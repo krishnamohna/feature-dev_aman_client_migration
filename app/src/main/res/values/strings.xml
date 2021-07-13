@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Cardio Patient</string>
+
+
+    <!--network error-->
+    <string name="err_no_network_available">Please check your internet connection and try again later.</string>
+    <string name="err_empty_to_identifying_user_blocked" />
+
+    <!--Validation error-->
+
+
+    <!--Login-->
+    <string name="hello_login">Hello Welcome to Login</string>
+    <string name="login">Login</string>
+
+    <!--Signup-->
+    <string name="hello_signup">Hello Welcome to Signup</string>
+    <string name="signup">SignUp</string>
+
+    <!--Common-->
+    <string name="click_one_more_time_to_exit_the_app">Click one more time to exit the app</string>
+
+</resources>
