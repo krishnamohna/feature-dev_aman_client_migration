@@ -1,12 +1,9 @@
-package com.cardio.doctor.utils
+package com.cardio.doctor.utils.network
 
 import android.util.Log
 import com.cardio.doctor.R
 import com.cardio.doctor.model.BaseResponse
 import com.google.gson.Gson
-import com.cardio.doctor.utils.network.NoNetworkException
-import com.cardio.doctor.utils.network.Resource
-import com.cardio.doctor.utils.network.UserBlockedException
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withTimeout
