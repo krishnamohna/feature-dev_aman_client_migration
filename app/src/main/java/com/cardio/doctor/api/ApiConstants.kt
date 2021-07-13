@@ -3,7 +3,7 @@
 
 package com.cardio.doctor.api
 
-interface API_HEADER{
+interface ApiHeader{
     companion object {
         const val CONTENT_TYPE = "Content-Type"
         const val ACCEPT="accept"
@@ -15,7 +15,7 @@ interface API_HEADER{
     }
 }
 
-interface API_STATUS{
+interface ApiStatus{
     companion object {
         const val STATUS_200=200
         const val STATUS_201=201

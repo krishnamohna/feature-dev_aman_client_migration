@@ -19,7 +19,7 @@ abstract class AppBaseFragment(layoutResId: Int) : BaseFragment(layoutResId){
 
     protected fun showAlertToExitFromApp(view: View) {
         val clickTime = System.currentTimeMillis()
-        if (clickTime - lastClickTime < TIMER.DOUBLE_CLICK_TIME_DELTA) {
+        if (clickTime - lastClickTime < Timer.DOUBLE_CLICK_TIME_DELTA) {
             requireActivity().finish()
             lastClickTime = 0
         }else {

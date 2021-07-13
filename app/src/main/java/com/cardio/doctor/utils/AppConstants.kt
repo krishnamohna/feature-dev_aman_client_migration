@@ -3,23 +3,20 @@
 
 package com.cardio.doctor.utils
 
-/*Preferences*/
-interface PREFERENCES{
+interface Preference{
     companion object {
-        const val APP = "PatientPreferences"
+        const val APP = "DoctorPreferences"
     }
 }
-/*Timer*/
-interface TIMER{
+interface Timer{
     companion object {
         const val DOUBLE_CLICK_TIME_DELTA: Long = 1500
     }
 }
 
-/*LOG*/
-interface LOG{
+interface Log{
     companion object {
-        const val TAG = "com.cardio.patient"
+        const val TAG = "com.cardio.doctor"
     }
 }
 

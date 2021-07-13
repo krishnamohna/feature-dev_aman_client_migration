@@ -13,7 +13,7 @@ class DialogHelperImpl(context: BaseActivity) : DialogHelper {
     override fun showProgress() {
         try {
             val customDialog = dialog
-            Log.e(LOG.TAG,customDialog.toString())
+            Log.e(Log.TAG,customDialog.toString())
             customDialog.setCancelable(false)
             customDialog.setContentView(R.layout.dialog_progress_bar)
             val lp = WindowManager.LayoutParams()
@@ -24,7 +24,7 @@ class DialogHelperImpl(context: BaseActivity) : DialogHelper {
             window.attributes = lp
             customDialog.show()
         } catch (e: Exception) {
-            Log.e(LOG.TAG,e.printStackTrace().toString())
+            Log.e(Log.TAG,e.printStackTrace().toString())
         }
     }
 

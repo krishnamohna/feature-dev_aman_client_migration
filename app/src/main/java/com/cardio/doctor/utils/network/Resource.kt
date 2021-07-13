@@ -1,6 +1,6 @@
 package com.cardio.doctor.utils.network
 
-import com.cardio.doctor.api.API_STATUS.Companion.STATUS_200
+import com.cardio.doctor.api.ApiStatus.Companion.STATUS_200
 import java.io.Serializable
 
 data class Resource<out T>(val apiConstant: String?, val apiCode :Int, val status: Status, val data: T?,

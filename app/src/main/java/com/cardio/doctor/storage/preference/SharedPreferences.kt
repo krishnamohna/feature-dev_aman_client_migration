@@ -2,14 +2,14 @@ package com.cardio.doctor.storage.preference
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.cardio.doctor.utils.PREFERENCES
+import com.cardio.doctor.utils.Preference
 import com.google.gson.GsonBuilder
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class SharedPreferences @Inject constructor(@ApplicationContext context: Context) {
 
-    val sharedPreferences: SharedPreferences = context.getSharedPreferences(PREFERENCES.APP, Context.MODE_PRIVATE)
+    val sharedPreferences: SharedPreferences = context.getSharedPreferences(Preference.APP, Context.MODE_PRIVATE)
 
     fun setString(key: String, value: String?) {
         with(sharedPreferences.edit()) {
