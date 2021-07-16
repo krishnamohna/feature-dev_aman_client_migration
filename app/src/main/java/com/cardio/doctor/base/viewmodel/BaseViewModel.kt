@@ -1,11 +1,11 @@
-package com.cardio.doctor.ui.base.viewmodel
+package com.cardio.doctor.base.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavDirections
 import com.cardio.doctor.storage.UserManager
-import com.cardio.doctor.ui.base.repository.BaseRepository
+import com.cardio.doctor.base.repository.BaseRepository
 import com.cardio.doctor.utils.livedata.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

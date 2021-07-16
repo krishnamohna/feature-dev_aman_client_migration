@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.base.fragment
+package com.cardio.doctor.base.fragment
 
 import android.content.Context
 import androidx.annotation.LayoutRes
@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.cardio.doctor.listeners.DialogHelper
 import com.cardio.doctor.listeners.DialogProvider
-import com.cardio.doctor.ui.base.viewmodel.BaseViewModel
+import com.cardio.doctor.base.viewmodel.BaseViewModel
 
 abstract class BaseFragment(@LayoutRes layoutResId: Int) : Fragment(layoutResId), DialogProvider {
     protected val baseViewModel : BaseViewModel by activityViewModels()

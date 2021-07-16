@@ -1,15 +1,14 @@
 package com.cardio.doctor.ui.fragment.login
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentLoginBinding
-import com.cardio.doctor.utils.AppBaseFragment
+import com.cardio.doctor.base.fragment.AppBaseFragment
 import com.cardio.doctor.utils.customSnackBarFail
-import com.cardio.doctor.utils.network.Resource
-import com.cardio.doctor.utils.network.Status
+import com.cardio.doctor.network.Resource
+import com.cardio.doctor.network.Status
 import com.cardio.doctor.utils.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 

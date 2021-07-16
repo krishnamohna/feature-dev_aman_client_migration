@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.ActivityAuthenticateUserBinding
-import com.cardio.doctor.ui.base.activity.BaseActivity
+import com.cardio.doctor.base.activity.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

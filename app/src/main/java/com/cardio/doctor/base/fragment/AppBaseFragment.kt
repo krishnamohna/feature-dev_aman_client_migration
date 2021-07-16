@@ -1,10 +1,11 @@
-package com.cardio.doctor.utils
+package com.cardio.doctor.base.fragment
 
 import android.view.View
 import com.cardio.doctor.R
 import com.cardio.doctor.listeners.DialogHelper
 import com.cardio.doctor.listeners.DialogProvider
-import com.cardio.doctor.ui.base.fragment.BaseFragment
+import com.cardio.doctor.utils.Timer
+import com.cardio.doctor.utils.customSnackBarFail
 
 abstract class AppBaseFragment(layoutResId: Int) : BaseFragment(layoutResId){
     private var lastClickTime: Long = 0

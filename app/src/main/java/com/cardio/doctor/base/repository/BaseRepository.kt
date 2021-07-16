@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.base.repository
+package com.cardio.doctor.base.repository
 
 import com.cardio.doctor.api.ApiService
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.base.activity
+package com.cardio.doctor.base.activity
 
 import android.view.LayoutInflater
 import androidx.activity.viewModels
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.cardio.doctor.listeners.DialogHelper
 import com.cardio.doctor.listeners.DialogProvider
-import com.cardio.doctor.ui.base.viewmodel.BaseViewModel
+import com.cardio.doctor.base.viewmodel.BaseViewModel
 import com.cardio.doctor.utils.DialogHelperImpl
 
 abstract class BaseActivity : AppCompatActivity() , DialogProvider {

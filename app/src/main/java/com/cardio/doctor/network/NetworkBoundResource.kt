@@ -1,4 +1,4 @@
-package com.cardio.doctor.utils.network
+package com.cardio.doctor.network
 
 import android.util.Log
 import com.cardio.doctor.R

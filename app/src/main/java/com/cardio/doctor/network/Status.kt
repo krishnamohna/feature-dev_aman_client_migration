@@ -1,4 +1,4 @@
-package com.cardio.doctor.utils.network
+package com.cardio.doctor.network
 
 enum class Status {
     SUCCESS,

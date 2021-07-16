@@ -1,4 +1,4 @@
-package com.cardio.doctor.utils.network
+package com.cardio.doctor.network
 
 import com.cardio.doctor.api.ApiStatus.Companion.STATUS_200
 import java.io.Serializable

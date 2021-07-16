@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentSignUpBinding
-import com.cardio.doctor.utils.AppBaseFragment
+import com.cardio.doctor.base.fragment.AppBaseFragment
 import com.cardio.doctor.utils.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 

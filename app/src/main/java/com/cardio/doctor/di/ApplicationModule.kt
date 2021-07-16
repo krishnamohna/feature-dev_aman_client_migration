@@ -14,7 +14,7 @@ import com.cardio.doctor.api.ApiHeader.Companion.PLATFORM_TYPE
 import com.cardio.doctor.storage.UserManager
 import com.cardio.doctor.storage.preference.SharedPreferences
 import com.google.gson.GsonBuilder
-import com.cardio.doctor.utils.network.InternetInterceptor
+import com.cardio.doctor.network.InternetInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

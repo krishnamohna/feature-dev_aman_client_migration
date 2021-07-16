@@ -1,12 +1,9 @@
 package com.cardio.doctor.ui.fragment.login
 
 import android.app.Application
-import androidx.lifecycle.viewModelScope
 import com.cardio.doctor.storage.UserManager
-import com.cardio.doctor.ui.base.viewmodel.BaseViewModel
-import com.cardio.doctor.utils.network.networkCall
+import com.cardio.doctor.base.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
