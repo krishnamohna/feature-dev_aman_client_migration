@@ -20,5 +20,18 @@
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.cardio.doctor.ui.fragment.signup.SignUpFragment"
-        android:label="SignUpFragment" />
+        android:label="SignUpFragment" >
+        <action
+            android:id="@+id/signup_to_phone_verification"
+            app:destination="@id/phoneNumberVerificationFragment"
+            app:enterAnim="@anim/in_from_right"
+            app:exitAnim="@anim/out_to_left"
+            app:popEnterAnim="@anim/in_from_left"
+            app:popExitAnim="@anim/out_to_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneNumberVerificationFragment"
+        android:name="com.cardio.doctor.ui.fragment.phone_verification.PhoneNumberVerificationFragment"
+        android:label="PhoneNumberVerificationFragment" />
 </navigation>

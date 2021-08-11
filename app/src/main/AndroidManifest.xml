@@ -3,12 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.cardio.doctor">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
     <application
-        android:name="com.cardio.doctor.AppCardioPatient"
+        android:name=".AppCardioPatient"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -16,15 +12,19 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,LockedOrientationActivity"
-        tools:targetApi="m"
-        >
-
-        <activity android:name="com.cardio.doctor.ui.activity.AuthenticateUserActivity">
+        tools:targetApi="m">
+        <activity android:name=".ui.activity.dashboard.DashboardActivity"></activity>
+        <activity android:name=".ui.activity.AuthenticateUserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -20,4 +20,13 @@ interface Log{
     }
 }
 
+interface ENUM{
+    companion object {
+        const val INT_1: Int = 1
+    }
+}
+
+
+
+
 

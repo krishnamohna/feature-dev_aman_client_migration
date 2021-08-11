@@ -7,17 +7,50 @@
     <string name="err_empty_to_identifying_user_blocked" />
 
     <!--Validation error-->
-
+    <string name="enter_email_address">Please enter your email!!!</string>
+    <string name="enter_phone_number">Please enter your phone number!!!</string>
+    <string name="enter_valid_full_name">Please enter full name!!!</string>
+    <string name="err_valid_email">Please enter a valid email!!!</string>
+    <string name="err_empty_password">Please enter your password!!!</string>
+    <string name="err_valid_password">Password must be at least 8 and less than 35 characters, and must include at least one upper case letter, one lower case letter, and one numeric digits, and can include special characters!!!</string>
+    <string name="enter_valid_mobile">Please enter mobile number!!!</string>
+    <string name="err_valid_mobile_number">Please enter a valid mobile number!!!</string>
 
     <!--Login-->
     <string name="hello_login">Hello Welcome to Login</string>
     <string name="login">Login</string>
+    <string name="google_login">Google Login</string>
+    <string name="user_logged_in_successfully">User logged in successfully</string>
+
+
+    <string name="custom_auth_signin_status_user">User ID: %s</string>
+    <string name="custom_auth_signin_status_failed">Error: sign in failed</string>
+    <string name="auth_failed">Authentication failed</string>
 
     <!--Signup-->
     <string name="hello_signup">Hello Welcome to Signup</string>
     <string name="signup">SignUp</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
+    <string name="emailpassword_title_text">Email and Password</string>
+    <string name="plus_one">+1</string>
+
+
+    <!--OTP-->
+    <string name="phone_verification_description">Please share the OTP received on your mobile number for verification.</string>
+    <string name="not_yet_received">Not yet received?</string>
+    <string name="resend">Resend</string>
+    <string name="confirm">Confirm</string>
+
 
     <!--Common-->
     <string name="click_one_more_time_to_exit_the_app">Click one more time to exit the app</string>
-
+    <string name="forgot_password">Forgot Password</string>
+    <string name="email">Email</string>
+    <string name="email_address">Email Address</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="alpha_true">True</string>
+    <string name="alpha_false">False</string>
 </resources>

@@ -26,5 +26,14 @@ interface ApiStatus{
     }
 }
 
+interface Constants{
+    companion object {
+        const val LOGIN = "Login"
+        const val SIGNUP = "Signup"
+        const val PHONE_VERIFICATION = "PhoneVerification"
+
+    }
+}
+
 
 

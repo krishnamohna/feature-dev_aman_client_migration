@@ -1,9 +1,19 @@
-apply plugin: 'com.android.application'
+/*apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
-apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "androidx.navigation.safeargs.kotlin"*/
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id "androidx.navigation.safeargs.kotlin"
+    id 'com.google.gms.google-services'
+}
+
 
 android {
     compileSdkVersion build_versions.compile_sdk
@@ -43,6 +53,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(path: ':countrypicker')
     testImplementation deps.kotlin.junit
     androidTestImplementation deps.kotlin.test
     androidTestImplementation deps.kotlin.espresso
@@ -89,5 +100,14 @@ dependencies {
     //sdp for font size
     implementation deps.sdp.ssp
     implementation deps.sdp.sdp
+
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:28.2.1')
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'com.google.firebase:firebase-storage'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    // Google Sign In SDK (only required for Google Sign In)
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
 }
 

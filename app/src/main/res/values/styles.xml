@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="BaseAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/grey</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/blue</item>
     </style>
@@ -19,6 +19,17 @@
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowEnterTransition">@android:transition/slide_right</item>
         <item name="android:windowExitTransition">@android:transition/slide_left</item>
+    </style>
+
+
+    <style name="BaseAppTheme.EdtTxt">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:background">@drawable/edt_rounded_corner</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:paddingLeft">@dimen/_16sdp</item>
+        <item name="android:paddingRight">@dimen/_16sdp</item>
     </style>
 
     <style name="textStyle" parent="@android:style/TextAppearance">

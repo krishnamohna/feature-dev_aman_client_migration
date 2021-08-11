@@ -6,6 +6,7 @@
 
     <integer name="int_4">4</integer>
     <integer name="int_6">6</integer>
+    <integer name="int_10">10</integer>
     <integer name="int_12">12</integer>
     <integer name="int_14">14</integer>
     <integer name="int_15">15</integer>

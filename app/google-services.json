@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "607768524761",
+    "project_id": "pocketcardio1",
+    "storage_bucket": "pocketcardio1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607768524761:android:9f5d18d707650f0e624bc8",
+        "android_client_info": {
+          "package_name": "com.cardio.doctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607768524761-v4qorj149ksinnbpsp0o5vrv2cogum3p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvBhCJajdp7IrnmhVHvL5_oJ99Xf3pPaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607768524761-v4qorj149ksinnbpsp0o5vrv2cogum3p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "607768524761-3ukgur428brb6h6pjii46cbu1445s579.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pocketcardiodoctor.beta"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
