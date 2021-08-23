@@ -30,6 +30,7 @@ interface Constants{
     companion object {
         const val LOGIN = "Login"
         const val SIGNUP = "Signup"
+        const val FORGOT_PASSWORD = "ForgotPassword"
         const val PHONE_VERIFICATION = "PhoneVerification"
 
     }

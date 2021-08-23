@@ -38,14 +38,15 @@
             android:id="@+id/toolbarTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_13ssp"
+            android:fontFamily="@font/poppins_medium"
             android:gravity="center"
             android:maxLines="@integer/int_1"
-            android:fontFamily="@font/poppins_medium"
             android:paddingStart="0dp"
             android:paddingEnd="@dimen/_12sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+            app:layout_constraintEnd_toEndOf="@+id/toolbar"
             app:layout_constraintStart_toEndOf="@+id/backBtn"
             app:layout_constraintTop_toTopOf="@+id/toolbar" />
     </androidx.constraintlayout.widget.ConstraintLayout>

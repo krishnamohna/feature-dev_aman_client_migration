@@ -42,24 +42,65 @@
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/appLogo" />
 
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/txtUserName"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_27sdp"
-                android:hint="@string/email"
-                android:paddingLeft="@dimen/_16sdp"
-                android:paddingRight="@dimen/_16sdp"
-                android:maxLines="@integer/int_1"
-                android:maxLength="@integer/int_50"
-                android:textColor="@color/black"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailAddress"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/phoneNumberContainer"
+                android:layout_width="368dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="@dimen/_16sdp"
                 app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/loginTittle"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/loginTittle">
+
+                <View
+                    android:id="@+id/countryCodeSeprator"
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/countryCode"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtUserName"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:hint="@string/email_mobile_number"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="@integer/int_1"
+                    android:paddingLeft="@dimen/_16sdp"
+                    android:paddingRight="@dimen/_16sdp"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="@integer/int_1"
+                    app:layout_constraintStart_toEndOf="@+id/countryCodeSeprator"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/countryCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:drawableEnd="@drawable/ic_dropdown_mobile"
+                    android:drawablePadding="@dimen/_16sdp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/_8sdp"
+                    android:paddingEnd="@dimen/_8sdp"
+                    android:text="@string/plus_one"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13ssp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/countryCodeSeprator"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/passwordContainer"
@@ -68,10 +109,10 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/txtUserName"
+                app:layout_constraintTop_toBottomOf="@+id/phoneNumberContainer"
                 >
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/txtPassword"
+                    android:id="@+id/edtPassword"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
                     android:hint="@string/enter_password"
@@ -94,10 +135,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtPassword"
+                    app:layout_constraintBottom_toBottomOf="@+id/edtPassword"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtPassword"
-                     />
+                    app:layout_constraintTop_toTopOf="@+id/edtPassword"
+                    app:srcCompat="@drawable/ic_hide_password"
+                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatTextView

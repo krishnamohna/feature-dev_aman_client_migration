@@ -53,7 +53,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(path: ':countrypicker')
     testImplementation deps.kotlin.junit
     androidTestImplementation deps.kotlin.test
     androidTestImplementation deps.kotlin.espresso
@@ -108,6 +107,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     // Google Sign In SDK (only required for Google Sign In)
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation project(path: ':countrypicker')
 
 }
 

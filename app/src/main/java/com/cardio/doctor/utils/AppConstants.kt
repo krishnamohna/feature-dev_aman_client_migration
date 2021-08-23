@@ -23,9 +23,21 @@ interface Log{
 interface ENUM{
     companion object {
         const val INT_1: Int = 1
+        const val INT_2: Int = 2
+
     }
 }
 
+interface FireStoreCollection{
+    companion object {
+        const val USERS = "Users"
+    }
+}
+interface FireStoreDocKey{
+    companion object {
+        const val PHONE_NUMBER = "PhoneNumber"
+    }
+}
 
 
 

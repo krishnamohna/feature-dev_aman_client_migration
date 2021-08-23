@@ -13,12 +13,14 @@ import java.util.regex.Pattern
 private const val USERNAME = "^[a-zA-Z]+[a-zA-Z ]{2,34}"//35
 private const val USERID = "^(?=.*[a-zA-Z])[A-Z0-9a-z!@$%*#?&_^+.=-]{2,25}"
 private const val MOBILE_NUMBER = "^[0-9]{8,12}"
+private const val NUMERIC_VALUE = "^[0-9]{1,12}"
 private const val PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Z0-9a-z!@$%*#?&_^+.=-]{8,35}$"
 private const val WEBURL = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
 
 private val USERNAME_PATTERN: Pattern = Pattern.compile(USERNAME)
 private val USERID_PATTERN: Pattern = Pattern.compile(USERID)
 private val MOBILE_NUMBER_PATTERN: Pattern = Pattern.compile(MOBILE_NUMBER)
+private val NUMERIC_PATTERN: Pattern = Pattern.compile(NUMERIC_VALUE)
 private val WEBURL_PATTERN: Pattern = Pattern.compile(WEBURL)
 private val PASSWORD_PATTERN: Pattern = Pattern.compile(PASSWORD)
 
@@ -56,6 +58,10 @@ fun validPhoneLength(target: CharSequence): Boolean {
 
 fun isValidMobileNumber(target: CharSequence): Boolean {
     return MOBILE_NUMBER_PATTERN.matcher(target).matches()
+}
+
+fun isNumericValue(target: CharSequence): Boolean {
+    return NUMERIC_PATTERN.matcher(target).matches()
 }
 
 fun String.validPasswordLength(): Boolean {

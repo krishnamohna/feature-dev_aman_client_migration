@@ -16,6 +16,22 @@
             app:popEnterAnim="@anim/in_from_left"
             app:popExitAnim="@anim/out_to_right"
             />
+        <action
+            android:id="@+id/loginToPhoneVerification"
+            app:destination="@id/phoneNumberVerificationFragment"
+            app:enterAnim="@anim/in_from_right"
+            app:exitAnim="@anim/out_to_left"
+            app:popEnterAnim="@anim/in_from_left"
+            app:popExitAnim="@anim/out_to_right"
+            />
+        <action
+            android:id="@+id/loginToForgotPassword"
+            app:destination="@id/forgotPasswordFragment"
+            app:enterAnim="@anim/in_from_right"
+            app:exitAnim="@anim/out_to_left"
+            app:popEnterAnim="@anim/in_from_left"
+            app:popExitAnim="@anim/out_to_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -33,5 +49,18 @@
     <fragment
         android:id="@+id/phoneNumberVerificationFragment"
         android:name="com.cardio.doctor.ui.fragment.phone_verification.PhoneNumberVerificationFragment"
-        android:label="PhoneNumberVerificationFragment" />
+        android:label="PhoneNumberVerificationFragment" >
+        <argument
+            android:name="phoneVerificationDetail"
+            app:argType="com.cardio.doctor.model.request.PhoneVerificationDetails"
+            app:nullable="true" />
+        <argument
+            android:name="isComingFrom"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.cardio.doctor.ui.fragment.forgot_password.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment" />
 </navigation>
