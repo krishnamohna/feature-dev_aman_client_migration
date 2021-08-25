@@ -15,6 +15,11 @@ import com.cardio.doctor.storage.UserManager
 import com.cardio.doctor.storage.preference.SharedPreferences
 import com.google.gson.GsonBuilder
 import com.cardio.doctor.network.InternetInterceptor
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -95,5 +100,17 @@ class ApplicationModule {
     @Singleton
     fun providePreference(@ApplicationContext context : Context) : SharedPreferences {
         return SharedPreferences(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseAuth() : FirebaseAuth {
+        return Firebase.auth
+    }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseFireStore() : FirebaseFirestore {
+        return Firebase.firestore
     }
 }

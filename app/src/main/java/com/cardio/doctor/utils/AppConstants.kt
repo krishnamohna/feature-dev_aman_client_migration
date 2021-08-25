@@ -11,6 +11,8 @@ interface Preference{
 interface Timer{
     companion object {
         const val DOUBLE_CLICK_TIME_DELTA: Long = 1500
+        const val OTP_EXPIRED: Long = 120
+
     }
 }
 

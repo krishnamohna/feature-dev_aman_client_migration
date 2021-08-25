@@ -217,7 +217,6 @@ class PhoneNumberVerificationFragment : AppBaseFragment(R.layout.fragment_phone_
                 .setTimeout(120L, TimeUnit.SECONDS) // Timeout and unit
                 .setActivity(requireActivity())                 // Activity (for callback binding)
                 .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
-
             resendToken?.let {  optionsBuilder.setForceResendingToken(resendToken!!)}
             PhoneAuthProvider.verifyPhoneNumber(optionsBuilder.build())
         }
