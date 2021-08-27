@@ -33,8 +33,9 @@ interface Constants{
         const val VALIDATION = "Validation"
         const val FORGOT_PASSWORD = "ForgotPassword"
         const val PHONE_VERIFICATION = "PhoneVerification"
+        const val PHONE_AUTHENTICATION = "PhoneAuthentication"
         const val SEND_OTP = "SendOtp"
-
+        const val UPDATE_EMAIL_AND_PASSWORD = "UpdateEmailAndPassword"
     }
 }
 

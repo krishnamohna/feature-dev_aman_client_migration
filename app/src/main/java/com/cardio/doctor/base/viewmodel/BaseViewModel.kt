@@ -3,6 +3,7 @@ package com.cardio.doctor.base.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.cardio.doctor.AppCardioPatient
 import com.cardio.doctor.R
@@ -14,34 +15,40 @@ import com.cardio.doctor.storage.UserManager
 import com.cardio.doctor.utils.livedata.SingleLiveEvent
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 open class BaseViewModel @Inject constructor(
-    private val userManager: UserManager,
-    private val baseRepository: BaseRepository,
+    userManager: UserManager,
+    baseRepository: BaseRepository,
     application: Application
 ) : AndroidViewModel(application) {
 
     val auth: FirebaseAuth = Firebase.auth
-    protected val db = Firebase.firestore
+    //protected val db = Firebase.firestore
 
     private val _phoneVerificationResponse = SingleLiveEvent<Resource<PhoneAuthCredential>>()
     val phoneVerificationResponse: LiveData<Resource<PhoneAuthCredential>> =
         _phoneVerificationResponse
 
+    private val _phoneAuthenticationResponse = SingleLiveEvent<Resource<FirebaseUser>>()
+    val phoneAuthenticationResponse: LiveData<Resource<FirebaseUser>> =
+        _phoneAuthenticationResponse
+
+    private val _firebaseException = SingleLiveEvent<Resource<String>>()
+    val firebaseException: LiveData<Resource<String>> =
+        _firebaseException
+
     internal lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     internal var verificationInProgress = false
     internal var storedVerificationId: String = ""
-    private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
+    internal lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
 
     private val _navDirectionLiveData = SingleLiveEvent<NavDirections>()
     val navDirectionLiveData: LiveData<NavDirections> = _navDirectionLiveData
@@ -56,12 +63,10 @@ open class BaseViewModel @Inject constructor(
                 verificationInProgress = false
                 _phoneVerificationResponse.value =
                     Resource.success(Constants.PHONE_VERIFICATION, credential)
-                //signInWithPhoneAuthCredential(credential)
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
                 verificationInProgress = false
-                //hideProgress()
                 phoneVerificationFailException(e)
             }
 
@@ -71,7 +76,7 @@ open class BaseViewModel @Inject constructor(
             ) {
                 storedVerificationId = verificationId
                 resendToken = token
-                _phoneVerificationResponse.value = Resource.success(Constants.SEND_OTP, null)
+                _phoneAuthenticationResponse.value = Resource.success(Constants.SEND_OTP, null)
             }
         }
     }
@@ -85,20 +90,77 @@ open class BaseViewModel @Inject constructor(
         }
     }
 
-    fun createModelForPhoneVerification(
-        phoneNumber: String, countryCode: String, email: String,
-        password: String): PhoneVerificationDetails {
-        return PhoneVerificationDetails(
-            countryCode.plus(phoneNumber), email, password,
-            storedVerificationId, resendToken
-        )
-    }
-
     private fun showPhoneValidation(message: String) {
-        _phoneVerificationResponse.value =
+        _phoneAuthenticationResponse.value =
             Resource.error(Constants.PHONE_VERIFICATION, 0, message, null)
     }
 
+    fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+        try {
+            viewModelScope.launch {
+                _phoneAuthenticationResponse.value =
+                    Resource.loading(Constants.PHONE_VERIFICATION, null)
+                auth.signInWithCredential(credential).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        _phoneAuthenticationResponse.value =
+                            Resource.success(Constants.PHONE_VERIFICATION, task.result?.user)
+                    } else {
+                          if (task.exception is FirebaseAuthInvalidCredentialsException) {
+                              _phoneAuthenticationResponse.value = Resource.error(
+                                  Constants.PHONE_VERIFICATION, 0,
+                                  task.exception?.localizedMessage
+                                      ?: getApplication<AppCardioPatient>().getString(R.string.getting_some_error),
+                                  null
+                              )
+                          }
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            _phoneAuthenticationResponse.value =
+                Resource.error(Constants.VALIDATION, 0, getExceptionMessage(e), null)
+        }
+    }
+
+    fun createModelForPhoneVerification(fullName :String,
+        phoneNumber: String, countryCode: String, email: String,
+        password: String, imageUrl : String
+    ): PhoneVerificationDetails {
+        return PhoneVerificationDetails(fullName,
+            countryCode.plus(phoneNumber), email, password,
+            storedVerificationId, imageUrl,resendToken
+        )
+    }
+
+    protected fun checkForMultiFactorFailure(e: Exception) {
+        val context = getApplication<AppCardioPatient>()
+        when (e) {
+            is FirebaseAuthInvalidCredentialsException -> {
+                showFirebaseException(context.getString(R.string.invalid_password))
+            }
+            is FirebaseAuthInvalidUserException -> {
+                showFirebaseException(context.getString(R.string.email_not_in_use))
+            }
+            is FirebaseAuthUserCollisionException -> {
+                showFirebaseException(context.getString(R.string.email_already_in_use))
+            }
+            else -> {
+                showFirebaseException(
+                    e.localizedMessage ?: context.getString(R.string.getting_some_error)
+                )
+            }
+        }
+    }
+
+    private fun showFirebaseException(message: String) {
+        _phoneAuthenticationResponse.value =
+            Resource.error(Constants.VALIDATION, 0, message, null)
+    }
+
+    protected fun getExceptionMessage(e: Exception): String {
+        return e.localizedMessage
+            ?: getApplication<AppCardioPatient>().getString(R.string.getting_some_error)
+    }
 }
 
 

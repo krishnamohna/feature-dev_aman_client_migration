@@ -14,45 +14,33 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.api.Constants
 import com.cardio.doctor.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentLoginBinding
-import com.cardio.doctor.model.request.PhoneVerificationDetails
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.ui.activity.dashboard.DashboardActivity
 import com.cardio.doctor.utils.*
+import com.cardio.doctor.utils.Timer.Companion.OTP_EXPIRED
 import com.cardio.doctor.utils.viewbinding.viewBinding
 import com.countrypicker.CountrySelectActivity
 import com.countrypicker.bean.CountryData
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.FirebaseException
-import com.google.firebase.FirebaseTooManyRequestsException
-import com.google.firebase.auth.*
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.PhoneAuthOptions
+import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
-
 
 @AndroidEntryPoint
 class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickListener {
     private val binding by viewBinding(FragmentLoginBinding::bind)
     private val viewModel: LoginViewModel by viewModels()
-    private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private var isPasswordVisible: Boolean = false
-
-    private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
-    private var verificationInProgress = false
-    private var storedVerificationId: String? = ""
-    private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
 
     private var resultLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -64,26 +52,28 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
             }
         }
 
+    private var resultGoogleSignIn: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                viewModel.getGoogleSignedAccount(task)
+            }
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setListener()
         setObservers()
-        // Initialize Firebase Auth
-        auth = Firebase.auth
-        initializePhoneAuthCallBack()
-        googleSignIn()
+        viewModel.initializePhoneAuthCallBack()
+        initializeGoogleSign()
     }
 
-    private fun googleSignIn() {
-        // Configure Google Sign In
+    private fun initializeGoogleSign() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-
         googleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
-
     }
 
     private fun setListener() {
@@ -119,7 +109,13 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
     }
 
     private fun setObservers() {
-        viewModel.signUpApiResponse.observe(viewLifecycleOwner, {
+        viewModel.loginApiResponse.observe(viewLifecycleOwner, {
+            handleApiCallback(it)
+        })
+        viewModel.firebaseException.observe(viewLifecycleOwner, {
+            handleApiCallback(it)
+        })
+        viewModel.phoneAuthenticationResponse.observe(viewLifecycleOwner, {
             handleApiCallback(it)
         })
     }
@@ -129,10 +125,10 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
             binding.btnLogin -> {
                 val email = binding.edtUserName.text.toString()
                 val password = binding.edtPassword.text.toString()
-                viewModel.validateFields(email,password,binding.countryCode.text.toString())
+                viewModel.validateFields(email, password, binding.countryCode.text.toString())
             }
             binding.btnGoogleSignIn -> {
-                signWithEmailAndPassword()
+                signWithGoogle()
             }
             binding.forgotPassword -> {
                 baseViewModel.setDirection(LoginFragmentDirections.loginToForgotPassword())
@@ -170,16 +166,26 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
             Status.SUCCESS -> {
                 hideProgress()
                 when (apiResponse.apiConstant) {
-                    Constants.LOGIN -> {
+                    Constants.LOGIN ->  checkIsUserVerified()
+
+                    Constants.VALIDATION -> {
                         if (isNumericValue(binding.edtUserName.text.toString())) startPhoneNumberVerification(
                             binding.countryCode.text.toString()
                                 .plus(binding.edtUserName.text.toString())
-                        )
-                        else signWithEmailAndPassword(
-                            binding.edtUserName.text.toString(),
-                            binding.edtPassword.text.toString()
-                        )
+                        ) else viewModel.signWithEmailAndPassword(binding.edtUserName.text.toString(),
+                            binding.edtPassword.text.toString())
                     }
+
+                    Constants.SEND_OTP -> {
+                        baseViewModel.setDirection(LoginFragmentDirections.loginToPhoneVerification(
+                            viewModel.createModelForPhoneVerification("",
+                                binding.countryCode.text.toString(),
+                                binding.edtUserName.text.toString(),
+                                "","",""
+                            ), ENUM.INT_2
+                        ))
+                    }
+
                 }
             }
             Status.LOADING -> {
@@ -202,170 +208,43 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
         }
     }
 
-
-    private fun signWithEmailAndPassword() {
+    private fun signWithGoogle() {
         val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
-
-    private fun signOut() {
-        // Firebase sign out
-        auth.signOut()
-
-        // Google sign out
-        googleSignInClient.signOut().addOnCompleteListener(requireActivity()) {
-            //updateUI(null)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)!!
-                Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
-                firebaseAuthWithGoogle(account.idToken!!)
-            } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e)
-                // updateUI(null)
-            }
-        }
-    }
-
-    private fun firebaseAuthWithGoogle(idToken: String) {
-        showProgress()
-        val credential = GoogleAuthProvider.getCredential(idToken, null)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(requireActivity()) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithCredential:success")
-                    val user = auth.currentUser
-                    Snackbar.make(
-                        binding.root,
-                        "User Logged In Successfully ${user?.displayName}",
-                        Snackbar.LENGTH_SHORT
-                    ).show()
-                    openDashboardActivity()
-                    //updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    val view = binding.root
-                    Snackbar.make(view, "Authentication Failed.", Snackbar.LENGTH_SHORT).show()
-                    //updateUI(null)
-                }
-                hideProgress()
-            }
-    }
-
-    companion object {
-        private const val TAG = "Doctor App"
-        private const val RC_SIGN_IN = 9001
-    }
-
-    private fun signWithEmailAndPassword(email: String, password: String) {
-        Log.d(TAG, "signIn:$email")
-        showProgress()
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(requireActivity()) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                   checkIsUserVerified()
-                } else {
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    viewModel.checkForMultiFactorFailure(task.exception!!)
-                }
-                hideProgress()
-            }
+        resultGoogleSignIn.launch(signInIntent)
     }
 
     private fun checkIsUserVerified() {
-        val user = auth.currentUser
+        val user = viewModel.auth.currentUser
         user?.let {
-            if(user.isEmailVerified) {
-                updateUI(user)
+            if (user.isEmailVerified) {
+                showToast(requireContext(), getString(R.string.user_logged_in_successfully))
                 openDashboardActivity()
-            }else{
-                showAlertDialog(requireActivity() as AppCompatActivity,
-                    "", getString(R.string.verify_email), getString(R.string.ok),
-                    getString(R.string.cancel),
-                    btnTwoVisibility = false
-                ) { _: String, dialog: DialogInterface ->
-                    user.sendEmailVerification()
-                    dialog.dismiss()
-                }
-            }
+            } else showDialogEmailNotVerified(user)
         }
     }
 
+    private fun showDialogEmailNotVerified(user: FirebaseUser?) {
+        showAlertDialog(
+            requireActivity() as AppCompatActivity,
+            "", getString(R.string.verify_email), getString(R.string.ok),
+            getString(R.string.cancel),
+            btnTwoVisibility = false
+        ) { _: String, dialog: DialogInterface ->
+            user?.sendEmailVerification()
+            dialog.dismiss()
+        }
+    }
 
     private fun startPhoneNumberVerification(phoneNumber: String) {
         showProgress()
-        val options = PhoneAuthOptions.newBuilder(auth)
+        val options = PhoneAuthOptions.newBuilder(viewModel.auth)
             .setPhoneNumber(phoneNumber)       // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+            .setTimeout(OTP_EXPIRED, TimeUnit.SECONDS) // Timeout and unit
             .setActivity(requireActivity())                 // Activity (for callback binding)
-            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
+            .setCallbacks(viewModel.callbacks)          // OnVerificationStateChangedCallbacks
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
-
-        verificationInProgress = true
-    }
-
-    private fun initializePhoneAuthCallBack() {
-        callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-                Log.d(TAG, "onVerificationCompleted:$credential")
-                verificationInProgress = false
-                hideProgress()
-            }
-
-            override fun onVerificationFailed(e: FirebaseException) {
-                Log.w(TAG, "onVerificationFailed", e)
-                verificationInProgress = false
-                hideProgress()
-                if (e is FirebaseAuthInvalidCredentialsException) {
-                    // Invalid request
-                    customSnackBarFail(requireContext(), binding.root, getString(R.string.invalid_mobile_number))
-                } else if (e is FirebaseTooManyRequestsException) {
-                    customSnackBarFail(requireContext(), binding.root, getString(R.string.quota_exceeded))
-                }
-            }
-
-            override fun onCodeSent(
-                verificationId: String,
-                token: PhoneAuthProvider.ForceResendingToken
-            ) {
-                hideProgress()
-                storedVerificationId = verificationId
-                resendToken = token
-
-                val phoneVerificationDetails = PhoneVerificationDetails(
-                    binding.countryCode.text.toString().plus(binding.edtUserName.text.toString()),
-                    "", "",
-                    verificationId, token
-                )
-                baseViewModel.setDirection(LoginFragmentDirections.loginToPhoneVerification(
-                    phoneVerificationDetails, ENUM.INT_2
-                ))
-            }
-        }
-    }
-
-
-
-    private fun updateUI(user: FirebaseUser?) {
-        if (user != null) {
-            showToast(requireContext(), getString(R.string.user_logged_in_successfully))
-        } else {
-            showToast(requireContext(), getString(R.string.custom_auth_signin_status_failed))
-        }
+        viewModel.verificationInProgress = true
     }
 
     private fun openDashboardActivity() {

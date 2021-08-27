@@ -37,6 +37,10 @@ interface FireStoreCollection{
 }
 interface FireStoreDocKey{
     companion object {
+        const val USER_ID = "UserId"
+        const val FULL_NAME = "FullName"
+        const val EMAIL = "email"
+        const val IMAGE_URL = "ImageUrl"
         const val PHONE_NUMBER = "PhoneNumber"
     }
 }

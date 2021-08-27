@@ -1,8 +1,12 @@
 package com.cardio.doctor.ui.fragment.signup
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
 import android.view.View
@@ -19,13 +23,17 @@ import com.cardio.doctor.network.Status
 import com.cardio.doctor.utils.ENUM
 import com.cardio.doctor.utils.Timer.Companion.OTP_EXPIRED
 import com.cardio.doctor.utils.customSnackBarFail
+import com.cardio.doctor.utils.from
+import com.cardio.doctor.utils.getFileName
 import com.cardio.doctor.utils.viewbinding.viewBinding
 import com.countrypicker.CountrySelectActivity
 import com.countrypicker.bean.CountryData
-import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
+import com.theartofdev.edmodo.cropper.CropImage.*
+import com.theartofdev.edmodo.cropper.CropImageView
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
@@ -33,6 +41,20 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
     private val binding by viewBinding(FragmentSignUpBinding::bind)
     private val viewModel: SignUpViewModel by viewModels()
     private var isPasswordVisible: Boolean = false
+
+    private val requestMultiplePermissions =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            var isGranted = true
+            permissions.entries.forEach {
+                if (it.value == false) {
+                    isGranted = false
+                    return@forEach
+                }
+            }
+
+            if (isGranted)
+                fetchImage()
+        }
 
     private var resultLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -62,7 +84,7 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
         binding.txtLogin.setOnClickListener(this)
         binding.imgShowPassword.setOnClickListener(this)
         binding.countryCode.setOnClickListener(this)
-
+        binding.appLogo.setOnClickListener(this)
         /*   binding.edtPhoneNumber.setOnFocusChangeListener { _, hasFocus ->
                if (!hasFocus) {
                    viewModel.isPhoneNumberExist(
@@ -79,16 +101,55 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
     }
 
     private fun setObservers() {
-        viewModel.phoneVerificationResponse.observe(viewLifecycleOwner, {
+        viewModel.phoneAuthenticationResponse.observe(viewLifecycleOwner, {
             handleApiCallback(it)
         })
         viewModel.signUpApiResponse.observe(viewLifecycleOwner, {
             handleApiCallback(it)
         })
+        viewModel.firebaseException.observe(viewLifecycleOwner, {
+            handleApiCallback(it)
+        })
+    }
+
+    private fun checkPermission() {
+        if (isAdded) {
+            requestMultiplePermissions.launch(
+                arrayOf(Manifest.permission.CAMERA,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                )
+            )
+        }
+    }
+
+    private fun fetchImage() {
+        activity().setGuidelines(CropImageView.Guidelines.ON)
+            .start(requireContext(), this)
+    }
+
+    @SuppressLint("Assert")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            val result = getActivityResult(data)
+            if (resultCode == Activity.RESULT_OK) {
+                viewModel.deviceUri = result.uri
+                viewModel.fileName = getFileName(requireContext(), viewModel.deviceUri!!)
+                val bitmap = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, viewModel.deviceUri )
+                binding.appLogo.setImageBitmap(bitmap)
+                viewModel.uploadProfileImage(viewModel.deviceUri ,viewModel.fileName )
+            } else if (resultCode == CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                customSnackBarFail(requireContext(),binding.root ,result.error.message !!)
+            }
+        }
     }
 
     override fun onClick(view: View?) {
         when (view) {
+            binding.appLogo -> {
+                checkPermission()
+            }
+
             binding.btnSignup -> {
                 viewModel.validateFields(
                     binding.edtUserName.text.toString(), binding.edtPhoneNumber.text.toString(),
@@ -127,20 +188,24 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
                         startPhoneNumberVerification(binding.countryCode.text.toString()
                             .plus(binding.edtPhoneNumber.text.toString()))
                     }
-                    Constants.PHONE_VERIFICATION -> {
-                        signInWithPhoneAuthCredential(apiResponse.data as PhoneAuthCredential)
-                    }
+//                    Constants.PHONE_VERIFICATION -> {
+//                        signInWithPhoneAuthCredential(apiResponse.data as PhoneAuthCredential)
+//                    }
                     Constants.SEND_OTP -> {
-                        viewModel.storeUserDetailInFireStore(binding.countryCode.text.toString().plus(
+                        /*viewModel.storeUserDetailInFireStore(binding.countryCode.text.toString().plus(
                             binding.edtPhoneNumber.text.toString()
-                        ))
+                        ))*/
+                        var imagePath =""
+                        viewModel.firebaseUri?.let { imagePath = it.toString() }
                         baseViewModel.setDirection(
                             SignUpFragmentDirections.signupToPhoneVerification(
                                 viewModel.createModelForPhoneVerification(
+                                    binding.edtUserName.text.toString(),
                                     binding.edtPhoneNumber.text.toString(),
                                     binding.countryCode.text.toString(),
                                     binding.edtEmailId.text.toString(),
-                                    binding.edtPassword.text.toString()), ENUM.INT_1
+                                    binding.edtPassword.text.toString(), imagePath
+                                ), ENUM.INT_1
                             )
                         )
                     }
@@ -174,16 +239,16 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
         viewModel.verificationInProgress = true
     }
 
-    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
-        viewModel.auth.signInWithCredential(credential)
-            .addOnCompleteListener(requireActivity()) { _ ->
-                hideProgress()
-            }.addOnFailureListener {
-                hideProgress()
-                customSnackBarFail(
-                    requireContext(), binding.root, it.localizedMessage
-                        ?: getString(R.string.getting_some_error)
-                )
-            }
-    }
+    /* private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+         viewModel.auth.signInWithCredential(credential)
+             .addOnCompleteListener(requireActivity()) { _ ->
+                 hideProgress()
+             }.addOnFailureListener {
+                 hideProgress()
+                 customSnackBarFail(
+                     requireContext(), binding.root, it.localizedMessage
+                         ?: getString(R.string.getting_some_error)
+                 )
+             }
+     }*/
 }

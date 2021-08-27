@@ -6,9 +6,11 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class PhoneVerificationDetails (
+    var fullName: String = "",
     var phoneNumber: String = "",
     var email : String = "",
     var password : String = "",
     var verificationId: String = "",
+    var imageUrl: String = "",
     var token: PhoneAuthProvider.ForceResendingToken? = null
 ) : Parcelable

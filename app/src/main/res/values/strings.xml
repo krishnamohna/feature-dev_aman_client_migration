@@ -13,6 +13,8 @@
     <string name="err_empty_password">Please enter your password!!!</string>
     <string name="err_email_exist">EmailId already exist!!!</string>
     <string name="err_phonenumber_already_exist">PhoneNumber already exist!!!</string>
+    <string name="err_user_does_not_exist">User doesn\'t exist!!!</string>
+    <string name="err_image_not_uploaded">Image not uploaded kindly re!!!</string>
 
     <string name="err_valid_password">Password must be at least 8 and less than 35 characters, and must include at least one upper case letter, one lower case letter, and one numeric digits, and can include special characters!!!</string>
     <string name="enter_valid_mobile">Please enter mobile number!!!</string>
@@ -76,4 +78,6 @@
     <string name="getting_some_error">We\'re getting some error, Please try again later!!!</string>
     <string name="verification_link">We have sent you verification link on your registered email Id</string>
     <string name="verify_email">Email id is not verified for this user. Kindly verify the email first</string>
+    <string name="image_saved">Image has been saved to your Photos!!!</string>
+
 </resources>
