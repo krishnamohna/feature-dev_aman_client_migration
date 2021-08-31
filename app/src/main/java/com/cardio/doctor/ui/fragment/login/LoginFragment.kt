@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
-import android.text.method.PasswordTransformationMethod
-import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -40,7 +38,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
     private val binding by viewBinding(FragmentLoginBinding::bind)
     private val viewModel: LoginViewModel by viewModels()
     private lateinit var googleSignInClient: GoogleSignInClient
-    private var isPasswordVisible: Boolean = false
+    //  private var isPasswordVisible: Boolean = false
 
     private var resultLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -66,6 +64,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
         setObservers()
         viewModel.initializePhoneAuthCallBack()
         initializeGoogleSign()
+        enableButtonClick(0.3f, false)
     }
 
     private fun initializeGoogleSign() {
@@ -77,6 +76,9 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
     }
 
     private fun setListener() {
+        binding.edtUserName.addTextChangedListener(TextChangeWatcher())
+        binding.edtPassword.addTextChangedListener(TextChangeWatcher())
+
         binding.btnLogin.setOnClickListener(this)
         binding.btnGoogleSignIn.setOnClickListener(this)
         binding.forgotPassword.setOnClickListener(this)
@@ -90,7 +92,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
                     View.VISIBLE, View.GONE,
                     getString(R.string.request_otp)
                 )
-                else manageCountryCodeVisibility(View.GONE, View.VISIBLE, getString(R.string.login))
+                else manageCountryCodeVisibility(View.GONE, View.VISIBLE, getString(R.string.sign_in))
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -140,7 +142,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
                 startActivityForCountryCode()
             }
 
-            binding.imgShowPassword -> {
+            /*binding.imgShowPassword -> {
                 if (!isPasswordVisible) {
                     isPasswordVisible = true
                     binding.imgShowPassword.setImageResource(R.drawable.ic_show_password)
@@ -151,7 +153,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
                     binding.edtPassword.transformationMethod = PasswordTransformationMethod()
                 }
                 binding.edtPassword.setSelection(binding.edtPassword.text!!.length)
-            }
+            }*/
         }
     }
 
@@ -204,6 +206,11 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
                 )
             }
             Status.ALPHA -> {
+                if (getString(apiResponse.resourceId !!).equals(getString(R.string.alpha_true),
+                        true)
+                ) {
+                    enableButtonClick(1.0f, true)
+                } else enableButtonClick(0.3f, false)
             }
         }
     }
@@ -251,4 +258,19 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
         startActivity(Intent(requireContext(), DashboardActivity::class.java))
         requireActivity().finish()
     }
+    private fun enableButtonClick(alpha: Float, clickable: Boolean) {
+        binding.btnLogin.isEnabled = clickable
+        binding.btnLogin.alpha = alpha
+    }
+
+    inner class TextChangeWatcher : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            viewModel.validateFieldsToSetAlpha(binding.edtUserName.text.toString(),
+                binding.edtPassword.text.toString())
+        }
+        override fun afterTextChanged(p0: Editable?) {
+        }
+    }
+
 }

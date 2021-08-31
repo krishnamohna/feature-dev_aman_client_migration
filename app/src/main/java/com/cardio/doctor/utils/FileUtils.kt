@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.cardio.doctor.utils
 
 import android.content.ContentValues

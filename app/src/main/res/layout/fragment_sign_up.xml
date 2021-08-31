@@ -16,70 +16,303 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/appLogo"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.10"
-                app:srcCompat="@drawable/ic_launcher_foreground" />
+
+            <include
+                android:id="@+id/headerView"
+                layout="@layout/toolbar" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/loginTittle"
+                android:id="@+id/titleSignup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:text="@string/signup"
-                android:fontFamily="@font/poppins_bold"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:fontFamily="@font/nunito_extrabold"
+                android:text="@string/create_an_account"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_18ssp"
-                android:textColor="@color/blue"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/appLogo" />
+                app:layout_constraintTop_toBottomOf="@+id/headerView" />
 
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgProfilePic"
+                android:layout_width="@dimen/_85sdp"
+                android:layout_height="@dimen/_85sdp"
+                android:layout_marginTop="@dimen/_9sdp"
+                app:srcCompat="@drawable/ic_place_holder_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                app:strokeColor="@color/white"
+                app:strokeWidth="@dimen/_2sdp"
+                app:layout_constraintTop_toBottomOf="@+id/titleSignup"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/ic_choose_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.627"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgProfilePic"
+                app:srcCompat="@drawable/ic_choose_image" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtFirstName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="@string/first_name"
+                android:textStyle="bold"
+                style="@style/BaseAppTheme.TxtView"
+                app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/imgProfilePic" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edtUserName"
+                android:id="@+id/edtFirstName"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_6sdp"
                 android:maxLength="@integer/int_35"
                 android:maxLines="@integer/int_1"
                 android:imeOptions="actionNext"
                 android:paddingLeft="@dimen/_16sdp"
-                android:text="Ajay Malhotra"
                 android:paddingRight="@dimen/_16sdp"
-                android:hint="@string/full_name"
+                android:hint="@string/first_name"
                 android:inputType="textCapWords"
-                android:textColor="@color/black"
+                style="@style/BaseAppTheme.EdtTxt"
                 app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/loginTittle"
+                app:layout_constraintTop_toBottomOf="@+id/txtFirstName"
                 />
+
+            <!--            <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtFirstName1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/first_name"
+                            app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
+                            app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                            app:layout_constraintTop_toBottomOf="@+id/txtFirstName"
+                            style="@style/BaseAppTheme.TextInputLayout.OutlinedBox"
+                            >
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edtUserName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="@dimen/_40sdp"
+                                android:layout_marginTop="@dimen/_6sdp"
+                                android:maxLength="@integer/int_35"
+                                android:maxLines="@integer/int_1"
+                                android:imeOptions="actionNext"
+                                android:text="AJay"
+                                android:paddingLeft="@dimen/_16sdp"
+                                android:paddingRight="@dimen/_16sdp"
+                                android:textColor="@color/black"
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>-->
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtLastName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="@string/last_name"
+                android:textStyle="bold"
+                style="@style/BaseAppTheme.TxtView"
+                app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/edtFirstName" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtLastName"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:maxLength="@integer/int_35"
+                android:maxLines="@integer/int_1"
+                android:imeOptions="actionNext"
+                android:paddingLeft="@dimen/_16sdp"
+                android:paddingRight="@dimen/_16sdp"
+                android:hint="@string/last_name"
+                style="@style/BaseAppTheme.EdtTxt"
+                android:inputType="textCapWords"
+                app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
+                app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/txtLastName"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtEmailAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="@string/email_address"
+                android:textStyle="bold"
+                style="@style/BaseAppTheme.TxtView"
+                app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/edtLastName" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtEmailId"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:hint="@string/email_address"
+                android:paddingLeft="@dimen/_16sdp"
+                android:paddingRight="@dimen/_16sdp"
+                android:maxLines="@integer/int_1"
+                android:maxLength="@integer/int_50"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                style="@style/BaseAppTheme.EdtTxt"
+                app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
+                app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmailAddress"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="@string/password"
+                android:textStyle="bold"
+                style="@style/BaseAppTheme.TxtView"
+                app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/edtEmailId" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/passwordContainer"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
+                app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/txtPassword"
+                >
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:hint="@string/enter_password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:maxLines="@integer/int_1"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="0dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/imgShowPassword"
+                    app:layout_constraintHorizontal_weight="@integer/int_1"
+                    android:maxLength="@integer/int_35"
+                    style="@style/BaseAppTheme.EdtTxt"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgShowPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/edtPassword"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="@+id/edtPassword"
+                    app:srcCompat="@drawable/ic_hide_password" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtConfirmPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="@string/confirm_password"
+                android:textStyle="bold"
+                style="@style/BaseAppTheme.TxtView"
+                app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/passwordContainer" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/confirmPasswordContainer"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
+                app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/txtConfirmPassword"
+                >
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtConfirmPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:hint="@string/enter_confirm_password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:maxLines="@integer/int_1"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/imgConfirmShowPassword"
+                    app:layout_constraintHorizontal_weight="@integer/int_1"
+                    android:maxLength="@integer/int_35"
+                    style="@style/BaseAppTheme.EdtTxt"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgConfirmShowPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_8sdp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/edtConfirmPassword"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/edtConfirmPassword"
+                    app:srcCompat="@drawable/ic_hide_password" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtPhoneNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="@string/phone_number"
+                android:textStyle="bold"
+                style="@style/BaseAppTheme.TxtView"
+                app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/confirmPasswordContainer" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/phoneNumberContainer"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_6sdp"
                 app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/edtUserName"
+                app:layout_constraintTop_toBottomOf="@+id/txtPhoneNumber"
+                android:background="@drawable/edt_rounded_corner"
                 >
-
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/countryCode"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="@dimen/_8sdp"
                     android:paddingStart="@dimen/_8sdp"
                     android:paddingEnd="@dimen/_8sdp"
                     android:drawableEnd="@drawable/ic_dropdown_mobile"
                     android:drawablePadding="@dimen/_16sdp"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/nunito_regular"
                     android:gravity="center"
                     android:text="@string/plus_one"
                     android:textColor="@color/black"
@@ -94,7 +327,7 @@
                     android:id="@+id/countryCodeSeprator"
                     android:layout_width="@dimen/_1sdp"
                     android:layout_height="match_parent"
-                    android:background="@color/white"
+                    android:background="@color/grey_divider"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginBottom="@dimen/_8sdp"
                     app:layout_constraintStart_toEndOf="@+id/countryCode"
@@ -106,86 +339,66 @@
                     android:id="@+id/edtPhoneNumber"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
-                    android:hint="@string/mobile_number"
+                    android:hint="@string/phone_number"
                     android:imeOptions="actionNext"
                     android:inputType="phone"
                     android:maxLines="@integer/int_1"
                     android:paddingLeft="@dimen/_16sdp"
                     android:paddingRight="@dimen/_16sdp"
-                    android:text="8899579906"
                     android:digits="0123456789()- "
                     android:maxLength="@integer/int_14"
+                    android:background="@null"
                     android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_weight="@integer/int_1"
                     app:layout_constraintStart_toEndOf="@+id/countryCodeSeprator"
                     app:layout_constraintTop_toTopOf="parent" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edtEmailId"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:hint="@string/email_address"
-                android:paddingLeft="@dimen/_16sdp"
-                android:paddingRight="@dimen/_16sdp"
-                android:maxLines="@integer/int_1"
-                android:maxLength="@integer/int_50"
-                android:text="ajaymlhotra@gmail.com"
-                android:textColor="@color/black"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailAddress"
-                app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/chkBoxAcceptPolicy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:button="@drawable/checkbox_click_state"
+                android:checked="false"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="@null"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTermCondition"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                app:layout_constraintTop_toTopOf="@+id/tvTermCondition" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAgree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_9sdp"
+                android:fontFamily="@font/nunito_medium"
+                android:layout_marginTop="@dimen/_23sdp"
+                android:text="@string/i_agree_to_the"
+                style="@style/BaseAppTheme.TxtView"
                 app:layout_constraintTop_toBottomOf="@+id/phoneNumberContainer"
+                app:layout_constraintStart_toEndOf="@+id/chkBoxAcceptPolicy"
                 />
 
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/passwordContainer"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTermCondition"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
-                app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/edtEmailId"
-                >
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtPassword"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:hint="@string/enter_password"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPassword"
-                    android:maxLines="@integer/int_1"
-                    android:paddingStart="@dimen/_16sdp"
-                    android:paddingEnd="0dp"
-                    android:text="Mind@123"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_13ssp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/imgShowPassword"
-                    app:layout_constraintHorizontal_weight="@integer/int_1"
-                    android:maxLength="@integer/int_35"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgShowPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="@+id/edtPassword"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/edtPassword"
-                    app:srcCompat="@drawable/ic_hide_password" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+                android:layout_height="wrap_content"
+                android:text="@string/terms_of_service"
+                android:fontFamily="@font/nunito_bold"
+                android:textStyle="bold"
+                android:textColor="@color/black_tutorial_text"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintTop_toBottomOf="@+id/phoneNumberContainer"
+                app:layout_constraintTop_toTopOf="@+id/tvAgree"
+                app:layout_constraintStart_toEndOf="@+id/tvAgree"
+                app:layout_constraintBottom_toBottomOf="@+id/tvAgree"
+                app:layout_constraintEnd_toStartOf="@+id/verticalRightGuideline"
+                />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSignup"
@@ -194,42 +407,16 @@
                 android:layout_marginTop="@dimen/_28sdp"
                 android:text="@string/signup"
                 android:alpha="0.3"
-                android:textColor="@android:color/black"
+                style="@style/BaseAppTheme.btnStyleContinue"
+                android:textAllCaps="true"
                 app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/verticalLeftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/passwordContainer" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtHaveAnAccount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_31sdp"
-                android:text="@string/already_have_an_account"
-                app:layout_constraintEnd_toStartOf="@+id/verticalRightGuideline"
-                app:layout_constraintHorizontal_bias="0.33"
-                app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/btnSignup"
+                android:layout_marginBottom="@dimen/_30sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="@dimen/_40sdp"
-                />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:text="@string/login"
-                android:textSize="@dimen/_11ssp"
-                android:textColor="@color/blue"
-                android:layout_marginStart="@dimen/_4sdp"
-                android:fontFamily="@font/poppins_semibold"
-                app:layout_constraintStart_toEndOf="@+id/txtHaveAnAccount"
-                app:layout_constraintTop_toTopOf="@+id/txtHaveAnAccount" />
+                app:layout_constraintStart_toStartOf="@id/verticalLeftGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/tvTermCondition" />
 
             <include layout="@layout/guideline_left"/>
             <include layout="@layout/guideline_right"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
 </layout>

@@ -1,6 +1,7 @@
 package com.cardio.doctor.ui.fragment.login
 
 import android.app.Application
+import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.cardio.doctor.AppCardioPatient
@@ -24,11 +25,21 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     userManager: UserManager, private val loginRepository: LoginRepository,
-    application: Application
+    application: Application,
 ) : BaseViewModel(userManager, loginRepository, application) {
 
     private val _loginApiResponse = SingleLiveEvent<Resource<String>>()
     val loginApiResponse: LiveData<Resource<String>> = _loginApiResponse
+
+    fun validateFieldsToSetAlpha(userId: String, password: String) {
+        if (userId.isEmpty()) setObserverForAlpha(R.string.alpha_false)
+        else if (!isNumericValue(userId) && password.isEmpty()) setObserverForAlpha(R.string.alpha_false)
+        else setObserverForAlpha(R.string.alpha_true)
+    }
+
+    private fun setObserverForAlpha(resourceId: Int) {
+        _loginApiResponse.value = Resource.setAlpha(Constants.SIGNUP, resourceId)
+    }
 
     fun validateFields(userId: String, password: String, countryCode: String) {
         val context = getApplication<AppCardioPatient>()
@@ -38,7 +49,7 @@ class LoginViewModel @Inject constructor(
 
     private fun checkValidationForEmailAndPassword(
         context: AppCardioPatient, email: String,
-        password: String
+        password: String,
     ) {
         when {
             email.isEmpty() -> {
@@ -62,7 +73,7 @@ class LoginViewModel @Inject constructor(
     private fun checkValidationForPhoneNumber(
         context: AppCardioPatient,
         phoneNumber: String,
-        countryCode: String
+        countryCode: String,
     ) {
         when {
             phoneNumber.isEmpty() -> {
@@ -82,7 +93,9 @@ class LoginViewModel @Inject constructor(
         try {
             _loginApiResponse.value = Resource.loading(Constants.VALIDATION, null)
             viewModelScope.launch {
-                if (!loginRepository.isPhoneNumberExist(countryCode.plus(phoneNumber))) {
+                if (!loginRepository.isPhoneNumberExist(countryCode.plus(phoneNumber),
+                        _firebaseException)!!
+                ) {
                     showValidationMessage(getApplication<AppCardioPatient>().getString(R.string.err_user_does_not_exist))
                 } else {
                     _loginApiResponse.value = Resource.success(Constants.VALIDATION, null)
@@ -102,12 +115,13 @@ class LoginViewModel @Inject constructor(
         try {
             viewModelScope.launch {
                 _loginApiResponse.value = Resource.loading(Constants.LOGIN, null)
-                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener{ task ->
-                    if (task.isSuccessful) _loginApiResponse.value = Resource.success(Constants.LOGIN, null)
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                    if (task.isSuccessful) _loginApiResponse.value =
+                        Resource.success(Constants.LOGIN, null)
                     else checkForMultiFactorFailure(task.exception!!)
                 }
             }
-        }catch (e: Exception) {
+        } catch (e: Exception) {
             _loginApiResponse.value = Resource.error(Constants.VALIDATION, 0,
                 getExceptionMessage(e), null)
         }

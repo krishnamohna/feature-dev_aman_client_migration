@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="colorPrimary">#ffffff</color>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#c4f0e8</color>
     <color name="colorPrimaryDark">#0c0c23</color>
-    <color name="colorPrimaryLight">#16163d</color>
+    <color name="colorPrimaryLight">#0493bf</color>
 
     <color name="black">#000000</color>
+    <color name="black_tutorial_text">#333333</color>
 
     <color name="white">#ffffff</color>
 
-    <color name="blue">#246bfe</color>
+    <color name="grey">#9aa1c8</color>
+    <color name="grey_divider">#c4c4c4</color>
+    <color name="grey_bg">#e0e5e4</color>
+    <color name="grey_text">#8e9aab</color>
+    <color name="grey_text_hint">#999999</color>
+    <color name="grey_dark">#25242d</color>
+
+    <color name="green_light">#1bc340</color>
+    <color name="green_otp">#4cb162</color>
+
+    <color name="green_tutorial_indicator">#0493bf</color>
+    <color name="btn_gradient_start">#00b191</color>
+    <color name="btn_gradient_end">#0e88ac</color>
+
+    <color name="red_validation">#ee000e</color>
+
+    <color name="blue">#007aff</color>
     <color name="blue_btn_start">#8228fb</color>
 
-    <color name="grey">#9aa1c8</color>
-    <color name="grey_dark">#25242d</color>
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/grey_bg</color>
+
 </resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPagerTutorial"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toStartOf="@+id/verticalRightGuideline"
+            app:layout_constraintStart_toEndOf="@+id/verticalLeftGuideline"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/dotContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.87" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGetStarted"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:text="@string/get_started"
+            android:layout_marginBottom="@dimen/_18sdp"
+            android:visibility="gone"
+            style="@style/BaseAppTheme.btnStyleContinue"
+            android:layout_marginTop="@dimen/_32sdp"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
+            app:layout_constraintStart_toStartOf="@id/verticalLeftGuideline" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgNext"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginBottom="@dimen/_24sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
+            app:srcCompat="@drawable/ic_next"
+            android:layout_marginEnd="@dimen/_2sdp"/>
+
+        <include layout="@layout/guideline_left"/>
+        <include layout="@layout/guideline_right"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

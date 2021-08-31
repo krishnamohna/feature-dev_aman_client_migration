@@ -90,6 +90,9 @@ dependencies {
     implementation deps.navigation_graph.navigation_fragment
     implementation deps.navigation_graph.navigation_ui
 
+    // Image Loader
+    implementation deps.image_loader.glide
+
     //sdp for font size
     implementation deps.sdp.ssp
     implementation deps.sdp.sdp

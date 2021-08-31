@@ -2,6 +2,8 @@ package com.cardio.doctor.ui.fragment.forgot_password
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
@@ -21,28 +23,33 @@ import dagger.hilt.android.AndroidEntryPoint
 class ForgotPasswordFragment : AppBaseFragment(R.layout.fragment_forgot_password),
     View.OnClickListener {
     private val binding by viewBinding(FragmentForgotPasswordBinding::bind)
-    private val viewModel : ForgotPasswordViewModel by viewModels()
+    private val viewModel: ForgotPasswordViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpToolbar(binding.root, getString(R.string.forgot_password),backBtnVisibility = true)
-        setListeners()
+        setUpToolbar(binding.root, "", backBtnVisibility = true)
+        setListners()
         setObservers()
+        enableButtonClick(0.3f, false)
     }
 
-    fun setListeners(){
-        binding.btnResetPassword.setOnClickListener(this)
+    fun setListners() {
+        binding.edtEmailId.addTextChangedListener(TextChangeWatcher())
+        binding.btnForgotPassword.setOnClickListener(this)
     }
 
     private fun setObservers() {
         viewModel.validationObserver.observe(viewLifecycleOwner, {
             handleApiCallback(it)
         })
+        viewModel.firebaseException.observe(viewLifecycleOwner, {
+            handleApiCallback(it)
+        })
     }
 
     override fun onClick(v: View?) {
-        when(v){
-            binding.btnResetPassword ->{
+        when (v) {
+            binding.btnForgotPassword -> {
                 viewModel.validateFields(binding.edtEmailId.text.toString())
             }
         }
@@ -85,4 +92,19 @@ class ForgotPasswordFragment : AppBaseFragment(R.layout.fragment_forgot_password
         }
     }
 
+    inner class TextChangeWatcher : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            if (binding.edtEmailId.text.toString().isEmpty()) enableButtonClick(0.3f, false)
+            else enableButtonClick(1.0f, true)
+        }
+
+        override fun afterTextChanged(p0: Editable?) {
+        }
+    }
+
+    private fun enableButtonClick(alpha: Float, clickable: Boolean) {
+        binding.btnForgotPassword.isEnabled = clickable
+        binding.btnForgotPassword.alpha = alpha
+    }
 }

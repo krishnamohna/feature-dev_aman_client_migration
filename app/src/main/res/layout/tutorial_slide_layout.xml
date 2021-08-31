@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tutorialImageContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintBottom_toTopOf="@+id/tutorialDetailContainer"
+            app:layout_constraintEnd_toStartOf="@+id/verticalRightGuideline"
+            app:layout_constraintStart_toEndOf="@+id/verticalLeftGuideline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="@integer/int_10">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tutorialImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_tutorial_two"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tutorialDetailContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/verticalRightGuideline"
+            app:layout_constraintStart_toEndOf="@+id/verticalLeftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/tutorialImageContainer"
+            app:layout_constraintVertical_weight="@integer/int_8">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tutorialTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_extrabold"
+                android:textColor="@color/black_tutorial_text"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center_horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.20999998" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tutorialDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/nunito_medium"
+                android:textSize="@dimen/_13ssp"
+                android:textColor="@color/grey_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tutorialTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include layout="@layout/guideline_left" />
+        <include layout="@layout/guideline_right" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

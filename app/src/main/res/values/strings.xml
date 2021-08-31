@@ -1,6 +1,79 @@
 <resources>
     <string name="app_name">Cardio Patient</string>
 
+    <!--Tutorial-->
+    <string name="get_started">Get Started</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+
+    <!--Login-->
+    <string name="hello_login">Hello Welcome to Login</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="request_otp">Request OTP</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="user_logged_in_successfully">User logged in successfully</string>
+    <string name="email_phone_number">Email/Phone Number</string>
+    <string name="connect_with_social_media">Or connect with social media</string>
+    <string name="custom_auth_signin_status_user">User ID: %s</string>
+    <string name="custom_auth_signin_status_failed">Error: sign in failed</string>
+    <string name="auth_failed">Authentication failed</string>
+
+    <!--Signup-->
+    <string name="create_an_account">Create an Account</string>
+    <string name="signup">Sign Up</string>
+    <string name="do_not_have_an_account">Don’t have an account?</string>
+    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
+    <string name="emailpassword_title_text">Email and Password</string>
+    <string name="plus_one">+91</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name (optional)</string>
+    <string name="submit">Submit</string>
+    <string name="email">Email</string>
+    <string name="email_address">Email Address</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_confirm_password">Enter Confirm Password</string>
+    <string name="i_agree_to_the">I agree to the</string>
+    <string name="terms_of_service">Terms of Service &amp; Privacy Policy</string>
+
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+
+
+    <!--OTP-->
+    <string name="otp_verification">OTP Verification</string>
+    <string name="phone_verification_description">Kindly enter the 4digit verification code sent to </string>
+    <string name="not_yet_received">Not yet received?</string>
+    <string name="resend_otp">Resend OTP</string>
+
+    <!--Forgot Password-->
+    <string name="forgot_password">Forgot Password</string>
+    <string name="forgot_password_ques_mark">Forgot Password?</string>
+    <string name="please_provide_your_registered_number">Please provide your registered email or phone number in order to retrieve your password</string>
+    <string name="registered_your_account_password">Enter your registered email address in order to reset your account password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="forgot_password_email_sent">Email has been sent on your registered email Id to reset password!!!</string>
+
+
+    <!--Common-->
+    <string name="click_one_more_time_to_exit_the_app">Click one more time to exit the app</string>
+
+    <string name="alpha_true">True</string>
+    <string name="alpha_false">False</string>
+    <string name="invalid_password">Invalid Password</string>
+    <string name="email_not_in_use">Email not in use</string>
+    <string name="email_already_in_use">Email already in use</string>
+    <string name="user_not_valid">User not valid</string>
+    <string name="invalid_mobile_number">Invalid phone number.</string>
+    <string name="quota_exceeded">Quota exceeded.</string>
+    <string name="invalid_code">Invalid code</string>
+    <string name="otp_has_expired">Otp has been expired. Kindly click on resend OTP</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="getting_some_error">We\'re getting some error, Please try again later!!!</string>
+    <string name="verification_link">We have sent you verification link on your registered email Id</string>
+    <string name="verify_email">Email id is not verified for this user. Kindly verify the email first</string>
+    <string name="image_saved">Image has been saved to your Photos!!!</string>
 
     <!--network error-->
     <string name="err_no_network_available">Please check your internet connection and try again later.</string>
@@ -20,64 +93,16 @@
     <string name="enter_valid_mobile">Please enter mobile number!!!</string>
     <string name="err_valid_mobile_number">Please enter a valid mobile number!!!</string>
 
-    <!--Login-->
-    <string name="hello_login">Hello Welcome to Login</string>
-    <string name="login">Login</string>
-    <string name="request_otp">Request OTP</string>
+    <string-array name="TutorialTitle">
+        <item>Connect with Experience Practitioners </item>
+        <item>Lorem Ipsum is simply dummy text of printing.</item>
+        <item>Lorem Ipsum is simply dummy text of printing.</item>
+    </string-array>
 
-    <string name="google_login">Google Login</string>
-    <string name="user_logged_in_successfully">User logged in successfully</string>
-    <string name="email_mobile_number">Email / Mobile Number</string>
-
-
-    <string name="custom_auth_signin_status_user">User ID: %s</string>
-    <string name="custom_auth_signin_status_failed">Error: sign in failed</string>
-    <string name="auth_failed">Authentication failed</string>
-
-    <!--Signup-->
-    <string name="hello_signup">Hello Welcome to Signup</string>
-    <string name="signup">SignUp</string>
-    <string name="already_have_an_account">Already have an account?</string>
-    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
-    <string name="emailpassword_title_text">Email and Password</string>
-    <string name="plus_one">+91</string>
-
-
-    <!--OTP-->
-    <string name="phone_verification_description">Please share the OTP received on your mobile number for verification.</string>
-    <string name="not_yet_received">Not yet received?</string>
-    <string name="resend">Resend</string>
-    <string name="confirm">Confirm</string>
-
-    <!--Forgot Password-->
-    <string name="forgot_password">Forgot Password</string>
-    <string name="registered_your_account_password">Enter your registered email address in order to reset your account password</string>
-    <string name="reset_password">Reset Password</string>
-    <string name="forgot_password_email_sent">Email has been sent on your registered email Id to reset password!!!</string>
-
-
-    <!--Common-->
-    <string name="click_one_more_time_to_exit_the_app">Click one more time to exit the app</string>
-    <string name="email">Email</string>
-    <string name="email_address">Email Address</string>
-    <string name="enter_password">Enter Password</string>
-    <string name="full_name">Full Name</string>
-    <string name="mobile_number">Mobile Number</string>
-    <string name="alpha_true">True</string>
-    <string name="alpha_false">False</string>
-    <string name="invalid_password">Invalid Password</string>
-    <string name="email_not_in_use">Email not in use</string>
-    <string name="email_already_in_use">Email already in use</string>
-    <string name="user_not_valid">User not valid</string>
-    <string name="invalid_mobile_number">Invalid phone number.</string>
-    <string name="quota_exceeded">Quota exceeded.</string>
-    <string name="invalid_code">Invalid code</string>
-    <string name="otp_has_expired">Otp has been expired. Kindly click on resend OTP</string>
-    <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
-    <string name="getting_some_error">We\'re getting some error, Please try again later!!!</string>
-    <string name="verification_link">We have sent you verification link on your registered email Id</string>
-    <string name="verify_email">Email id is not verified for this user. Kindly verify the email first</string>
-    <string name="image_saved">Image has been saved to your Photos!!!</string>
+    <string-array name="TutorialDescription">
+        <item>Reach out to the experts </item>
+        <item>View report to monitor your illness</item>
+        <item>Download and share latest reports with your doctor anytime</item>
+    </string-array>
 
 </resources>

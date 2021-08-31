@@ -14,6 +14,7 @@ import com.cardio.doctor.network.Resource
 import com.cardio.doctor.storage.UserManager
 import com.cardio.doctor.utils.livedata.SingleLiveEvent
 import com.google.firebase.FirebaseException
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
@@ -41,8 +42,8 @@ open class BaseViewModel @Inject constructor(
     val phoneAuthenticationResponse: LiveData<Resource<FirebaseUser>> =
         _phoneAuthenticationResponse
 
-    private val _firebaseException = SingleLiveEvent<Resource<String>>()
-    val firebaseException: LiveData<Resource<String>> =
+    protected val _firebaseException = SingleLiveEvent<Resource<Exception>>()
+    val firebaseException: LiveData<Resource<Exception>> =
         _firebaseException
 
     internal lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
@@ -143,6 +144,9 @@ open class BaseViewModel @Inject constructor(
             }
             is FirebaseAuthUserCollisionException -> {
                 showFirebaseException(context.getString(R.string.email_already_in_use))
+            }
+            is FirebaseNetworkException ->{
+                showFirebaseException(context.getString(R.string.err_no_network_available))
             }
             else -> {
                 showFirebaseException(

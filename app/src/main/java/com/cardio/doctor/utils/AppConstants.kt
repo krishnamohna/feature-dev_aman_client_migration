@@ -6,12 +6,22 @@ package com.cardio.doctor.utils
 interface Preference{
     companion object {
         const val APP = "DoctorPreferences"
+        const val IS_TUTORIAL_SHOWN = "IsTutorialShown"
+
     }
 }
 interface Timer{
     companion object {
+        const val SPLASH_TIME: Long = 1000
+        const val OTP_EXPIRED: Long = 60
+        const val INPUT_DELAY: Long = 500
         const val DOUBLE_CLICK_TIME_DELTA: Long = 1500
-        const val OTP_EXPIRED: Long = 120
+
+        const val OTP_EXPIRE_IN_MILISECONDS: Long =60000
+        const val COUNT_DOWN_INTERVAL: Long =1000
+        const val OTP_TIME_FORMAT = "00"
+        const val MINUTES_IN_MILIS: Long =60000
+        const val MINUTES: Long =60
 
     }
 }

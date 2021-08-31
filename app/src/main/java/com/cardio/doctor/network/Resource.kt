@@ -2,9 +2,10 @@ package com.cardio.doctor.network
 
 import com.cardio.doctor.api.ApiStatus.Companion.STATUS_200
 import java.io.Serializable
+import java.lang.Exception
 
 data class Resource<out T>(val apiConstant: String?, val apiCode :Int, val status: Status, val data: T?,
-                           var message: String?, val resourceId: Int?) : Serializable {
+                           var message: String?, val resourceId: Int?,val exception: Exception ?=null) : Serializable {
 
     companion object {
         fun <T> success(apiConstant : String, data: T?): Resource<T> {
@@ -40,6 +41,10 @@ data class Resource<out T>(val apiConstant: String?, val apiCode :Int, val statu
 
         fun <T> loading(apiConstant : String,data: T?): Resource<T> {
             return Resource(apiConstant,0, Status.LOADING, data, null,0)
+        }
+
+        fun <T> firebaseException(e : Exception): Resource<T> {
+            return Resource("",-1, Status.ERROR, null, e.localizedMessage,0,e)
         }
     }
 }

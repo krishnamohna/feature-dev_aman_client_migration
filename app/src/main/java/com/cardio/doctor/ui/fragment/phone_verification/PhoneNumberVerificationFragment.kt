@@ -3,6 +3,7 @@ package com.cardio.doctor.ui.fragment.phone_verification
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
@@ -13,6 +14,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.cardio.doctor.R
 import com.cardio.doctor.api.Constants
@@ -22,12 +24,22 @@ import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.ui.activity.dashboard.DashboardActivity
 import com.cardio.doctor.utils.ENUM
+import com.cardio.doctor.utils.Timer.Companion.COUNT_DOWN_INTERVAL
+import com.cardio.doctor.utils.Timer.Companion.MINUTES
+import com.cardio.doctor.utils.Timer.Companion.MINUTES_IN_MILIS
 import com.cardio.doctor.utils.Timer.Companion.OTP_EXPIRED
+import com.cardio.doctor.utils.Timer.Companion.OTP_EXPIRE_IN_MILISECONDS
+import com.cardio.doctor.utils.Timer.Companion.OTP_TIME_FORMAT
 import com.cardio.doctor.utils.customSnackBarFail
 import com.cardio.doctor.utils.showAlertDialog
 import com.cardio.doctor.utils.viewbinding.viewBinding
-import com.google.firebase.auth.*
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.PhoneAuthOptions
+import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import java.text.DecimalFormat
+import java.text.NumberFormat
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
@@ -38,15 +50,19 @@ class PhoneNumberVerificationFragment :
     private val viewModel: PhoneVerificationViewModel by viewModels()
     private lateinit var arrayOfEditText: Array<AppCompatEditText>
     private val navArgs by navArgs<PhoneNumberVerificationFragmentArgs>()
+    private var countDownTimer: CountDownTimer? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpToolbar(binding.root, "", backBtnVisibility = true)
         arrayOfEditText = arrayOf(
             binding.otpEdtText1, binding.otpEdtText2, binding.otpEdtText3,
             binding.otpEdtText4, binding.otpEdtText5, binding.otpEdtText6
         )
         setListeners()
         setObserver()
+        enableButtonClick(0.3f, false)
+        setOtpTimer()
         viewModel.initializePhoneAuthCallBack()
         setNavArgsInFields()
     }
@@ -55,6 +71,7 @@ class PhoneNumberVerificationFragment :
         navArgs.phoneVerificationDetail?.let {
             viewModel.resendToken = it.token!!
             viewModel.storedVerificationId = navArgs.phoneVerificationDetail?.verificationId!!
+            binding.txtPhoneNumber.text = navArgs.phoneVerificationDetail?.phoneNumber
         }
     }
 
@@ -116,16 +133,11 @@ class PhoneNumberVerificationFragment :
 
     override fun onClick(v: View?) {
         when (v) {
-            binding.txtResendOtp -> {
-                if (binding.txtResendOtp.text.toString()
-                        .equals(getString(R.string.resend), false)
-                ) {
-                    resendVerificationCode()
-                }
-            }
+            binding.txtResendOtp -> resendVerificationCode()
 
             binding.btnConfirm -> {
-                viewModel.verifyPhoneNumberWithCode(viewModel.storedVerificationId, getOtpFromView())
+                viewModel.verifyPhoneNumberWithCode(viewModel.storedVerificationId,
+                    getOtpFromView())
             }
         }
     }
@@ -183,7 +195,7 @@ class PhoneNumberVerificationFragment :
 
     private fun moveToNextView(
         selectedEditText: AppCompatEditText,
-        nextEditText: AppCompatEditText
+        nextEditText: AppCompatEditText,
     ) {
         if (!TextUtils.isEmpty(selectedEditText.text.toString())
             && selectedEditText.text.toString().length == ENUM.INT_1
@@ -212,12 +224,15 @@ class PhoneNumberVerificationFragment :
                     Constants.PHONE_VERIFICATION -> {
                         if (navArgs.isComingFrom == ENUM.INT_1) {
                             navArgs.phoneVerificationDetail?.let {
-                                viewModel.updateEmailAndPassword(apiResponse.data as FirebaseUser,
+                                viewModel.updateEmailAndPassword(
+                                    apiResponse.data as FirebaseUser,
                                     navArgs.phoneVerificationDetail,
                                 )
                             }
                         } else startDashboardActivity()
                     }
+
+                    Constants.SEND_OTP -> setOtpTimer()
                 }
             }
             Status.LOADING -> {
@@ -236,8 +251,18 @@ class PhoneNumberVerificationFragment :
             }
 
             Status.ALPHA -> {
+                if (getString(apiResponse.resourceId!!).equals(getString(R.string.alpha_true),
+                        true)
+                ) {
+                    enableButtonClick(1.0f, true)
+                } else enableButtonClick(0.3f, false)
             }
         }
+    }
+
+    private fun enableButtonClick(alpha: Float, clickable: Boolean) {
+        binding.btnConfirm.isEnabled = clickable
+        binding.btnConfirm.alpha = alpha
     }
 
     private fun showVerificationEmail() {
@@ -253,6 +278,7 @@ class PhoneNumberVerificationFragment :
     }
 
     private fun resendVerificationCode() {
+        showProgress()
         navArgs.phoneVerificationDetail?.let {
             val optionsBuilder = PhoneAuthOptions.newBuilder(viewModel.auth)
                 .setPhoneNumber(navArgs.phoneVerificationDetail!!.phoneNumber) // Phone number to verify
@@ -266,5 +292,44 @@ class PhoneNumberVerificationFragment :
 
     private fun startDashboardActivity() {
         startActivity(Intent(requireContext(), DashboardActivity::class.java))
+        requireActivity().finish()
     }
+
+    private fun setOtpTimer() {
+        lifecycleScope.launch {
+            countDownTimer = object : CountDownTimer(OTP_EXPIRE_IN_MILISECONDS, COUNT_DOWN_INTERVAL) {
+                override fun onTick(millisUntilFinished: Long) {
+                    val f: NumberFormat = DecimalFormat(OTP_TIME_FORMAT)
+                    val min = millisUntilFinished / MINUTES_IN_MILIS % MINUTES
+                    val sec = millisUntilFinished / COUNT_DOWN_INTERVAL % MINUTES
+                    setTimerOnView(f.format(min).plus(":").plus(f.format(sec)), View.VISIBLE, false)
+                }
+
+                override fun onFinish() {
+                    setTimerOnView("", View.GONE, true)
+                }
+            }.start()
+        }
+    }
+
+    private fun setTimerOnView(text: String, visibility: Int, enableBtn: Boolean) {
+        binding.txtOtpTimer.text = text
+        binding.txtOtpTimer.visibility = visibility
+        if (enableBtn) enableResendBtn(1.0f, true)
+        else enableResendBtn(0.3f, false)
+    }
+
+    override fun onDestroyView() {
+        if (countDownTimer != null) {
+            countDownTimer!!.cancel()
+        }
+        super.onDestroyView()
+    }
+
+    private fun enableResendBtn(alpha: Float, clickable: Boolean) {
+        binding.txtResendOtp.isEnabled = clickable
+        binding.txtResendOtp.alpha = alpha
+    }
+
+
 }
