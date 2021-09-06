@@ -5,18 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import com.cardio.doctor.api.ApiService
 import com.cardio.doctor.base.repository.BaseRepository
 import com.cardio.doctor.network.Resource
-import com.cardio.doctor.utils.FireStoreCollection
 import com.cardio.doctor.utils.firebaseDocumentQuery
 import com.cardio.doctor.utils.firebaseQuery
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.SignInMethodQueryResult
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.UploadTask
 import kotlinx.coroutines.tasks.await
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.HashMap
 
 class SignUpRepository @Inject constructor(
     firebaseAuth: FirebaseAuth,

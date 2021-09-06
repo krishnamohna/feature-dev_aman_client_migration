@@ -38,7 +38,7 @@ open class BaseViewModel @Inject constructor(
     val phoneVerificationResponse: LiveData<Resource<PhoneAuthCredential>> =
         _phoneVerificationResponse
 
-    private val _phoneAuthenticationResponse = SingleLiveEvent<Resource<FirebaseUser>>()
+    protected val _phoneAuthenticationResponse = SingleLiveEvent<Resource<FirebaseUser>>()
     val phoneAuthenticationResponse: LiveData<Resource<FirebaseUser>> =
         _phoneAuthenticationResponse
 
@@ -96,38 +96,11 @@ open class BaseViewModel @Inject constructor(
             Resource.error(Constants.PHONE_VERIFICATION, 0, message, null)
     }
 
-    fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
-        try {
-            viewModelScope.launch {
-                _phoneAuthenticationResponse.value =
-                    Resource.loading(Constants.PHONE_VERIFICATION, null)
-                auth.signInWithCredential(credential).addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        _phoneAuthenticationResponse.value =
-                            Resource.success(Constants.PHONE_VERIFICATION, task.result?.user)
-                    } else {
-                          if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                              _phoneAuthenticationResponse.value = Resource.error(
-                                  Constants.PHONE_VERIFICATION, 0,
-                                  task.exception?.localizedMessage
-                                      ?: getApplication<AppCardioPatient>().getString(R.string.getting_some_error),
-                                  null
-                              )
-                          }
-                    }
-                }
-            }
-        } catch (e: Exception) {
-            _phoneAuthenticationResponse.value =
-                Resource.error(Constants.VALIDATION, 0, getExceptionMessage(e), null)
-        }
-    }
-
-    fun createModelForPhoneVerification(fullName :String,
+    fun createModelForPhoneVerification(firstName :String,lastName : String,
         phoneNumber: String, countryCode: String, email: String,
         password: String, imageUrl : String
     ): PhoneVerificationDetails {
-        return PhoneVerificationDetails(fullName,
+        return PhoneVerificationDetails(firstName,lastName,
             countryCode.plus(phoneNumber), email, password,
             storedVerificationId, imageUrl,resendToken
         )

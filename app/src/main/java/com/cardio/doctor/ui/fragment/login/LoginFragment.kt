@@ -7,15 +7,19 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.text.method.PasswordTransformationMethod
 import android.view.View
+import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.cardio.doctor.R
 import com.cardio.doctor.api.Constants
 import com.cardio.doctor.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentLoginBinding
+import com.cardio.doctor.model.ValidationModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.ui.activity.dashboard.DashboardActivity
@@ -31,6 +35,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
@@ -38,7 +45,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
     private val binding by viewBinding(FragmentLoginBinding::bind)
     private val viewModel: LoginViewModel by viewModels()
     private lateinit var googleSignInClient: GoogleSignInClient
-    //  private var isPasswordVisible: Boolean = false
+    private var isPasswordVisible: Boolean = false
 
     private var resultLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -76,38 +83,30 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
     }
 
     private fun setListener() {
-        binding.edtUserName.addTextChangedListener(TextChangeWatcher())
-        binding.edtPassword.addTextChangedListener(TextChangeWatcher())
-
+        binding.edtUserName.addTextChangedListener(TextChangeWatcher(binding.edtUserName,
+            binding.tvEmailError))
+        binding.edtPassword.addTextChangedListener(TextChangeWatcher(binding.edtPassword,
+            binding.tvPasswordError))
+        preventSpaceOnEditText(binding.edtUserName)
         binding.btnLogin.setOnClickListener(this)
         binding.btnGoogleSignIn.setOnClickListener(this)
         binding.forgotPassword.setOnClickListener(this)
         binding.txtSignup.setOnClickListener(this)
         binding.countryCode.setOnClickListener(this)
         binding.imgShowPassword.setOnClickListener(this)
-
-        binding.edtUserName.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (isNumericValue(s.toString())) manageCountryCodeVisibility(
-                    View.VISIBLE, View.GONE,
-                    getString(R.string.request_otp)
-                )
-                else manageCountryCodeVisibility(View.GONE, View.VISIBLE, getString(R.string.sign_in))
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
     }
 
     private fun manageCountryCodeVisibility(
         countryCodeVisibility: Int,
         passwordVisibility: Int,
-        loginBtnText: String
+        loginBtnText: String,
     ) {
-        binding.countryCode.visibility = countryCodeVisibility
-        binding.passwordContainer.visibility = passwordVisibility
-        binding.btnLogin.text = loginBtnText
+        binding.apply {
+            countryCode.visibility = countryCodeVisibility
+            countryCodeSeprator.visibility = countryCodeVisibility
+            passwordValContainer.visibility = passwordVisibility
+            btnLogin.text = loginBtnText
+        }
     }
 
     private fun setObservers() {
@@ -120,14 +119,22 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
         viewModel.phoneAuthenticationResponse.observe(viewLifecycleOwner, {
             handleApiCallback(it)
         })
+        lifecycleScope.launch {
+            viewModel.validationChannel.receiveAsFlow().collect {
+                manageViewsForValidation(it)
+            }
+        }
     }
+
 
     override fun onClick(view: View?) {
         when (view) {
             binding.btnLogin -> {
                 val email = binding.edtUserName.text.toString()
                 val password = binding.edtPassword.text.toString()
-                viewModel.validateFields(email, password, binding.countryCode.text.toString())
+                lifecycleScope.launch {
+                    viewModel.validateFields(email, password, binding.countryCode.text.toString())
+                }
             }
             binding.btnGoogleSignIn -> {
                 signWithGoogle()
@@ -142,7 +149,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
                 startActivityForCountryCode()
             }
 
-            /*binding.imgShowPassword -> {
+            binding.imgShowPassword -> {
                 if (!isPasswordVisible) {
                     isPasswordVisible = true
                     binding.imgShowPassword.setImageResource(R.drawable.ic_show_password)
@@ -153,7 +160,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
                     binding.edtPassword.transformationMethod = PasswordTransformationMethod()
                 }
                 binding.edtPassword.setSelection(binding.edtPassword.text!!.length)
-            }*/
+            }
         }
     }
 
@@ -168,7 +175,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
             Status.SUCCESS -> {
                 hideProgress()
                 when (apiResponse.apiConstant) {
-                    Constants.LOGIN ->  checkIsUserVerified()
+                    Constants.LOGIN -> checkIsUserVerified()
 
                     Constants.VALIDATION -> {
                         if (isNumericValue(binding.edtUserName.text.toString())) startPhoneNumberVerification(
@@ -180,10 +187,10 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
 
                     Constants.SEND_OTP -> {
                         baseViewModel.setDirection(LoginFragmentDirections.loginToPhoneVerification(
-                            viewModel.createModelForPhoneVerification("",
-                                binding.countryCode.text.toString(),
+                            viewModel.createModelForPhoneVerification("", "",
                                 binding.edtUserName.text.toString(),
-                                "","",""
+                                binding.countryCode.text.toString(),
+                                "", "", ""
                             ), ENUM.INT_2
                         ))
                     }
@@ -206,7 +213,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
                 )
             }
             Status.ALPHA -> {
-                if (getString(apiResponse.resourceId !!).equals(getString(R.string.alpha_true),
+                if (getString(apiResponse.resourceId!!).equals(getString(R.string.alpha_true),
                         true)
                 ) {
                     enableButtonClick(1.0f, true)
@@ -258,19 +265,75 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
         startActivity(Intent(requireContext(), DashboardActivity::class.java))
         requireActivity().finish()
     }
+
     private fun enableButtonClick(alpha: Float, clickable: Boolean) {
         binding.btnLogin.isEnabled = clickable
         binding.btnLogin.alpha = alpha
     }
 
-    inner class TextChangeWatcher : TextWatcher {
+    inner class TextChangeWatcher(private var view: View, private val errorTxt: TextView) :
+        TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            errorTxt.visibility = View.GONE
+            when (view) {
+                binding.edtUserName -> {
+                    if (isNumericValue(s.toString())) {
+                        manageCountryCodeVisibility(
+                            View.VISIBLE, View.GONE,
+                            getString(R.string.request_otp)
+                        )
+                        binding.edtUserName.limitLength(resources.getInteger(R.integer.int_12))
+                    } else {
+                        manageCountryCodeVisibility(View.GONE,
+                            View.VISIBLE,
+                            getString(R.string.sign_in))
+
+                        binding.edtUserName.limitLength(resources.getInteger(R.integer.int_35))
+                    }
+                    customAnimationForTextInput(requireContext(), binding.tvEmailAddress,
+                        s, before)
+                    binding.phoneNumberContainer.setBackgroundResource(R.drawable.edt_rounded_corner)
+                }
+                binding.edtPassword -> {
+                    customAnimationForTextInput(requireContext(), binding.tvPassword, s, before)
+                    binding.passwordContainer.setBackgroundResource(R.drawable.edt_rounded_corner)
+                }
+            }
+
             viewModel.validateFieldsToSetAlpha(binding.edtUserName.text.toString(),
                 binding.edtPassword.text.toString())
         }
+
         override fun afterTextChanged(p0: Editable?) {
         }
+    }
+
+    private fun manageViewsForValidation(validationModel: ValidationModel) {
+        if (validationModel.status == Status.SUCCESS) {
+            manageViewVisibility(validationModel, R.drawable.edt_rounded_corner, View.GONE, "")
+        } else if (validationModel.status == Status.ERROR) {
+            manageViewVisibility(validationModel, R.drawable.edt_rounded_corner_red, View.VISIBLE,
+                validationModel.message)
+        }
+    }
+
+    private fun manageViewVisibility(
+        validationModel: ValidationModel, bgDrawable: Int,
+        tvValidatorVisibility: Int, message: String,
+    ) {
+        //val editText = binding.root.findViewById(validationModel.edtResourceId) as EditText
+        val tvValidator = binding.root.findViewById(validationModel.tvResourceId) as TextView
+        if (validationModel.edtResourceId == R.id.edtUserName) {
+            binding.phoneNumberContainer.setBackgroundResource(bgDrawable)
+        }
+
+        /*  R.id.edtPassword -> {
+              binding.passwordContainer.setBackgroundResource(bgDrawable)
+          }
+          else -> editText.setBackgroundResource(bgDrawable)*/
+        tvValidator.visibility = tvValidatorVisibility
+        tvValidator.text = message
     }
 
 }

@@ -9,11 +9,15 @@ import com.cardio.doctor.api.Constants
 import com.cardio.doctor.api.Constants.Companion.FORGOT_PASSWORD
 import com.cardio.doctor.base.repository.BaseRepository
 import com.cardio.doctor.base.viewmodel.BaseViewModel
+import com.cardio.doctor.model.ValidationModel
 import com.cardio.doctor.network.Resource
+import com.cardio.doctor.network.Status
 import com.cardio.doctor.storage.UserManager
+import com.cardio.doctor.utils.ENUM
 import com.cardio.doctor.utils.isValidEmail
 import com.cardio.doctor.utils.livedata.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,9 +30,29 @@ class ForgotPasswordViewModel @Inject constructor(
     private val _validationObserver = SingleLiveEvent<Resource<String>>()
     val validationObserver: LiveData<Resource<String>> = _validationObserver
 
-    fun validateFields(email: String) {
+    val validationChannel = Channel<ValidationModel>(ENUM.INT_1)
+
+    suspend fun validateFields(email: String) {
         val context = getApplication<AppCardioPatient>()
-        when {
+        val isValidEmail = if (email.isEmpty()) {
+            queueValidationRequest(Status.ERROR,
+                context.getString(R.string.enter_email_address),
+                R.id.edtEmailId, R.id.tvEmailError)
+            false
+        } else if (!isValidEmail(email)) {
+            queueValidationRequest(Status.ERROR,
+                context.getString(R.string.err_valid_email),
+                R.id.edtEmailId, R.id.tvEmailError)
+            false
+        } else {
+            queueValidationRequest(Status.SUCCESS, "",
+                R.id.edtEmailId, R.id.tvEmailError)
+            true
+        }
+
+        if(isValidEmail) callForgotPasswordApi(email)
+
+       /* when {
             email.isEmpty() -> {
                 showValidationMessage(context.getString(R.string.enter_email_address))
                 return
@@ -39,7 +63,7 @@ class ForgotPasswordViewModel @Inject constructor(
                 return
             }
         }
-        callForgotPasswordApi(email)
+        callForgotPasswordApi(email)*/
     }
 
     private fun callForgotPasswordApi(email: String) {
@@ -72,4 +96,17 @@ class ForgotPasswordViewModel @Inject constructor(
         _validationObserver.value = Resource.error(Constants.LOGIN, 0, message, null)
     }
 
+    private suspend fun queueValidationRequest(
+        status: Status, message: String,
+        edtResource: Int, tvResourceId: Int,
+    ) {
+        validationChannel.send(ValidationModel(
+            edtResource, tvResourceId, status, message
+        ))
+    }
+
+    override fun onCleared() {
+        validationChannel.close()
+        super.onCleared()
+    }
 }

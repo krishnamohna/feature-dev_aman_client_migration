@@ -14,16 +14,41 @@
             app:layout_constraintStart_toEndOf="@+id/verticalLeftGuideline"
             app:layout_constraintTop_toBottomOf="parent" />
 
-        <LinearLayout
+        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
             android:id="@+id/dotContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            app:dotsColor="@color/btn_gradient_end"
+            app:dotsCornerRadius="@dimen/_6sdp"
+            app:dotsSize="@dimen/_5sdp"
+            app:dotsSpacing="@dimen/_2sdp"
+            app:dotsWidthFactor="2.5"
+            app:selectedDotColor="@color/green_tutorial_indicator"
+            app:progressMode="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:visibility="visible"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.87" />
+            app:layout_constraintVertical_bias="0.87"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tutorialSkip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            style="@style/BaseAppTheme.TxtView"
+            android:fontFamily="@font/nunito_extrabold"
+            android:text="@string/skip"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_2sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="@+id/txtPassword" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnGetStarted"
@@ -34,7 +59,6 @@
             android:visibility="gone"
             style="@style/BaseAppTheme.btnStyleContinue"
             android:layout_marginTop="@dimen/_32sdp"
-            android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
             app:layout_constraintStart_toStartOf="@id/verticalLeftGuideline" />

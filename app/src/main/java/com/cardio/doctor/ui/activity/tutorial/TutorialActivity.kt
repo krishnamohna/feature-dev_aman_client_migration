@@ -3,9 +3,6 @@ package com.cardio.doctor.ui.activity.tutorial
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.core.text.HtmlCompat
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.cardio.doctor.R
 import com.cardio.doctor.base.activity.BaseActivity
@@ -19,9 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class TutorialActivity : BaseActivity() {
     private val binding by viewBinding(ActivityTutorialBinding::inflate)
     private lateinit var tutorialModel: TutorialModel
-    private lateinit var dots: Array<TextView?>
     private var currentPos = 0
-    private val tutorialImages = arrayListOf(R.drawable.ic_tutorial_two,
+    private val tutorialImages = arrayListOf(R.drawable.ic_tutorial_one,
         R.drawable.ic_tutorial_two,
         R.drawable.ic_tutorial_three
     )
@@ -40,10 +36,15 @@ class TutorialActivity : BaseActivity() {
         )
         binding.viewPagerTutorial.adapter = SliderAdapter(this, tutorialModel)
         binding.viewPagerTutorial.addOnPageChangeListener(changeListener)
-        addDots(0)
+        binding.dotContainer.setViewPager(binding.viewPagerTutorial)
     }
 
     private fun setListeners() {
+        binding.tutorialSkip.setOnClickListener {
+            binding.tutorialSkip.isEnabled = false
+            openUserAuthActivity()
+        }
+
         binding.btnGetStarted.setOnClickListener {
             openUserAuthActivity()
         }
@@ -58,34 +59,20 @@ class TutorialActivity : BaseActivity() {
         finish()
     }
 
-    private fun addDots(position: Int) {
-        dots = arrayOfNulls(tutorialModel.listOfImages.size)
-        binding.dotContainer.removeAllViews()
-        for (i in dots.indices) {
-            dots[i] = TextView(this)
-            dots[i]!!.text =HtmlCompat.fromHtml("•", HtmlCompat.FROM_HTML_MODE_LEGACY)
-            dots[i]!!.textSize = resources.getDimension(R.dimen._11ssp)
-            dots[i]!!.setTextColor(ContextCompat.getColor(this, R.color.btn_gradient_end))
-            binding.dotContainer.addView(dots[i])
-        }
-        if (dots.isNotEmpty()) {
-            dots[position]!!.setTextColor(ContextCompat.getColor(this, R.color.green_tutorial_indicator))
-        }
-    }
-
     private var changeListener: OnPageChangeListener = object : OnPageChangeListener {
         override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
         override fun onPageScrollStateChanged(state: Int) {}
         override fun onPageSelected(position: Int) {
-            addDots(position)
             currentPos = position
-            if (position == tutorialModel.listOfImages.size-1) btnVisibility(View.VISIBLE, View.GONE)
-            else  btnVisibility(View.GONE, View.VISIBLE)
+            if (position == tutorialModel.listOfImages.size-1) btnVisibility(View.VISIBLE, View.GONE,View.INVISIBLE)
+            else  btnVisibility(View.GONE, View.VISIBLE,View.VISIBLE)
         }
     }
 
-    private fun btnVisibility(visibilityGetStarted: Int, visibilityNext: Int) {
+    private fun btnVisibility(visibilityGetStarted: Int, visibilityNext: Int,skipVisibilty : Int) {
         binding.btnGetStarted.visibility = visibilityGetStarted
         binding.imgNext.visibility = visibilityNext
+        binding.tutorialSkip.visibility = skipVisibilty
+
     }
 }

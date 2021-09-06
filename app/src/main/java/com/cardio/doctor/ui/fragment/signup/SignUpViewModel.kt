@@ -8,12 +8,15 @@ import com.cardio.doctor.AppCardioPatient
 import com.cardio.doctor.R
 import com.cardio.doctor.api.Constants
 import com.cardio.doctor.base.viewmodel.BaseViewModel
+import com.cardio.doctor.model.ValidationModel
 import com.cardio.doctor.network.Resource
+import com.cardio.doctor.network.Status
 import com.cardio.doctor.storage.UserManager
 import com.cardio.doctor.utils.*
 import com.cardio.doctor.utils.livedata.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
@@ -26,28 +29,33 @@ class SignUpViewModel @Inject constructor(
 
     private val _signUpApiResponse = SingleLiveEvent<Resource<String>>()
     val signUpApiResponse: LiveData<Resource<String>> = _signUpApiResponse
+
+    val validationChannel = Channel<ValidationModel>(ENUM.INT_10)
+
     var firebaseUri: Uri? = null
     var deviceUri: Uri? = null
     var fileName: String? = null
 
-    fun validateFieldsToSetAlpha( isChecked : Boolean,firstName: String, email: String,
-                                  password: String,confirmPassword: String,phoneNumber: String,) {
+    fun validateFieldsToSetAlpha(
+        isChecked: Boolean, firstName: String, email: String,
+        password: String, confirmPassword: String, phoneNumber: String,
+    ) {
         when {
-            firstName.isEmpty() || !firstName.validUserNameLength()-> {
+            firstName.isEmpty() || !firstName.validUserNameLength() -> {
                 setObserverForAlpha(R.string.alpha_false)
             }
-            email.isEmpty() || !email.validUserIdLength()-> {
-                setObserverForAlpha(R.string.alpha_false)
-            }
-
-            password.isEmpty() || !password.validPasswordLength()-> {//2 -1
+            email.isEmpty() -> {
                 setObserverForAlpha(R.string.alpha_false)
             }
 
-            confirmPassword.isEmpty() || !password.validPasswordLength()-> {//8 -1
+            password.isEmpty() || !password.validPasswordLength() -> {//2 -1
                 setObserverForAlpha(R.string.alpha_false)
             }
-            phoneNumber.isEmpty() || !validPhoneLength(phoneNumber)-> {//8 -1
+
+            confirmPassword.isEmpty() || !confirmPassword.validPasswordLength() -> {//8 -1
+                setObserverForAlpha(R.string.alpha_false)
+            }
+            phoneNumber.isEmpty() || !validPhoneLength(phoneNumber) -> {//8 -1
                 setObserverForAlpha(R.string.alpha_false)
             }
             !isChecked -> {
@@ -61,15 +69,147 @@ class SignUpViewModel @Inject constructor(
         _signUpApiResponse.value = Resource.setAlpha(Constants.SIGNUP, resourceId)
     }
 
-    fun validateFields(
-        fullName: String, phoneNumber: String, countryCode: String, email: String,
-        password: String,
+    suspend fun validateFields(
+        firstName: String, lastName: String,
+        phoneNumber: String, countryCode: String, email: String,
+        password: String, confirmPassword: String,
     ) {
         val context = getApplication<AppCardioPatient>()
 
+        /*
+        * Signup button is not enable for the empty fields and for that reason
+        * some validation are not required in this method
+        * */
+
+        val isValidFirstName = when {
+            firstName.isEmpty() -> {
+                queueValidationRequest(Status.ERROR,
+                    context.getString(R.string.enter_first_name),
+                    R.id.edtFirstName, R.id.tvFirstNameError)
+                false
+            }
+            firstName.length < ENUM.INT_3 -> {
+                queueValidationRequest(Status.ERROR,
+                    context.getString(R.string.enter_valid_first_name),
+                    R.id.edtFirstName, R.id.tvFirstNameError)
+                false
+            }
+            else -> {
+                queueValidationRequest(Status.SUCCESS, "",
+                    R.id.edtFirstName, R.id.tvFirstNameError)
+                true
+            }
+        }
+
+        val isValidLastName = when {
+            lastName.isNotEmpty() && lastName.length < ENUM.INT_3 -> {
+                queueValidationRequest(Status.ERROR,
+                    context.getString(R.string.enter_valid_last_name),
+                    R.id.edtLastName, R.id.tvLastName)
+                false
+            }
+            else -> {
+                queueValidationRequest(Status.SUCCESS, "",
+                    R.id.edtLastName, R.id.tvLastName)
+                true
+            }
+        }
+
+        val isValidEmail = when {
+            email.isEmpty() -> {
+                queueValidationRequest(Status.ERROR,
+                    context.getString(R.string.enter_email_address),
+                    R.id.edtEmailId, R.id.tvEmailError)
+                false
+            }
+            !isValidEmail(email) -> {
+                queueValidationRequest(Status.ERROR,
+                    context.getString(R.string.err_valid_email),
+                    R.id.edtEmailId, R.id.tvEmailError)
+                false
+            }
+            else -> {
+                queueValidationRequest(Status.SUCCESS, "",
+                    R.id.edtEmailId, R.id.tvEmailError)
+                true
+            }
+        }
+
+        val isValidPhoneNumber = when {
+            phoneNumber.isEmpty() -> {
+                queueValidationRequest(Status.ERROR,
+                    context.getString(R.string.enter_valid_mobile),
+                    R.id.edtPhoneNumber, R.id.tvPhoneNoError)
+                false
+            }
+            !isValidMobileNumber(phoneNumber) -> {
+                queueValidationRequest(Status.ERROR,
+                    context.getString(R.string.err_valid_phone_number),
+                    R.id.edtPhoneNumber, R.id.tvPhoneNoError)
+                false
+            }
+            else -> {
+                queueValidationRequest(Status.SUCCESS, "",
+                    R.id.edtPhoneNumber, R.id.tvPhoneNoError)
+                true
+            }
+        }
+
+
+        val isValidPassword = when {
+            password.isEmpty() -> {
+                queueValidationRequest(Status.ERROR,
+                    context.getString(R.string.err_empty_password),
+                    R.id.edtPassword, R.id.tvPasswordError)
+                false
+            }
+            !isValidPassword(password) -> {
+                queueValidationRequest(Status.ERROR,
+                    context.getString(R.string.err_valid_password),
+                    R.id.edtPassword, R.id.tvPasswordError)
+                false
+            }
+            else -> {
+                queueValidationRequest(Status.SUCCESS, "",
+                    R.id.edtPassword, R.id.tvPasswordError)
+                true
+            }
+        }
+
+        val isValidConfirmPassword = when {
+            confirmPassword.isEmpty() -> {
+                queueValidationRequest(Status.ERROR,
+                    context.getString(R.string.err_confirm_password),
+                    R.id.edtConfirmPassword, R.id.tvConfirmPasswordError)
+                false
+            }
+            !isValidPassword(confirmPassword) -> {
+                queueValidationRequest(Status.ERROR,
+                    context.getString(R.string.err_valid_password),
+                    R.id.edtConfirmPassword, R.id.tvConfirmPasswordError)
+                false
+            }
+            !password.equals(confirmPassword, true) -> {
+                queueValidationRequest(Status.ERROR,
+                    context.getString(R.string.password_does_not_match),
+                    R.id.edtConfirmPassword, R.id.tvConfirmPasswordError)
+                false
+            }
+            else -> {
+                queueValidationRequest(Status.SUCCESS, "",
+                    R.id.edtConfirmPassword, R.id.tvConfirmPasswordError)
+                true
+            }
+        }
+
+        if (isValidFirstName && isValidEmail && isValidPassword && isValidConfirmPassword && isValidPhoneNumber && isValidLastName) {
+            checkIsUserExist(countryCode, phoneNumber, email)
+        }
+
+/*
         when {
-            fullName.isEmpty() -> {
-                showValidationMessage(context.getString(R.string.enter_valid_full_name))
+            firstName.isEmpty() -> {
+                showValidationMessage(context.getString(R.string.enter_valid_first_name))
             }
 
             phoneNumber.isEmpty() -> {
@@ -77,7 +217,7 @@ class SignUpViewModel @Inject constructor(
             }
 
             !isValidMobileNumber(phoneNumber) -> {
-                showValidationMessage(context.getString(R.string.err_valid_mobile_number))
+                showValidationMessage(context.getString(R.string.err_valid_phone_number))
             }
 
             email.isEmpty() -> {
@@ -95,10 +235,22 @@ class SignUpViewModel @Inject constructor(
                 showValidationMessage(context.getString(R.string.err_valid_password))
             }
 
+            confirmPassword.isEmpty() -> {
+                showValidationMessage(context.getString(R.string.err_confirm_password))
+            }
+
+            !isValidPassword(confirmPassword) -> {
+                showValidationMessage(context.getString(R.string.err_valid_password))
+            }
+
+            !password.equals(confirmPassword, true) -> {
+                showValidationMessage(context.getString(R.string.password_does_not_match))
+            }
             else -> {
                 checkIsUserExist(countryCode, phoneNumber, email)
             }
         }
+*/
     }
 
     private fun checkIsUserExist(countryCode: String, phoneNumber: String, email: String) {
@@ -169,5 +321,19 @@ class SignUpViewModel @Inject constructor(
         } catch (e: Exception) {
             showValidationMessage(getExceptionMessage(e))
         }
+    }
+
+    private suspend fun queueValidationRequest(
+        status: Status, message: String,
+        edtResource: Int, tvResourceId: Int,
+    ) {
+        validationChannel.send(ValidationModel(
+            edtResource, tvResourceId, status, message
+        ))
+    }
+
+    override fun onCleared() {
+        validationChannel.close()
+        super.onCleared()
     }
 }

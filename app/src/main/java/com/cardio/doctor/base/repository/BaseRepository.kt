@@ -1,6 +1,5 @@
 package com.cardio.doctor.base.repository
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cardio.doctor.api.ApiService
 import com.cardio.doctor.network.Resource
@@ -11,7 +10,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.storage.StorageReference
-import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 open class BaseRepository @Inject constructor(
@@ -55,4 +53,6 @@ open class BaseRepository @Inject constructor(
         },
         errorLiveData = errorLiveData
     )
+
+
 }

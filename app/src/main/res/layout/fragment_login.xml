@@ -30,109 +30,181 @@
                 app:srcCompat="@drawable/ic_logo" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/phoneNumberContainer"
+                android:id="@+id/emailValContainer"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_60sdp"
-                android:background="@drawable/edt_rounded_corner"
                 app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/_imgProfilePic">
 
-                <View
-                    android:id="@+id/countryCodeSeprator"
-                    android:layout_width="@dimen/_1sdp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:layout_marginBottom="@dimen/_8sdp"
-                    android:background="@color/grey_divider"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/countryCode"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEmailAddress"
+                    style="@style/BaseAppTheme.TxtView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email_phone_number"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtUserName"
-                    style="@style/BaseAppTheme.EdtTxt"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/phoneNumberContainer"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
-                    android:background="@null"
-                    android:hint="@string/email_phone_number"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:maxLines="@integer/int_1"
-                    android:paddingLeft="@dimen/_16sdp"
-                    android:paddingRight="@dimen/_16sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/edt_rounded_corner"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_weight="@integer/int_1"
-                    app:layout_constraintStart_toEndOf="@+id/countryCodeSeprator"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvEmailAddress">
+
+                    <View
+                        android:id="@+id/countryCodeSeprator"
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:visibility="gone"
+                        android:background="@color/grey_divider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/countryCode"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edtUserName"
+                        style="@style/BaseAppTheme.EdtTxt"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:background="@null"
+                        android:hint="@string/email_phone_number"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:maxLines="@integer/int_1"
+                        android:paddingLeft="@dimen/_16sdp"
+                        android:paddingRight="@dimen/_16sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_weight="@integer/int_1"
+                        app:layout_constraintStart_toEndOf="@+id/countryCodeSeprator"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/countryCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:drawableEnd="@drawable/ic_dropdown_mobile"
+                        android:drawablePadding="@dimen/_16sdp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_8sdp"
+                        android:text="@string/plus_one"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13ssp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/countryCodeSeprator"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/countryCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:drawableEnd="@drawable/ic_dropdown_mobile"
-                    android:drawablePadding="@dimen/_16sdp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:gravity="center"
-                    android:paddingStart="@dimen/_8sdp"
-                    android:paddingEnd="@dimen/_8sdp"
-                    android:text="@string/plus_one"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_13ssp"
+                    android:id="@+id/tvEmailError"
+                    style="@style/BaseAppTheme.TxtView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:gravity="end"
+                    android:text="@string/err_valid_email"
                     android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/countryCodeSeprator"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textColor="@color/red_validation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneNumberContainer" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/passwordContainer"
+                android:id="@+id/passwordValContainer"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_13sdp"
                 app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/phoneNumberContainer"
-                >
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtPassword"
+                app:layout_constraintTop_toBottomOf="@+id/emailValContainer">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPassword"
+                    style="@style/BaseAppTheme.TxtView"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:hint="@string/enter_password"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPassword"
-                    android:maxLines="@integer/int_1"
-                    android:paddingStart="@dimen/_16sdp"
-                    android:paddingEnd="0dp"
-                    android:textSize="@dimen/_13ssp"
-                    android:textColor="@color/black"
-                    android:maxLength="@integer/int_25"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/imgShowPassword"
-                    app:layout_constraintHorizontal_weight="@integer/int_1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enter_password"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    style="@style/BaseAppTheme.EdtTxt"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgShowPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="@+id/edtPassword"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/passwordContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toTopOf="@+id/edtPassword"
-                    app:srcCompat="@drawable/ic_hide_password"
-                    />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPassword"
+                    android:background="@drawable/edt_rounded_corner"
+                    >
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edtPassword"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:hint="@string/enter_password"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:maxLines="@integer/int_1"
+                        android:paddingStart="@dimen/_16sdp"
+                        android:paddingEnd="0dp"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/black"
+                        android:maxLength="@integer/int_25"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/imgShowPassword"
+                        app:layout_constraintHorizontal_weight="@integer/int_1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        style="@style/BaseAppTheme.EdtTxt"
+                        android:background="@null"
+                        app:layout_constraintTop_toTopOf="parent" />
 
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgShowPassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_8sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/edtPassword"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/edtPassword"
+                        app:srcCompat="@drawable/ic_hide_password"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPasswordError"
+                    style="@style/BaseAppTheme.TxtView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:gravity="end"
+                    android:visibility="gone"
+                    android:text="@string/err_empty_password"
+                    android:textColor="@color/red_validation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/passwordContainer" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/forgotPassword"
                 android:layout_width="wrap_content"
@@ -145,7 +217,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/passwordContainer" />
+                app:layout_constraintTop_toBottomOf="@+id/passwordValContainer" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnLogin"

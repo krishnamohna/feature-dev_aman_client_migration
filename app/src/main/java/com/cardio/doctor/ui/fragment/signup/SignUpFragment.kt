@@ -8,20 +8,27 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.text.method.PasswordTransformationMethod
 import android.view.View
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.cardio.doctor.R
 import com.cardio.doctor.api.Constants
 import com.cardio.doctor.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentSignUpBinding
+import com.cardio.doctor.model.ValidationModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.utils.ENUM
 import com.cardio.doctor.utils.Timer.Companion.OTP_EXPIRED
+import com.cardio.doctor.utils.customAnimationForTextInput
 import com.cardio.doctor.utils.customSnackBarFail
 import com.cardio.doctor.utils.getFileName
 import com.cardio.doctor.utils.viewbinding.viewBinding
@@ -32,6 +39,9 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.theartofdev.edmodo.cropper.CropImage.*
 import com.theartofdev.edmodo.cropper.CropImageView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -39,7 +49,8 @@ import java.util.concurrent.TimeUnit
 class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickListener {
     private val binding by viewBinding(FragmentSignUpBinding::bind)
     private val viewModel: SignUpViewModel by viewModels()
-    // private var isPasswordVisible: Boolean = false
+    private var isPasswordVisible: Boolean = false
+    private var isConfirmVisible: Boolean = false
 
     private val requestMultiplePermissions =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -82,15 +93,23 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
 
     private fun setListener() {
         binding.btnSignup.setOnClickListener(this)
-        // binding.txtLogin.setOnClickListener(this)
+        binding.txtSignin.setOnClickListener(this)
         binding.imgShowPassword.setOnClickListener(this)
+        binding.imgConfirmShowPassword.setOnClickListener(this)
         binding.countryCode.setOnClickListener(this)
         binding.imgProfilePic.setOnClickListener(this)
-        binding.edtFirstName.addTextChangedListener(TextChangeWatcher())
-        binding.edtEmailId.addTextChangedListener(TextChangeWatcher())
-        binding.edtPassword.addTextChangedListener(TextChangeWatcher())
-        binding.edtConfirmPassword.addTextChangedListener(TextChangeWatcher())
-        binding.edtPhoneNumber.addTextChangedListener(TextChangeWatcher())
+        binding.edtFirstName.addTextChangedListener(TextChangeWatcher(binding.edtFirstName,
+            binding.tvFirstNameError))
+        binding.edtLastName.addTextChangedListener(TextChangeWatcher(binding.edtLastName,
+            binding.tvLastName))
+        binding.edtEmailId.addTextChangedListener(TextChangeWatcher(binding.edtEmailId,
+            binding.tvEmailError))
+        binding.edtPassword.addTextChangedListener(TextChangeWatcher(binding.passwordContainer,
+            binding.tvPasswordError))
+        binding.edtConfirmPassword.addTextChangedListener(TextChangeWatcher(binding.confirmPasswordContainer,
+            binding.tvConfirmPasswordError))
+        binding.edtPhoneNumber.addTextChangedListener(TextChangeWatcher(binding.phoneNumberContainer,
+            binding.tvPhoneNoError))
 
         binding.chkBoxAcceptPolicy.setOnCheckedChangeListener { _, isChecked ->
             validationFieldsForAlpha(isChecked)
@@ -120,7 +139,13 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
         viewModel.firebaseException.observe(viewLifecycleOwner, {
             handleApiCallback(it)
         })
+        lifecycleScope.launch {
+            viewModel.validationChannel.receiveAsFlow().collect {
+                manageViewsForValidation(it)
+            }
+        }
     }
+
 
     private fun checkPermission() {
         if (isAdded) {
@@ -160,31 +185,53 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
 
     override fun onClick(view: View?) {
         when (view) {
+            binding.txtSignin -> {
+                findNavController().popBackStack()
+            }
             binding.imgProfilePic -> {
                 checkPermission()
             }
 
             binding.btnSignup -> {
-                viewModel.validateFields(
-                    binding.edtFirstName.text.toString(), binding.edtPhoneNumber.text.toString(),
-                    binding.countryCode.text.toString(), binding.edtEmailId.text.toString(),
-                    binding.edtPassword.text.toString()
-                )
+                lifecycleScope.launch {
+                    viewModel.validateFields(
+                        binding.edtFirstName.text.toString(),
+                        binding.edtLastName.text.toString(),
+                        binding.edtPhoneNumber.text.toString(),
+                        binding.countryCode.text.toString(),
+                        binding.edtEmailId.text.toString(),
+                        binding.edtPassword.text.toString(),
+                        binding.edtConfirmPassword.text.toString()
+                    )
+                }
             }
 
-            /* binding.imgShowPassword -> {
-                 if (!isPasswordVisible) {
-                     isPasswordVisible = true
-                     binding.imgShowPassword.setImageResource(R.drawable.ic_show_password)
-                     binding.edtPassword.transformationMethod = null
-                 } else {
-                     isPasswordVisible = false
-                     binding.imgShowPassword.setImageResource(R.drawable.ic_hide_password)
-                     binding.edtPassword.transformationMethod = PasswordTransformationMethod()
-                 }
-                 binding.edtPassword.setSelection(binding.edtPassword.text!!.length)
-             }*/
+            binding.imgShowPassword -> {
+                if (!isPasswordVisible) {
+                    isPasswordVisible = true
+                    binding.imgShowPassword.setImageResource(R.drawable.ic_show_password)
+                    binding.edtPassword.transformationMethod = null
+                } else {
+                    isPasswordVisible = false
+                    binding.imgShowPassword.setImageResource(R.drawable.ic_hide_password)
+                    binding.edtPassword.transformationMethod = PasswordTransformationMethod()
+                }
+                binding.edtPassword.setSelection(binding.edtPassword.text!!.length)
+            }
 
+            binding.imgConfirmShowPassword -> {
+                if (!isConfirmVisible) {
+                    isConfirmVisible = true
+                    binding.imgConfirmShowPassword.setImageResource(R.drawable.ic_show_password)
+                    binding.edtConfirmPassword.transformationMethod = null
+                } else {
+                    isConfirmVisible = false
+                    binding.imgConfirmShowPassword.setImageResource(R.drawable.ic_hide_password)
+                    binding.edtConfirmPassword.transformationMethod = PasswordTransformationMethod()
+                }
+                binding.edtConfirmPassword.setSelection(binding.edtConfirmPassword.text!!.length)
+
+            }
             binding.countryCode -> {
                 startActivityForCountryCode()
             }
@@ -213,6 +260,7 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
                             SignUpFragmentDirections.signupToPhoneVerification(
                                 viewModel.createModelForPhoneVerification(
                                     binding.edtFirstName.text.toString(),
+                                    binding.edtLastName.text.toString(),
                                     binding.edtPhoneNumber.text.toString(),
                                     binding.countryCode.text.toString(),
                                     binding.edtEmailId.text.toString(),
@@ -264,18 +312,31 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
     }
 
 
-    inner class TextChangeWatcher : TextWatcher {
+    inner class TextChangeWatcher(private var view: View, private val errorTxt: TextView) :
+        TextWatcher {
         //private var job: Job? = null
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-           /* job = lifecycleScope.launch {
-                delay(INPUT_DELAY)*/
-                validationFieldsForAlpha(binding.chkBoxAcceptPolicy.isChecked)
-           // }
+            errorTxt.visibility = View.GONE
+            view.setBackgroundResource(R.drawable.edt_rounded_corner)
+            var textView: TextView? = null
+            when (view) {
+                binding.edtFirstName -> textView = binding.txtFirstName
+                binding.edtLastName -> textView = binding.txtLastName
+                binding.edtEmailId -> textView = binding.txtEmailAddress
+                binding.passwordContainer -> textView = binding.txtPassword
+                binding.confirmPasswordContainer -> textView = binding.txtConfirmPassword
+                binding.phoneNumberContainer -> textView = binding.txtPhoneNumber
+            }
+            /* job = lifecycleScope.launch {
+                 delay(INPUT_DELAY)*/
+            customAnimationForTextInput(requireContext(), textView!!, s, before)
+            validationFieldsForAlpha(binding.chkBoxAcceptPolicy.isChecked)
+            // }
         }
 
         override fun afterTextChanged(p0: Editable?) {
-           // job?.cancel()
+            // job?.cancel()
         }
     }
 
@@ -284,5 +345,36 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
             binding.edtFirstName.text.toString(), binding.edtEmailId.text.toString(),
             binding.edtPassword.text.toString(), binding.edtConfirmPassword.text.toString(),
             binding.edtPhoneNumber.text.toString())
+    }
+
+    private fun manageViewsForValidation(validationModel: ValidationModel) {
+        if (validationModel.status == Status.SUCCESS) {
+            manageViewVisibility(validationModel, R.drawable.edt_rounded_corner, View.GONE, "")
+        } else if (validationModel.status == Status.ERROR) {
+            manageViewVisibility(validationModel, R.drawable.edt_rounded_corner_red, View.VISIBLE,
+                validationModel.message)
+        }
+    }
+
+    private fun manageViewVisibility(
+        validationModel: ValidationModel, bgDrawable: Int,
+        tvValidatorVisibility: Int, message: String,
+    ) {
+        val editText = binding.root.findViewById(validationModel.edtResourceId) as EditText
+        val tvValidator = binding.root.findViewById(validationModel.tvResourceId) as TextView
+        when (validationModel.edtResourceId) {
+            R.id.edtPassword -> {
+                binding.passwordContainer.setBackgroundResource(bgDrawable)
+            }
+            R.id.edtConfirmPassword -> {
+                binding.confirmPasswordContainer.setBackgroundResource(bgDrawable)
+            }
+            R.id.edtPhoneNumber -> {
+                binding.phoneNumberContainer.setBackgroundResource(bgDrawable)
+            }
+            else -> editText.setBackgroundResource(bgDrawable)
+        }
+        tvValidator.visibility = tvValidatorVisibility
+        tvValidator.text = message
     }
 }

@@ -5,19 +5,29 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.api.Constants
 import com.cardio.doctor.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentForgotPasswordBinding
+import com.cardio.doctor.model.ValidationModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
+import com.cardio.doctor.utils.EditTextWatcher
+import com.cardio.doctor.utils.customAnimationForTextInput
 import com.cardio.doctor.utils.customSnackBarFail
 import com.cardio.doctor.utils.showAlertDialog
 import com.cardio.doctor.utils.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ForgotPasswordFragment : AppBaseFragment(R.layout.fragment_forgot_password),
@@ -33,9 +43,15 @@ class ForgotPasswordFragment : AppBaseFragment(R.layout.fragment_forgot_password
         enableButtonClick(0.3f, false)
     }
 
-    fun setListners() {
-        binding.edtEmailId.addTextChangedListener(TextChangeWatcher())
+    private fun setListners() {
+        binding.edtEmailId.addTextChangedListener(TextChangeWatcher(binding.edtEmailId))
         binding.btnForgotPassword.setOnClickListener(this)
+
+        /* binding.edtConfirmPassword.addTextChangedListener(EditTextWatcher(requireContext(),
+             binding.tvConfirmPassword))*/
+        /*  binding.edtConfirmPassword.error = "Invalid email"
+          binding.edtConfirmPassword.background =
+              ResourcesCompat.getDrawable(resources, R.drawable.edt_rounded_corner_red, null)*/
     }
 
     private fun setObservers() {
@@ -45,12 +61,39 @@ class ForgotPasswordFragment : AppBaseFragment(R.layout.fragment_forgot_password
         viewModel.firebaseException.observe(viewLifecycleOwner, {
             handleApiCallback(it)
         })
+        lifecycleScope.launch {
+            viewModel.validationChannel.receiveAsFlow().collect {
+                manageViewsForValidation(it)
+            }
+        }
+    }
+
+    private fun manageViewsForValidation(validationModel: ValidationModel) {
+        if (validationModel.status == Status.SUCCESS) {
+            manageViewVisibility(validationModel, R.drawable.edt_rounded_corner, View.GONE, "")
+        } else if (validationModel.status == Status.ERROR) {
+            manageViewVisibility(validationModel, R.drawable.edt_rounded_corner_red, View.VISIBLE,
+                validationModel.message)
+        }
+    }
+
+    private fun manageViewVisibility(
+        validationModel: ValidationModel, bgDrawable: Int,
+        tvValidatorVisibility: Int, message: String,
+    ) {
+        val editText = binding.root.findViewById(validationModel.edtResourceId) as EditText
+        val tvValidator = binding.root.findViewById(validationModel.tvResourceId) as TextView
+        editText.setBackgroundResource(bgDrawable)
+        tvValidator.visibility = tvValidatorVisibility
+        tvValidator.text = message
     }
 
     override fun onClick(v: View?) {
         when (v) {
             binding.btnForgotPassword -> {
-                viewModel.validateFields(binding.edtEmailId.text.toString())
+                lifecycleScope.launch {
+                    viewModel.validateFields(binding.edtEmailId.text.toString())
+                }
             }
         }
     }
@@ -92,11 +135,18 @@ class ForgotPasswordFragment : AppBaseFragment(R.layout.fragment_forgot_password
         }
     }
 
-    inner class TextChangeWatcher : TextWatcher {
+    inner class TextChangeWatcher(private var view: View) : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            if (binding.edtEmailId.text.toString().isEmpty()) enableButtonClick(0.3f, false)
-            else enableButtonClick(1.0f, true)
+            when (view) {
+                binding.edtEmailId ->{
+                    if (binding.edtEmailId.text.toString().isEmpty()) enableButtonClick(0.3f, false)
+                    else enableButtonClick(1.0f, true)
+                    customAnimationForTextInput(requireContext(), binding.tvEmailAddress, s, before)
+                    binding.edtEmailId.setBackgroundResource(R.drawable.edt_rounded_corner)
+                    binding.tvEmailError.visibility = View.GONE
+                }
+            }
         }
 
         override fun afterTextChanged(p0: Editable?) {

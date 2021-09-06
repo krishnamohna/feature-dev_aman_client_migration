@@ -253,7 +253,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_41sdp"
-            android:text="@string/submit"
+            android:text="@string/submit_caps"
             style="@style/BaseAppTheme.btnStyleContinue"
             app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
             app:layout_constraintStart_toStartOf="@id/verticalLeftGuideline"

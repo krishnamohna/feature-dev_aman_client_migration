@@ -108,3 +108,7 @@ fun String.formatStringToAddThousandsCharacter(): String {
     }
     return targetString
 }
+
+fun EditText.limitLength(maxLength: Int) {
+    filters = arrayOf<InputFilter>(LengthFilter(maxLength))
+}

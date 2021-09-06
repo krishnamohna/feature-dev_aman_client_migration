@@ -85,7 +85,4 @@
         <item name="android:textColor">@color/black_tutorial_text</item>
         <item name="fontFamily">@font/nunito_medium</item>
     </style>
-
-
-
 </resources>

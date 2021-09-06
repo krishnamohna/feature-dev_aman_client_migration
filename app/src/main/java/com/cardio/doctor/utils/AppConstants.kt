@@ -36,6 +36,8 @@ interface ENUM{
     companion object {
         const val INT_1: Int = 1
         const val INT_2: Int = 2
+        const val INT_3: Int = 3
+        const val INT_10: Int = 10
 
     }
 }
@@ -48,7 +50,8 @@ interface FireStoreCollection{
 interface FireStoreDocKey{
     companion object {
         const val USER_ID = "UserId"
-        const val FULL_NAME = "FullName"
+        const val FIRST_NAME = "FullName"
+        const val LAST_NAME = "LastName"
         const val EMAIL = "email"
         const val IMAGE_URL = "ImageUrl"
         const val PHONE_NUMBER = "PhoneNumber"
