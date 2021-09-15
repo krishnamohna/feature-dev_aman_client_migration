@@ -8,6 +8,7 @@ import kotlinx.android.parcel.Parcelize
 class PhoneVerificationDetails (
     var firstName: String = "",
     var lastName: String = "",
+    var countryCode: String = "",
     var phoneNumber: String = "",
     var email : String = "",
     var password : String = "",

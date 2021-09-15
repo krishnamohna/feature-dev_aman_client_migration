@@ -30,23 +30,36 @@
             android:paddingBottom="@dimen/_8sdp"
             app:layout_constraintTop_toTopOf="@+id/toolbarTitle"
             app:srcCompat="@drawable/ic_back"
-            android:visibility="gone"
+            android:visibility="visible"
             tools:ignore="RtlSymmetry" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/toolbarTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito_medium"
-            android:gravity="center"
+            android:fontFamily="@font/nunito_extrabold"
             android:maxLines="@integer/int_1"
             android:paddingStart="0dp"
+            tools:text="Profile"
             android:paddingEnd="@dimen/_12sdp"
             android:textColor="@color/black"
-            android:textSize="@dimen/_13ssp"
+            android:textSize="@dimen/_15ssp"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-            app:layout_constraintEnd_toEndOf="@+id/toolbar"
+            app:layout_constraintEnd_toStartOf="@+id/imgEditProfile"
             app:layout_constraintStart_toEndOf="@+id/backBtn"
             app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_edit_profile"
+            android:paddingStart="@dimen/_8sdp"
+            android:paddingEnd="0dp"
+            android:visibility="gone"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

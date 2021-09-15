@@ -29,6 +29,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "env"
+    productFlavors {
+        qa {
+            dimension "env"
+            applicationIdSuffix ".qa"
+            versionNameSuffix "-qa"
+        }
+        dev {
+            dimension "env"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -47,6 +60,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation deps.kotlin.junit
     androidTestImplementation deps.kotlin.test
     androidTestImplementation deps.kotlin.espresso

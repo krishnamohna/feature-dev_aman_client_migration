@@ -1,6 +1,9 @@
 package com.cardio.doctor.network
 
+import com.cardio.doctor.AppCardioPatient
+import com.cardio.doctor.R
 import com.cardio.doctor.api.ApiStatus.Companion.STATUS_200
+import com.google.firebase.FirebaseNetworkException
 import java.io.Serializable
 import java.lang.Exception
 
@@ -44,7 +47,18 @@ data class Resource<out T>(val apiConstant: String?, val apiCode :Int, val statu
         }
 
         fun <T> firebaseException(e : Exception): Resource<T> {
-            return Resource("",-1, Status.ERROR, null, e.localizedMessage,0,e)
+            var message = ""
+            message = when(e){
+                is FirebaseNetworkException ->{
+                    "Please check your internet connection and try again later."
+                }
+                else ->{
+                    e.localizedMessage
+                        ?: "Please check your internet connection and try again later."
+                }
+            }
+
+            return Resource("",-1, Status.ERROR, null, message,0,e)
         }
     }
 }

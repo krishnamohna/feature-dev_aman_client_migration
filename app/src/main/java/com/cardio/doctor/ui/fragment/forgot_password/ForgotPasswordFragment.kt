@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -19,7 +18,6 @@ import com.cardio.doctor.databinding.FragmentForgotPasswordBinding
 import com.cardio.doctor.model.ValidationModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
-import com.cardio.doctor.utils.EditTextWatcher
 import com.cardio.doctor.utils.customAnimationForTextInput
 import com.cardio.doctor.utils.customSnackBarFail
 import com.cardio.doctor.utils.showAlertDialog

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include
+            android:id="@+id/headerView"
+            layout="@layout/toolbar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fitbitContainer"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:background="@drawable/btn_white_bg_with_white_corner"
+            app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+            app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/headerView">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgFitBit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_profile_circle_bg"
+                android:scaleType="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_setting" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtSettingTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/nunito_extrabold"
+                android:text="@string/fitbit"
+                android:textSize="@dimen/_13ssp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/imgFitBit"
+                app:layout_constraintStart_toEndOf="@+id/imgFitBit"
+                app:layout_constraintTop_toTopOf="@+id/imgFitBit" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgFitBitDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_done"
+                app:layout_constraintBottom_toBottomOf="@+id/imgFitBit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgFitBit" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/googleFitContainer"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:background="@drawable/btn_white_bg_with_white_corner"
+            app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+            app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/fitbitContainer">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgGoogleFit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_profile_circle_bg"
+                android:scaleType="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_setting" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtGoogleFit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/nunito_extrabold"
+                android:text="@string/google_fit"
+                android:textSize="@dimen/_13ssp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/imgGoogleFit"
+                app:layout_constraintStart_toEndOf="@+id/imgGoogleFit"
+                app:layout_constraintTop_toTopOf="@+id/imgGoogleFit" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgGoogleFitDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_done"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/imgGoogleFit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgGoogleFit" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include layout="@layout/guideline_left" />
+        <include layout="@layout/guideline_right" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

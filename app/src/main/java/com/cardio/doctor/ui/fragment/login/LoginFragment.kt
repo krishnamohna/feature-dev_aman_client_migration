@@ -188,8 +188,8 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
                     Constants.SEND_OTP -> {
                         baseViewModel.setDirection(LoginFragmentDirections.loginToPhoneVerification(
                             viewModel.createModelForPhoneVerification("", "",
-                                binding.edtUserName.text.toString(),
                                 binding.countryCode.text.toString(),
+                                binding.edtUserName.text.toString(),
                                 "", "", ""
                             ), ENUM.INT_2
                         ))
@@ -294,6 +294,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
                     customAnimationForTextInput(requireContext(), binding.tvEmailAddress,
                         s, before)
                     binding.phoneNumberContainer.setBackgroundResource(R.drawable.edt_rounded_corner)
+                    preventSpaceOnEditText(binding.edtUserName)
                 }
                 binding.edtPassword -> {
                     customAnimationForTextInput(requireContext(), binding.tvPassword, s, before)

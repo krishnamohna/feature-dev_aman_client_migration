@@ -9,6 +9,7 @@ import com.cardio.doctor.R
 import com.cardio.doctor.api.Constants
 import com.cardio.doctor.base.viewmodel.BaseViewModel
 import com.cardio.doctor.model.ValidationModel
+import com.cardio.doctor.network.NetworkHelper
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.storage.UserManager
@@ -18,13 +19,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
-import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
     userManager: UserManager, private val signUpRepository: SignUpRepository,
-    application: Application,
+    application: Application, private val networkHelper: NetworkHelper,
 ) : BaseViewModel(userManager, signUpRepository, application) {
 
     private val _signUpApiResponse = SingleLiveEvent<Resource<String>>()
@@ -32,9 +32,9 @@ class SignUpViewModel @Inject constructor(
 
     val validationChannel = Channel<ValidationModel>(ENUM.INT_10)
 
-    var firebaseUri: Uri? = null
+    //var firebaseUri: Uri? = null
     var deviceUri: Uri? = null
-    var fileName: String? = null
+    //var fileName: String? = null
 
     fun validateFieldsToSetAlpha(
         isChecked: Boolean, firstName: String, email: String,
@@ -205,73 +205,18 @@ class SignUpViewModel @Inject constructor(
         if (isValidFirstName && isValidEmail && isValidPassword && isValidConfirmPassword && isValidPhoneNumber && isValidLastName) {
             checkIsUserExist(countryCode, phoneNumber, email)
         }
-
-/*
-        when {
-            firstName.isEmpty() -> {
-                showValidationMessage(context.getString(R.string.enter_valid_first_name))
-            }
-
-            phoneNumber.isEmpty() -> {
-                showValidationMessage(context.getString(R.string.enter_valid_mobile))
-            }
-
-            !isValidMobileNumber(phoneNumber) -> {
-                showValidationMessage(context.getString(R.string.err_valid_phone_number))
-            }
-
-            email.isEmpty() -> {
-                showValidationMessage(context.getString(R.string.enter_email_address))
-            }
-
-            !isValidEmail(email) -> {
-                showValidationMessage(context.getString(R.string.err_valid_email))
-            }
-            password.isEmpty() -> {
-                showValidationMessage(context.getString(R.string.err_empty_password))
-            }
-
-            !isValidPassword(password) -> {
-                showValidationMessage(context.getString(R.string.err_valid_password))
-            }
-
-            confirmPassword.isEmpty() -> {
-                showValidationMessage(context.getString(R.string.err_confirm_password))
-            }
-
-            !isValidPassword(confirmPassword) -> {
-                showValidationMessage(context.getString(R.string.err_valid_password))
-            }
-
-            !password.equals(confirmPassword, true) -> {
-                showValidationMessage(context.getString(R.string.password_does_not_match))
-            }
-            else -> {
-                checkIsUserExist(countryCode, phoneNumber, email)
-            }
-        }
-*/
     }
 
     private fun checkIsUserExist(countryCode: String, phoneNumber: String, email: String) {
         try {
             viewModelScope.launch {
-                /*   val phoneNumberTask = async {
-                       firebaseTakeOff(
-                           operation = signUpRepository.isPhoneNumberExist1(countryCode.plus(
-                               phoneNumber)), liveData = _firebaseException)
-                   }
-                   val phoneAwait: QuerySnapshot? = phoneNumberTask.await()
-
-   */
-                val phoneNumberDeferred =
-                    async {
-                        signUpRepository.isPhoneNumberExist(countryCode.plus(phoneNumber),
-                            _firebaseException)
-                    }
+                val phoneNumberDeferred = async {
+                    signUpRepository.isPhoneNumberExist(countryCode.plus(phoneNumber),
+                        _firebaseException)
+                }
                 val emailDeferred =
                     async { signUpRepository.isEmailAlreadyExist(email, _firebaseException) }
-                var isImageSelected = false
+              /*  var isImageSelected = false
                 if (deviceUri != null && firebaseUri == null) {
                     val firebaseUriDeferred = async {
                         signUpRepository.uploadImageOnFirebaseStorage(
@@ -281,19 +226,22 @@ class SignUpViewModel @Inject constructor(
                     }
                     isImageSelected = true
                     firebaseUri = firebaseUriDeferred.await()
-                }
+                }*/
                 val isPhoneNumberExist = phoneNumberDeferred.await()
                 val isEmailExist = emailDeferred.await()
 
-                if (!isPhoneNumberExist!! && !isEmailExist!! && (!isImageSelected || firebaseUri != null)) {
+                if ((isPhoneNumberExist != null && !isPhoneNumberExist)
+                    && (isEmailExist != null && !isEmailExist)/*
+                    && (!isImageSelected || firebaseUri != null)*/
+                ) {
                     _signUpApiResponse.value = Resource.success(Constants.SIGNUP, null)
-                } else if (isPhoneNumberExist) {
+                } else if (isPhoneNumberExist != null && isPhoneNumberExist) {
                     showValidationMessage(getApplication<AppCardioPatient>().getString(R.string.err_phonenumber_already_exist))
-                } else if (isEmailExist!!) {
+                } else if (isEmailExist != null && isEmailExist) {
                     showValidationMessage(getApplication<AppCardioPatient>().getString(R.string.err_email_exist))
-                } else if (isImageSelected && firebaseUri == null) {
+                } /*else if (isImageSelected && firebaseUri == null) {
                     showValidationMessage(getApplication<AppCardioPatient>().getString(R.string.err_email_exist))
-                }
+                }*/
             }
         } catch (e: Exception) {
             showValidationMessage(getExceptionMessage(e))
@@ -312,7 +260,7 @@ class SignUpViewModel @Inject constructor(
         _signUpApiResponse.value = Resource.error(Constants.VALIDATION, 0, message, null)
     }
 
-    fun uploadProfileImage(resultUri: Uri?, fileName: String?) {
+    /*fun uploadProfileImage(resultUri: Uri?, fileName: String?) {
         try {
             viewModelScope.launch {
                 firebaseUri = signUpRepository.uploadImageOnFirebaseStorage(resultUri,
@@ -321,7 +269,7 @@ class SignUpViewModel @Inject constructor(
         } catch (e: Exception) {
             showValidationMessage(getExceptionMessage(e))
         }
-    }
+    }*/
 
     private suspend fun queueValidationRequest(
         status: Status, message: String,
@@ -335,5 +283,17 @@ class SignUpViewModel @Inject constructor(
     override fun onCleared() {
         validationChannel.close()
         super.onCleared()
+    }
+
+    fun isNetworkConnected(): Boolean {
+        return if (!networkHelper.isNetworkConnected()) {
+            _signUpApiResponse.value = Resource.error(Constants.VALIDATION, 0,
+                getApplication<AppCardioPatient>().getString(R.string.err_no_network_available),
+                null)
+            false
+        } else {
+            _signUpApiResponse.value = Resource.loading(Constants.SIGNUP, null)
+            true
+        }
     }
 }

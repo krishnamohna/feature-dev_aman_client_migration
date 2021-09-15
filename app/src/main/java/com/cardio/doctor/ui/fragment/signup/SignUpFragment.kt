@@ -62,8 +62,7 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
                 }
             }
 
-            if (isGranted)
-                fetchImage()
+            if (isGranted) fetchImage()
         }
 
     private var resultLauncher: ActivityResultLauncher<Intent> =
@@ -114,19 +113,6 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
         binding.chkBoxAcceptPolicy.setOnCheckedChangeListener { _, isChecked ->
             validationFieldsForAlpha(isChecked)
         }
-        /*   binding.edtPhoneNumber.setOnFocusChangeListener { _, hasFocus ->
-               if (!hasFocus) {
-                   viewModel.isPhoneNumberExist(
-                       binding.countryCode.text.toString()
-                           .plus(binding.edtPhoneNumber.text.toString())
-                   )
-               }
-           }
-           binding.edtEmailId.setOnFocusChangeListener { _, hasFocus ->
-               if (!hasFocus) {
-                   viewModel.isEmailAlreadyExist(binding.edtEmailId.text.toString())
-               }
-           }*/
     }
 
     private fun setObservers() {
@@ -169,14 +155,14 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
             val result = getActivityResult(data)
             if (resultCode == Activity.RESULT_OK) {
                 viewModel.deviceUri = result.uri
-                viewModel.fileName = getFileName(requireContext(), viewModel.deviceUri!!)
+                //viewModel.fileName = getFileName(requireContext(), viewModel.deviceUri!!)
                 Glide.with(requireContext())
                     .load(viewModel.deviceUri)
                     .apply(RequestOptions().circleCrop())
                     .placeholder(R.drawable.ic_place_holder_profile)
                     .into(binding.imgProfilePic)
 
-                viewModel.uploadProfileImage(viewModel.deviceUri, viewModel.fileName)
+                //viewModel.uploadProfileImage(viewModel.deviceUri, viewModel.fileName)
             } else if (resultCode == CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 customSnackBarFail(requireContext(), binding.root, result.error.message!!)
             }
@@ -251,18 +237,15 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
 //                        signInWithPhoneAuthCredential(apiResponse.data as PhoneAuthCredential)
 //                    }
                     Constants.SEND_OTP -> {
-                        /*viewModel.storeUserDetailInFireStore(binding.countryCode.text.toString().plus(
-                            binding.edtPhoneNumber.text.toString()
-                        ))*/
                         var imagePath = ""
-                        viewModel.firebaseUri?.let { imagePath = it.toString() }
+                       viewModel.deviceUri?.let { imagePath = it.toString() }
                         baseViewModel.setDirection(
                             SignUpFragmentDirections.signupToPhoneVerification(
                                 viewModel.createModelForPhoneVerification(
                                     binding.edtFirstName.text.toString(),
                                     binding.edtLastName.text.toString(),
-                                    binding.edtPhoneNumber.text.toString(),
                                     binding.countryCode.text.toString(),
+                                    binding.edtPhoneNumber.text.toString(),
                                     binding.edtEmailId.text.toString(),
                                     binding.edtPassword.text.toString(), imagePath
                                 ), ENUM.INT_1
@@ -295,15 +278,18 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
     }
 
     private fun startPhoneNumberVerification(phoneNumber: String) {
-        showProgress()
-        val options = PhoneAuthOptions.newBuilder(viewModel.auth)
-            .setPhoneNumber(phoneNumber)       // Phone number to verify
-            .setTimeout(OTP_EXPIRED, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(requireActivity())                 // Activity (for callback binding)
-            .setCallbacks(viewModel.callbacks)          // OnVerificationStateChangedCallbacks
-            .build()
-        PhoneAuthProvider.verifyPhoneNumber(options)
-        viewModel.verificationInProgress = true
+        if(viewModel.isNetworkConnected()) {
+            lifecycleScope.launch {
+                val options = PhoneAuthOptions.newBuilder(viewModel.auth)
+                    .setPhoneNumber(phoneNumber)       // Phone number to verify
+                    .setTimeout(OTP_EXPIRED, TimeUnit.SECONDS) // Timeout and unit
+                    .setActivity(requireActivity())                 // Activity (for callback binding)
+                    .setCallbacks(viewModel.callbacks)          // OnVerificationStateChangedCallbacks
+                    .build()
+                PhoneAuthProvider.verifyPhoneNumber(options)
+                viewModel.verificationInProgress = true
+            }
+        }
     }
 
     private fun enableButtonClick(alpha: Float, clickable: Boolean) {

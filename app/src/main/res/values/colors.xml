@@ -17,6 +17,7 @@
     <color name="grey_dark">#25242d</color>
 
     <color name="green_light">#1bc340</color>
+    <color name="green_toggle">#34c759</color>
     <color name="green_otp">#4cb162</color>
 
     <color name="green_tutorial_indicator">#0493bf</color>

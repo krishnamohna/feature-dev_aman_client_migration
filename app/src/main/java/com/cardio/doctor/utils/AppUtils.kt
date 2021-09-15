@@ -2,6 +2,7 @@
 
 package com.cardio.doctor.utils
 
+import android.net.Uri
 import android.text.InputFilter
 import android.text.InputFilter.LengthFilter
 import android.text.TextUtils
@@ -14,7 +15,7 @@ private const val USERNAME = "^[a-zA-Z]+[a-zA-Z ]{2,34}"//35
 private const val USERID = "^(?=.*[a-zA-Z])[A-Z0-9a-z!@$%*#?&_^+.=-]{2,25}"
 private const val MOBILE_NUMBER = "^[0-9]{8,12}"
 private const val NUMERIC_VALUE = "^[0-9]{1,12}"
-private const val PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Z0-9a-z!@$%*#?&_^+.=-]{8,35}$"
+private const val PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Z0-9a-z!@$%*#?&_^+.=-]{8,20}$"
 private const val WEBURL = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
 
 private val USERNAME_PATTERN: Pattern = Pattern.compile(USERNAME)
@@ -111,4 +112,9 @@ fun String.formatStringToAddThousandsCharacter(): String {
 
 fun EditText.limitLength(maxLength: Int) {
     filters = arrayOf<InputFilter>(LengthFilter(maxLength))
+}
+
+fun String.convertIntoUri() : Uri {
+    val imagePath = this
+    return Uri.parse(imagePath)
 }

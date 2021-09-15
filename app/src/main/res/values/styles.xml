@@ -2,23 +2,25 @@
     <!-- Base application theme. -->
     <style name="BaseAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/grey</item>
+        <item name="colorPrimary">@color/btn_gradient_start</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/black_tutorial_text</item>
     </style>
 
     <style name="AppTheme" parent="BaseAppTheme">
-        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorPrimary">@color/black_tutorial_text</item>
         <item name="android:windowBackground">@drawable/app_gradient_background</item>
         <item name="android:navigationBarColor">@color/colorPrimaryLight</item>
-        <item name="android:textColorSecondary">@color/white</item>
-        <item name="colorControlActivated">@color/grey</item>
+        <item name="android:textColorSecondary">@color/btn_gradient_start</item>
+        <item name="colorControlActivated">@color/btn_gradient_start</item>
         <item name="colorControlNormal">@color/colorPrimaryLight</item>
         <item name="colorControlHighlight">@color/btn_gradient_start</item>
         <item name="android:textColorLink">@color/blue</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowEnterTransition">@android:transition/slide_right</item>
         <item name="android:windowExitTransition">@android:transition/slide_left</item>
+        <item name="android:spinnerDropDownItemStyle">@style/mySpinnerItemStyle</item>
+
     </style>
 
     <style name="BaseAppTheme.btnStyleContinue" parent="Widget.MaterialComponents.Button.TextButton">
@@ -84,5 +86,12 @@
         <item name="android:textSize">@dimen/_11ssp</item>
         <item name="android:textColor">@color/black_tutorial_text</item>
         <item name="fontFamily">@font/nunito_medium</item>
+    </style>
+
+    <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:textColor">@color/black_tutorial_text</item>
+        <item name="fontFamily">@font/nunito_semibold</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

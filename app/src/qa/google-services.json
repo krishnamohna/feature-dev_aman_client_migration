@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "202279192016",
+    "project_id": "pocketcardioqa",
+    "storage_bucket": "pocketcardioqa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202279192016:android:f4e64de1a4f87d2d3925d5",
+        "android_client_info": {
+          "package_name": "com.cardio.doctor.qa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202279192016-mqpj87fj3knda0lhaek3vil6kutl6s5k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNvUCWemo4URST17T8P51OtpNm74QJ2yI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202279192016-mqpj87fj3knda0lhaek3vil6kutl6s5k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

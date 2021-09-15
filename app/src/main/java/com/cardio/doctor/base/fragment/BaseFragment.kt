@@ -34,13 +34,20 @@ abstract class BaseFragment(@LayoutRes layoutResId: Int) : Fragment(layoutResId)
     }
 
 
-    protected fun setUpToolbar(view: View, title: String, backBtnVisibility: Boolean = false) {
+    protected fun setUpToolbar(view: View, title: String, backBtnVisibility: Boolean = false
+    , editProfile : Boolean = false) {
         val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
         val backBtn = view.findViewById<ImageView>(R.id.backBtn)
         val toolbarTitle = view.findViewById<TextView>(R.id.toolbarTitle)
+        val imgEdtProfile = view.findViewById<ImageView>(R.id.imgEditProfile)
+
         (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar!!.setDisplayShowTitleEnabled(false)
+        backBtn.visibility = if(title.isNotEmpty()) View.VISIBLE else View.GONE
         backBtn.visibility = if(backBtnVisibility) View.VISIBLE else View.INVISIBLE
+        imgEdtProfile.visibility = if(editProfile) View.VISIBLE else View.GONE
+
+
         if(!TextUtils.isEmpty(title)){
             toolbarTitle.text = title
         }

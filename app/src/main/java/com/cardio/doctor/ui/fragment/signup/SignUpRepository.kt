@@ -44,21 +44,6 @@ class SignUpRepository @Inject constructor(
     )
 
 
-    suspend fun uploadImageOnFirebaseStorage(
-        fileUri: Uri?, fileName: String,
-        errorLiveData: MutableLiveData<Resource<Exception>>,
-    ) = firebaseDocumentQuery<StorageReference, Uri>(
-        operation = {
-            val ref = storageReference.child("images/" + fileName)
-            ref.putFile(fileUri!!).await()
-            ref
-        },
-        parse = { result ->
-            return@firebaseDocumentQuery result.downloadUrl.await()
-        }, errorLiveData
-    )
-
-
     /* suspend fun uploadImageOnFirebaseStorage(fileUri: Uri?, fileName: String): Uri? {
          return try {
              val ref = storageReference.child("images/" + fileName)

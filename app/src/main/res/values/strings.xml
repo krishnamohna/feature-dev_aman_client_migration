@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cardio Doctor</string>
+    <string name="app_name">Cardio Doctor Dev</string>
 
     <!--Tutorial-->
     <string name="get_started">GET STARTED</string>
@@ -25,7 +25,7 @@
     <string name="do_not_have_an_account">Don’t have an account?</string>
     <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
     <string name="emailpassword_title_text">Email and Password</string>
-    <string name="plus_one">+1</string>
+    <string name="plus_one">+91</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name (optional)</string>
     <string name="submit_caps">SUBMIT</string>
@@ -35,27 +35,26 @@
     <string name="enter_confirm_password">Enter Confirm Password</string>
     <string name="i_agree_to_the">I agree to the</string>
     <string name="terms_of_service">Terms of Service &amp;</string>
-    <string name="password_does_not_match">Password and confirm password doesn\'t match!!!</string>
+    <string name="password_does_not_match">Your passwords do not match, please check.</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="phone_number">Phone Number</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
-    <string name="enter_first_name">Please enter first name!!!</string>
-    <string name="enter_valid_first_name">Please enter valid first name!!!</string>
-    <string name="enter_email_address">Please enter your email!!!</string>
-    <string name="err_valid_email">Please enter a valid email!!!</string>
-    <string name="enter_valid_last_name">Please enter valid last name!!!</string>
-    <string name="err_empty_password">Please enter your password!!!</string>
-    <string name="err_confirm_password">Please enter confirm password!!!</string>
-    <string name="err_valid_password">Password must be at least 8 and less than 35 characters, and must include at least one upper case letter, one lower case letter, and one numeric digits, and can include special characters!!!</string>
-
-    <string name="err_email_exist">EmailId already exist!!!</string>
-    <string name="err_phonenumber_already_exist">PhoneNumber already exist!!!</string>
-    <string name="err_user_does_not_exist">User doesn\'t exist!!!</string>
-    <string name="err_image_not_uploaded">Image not uploaded kindly try again!!!</string>
-    <string name="enter_valid_mobile">Please enter phone number!!!</string>
-    <string name="err_valid_phone_number">Please enter a valid phone number!!!</string>
+    <string name="enter_first_name">Please enter first name</string>
+    <string name="enter_valid_first_name">First name must be atleast 3 characters long</string>
+    <string name="enter_email_address">Please enter your email</string>
+    <string name="err_valid_email">Please enter a valid email</string>
+    <string name="enter_valid_last_name">Last name must be atleast 3 characters long</string>
+    <string name="err_empty_password">Please enter your password</string>
+    <string name="err_confirm_password">Please enter confirm password</string>
+    <string name="err_valid_password">Password must contain 8–20 characters, with one uppercase alphabet, one lowercase alphabet, one number and a special character</string>
+    <string name="err_email_exist">EmailId already exist</string>
+    <string name="err_phonenumber_already_exist">Phone Number already exist</string>
+    <string name="err_user_does_not_exist">User doesn\'t exist</string>
+    <string name="err_image_not_uploaded">Image not uploaded kindly try again</string>
+    <string name="enter_valid_mobile">Please enter phone number</string>
+    <string name="err_valid_phone_number">Please enter a valid phone number</string>
 
     <!--OTP-->
     <string name="otp_verification">OTP Verification</string>
@@ -69,8 +68,54 @@
     <string name="please_provide_your_registered_number">Please provide your registered email or phone number in order to retrieve your password</string>
     <string name="registered_your_account_password">Enter your registered email address in order to reset your account password</string>
     <string name="reset_password">Reset Password</string>
-    <string name="forgot_password_email_sent">Email has been sent on your registered email Id to reset password!!!</string>
+    <string name="forgot_password_email_sent">Email has been sent on your registered email Id to reset password</string>
 
+    <!--Dashboard-->
+    <string name="welcome_to_dashboard">Welcome to Dashboard</string>
+
+    <!--Profile-->
+    <string name="profile">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="menu">Menu</string>
+    <string name="setting">Settings</string>
+    <string name="other_details">Other Details</string>
+    <string name="gender">Gender</string>
+    <string name="weight_in_kg">Weight (Kg)</string>
+    <string name="height_in_cm">Height (Kg)</string>
+    <string name="wearable">Wearable</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+
+    <!--Edit Profile-->
+    <string name="height_in_centimeter">Height (in cm)</string>
+    <string name="heart_rate_in_lbs">Heart Rate (in lbs)</string>
+    <string name="date_of_birth">Date Of Birth</string>
+    <string name="please_select_gender">Please select gender</string>
+    <string name="date_of_birth_val">Please enter valid date of birth</string>
+    <string name="valid_height">Please enter valid height</string>
+    <string name="valid_heart_rate">Please enter valid heart rate</string>
+    <string name="user_detail_not_found">User detail not found</string>
+    <string name="select_gender">Select Gender</string>
+    <string name="profile_updated_successfully">Profile Detail Uploaded Successfully</string>
+
+    <!--Setting-->
+    <string name="notification_preference">Notification Preference</string>
+    <string name="change_password">Change Password</string>
+    <string name="about_us">About Us</string>
+    <string name="faq">FAQ’s</string>
+    <string name="terms_and_conditions">Terms &amp; Conditions</string>
+    <string name="logout">Logout</string>
+
+    <!--Change Password-->
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="logout_description">Are you sure you want to logout?</string>
+    <string name="save">SAVE</string>
+
+    <!-- Sync Health Data  -->
+    <string name="sync_health_data">Sync Health Data</string>
+    <string name="fitbit">Fitbit</string>
+    <string name="google_fit">Google Fit</string>
 
     <!--Common-->
     <string name="click_one_more_time_to_exit_the_app">Click one more time to exit the app</string>
@@ -86,26 +131,34 @@
     <string name="otp_has_expired">Otp has been expired. Kindly click on resend OTP</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-    <string name="getting_some_error">We\'re getting some error, Please try again later!!!</string>
-    <string name="verification_link">We have sent you verification link on your registered email Id</string>
+    <string name="getting_some_error">We\'re getting some error, Please try again later</string>
+    <string name="verification_link">User has been successfully registered and verification link sent to your registered email id. Please verify your email to login with email id.</string>
     <string name="verify_email">Email id is not verified for this user. Kindly verify the email first</string>
-    <string name="image_saved">Image has been saved to your Photos!!!</string>
+    <string name="image_saved">Image has been saved to your Photos</string>
 
     <!--network error-->
     <string name="err_no_network_available">Please check your internet connection and try again later.</string>
     <string name="err_empty_to_identifying_user_blocked" />
 
-
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string-array name="TutorialTitle">
         <item>Connect with Experience Practitioners </item>
         <item>Lorem Ipsum is simply dummy text of printing.</item>
         <item>Lorem Ipsum is simply dummy text of printing.</item>
     </string-array>
-
+    <!-- TODO: Remove or change this placeholder text -->
     <string-array name="TutorialDescription">
         <item>Reach out to the experts </item>
         <item>View report to monitor your illness</item>
         <item>Download and share latest reports with your doctor anytime</item>
+    </string-array>
+
+    <string-array name="gender_list">
+        <item>@string/select_gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>other</item>
     </string-array>
 
 </resources>

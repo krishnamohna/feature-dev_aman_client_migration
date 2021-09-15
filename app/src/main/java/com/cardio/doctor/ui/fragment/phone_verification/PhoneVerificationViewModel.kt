@@ -1,6 +1,7 @@
 package com.cardio.doctor.ui.fragment.phone_verification
 
 import android.app.Application
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.cardio.doctor.AppCardioPatient
@@ -10,17 +11,23 @@ import com.cardio.doctor.base.viewmodel.BaseViewModel
 import com.cardio.doctor.model.request.PhoneVerificationDetails
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.storage.UserManager
+import com.cardio.doctor.utils.FireStoreDocKey.Companion.COUNTRY_CODE
 import com.cardio.doctor.utils.FireStoreDocKey.Companion.EMAIL
 import com.cardio.doctor.utils.FireStoreDocKey.Companion.FIRST_NAME
 import com.cardio.doctor.utils.FireStoreDocKey.Companion.IMAGE_URL
 import com.cardio.doctor.utils.FireStoreDocKey.Companion.LAST_NAME
 import com.cardio.doctor.utils.FireStoreDocKey.Companion.PHONE_NUMBER
 import com.cardio.doctor.utils.FireStoreDocKey.Companion.USER_ID
+import com.cardio.doctor.utils.getFileName
 import com.cardio.doctor.utils.livedata.SingleLiveEvent
 import com.google.firebase.auth.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.HashMap
 
 @HiltViewModel
 class PhoneVerificationViewModel @Inject constructor(
@@ -31,6 +38,8 @@ class PhoneVerificationViewModel @Inject constructor(
     private val _validatePhoneVerification = SingleLiveEvent<Resource<FirebaseUser>>()
     val validateForgotPasswordResponse: LiveData<Resource<FirebaseUser>> =
         _validatePhoneVerification
+   // private var firebaseUriDeferred: Deferred<Uri?>? = null
+    private var imagePath = ""
 
     fun validateFieldsToSetAlpha(otp: String) {
         when {
@@ -60,7 +69,7 @@ class PhoneVerificationViewModel @Inject constructor(
                 val authResult =
                     phoneVerificationRepository.signInWithCredential(credential, _firebaseException)
                 if (authResult != null) {
-                   // phoneVerificationRepository.enableAccountLinking(credential,_firebaseException)
+                    // phoneVerificationRepository.enableAccountLinking(credential,_firebaseException)
                     _phoneAuthenticationResponse.value =
                         Resource.success(Constants.PHONE_VERIFICATION, authResult.user)
                 } else {
@@ -104,25 +113,34 @@ class PhoneVerificationViewModel @Inject constructor(
                 _validatePhoneVerification.value =
                     Resource.loading(Constants.UPDATE_EMAIL_AND_PASSWORD, null)
                 user?.let {
+                    //  if (deviceUri != null && firebaseUri == null) {
+                    if(!phoneVerificationDetail?.imageUrl.isNullOrEmpty()){
+                        val uri = Uri.parse(phoneVerificationDetail?.imageUrl)
+                        val firebaseUriDeferred = async {
+                            phoneVerificationRepository.uploadImageOnFirebaseStorage(
+                                uri,
+                                getFileName(getApplication(), uri) ?: UUID.randomUUID().toString(),
+                                _firebaseException
+                            )
+                        }
+                        val firebaseUri = firebaseUriDeferred.await()
+                        firebaseUri?.let { imagePath = it.toString() }
+                    }
+
                     it.updateEmail(phoneVerificationDetail!!.email).addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             user.updatePassword(phoneVerificationDetail.password)
                                 .addOnCompleteListener { resultPassword ->
                                     if (resultPassword.isSuccessful) {
                                         viewModelScope.launch {
-
-
                                             phoneVerificationRepository.sendVerificationEmail(it,
                                                 _firebaseException)
-
-
                                         }
                                         storeUserDetailInFireStore(user, phoneVerificationDetail)
                                         _validatePhoneVerification.value = Resource.success(
                                             Constants.UPDATE_EMAIL_AND_PASSWORD,
                                             null
                                         )
-
                                     }
                                 }
                         }
@@ -156,9 +174,10 @@ class PhoneVerificationViewModel @Inject constructor(
                             USER_ID to user!!.uid,
                             FIRST_NAME to userDetail!!.firstName,
                             LAST_NAME to userDetail.lastName,
+                            COUNTRY_CODE to userDetail.countryCode,
                             PHONE_NUMBER to userDetail.phoneNumber,
-                            EMAIL to userDetail.phoneNumber,
-                            IMAGE_URL to userDetail.imageUrl
+                            EMAIL to userDetail.email,
+                            IMAGE_URL to imagePath
                         )
                     phoneVerificationRepository.storeUserDataInFireStore("", user)
                 }

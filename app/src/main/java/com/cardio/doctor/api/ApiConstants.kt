@@ -36,6 +36,12 @@ interface Constants{
         const val PHONE_AUTHENTICATION = "PhoneAuthentication"
         const val SEND_OTP = "SendOtp"
         const val UPDATE_EMAIL_AND_PASSWORD = "UpdateEmailAndPassword"
+        const val USER_DETAIL = "UserDetail"
+        const val USER_PROFILE_PIC = "UserProfilePic"
+        const val UPLOAD_PROFILE_PIC = "UploadProfilePic"
+        const val USER_GENDER = "UserGender"
+        const val EDIT_PROFILE = "EditProfile"
+
     }
 }
 

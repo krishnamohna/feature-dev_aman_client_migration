@@ -49,12 +49,19 @@ interface FireStoreCollection{
 }
 interface FireStoreDocKey{
     companion object {
-        const val USER_ID = "UserId"
-        const val FIRST_NAME = "FullName"
-        const val LAST_NAME = "LastName"
+        const val USER_ID = "userId"
+        const val FIRST_NAME = "firstName"
+        const val LAST_NAME = "lastName"
         const val EMAIL = "email"
-        const val IMAGE_URL = "ImageUrl"
-        const val PHONE_NUMBER = "PhoneNumber"
+        const val IMAGE_URL = "imageUrl"
+        const val COUNTRY_CODE = "countryCode"
+        const val PHONE_NUMBER = "phoneNumber"
+        const val DOB = "dob"
+        const val GENDER = "gender"
+        const val HEIGHT = "height"
+        const val HEART_RATE = "heartRate"
+
+
     }
 }
 

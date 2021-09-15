@@ -71,7 +71,8 @@ class PhoneNumberVerificationFragment :
         navArgs.phoneVerificationDetail?.let {
             viewModel.resendToken = it.token!!
             viewModel.storedVerificationId = navArgs.phoneVerificationDetail?.verificationId!!
-            binding.txtPhoneNumber.text = navArgs.phoneVerificationDetail?.phoneNumber
+            binding.txtPhoneNumber.text =
+                navArgs.phoneVerificationDetail?.countryCode.plus(navArgs.phoneVerificationDetail?.phoneNumber)
         }
     }
 
@@ -281,7 +282,7 @@ class PhoneNumberVerificationFragment :
         showProgress()
         navArgs.phoneVerificationDetail?.let {
             val optionsBuilder = PhoneAuthOptions.newBuilder(viewModel.auth)
-                .setPhoneNumber(navArgs.phoneVerificationDetail!!.phoneNumber) // Phone number to verify
+                .setPhoneNumber(navArgs.phoneVerificationDetail!!.countryCode.plus(navArgs.phoneVerificationDetail!!.phoneNumber)) // Phone number to verify
                 .setTimeout(OTP_EXPIRED, TimeUnit.SECONDS) // Timeout and unit
                 .setActivity(requireActivity())           // Activity (for callback binding)
                 .setCallbacks(viewModel.callbacks)
@@ -297,18 +298,21 @@ class PhoneNumberVerificationFragment :
 
     private fun setOtpTimer() {
         lifecycleScope.launch {
-            countDownTimer = object : CountDownTimer(OTP_EXPIRE_IN_MILISECONDS, COUNT_DOWN_INTERVAL) {
-                override fun onTick(millisUntilFinished: Long) {
-                    val f: NumberFormat = DecimalFormat(OTP_TIME_FORMAT)
-                    val min = millisUntilFinished / MINUTES_IN_MILIS % MINUTES
-                    val sec = millisUntilFinished / COUNT_DOWN_INTERVAL % MINUTES
-                    setTimerOnView(f.format(min).plus(":").plus(f.format(sec)), View.VISIBLE, false)
-                }
+            countDownTimer =
+                object : CountDownTimer(OTP_EXPIRE_IN_MILISECONDS, COUNT_DOWN_INTERVAL) {
+                    override fun onTick(millisUntilFinished: Long) {
+                        val f: NumberFormat = DecimalFormat(OTP_TIME_FORMAT)
+                        val min = millisUntilFinished / MINUTES_IN_MILIS % MINUTES
+                        val sec = millisUntilFinished / COUNT_DOWN_INTERVAL % MINUTES
+                        setTimerOnView(f.format(min).plus(":").plus(f.format(sec)),
+                            View.VISIBLE,
+                            false)
+                    }
 
-                override fun onFinish() {
-                    setTimerOnView("", View.GONE, true)
-                }
-            }.start()
+                    override fun onFinish() {
+                        setTimerOnView("", View.GONE, true)
+                    }
+                }.start()
         }
     }
 

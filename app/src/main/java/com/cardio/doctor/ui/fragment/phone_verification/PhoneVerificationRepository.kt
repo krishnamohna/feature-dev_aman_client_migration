@@ -28,8 +28,9 @@ class PhoneVerificationRepository @Inject constructor(
         hashMap: HashMap<String, Any>,
     ): Boolean {
         return try {
+            val userId= firebaseAuth.currentUser?.uid
             fireStore.collection(FireStoreCollection.USERS)
-                .document()
+                .document(userId ?: "")
                 .set(hashMap)
                 .await()
             true
@@ -67,8 +68,22 @@ class PhoneVerificationRepository @Inject constructor(
             return@firebaseQuery it !=null
         }, errorLiveData
     )
+/*
+    suspend fun uploadImageOnFirebaseStorage(
+        fileUri: Uri?, fileName: String,
+        errorLiveData: MutableLiveData<Resource<Exception>>,
+    ) = firebaseDocumentQuery<StorageReference, Uri>(
+        operation = {
+            val ref = storageReference.child("images/" + fileName)
+            ref.putFile(fileUri!!).await()
+            ref
+        },
+        parse = { result ->
+            return@firebaseDocumentQuery result.downloadUrl.await()
+        }, errorLiveData
+    )
 
-    /*suspend fun sendVerificationEmail1(firebaseUser: FirebaseUser): Boolean {
+    suspend fun sendVerificationEmail1(firebaseUser: FirebaseUser): Boolean {
         return try {
             val await = firebaseUser.sendEmailVerification().await()
             true
