@@ -88,7 +88,6 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginTop="@dimen/_6sdp"
-                    android:maxLength="@integer/int_35"
                     android:maxLines="@integer/int_1"
                     android:imeOptions="actionNext"
                     android:paddingLeft="@dimen/_16sdp"
@@ -96,6 +95,7 @@
                     android:hint="@string/first_name"
                     android:inputType="textCapWords"
                     style="@style/BaseAppTheme.EdtTxt"
+                    android:maxLength="@integer/int_20"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtFirstName"
@@ -143,13 +143,13 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginTop="@dimen/_6sdp"
-                    android:maxLength="@integer/int_35"
                     android:maxLines="@integer/int_1"
                     android:imeOptions="actionNext"
                     android:paddingLeft="@dimen/_16sdp"
                     android:paddingRight="@dimen/_16sdp"
                     android:hint="@string/last_name"
                     style="@style/BaseAppTheme.EdtTxt"
+                    android:maxLength="@integer/int_20"
                     android:inputType="textCapWords"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -200,7 +200,7 @@
                     android:paddingLeft="@dimen/_16sdp"
                     android:paddingRight="@dimen/_16sdp"
                     android:maxLines="@integer/int_1"
-                    android:maxLength="@integer/int_50"
+                    android:maxLength="@integer/int_35"
                     android:imeOptions="actionNext"
                     android:inputType="textEmailAddress"
                     style="@style/BaseAppTheme.EdtTxt"
@@ -477,7 +477,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/confirmPasswordContainer" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
             <androidx.appcompat.widget.AppCompatCheckBox

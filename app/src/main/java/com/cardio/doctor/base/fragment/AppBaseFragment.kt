@@ -30,4 +30,9 @@ abstract class AppBaseFragment(layoutResId: Int) : BaseFragment(layoutResId){
 
         lastClickTime = clickTime
     }
+
+    override fun onResume() {
+        super.onResume()
+        hideProgress()
+    }
 }

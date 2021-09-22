@@ -76,7 +76,7 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginTop="@dimen/_6sdp"
-                    android:maxLength="@integer/int_35"
+                    android:maxLength="@integer/int_20"
                     android:maxLines="@integer/int_1"
                     android:imeOptions="actionNext"
                     android:paddingLeft="@dimen/_16sdp"
@@ -132,7 +132,7 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginTop="@dimen/_6sdp"
-                    android:maxLength="@integer/int_35"
+                    android:maxLength="@integer/int_20"
                     android:maxLines="@integer/int_1"
                     android:imeOptions="actionNext"
                     android:paddingLeft="@dimen/_16sdp"
@@ -190,7 +190,7 @@
                     android:paddingLeft="@dimen/_16sdp"
                     android:paddingRight="@dimen/_16sdp"
                     android:maxLines="@integer/int_1"
-                    android:maxLength="@integer/int_50"
+                    android:maxLength="@integer/int_35"
                     android:imeOptions="actionNext"
                     android:clickable="false"
                     android:focusable="false"
@@ -458,8 +458,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
+                app:layout_constraintHorizontal_weight="0.5"
+                android:layout_marginEnd="@dimen/_12sdp"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
-                app:layout_constraintEnd_toStartOf="@+id/verticalRightGuideline"
+                app:layout_constraintEnd_toStartOf="@+id/weightContainer"
                 app:layout_constraintTop_toBottomOf="@+id/dobContainer">
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -484,8 +486,8 @@
                     android:layout_marginTop="@dimen/_6sdp"
                     android:hint="@string/height_in_centimeter"
                     android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:maxLength="@integer/int_50"
+                    android:inputType="numberDecimal"
+                    android:maxLength="@integer/int_5"
                     android:maxLines="@integer/int_1"
                     android:paddingLeft="@dimen/_16sdp"
                     android:paddingRight="@dimen/_16sdp"
@@ -509,22 +511,23 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/heartContainer"
+                android:id="@+id/weightContainer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
+                app:layout_constraintHorizontal_weight="0.5"
                 app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
-                app:layout_constraintStart_toEndOf="@+id/verticalLeftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/heightContainer"
+                app:layout_constraintStart_toEndOf="@+id/heightContainer"
+                app:layout_constraintTop_toBottomOf="@+id/dobContainer"
                 >
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtTitleHeart"
+                    android:id="@+id/txtTitleWeight"
                     style="@style/BaseAppTheme.TxtView"
                     android:fontFamily="@font/nunito_semibold"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_6sdp"
-                    android:text="@string/heart_rate_in_lbs"
+                    android:text="@string/weight_in_lbs"
                     android:textStyle="bold"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -532,22 +535,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtHeart"
+                    android:id="@+id/edtWeight"
                     style="@style/BaseAppTheme.EdtTxt"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginTop="@dimen/_6sdp"
-                    android:hint="@string/heart_rate_in_lbs"
-                    android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:maxLength="@integer/int_50"
+                    android:hint="@string/weight_in_lbs"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:maxLength="@integer/int_5"
                     android:maxLines="@integer/int_1"
                     android:paddingLeft="@dimen/_16sdp"
                     android:paddingRight="@dimen/_16sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtTitleHeart" />
-
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitleWeight" />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -556,11 +558,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/valid_heart_rate"
+                    android:text="@string/valid_weight"
                     android:textColor="@color/red_validation"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtHeart" />
+                    app:layout_constraintTop_toBottomOf="@+id/edtWeight" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -569,14 +571,14 @@
                 style="@style/BaseAppTheme.btnStyleContinue"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_30sdp"
                 android:text="@string/save"
                 android:textAllCaps="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="@dimen/_70sdp"
                 app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
                 app:layout_constraintStart_toStartOf="@id/verticalLeftGuideline"
-                app:layout_constraintTop_toBottomOf="@+id/heartContainer" />
+                app:layout_constraintTop_toBottomOf="@+id/weightContainer" />
 
             <include layout="@layout/guideline_left"/>
             <include layout="@layout/guideline_right"/>

@@ -19,6 +19,8 @@ fun getBirthDatePicker(
     val day = calendar[Calendar.DAY_OF_MONTH]
     val datePickerDialog = DatePickerDialog(context!!, callback, year, month, day)
     datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
+    //datePickerDialog.datePicker.minDate = (System.currentTimeMillis() -1000*60*60*24*365*100)
+
     return datePickerDialog
 }
 

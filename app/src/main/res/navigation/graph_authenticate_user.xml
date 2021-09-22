@@ -45,6 +45,13 @@
             app:popEnterAnim="@anim/in_from_left"
             app:popExitAnim="@anim/out_to_right"
             />
+        <action
+            android:id="@+id/signupToWebView"
+            app:destination="@id/webViewFragment"
+            app:enterAnim="@anim/in_from_right"
+            app:exitAnim="@anim/out_to_left"
+            app:popEnterAnim="@anim/in_from_left"
+            app:popExitAnim="@anim/out_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/phoneNumberVerificationFragment"
@@ -58,9 +65,31 @@
             android:name="isComingFrom"
             app:argType="integer"
             android:defaultValue="1" />
+        <action
+            android:id="@+id/phoneVerificationToLoginScreen"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/in_from_left"
+            app:exitAnim="@anim/out_to_right"
+            app:popEnterAnim="@anim/in_from_left"
+            app:popExitAnim="@anim/out_to_right"
+            app:popUpTo="@+id/loginFragment"
+            app:popUpToInclusive="true"
+            />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.cardio.doctor.ui.fragment.forgot_password.ForgotPasswordFragment"
         android:label="ForgotPasswordFragment" />
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.cardio.doctor.ui.fragment.profile.web_view.WebViewFragment"
+        android:label="WebViewFragment">
+        <argument
+            android:name="toolBarTitle"
+            app:argType="string"
+            app:nullable="true" />
+        <argument android:name="webUrl"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

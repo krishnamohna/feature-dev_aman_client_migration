@@ -9,6 +9,7 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
 import android.view.View
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -20,6 +21,7 @@ import com.cardio.doctor.api.Constants
 import com.cardio.doctor.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentLoginBinding
 import com.cardio.doctor.model.ValidationModel
+import com.cardio.doctor.network.NetworkHelper
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.ui.activity.dashboard.DashboardActivity
@@ -39,6 +41,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickListener {
@@ -46,6 +49,9 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
     private val viewModel: LoginViewModel by viewModels()
     private lateinit var googleSignInClient: GoogleSignInClient
     private var isPasswordVisible: Boolean = false
+
+    @Inject
+    lateinit var networkHelper: NetworkHelper
 
     private var resultLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -72,6 +78,12 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
         viewModel.initializePhoneAuthCallBack()
         initializeGoogleSign()
         enableButtonClick(0.3f, false)
+        hideProgress()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        hideProgress()
     }
 
     private fun initializeGoogleSign() {
@@ -137,7 +149,11 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
                 }
             }
             binding.btnGoogleSignIn -> {
-                signWithGoogle()
+                if (networkHelper.isNetworkConnected()) {
+                    signWithGoogle()
+                } else customSnackBarFail(requireContext(),
+                    binding.root,
+                    getString(R.string.err_no_network_available))
             }
             binding.forgotPassword -> {
                 baseViewModel.setDirection(LoginFragmentDirections.loginToForgotPassword())
@@ -223,6 +239,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
     }
 
     private fun signWithGoogle() {
+
         val signInIntent = googleSignInClient.signInIntent
         resultGoogleSignIn.launch(signInIntent)
     }
@@ -276,6 +293,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
             errorTxt.visibility = View.GONE
+            var editText: EditText? = null
             when (view) {
                 binding.edtUserName -> {
                     if (isNumericValue(s.toString())) {
@@ -294,14 +312,23 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
                     customAnimationForTextInput(requireContext(), binding.tvEmailAddress,
                         s, before)
                     binding.phoneNumberContainer.setBackgroundResource(R.drawable.edt_rounded_corner)
-                    preventSpaceOnEditText(binding.edtUserName)
+                    editText = binding.edtUserName
+                    //preventSpaceOnEditText(binding.edtUserName)
                 }
                 binding.edtPassword -> {
                     customAnimationForTextInput(requireContext(), binding.tvPassword, s, before)
                     binding.passwordContainer.setBackgroundResource(R.drawable.edt_rounded_corner)
+                    //preventSpaceOnEditText(binding.edtPassword)
+                    binding.edtPassword.limitLength(resources.getInteger(R.integer.int_20))
+                    editText = binding.edtPassword
                 }
             }
 
+            val result: String = s.toString().replace(" ", "")
+            if (!s.toString().equals(result,false)) {
+                editText?.setText(result)
+                editText?.setSelection(result.length)
+            }
             viewModel.validateFieldsToSetAlpha(binding.edtUserName.text.toString(),
                 binding.edtPassword.text.toString())
         }

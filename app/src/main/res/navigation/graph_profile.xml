@@ -79,7 +79,11 @@
         android:name="com.cardio.doctor.ui.fragment.profile.web_view.WebViewFragment"
         android:label="WebViewFragment" >
         <argument
-            android:name="isComingFrom"
-            app:argType="string" />
+            android:name="toolBarTitle"
+            app:argType="string"
+            app:nullable="true" />
+        <argument android:name="webUrl"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

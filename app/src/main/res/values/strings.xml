@@ -9,7 +9,7 @@
     <!--Login-->
     <string name="hello_login">Hello Welcome to Login</string>
     <string name="sign_in">SIGN IN</string>
-    <string name="request_otp">Request OTP</string>
+    <string name="request_otp">REQUEST OTP</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="user_logged_in_successfully">User logged in successfully</string>
     <string name="email_phone_number">Email/Phone Number</string>
@@ -49,7 +49,7 @@
     <string name="err_empty_password">Please enter your password</string>
     <string name="err_confirm_password">Please enter confirm password</string>
     <string name="err_valid_password">Password must contain 8–20 characters, with one uppercase alphabet, one lowercase alphabet, one number and a special character</string>
-    <string name="err_email_exist">EmailId already exist</string>
+    <string name="err_email_exist">Email Id already exist</string>
     <string name="err_phonenumber_already_exist">Phone Number already exist</string>
     <string name="err_user_does_not_exist">User doesn\'t exist</string>
     <string name="err_image_not_uploaded">Image not uploaded kindly try again</string>
@@ -58,17 +58,17 @@
 
     <!--OTP-->
     <string name="otp_verification">OTP Verification</string>
-    <string name="phone_verification_description">Kindly enter the 4digit verification code sent to </string>
+    <string name="phone_verification_description">Kindly enter the 6 digit verification code sent to </string>
     <string name="not_yet_received">Not yet received?</string>
     <string name="resend_otp">Resend OTP</string>
 
     <!--Forgot Password-->
     <string name="forgot_password">Forgot Password</string>
     <string name="forgot_password_ques_mark">Forgot Password?</string>
-    <string name="please_provide_your_registered_number">Please provide your registered email or phone number in order to retrieve your password</string>
+    <string name="please_provide_your_registered_number">Please provide your registered email in order to retrieve your password</string>
     <string name="registered_your_account_password">Enter your registered email address in order to reset your account password</string>
     <string name="reset_password">Reset Password</string>
-    <string name="forgot_password_email_sent">Email has been sent on your registered email Id to reset password</string>
+    <string name="forgot_password_email_sent">Link has been sent on your registered email Id to reset password</string>
 
     <!--Dashboard-->
     <string name="welcome_to_dashboard">Welcome to Dashboard</string>
@@ -88,15 +88,17 @@
 
     <!--Edit Profile-->
     <string name="height_in_centimeter">Height (in cm)</string>
-    <string name="heart_rate_in_lbs">Heart Rate (in lbs)</string>
+    <string name="weight_in_lbs">Weight (in lbs)</string>
     <string name="date_of_birth">Date Of Birth</string>
     <string name="please_select_gender">Please select gender</string>
     <string name="date_of_birth_val">Please enter valid date of birth</string>
     <string name="valid_height">Please enter valid height</string>
-    <string name="valid_heart_rate">Please enter valid heart rate</string>
+    <string name="valid_weight">Please enter valid weight rate</string>
     <string name="user_detail_not_found">User detail not found</string>
     <string name="select_gender">Select Gender</string>
     <string name="profile_updated_successfully">Profile Detail Uploaded Successfully</string>
+    <string name="password_change_successfully">Your password has been successfully changed</string>
+    <string name="success">Success</string>
 
     <!--Setting-->
     <string name="notification_preference">Notification Preference</string>
@@ -111,6 +113,10 @@
     <string name="new_password">New Password</string>
     <string name="logout_description">Are you sure you want to logout?</string>
     <string name="save">SAVE</string>
+    <string name="please_enter_your_old_password">Please enter old password</string>
+    <string name="please_enter_your_new_password">Please enter new password</string>
+    <string name="old_and_new_password_should_not_same">Old password and new password should not be the same</string>
+
 
     <!-- Sync Health Data  -->
     <string name="sync_health_data">Sync Health Data</string>

@@ -8,7 +8,9 @@ import com.cardio.doctor.utils.FireStoreCollection
 import com.cardio.doctor.utils.FireStoreDocKey
 import com.cardio.doctor.utils.firebaseDocumentQuery
 import com.cardio.doctor.utils.firebaseQuery
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.storage.StorageReference
@@ -75,4 +77,20 @@ open class BaseRepository @Inject constructor(
     )
 
 
+
+
+    /*val credential = EmailAuthProvider.getCredential(auth.currentUser?.email ?: "", oldPass)
+    auth.currentUser?.reauthenticate(credential)?.addOnCompleteListener {
+        if (it.isSuccessful) {
+            auth.currentUser?.updatePassword(newPass)?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    _changePasswordResponse.value = Resource.success(Constants.CHANGE_PASSWORD, true)
+                } else {
+                    Log.d("TAG", "Error password not updated")
+                }
+            }
+        } else {
+            Log.d("TAG", "Error auth failed")
+        }
+    }*/
 }

@@ -235,11 +235,17 @@ class SignUpViewModel @Inject constructor(
                     && (!isImageSelected || firebaseUri != null)*/
                 ) {
                     _signUpApiResponse.value = Resource.success(Constants.SIGNUP, null)
+                }else if (isEmailExist != null && isEmailExist) {
+                    //showValidationMessage(getApplication<AppCardioPatient>().getString(R.string.err_email_exist))
+                    queueValidationRequest(Status.ERROR,
+                        getApplication<AppCardioPatient>().getString(R.string.err_email_exist),
+                        R.id.edtEmailId, R.id.tvEmailError)
                 } else if (isPhoneNumberExist != null && isPhoneNumberExist) {
-                    showValidationMessage(getApplication<AppCardioPatient>().getString(R.string.err_phonenumber_already_exist))
-                } else if (isEmailExist != null && isEmailExist) {
-                    showValidationMessage(getApplication<AppCardioPatient>().getString(R.string.err_email_exist))
-                } /*else if (isImageSelected && firebaseUri == null) {
+                    queueValidationRequest(Status.ERROR,
+                        getApplication<AppCardioPatient>().getString(R.string.err_phonenumber_already_exist),
+                        R.id.edtPhoneNumber, R.id.tvPhoneNoError)
+                   // showValidationMessage(getApplication<AppCardioPatient>().getString(R.string.err_phonenumber_already_exist))
+                }  /*else if (isImageSelected && firebaseUri == null) {
                     showValidationMessage(getApplication<AppCardioPatient>().getString(R.string.err_email_exist))
                 }*/
             }

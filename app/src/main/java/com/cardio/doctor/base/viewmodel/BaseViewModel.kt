@@ -11,6 +11,7 @@ import com.cardio.doctor.base.repository.BaseRepository
 import com.cardio.doctor.model.request.PhoneVerificationDetails
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.storage.UserManager
+import com.cardio.doctor.utils.Preference
 import com.cardio.doctor.utils.livedata.SingleLiveEvent
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseNetworkException
@@ -23,7 +24,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 open class BaseViewModel @Inject constructor(
-    private val userManager: UserManager,
+    protected val userManager: UserManager,
     private val baseRepository: BaseRepository,
     application: Application
 ) : AndroidViewModel(application) {
@@ -53,6 +54,11 @@ open class BaseViewModel @Inject constructor(
 
     fun setDirection(navDirections: NavDirections) {
         _navDirectionLiveData.value = navDirections
+    }
+
+    fun clearPreference(){
+        userManager.clearAllPreference()
+        userManager.setBoolean(Preference.IS_TUTORIAL_SHOWN,true)
     }
 
     fun initializePhoneAuthCallBack() {

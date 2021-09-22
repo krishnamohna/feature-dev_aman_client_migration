@@ -6,13 +6,20 @@ import androidx.fragment.app.viewModels
 import com.cardio.doctor.R
 import com.cardio.doctor.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentSettingBinding
+import com.cardio.doctor.network.NetworkHelper
+import com.cardio.doctor.utils.WEBURL
+import com.cardio.doctor.utils.customSnackBarFail
 import com.cardio.doctor.utils.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class SettingFragment :  AppBaseFragment(R.layout.fragment_setting), View.OnClickListener{
+class SettingFragment : AppBaseFragment(R.layout.fragment_setting), View.OnClickListener {
     private val binding by viewBinding(FragmentSettingBinding::bind)
     private val viewModel: SettingViewModel by viewModels()
+
+    @Inject
+    lateinit var networkHelper: NetworkHelper
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,36 +34,47 @@ class SettingFragment :  AppBaseFragment(R.layout.fragment_setting), View.OnClic
         binding.faqContainer.setOnClickListener(this)
         binding.termsAndConditionContainer.setOnClickListener(this)
         binding.logoutContainer.setOnClickListener(this)
-
+        binding.switchNotification.setOnClickListener(this)
     }
 
     private fun setObservers() {
 
 
     }
+
     override fun onClick(view: View?) {
-        when(view){
-            binding.changePasswordContainer ->{
+        when (view) {
+            binding.changePasswordContainer -> {
                 baseViewModel.setDirection(SettingFragmentDirections.settingToChangePasswordFragment())
             }
-            binding.aboutUsContainer ->{
-
+            binding.aboutUsContainer -> {
+                openWebUrl(getString(R.string.about_us), WEBURL.ABOUT_US)
             }
 
-            binding.faqContainer ->{
-
+            binding.faqContainer -> {
+                openWebUrl(getString(R.string.faq), WEBURL.FAQ)
             }
 
-            binding.termsAndConditionContainer ->{
-
+            binding.termsAndConditionContainer -> {
+                openWebUrl(getString(R.string.terms_and_conditions), WEBURL.TERMS_AND_CONDITION)
             }
-            binding.logoutContainer ->{
-
+            binding.logoutContainer -> {
+                showLogout(getString(R.string.logout), getString(R.string.logout_description))
             }
 
-            binding.switchNotification ->{
-
+            binding.switchNotification -> {
+                binding.switchNotification.isChecked = !binding.switchNotification.isChecked
             }
         }
+    }
+
+    private fun openWebUrl(toolbarTitle: String, webUrl: String) {
+        if (networkHelper.isNetworkConnected()) {
+            baseViewModel.setDirection(SettingFragmentDirections.settingToWebView(
+                toolbarTitle, webUrl
+            ))
+        } else customSnackBarFail(requireContext(),
+            binding.root,
+            getString(R.string.err_no_network_available))
     }
 }

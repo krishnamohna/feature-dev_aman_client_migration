@@ -14,6 +14,8 @@ import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.storage.UserManager
 import com.cardio.doctor.utils.ENUM
+import com.cardio.doctor.utils.Preference
+import com.cardio.doctor.utils.Preference.Companion.SYNC_HEALTH
 import com.cardio.doctor.utils.isValidEmail
 import com.cardio.doctor.utils.livedata.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,5 +29,15 @@ class SyncHealthViewModel @Inject constructor(
     application: Application
 ) : BaseViewModel(userManager, baseRepository, application) {
 
+    fun storeSyncSelectionInPreference(name : String){
+        userManager.setString(SYNC_HEALTH,name)
+    }
+
+    fun getSelectedHealthKit(): String {
+        var selectedTab = userManager.getString(SYNC_HEALTH)
+        if (selectedTab.isEmpty())
+            selectedTab = getApplication<AppCardioPatient>().getString(R.string.fitbit)
+        return selectedTab
+    }
 
 }

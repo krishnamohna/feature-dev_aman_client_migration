@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.view.Gravity
+import android.view.KeyEvent
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -49,6 +50,7 @@ fun showAlertDialog(
 ) {
     val builder = AlertDialog.Builder(context, R.style.CustomAlertDialogCommon)
     builder.setTitle(title)
+    builder.setCancelable(false)
     builder.setMessage(description)
     builder.setPositiveButton(btnOneTitle) { dialogInterface, _ ->
         mCallBack.invoke(btnOneTitle, dialogInterface)
@@ -59,6 +61,5 @@ fun showAlertDialog(
         }
     }
     val dialog = builder.create()
-    dialog.setCanceledOnTouchOutside(false)
     dialog.show()
 }

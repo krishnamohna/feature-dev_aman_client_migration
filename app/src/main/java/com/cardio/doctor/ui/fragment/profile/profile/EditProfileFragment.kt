@@ -82,7 +82,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
             binding.txtPhoneNumber))
         binding.edtHeight.addTextChangedListener(TextChangeWatcher(binding.edtHeight,
             binding.txtTitleHeight))
-        binding.edtHeart.addTextChangedListener(TextChangeWatcher(binding.edtHeart,
+        binding.edtWeight.addTextChangedListener(TextChangeWatcher(binding.edtWeight,
             binding.tvHeartError))
     }
 
@@ -139,7 +139,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
                         binding.edtPhoneNumber.text.toString(),
                         binding.edtDob.text.toString(),
                         binding.edtHeight.text.toString(),
-                        binding.edtHeart.text.toString()
+                        binding.edtWeight.text.toString()
                     )
                 }
             }
@@ -217,14 +217,15 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
             val gender = documentReference.data?.get(FireStoreDocKey.GENDER) as String?
             val dob = documentReference.data?.get(FireStoreDocKey.DOB) as String?
             val height = documentReference.data?.get(FireStoreDocKey.HEIGHT) as String?
-            val heartRate = documentReference.data?.get(FireStoreDocKey.HEART_RATE) as String?
+            val heartRate = documentReference.data?.get(FireStoreDocKey.WEIGHT) as String?
             val genderList = resources.getStringArray(R.array.gender_list).toList()
             val imageUrl = documentReference.data?.get(FireStoreDocKey.IMAGE_URL) as String?
 
             if(!imageUrl.isNullOrEmpty()){
                 viewModel.firebaseUri = imageUrl.convertIntoUri()
+                viewModel.getImageDownloadUrl(imageUrl)
             }
-            if(dob.isNullOrEmpty()) birthDate = dob?.toDate()
+            if(!dob.isNullOrEmpty()) birthDate = dob.toDate("dd MMM yyyy")
 
             binding.edtFirstName.setText(firstName ?: "")
             binding.edtLastName.setText(lastName ?: "")
@@ -241,9 +242,8 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
 
             binding.edtDob.setText(dob ?: "")
             binding.edtHeight.setText(height ?: "")
-            binding.edtHeart.setText(heartRate ?: "")
+            binding.edtWeight.setText(heartRate ?: "")
 
-            viewModel.getImageDownloadUrl(documentReference.data?.get(FireStoreDocKey.IMAGE_URL) as String)
         }
     }
 
@@ -256,6 +256,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
                 binding.phoneNumberContainer.setBackgroundResource(R.drawable.edt_rounded_corner)
             } else view.setBackgroundResource(R.drawable.edt_rounded_corner)
             var textView: TextView? = null
+
             when (view) {
                 binding.edtFirstName -> textView = binding.txtFirstName
                 binding.edtLastName -> textView = binding.txtLastName
@@ -263,7 +264,12 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
                 binding.edtPhoneNumber -> textView = binding.txtPhoneNumber
                 binding.edtHeight -> textView = binding.txtTitleHeight
                 binding.edtDob -> textView = binding.dobTxtTitle
-                binding.edtHeart -> textView = binding.txtTitleHeart
+                binding.edtWeight -> textView = binding.txtTitleWeight
+            }
+            val result: String = s.toString().replace(" ", "")
+            if (!s.toString().equals(result,false)) {
+                (view as EditText).setText(result)
+                (view as EditText).setSelection(result.length)
             }
             customAnimationForTextInput(requireContext(), textView!!, s, before)
         }

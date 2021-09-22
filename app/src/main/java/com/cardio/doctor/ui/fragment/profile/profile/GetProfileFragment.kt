@@ -100,11 +100,24 @@ class GetProfileFragment :  AppBaseFragment(R.layout.fragment_get_profile), View
             val email = documentReference.data?.get(FireStoreDocKey.EMAIL) as String?
             val countryCode = documentReference.data?.get(FireStoreDocKey.COUNTRY_CODE) as String?
             val phoneNumber = documentReference.data?.get(FireStoreDocKey.PHONE_NUMBER) as String?
+            val imageUrl = documentReference.data?.get(FireStoreDocKey.IMAGE_URL) as String?
+            val gender = documentReference.data?.get(FireStoreDocKey.GENDER) as String?
+            val weight = documentReference.data?.get(FireStoreDocKey.WEIGHT) as String?
+            val height = documentReference.data?.get(FireStoreDocKey.HEIGHT) as String?
 
-            binding.txtUserName.text = firstName?.plus(lastName ?: "")
+
+            binding.txtUserName.text = firstName?.plus(" ").plus(lastName ?: "")
             binding.txtEmailAddress.text = email ?: ""
-            binding.txtPhoneNumber.text = countryCode?.plus(phoneNumber)
-            viewModel.getImageDownloadUrl(documentReference.data?.get(FireStoreDocKey.IMAGE_URL) as String)
+            binding.txtPhoneNumber.text = countryCode?.plus(" ").plus(phoneNumber)
+
+            binding.txtGender.text = gender ?: ""
+            binding.txtHeight.text = height ?: ""
+            binding.txtWeight.text = weight ?: ""
+
+            binding.txtSelectedWearable.text = viewModel.getSelectedHealthKit()
+            if(!imageUrl.isNullOrEmpty()) {
+                viewModel.getImageDownloadUrl(imageUrl)
+            }
         }else {
             customSnackBarFail(requireContext(),binding.root,getString(R.string.user_detail_not_found))
         }

@@ -41,6 +41,7 @@ interface Constants{
         const val UPLOAD_PROFILE_PIC = "UploadProfilePic"
         const val USER_GENDER = "UserGender"
         const val EDIT_PROFILE = "EditProfile"
+        const val CHANGE_PASSWORD = "ChangePassword"
 
     }
 }

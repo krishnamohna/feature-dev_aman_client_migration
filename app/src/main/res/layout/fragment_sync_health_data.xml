@@ -12,9 +12,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/fitbitContainer"
             android:layout_width="0dp"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/_50sdp"
             android:layout_marginTop="@dimen/_16sdp"
-            android:paddingStart="@dimen/_10sdp"
+            android:paddingStart="@dimen/_5sdp"
             android:paddingEnd="@dimen/_10sdp"
             android:background="@drawable/btn_white_bg_with_white_corner"
             app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
@@ -23,14 +24,16 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imgFitBit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_profile_circle_bg"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:background="@drawable/bg_sync_profile"
                 android:scaleType="center"
+                android:padding="@dimen/_5sdp"
+                android:layout_margin="@dimen/_5sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_setting" />
+                app:srcCompat="@drawable/ic_fitbit" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtSettingTitle"
@@ -61,7 +64,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginTop="@dimen/_12sdp"
-            android:paddingStart="@dimen/_10sdp"
+            android:paddingStart="@dimen/_5sdp"
             android:paddingEnd="@dimen/_10sdp"
             android:background="@drawable/btn_white_bg_with_white_corner"
             app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
@@ -70,14 +73,17 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imgGoogleFit"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_45sdp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_profile_circle_bg"
+                android:minHeight="@dimen/_45sdp"
+                android:background="@drawable/bg_sync_profile"
                 android:scaleType="center"
+                android:padding="@dimen/_5sdp"
+                android:layout_margin="@dimen/_5sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_setting" />
+                app:srcCompat="@drawable/ic_google_fit" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtGoogleFit"

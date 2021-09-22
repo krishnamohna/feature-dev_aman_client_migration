@@ -39,6 +39,12 @@ class ForgotPasswordFragment : AppBaseFragment(R.layout.fragment_forgot_password
         setListners()
         setObservers()
         enableButtonClick(0.3f, false)
+        hideProgress()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        hideProgress()
     }
 
     private fun setListners() {
@@ -144,6 +150,12 @@ class ForgotPasswordFragment : AppBaseFragment(R.layout.fragment_forgot_password
                     binding.edtEmailId.setBackgroundResource(R.drawable.edt_rounded_corner)
                     binding.tvEmailError.visibility = View.GONE
                 }
+            }
+
+            val result: String = s.toString().replace(" ", "")
+            if (!s.toString().equals(result,false)) {
+                binding.edtEmailId.setText(result)
+                binding.edtEmailId.setSelection(result.length)
             }
         }
 

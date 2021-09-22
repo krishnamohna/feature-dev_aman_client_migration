@@ -7,6 +7,7 @@ interface Preference{
     companion object {
         const val APP = "DoctorPreferences"
         const val IS_TUTORIAL_SHOWN = "IsTutorialShown"
+        const val SYNC_HEALTH = "SyncHealth"
 
     }
 }
@@ -47,6 +48,18 @@ interface FireStoreCollection{
         const val USERS = "Users"
     }
 }
+
+interface WEBURL{
+    companion object {
+        const val PRIVACY_POLICY = "google.com"
+        const val TERMS_AND_CONDITION = "google.com"
+        const val ABOUT_US = "google.com"
+        const val FAQ = "google.com"
+        const val DEFAULT_URL = "google.com"
+
+    }
+}
+
 interface FireStoreDocKey{
     companion object {
         const val USER_ID = "userId"
@@ -59,7 +72,7 @@ interface FireStoreDocKey{
         const val DOB = "dob"
         const val GENDER = "gender"
         const val HEIGHT = "height"
-        const val HEART_RATE = "heartRate"
+        const val WEIGHT = "weight"
 
 
     }

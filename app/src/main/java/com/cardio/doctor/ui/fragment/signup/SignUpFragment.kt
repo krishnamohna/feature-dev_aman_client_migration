@@ -24,13 +24,12 @@ import com.cardio.doctor.api.Constants
 import com.cardio.doctor.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentSignUpBinding
 import com.cardio.doctor.model.ValidationModel
+import com.cardio.doctor.network.NetworkHelper
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
-import com.cardio.doctor.utils.ENUM
+import com.cardio.doctor.ui.fragment.profile.setting.SettingFragmentDirections
+import com.cardio.doctor.utils.*
 import com.cardio.doctor.utils.Timer.Companion.OTP_EXPIRED
-import com.cardio.doctor.utils.customAnimationForTextInput
-import com.cardio.doctor.utils.customSnackBarFail
-import com.cardio.doctor.utils.getFileName
 import com.cardio.doctor.utils.viewbinding.viewBinding
 import com.countrypicker.CountrySelectActivity
 import com.countrypicker.bean.CountryData
@@ -44,6 +43,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import java.util.*
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickListener {
@@ -51,6 +51,9 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
     private val viewModel: SignUpViewModel by viewModels()
     private var isPasswordVisible: Boolean = false
     private var isConfirmVisible: Boolean = false
+
+    @Inject
+    lateinit var networkHelper: NetworkHelper
 
     private val requestMultiplePermissions =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -88,6 +91,12 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
         setObservers()
         enableButtonClick(0.3f, false)
         viewModel.initializePhoneAuthCallBack()
+        hideProgress()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        hideProgress()
     }
 
     private fun setListener() {
@@ -97,6 +106,9 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
         binding.imgConfirmShowPassword.setOnClickListener(this)
         binding.countryCode.setOnClickListener(this)
         binding.imgProfilePic.setOnClickListener(this)
+        binding.tvTermCondition.setOnClickListener(this)
+        binding.tvPrivacyPolicy.setOnClickListener(this)
+
         binding.edtFirstName.addTextChangedListener(TextChangeWatcher(binding.edtFirstName,
             binding.tvFirstNameError))
         binding.edtLastName.addTextChangedListener(TextChangeWatcher(binding.edtLastName,
@@ -221,6 +233,13 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
             binding.countryCode -> {
                 startActivityForCountryCode()
             }
+
+            binding.tvPrivacyPolicy -> {
+                openWebUrl(getString(R.string.privacy_policy), WEBURL.PRIVACY_POLICY)
+            }
+            binding.tvTermCondition -> {
+                openWebUrl(getString(R.string.terms_and_conditions), WEBURL.TERMS_AND_CONDITION)
+            }
         }
     }
 
@@ -238,7 +257,7 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
 //                    }
                     Constants.SEND_OTP -> {
                         var imagePath = ""
-                       viewModel.deviceUri?.let { imagePath = it.toString() }
+                        viewModel.deviceUri?.let { imagePath = it.toString() }
                         baseViewModel.setDirection(
                             SignUpFragmentDirections.signupToPhoneVerification(
                                 viewModel.createModelForPhoneVerification(
@@ -278,7 +297,7 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
     }
 
     private fun startPhoneNumberVerification(phoneNumber: String) {
-        if(viewModel.isNetworkConnected()) {
+        if (viewModel.isNetworkConnected()) {
             lifecycleScope.launch {
                 val options = PhoneAuthOptions.newBuilder(viewModel.auth)
                     .setPhoneNumber(phoneNumber)       // Phone number to verify
@@ -306,23 +325,45 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
             errorTxt.visibility = View.GONE
             view.setBackgroundResource(R.drawable.edt_rounded_corner)
             var textView: TextView? = null
+            var editText: EditText? = null
+
             when (view) {
-                binding.edtFirstName -> textView = binding.txtFirstName
-                binding.edtLastName -> textView = binding.txtLastName
-                binding.edtEmailId -> textView = binding.txtEmailAddress
-                binding.passwordContainer -> textView = binding.txtPassword
-                binding.confirmPasswordContainer -> textView = binding.txtConfirmPassword
-                binding.phoneNumberContainer -> textView = binding.txtPhoneNumber
+                binding.edtFirstName -> {
+                    textView = binding.txtFirstName
+                    editText = binding.edtFirstName
+                }
+                binding.edtLastName -> {
+                    textView = binding.txtLastName
+                    editText = binding.edtLastName
+                }
+                binding.edtEmailId -> {
+                    textView = binding.txtEmailAddress
+                    editText = binding.edtEmailId
+                }
+                binding.passwordContainer -> {
+                    textView = binding.txtPassword
+                    editText = binding.edtPassword
+                }
+                binding.confirmPasswordContainer -> {
+                    textView = binding.txtConfirmPassword
+                    editText = binding.edtConfirmPassword
+                }
+                binding.phoneNumberContainer -> {
+                    textView = binding.txtPhoneNumber
+                    editText = binding.edtPhoneNumber
+                }
             }
-            /* job = lifecycleScope.launch {
-                 delay(INPUT_DELAY)*/
+
+            val result: String = s.toString().replace(" ", "")
+            if (!s.toString().equals(result,false)) {
+                editText?.setText(result)
+                editText?.setSelection(result.length)
+            }
             customAnimationForTextInput(requireContext(), textView!!, s, before)
             validationFieldsForAlpha(binding.chkBoxAcceptPolicy.isChecked)
-            // }
         }
 
         override fun afterTextChanged(p0: Editable?) {
-            // job?.cancel()
         }
     }
 
@@ -362,5 +403,15 @@ class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickL
         }
         tvValidator.visibility = tvValidatorVisibility
         tvValidator.text = message
+    }
+
+    private fun openWebUrl(toolbarTitle: String, webUrl: String) {
+        if (networkHelper.isNetworkConnected()) {
+            baseViewModel.setDirection(SignUpFragmentDirections.signupToWebView(
+                toolbarTitle, webUrl
+            ))
+        } else customSnackBarFail(requireContext(),
+            binding.root,
+            getString(R.string.err_no_network_available))
     }
 }

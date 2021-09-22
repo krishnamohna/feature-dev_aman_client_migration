@@ -20,10 +20,11 @@ class UserManager @Inject constructor(
         sharedPreferences.setString(key, value)
     }
 
-    fun getString(key: String){
-        sharedPreferences.getString(key)
+    fun getString(key: String) : String{
+        return sharedPreferences.getString(key)
     }
 
-
-
+    fun clearAllPreference(){
+        sharedPreferences.clearSharedPreference()
+    }
 }

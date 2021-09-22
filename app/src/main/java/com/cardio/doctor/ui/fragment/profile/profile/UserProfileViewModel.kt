@@ -11,13 +11,11 @@ import com.cardio.doctor.R
 import com.cardio.doctor.api.Constants
 import com.cardio.doctor.base.viewmodel.BaseViewModel
 import com.cardio.doctor.model.ValidationModel
+import com.cardio.doctor.network.NetworkHelper
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.storage.UserManager
-import com.cardio.doctor.utils.ENUM
-import com.cardio.doctor.utils.FireStoreDocKey
-import com.cardio.doctor.utils.isValidEmail
-import com.cardio.doctor.utils.isValidMobileNumber
+import com.cardio.doctor.utils.*
 import com.cardio.doctor.utils.livedata.SingleLiveEvent
 import com.google.firebase.firestore.DocumentSnapshot
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,7 +28,7 @@ import javax.inject.Inject
 @HiltViewModel
 class UserProfileViewModel @Inject constructor(
     userManager: UserManager, private val repository: UserProfileRepository,
-    application: Application,
+    application: Application, private val networkHelper: NetworkHelper,
 ) : BaseViewModel(userManager, repository, application) {
 
     private val _userDetailDocument = SingleLiveEvent<Resource<DocumentSnapshot>>()
@@ -53,7 +51,7 @@ class UserProfileViewModel @Inject constructor(
         _editProfileResponse
 
     private var gender: String = ""
-    var firebaseUri: Uri? =null
+    var firebaseUri: Uri? = null
 
     val validationChannel = Channel<ValidationModel>(ENUM.INT_10)
 
@@ -61,7 +59,7 @@ class UserProfileViewModel @Inject constructor(
         try {
             _userDetailDocument.value = Resource.loading(Constants.USER_DETAIL, null)
             viewModelScope.launch {
-                val userDeferred = async { repository.fetchUserDetail(_firebaseException)}
+                val userDeferred = async { repository.fetchUserDetail(_firebaseException) }
                 val userDetail = userDeferred.await()
                 _userDetailDocument.value = Resource.success(Constants.USER_DETAIL, userDetail)
             }
@@ -96,8 +94,13 @@ class UserProfileViewModel @Inject constructor(
             viewModelScope.launch {
                 val firebaseUriDeferred = async { repository.getImageUrl(url, _firebaseException) }
                 val firebaseUri = firebaseUriDeferred.await()
-                _getUserProfilePic.value =
-                    Resource.success(Constants.USER_PROFILE_PIC, firebaseUri)
+                if (firebaseUri != null) {
+                    _getUserProfilePic.value =
+                        Resource.success(Constants.USER_PROFILE_PIC, firebaseUri)
+                } else {
+                    _userDetailDocument.value =
+                        Resource.error(Constants.USER_PROFILE_PIC, 0, "", null)
+                }
             }
         } catch (e: Exception) {
             _userDetailDocument.value =
@@ -201,41 +204,57 @@ class UserProfileViewModel @Inject constructor(
     private fun updateUserDetailOnFireStore(
         firstName: String, lastName: String, email: String,
         countryCode: String, phoneNumber: String, dob: String,
-        height: String, heartRate: String) {
+        height: String, heartRate: String,
+    ) {
         try {
-            viewModelScope.launch {
-                _editProfileResponse.value = Resource.loading(Constants.EDIT_PROFILE, null)
-                val context = getApplication<AppCardioPatient>()
-                var imagePath = ""
-                firebaseUri?.let { imagePath = it.toString() }
+            val context = getApplication<AppCardioPatient>()
+            if (!networkHelper.isNetworkConnected())
+                _editProfileResponse.value = Resource.error(
+                    Constants.EDIT_PROFILE, 0,
+                    context.getString(R.string.err_no_network_available), null)
+            else {
+                viewModelScope.launch {
+                    _editProfileResponse.value = Resource.loading(Constants.EDIT_PROFILE, null)
+                    var imagePath = ""
+                    firebaseUri?.let { imagePath = it.toString() }
 
-                repository.firebaseAuth.currentUser?.let {
-                    val user: HashMap<String, Any> =
-                        hashMapOf(
-                            FireStoreDocKey.USER_ID to repository.firebaseAuth.currentUser?.uid!!,
-                            FireStoreDocKey.FIRST_NAME to firstName,
-                            FireStoreDocKey.LAST_NAME to lastName,
-                            FireStoreDocKey.EMAIL to email,
-                            FireStoreDocKey.COUNTRY_CODE to countryCode,
-                            FireStoreDocKey.PHONE_NUMBER to phoneNumber,
-                            FireStoreDocKey.GENDER to gender,
-                            FireStoreDocKey.DOB to dob,
-                            FireStoreDocKey.HEIGHT to height,
-                            FireStoreDocKey.HEART_RATE to heartRate,
-                            FireStoreDocKey.IMAGE_URL to imagePath
-                        )
-                    val deferredUpdatedDetail = async { repository.storeUserDataInFireStore(user) }
-                    val isUpdated = deferredUpdatedDetail.await()
-                    if (isUpdated) {
-                        _editProfileResponse.value = Resource.success(Constants.EDIT_PROFILE,
-                            context.getString(R.string.profile_updated_successfully))
-                    } else {
-                        _editProfileResponse.value = Resource.error(
-                            Constants.EDIT_PROFILE, 0, context.getString(R.string.getting_some_error),
-                            null)
+                    repository.firebaseAuth.currentUser?.let {
+                        val user: HashMap<String, Any> =
+                            hashMapOf(
+                                FireStoreDocKey.USER_ID to repository.firebaseAuth.currentUser?.uid!!,
+                                FireStoreDocKey.FIRST_NAME to firstName,
+                                FireStoreDocKey.LAST_NAME to lastName,
+                                FireStoreDocKey.EMAIL to email,
+                                FireStoreDocKey.COUNTRY_CODE to countryCode,
+                                FireStoreDocKey.PHONE_NUMBER to phoneNumber,
+                                FireStoreDocKey.GENDER to gender,
+                                FireStoreDocKey.DOB to dob,
+                                FireStoreDocKey.HEIGHT to height,
+                                FireStoreDocKey.WEIGHT to heartRate,
+                                FireStoreDocKey.IMAGE_URL to imagePath
+                            )
+
+                        if (auth.currentUser == null) {
+                            _editProfileResponse.value = Resource.error(Constants.EDIT_PROFILE,
+                                0, context.getString(R.string.getting_some_error), null)
+                        } else {
+                            val currentUser = auth.currentUser
+                            val isUpdated =
+                                repository.storeUserDataInFireStore(currentUser!!,
+                                    user, _firebaseException)
+                            if (isUpdated == true) {
+                                _editProfileResponse.value =
+                                    Resource.success(Constants.EDIT_PROFILE,
+                                        context.getString(R.string.profile_updated_successfully))
+                            } else {
+                                _editProfileResponse.value = Resource.error(
+                                    Constants.EDIT_PROFILE, 0,
+                                    context.getString(R.string.getting_some_error), null)
+                            }
+                        }
                     }
-                }
 
+                }
             }
         } catch (e: Exception) {
             showFailureException(e)
@@ -259,5 +278,11 @@ class UserProfileViewModel @Inject constructor(
         )
     }
 
+    fun getSelectedHealthKit(): String {
+        var selectedTab = userManager.getString(Preference.SYNC_HEALTH)
+        if (selectedTab.isEmpty())
+            selectedTab = getApplication<AppCardioPatient>().getString(R.string.fitbit)
+        return selectedTab
+    }
 
 }

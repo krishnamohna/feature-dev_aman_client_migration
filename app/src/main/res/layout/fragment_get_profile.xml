@@ -20,7 +20,7 @@
                 android:fontFamily="@font/nunito_extrabold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15ssp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/imgProfilePic"
                 tools:text="Samantha John" />
@@ -49,7 +49,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/txtEmailAddress"
-                tools:text="+971 - 7309438172" />
+                tools:text="+971  7309438172" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtOtherDetail"
@@ -82,7 +82,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/txtGender"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/txtTitleGender"
-                    app:srcCompat="@drawable/ic_wearable" />
+                    app:srcCompat="@drawable/ic_gender" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtTitleGender"
@@ -127,16 +127,16 @@
                     android:background="@drawable/ic_profile_circle_bg"
                     android:scaleType="center"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtTitleHeart"
-                    app:srcCompat="@drawable/ic_wearable" />
+                    app:layout_constraintTop_toTopOf="@+id/txtTitleWeight"
+                    app:srcCompat="@drawable/ic_weight" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtTitleHeart"
+                    android:id="@+id/txtTitleWeight"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:fontFamily="@font/nunito_extrabold"
-                    android:text="@string/weight_in_kg"
+                    android:text="@string/weight_in_lbs"
                     android:textColor="@color/grey_text_hint"
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toEndOf="@+id/imgWeight"
@@ -151,8 +151,8 @@
                     tools:text="70"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
-                    app:layout_constraintStart_toStartOf="@+id/txtTitleHeart"
-                    app:layout_constraintTop_toBottomOf="@+id/txtTitleHeart"
+                    app:layout_constraintStart_toStartOf="@+id/txtTitleWeight"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitleWeight"
                      />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -175,18 +175,20 @@
                     android:scaleType="center"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/txtTitleHeight"
-                    app:srcCompat="@drawable/ic_wearable" />
+                    app:srcCompat="@drawable/ic_height" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtTitleHeight"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_6sdp"
+                    android:layout_marginEnd="@dimen/_3sdp"
                     android:fontFamily="@font/nunito_extrabold"
-                    android:text="@string/height_in_cm"
+                    android:text="@string/height_in_centimeter"
                     android:textColor="@color/grey_text_hint"
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toEndOf="@+id/imgHeight"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView

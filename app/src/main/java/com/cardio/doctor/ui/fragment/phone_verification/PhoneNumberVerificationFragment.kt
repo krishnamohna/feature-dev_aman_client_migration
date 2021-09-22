@@ -67,12 +67,18 @@ class PhoneNumberVerificationFragment :
         setNavArgsInFields()
     }
 
+    override fun onResume() {
+        super.onResume()
+        hideProgress()
+    }
+
     private fun setNavArgsInFields() {
         navArgs.phoneVerificationDetail?.let {
             viewModel.resendToken = it.token!!
             viewModel.storedVerificationId = navArgs.phoneVerificationDetail?.verificationId!!
             binding.txtPhoneNumber.text =
-                navArgs.phoneVerificationDetail?.countryCode.plus(navArgs.phoneVerificationDetail?.phoneNumber)
+                navArgs.phoneVerificationDetail?.countryCode.plus(" ")
+                    .plus(navArgs.phoneVerificationDetail?.phoneNumber)
         }
     }
 
@@ -134,7 +140,10 @@ class PhoneNumberVerificationFragment :
 
     override fun onClick(v: View?) {
         when (v) {
-            binding.txtResendOtp -> resendVerificationCode()
+            binding.txtResendOtp -> {
+                resendVerificationCode()
+                removeInputTextOnResetOtp()
+            }
 
             binding.btnConfirm -> {
                 viewModel.verifyPhoneNumberWithCode(viewModel.storedVerificationId,
@@ -215,6 +224,7 @@ class PhoneNumberVerificationFragment :
         return otp
     }
 
+
     private fun handleApiCallback(apiResponse: Resource<Any>) {
         when (apiResponse.status) {
             Status.SUCCESS -> {
@@ -273,6 +283,7 @@ class PhoneNumberVerificationFragment :
             getString(R.string.cancel),
             btnTwoVisibility = false
         ) { _: String, dialog: DialogInterface ->
+            //baseViewModel.setDirection(PhoneNumberVerificationFragmentDirections.phoneVerificationToLoginScreen())
             startDashboardActivity()
             dialog.dismiss()
         }
@@ -323,6 +334,12 @@ class PhoneNumberVerificationFragment :
         else enableResendBtn(0.3f, false)
     }
 
+    private fun removeInputTextOnResetOtp() {
+        for (view in arrayOfEditText) {
+            view.setText("")
+        }
+    }
+
     override fun onDestroyView() {
         if (countDownTimer != null) {
             countDownTimer!!.cancel()
@@ -334,6 +351,4 @@ class PhoneNumberVerificationFragment :
         binding.txtResendOtp.isEnabled = clickable
         binding.txtResendOtp.alpha = alpha
     }
-
-
 }

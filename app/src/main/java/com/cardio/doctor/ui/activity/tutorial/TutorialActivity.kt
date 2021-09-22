@@ -10,6 +10,7 @@ import com.cardio.doctor.databinding.ActivityTutorialBinding
 import com.cardio.doctor.model.TutorialModel
 import com.cardio.doctor.ui.activity.AuthenticateUserActivity
 import com.cardio.doctor.ui.activity.tutorial.adapter.SliderAdapter
+import com.cardio.doctor.utils.setDoubleClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,16 +41,16 @@ class TutorialActivity : BaseActivity() {
     }
 
     private fun setListeners() {
-        binding.tutorialSkip.setOnClickListener {
+        binding.tutorialSkip.setDoubleClickListener {
             binding.tutorialSkip.isEnabled = false
             openUserAuthActivity()
         }
 
-        binding.btnGetStarted.setOnClickListener {
+        binding.btnGetStarted.setDoubleClickListener {
             openUserAuthActivity()
         }
 
-        binding.imgNext.setOnClickListener {
+        binding.imgNext.setDoubleClickListener {
             binding.viewPagerTutorial.currentItem = currentPos + 1
         }
     }

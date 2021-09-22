@@ -48,7 +48,7 @@
             android:textSize="@dimen/_12ssp"
             android:fontFamily="@font/nunito_extrabold"
             android:textColor="@color/black_tutorial_text"
-            tools:text="+911234567890"
+            tools:text="+91 1234567890"
             app:layout_constraintEnd_toStartOf="@id/verticalRightGuideline"
             app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
             app:layout_constraintTop_toBottomOf="@+id/txtOtpDescription" />
@@ -227,7 +227,10 @@
             style="@style/BaseAppTheme.TxtView"
             android:textColor="@color/green_otp"
             android:fontFamily="@font/nunito_semibold"
-            android:visibility="gone"
+            android:visibility="visible"
+            android:gravity="center"
+            android:drawableStart="@drawable/ic_watch"
+            android:drawablePadding="@dimen/_5sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/otpEdtText1" />
@@ -250,14 +253,16 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnConfirm"
+            style="@style/BaseAppTheme.btnStyleContinue"
             android:layout_width="0dp"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_41sdp"
             android:text="@string/submit_caps"
-            style="@style/BaseAppTheme.btnStyleContinue"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/verticalRightGuideline"
             app:layout_constraintStart_toStartOf="@id/verticalLeftGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/txtResendOtp" />
+            app:layout_constraintTop_toBottomOf="@+id/txtResendOtp"
+            app:layout_constraintVertical_bias="0.85" />
 
         <include layout="@layout/guideline_left" />
 
