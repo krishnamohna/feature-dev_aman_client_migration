@@ -141,6 +141,7 @@
     <string name="verification_link">User has been successfully registered and verification link sent to your registered email id. Please verify your email to login with email id.</string>
     <string name="verify_email">Email id is not verified for this user. Kindly verify the email first</string>
     <string name="image_saved">Image has been saved to your Photos</string>
+    <string name="coming_soon">Coming Soon</string>
 
     <!--network error-->
     <string name="err_no_network_available">Please check your internet connection and try again later.</string>

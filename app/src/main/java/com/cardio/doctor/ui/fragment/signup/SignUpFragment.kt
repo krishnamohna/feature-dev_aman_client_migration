@@ -27,7 +27,6 @@ import com.cardio.doctor.model.ValidationModel
 import com.cardio.doctor.network.NetworkHelper
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
-import com.cardio.doctor.ui.fragment.profile.setting.SettingFragmentDirections
 import com.cardio.doctor.utils.*
 import com.cardio.doctor.utils.Timer.Companion.OTP_EXPIRED
 import com.cardio.doctor.utils.viewbinding.viewBinding

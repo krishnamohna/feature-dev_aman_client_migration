@@ -6,15 +6,15 @@ import androidx.fragment.app.viewModels
 import com.cardio.doctor.R
 import com.cardio.doctor.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentDashboardBinding
+import com.cardio.doctor.utils.customSnackBarFail
 import com.cardio.doctor.utils.viewbinding.viewBinding
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DashboardFragment : AppBaseFragment(R.layout.fragment_dashboard), View.OnClickListener {
     private val binding by viewBinding(FragmentDashboardBinding::bind)
     private val viewModel: DashboardViewModel by viewModels()
-    private lateinit var googleSignInClient: GoogleSignInClient
+    //private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,21 +25,41 @@ class DashboardFragment : AppBaseFragment(R.layout.fragment_dashboard), View.OnC
     }
 
     private fun setListener() {
-
+        binding.btnDashboardOne.setOnClickListener(this)
+        binding.btnDashboardTwo.setOnClickListener(this)
+        binding.btnProfileMenu.setOnClickListener(this)
     }
 
-
     private fun setObservers() {
+
     }
 
 
     override fun onClick(view: View?) {
         when (view) {
-            binding.btnLogOut->{
-                //signOut()
+            binding.btnDashboardOne -> {
+                customSnackBarFail(requireContext(), binding.root, getString(R.string.coming_soon))
+
+            }
+            binding.btnDashboardTwo -> {
+                customSnackBarFail(requireContext(), binding.root, getString(R.string.coming_soon))
+            }
+            binding.btnProfileMenu -> {
+                baseViewModel.setDirection(DashboardFragmentDirections.dashboardToProfileFragment())
             }
         }
     }
+/*
+    private fun setStartDestinationOfNavGraph(navId: Int) {
+
+        val navHostFragmentView =
+            supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        val graphInflater = navHostFragmentView.navController.navInflater
+        val navGraph = graphInflater.inflate(R.navigation.graph_dashboard)
+        val navController = navHostFragmentView.navController
+        navGraph.startDestination = navId
+        navController.graph = navGraph
+    }*/
 
     /*private fun googleSignIn() {
         // Configure Google Sign In
