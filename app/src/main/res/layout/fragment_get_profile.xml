@@ -20,10 +20,14 @@
                 android:fontFamily="@font/nunito_extrabold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15ssp"
-                app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
-                app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                android:text="Ajajsjakdasjdkjaskdjalskdl"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_16sdp"
                 app:layout_constraintTop_toBottomOf="@+id/imgProfilePic"
-                tools:text="Samantha John" />
+                 />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtEmailAddress"
@@ -101,12 +105,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="@string/gender"
+                    android:text="@string/na"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toStartOf="@+id/txtTitleGender"
                     app:layout_constraintTop_toBottomOf="@+id/txtTitleGender"
-                    tools:text="Male" />
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -148,7 +152,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunito_bold"
-                    tools:text="70"
+                    android:text="@string/na"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toStartOf="@+id/txtTitleWeight"
@@ -196,12 +200,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="@string/gender"
+                    android:text="@string/na"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toStartOf="@+id/txtTitleHeight"
                     app:layout_constraintTop_toBottomOf="@+id/txtTitleHeight"
-                    tools:text="164" />
+                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -101,18 +101,26 @@ class GetProfileFragment :  AppBaseFragment(R.layout.fragment_get_profile), View
             val countryCode = documentReference.data?.get(FireStoreDocKey.COUNTRY_CODE) as String?
             val phoneNumber = documentReference.data?.get(FireStoreDocKey.PHONE_NUMBER) as String?
             val imageUrl = documentReference.data?.get(FireStoreDocKey.IMAGE_URL) as String?
-            val gender = documentReference.data?.get(FireStoreDocKey.GENDER) as String?
-            val weight = documentReference.data?.get(FireStoreDocKey.WEIGHT) as String?
-            val height = documentReference.data?.get(FireStoreDocKey.HEIGHT) as String?
+            var gender = documentReference.data?.get(FireStoreDocKey.GENDER) as String?
+            var weight = documentReference.data?.get(FireStoreDocKey.WEIGHT) as String?
+            var height = documentReference.data?.get(FireStoreDocKey.HEIGHT) as String?
 
-
-            binding.txtUserName.text = firstName?.plus(" ").plus(lastName ?: "")
+            val userName = firstName?.plus(" ").plus(lastName ?: "")
+            binding.txtUserName.text = userName
             binding.txtEmailAddress.text = email ?: ""
             binding.txtPhoneNumber.text = countryCode?.plus(" ").plus(phoneNumber)
 
-            binding.txtGender.text = gender ?: ""
-            binding.txtHeight.text = height ?: ""
-            binding.txtWeight.text = weight ?: ""
+            if(gender.isNullOrEmpty()){
+                gender = "NA"
+            }else if(gender.equals(getString(R.string.select_gender),true)){
+                gender = "NA"
+            }
+            height = if(!height.isNullOrEmpty()) height else "NA"
+            weight = if(!weight.isNullOrEmpty()) weight else "NA"
+
+            binding.txtGender.text = gender
+            binding.txtHeight.text = height
+            binding.txtWeight.text = weight
 
             binding.txtSelectedWearable.text = viewModel.getSelectedHealthKit()
             if(!imageUrl.isNullOrEmpty()) {

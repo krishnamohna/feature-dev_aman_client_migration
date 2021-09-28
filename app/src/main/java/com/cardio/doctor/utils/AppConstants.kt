@@ -24,6 +24,8 @@ interface Timer{
         const val MINUTES_IN_MILIS: Long =60000
         const val MINUTES: Long =60
 
+        const val API_TIMEOUT: Long =60000
+
     }
 }
 

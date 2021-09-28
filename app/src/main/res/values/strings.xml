@@ -80,6 +80,7 @@
     <string name="setting">Settings</string>
     <string name="other_details">Other Details</string>
     <string name="gender">Gender</string>
+    <string name="na">NA</string>
     <string name="weight_in_kg">Weight (Kg)</string>
     <string name="height_in_cm">Height (Kg)</string>
     <string name="wearable">Wearable</string>
@@ -96,7 +97,7 @@
     <string name="valid_weight">Please enter valid weight rate</string>
     <string name="user_detail_not_found">User detail not found</string>
     <string name="select_gender">Select Gender</string>
-    <string name="profile_updated_successfully">Profile Detail Uploaded Successfully</string>
+    <string name="profile_updated_successfully">Profile Detail Updated Successfully</string>
     <string name="password_change_successfully">Your password has been successfully changed</string>
     <string name="success">Success</string>
 
