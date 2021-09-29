@@ -87,7 +87,7 @@ dependencies {
     //Dagger
     implementation deps.dagger_hilt.hilt_version
     kapt deps.dagger_hilt.kotlin_compiler
-    implementation deps.dagger_hilt.hilt_viewmodel
+ //   implementation deps.dagger_hilt.hilt_viewmodel
     kapt deps.dagger_hilt.hilt_viewmodel_compiler
 
     // Networking

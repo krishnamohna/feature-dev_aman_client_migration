@@ -7,60 +7,59 @@
     <fragment
         android:id="@+id/profileMenuFragment"
         android:name="com.cardio.doctor.ui.fragment.profile.profile_menu.ProfileMenuFragment"
-        android:label="ProfileMenuFragment" >
+        android:label="ProfileMenuFragment">
         <action
             android:id="@+id/profileMenuToGetProfile"
             app:destination="@id/getProfileFragment"
             app:enterAnim="@anim/in_from_right"
             app:exitAnim="@anim/out_to_left"
             app:popEnterAnim="@anim/in_from_left"
-            app:popExitAnim="@anim/out_to_right"/>
+            app:popExitAnim="@anim/out_to_right" />
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.cardio.doctor.ui.fragment.profile.setting.SettingFragment"
-        android:label="SettingFragment" >
+        android:label="SettingFragment">
         <action
             android:id="@+id/settingToChangePasswordFragment"
             app:destination="@id/changePasswordFragment"
             app:enterAnim="@anim/in_from_right"
             app:exitAnim="@anim/out_to_left"
             app:popEnterAnim="@anim/in_from_left"
-            app:popExitAnim="@anim/out_to_right"/>
+            app:popExitAnim="@anim/out_to_right" />
         <action
             android:id="@+id/settingToWebView"
             app:destination="@id/webViewFragment"
             app:enterAnim="@anim/in_from_right"
             app:exitAnim="@anim/out_to_left"
             app:popEnterAnim="@anim/in_from_left"
-            app:popExitAnim="@anim/out_to_right"/>
+            app:popExitAnim="@anim/out_to_right" />
     </fragment>
     <fragment
         android:id="@+id/getProfileFragment"
         android:name="com.cardio.doctor.ui.fragment.profile.profile.GetProfileFragment"
-        android:label="GetProfileFragment" >
+        android:label="GetProfileFragment">
         <action
             android:id="@+id/getProfileToEditProfile"
             app:destination="@id/editProfileFragment"
             app:enterAnim="@anim/in_from_right"
             app:exitAnim="@anim/out_to_left"
             app:popEnterAnim="@anim/in_from_left"
-            app:popExitAnim="@anim/out_to_right"/>
+            app:popExitAnim="@anim/out_to_right" />
         <action
             android:id="@+id/getProfileToSyncHealthData"
             app:destination="@id/syncHealthDataFragment"
             app:enterAnim="@anim/in_from_right"
             app:exitAnim="@anim/out_to_left"
             app:popEnterAnim="@anim/in_from_left"
-            app:popExitAnim="@anim/out_to_right"/>
+            app:popExitAnim="@anim/out_to_right" />
         <action
             android:id="@+id/getProfileToSettingFragment"
             app:destination="@id/settingFragment"
             app:enterAnim="@anim/in_from_right"
             app:exitAnim="@anim/out_to_left"
             app:popEnterAnim="@anim/in_from_left"
-            app:popExitAnim="@anim/out_to_right"
-            />
+            app:popExitAnim="@anim/out_to_right" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
@@ -77,12 +76,13 @@
     <fragment
         android:id="@+id/webViewFragment"
         android:name="com.cardio.doctor.ui.fragment.profile.web_view.WebViewFragment"
-        android:label="WebViewFragment" >
+        android:label="WebViewFragment">
         <argument
             android:name="toolBarTitle"
             app:argType="string"
             app:nullable="true" />
-        <argument android:name="webUrl"
+        <argument
+            android:name="webUrl"
             app:argType="string"
             app:nullable="true" />
     </fragment>

@@ -16,6 +16,7 @@ class AuthenticateUserActivity : BaseActivity() {
         setContentView(binding.root)
         setNavigationController()
     }
+
     private fun setNavigationController() {
         val navController = (supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment)
             .navController

@@ -45,6 +45,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickListener {
+
     private val binding by viewBinding(FragmentLoginBinding::bind)
     private val viewModel: LoginViewModel by viewModels()
     private lateinit var googleSignInClient: GoogleSignInClient

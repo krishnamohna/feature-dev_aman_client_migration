@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "202279192016-7i8ou6rcn6q0ld2o41oissgrq5ekmcb8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cardio.doctor.qa",
+            "certificate_hash": "8cb054b8c0f01dfeae05ebd77695ddbf821556af"
+          }
+        },
+        {
+          "client_id": "202279192016-ads52lsro7rnkbnvd165e4acsff12522.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cardio.doctor.qa",
+            "certificate_hash": "287cd35898eae14be2c12d0ecb94d0204c8855b9"
+          }
+        },
+        {
           "client_id": "202279192016-mqpj87fj3knda0lhaek3vil6kutl6s5k.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +45,13 @@
             {
               "client_id": "202279192016-mqpj87fj3knda0lhaek3vil6kutl6s5k.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "202279192016-46uq6r8nibalf6edecvi06u9bdk0jfrs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pocketcardiodoctor.beta"
+              }
             }
           ]
         }
