@@ -59,8 +59,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpToolbar(binding.root, getString(R.string.edit_profile), backBtnVisibility = true,
-            editProfile = true)
+        setUpToolbar(binding.root, getString(R.string.edit_profile), backBtnVisibility = true)
         setListener()
         setObservers()
         binding.userProfileViewModel = viewModel
@@ -80,6 +79,8 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
             binding.txtEmailAddress))
         binding.edtPhoneNumber.addTextChangedListener(TextChangeWatcher(binding.edtPhoneNumber,
             binding.txtPhoneNumber))
+        binding.edtDob.addTextChangedListener(TextChangeWatcher(binding.edtDob,
+            binding.dobTxtTitle))
         binding.edtHeight.addTextChangedListener(TextChangeWatcher(binding.edtHeight,
             binding.txtTitleHeight))
         binding.edtWeight.addTextChangedListener(TextChangeWatcher(binding.edtWeight,
@@ -170,8 +171,8 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
                         val gender = apiResponse.data as String
                         binding.txtTitleGender.visibility =
                             if (gender.equals(getString(R.string.select_gender), true)) {
-                                View.VISIBLE
-                            } else View.GONE
+                                View.GONE
+                            } else View.VISIBLE
                     }
 
                     Constants.EDIT_PROFILE ->{
@@ -225,20 +226,25 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
                 viewModel.firebaseUri = imageUrl.convertIntoUri()
                 viewModel.getImageDownloadUrl(imageUrl)
             }
-            if(!dob.isNullOrEmpty()) birthDate = dob.toDate("dd MMM yyyy")
+            try {
+                if(!dob.isNullOrEmpty()) birthDate = dob.toDate("dd MMM yyyy")
+            }catch (ex : Exception){
+
+            }
 
             binding.edtFirstName.setText(firstName ?: "")
             binding.edtLastName.setText(lastName ?: "")
             binding.edtEmailId.setText(email ?: "")
             binding.countryCode.text = countryCode ?: ""
             binding.edtPhoneNumber.setText(phoneNumber ?: "")
-            binding.txtTitleGender.visibility = if (!gender.isNullOrEmpty() && !gender.equals(
+            /*binding.txtTitleGender.visibility = */
+            if (!gender.isNullOrEmpty() && !gender.equals(
                     getString(R.string.select_gender),
                     false)
             ) {
                 binding.spinnerCategory.setSelection(genderList.indexOf(gender))
-                View.VISIBLE
-            } else View.GONE
+                //View.VISIBLE
+            } //else View.GONE
 
             binding.edtDob.setText(dob ?: "")
             binding.edtHeight.setText(height ?: "")
@@ -267,7 +273,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
                 binding.edtWeight -> textView = binding.txtTitleWeight
             }
             val result: String = s.toString().replace(" ", "")
-            if (!s.toString().equals(result,false)) {
+            if (!s.toString().equals(result,false) && view != binding.edtDob) {
                 (view as EditText).setText(result)
                 (view as EditText).setSelection(result.length)
             }

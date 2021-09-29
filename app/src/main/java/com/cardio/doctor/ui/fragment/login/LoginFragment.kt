@@ -26,6 +26,7 @@ import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.ui.activity.dashboard.DashboardActivity
 import com.cardio.doctor.utils.*
+import com.cardio.doctor.utils.Timer.Companion.API_TIMEOUT
 import com.cardio.doctor.utils.Timer.Companion.OTP_EXPIRED
 import com.cardio.doctor.utils.viewbinding.viewBinding
 import com.countrypicker.CountrySelectActivity
@@ -37,6 +38,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -277,6 +279,10 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
         viewModel.verificationInProgress = true
+        lifecycleScope.launch {
+            delay(API_TIMEOUT)
+            hideProgress()
+        }
     }
 
     private fun openDashboardActivity() {

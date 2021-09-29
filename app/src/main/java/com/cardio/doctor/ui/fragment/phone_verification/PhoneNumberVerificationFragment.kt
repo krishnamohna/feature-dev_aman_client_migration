@@ -321,7 +321,7 @@ class PhoneNumberVerificationFragment :
                     }
 
                     override fun onFinish() {
-                        setTimerOnView("", View.GONE, true)
+                        setTimerOnView("00:00", View.VISIBLE, true)
                     }
                 }.start()
         }
