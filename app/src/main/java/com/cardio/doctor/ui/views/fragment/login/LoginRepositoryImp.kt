@@ -3,15 +3,16 @@ package com.cardio.doctor.ui.views.fragment.login
 import android.util.Log
 import androidx.annotation.NonNull
 import androidx.lifecycle.MutableLiveData
-import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.domain.login.LoginRepositary
 import com.cardio.doctor.network.Resource
+import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.ui.common.utils.FireStoreCollection
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey
 import com.cardio.doctor.ui.common.utils.firebaseQuery
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.SignInMethodQueryResult
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.storage.StorageReference
@@ -49,12 +50,17 @@ class LoginRepositoryImp @Inject constructor(
         }, errorLiveData
     )
 
-    /* suspend fun loginUser(loginRequest: LoginRequest): Response<UserAuthenticationResponse>
-     =apiService.userLogin(loginRequest)*/
 
-    suspend fun isEmailExist(){
+    override suspend fun isEmailExist(
+        email: String,
+        errorLiveData: MutableLiveData<Resource<Exception>>,
+    ) = firebaseQuery<SignInMethodQueryResult, Boolean>(
+        operation = { firebaseAuth.fetchSignInMethodsForEmail(email) },
+        parse = { result ->
+            return@firebaseQuery result.signInMethods?.size ?: 0 > 0
+        }, errorLiveData
+    )
 
-    }
 
     override suspend fun isPhoneNumberExist(
             phoneNumber: String,

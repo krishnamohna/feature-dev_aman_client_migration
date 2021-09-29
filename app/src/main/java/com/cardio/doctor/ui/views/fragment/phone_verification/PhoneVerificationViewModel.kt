@@ -4,13 +4,13 @@ import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.cardio.doctor.AppCardioPatient
 import com.cardio.doctor.R
-import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
 import com.cardio.doctor.data.local.UserManager
-import com.cardio.doctor.model.request.PhoneVerificationDetails
+import com.cardio.doctor.domain.login.request.PhoneVerificationDetails
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.api.Constants
+import com.cardio.doctor.ui.AppCardioPatient
+import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey.Companion.COUNTRY_CODE
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey.Companion.EMAIL
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey.Companion.FIRST_NAME

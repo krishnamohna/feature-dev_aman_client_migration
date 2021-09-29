@@ -1,4 +1,4 @@
-package com.cardio.doctor.model
+package com.cardio.doctor.domain.tutorial
 
 data class TutorialModel(
     var listOfImages: ArrayList<Int>,

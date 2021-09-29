@@ -1,7 +1,7 @@
 package com.cardio.doctor.di
 
 import android.content.Context
-import com.cardio.doctor.AppCardioPatient
+import com.cardio.doctor.ui.AppCardioPatient
 import com.cardio.doctor.BuildConfig
 import com.cardio.doctor.data.local.SharedPreferences
 import com.cardio.doctor.data.local.UserManager

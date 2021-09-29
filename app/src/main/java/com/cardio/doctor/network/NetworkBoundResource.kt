@@ -2,7 +2,7 @@ package com.cardio.doctor.network
 
 import android.util.Log
 import com.cardio.doctor.R
-import com.cardio.doctor.model.BaseResponse
+import com.cardio.doctor.domain.common.model.BaseResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.flow.flow

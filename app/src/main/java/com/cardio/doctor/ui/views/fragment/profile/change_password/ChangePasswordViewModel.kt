@@ -4,15 +4,15 @@ import android.app.Application
 import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.cardio.doctor.AppCardioPatient
 import com.cardio.doctor.R
-import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.network.api.Constants.Companion.CHANGE_PASSWORD
-import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
 import com.cardio.doctor.data.local.UserManager
-import com.cardio.doctor.model.ValidationModel
+import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
+import com.cardio.doctor.network.api.Constants
+import com.cardio.doctor.network.api.Constants.Companion.CHANGE_PASSWORD
+import com.cardio.doctor.ui.AppCardioPatient
+import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
 import com.cardio.doctor.ui.common.utils.ENUM
 import com.cardio.doctor.ui.common.utils.isMatched
 import com.cardio.doctor.ui.common.utils.isValidPassword
@@ -190,9 +190,11 @@ class ChangePasswordViewModel @Inject constructor(
         status: Status, message: String,
         edtResource: Int, tvResourceId: Int,
     ) {
-        validationChannel.send(ValidationModel(
+        validationChannel.send(
+            ValidationModel(
             edtResource, tvResourceId, status, message
-        ))
+        )
+        )
     }
 
 }

@@ -7,7 +7,7 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.cardio.doctor.R
 import com.cardio.doctor.ui.common.base.activity.BaseActivity
 import com.cardio.doctor.databinding.ActivityTutorialBinding
-import com.cardio.doctor.model.TutorialModel
+import com.cardio.doctor.domain.tutorial.TutorialModel
 import com.cardio.doctor.ui.views.activity.AuthenticateUserActivity
 import com.cardio.doctor.ui.views.activity.tutorial.adapter.SliderAdapter
 import com.cardio.doctor.ui.common.utils.setDoubleClickListener

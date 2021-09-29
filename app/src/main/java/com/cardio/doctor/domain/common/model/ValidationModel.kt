@@ -1,4 +1,4 @@
-package com.cardio.doctor.model
+package com.cardio.doctor.domain.common.model
 
 import com.cardio.doctor.network.Status
 

@@ -1,4 +1,4 @@
-package com.cardio.doctor.model.request
+package com.cardio.doctor.domain.login.request
 
 import android.os.Parcelable
 import com.google.firebase.auth.PhoneAuthProvider

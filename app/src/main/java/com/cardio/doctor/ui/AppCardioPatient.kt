@@ -1,4 +1,4 @@
-package com.cardio.doctor
+package com.cardio.doctor.ui
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

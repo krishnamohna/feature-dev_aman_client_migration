@@ -21,7 +21,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.cardio.doctor.R
 import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentEditProfileBinding
-import com.cardio.doctor.model.ValidationModel
+import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
@@ -337,8 +337,8 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
     }
 
     private fun manageViewVisibility(
-            validationModel: ValidationModel, bgDrawable: Int,
-            tvValidatorVisibility: Int, message: String,
+        validationModel: ValidationModel, bgDrawable: Int,
+        tvValidatorVisibility: Int, message: String,
     ) {
         val editText = binding.root.findViewById(validationModel.edtResourceId) as EditText
         val tvValidator = binding.root.findViewById(validationModel.tvResourceId) as TextView

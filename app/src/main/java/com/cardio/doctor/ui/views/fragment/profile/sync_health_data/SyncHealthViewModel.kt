@@ -1,7 +1,7 @@
 package com.cardio.doctor.ui.views.fragment.profile.sync_health_data
 
 import android.app.Application
-import com.cardio.doctor.AppCardioPatient
+import com.cardio.doctor.ui.AppCardioPatient
 import com.cardio.doctor.R
 import com.cardio.doctor.domain.common.repository.BaseRepository
 import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel

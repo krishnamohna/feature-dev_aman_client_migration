@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.cardio.doctor.databinding.TutorialSlideLayoutBinding
-import com.cardio.doctor.model.TutorialModel
+import com.cardio.doctor.domain.tutorial.TutorialModel
 
 class SliderAdapter(private val theContext: Context, private val tutorialModel: TutorialModel) : PagerAdapter(){
     override fun getCount(): Int {

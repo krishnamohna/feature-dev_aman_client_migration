@@ -59,7 +59,7 @@
         android:label="PhoneNumberVerificationFragment" >
         <argument
             android:name="phoneVerificationDetail"
-            app:argType="com.cardio.doctor.model.request.PhoneVerificationDetails"
+            app:argType="com.cardio.doctor.domain.login.request.PhoneVerificationDetails"
             app:nullable="true" />
         <argument
             android:name="isComingFrom"

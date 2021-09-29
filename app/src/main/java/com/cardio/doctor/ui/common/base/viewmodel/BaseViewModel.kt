@@ -4,12 +4,12 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavDirections
-import com.cardio.doctor.AppCardioPatient
 import com.cardio.doctor.R
-import com.cardio.doctor.network.api.Constants
 import com.cardio.doctor.data.local.UserManager
-import com.cardio.doctor.model.request.PhoneVerificationDetails
+import com.cardio.doctor.domain.login.request.PhoneVerificationDetails
 import com.cardio.doctor.network.Resource
+import com.cardio.doctor.network.api.Constants
+import com.cardio.doctor.ui.AppCardioPatient
 import com.cardio.doctor.ui.common.utils.Preference
 import com.cardio.doctor.ui.common.utils.livedata.SingleLiveEvent
 import com.google.firebase.FirebaseException

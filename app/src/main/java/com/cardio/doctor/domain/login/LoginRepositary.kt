@@ -15,4 +15,9 @@ interface LoginRepositary {
             authCredential: AuthCredential,
             errorLiveData: MutableLiveData<Resource<Exception>>,
     ):AuthCredential?
+
+    suspend fun isEmailExist(
+        email: String,
+        errorLiveData: MutableLiveData<Resource<Exception>>,
+    ):Boolean?
 }

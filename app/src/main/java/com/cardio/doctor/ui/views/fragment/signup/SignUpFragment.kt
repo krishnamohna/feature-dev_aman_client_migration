@@ -23,7 +23,7 @@ import com.cardio.doctor.R
 import com.cardio.doctor.network.api.Constants
 import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentSignUpBinding
-import com.cardio.doctor.model.ValidationModel
+import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.NetworkHelper
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
