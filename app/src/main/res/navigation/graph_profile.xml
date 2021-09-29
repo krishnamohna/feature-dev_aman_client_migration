@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/profileMenuFragment"
-        android:name="com.cardio.doctor.ui.fragment.profile.profile_menu.ProfileMenuFragment"
+        android:name="com.cardio.doctor.ui.views.fragment.profile.profile_menu.ProfileMenuFragment"
         android:label="ProfileMenuFragment">
         <action
             android:id="@+id/profileMenuToGetProfile"
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.cardio.doctor.ui.fragment.profile.setting.SettingFragment"
+        android:name="com.cardio.doctor.ui.views.fragment.profile.setting.SettingFragment"
         android:label="SettingFragment">
         <action
             android:id="@+id/settingToChangePasswordFragment"
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/getProfileFragment"
-        android:name="com.cardio.doctor.ui.fragment.profile.profile.GetProfileFragment"
+        android:name="com.cardio.doctor.ui.views.fragment.profile.profile.GetProfileFragment"
         android:label="GetProfileFragment">
         <action
             android:id="@+id/getProfileToEditProfile"
@@ -63,19 +63,19 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.cardio.doctor.ui.fragment.profile.profile.EditProfileFragment"
+        android:name="com.cardio.doctor.ui.views.fragment.profile.profile.EditProfileFragment"
         android:label="EditProfileFragment" />
     <fragment
         android:id="@+id/syncHealthDataFragment"
-        android:name="com.cardio.doctor.ui.fragment.profile.sync_health_data.SyncHealthDataFragment"
+        android:name="com.cardio.doctor.ui.views.fragment.profile.sync_health_data.SyncHealthDataFragment"
         android:label="SyncHealthDataFragment" />
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="com.cardio.doctor.ui.fragment.profile.change_password.ChangePasswordFragment"
+        android:name="com.cardio.doctor.ui.views.fragment.profile.change_password.ChangePasswordFragment"
         android:label="ChangePasswordFragment" />
     <fragment
         android:id="@+id/webViewFragment"
-        android:name="com.cardio.doctor.ui.fragment.profile.web_view.WebViewFragment"
+        android:name="com.cardio.doctor.ui.views.fragment.profile.web_view.WebViewFragment"
         android:label="WebViewFragment">
         <argument
             android:name="toolBarTitle"

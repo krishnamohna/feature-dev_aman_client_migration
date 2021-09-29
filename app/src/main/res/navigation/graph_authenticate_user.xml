@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.cardio.doctor.ui.fragment.login.LoginFragment"
+        android:name="com.cardio.doctor.ui.views.fragment.login.LoginFragment"
         android:label="LoginFragment" >
         <action
             android:id="@+id/loginToSignUp"
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.cardio.doctor.ui.fragment.signup.SignUpFragment"
+        android:name="com.cardio.doctor.ui.views.fragment.signup.SignUpFragment"
         android:label="SignUpFragment" >
         <action
             android:id="@+id/signup_to_phone_verification"
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/phoneNumberVerificationFragment"
-        android:name="com.cardio.doctor.ui.fragment.phone_verification.PhoneNumberVerificationFragment"
+        android:name="com.cardio.doctor.ui.views.fragment.phone_verification.PhoneNumberVerificationFragment"
         android:label="PhoneNumberVerificationFragment" >
         <argument
             android:name="phoneVerificationDetail"
@@ -78,11 +78,11 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.cardio.doctor.ui.fragment.forgot_password.ForgotPasswordFragment"
+        android:name="com.cardio.doctor.ui.views.fragment.forgot_password.ForgotPasswordFragment"
         android:label="ForgotPasswordFragment" />
     <fragment
         android:id="@+id/webViewFragment"
-        android:name="com.cardio.doctor.ui.fragment.profile.web_view.WebViewFragment"
+        android:name="com.cardio.doctor.ui.views.fragment.profile.web_view.WebViewFragment"
         android:label="WebViewFragment">
         <argument
             android:name="toolBarTitle"

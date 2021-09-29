@@ -23,7 +23,7 @@
         tools:ignore="AllowBackup,LockedOrientationActivity"
         tools:targetApi="m">
 
-        <activity android:name=".ui.activity.splash.SplashActivity"
+        <activity android:name="com.cardio.doctor.ui.views.activity.splash.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,11 +33,11 @@
         </activity>
 
         <activity
-            android:name=".ui.activity.tutorial.TutorialActivity"
+            android:name="com.cardio.doctor.ui.views.activity.tutorial.TutorialActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".ui.activity.AuthenticateUserActivity"
+            android:name="com.cardio.doctor.ui.views.activity.AuthenticateUserActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
           <!--  <intent-filter>
@@ -47,7 +47,7 @@
             </intent-filter>-->
         </activity>
         <activity
-            android:name=".ui.activity.dashboard.DashboardActivity"
+            android:name="com.cardio.doctor.ui.views.activity.dashboard.DashboardActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             />

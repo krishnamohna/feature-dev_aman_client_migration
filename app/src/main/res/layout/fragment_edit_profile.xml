@@ -5,7 +5,7 @@
     <data>
         <variable
             name="userProfileViewModel"
-            type="com.cardio.doctor.ui.fragment.profile.profile.UserProfileViewModel" />
+            type="com.cardio.doctor.ui.views.fragment.profile.profile.UserProfileViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

@@ -1,8 +1,6 @@
 package com.cardio.doctor.network
 
-import com.cardio.doctor.AppCardioPatient
-import com.cardio.doctor.R
-import com.cardio.doctor.api.ApiStatus.Companion.STATUS_200
+import com.cardio.doctor.network.api.ApiStatus.Companion.STATUS_200
 import com.google.firebase.FirebaseNetworkException
 import java.io.Serializable
 import java.lang.Exception
