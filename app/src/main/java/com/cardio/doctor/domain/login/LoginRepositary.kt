@@ -16,12 +16,12 @@ interface LoginRepositary {
     /*
     Sign in with Google with firebase after login success with Google
      */
-    suspend fun signInWithCredential(
+    suspend fun googleSignInWithCredential(
             authCredential: AuthCredential,
             errorLiveData: MutableLiveData<Resource<Exception>>,
     ):String?
 
-    suspend fun isEmailExist(
+    suspend fun isEmailExistForNormalSignUp(
         email: String,
         errorLiveData: MutableLiveData<Resource<Exception>>,
     ):Boolean?
@@ -34,4 +34,6 @@ interface LoginRepositary {
     suspend fun linkGoogleCredentialWithExistingAcc(
             @NonNull credential: AuthCredential, errorLiveData: MutableLiveData<Resource<Exception>>,
     ):Boolean?
+
+    suspend fun isCollectionExist(uuid: String, errorLiveData: MutableLiveData<Resource<Exception>>): Boolean?
 }

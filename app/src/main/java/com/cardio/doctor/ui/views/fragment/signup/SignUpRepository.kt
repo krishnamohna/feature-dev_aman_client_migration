@@ -1,9 +1,9 @@
 package com.cardio.doctor.ui.views.fragment.signup
 
 import androidx.lifecycle.MutableLiveData
-import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.domain.common.repository.BaseRepository
 import com.cardio.doctor.network.Resource
+import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.ui.common.utils.firebaseQuery
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.SignInMethodQueryResult
@@ -34,7 +34,9 @@ class SignUpRepository @Inject constructor(
         email: String,
         errorLiveData: MutableLiveData<Resource<Exception>>,
     ) = firebaseQuery<SignInMethodQueryResult, Boolean>(
-        operation = { firebaseAuth.fetchSignInMethodsForEmail(email) },
+        operation = {
+            firebaseAuth.fetchSignInMethodsForEmail(email)
+                    },
         parse = { result ->
             return@firebaseQuery result.signInMethods?.size ?: 0 > 0
         }, errorLiveData

@@ -27,6 +27,10 @@ open class BaseViewModel @Inject constructor(
      application: Application
 ) : AndroidViewModel(application) {
 
+    val applicationContext:Application by lazy {
+        getApplication<AppCardioPatient>()
+    }
+
     val auth: FirebaseAuth = Firebase.auth
     //protected val db = Firebase.firestoreprivate val
 

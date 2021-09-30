@@ -9,10 +9,8 @@ import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.ui.common.utils.FireStoreCollection
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey
 import com.cardio.doctor.ui.common.utils.firebaseQuery
-import com.google.firebase.auth.AuthCredential
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.SignInMethodQueryResult
+import com.google.firebase.auth.*
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.storage.StorageReference
@@ -21,52 +19,67 @@ import java.util.*
 import javax.inject.Inject
 
 class LoginRepositoryImp @Inject constructor(
-    val firebaseAuth: FirebaseAuth,
-    private val fireStore: FirebaseFirestore,
-    private val storageReference: StorageReference,
-    apiService: ApiService,
-) : LoginRepositary{
+        val firebaseAuth: FirebaseAuth,
+        private val fireStore: FirebaseFirestore,
+        private val storageReference: StorageReference,
+        apiService: ApiService,
+) : LoginRepositary {
 
 
-    override suspend fun signInWithCredential(
-        authCredential: AuthCredential,
-        errorLiveData: MutableLiveData<Resource<Exception>>,
-    ) = firebaseQuery<AuthResult,String?>(
-        operation = {
-            firebaseAuth.signInWithCredential(authCredential)
-        }, parse = {
-            return@firebaseQuery firebaseAuth?.currentUser?.uid
-        }, errorLiveData
+    override suspend fun googleSignInWithCredential(
+            authCredential: AuthCredential,
+            errorLiveData: MutableLiveData<Resource<Exception>>,
+    ) = firebaseQuery<AuthResult, String?>(
+            operation = {
+                firebaseAuth.signInWithCredential(authCredential)
+            }, parse = {
+        return@firebaseQuery firebaseAuth?.currentUser?.uid
+    }, errorLiveData
 
     )
 
 
     override suspend fun linkGoogleCredentialWithExistingAcc(
-        @NonNull credential: AuthCredential, errorLiveData: MutableLiveData<Resource<Exception>>,
+            @NonNull credential: AuthCredential, errorLiveData: MutableLiveData<Resource<Exception>>,
     ) = firebaseQuery<AuthResult?, Boolean>(
-        operation = {
-            firebaseAuth.currentUser?.linkWithCredential(credential)!!
-        }, parse = {
-            Log.d("TAG", "linkGoogleCredentialWithExistingAcc() called ${it.toString()}")
-            return@firebaseQuery it !=null
-        }, errorLiveData
+            operation = {
+                firebaseAuth.currentUser?.linkWithCredential(credential)!!
+            }, parse = {
+        Log.d("TAG", "linkGoogleCredentialWithExistingAcc() called ${it.toString()}")
+        return@firebaseQuery it != null
+    }, errorLiveData
     )
 
+    override suspend fun isCollectionExist(uuid: String, errorLiveData: MutableLiveData<Resource<Exception>>) =
+            firebaseQuery<DocumentSnapshot, Boolean?>(
+                    operation = {
+                        fireStore.collection(FireStoreCollection.USERS).document(uuid ?: "").get()
+                    },
+                    parse = { documentSnapShot ->
+                        return@firebaseQuery documentSnapShot.exists()
+                    }, errorLiveData
+            )
 
-    override suspend fun isEmailExist(
-        email: String,
-        errorLiveData: MutableLiveData<Resource<Exception>>,
+    override suspend fun isEmailExistForNormalSignUp(
+            email: String,
+            errorLiveData: MutableLiveData<Resource<Exception>>,
     ) = firebaseQuery<SignInMethodQueryResult, Boolean>(
-        operation = { firebaseAuth.fetchSignInMethodsForEmail(email) },
-        parse = { result ->
-            return@firebaseQuery result.signInMethods?.size ?: 0 > 0
-        }, errorLiveData
+            operation = { firebaseAuth.fetchSignInMethodsForEmail(email) },
+            parse = { result ->
+                var isExist = false
+                result.signInMethods?.forEach {
+                    if (it == EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD) {
+                        return@firebaseQuery true
+                    }
+                }
+                return@firebaseQuery false
+            }, errorLiveData
     )
 
 
     override suspend fun isPhoneNumberExist(
             phoneNumber: String,
-            errorLiveData: MutableLiveData<Resource<Exception>>
+            errorLiveData: MutableLiveData<Resource<Exception>>,
     ) = firebaseQuery<QuerySnapshot, Boolean>(
             operation = { fireStore.collection(FireStoreCollection.USERS).get() },
             parse = { querySnapshot ->
@@ -86,7 +99,7 @@ class LoginRepositoryImp @Inject constructor(
             hashMap: HashMap<String, Any?>,
     ): Boolean {
         return try {
-            val userId= firebaseAuth.currentUser?.uid
+            val userId = firebaseAuth.currentUser?.uid
             fireStore.collection(FireStoreCollection.USERS)
                     .document(userId ?: "")
                     .set(hashMap)

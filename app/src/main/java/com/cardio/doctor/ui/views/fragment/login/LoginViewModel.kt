@@ -185,28 +185,34 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 task?.result?.email?.let {
-                    var isExist = loginRepository.isEmailExist(it, _firebaseException)
-                    if (isExist == null || isExist)
+                    //check if user is already signed up with normal account
+                    var isExist = loginRepository.isEmailExistForNormalSignUp(it, _firebaseException)
+                    if (isExist == null || isExist) {
                         _loginApiResponse.value = Resource.error(Constants.VALIDATION, 0,
-                                "Email address already exists !!", null)
-                    else {
-                        //if email address does not exist then check if account is already exists
-                        val account = task?.getResult(ApiException::class.java)!!
-                        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-                        val uuid =
-                                loginRepository.signInWithCredential(credential,_firebaseException)
-                        //save data to collections
-                        uuid.let {
-                            if (it != null) {
-                                var userModel=account.toUserModel()
-                                userModel.uid=it
-                                if (storeUserDetailInFireStore(userModel))
-                                    _loginApiResponse.value = Resource.success(Constants.LOGIN, null)
-                                else
-                                    throw Exception(getApplication<AppCardioPatient>().getString(R.string.unable_to_save_values_to_database))
-                            }else
-                                throw Exception(getApplication<AppCardioPatient>().getString(R.string.unable_to_create_google_account))
-                        }
+                                applicationContext.getString(R.string.err_email_exist), null)
+                        return@launch
+                    }
+                    //Login with Google now
+                    val account = task?.getResult(ApiException::class.java)!!
+                    val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                    val uuid = loginRepository.googleSignInWithCredential(credential, _firebaseException)
+                    uuid.let {
+                        if (it != null) {
+                            //check if collection already exists
+                            var isCollectionExist = loginRepository.isCollectionExist(it,_firebaseException)
+                            isCollectionExist?.let {
+                                _loginApiResponse.value = Resource.success(Constants.LOGIN, null)
+                                return@launch
+                            }
+                            //save data to collections
+                            var userModel = account.toUserModel()
+                            userModel.uid = it
+                            if (storeUserDetailInFireStore(userModel))
+                                _loginApiResponse.value = Resource.success(Constants.LOGIN, null)
+                            else
+                                throw Exception(applicationContext.getString(R.string.unable_to_save_values_to_database))
+                        } else
+                            throw Exception(applicationContext.getString(R.string.unable_to_create_google_account))
                     }
                 }
             } catch (e: Exception) {
@@ -235,7 +241,7 @@ class LoginViewModel @Inject constructor(
     }
 
     private suspend fun storeUserDetailInFireStore(
-            user: UserModel
+            user: UserModel,
     ): Boolean {
         user.let {
             val user: HashMap<String, Any?> =
