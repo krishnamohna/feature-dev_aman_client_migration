@@ -185,6 +185,7 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 task?.result?.email?.let {
+                    _loginApiResponse.postValue(Resource.loading(Constants.LOGIN, null))
                     //check if user is already signed up with normal account
                     var isExist = loginRepository.isEmailExistForNormalSignUp(it, _firebaseException)
                     if (isExist == null || isExist) {
@@ -201,8 +202,11 @@ class LoginViewModel @Inject constructor(
                             //check if collection already exists
                             var isCollectionExist = loginRepository.isCollectionExist(it,_firebaseException)
                             isCollectionExist?.let {
-                                _loginApiResponse.value = Resource.success(Constants.LOGIN, null)
-                                return@launch
+                                if(isCollectionExist) {
+                                    _loginApiResponse.value =
+                                        Resource.success(Constants.LOGIN, null)
+                                    return@launch
+                                }
                             }
                             //save data to collections
                             var userModel = account.toUserModel()

@@ -6,6 +6,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 
 
 fun GoogleSignInAccount.toUserModel(): UserModel {
-    return UserModel("",displayName,null,null,null,email,null,UserType.GOOGLE)
+    return UserModel("","",null,null,null,email,null,UserType.GOOGLE)
 }
 
