@@ -6,15 +6,16 @@ import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.cardio.doctor.ui.AppCardioPatient
 import com.cardio.doctor.R
-import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
 import com.cardio.doctor.data.local.UserManager
+import com.cardio.doctor.domain.common.model.UserType
 import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.NetworkHelper
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
+import com.cardio.doctor.network.api.Constants
+import com.cardio.doctor.ui.AppCardioPatient
+import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
 import com.cardio.doctor.ui.common.utils.*
 import com.cardio.doctor.ui.common.utils.livedata.SingleLiveEvent
 import com.google.firebase.firestore.DocumentSnapshot
@@ -117,7 +118,7 @@ class UserProfileViewModel @Inject constructor(
 
     suspend fun validateFields(
             firstName: String, lastName: String, email: String, countryCode: String,
-            phoneNumber: String, dob: String, height: String, heartRate: String, selectedImageUri: Uri?, fileName: String?,
+            phoneNumber: String, dob: String, height: String, heartRate: String, selectedImageUri: Uri?, fileName: String?, userType: String?,
     ) {
 
         val context = getApplication<AppCardioPatient>()
@@ -176,37 +177,43 @@ class UserProfileViewModel @Inject constructor(
             }
         }
 
-        val isValidPhoneNumber = when {
-            phoneNumber.isEmpty() -> {
-                queueValidationRequest(Status.ERROR,
-                        context.getString(R.string.enter_valid_mobile),
-                        R.id.edtPhoneNumber, R.id.tvPhoneNoError)
-                false
-            }
-            !isValidMobileNumber(phoneNumber) -> {
-                queueValidationRequest(Status.ERROR,
-                        context.getString(R.string.err_valid_phone_number),
-                        R.id.edtPhoneNumber, R.id.tvPhoneNoError)
-                false
-            }
-            else -> {
-                queueValidationRequest(Status.SUCCESS, "",
-                        R.id.edtPhoneNumber, R.id.tvPhoneNoError)
-                true
+        //skip phone validation if user type is Google
+        var isValidPhoneNumber=false
+        if(userType!=null || userType==UserType.GOOGLE.name){
+            isValidPhoneNumber=true
+        }else{
+             isValidPhoneNumber= when {
+                phoneNumber.isEmpty() -> {
+                    queueValidationRequest(Status.ERROR,
+                            context.getString(R.string.enter_valid_mobile),
+                            R.id.edtPhoneNumber, R.id.tvPhoneNoError)
+                    false
+                }
+                !isValidMobileNumber(phoneNumber) -> {
+                    queueValidationRequest(Status.ERROR,
+                            context.getString(R.string.err_valid_phone_number),
+                            R.id.edtPhoneNumber, R.id.tvPhoneNoError)
+                    false
+                }
+                else -> {
+                    queueValidationRequest(Status.SUCCESS, "",
+                            R.id.edtPhoneNumber, R.id.tvPhoneNoError)
+                    true
+                }
             }
         }
 
         if (isValidFirstName && isValidLastName && isValidEmail && isValidPhoneNumber) {
             updateUserDetailOnFireStore(firstName,
                     lastName, email, countryCode, phoneNumber,
-                    dob, height, heartRate, selectedImageUri, fileName)
+                    dob, height, heartRate, selectedImageUri, fileName,userType)
         }
     }
 
     private fun updateUserDetailOnFireStore(
             firstName: String, lastName: String, email: String,
             countryCode: String, phoneNumber: String, dob: String,
-            height: String, heartRate: String, selectedImageUri: Uri?, fileName: String?,
+            height: String, heartRate: String, selectedImageUri: Uri?, fileName: String?, userType: String?,
     ) {
         try {
             val context = getApplication<AppCardioPatient>()
@@ -230,7 +237,7 @@ class UserProfileViewModel @Inject constructor(
                     firebaseUri?.let { imagePath = it.toString() }
                     // save all user info now
                     repository.firebaseAuth.currentUser?.let {
-                        val user: HashMap<String, Any> =
+                        val user: HashMap<String, Any?> =
                                 hashMapOf(
                                         FireStoreDocKey.USER_ID to repository.firebaseAuth.currentUser?.uid!!,
                                         FireStoreDocKey.FIRST_NAME to firstName,
@@ -242,7 +249,8 @@ class UserProfileViewModel @Inject constructor(
                                         FireStoreDocKey.DOB to dob,
                                         FireStoreDocKey.HEIGHT to height,
                                         FireStoreDocKey.WEIGHT to heartRate,
-                                        FireStoreDocKey.IMAGE_URL to imagePath
+                                        FireStoreDocKey.IMAGE_URL to imagePath,
+                                        FireStoreDocKey.SIGN_UP_TYPE to userType
                                 )
 
                         if (auth.currentUser == null) {

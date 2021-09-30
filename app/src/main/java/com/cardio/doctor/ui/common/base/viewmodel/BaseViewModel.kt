@@ -24,7 +24,7 @@ import javax.inject.Inject
 @HiltViewModel
 open class BaseViewModel @Inject constructor(
     protected val userManager: UserManager,
-    application: Application
+     application: Application
 ) : AndroidViewModel(application) {
 
     val auth: FirebaseAuth = Firebase.auth

@@ -49,6 +49,8 @@
                 android:layout_marginTop="@dimen/_3sdp"
                 android:fontFamily="@font/nunito_semibold"
                 android:textColor="@color/black"
+                android:visibility="invisible"
+                tools:visibility="invisible"
                 android:textSize="@dimen/_11ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"

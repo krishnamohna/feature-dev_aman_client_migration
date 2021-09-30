@@ -3,7 +3,6 @@ package com.cardio.doctor.network
 import com.cardio.doctor.network.api.ApiStatus.Companion.STATUS_200
 import com.google.firebase.FirebaseNetworkException
 import java.io.Serializable
-import java.lang.Exception
 
 data class Resource<out T>(val apiConstant: String?, val apiCode :Int, val status: Status, val data: T?,
                            var message: String?, val resourceId: Int?,val exception: Exception ?=null) : Serializable {
@@ -21,7 +20,7 @@ data class Resource<out T>(val apiConstant: String?, val apiCode :Int, val statu
                     return Resource(apiConstant, errorCode, Status.ERROR, data, msg, 0)
                 }
                 in 400..499 -> {
-                   // val message = "User unauthorized"
+                   // val message = "UserModel unauthorized"
                     return Resource(apiConstant, errorCode, Status.ERROR, data, msg, 0)
                 }
                 in 500..600 -> {

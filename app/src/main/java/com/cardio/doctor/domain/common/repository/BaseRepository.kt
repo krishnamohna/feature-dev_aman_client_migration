@@ -2,8 +2,8 @@ package com.cardio.doctor.domain.common.repository
 
 import android.net.Uri
 import androidx.lifecycle.MutableLiveData
-import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.network.Resource
+import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.ui.common.utils.FireStoreCollection
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey
 import com.cardio.doctor.ui.common.utils.firebaseDocumentQuery
@@ -73,22 +73,4 @@ open class BaseRepository @Inject constructor(
         },
         errorLiveData = errorLiveData
     )
-
-
-
-
-    /*val credential = EmailAuthProvider.getCredential(auth.currentUser?.email ?: "", oldPass)
-    auth.currentUser?.reauthenticate(credential)?.addOnCompleteListener {
-        if (it.isSuccessful) {
-            auth.currentUser?.updatePassword(newPass)?.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    _changePasswordResponse.value = Resource.success(Constants.CHANGE_PASSWORD, true)
-                } else {
-                    Log.d("TAG", "Error password not updated")
-                }
-            }
-        } else {
-            Log.d("TAG", "Error auth failed")
-        }
-    }*/
 }

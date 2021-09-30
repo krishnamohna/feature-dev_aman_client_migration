@@ -70,7 +70,7 @@ class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickList
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                viewModel.getGoogleSignedAccount(task)
+                viewModel.onGoogleSignIn(task)
             }
         }
 

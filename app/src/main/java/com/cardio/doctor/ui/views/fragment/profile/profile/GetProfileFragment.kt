@@ -8,11 +8,11 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.cardio.doctor.R
-import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentGetProfileBinding
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
+import com.cardio.doctor.network.api.Constants
+import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
@@ -108,8 +108,9 @@ class GetProfileFragment :  AppBaseFragment(R.layout.fragment_get_profile), View
             val userName = firstName?.plus(" ").plus(lastName ?: "")
             binding.txtUserName.text = userName
             binding.txtEmailAddress.text = email ?: ""
-            binding.txtPhoneNumber.text = countryCode?.plus(" ").plus(phoneNumber)
-
+            phoneNumber?.let {
+                binding.txtPhoneNumber.text = countryCode?:"".plus(" ").plus(phoneNumber)
+            }
             if(gender.isNullOrEmpty()){
                 gender = "NA"
             }else if(gender.equals(getString(R.string.select_gender),true)){

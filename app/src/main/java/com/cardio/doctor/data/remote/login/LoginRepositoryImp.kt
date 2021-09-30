@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.login
+package com.cardio.doctor.data.remote.login
 
 import android.util.Log
 import androidx.annotation.NonNull
@@ -16,6 +16,8 @@ import com.google.firebase.auth.SignInMethodQueryResult
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.storage.StorageReference
+import kotlinx.coroutines.tasks.await
+import java.util.*
 import javax.inject.Inject
 
 class LoginRepositoryImp @Inject constructor(
@@ -29,17 +31,17 @@ class LoginRepositoryImp @Inject constructor(
     override suspend fun signInWithCredential(
         authCredential: AuthCredential,
         errorLiveData: MutableLiveData<Resource<Exception>>,
-    ) = firebaseQuery<AuthResult,AuthCredential>(
+    ) = firebaseQuery<AuthResult,String?>(
         operation = {
             firebaseAuth.signInWithCredential(authCredential)
         }, parse = {
-            return@firebaseQuery it.credential!!
+            return@firebaseQuery firebaseAuth?.currentUser?.uid
         }, errorLiveData
 
     )
 
 
-    suspend fun linkGoogleCredentialWithExistingAcc(
+    override suspend fun linkGoogleCredentialWithExistingAcc(
         @NonNull credential: AuthCredential, errorLiveData: MutableLiveData<Resource<Exception>>,
     ) = firebaseQuery<AuthResult?, Boolean>(
         operation = {
@@ -79,6 +81,21 @@ class LoginRepositoryImp @Inject constructor(
     )
 
 
+    override suspend fun storeUserDataInFireStore(
+            childName: String,
+            hashMap: HashMap<String, Any?>,
+    ): Boolean {
+        return try {
+            val userId= firebaseAuth.currentUser?.uid
+            fireStore.collection(FireStoreCollection.USERS)
+                    .document(userId ?: "")
+                    .set(hashMap)
+                    .await()
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
 
 }
 

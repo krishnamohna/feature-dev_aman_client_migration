@@ -10,6 +10,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.view.View.GONE
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,12 +20,13 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.cardio.doctor.R
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentEditProfileBinding
+import com.cardio.doctor.domain.common.model.UserType
 import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
+import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.ui.common.utils.*
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
 import com.google.firebase.firestore.DocumentSnapshot
@@ -39,6 +41,7 @@ import java.util.*
 @AndroidEntryPoint
 class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), View.OnClickListener {
 
+    private var userType: String? = null
     private var selectedImageUri: Uri? = null
     private val binding by viewBinding(FragmentEditProfileBinding::bind)
     private val viewModel: UserProfileViewModel by viewModels()
@@ -145,7 +148,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
                             selectedImageUri,
                             selectedImageUri?.let {
                                 getFileName(requireContext(), it)
-                            }
+                            },userType
 
                     )
                 }
@@ -177,7 +180,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
                         val gender = apiResponse.data as String
                         binding.txtTitleGender.visibility =
                                 if (gender.equals(getString(R.string.select_gender), true)) {
-                                    View.GONE
+                                    GONE
                                 } else View.VISIBLE
                     }
 
@@ -227,6 +230,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
             val heartRate = documentReference.data?.get(FireStoreDocKey.WEIGHT) as String?
             val genderList = resources.getStringArray(R.array.gender_list).toList()
             val imageUrl = documentReference.data?.get(FireStoreDocKey.IMAGE_URL) as String?
+            userType= documentReference.data?.get(FireStoreDocKey.SIGN_UP_TYPE) as String?
 
             if (!imageUrl.isNullOrEmpty()) {
                 viewModel.firebaseUri = imageUrl.convertIntoUri()
@@ -249,13 +253,17 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
                             false)
             ) {
                 binding.spinnerCategory.setSelection(genderList.indexOf(gender))
-                //View.VISIBLE
-            } //else View.GONE
-
+            }
             binding.edtDob.setText(dob ?: "")
             binding.edtHeight.setText(height ?: "")
             binding.edtWeight.setText(heartRate ?: "")
-
+            userType?.let {
+                binding.phoneNumberContainer.visibility = if (it==UserType.GOOGLE.name){
+                    View.GONE
+                } else{
+                    View.VISIBLE
+                }
+            }
         }
     }
 
@@ -263,7 +271,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
             TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            errorTxt.visibility = View.GONE
+            errorTxt.visibility = GONE
             if (view == binding.edtPhoneNumber) {
                 binding.phoneNumberContainer.setBackgroundResource(R.drawable.edt_rounded_corner)
             } else view.setBackgroundResource(R.drawable.edt_rounded_corner)
@@ -329,7 +337,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
 
     private fun manageViewsForValidation(validationModel: ValidationModel) {
         if (validationModel.status == Status.SUCCESS) {
-            manageViewVisibility(validationModel, R.drawable.edt_rounded_corner, View.GONE, "")
+            manageViewVisibility(validationModel, R.drawable.edt_rounded_corner, GONE, "")
         } else if (validationModel.status == Status.ERROR) {
             manageViewVisibility(validationModel, R.drawable.edt_rounded_corner_red, View.VISIBLE,
                     validationModel.message)

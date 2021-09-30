@@ -1,7 +1,7 @@
 package com.cardio.doctor.di
 
+import com.cardio.doctor.data.remote.login.LoginRepositoryImp
 import com.cardio.doctor.domain.login.LoginRepositary
-import com.cardio.doctor.ui.views.fragment.login.LoginRepositoryImp
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

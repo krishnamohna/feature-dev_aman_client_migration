@@ -72,6 +72,7 @@ interface FireStoreDocKey{
         const val COUNTRY_CODE = "countryCode"
         const val PHONE_NUMBER = "phoneNumber"
         const val DOB = "dob"
+        const val SIGN_UP_TYPE="signupType"
         const val GENDER = "gender"
         const val HEIGHT = "height"
         const val WEIGHT = "weight"
