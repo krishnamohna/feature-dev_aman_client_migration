@@ -42,8 +42,14 @@ interface Constants{
         const val USER_GENDER = "UserGender"
         const val EDIT_PROFILE = "EditProfile"
         const val CHANGE_PASSWORD = "ChangePassword"
-
+        const val CHANGE_EMAIL = "Change_email"
+        const val EMAIL_SEND_VERIFICATION = "email_send_verification"
     }
+
+}
+
+object EXTRAS{
+    const val NEW_EMAIL_ADDRESS= "new_email_address"
 }
 
 

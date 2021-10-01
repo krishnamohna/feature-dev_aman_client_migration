@@ -36,22 +36,26 @@ class UserProfileViewModel @Inject constructor(
 
     private val _userDetailDocument = SingleLiveEvent<Resource<DocumentSnapshot>>()
     val userDetailDocument: LiveData<Resource<DocumentSnapshot>> =
-            _userDetailDocument
+        _userDetailDocument
+
+    private val _send_email_verification = SingleLiveEvent<Resource<String>>()
+    val live_data_send_email_verification: LiveData<Resource<String>> =
+        _send_email_verification
 
     private val _uploadUserProfilePic = SingleLiveEvent<Resource<Uri>>()
     val uploadUserProfilePic: LiveData<Resource<Uri>> =
-            _uploadUserProfilePic
+        _uploadUserProfilePic
 
     private val _getUserProfilePic = SingleLiveEvent<Resource<Uri>>()
     val getUserProfilePic: LiveData<Resource<Uri>> =
-            _getUserProfilePic
+        _getUserProfilePic
 
     private val _userGender = SingleLiveEvent<Resource<String>>()
     val userGender: LiveData<Resource<String>> = _userGender
 
     private val _editProfileResponse = SingleLiveEvent<Resource<String>>()
     val editProfileResponse: LiveData<Resource<String>> =
-            _editProfileResponse
+        _editProfileResponse
 
     private var gender: String = ""
     var firebaseUri: Uri? = null
@@ -60,16 +64,19 @@ class UserProfileViewModel @Inject constructor(
 
     fun getUserDetail() {
         try {
-            _userDetailDocument.value = Resource.loading(Constants.USER_DETAIL, null)
+            _userDetailDocument.postValue(Resource.loading(Constants.USER_DETAIL, null))
             viewModelScope.launch {
-                val userDeferred = async { repository.fetchUserDetail(_firebaseException) }
-                val userDetail = userDeferred.await()
-                _userDetailDocument.value = Resource.success(Constants.USER_DETAIL, userDetail)
+                var userDetail = repository.fetchUserDetail(_firebaseException)
+                _userDetailDocument.postValue(Resource.success(Constants.USER_DETAIL, userDetail))
             }
         } catch (e: Exception) {
             _userDetailDocument.value =
-                    Resource.error(Constants.USER_DETAIL, 0, getExceptionMessage(e), null)
+                Resource.error(Constants.USER_DETAIL, 0, getExceptionMessage(e), null)
         }
+    }
+
+    fun isEmailVerified(): Boolean? {
+        return repository.isEmailVerified()
     }
 
     fun uploadProfileImage(deviceUri: Uri?, fileName: String) {
@@ -78,16 +85,16 @@ class UserProfileViewModel @Inject constructor(
             viewModelScope.launch {
                 val firebaseUriDeferred = async {
                     repository.uploadImageOnFirebaseStorage(
-                            deviceUri, fileName, _firebaseException
+                        deviceUri, fileName, _firebaseException
                     )
                 }
                 val firebaseUri = firebaseUriDeferred.await()
                 _uploadUserProfilePic.value =
-                        Resource.success(Constants.UPLOAD_PROFILE_PIC, firebaseUri)
+                    Resource.success(Constants.UPLOAD_PROFILE_PIC, firebaseUri)
             }
         } catch (e: Exception) {
             _userDetailDocument.value =
-                    Resource.error(Constants.USER_PROFILE_PIC, 0, getExceptionMessage(e), null)
+                Resource.error(Constants.USER_PROFILE_PIC, 0, getExceptionMessage(e), null)
         }
     }
 
@@ -99,15 +106,15 @@ class UserProfileViewModel @Inject constructor(
                 val firebaseUri = firebaseUriDeferred.await()
                 if (firebaseUri != null) {
                     _getUserProfilePic.value =
-                            Resource.success(Constants.USER_PROFILE_PIC, firebaseUri)
+                        Resource.success(Constants.USER_PROFILE_PIC, firebaseUri)
                 } else {
                     _userDetailDocument.value =
-                            Resource.error(Constants.USER_PROFILE_PIC, 0, "", null)
+                        Resource.error(Constants.USER_PROFILE_PIC, 0, "", null)
                 }
             }
         } catch (e: Exception) {
             _userDetailDocument.value =
-                    Resource.error(Constants.USER_PROFILE_PIC, 0, getExceptionMessage(e), null)
+                Resource.error(Constants.USER_PROFILE_PIC, 0, getExceptionMessage(e), null)
         }
     }
 
@@ -117,110 +124,172 @@ class UserProfileViewModel @Inject constructor(
     }
 
     suspend fun validateFields(
-            firstName: String, lastName: String, email: String, countryCode: String,
-            phoneNumber: String, dob: String, height: String, heartRate: String, selectedImageUri: Uri?, fileName: String?, userType: String?,
+        firstName: String,
+        lastName: String,
+        email: String,
+        countryCode: String,
+        phoneNumber: String,
+        dob: String,
+        height: String,
+        heartRate: String,
+        selectedImageUri: Uri?,
+        fileName: String?,
+        userType: String?,
+        isEmailEdited: (newEmail:String) -> Unit,
     ) {
 
         val context = getApplication<AppCardioPatient>()
 
         val isValidFirstName = when {
             firstName.isEmpty() -> {
-                queueValidationRequest(Status.ERROR,
-                        context.getString(R.string.enter_first_name),
-                        R.id.edtFirstName, R.id.tvFirstNameError)
+                queueValidationRequest(
+                    Status.ERROR,
+                    context.getString(R.string.enter_first_name),
+                    R.id.edtFirstName, R.id.tvFirstNameError
+                )
                 false
             }
             firstName.length < ENUM.INT_3 -> {
-                queueValidationRequest(Status.ERROR,
-                        context.getString(R.string.enter_valid_first_name),
-                        R.id.edtFirstName, R.id.tvFirstNameError)
+                queueValidationRequest(
+                    Status.ERROR,
+                    context.getString(R.string.enter_valid_first_name),
+                    R.id.edtFirstName, R.id.tvFirstNameError
+                )
                 false
             }
             else -> {
-                queueValidationRequest(Status.SUCCESS, "",
-                        R.id.edtFirstName, R.id.tvFirstNameError)
+                queueValidationRequest(
+                    Status.SUCCESS, "",
+                    R.id.edtFirstName, R.id.tvFirstNameError
+                )
                 true
             }
         }
 
         val isValidLastName = when {
             lastName.isNotEmpty() && lastName.length < ENUM.INT_3 -> {
-                queueValidationRequest(Status.ERROR,
-                        context.getString(R.string.enter_valid_last_name),
-                        R.id.edtLastName, R.id.tvLastName)
+                queueValidationRequest(
+                    Status.ERROR,
+                    context.getString(R.string.enter_valid_last_name),
+                    R.id.edtLastName, R.id.tvLastName
+                )
                 false
             }
             else -> {
-                queueValidationRequest(Status.SUCCESS, "",
-                        R.id.edtLastName, R.id.tvLastName)
+                queueValidationRequest(
+                    Status.SUCCESS, "",
+                    R.id.edtLastName, R.id.tvLastName
+                )
                 true
             }
         }
 
         val isValidEmail = when {
             email.isEmpty() -> {
-                queueValidationRequest(Status.ERROR,
-                        context.getString(R.string.enter_email_address),
-                        R.id.edtEmailId, R.id.tvEmailError)
+                queueValidationRequest(
+                    Status.ERROR,
+                    context.getString(R.string.enter_email_address),
+                    R.id.edtEmailId, R.id.tvEmailError
+                )
                 false
             }
             !isValidEmail(email) -> {
-                queueValidationRequest(Status.ERROR,
-                        context.getString(R.string.err_valid_email),
-                        R.id.edtEmailId, R.id.tvEmailError)
+                queueValidationRequest(
+                    Status.ERROR,
+                    context.getString(R.string.err_valid_email),
+                    R.id.edtEmailId, R.id.tvEmailError
+                )
                 false
             }
             else -> {
-                queueValidationRequest(Status.SUCCESS, "",
-                        R.id.edtEmailId, R.id.tvEmailError)
+                queueValidationRequest(
+                    Status.SUCCESS, "",
+                    R.id.edtEmailId, R.id.tvEmailError
+                )
                 true
             }
         }
 
         //skip phone validation if user type is Google
-        var isValidPhoneNumber=false
-        if(userType!=null || userType==UserType.GOOGLE.name){
-            isValidPhoneNumber=true
-        }else{
-             isValidPhoneNumber= when {
+        var isValidPhoneNumber = false
+        if (userType != null || userType == UserType.GOOGLE.name) {
+            isValidPhoneNumber = true
+        } else {
+            isValidPhoneNumber = when {
                 phoneNumber.isEmpty() -> {
-                    queueValidationRequest(Status.ERROR,
-                            context.getString(R.string.enter_valid_mobile),
-                            R.id.edtPhoneNumber, R.id.tvPhoneNoError)
+                    queueValidationRequest(
+                        Status.ERROR,
+                        context.getString(R.string.enter_valid_mobile),
+                        R.id.edtPhoneNumber, R.id.tvPhoneNoError
+                    )
                     false
                 }
                 !isValidMobileNumber(phoneNumber) -> {
-                    queueValidationRequest(Status.ERROR,
-                            context.getString(R.string.err_valid_phone_number),
-                            R.id.edtPhoneNumber, R.id.tvPhoneNoError)
+                    queueValidationRequest(
+                        Status.ERROR,
+                        context.getString(R.string.err_valid_phone_number),
+                        R.id.edtPhoneNumber, R.id.tvPhoneNoError
+                    )
                     false
                 }
                 else -> {
-                    queueValidationRequest(Status.SUCCESS, "",
-                            R.id.edtPhoneNumber, R.id.tvPhoneNoError)
+                    queueValidationRequest(
+                        Status.SUCCESS, "",
+                        R.id.edtPhoneNumber, R.id.tvPhoneNoError
+                    )
                     true
                 }
             }
         }
 
         if (isValidFirstName && isValidLastName && isValidEmail && isValidPhoneNumber) {
-            updateUserDetailOnFireStore(firstName,
+            //check if email was edited
+            if(repository.isEmailEdited(email)){
+                //check if new email addresss already exist
+                viewModelScope.launch {
+                    var emailExist=repository.isEmailAlreadyExist(email,_firebaseException)
+                    emailExist?.let {
+                        if(emailExist){
+                            queueValidationRequest(
+                                Status.ERROR,
+                                context.getString(R.string.err_email_exist),
+                                R.id.edtEmailId, R.id.tvEmailError
+                            )
+                        }else {
+                            isEmailEdited.invoke(email)
+                        }
+                    }
+                }
+            }else {
+                updateUserDetailOnFireStore(
+                    firstName,
                     lastName, email, countryCode, phoneNumber,
-                    dob, height, heartRate, selectedImageUri, fileName,userType)
+                    dob, height, heartRate, selectedImageUri, fileName, userType
+                )
+            }
         }
     }
 
-    private fun updateUserDetailOnFireStore(
-            firstName: String, lastName: String, email: String,
-            countryCode: String, phoneNumber: String, dob: String,
-            height: String, heartRate: String, selectedImageUri: Uri?, fileName: String?, userType: String?,
+     fun updateUserDetailOnFireStore(
+        firstName: String,
+        lastName: String,
+        email: String,
+        countryCode: String,
+        phoneNumber: String,
+        dob: String,
+        height: String,
+        heartRate: String,
+        selectedImageUri: Uri?,
+        fileName: String?,
+        userType: String?,
     ) {
         try {
             val context = getApplication<AppCardioPatient>()
             if (!networkHelper.isNetworkConnected())
                 _editProfileResponse.value = Resource.error(
-                        Constants.EDIT_PROFILE, 0,
-                        context.getString(R.string.err_no_network_available), null)
+                    Constants.EDIT_PROFILE, 0,
+                    context.getString(R.string.err_no_network_available), null
+                )
             else {
                 _editProfileResponse.value = Resource.loading(Constants.EDIT_PROFILE, null)
                 viewModelScope.launch {
@@ -228,7 +297,7 @@ class UserProfileViewModel @Inject constructor(
                     selectedImageUri?.let {
                         firebaseUri = withContext(Dispatchers.IO) {
                             repository.uploadImageOnFirebaseStorage(
-                                    selectedImageUri, fileName!!, _firebaseException
+                                selectedImageUri, fileName!!, _firebaseException
                             )
                         }
                     }
@@ -238,37 +307,44 @@ class UserProfileViewModel @Inject constructor(
                     // save all user info now
                     repository.firebaseAuth.currentUser?.let {
                         val user: HashMap<String, Any?> =
-                                hashMapOf(
-                                        FireStoreDocKey.USER_ID to repository.firebaseAuth.currentUser?.uid!!,
-                                        FireStoreDocKey.FIRST_NAME to firstName,
-                                        FireStoreDocKey.LAST_NAME to lastName,
-                                        FireStoreDocKey.EMAIL to email,
-                                        FireStoreDocKey.COUNTRY_CODE to countryCode,
-                                        FireStoreDocKey.PHONE_NUMBER to phoneNumber,
-                                        FireStoreDocKey.GENDER to gender,
-                                        FireStoreDocKey.DOB to dob,
-                                        FireStoreDocKey.HEIGHT to height,
-                                        FireStoreDocKey.WEIGHT to heartRate,
-                                        FireStoreDocKey.IMAGE_URL to imagePath,
-                                        FireStoreDocKey.SIGN_UP_TYPE to userType
-                                )
+                            hashMapOf(
+                                FireStoreDocKey.USER_ID to repository.firebaseAuth.currentUser?.uid!!,
+                                FireStoreDocKey.FIRST_NAME to firstName,
+                                FireStoreDocKey.LAST_NAME to lastName,
+                                FireStoreDocKey.EMAIL to email,
+                                FireStoreDocKey.COUNTRY_CODE to countryCode,
+                                FireStoreDocKey.PHONE_NUMBER to phoneNumber,
+                                FireStoreDocKey.GENDER to gender,
+                                FireStoreDocKey.DOB to dob,
+                                FireStoreDocKey.HEIGHT to height,
+                                FireStoreDocKey.WEIGHT to heartRate,
+                                FireStoreDocKey.IMAGE_URL to imagePath,
+                                FireStoreDocKey.SIGN_UP_TYPE to userType
+                            )
 
                         if (auth.currentUser == null) {
-                            _editProfileResponse.value = Resource.error(Constants.EDIT_PROFILE,
-                                    0, context.getString(R.string.getting_some_error), null)
+                            _editProfileResponse.value = Resource.error(
+                                Constants.EDIT_PROFILE,
+                                0, context.getString(R.string.getting_some_error), null
+                            )
                         } else {
                             val currentUser = auth.currentUser
                             val isUpdated =
-                                    repository.storeUserDataInFireStore(currentUser!!,
-                                            user, _firebaseException)
+                                repository.storeUserDataInFireStore(
+                                    currentUser!!,
+                                    user, _firebaseException
+                                )
                             if (isUpdated == true) {
                                 _editProfileResponse.value =
-                                        Resource.success(Constants.EDIT_PROFILE,
-                                                context.getString(R.string.profile_updated_successfully))
+                                    Resource.success(
+                                        Constants.EDIT_PROFILE,
+                                        context.getString(R.string.profile_updated_successfully)
+                                    )
                             } else {
                                 _editProfileResponse.value = Resource.error(
-                                        Constants.EDIT_PROFILE, 0,
-                                        context.getString(R.string.getting_some_error), null)
+                                    Constants.EDIT_PROFILE, 0,
+                                    context.getString(R.string.getting_some_error), null
+                                )
                             }
                         }
                     }
@@ -281,21 +357,21 @@ class UserProfileViewModel @Inject constructor(
     }
 
     private suspend fun queueValidationRequest(
-            status: Status, message: String,
-            edtResource: Int, tvResourceId: Int,
+        status: Status, message: String,
+        edtResource: Int, tvResourceId: Int,
     ) {
         validationChannel.send(
             ValidationModel(
                 edtResource, tvResourceId, status, message
-        )
+            )
         )
     }
 
     private fun showFailureException(exception: Exception) {
         _editProfileResponse.value = Resource.error(
-                Constants.VALIDATION,
-                0, getExceptionMessage(exception),
-                null
+            Constants.VALIDATION,
+            0, getExceptionMessage(exception),
+            null
         )
     }
 
@@ -304,6 +380,14 @@ class UserProfileViewModel @Inject constructor(
         if (selectedTab.isEmpty())
             selectedTab = getApplication<AppCardioPatient>().getString(R.string.fitbit)
         return selectedTab
+    }
+
+    fun sendEmailVerificationLink() {
+        viewModelScope.launch {
+            _send_email_verification.postValue(Resource.loading(Constants.EMAIL_SEND_VERIFICATION, null))
+            repository.sendVerificationEmail(_firebaseException)
+            _send_email_verification.postValue(Resource.success(Constants.EMAIL_SEND_VERIFICATION, applicationContext.getString(R.string.message_verification_email_sent)))
+        }
     }
 
 }

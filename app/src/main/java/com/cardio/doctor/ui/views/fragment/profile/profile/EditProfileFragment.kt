@@ -8,11 +8,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.widget.EditText
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -26,9 +26,11 @@ import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
+import com.cardio.doctor.network.api.EXTRAS
 import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.ui.common.utils.*
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
+import com.cardio.doctor.ui.views.activity.change_email.ChangeEmailActivity
 import com.google.firebase.firestore.DocumentSnapshot
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
@@ -47,19 +49,35 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
     private val viewModel: UserProfileViewModel by viewModels()
     private var birthDate: Date? = null
 
-    private val requestMultiplePermissions =
-            registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
-                var isGranted = true
-                permissions.entries.forEach {
-                    if (it.value == false) {
-                        isGranted = false
-                        return@forEach
-                    }
-                }
+    var isEmailEdited: (email:String) -> Unit ={
+        Intent(requireContext(), ChangeEmailActivity::class.java).apply {
+            putExtra(EXTRAS.NEW_EMAIL_ADDRESS,it)
+        }.run {
+            resultLauncher.launch(this)
+        }
+    }
 
-                if (isGranted)
-                    fetchImage()
+    private var resultLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                binding.btnSave.performClick()
             }
+        }
+
+
+    private val requestMultiplePermissions =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            var isGranted = true
+            permissions.entries.forEach {
+                if (it.value == false) {
+                    isGranted = false
+                    return@forEach
+                }
+            }
+
+            if (isGranted)
+                fetchImage()
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -75,20 +93,49 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
         binding.edtDob.setOnClickListener(this)
         binding.btnSave.setOnClickListener(this)
 
-        binding.edtFirstName.addTextChangedListener(TextChangeWatcher(binding.edtFirstName,
-                binding.tvFirstNameError))
-        binding.edtLastName.addTextChangedListener(TextChangeWatcher(binding.edtLastName,
-                binding.txtLastName))
-        binding.edtEmailId.addTextChangedListener(TextChangeWatcher(binding.edtEmailId,
-                binding.txtEmailAddress))
-        binding.edtPhoneNumber.addTextChangedListener(TextChangeWatcher(binding.edtPhoneNumber,
-                binding.txtPhoneNumber))
-        binding.edtDob.addTextChangedListener(TextChangeWatcher(binding.edtDob,
-                binding.dobTxtTitle))
-        binding.edtHeight.addTextChangedListener(TextChangeWatcher(binding.edtHeight,
-                binding.txtTitleHeight))
-        binding.edtWeight.addTextChangedListener(TextChangeWatcher(binding.edtWeight,
-                binding.tvHeartError))
+        binding.edtFirstName.addTextChangedListener(
+            TextChangeWatcher(
+                binding.edtFirstName,
+                binding.tvFirstNameError
+            )
+        )
+        binding.edtLastName.addTextChangedListener(
+            TextChangeWatcher(
+                binding.edtLastName,
+                binding.txtLastName
+            )
+        )
+        binding.edtEmailId.addTextChangedListener(
+            TextChangeWatcher(
+                binding.edtEmailId,
+                binding.txtEmailAddress
+            )
+        )
+        binding.edtPhoneNumber.addTextChangedListener(
+            TextChangeWatcher(
+                binding.edtPhoneNumber,
+                binding.txtPhoneNumber
+            )
+        )
+        binding.edtDob.addTextChangedListener(
+            TextChangeWatcher(
+                binding.edtDob,
+                binding.dobTxtTitle
+            )
+        )
+        binding.edtHeight.addTextChangedListener(
+            TextChangeWatcher(
+                binding.edtHeight,
+                binding.txtTitleHeight
+            )
+        )
+        binding.edtWeight.addTextChangedListener(
+            TextChangeWatcher(
+                binding.edtWeight,
+                binding.tvHeartError
+            )
+        )
+        binding.txtResendVerificationLink.setOnClickListener(this)
     }
 
     private fun setObservers() {
@@ -111,6 +158,9 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
         viewModel.editProfileResponse.observe(viewLifecycleOwner, {
             handleApiCallback(it)
         })
+        viewModel.live_data_send_email_verification.observe(viewLifecycleOwner, {
+            handleApiCallback(it)
+        })
         lifecycleScope.launch {
             viewModel.validationChannel.receiveAsFlow().collect {
                 manageViewsForValidation(it)
@@ -127,8 +177,8 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
             binding.edtDob -> {
                 getBirthDatePicker(requireContext(), birthDate) { _, year, month, date ->
                     val dateString = getDate(date).plus("-")
-                            .plus(getMonthNumber(month).toString().plus("-"))
-                            .plus(year)
+                        .plus(getMonthNumber(month).toString().plus("-"))
+                        .plus(year)
                     birthDate = dateString.toDate()
                     binding.edtDob.setText(getStringFromDate(birthDate))
                 }?.show()
@@ -137,24 +187,30 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
             binding.btnSave -> {
                 lifecycleScope.launch {
                     viewModel.validateFields(
-                            binding.edtFirstName.text.toString(),
-                            binding.edtLastName.text.toString(),
-                            binding.edtEmailId.text.toString(),
-                            binding.countryCode.text.toString(),
-                            binding.edtPhoneNumber.text.toString(),
-                            binding.edtDob.text.toString(),
-                            binding.edtHeight.text.toString(),
-                            binding.edtWeight.text.toString(),
-                            selectedImageUri,
-                            selectedImageUri?.let {
-                                getFileName(requireContext(), it)
-                            },userType
-
+                        binding.edtFirstName.text.toString(),
+                        binding.edtLastName.text.toString(),
+                        binding.edtEmailId.text.toString(),
+                        binding.countryCode.text.toString(),
+                        binding.edtPhoneNumber.text.toString(),
+                        binding.edtDob.text.toString(),
+                        binding.edtHeight.text.toString(),
+                        binding.edtWeight.text.toString(),
+                        selectedImageUri,
+                        selectedImageUri?.let {
+                            getFileName(requireContext(), it)
+                        },
+                        userType,
+                        isEmailEdited
                     )
                 }
             }
+            binding.txtResendVerificationLink -> {
+                viewModel.sendEmailVerificationLink()
+            }
         }
     }
+
+
 
     private fun handleApiCallback(apiResponse: Resource<Any>) {
         when (apiResponse.status) {
@@ -170,23 +226,35 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
                     Constants.USER_PROFILE_PIC -> {
                         val storageReference = apiResponse.data as Uri
                         Glide.with(requireContext())
-                                .load(storageReference)
-                                .apply(RequestOptions().circleCrop())
-                                .placeholder(R.drawable.ic_profile_placeholder)
-                                .into(binding.imgProfilePic)
+                            .load(storageReference)
+                            .apply(RequestOptions().circleCrop())
+                            .placeholder(R.drawable.ic_profile_placeholder)
+                            .into(binding.imgProfilePic)
                     }
 
                     Constants.USER_GENDER -> {
                         val gender = apiResponse.data as String
                         binding.txtTitleGender.visibility =
-                                if (gender.equals(getString(R.string.select_gender), true)) {
-                                    GONE
-                                } else View.VISIBLE
+                            if (gender.equals(getString(R.string.select_gender), true)) {
+                                GONE
+                            } else View.VISIBLE
                     }
 
                     Constants.EDIT_PROFILE -> {
-                        customSnackBarFail(requireContext(), binding.root, apiResponse.data as String)
+                        customSnackBarFail(
+                            requireContext(),
+                            binding.root,
+                            apiResponse.data as String
+                        )
                         findNavController().popBackStack()
+                    }
+
+                    Constants.EMAIL_SEND_VERIFICATION -> {
+                        customSnackBarFail(
+                            requireContext(),
+                            binding.root,
+                            apiResponse.data as String
+                        )
                     }
                 }
             }
@@ -200,14 +268,16 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
             Status.RESOURCE -> {
                 hideProgress()
                 customSnackBarFail(
-                        requireContext(), binding.root,
-                        getString(apiResponse.resourceId!!)
+                    requireContext(), binding.root,
+                    getString(apiResponse.resourceId!!)
                 )
             }
 
             Status.ALPHA -> {
-                if (getString(apiResponse.resourceId!!).equals(getString(R.string.alpha_true),
-                                true)
+                if (getString(apiResponse.resourceId!!).equals(
+                        getString(R.string.alpha_true),
+                        true
+                    )
                 ) {
                     enableButtonClick(1.0f, true)
                 } else enableButtonClick(0.3f, false)
@@ -216,9 +286,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
     }
 
     private fun showUserDetailOnUI(documentReference: DocumentSnapshot?) {
-        Log.d("TAG", "showUserDetailOnUI() called ${documentReference.toString()}")
         if (documentReference != null && documentReference.data != null) {
-//        documentReference?.data?.let {
             val firstName = documentReference.data?.get(FireStoreDocKey.FIRST_NAME) as String?
             val lastName = documentReference.data?.get(FireStoreDocKey.LAST_NAME) as String?
             val email = documentReference.data?.get(FireStoreDocKey.EMAIL) as String?
@@ -230,8 +298,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
             val heartRate = documentReference.data?.get(FireStoreDocKey.WEIGHT) as String?
             val genderList = resources.getStringArray(R.array.gender_list).toList()
             val imageUrl = documentReference.data?.get(FireStoreDocKey.IMAGE_URL) as String?
-            userType= documentReference.data?.get(FireStoreDocKey.SIGN_UP_TYPE) as String?
-
+            userType = documentReference.data?.get(FireStoreDocKey.SIGN_UP_TYPE) as String?
             if (!imageUrl.isNullOrEmpty()) {
                 viewModel.firebaseUri = imageUrl.convertIntoUri()
                 viewModel.getImageDownloadUrl(imageUrl)
@@ -241,7 +308,6 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
             } catch (ex: Exception) {
 
             }
-
             binding.edtFirstName.setText(firstName ?: "")
             binding.edtLastName.setText(lastName ?: "")
             binding.edtEmailId.setText(email ?: "")
@@ -249,8 +315,9 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
             binding.edtPhoneNumber.setText(phoneNumber ?: "")
             /*binding.txtTitleGender.visibility = */
             if (!gender.isNullOrEmpty() && !gender.equals(
-                            getString(R.string.select_gender),
-                            false)
+                    getString(R.string.select_gender),
+                    false
+                )
             ) {
                 binding.spinnerCategory.setSelection(genderList.indexOf(gender))
             }
@@ -258,17 +325,27 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
             binding.edtHeight.setText(height ?: "")
             binding.edtWeight.setText(heartRate ?: "")
             userType?.let {
-                binding.phoneNumberContainer.visibility = if (it==UserType.GOOGLE.name){
+                binding.phoneNumberContainer.visibility = if (it == UserType.GOOGLE.name) {
                     View.GONE
-                } else{
+                } else {
                     View.VISIBLE
+                }
+            }
+            viewModel.isEmailVerified().let {
+                if (it == false) {
+                    binding.edtEmailId.isClickable=true
+                    binding.edtEmailId.alpha=1.0f
+                    binding.edtEmailId.isFocusableInTouchMode= true
+                    binding.txtResendVerificationLink.visibility = View.VISIBLE
+                } else {
+                    binding.txtResendVerificationLink.visibility = View.GONE
                 }
             }
         }
     }
 
     inner class TextChangeWatcher(private var view: View, private val errorTxt: TextView) :
-            TextWatcher {
+        TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
             errorTxt.visibility = GONE
@@ -302,17 +379,18 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
     private fun checkPermission() {
         if (isAdded) {
             requestMultiplePermissions.launch(
-                    arrayOf(Manifest.permission.CAMERA,
-                            Manifest.permission.READ_EXTERNAL_STORAGE,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    )
+                arrayOf(
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                )
             )
         }
     }
 
     private fun fetchImage() {
         CropImage.activity().setGuidelines(CropImageView.Guidelines.ON)
-                .start(requireContext(), this)
+            .start(requireContext(), this)
     }
 
     @SuppressLint("Assert")
@@ -322,10 +400,10 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
             if (resultCode == Activity.RESULT_OK) {
                 val fileName = getFileName(requireContext(), result.uri)!!
                 Glide.with(requireContext())
-                        .load(result.uri)
-                        .apply(RequestOptions().circleCrop())
-                        .placeholder(R.drawable.ic_profile_placeholder)
-                        .into(binding.imgProfilePic)
+                    .load(result.uri)
+                    .apply(RequestOptions().circleCrop())
+                    .placeholder(R.drawable.ic_profile_placeholder)
+                    .into(binding.imgProfilePic)
                 //lets not upload here. we will upload when user save changes
                 //  viewModel.uploadProfileImage(result.uri, fileName)
                 selectedImageUri = result.uri
@@ -339,8 +417,10 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
         if (validationModel.status == Status.SUCCESS) {
             manageViewVisibility(validationModel, R.drawable.edt_rounded_corner, GONE, "")
         } else if (validationModel.status == Status.ERROR) {
-            manageViewVisibility(validationModel, R.drawable.edt_rounded_corner_red, View.VISIBLE,
-                    validationModel.message)
+            manageViewVisibility(
+                validationModel, R.drawable.edt_rounded_corner_red, View.VISIBLE,
+                validationModel.message
+            )
         }
     }
 

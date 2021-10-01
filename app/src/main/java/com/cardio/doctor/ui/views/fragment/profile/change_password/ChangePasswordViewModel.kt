@@ -10,7 +10,7 @@ import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.network.api.Constants.Companion.CHANGE_PASSWORD
+import com.cardio.doctor.network.api.Constants.Companion.CHANGE_EMAIL
 import com.cardio.doctor.ui.AppCardioPatient
 import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
 import com.cardio.doctor.ui.common.utils.ENUM
@@ -60,7 +60,7 @@ class ChangePasswordViewModel @Inject constructor(
     }
 
     private fun setObserverForAlpha(resourceId: Int) {
-        _changePasswordResponse.value = Resource.setAlpha(CHANGE_PASSWORD, resourceId)
+        _changePasswordResponse.value = Resource.setAlpha(CHANGE_EMAIL, resourceId)
     }
 
     fun validatePassword(oldPassword: String, newPassword: String, confirmPassword: String) {
@@ -134,7 +134,7 @@ class ChangePasswordViewModel @Inject constructor(
             }
             if (isValidOldPassword && isValidNewPassword && isValidConfirmPassword) {
                 if (isMatched(oldPassword, confirmPassword)) {
-                    _changePasswordResponse.value = Resource.requiredResource(CHANGE_PASSWORD,
+                    _changePasswordResponse.value = Resource.requiredResource(CHANGE_EMAIL,
                         R.string.old_and_new_password_should_not_same)
                 } else
                     changePassword(oldPassword, newPassword)
@@ -145,7 +145,7 @@ class ChangePasswordViewModel @Inject constructor(
 
     private fun changePassword(oldPass: String, newPass: String) {
         viewModelScope.launch {
-            _changePasswordResponse.value = Resource.loading(CHANGE_PASSWORD, null)
+            _changePasswordResponse.value = Resource.loading(CHANGE_EMAIL, null)
             val currentUser = auth.currentUser
             if (currentUser == null) {
                 // _changePasswordResponse.value = Resource.error(CHANGE_PASSWORD, true)
@@ -157,7 +157,7 @@ class ChangePasswordViewModel @Inject constructor(
                     val isPasswordUpdated =
                         repository.updatePassword(currentUser, newPass, _firebaseException)
                     if(isPasswordUpdated == true){
-                        _changePasswordResponse.value = Resource.success(CHANGE_PASSWORD, true)
+                        _changePasswordResponse.value = Resource.success(CHANGE_EMAIL, true)
                         return@launch
                     }
                 }

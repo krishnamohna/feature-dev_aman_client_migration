@@ -1,6 +1,5 @@
-package com.cardio.doctor.ui.views.fragment.profile.change_password
+package com.cardio.doctor.ui.views.activity.change_email
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,41 +7,37 @@ import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.viewModels
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
-import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
-import com.cardio.doctor.databinding.FragmentChangePasswordBinding
+import com.cardio.doctor.databinding.ActivityChangeEmailBinding
 import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
+import com.cardio.doctor.network.api.Constants
+import com.cardio.doctor.network.api.EXTRAS
+import com.cardio.doctor.ui.common.base.activity.BaseActivity
 import com.cardio.doctor.ui.common.utils.customAnimationForTextInput
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.isTextEmpty
-import com.cardio.doctor.ui.common.utils.showAlertDialog
-import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ChangePasswordFragment : AppBaseFragment(R.layout.fragment_change_password),
+class ChangeEmailActivity : BaseActivity(),
     View.OnClickListener {
-    private val binding by viewBinding(FragmentChangePasswordBinding::bind)
-    private val viewModel: ChangePasswordViewModel by viewModels()
+    private val binding by viewBinding(ActivityChangeEmailBinding::inflate)
+    private val viewModel: ChangeEmailViewModel by viewModels()
     private var oldPasswordVisible: Boolean = false
-    private var newPasswordVisible: Boolean = false
-    private var confirmPasswordVisible: Boolean = false
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setUpToolbar(binding.root, getString(R.string.change_password), backBtnVisibility = true)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+        setUpToolbar(binding.root, getString(R.string.verify_password), backBtnVisibility = true)
         setListener()
         setObservers()
         enableButtonClick(0.3f, false)
@@ -51,23 +46,16 @@ class ChangePasswordFragment : AppBaseFragment(R.layout.fragment_change_password
     private fun setListener() {
         binding.edtOldPassword.addTextChangedListener(TextChangeWatcher(binding.oldPasswordContainer,
             binding.tvOldPasswordError))
-        binding.edtNewPassword.addTextChangedListener(TextChangeWatcher(binding.newPasswordContainer,
-            binding.tvNewPasswordError))
-        binding.edtConfirmPassword.addTextChangedListener(TextChangeWatcher(binding.confirmPasswordContainer,
-            binding.tvConfirmPasswordError))
-
         binding.imgOldPassword.setOnClickListener(this)
-        binding.imgNewPassword.setOnClickListener(this)
-        binding.imgConfirmPassword.setOnClickListener(this)
         binding.btnChangePassword.setOnClickListener(this)
     }
 
 
     private fun setObservers() {
-        viewModel.changePasswordResponse.observe(viewLifecycleOwner) {
+        viewModel.changeEmailResponse.observe(this) {
             handleApiCallback(it)
         }
-        viewModel.firebaseException.observe(viewLifecycleOwner) {
+        viewModel.firebaseException.observe(this) {
             handleApiCallback(it)
         }
         lifecycleScope.launch {
@@ -85,28 +73,12 @@ class ChangePasswordFragment : AppBaseFragment(R.layout.fragment_change_password
                 oldPasswordVisible = !oldPasswordVisible
             }
 
-            binding.imgNewPassword -> {
-                showPasswordImage(binding.imgNewPassword,
-                    binding.edtNewPassword,
-                    newPasswordVisible)
-                newPasswordVisible = !newPasswordVisible
-            }
-
-            binding.imgConfirmPassword -> {
-                showPasswordImage(binding.imgConfirmPassword,
-                    binding.edtConfirmPassword,
-                    confirmPasswordVisible)
-                confirmPasswordVisible = !confirmPasswordVisible
-            }
-
             binding.btnChangePassword -> {
-                viewModel.validatePassword(binding.edtOldPassword.text.toString(),
-                    binding.edtNewPassword.text.toString(),
-                    binding.edtConfirmPassword.text.toString())
+                viewModel.validatePassword(binding.edtOldPassword.text.toString(),intent.getStringExtra(EXTRAS.NEW_EMAIL_ADDRESS))
             }
 
             binding.headerView.backBtn -> {
-                findNavController().popBackStack()
+                onBackPressed()
             }
         }
     }
@@ -132,16 +104,24 @@ class ChangePasswordFragment : AppBaseFragment(R.layout.fragment_change_password
                 hideProgress()
                 when (apiResponse.apiConstant) {
                     Constants.CHANGE_EMAIL -> {
-                        showAlertDialog(requireActivity() as AppCompatActivity,
+                        /*showAlertDialog(this,
                             getString(R.string.success),
-                            getString(R.string.password_change_successfully),
+                            getString(R.string.email_change_successfully),
                             getString(R.string.ok),
                             getString(R.string.cancel),
                             btnTwoVisibility = false
                         ) { _: String, dialog: DialogInterface ->
-                            findNavController().popBackStack()
+                            setResult(RESULT_OK)
+                            finish()
                             dialog.dismiss()
-                        }
+                        }*/
+                        customSnackBarFail(
+                            this,
+                            binding.root,
+                            getString(R.string.email_change_successfully)
+                        )
+                        setResult(RESULT_OK)
+                        finish()
                     }
                 }
             }
@@ -150,11 +130,11 @@ class ChangePasswordFragment : AppBaseFragment(R.layout.fragment_change_password
             }
             Status.ERROR -> {
                 hideProgress()
-                customSnackBarFail(requireContext(), binding.root, apiResponse.message!!)
+                customSnackBarFail(this, binding.root, apiResponse.message!!)
             }
             Status.RESOURCE -> {
                 hideProgress()
-                customSnackBarFail(requireContext(),
+                customSnackBarFail(this,
                     binding.root,
                     getString(apiResponse.resourceId!!))
             }
@@ -185,7 +165,7 @@ class ChangePasswordFragment : AppBaseFragment(R.layout.fragment_change_password
                 binding.newPasswordContainer -> textView = binding.txtNewPassword
                 binding.confirmPasswordContainer -> textView = binding.txtConfirmPassword
             }
-            customAnimationForTextInput(requireContext(), textView!!, s, before)
+            customAnimationForTextInput(this@ChangeEmailActivity, textView!!, s, before)
             enableSaveBtn()
         }
 
@@ -195,12 +175,9 @@ class ChangePasswordFragment : AppBaseFragment(R.layout.fragment_change_password
 
     private fun enableSaveBtn() {
         viewModel.validateFieldsToSetAlpha(
-            isTextEmpty(binding.edtOldPassword.text.toString()),
-            isTextEmpty(binding.edtNewPassword.text.toString()),
-            isTextEmpty(binding.edtConfirmPassword.text.toString())
+            isTextEmpty(binding.edtOldPassword.text.toString())
         )
     }
-
 
     private fun manageViewsForValidation(validationModel: ValidationModel) {
         if (validationModel.status == Status.SUCCESS) {

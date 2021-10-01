@@ -20,6 +20,12 @@
         android:id="@+id/settingFragment"
         android:name="com.cardio.doctor.ui.views.fragment.profile.setting.SettingFragment"
         android:label="SettingFragment">
+
+        <argument
+            android:name="extras_user_type"
+            app:argType="string"
+            app:nullable="true" />
+
         <action
             android:id="@+id/settingToChangePasswordFragment"
             app:destination="@id/changePasswordFragment"

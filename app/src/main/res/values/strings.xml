@@ -99,6 +99,7 @@
     <string name="select_gender">Select Gender</string>
     <string name="profile_updated_successfully">Profile Detail Updated Successfully</string>
     <string name="password_change_successfully">Your password has been successfully changed</string>
+    <string name="email_change_successfully">Your email has been successfully changed</string>
     <string name="success">Success</string>
 
     <!--Setting-->
@@ -151,6 +152,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="unable_to_create_google_account">Unable to create Google account !!</string>
     <string name="unable_to_save_values_to_database">Unable to save values to database !!</string>
+    <string name="resend_link">Resend Link</string>
+    <string name="message_verification_email_sent">Verification link sent to your registered email id</string>
+    <string name="verify_password">Verify Password</string>
+    <string name="msg_change_email_label">To edit your email please enter your password</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="TutorialTitle">
         <item>Connect with Experience Practitioners </item>

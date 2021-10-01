@@ -16,22 +16,21 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 open class BaseRepository @Inject constructor(
-        val firebaseAuth: FirebaseAuth,
-        private val fireStore: FirebaseFirestore,
-        private val storageReference: StorageReference,
-        apiService: ApiService,
+    open val firebaseAuth: FirebaseAuth,
+    private val fireStore: FirebaseFirestore,
+    private val storageReference: StorageReference,
+    apiService: ApiService,
 ) {
     suspend fun fetchUserDetail(
             errorLiveData: MutableLiveData<Resource<Exception>>,
     ) = firebaseDocumentQuery(
-            operation = {
-                val userId = firebaseAuth.currentUser?.uid
-                fireStore.collection(FireStoreCollection.USERS).document(userId ?: "")
-                        .get()
-                        .await()
-            }, parse = {
-        return@firebaseDocumentQuery it
-    }, errorLiveData
+        operation = {
+            val userId = firebaseAuth.currentUser?.uid
+            fireStore.collection(FireStoreCollection.USERS).document(userId ?: "")
+                .get().await()
+        }, parse = {
+            return@firebaseDocumentQuery it
+        }, errorLiveData
     )
 
     suspend fun uploadImageOnFirebaseStorage(

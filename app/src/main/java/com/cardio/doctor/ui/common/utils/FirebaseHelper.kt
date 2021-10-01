@@ -38,6 +38,8 @@ suspend inline fun <T, R> firebaseQuery(
     }
 }
 
+
+
 suspend inline fun <T, R> firebaseDocumentQuery(
     crossinline operation: suspend () -> T,
     crossinline parse: suspend (T) -> R,

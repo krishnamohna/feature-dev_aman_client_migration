@@ -14,9 +14,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.ui.common.base.activity.BaseActivity
+import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
 import com.cardio.doctor.ui.common.listeners.DialogHelper
 import com.cardio.doctor.ui.common.listeners.DialogProvider
-import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
 import com.cardio.doctor.ui.common.utils.showAlertDialog
 
 abstract class BaseFragment(@LayoutRes layoutResId: Int) : Fragment(layoutResId), DialogProvider {
@@ -43,13 +43,11 @@ abstract class BaseFragment(@LayoutRes layoutResId: Int) : Fragment(layoutResId)
         val backBtn = view.findViewById<ImageView>(R.id.backBtn)
         val toolbarTitle = view.findViewById<TextView>(R.id.toolbarTitle)
         val imgEdtProfile = view.findViewById<ImageView>(R.id.imgEditProfile)
-
         (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar!!.setDisplayShowTitleEnabled(false)
         backBtn.visibility = if(title.isNotEmpty()) View.VISIBLE else View.GONE
         backBtn.visibility = if(backBtnVisibility) View.VISIBLE else View.INVISIBLE
         imgEdtProfile.visibility = if(editProfile) View.VISIBLE else View.GONE
-
 
         if(!TextUtils.isEmpty(title)){
             toolbarTitle.text = title

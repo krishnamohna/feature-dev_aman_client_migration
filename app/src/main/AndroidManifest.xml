@@ -52,6 +52,10 @@
             android:windowSoftInputMode="adjustResize"
             />
         <activity
+            android:name="com.cardio.doctor.ui.views.activity.change_email.ChangeEmailActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"
             android:screenOrientation="portrait"/>

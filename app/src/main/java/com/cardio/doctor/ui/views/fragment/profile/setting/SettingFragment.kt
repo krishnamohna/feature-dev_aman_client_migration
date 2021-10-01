@@ -3,10 +3,12 @@ package com.cardio.doctor.ui.views.fragment.profile.setting
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.cardio.doctor.R
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentSettingBinding
+import com.cardio.doctor.domain.common.model.UserType
 import com.cardio.doctor.network.NetworkHelper
+import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.ui.common.utils.WEBURL
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
@@ -15,8 +17,10 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class SettingFragment : AppBaseFragment(R.layout.fragment_setting), View.OnClickListener {
+
     private val binding by viewBinding(FragmentSettingBinding::bind)
     private val viewModel: SettingViewModel by viewModels()
+    private val navArgs by navArgs<SettingFragmentArgs>()
 
     @Inject
     lateinit var networkHelper: NetworkHelper
@@ -24,8 +28,17 @@ class SettingFragment : AppBaseFragment(R.layout.fragment_setting), View.OnClick
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolbar(binding.root, getString(R.string.setting), backBtnVisibility = true)
+        setViews()
         setListener()
         setObservers()
+    }
+
+    private fun setViews() {
+        navArgs.extrasUserType?.let {
+           if(it==UserType.GOOGLE.name){
+               binding.changePasswordContainer.visibility=View.GONE
+           }
+        }
     }
 
     private fun setListener() {

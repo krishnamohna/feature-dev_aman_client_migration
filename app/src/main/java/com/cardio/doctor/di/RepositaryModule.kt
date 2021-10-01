@@ -1,6 +1,8 @@
 package com.cardio.doctor.di
 
+import com.cardio.doctor.data.remote.common.repositary.UserAuthRepositaryImp
 import com.cardio.doctor.data.remote.login.LoginRepositoryImp
+import com.cardio.doctor.domain.common.repository.UserAuthRepositary
 import com.cardio.doctor.domain.login.LoginRepositary
 import dagger.Module
 import dagger.Provides
@@ -16,6 +18,12 @@ class RepositaryModule {
     @Singleton
     fun provideLoginRepositary(loginRepositoryImp: LoginRepositoryImp): LoginRepositary{
         return loginRepositoryImp
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserAuthRepo(userAuthRepositaryImp: UserAuthRepositaryImp): UserAuthRepositary{
+        return userAuthRepositaryImp
     }
 
 }

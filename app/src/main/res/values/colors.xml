@@ -25,10 +25,11 @@
     <color name="btn_gradient_end">#0e88ac</color>
 
     <color name="red_validation">#ee000e</color>
-
     <color name="blue">#007aff</color>
     <color name="blue_btn_start">#8228fb</color>
-
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/grey_bg</color>
+    <color name="text_color_green">#00b191</color>
+    <!--ripple-->
+    <color name="ripple_icon_state_pressed">#c4c4c4</color>
 
 </resources>
