@@ -156,6 +156,12 @@
     <string name="message_verification_email_sent">Verification link sent to your registered email id</string>
     <string name="verify_password">Verify Password</string>
     <string name="msg_change_email_label">To edit your email please enter your password</string>
+    <string name="ailment">AILMENT</string>
+    <string name="patient_detail">PATIENT DETAIL</string>
+    <string name="age">Age</string>
+    <string name="health_detail">HEALTH DETAIL</string>
+    <string name="top_bp">Top BP(Systolic)</string>
+    <string name="bottom_bp">Bottom BP(Diastolic)</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="TutorialTitle">
         <item>Connect with Experience Practitioners </item>
