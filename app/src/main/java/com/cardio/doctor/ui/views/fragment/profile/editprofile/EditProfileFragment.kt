@@ -346,9 +346,13 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
                 }
             }
             phoneNumber?.let {
-                binding.phoneNumberContainer.visibility=View.VISIBLE
-                binding.countryCode.text = countryCode ?: ""
-                binding.edtPhoneNumber.setText(it ?: "")
+                if(!it.trim().isEmpty()) {
+                    binding.phoneNumberContainer.visibility = View.VISIBLE
+                    binding.countryCode.text = countryCode ?: ""
+                    binding.edtPhoneNumber.setText(it ?: "")
+                }else{
+                    binding.phoneNumberContainer.visibility = View.GONE
+                }
             }
             viewModel.isEmailVerified().let {
                 if (it == false) {

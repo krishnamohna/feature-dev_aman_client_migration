@@ -128,8 +128,12 @@ class GetProfileFragment : BaseFragment<FragmentGetProfileBinding>(), View.OnCli
             binding.txtUserName.text = userName
             binding.txtEmailAddress.text = email ?: ""
             phoneNumber?.let {
-                binding.txtPhoneNumber.visibility=View.VISIBLE
-                binding.txtPhoneNumber.text = "$countryCode  $phoneNumber"
+                if(!it.trim().isEmpty()) {
+                    binding.txtPhoneNumber.visibility = View.VISIBLE
+                    binding.txtPhoneNumber.text = "$countryCode  $phoneNumber"
+                }else{
+                    binding.txtPhoneNumber.visibility = View.GONE
+                }
             }
             if (gender.isNullOrEmpty()) {
                 gender = "NA"
