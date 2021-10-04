@@ -13,11 +13,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentForgotPasswordBinding
 import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
+import com.cardio.doctor.ui.common.base.fragment.BaseFragmentAuth
 import com.cardio.doctor.ui.common.utils.customAnimationForTextInput
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.showAlertDialog
@@ -28,7 +28,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ForgotPasswordFragment : AppBaseFragment(R.layout.fragment_forgot_password),
+class ForgotPasswordFragment : BaseFragmentAuth(R.layout.fragment_forgot_password),
     View.OnClickListener {
     private val binding by viewBinding(FragmentForgotPasswordBinding::bind)
     private val viewModel: ForgotPasswordViewModel by viewModels()

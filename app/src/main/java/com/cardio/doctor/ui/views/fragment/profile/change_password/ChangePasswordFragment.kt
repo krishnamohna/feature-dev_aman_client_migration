@@ -16,11 +16,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentChangePasswordBinding
 import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
+import com.cardio.doctor.ui.common.base.fragment.BaseFragmentAuth
 import com.cardio.doctor.ui.common.utils.customAnimationForTextInput
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.isTextEmpty
@@ -32,7 +32,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ChangePasswordFragment : AppBaseFragment(R.layout.fragment_change_password),
+class ChangePasswordFragment : BaseFragmentAuth(R.layout.fragment_change_password),
     View.OnClickListener {
     private val binding by viewBinding(FragmentChangePasswordBinding::bind)
     private val viewModel: ChangePasswordViewModel by viewModels()

@@ -23,7 +23,7 @@ import com.cardio.doctor.network.NetworkHelper
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
+import com.cardio.doctor.ui.common.base.fragment.BaseFragmentAuth
 import com.cardio.doctor.ui.common.utils.*
 import com.cardio.doctor.ui.common.utils.Timer.Companion.API_TIMEOUT
 import com.cardio.doctor.ui.common.utils.Timer.Companion.OTP_EXPIRED
@@ -46,7 +46,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginFragment : AppBaseFragment(R.layout.fragment_login), View.OnClickListener {
+class LoginFragment : BaseFragmentAuth(R.layout.fragment_login), View.OnClickListener {
 
     private val binding by viewBinding(FragmentLoginBinding::bind)
     private val viewModel: LoginViewModel by viewModels()

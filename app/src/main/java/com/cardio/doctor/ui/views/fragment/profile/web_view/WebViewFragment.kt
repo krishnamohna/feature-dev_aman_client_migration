@@ -6,14 +6,14 @@ import android.webkit.WebSettings
 import android.webkit.WebViewClient
 import androidx.navigation.fragment.navArgs
 import com.cardio.doctor.R
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentWebViewBinding
+import com.cardio.doctor.ui.common.base.fragment.BaseFragmentAuth
 import com.cardio.doctor.ui.common.utils.WEBURL
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class WebViewFragment : AppBaseFragment(R.layout.fragment_web_view), View.OnClickListener {
+class WebViewFragment : BaseFragmentAuth(R.layout.fragment_web_view), View.OnClickListener {
     private val binding by viewBinding(FragmentWebViewBinding::bind)
     private val navArgs by navArgs<WebViewFragmentArgs>()
 

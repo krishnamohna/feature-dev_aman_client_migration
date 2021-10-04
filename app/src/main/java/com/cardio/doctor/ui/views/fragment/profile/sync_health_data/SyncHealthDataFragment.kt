@@ -6,13 +6,13 @@ import android.widget.ImageView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentSyncHealthDataBinding
+import com.cardio.doctor.ui.common.base.fragment.BaseFragmentAuth
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SyncHealthDataFragment : AppBaseFragment(R.layout.fragment_sync_health_data),
+class SyncHealthDataFragment : BaseFragmentAuth(R.layout.fragment_sync_health_data),
     View.OnClickListener {
 
     private val binding by viewBinding(FragmentSyncHealthDataBinding::bind)

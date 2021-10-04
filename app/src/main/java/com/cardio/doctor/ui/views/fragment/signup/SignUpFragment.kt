@@ -21,12 +21,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.cardio.doctor.R
 import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentSignUpBinding
 import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.NetworkHelper
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
+import com.cardio.doctor.ui.common.base.fragment.BaseFragmentAuth
 import com.cardio.doctor.ui.common.utils.*
 import com.cardio.doctor.ui.common.utils.Timer.Companion.OTP_EXPIRED
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
@@ -45,7 +45,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SignUpFragment : AppBaseFragment(R.layout.fragment_sign_up), View.OnClickListener {
+class SignUpFragment : BaseFragmentAuth(R.layout.fragment_sign_up), View.OnClickListener {
     private val binding by viewBinding(FragmentSignUpBinding::bind)
     private val viewModel: SignUpViewModel by viewModels()
     private var isPasswordVisible: Boolean = false

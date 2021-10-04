@@ -84,8 +84,12 @@ class LoginRepositoryImp @Inject constructor(
             operation = { fireStore.collection(FireStoreCollection.USERS).get() },
             parse = { querySnapshot ->
                 for (document in querySnapshot) {
-                    if (phoneNumber.contains(document.data[FireStoreDocKey.PHONE_NUMBER] as String)) {
-                        return@firebaseQuery true
+                    var phoneNo = document.data[FireStoreDocKey.PHONE_NUMBER] as? String?
+                    phoneNo?.let {
+                        if(it.isEmpty()) return@firebaseQuery false
+                        if (phoneNumber.contains(it)) {
+                            return@firebaseQuery true
+                        }
                     }
                 }
                 return@firebaseQuery false

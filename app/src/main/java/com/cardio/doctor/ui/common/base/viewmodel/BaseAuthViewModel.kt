@@ -23,7 +23,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 open class BaseAuthViewModel @Inject constructor(
-    protected val userManager: UserManager,
+     protected val userManager: UserManager,
      application: Application
 ) : AndroidViewModel(application) {
 

@@ -1,7 +1,6 @@
 package com.cardio.doctor.ui.common.base.fragment
 
 import android.content.Context
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
@@ -15,16 +14,12 @@ import com.cardio.doctor.ui.common.listeners.DialogHelper
 import com.cardio.doctor.ui.common.listeners.DialogProvider
 import com.cardio.doctor.ui.common.utils.extentions.setUpToolbar
 
-abstract class BaseFragment_v2<Binding : ViewBinding> : Fragment() {
+abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
 
     lateinit var binding: Binding
     private lateinit var dialogHelper: DialogHelper
     private val handler:Handler by lazy {
         Handler(Looper.getMainLooper())
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
     }
 
     override fun onAttach(context: Context) {

@@ -65,6 +65,9 @@ class EditUserProfileViewModel @Inject constructor(
 
     fun getUserDetail() {
         try {
+            //if email is not verified then lets reload auth as firebase do not udpate it realtime
+            repository.reloadAuthIfEmailNotVerified()
+            //get user detail now
             _userDetailDocument.postValue(Resource.loading(Constants.USER_DETAIL, null))
             viewModelScope.launch {
                 var userDetail = repository.fetchUserDetail(_firebaseException)

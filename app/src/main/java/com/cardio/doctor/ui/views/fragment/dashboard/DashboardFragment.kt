@@ -5,13 +5,13 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentDashboardBinding
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
+import com.cardio.doctor.ui.common.base.fragment.BaseFragmentAuth
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DashboardFragment : AppBaseFragment(R.layout.fragment_dashboard), View.OnClickListener {
+class DashboardFragment : BaseFragmentAuth(R.layout.fragment_dashboard), View.OnClickListener {
     private val binding by viewBinding(FragmentDashboardBinding::bind)
     private val viewModel: DashboardViewModel by viewModels()
     //private lateinit var googleSignInClient: GoogleSignInClient

@@ -65,7 +65,7 @@ open class BaseRepository @Inject constructor(
             operation = { fireStore.collection(FireStoreCollection.USERS).get() },
             parse = { querySnapshot ->
                 for (document in querySnapshot) {
-                    var phoneNo = document.data[FireStoreDocKey.PHONE_NUMBER] as String?
+                    var phoneNo = document.data[FireStoreDocKey.PHONE_NUMBER] as? String?
                     phoneNo?.let {
                         if(it.isEmpty()) return@firebaseQuery false
                         if (phoneNumber.contains(it)) {

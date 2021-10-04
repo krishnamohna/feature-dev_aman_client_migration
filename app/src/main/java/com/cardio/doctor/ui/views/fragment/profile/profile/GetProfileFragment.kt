@@ -15,7 +15,7 @@ import com.cardio.doctor.domain.common.model.UserModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.ui.common.base.fragment.BaseFragment_v2
+import com.cardio.doctor.ui.common.base.fragment.BaseFragment
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.extentions.toUserModel
@@ -23,7 +23,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class GetProfileFragment : BaseFragment_v2<FragmentGetProfileBinding>(), View.OnClickListener {
+class GetProfileFragment : BaseFragment<FragmentGetProfileBinding>(), View.OnClickListener {
 
     private var userType: String?=null
     private var userModel: UserModel? = null
@@ -128,7 +128,8 @@ class GetProfileFragment : BaseFragment_v2<FragmentGetProfileBinding>(), View.On
             binding.txtUserName.text = userName
             binding.txtEmailAddress.text = email ?: ""
             phoneNumber?.let {
-                binding.txtPhoneNumber.text = countryCode ?: "".plus(" ").plus(phoneNumber)
+                binding.txtPhoneNumber.visibility=View.VISIBLE
+                binding.txtPhoneNumber.text = "$countryCode  $phoneNumber"
             }
             if (gender.isNullOrEmpty()) {
                 gender = "NA"

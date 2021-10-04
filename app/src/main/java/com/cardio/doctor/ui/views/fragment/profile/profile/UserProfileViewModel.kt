@@ -38,7 +38,6 @@ class UserProfileViewModel @Inject constructor(
     val getUserProfilePic: LiveData<Resource<Uri>> =
         _getUserProfilePic
 
-    var firebaseUri: Uri? = null
 
     val validationChannel = Channel<ValidationModel>(ENUM.INT_10)
 
@@ -46,8 +45,6 @@ class UserProfileViewModel @Inject constructor(
         try {
             _userDetailDocument.postValue(Resource.loading(Constants.USER_DETAIL, null))
             viewModelScope.launch {
-                //if email is not verified then lets reload auth as firebase do not udpate it realtime
-                repository.reloadAuthIfEmailNotVerified()
                 //fetch user detai now
                 var userDetail = repository.fetchUserDetail(_firebaseException)
                 _userDetailDocument.postValue(Resource.success(Constants.USER_DETAIL, userDetail))

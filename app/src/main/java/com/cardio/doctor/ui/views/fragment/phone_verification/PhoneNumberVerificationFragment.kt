@@ -17,12 +17,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.cardio.doctor.R
-import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentPhoneNumberVerificationBinding
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
-import com.cardio.doctor.ui.views.activity.dashboard.DashboardActivity
+import com.cardio.doctor.network.api.Constants
+import com.cardio.doctor.ui.common.base.fragment.BaseFragmentAuth
 import com.cardio.doctor.ui.common.utils.ENUM
 import com.cardio.doctor.ui.common.utils.Timer.Companion.COUNT_DOWN_INTERVAL
 import com.cardio.doctor.ui.common.utils.Timer.Companion.MINUTES
@@ -33,6 +32,7 @@ import com.cardio.doctor.ui.common.utils.Timer.Companion.OTP_TIME_FORMAT
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.showAlertDialog
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
+import com.cardio.doctor.ui.views.activity.dashboard.DashboardActivity
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
@@ -44,7 +44,7 @@ import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class PhoneNumberVerificationFragment :
-    AppBaseFragment(R.layout.fragment_phone_number_verification),
+    BaseFragmentAuth(R.layout.fragment_phone_number_verification),
     View.OnClickListener {
     private val binding by viewBinding(FragmentPhoneNumberVerificationBinding::bind)
     private val viewModel: PhoneVerificationViewModel by viewModels()

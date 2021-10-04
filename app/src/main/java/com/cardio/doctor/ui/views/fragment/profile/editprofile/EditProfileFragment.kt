@@ -29,7 +29,7 @@ import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
 import com.cardio.doctor.network.api.EXTRAS
-import com.cardio.doctor.ui.common.base.fragment.BaseFragment_v2
+import com.cardio.doctor.ui.common.base.fragment.BaseFragment
 import com.cardio.doctor.ui.common.utils.*
 import com.cardio.doctor.ui.views.activity.change_email.ChangeEmailActivity
 import com.google.firebase.firestore.DocumentSnapshot
@@ -42,7 +42,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 @AndroidEntryPoint
-class EditProfileFragment : BaseFragment_v2<FragmentEditProfileBinding>(), View.OnClickListener {
+class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnClickListener {
 
     private var userType: String? = null
     private var selectedImageUri: Uri? = null
@@ -327,8 +327,6 @@ class EditProfileFragment : BaseFragment_v2<FragmentEditProfileBinding>(), View.
             binding.edtFirstName.setText(firstName ?: "")
             binding.edtLastName.setText(lastName ?: "")
             binding.edtEmailId.setText(email ?: "")
-            binding.countryCode.text = countryCode ?: ""
-            binding.edtPhoneNumber.setText(phoneNumber ?: "")
             /*binding.txtTitleGender.visibility = */
             if (!gender.isNullOrEmpty() && !gender.equals(
                     getString(R.string.select_gender),
@@ -346,6 +344,11 @@ class EditProfileFragment : BaseFragment_v2<FragmentEditProfileBinding>(), View.
                 } else {
                     View.VISIBLE
                 }
+            }
+            phoneNumber?.let {
+                binding.phoneNumberContainer.visibility=View.VISIBLE
+                binding.countryCode.text = countryCode ?: ""
+                binding.edtPhoneNumber.setText(it ?: "")
             }
             viewModel.isEmailVerified().let {
                 if (it == false) {

@@ -8,7 +8,7 @@ import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentSettingBinding
 import com.cardio.doctor.domain.common.model.UserType
 import com.cardio.doctor.network.NetworkHelper
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
+import com.cardio.doctor.ui.common.base.fragment.BaseFragmentAuth
 import com.cardio.doctor.ui.common.utils.WEBURL
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SettingFragment : AppBaseFragment(R.layout.fragment_setting), View.OnClickListener {
+class SettingFragment : BaseFragmentAuth(R.layout.fragment_setting), View.OnClickListener {
 
     private val binding by viewBinding(FragmentSettingBinding::bind)
     private val viewModel: SettingViewModel by viewModels()
