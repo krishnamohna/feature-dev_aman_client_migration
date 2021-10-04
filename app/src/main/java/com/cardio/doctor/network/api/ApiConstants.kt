@@ -52,5 +52,8 @@ object EXTRAS{
     const val NEW_EMAIL_ADDRESS= "new_email_address"
 }
 
+object OTHER_CONST{
+    const val DELAY_MINIMUM=700L
+}
 
 

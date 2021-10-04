@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.profile.profile
+package com.cardio.doctor.data.remote.profile
 
 import androidx.lifecycle.MutableLiveData
 import com.cardio.doctor.domain.common.repository.BaseRepository
@@ -65,5 +65,11 @@ class UserProfileRepository @Inject constructor(
             return@firebaseQuery result.signInMethods?.size ?: 0 > 0
         }, errorLiveData
     )
+
+    fun reloadAuthIfEmailNotVerified() {
+        isEmailVerified()?.let {
+            firebaseAuth.currentUser?.reload()
+        }
+    }
 
 }

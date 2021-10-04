@@ -12,7 +12,7 @@ import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants.Companion.CHANGE_EMAIL
 import com.cardio.doctor.ui.AppCardioPatient
-import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
+import com.cardio.doctor.ui.common.base.viewmodel.BaseAuthViewModel
 import com.cardio.doctor.ui.common.utils.ENUM
 import com.cardio.doctor.ui.common.utils.isValidPassword
 import com.cardio.doctor.ui.common.utils.livedata.SingleLiveEvent
@@ -25,7 +25,7 @@ import javax.inject.Inject
 class ChangeEmailViewModel @Inject constructor(
     userManager: UserManager, private val userAuthRepo: UserAuthRepositary,
     application: Application,
-) : BaseViewModel(userManager, application) {
+) : BaseAuthViewModel(userManager, application) {
 
     private val _changeEmailResponse = SingleLiveEvent<Resource<Boolean>>()
     val changeEmailResponse: LiveData<Resource<Boolean>> = _changeEmailResponse

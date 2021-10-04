@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.signup
+package com.cardio.doctor.data.remote.signup
 
 import androidx.lifecycle.MutableLiveData
 import com.cardio.doctor.domain.common.repository.BaseRepository
@@ -19,17 +19,6 @@ class SignUpRepository @Inject constructor(
     apiService: ApiService,
 ) : BaseRepository(firebaseAuth, fireStore, storageReference, apiService) {
 
-    /* suspend fun isEmailAlreadyExist(email: String): Boolean {
-         try {
-             val result = firebaseAuth.fetchSignInMethodsForEmail(email).await()
-             if (result?.signInMethods?.size!! > 0) {
-                 return true
-             }
-         } catch (e: Exception) {
-         }
-         return false
-     }
- */
     suspend fun isEmailAlreadyExist(
         email: String,
         errorLiveData: MutableLiveData<Resource<Exception>>,
@@ -41,18 +30,6 @@ class SignUpRepository @Inject constructor(
             return@firebaseQuery result.signInMethods?.size ?: 0 > 0
         }, errorLiveData
     )
-
-
-    /* suspend fun uploadImageOnFirebaseStorage(fileUri: Uri?, fileName: String): Uri? {
-         return try {
-             val ref = storageReference.child("images/" + fileName)
-             ref.putFile(fileUri!!).await()
-             val imageUrl = ref.downloadUrl.await()
-             imageUrl
-         } catch (e: Exception) {
-             null
-         }
-     }*/
 
 
 }

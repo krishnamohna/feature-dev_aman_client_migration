@@ -22,7 +22,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-open class BaseViewModel @Inject constructor(
+open class BaseAuthViewModel @Inject constructor(
     protected val userManager: UserManager,
      application: Application
 ) : AndroidViewModel(application) {

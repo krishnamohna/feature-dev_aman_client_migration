@@ -65,11 +65,11 @@
             app:enterAnim="@anim/in_from_right"
             app:exitAnim="@anim/out_to_left"
             app:popEnterAnim="@anim/in_from_left"
-            app:popExitAnim="@anim/out_to_right" />
+            app:popExitAnim="@anim/out_to_right"  />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.cardio.doctor.ui.views.fragment.profile.profile.EditProfileFragment"
+        android:name="com.cardio.doctor.ui.views.fragment.profile.editprofile.EditProfileFragment"
         android:label="EditProfileFragment" />
     <fragment
         android:id="@+id/syncHealthDataFragment"

@@ -2,8 +2,11 @@ package com.cardio.doctor.ui.views.fragment.profile.profile
 
 import android.net.Uri
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.cardio.doctor.R
@@ -12,32 +15,42 @@ import com.cardio.doctor.domain.common.model.UserModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
+import com.cardio.doctor.ui.common.base.fragment.BaseFragment_v2
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.extentions.toUserModel
-import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
 import com.google.firebase.firestore.DocumentSnapshot
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class GetProfileFragment : AppBaseFragment(R.layout.fragment_get_profile), View.OnClickListener {
+class GetProfileFragment : BaseFragment_v2<FragmentGetProfileBinding>(), View.OnClickListener {
 
     private var userType: String?=null
     private var userModel: UserModel? = null
-    private val binding by viewBinding(FragmentGetProfileBinding::bind)
     private val viewModel: UserProfileViewModel by viewModels()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding=FragmentGetProfileBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         setUpToolbar(
             binding.root, getString(R.string.profile), backBtnVisibility = true,
             editProfile = true
         )
         setListener()
         setObservers()
-        viewModel.getUserDetail()
+        launchWithMinDelay{
+            viewModel.getUserDetail()
+        }
     }
+
 
     private fun setListener() {
         binding.wearableContainer.setOnClickListener(this)
@@ -51,9 +64,6 @@ class GetProfileFragment : AppBaseFragment(R.layout.fragment_get_profile), View.
         })
 
         viewModel.userDetailDocument.observe(viewLifecycleOwner, {
-            handleApiCallback(it)
-        })
-        viewModel.uploadUserProfilePic.observe(viewLifecycleOwner, {
             handleApiCallback(it)
         })
         viewModel.getUserProfilePic.observe(viewLifecycleOwner, {
@@ -147,13 +157,13 @@ class GetProfileFragment : AppBaseFragment(R.layout.fragment_get_profile), View.
     override fun onClick(view: View?) {
         when (view) {
             binding.wearableContainer -> {
-                baseViewModel.setDirection(GetProfileFragmentDirections.getProfileToSyncHealthData())
+                findNavController().navigate(GetProfileFragmentDirections.getProfileToSyncHealthData())
             }
             binding.settingContainer -> {
-                baseViewModel.setDirection(GetProfileFragmentDirections.getProfileToSettingFragment(userType))
+                findNavController().navigate(GetProfileFragmentDirections.getProfileToSettingFragment(userType))
             }
             binding.headerView.imgEditProfile -> {
-                baseViewModel.setDirection(GetProfileFragmentDirections.getProfileToEditProfile())
+                findNavController().navigate(GetProfileFragmentDirections.getProfileToEditProfile())
             }
         }
     }

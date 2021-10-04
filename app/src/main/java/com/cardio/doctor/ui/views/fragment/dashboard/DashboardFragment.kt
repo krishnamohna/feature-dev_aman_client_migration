@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.cardio.doctor.R
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.databinding.FragmentDashboardBinding
+import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +28,7 @@ class DashboardFragment : AppBaseFragment(R.layout.fragment_dashboard), View.OnC
         binding.btnDashboardOne.setOnClickListener(this)
         binding.btnDashboardTwo.setOnClickListener(this)
         binding.btnProfileMenu.setOnClickListener(this)
+        binding.appButton.setOnClickListener {  }
     }
 
     private fun setObservers() {

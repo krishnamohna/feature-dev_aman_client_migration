@@ -4,7 +4,7 @@ import android.app.Application
 import com.cardio.doctor.ui.AppCardioPatient
 import com.cardio.doctor.R
 import com.cardio.doctor.domain.common.repository.BaseRepository
-import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
+import com.cardio.doctor.ui.common.base.viewmodel.BaseAuthViewModel
 import com.cardio.doctor.data.local.UserManager
 import com.cardio.doctor.ui.common.utils.Preference.Companion.SYNC_HEALTH
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +14,7 @@ import javax.inject.Inject
 class SyncHealthViewModel @Inject constructor(
     userManager: UserManager, baseRepository: BaseRepository,
     application: Application
-) : BaseViewModel(userManager, application) {
+) : BaseAuthViewModel(userManager, application) {
 
     fun storeSyncSelectionInPreference(name : String){
         userManager.setString(SYNC_HEALTH,name)

@@ -18,3 +18,4 @@ fun customAnimationForTextInput( context: Context,txtLabel: TextView,s: CharSequ
     if (before == 0 && s.length == 1)  txtLabel.startAnimation(up)
     if (s.isEmpty()) txtLabel.startAnimation(down)
 }
+

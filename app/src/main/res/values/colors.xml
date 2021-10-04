@@ -21,8 +21,13 @@
     <color name="green_otp">#4cb162</color>
 
     <color name="green_tutorial_indicator">#0493bf</color>
+    <!--button colors-->
+    <color name="buttonBackgroundColorDisabled">#e0e0e0</color>
+    <color name="buttonBackgroundColorEnabled">@color/colorPrimary</color>
     <color name="btn_gradient_start">#00b191</color>
     <color name="btn_gradient_end">#0e88ac</color>
+    <color name="btn_gradient_start_light">#00e6bb</color>
+    <color name="btn_gradient_end_light">#13b9ec</color>
 
     <color name="red_validation">#ee000e</color>
     <color name="blue">#007aff</color>

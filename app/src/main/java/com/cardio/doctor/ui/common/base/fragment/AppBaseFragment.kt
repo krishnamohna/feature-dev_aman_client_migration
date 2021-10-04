@@ -7,7 +7,8 @@ import com.cardio.doctor.ui.common.listeners.DialogProvider
 import com.cardio.doctor.ui.common.utils.Timer
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 
-abstract class AppBaseFragment(layoutResId: Int) : BaseFragment(layoutResId){
+abstract class AppBaseFragment(layoutResId: Int) : BaseFragmentAuth(layoutResId){
+
     private var lastClickTime: Long = 0
 
     override fun provideDialogHelper(): DialogHelper {

@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.viewbinding.ViewBinding
 import com.cardio.doctor.R
-import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
+import com.cardio.doctor.ui.common.base.viewmodel.BaseAuthViewModel
 import com.cardio.doctor.ui.common.listeners.DialogHelper
 import com.cardio.doctor.ui.common.listeners.DialogProvider
 import com.cardio.doctor.ui.common.utils.DialogHelperImpl
@@ -21,17 +21,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
-abstract class BaseActivity : AppCompatActivity() , DialogProvider {
+abstract class BaseActivity : AppCompatActivity(), DialogProvider {
 
-    protected val baseViewModel : BaseViewModel by viewModels()
-    private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var dialogHelper : DialogHelper
+    protected val baseViewModel: BaseAuthViewModel by viewModels()
+    private var googleSignInClient: GoogleSignInClient? = null
+    private lateinit var dialogHelper: DialogHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dialogHelper = provideDialogHelper()
-        googleSignIn()
     }
+
     private val dialogHelperImps by lazy {
         DialogHelperImpl(this)
     }
@@ -41,12 +41,13 @@ abstract class BaseActivity : AppCompatActivity() , DialogProvider {
     }
 
     inline fun <T : ViewBinding> AppCompatActivity.viewBinding(
-        crossinline bindingInflater: (LayoutInflater) -> T) =
+        crossinline bindingInflater: (LayoutInflater) -> T
+    ) =
         lazy(LazyThreadSafetyMode.NONE) {
             bindingInflater.invoke(layoutInflater)
         }
 
-    private fun googleSignIn() {
+    fun googleSignIn() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -57,7 +58,9 @@ abstract class BaseActivity : AppCompatActivity() , DialogProvider {
     fun signOut() {
         baseViewModel.clearPreference()
         baseViewModel.auth.signOut()
-        googleSignInClient.signOut().addOnCompleteListener(this) {
+        googleSignInClient?.let {
+            it.signOut().addOnCompleteListener(this) {
+            }
         }
         openLoginActivity()
     }
@@ -75,18 +78,19 @@ abstract class BaseActivity : AppCompatActivity() , DialogProvider {
         dialogHelper.hideProgress()
     }
 
-    protected fun setUpToolbar(view: View, title: String, backBtnVisibility: Boolean = false
-                               , editProfile : Boolean = false) {
+    protected fun setUpToolbar(
+        view: View, title: String, backBtnVisibility: Boolean = false, editProfile: Boolean = false
+    ) {
         val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
         val backBtn = view.findViewById<ImageView>(R.id.backBtn)
         val toolbarTitle = view.findViewById<TextView>(R.id.toolbarTitle)
         val imgEdtProfile = view.findViewById<ImageView>(R.id.imgEditProfile)
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
-        backBtn.visibility = if(title.isNotEmpty()) View.VISIBLE else View.GONE
-        backBtn.visibility = if(backBtnVisibility) View.VISIBLE else View.INVISIBLE
-        imgEdtProfile.visibility = if(editProfile) View.VISIBLE else View.GONE
-        if(!TextUtils.isEmpty(title)){
+        backBtn.visibility = if (title.isNotEmpty()) View.VISIBLE else View.GONE
+        backBtn.visibility = if (backBtnVisibility) View.VISIBLE else View.INVISIBLE
+        imgEdtProfile.visibility = if (editProfile) View.VISIBLE else View.GONE
+        if (!TextUtils.isEmpty(title)) {
             toolbarTitle.text = title
         }
         backBtn.setOnClickListener {

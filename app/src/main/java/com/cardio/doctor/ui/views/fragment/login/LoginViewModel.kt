@@ -12,7 +12,7 @@ import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
 import com.cardio.doctor.ui.AppCardioPatient
-import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
+import com.cardio.doctor.ui.common.base.viewmodel.BaseAuthViewModel
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey
 import com.cardio.doctor.ui.common.utils.extentions.toUserModel
 import com.cardio.doctor.ui.common.utils.isNumericValue
@@ -33,7 +33,7 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
         userManager: UserManager, private val loginRepository: LoginRepositary,
         application: Application,
-) : BaseViewModel(userManager, application) {
+) : BaseAuthViewModel(userManager, application) {
 
     private val _loginApiResponse = SingleLiveEvent<Resource<String>>()
     val loginApiResponse: LiveData<Resource<String>> = _loginApiResponse

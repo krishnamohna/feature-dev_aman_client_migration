@@ -14,13 +14,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.ui.common.base.activity.BaseActivity
-import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
+import com.cardio.doctor.ui.common.base.viewmodel.BaseAuthViewModel
 import com.cardio.doctor.ui.common.listeners.DialogHelper
 import com.cardio.doctor.ui.common.listeners.DialogProvider
 import com.cardio.doctor.ui.common.utils.showAlertDialog
 
-abstract class BaseFragment(@LayoutRes layoutResId: Int) : Fragment(layoutResId), DialogProvider {
-    protected val baseViewModel : BaseViewModel by activityViewModels()
+abstract class BaseFragmentAuth(@LayoutRes layoutResId: Int) : Fragment(layoutResId), DialogProvider {
+    protected val baseViewModel : BaseAuthViewModel by activityViewModels()
     private lateinit var dialogHelper : DialogHelper
 
     override fun onAttach(context: Context) {

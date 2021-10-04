@@ -6,13 +6,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.cardio.doctor.R
 import com.cardio.doctor.data.local.UserManager
+import com.cardio.doctor.data.remote.changepassword.ChangePasswordRepository
 import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
 import com.cardio.doctor.network.api.Constants.Companion.CHANGE_EMAIL
 import com.cardio.doctor.ui.AppCardioPatient
-import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
+import com.cardio.doctor.ui.common.base.viewmodel.BaseAuthViewModel
 import com.cardio.doctor.ui.common.utils.ENUM
 import com.cardio.doctor.ui.common.utils.isMatched
 import com.cardio.doctor.ui.common.utils.isValidPassword
@@ -27,7 +28,7 @@ import javax.inject.Inject
 class ChangePasswordViewModel @Inject constructor(
     userManager: UserManager, private val repository: ChangePasswordRepository,
     application: Application,
-) : BaseViewModel(userManager, application) {
+) : BaseAuthViewModel(userManager, application) {
 
     private val _changePasswordResponse = SingleLiveEvent<Resource<Boolean>>()
     val changePasswordResponse: LiveData<Resource<Boolean>> = _changePasswordResponse

@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.profile.profile
+package com.cardio.doctor.ui.views.fragment.profile.editprofile
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -8,8 +8,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
@@ -27,9 +29,8 @@ import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
 import com.cardio.doctor.network.api.EXTRAS
-import com.cardio.doctor.ui.common.base.fragment.AppBaseFragment
+import com.cardio.doctor.ui.common.base.fragment.BaseFragment_v2
 import com.cardio.doctor.ui.common.utils.*
-import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
 import com.cardio.doctor.ui.views.activity.change_email.ChangeEmailActivity
 import com.google.firebase.firestore.DocumentSnapshot
 import com.theartofdev.edmodo.cropper.CropImage
@@ -41,12 +42,11 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 @AndroidEntryPoint
-class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), View.OnClickListener {
+class EditProfileFragment : BaseFragment_v2<FragmentEditProfileBinding>(), View.OnClickListener {
 
     private var userType: String? = null
     private var selectedImageUri: Uri? = null
-    private val binding by viewBinding(FragmentEditProfileBinding::bind)
-    private val viewModel: UserProfileViewModel by viewModels()
+    private val viewModel: EditUserProfileViewModel by viewModels()
     private var birthDate: Date? = null
 
     var isEmailEdited: (email:String) -> Unit ={
@@ -79,13 +79,24 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
                 fetchImage()
         }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding=FragmentEditProfileBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         setUpToolbar(binding.root, getString(R.string.edit_profile), backBtnVisibility = true)
         setListener()
         setObservers()
         binding.userProfileViewModel = viewModel
-        viewModel.getUserDetail()
+        launchWithMinDelay{
+            viewModel.getUserDetail()
+        }
     }
 
     private fun setListener() {
@@ -215,9 +226,12 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
     private fun handleApiCallback(apiResponse: Resource<Any>) {
         when (apiResponse.status) {
             Status.SUCCESS -> {
-                hideProgress()
+
                 when (apiResponse.apiConstant) {
-                    Constants.USER_DETAIL -> showUserDetailOnUI(apiResponse.data as DocumentSnapshot)
+                    Constants.USER_DETAIL -> {
+                        hideProgress()
+                        showUserDetailOnUI(apiResponse.data as DocumentSnapshot)
+                    }
 
                     Constants.UPLOAD_PROFILE_PIC -> {
                         viewModel.firebaseUri = apiResponse.data as Uri
@@ -241,6 +255,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
                     }
 
                     Constants.EDIT_PROFILE -> {
+                        hideProgress()
                         customSnackBarFail(
                             requireContext(),
                             binding.root,
@@ -250,6 +265,7 @@ class EditProfileFragment : AppBaseFragment(R.layout.fragment_edit_profile), Vie
                     }
 
                     Constants.EMAIL_SEND_VERIFICATION -> {
+                        hideProgress()
                         customSnackBarFail(
                             requireContext(),
                             binding.root,

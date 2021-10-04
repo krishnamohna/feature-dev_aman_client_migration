@@ -1,10 +1,10 @@
-package com.cardio.doctor.ui.views.fragment.phone_verification
+package com.cardio.doctor.data.remote.phoneverification
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.domain.common.repository.BaseRepository
 import com.cardio.doctor.network.Resource
+import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.ui.common.utils.FireStoreCollection
 import com.cardio.doctor.ui.common.utils.firebaseQuery
 import com.google.firebase.auth.AuthCredential
@@ -68,28 +68,5 @@ class PhoneVerificationRepository @Inject constructor(
             return@firebaseQuery it !=null
         }, errorLiveData
     )
-/*
-    suspend fun uploadImageOnFirebaseStorage(
-        fileUri: Uri?, fileName: String,
-        errorLiveData: MutableLiveData<Resource<Exception>>,
-    ) = firebaseDocumentQuery<StorageReference, Uri>(
-        operation = {
-            val ref = storageReference.child("images/" + fileName)
-            ref.putFile(fileUri!!).await()
-            ref
-        },
-        parse = { result ->
-            return@firebaseDocumentQuery result.downloadUrl.await()
-        }, errorLiveData
-    )
-
-    suspend fun sendVerificationEmail1(firebaseUser: FirebaseUser): Boolean {
-        return try {
-            val await = firebaseUser.sendEmailVerification().await()
-            true
-        } catch (e: Exception) {
-            false
-        }
-    }*/
 }
 

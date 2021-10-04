@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/btn_gradient_start</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/black_tutorial_text</item>
+        <item name="buttonDefaultStyle">@style/ButtonDefaultStyle</item>
     </style>
 
     <style name="AppTheme" parent="BaseAppTheme">
