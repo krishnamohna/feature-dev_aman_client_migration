@@ -8,6 +8,7 @@ import com.cardio.doctor.databinding.FragmentDashboardBinding
 import com.cardio.doctor.ui.common.base.fragment.BaseFragmentAuth
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
+import com.cardio.doctor.ui.views.diagnosis.DiagnosisActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,10 +41,9 @@ class DashboardFragment : BaseFragmentAuth(R.layout.fragment_dashboard), View.On
         when (view) {
             binding.btnDashboardOne -> {
                 customSnackBarFail(requireContext(), binding.root, getString(R.string.coming_soon))
-
             }
             binding.btnDashboardTwo -> {
-                customSnackBarFail(requireContext(), binding.root, getString(R.string.coming_soon))
+                activity?.let { DiagnosisActivity.start(it) }
             }
             binding.btnProfileMenu -> {
                 baseViewModel.setDirection(DashboardFragmentDirections.dashboardToProfileFragment())

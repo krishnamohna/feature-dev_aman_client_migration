@@ -10,7 +10,6 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -22,8 +21,9 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,LockedOrientationActivity"
         tools:targetApi="m">
-
-        <activity android:name="com.cardio.doctor.ui.views.activity.splash.SplashActivity"
+        <activity android:name="com.cardio.doctor.ui.views.diagnosis.DiagnosisActivity"></activity>
+        <activity
+            android:name=".ui.views.activity.splash.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,34 +31,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.cardio.doctor.ui.views.activity.tutorial.TutorialActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:name=".ui.views.activity.tutorial.TutorialActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.cardio.doctor.ui.views.activity.AuthenticateUserActivity"
+            android:name=".ui.views.activity.AuthenticateUserActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
-          <!--  <intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity
-            android:name="com.cardio.doctor.ui.views.activity.dashboard.DashboardActivity"
+            android:name=".ui.views.activity.dashboard.DashboardActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            />
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.cardio.doctor.ui.views.activity.change_email.ChangeEmailActivity"
-            android:screenOrientation="portrait"
-            />
+            android:name=".ui.views.activity.change_email.ChangeEmailActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.Theme.AppCompat" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -70,6 +69,5 @@
                 android:resource="@xml/file_paths" />
         </provider>
     </application>
-
 
 </manifest>

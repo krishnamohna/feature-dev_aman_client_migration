@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/graph_diagnosis"
+    app:startDestination="@id/diagnosisFragmentPart1">
+
+    <fragment
+        android:id="@+id/diagnosisFragmentPart1"
+        android:name="com.cardio.doctor.ui.views.diagnosis.step1.DiagnosisFragmentPart1"
+        android:label="DiagnosisFragmentPart1" >
+        <action
+            android:id="@+id/action_diagnosisFragmentPart1_to_diagnosisFragmentPart2"
+            app:destination="@id/diagnosisFragmentPart2" />
+    </fragment>
+    <fragment
+        android:id="@+id/diagnosisFragmentPart2"
+        android:name="com.cardio.doctor.ui.views.diagnosis.step2.DiagnosisFragmentPart2"
+        android:label="DiagnosisFragmentPart2" >
+        <action
+            android:id="@+id/action_diagnosisFragmentPart2_to_diagnosisFragmentPart3"
+            app:destination="@id/diagnosisFragmentPart3" />
+    </fragment>
+    <fragment
+        android:id="@+id/diagnosisFragmentPart3"
+        android:name="com.cardio.doctor.ui.views.diagnosis.step3.DiagnosisFragmentPart3"
+        android:label="DiagnosisFragmentPart3" >
+        <action
+            android:id="@+id/action_diagnosisFragmentPart3_to_diagnosisFragmentPart4"
+            app:destination="@id/diagnosisFragmentPart4" />
+    </fragment>
+    <fragment
+        android:id="@+id/diagnosisFragmentPart4"
+        android:name="com.cardio.doctor.ui.views.diagnosis.step4.DiagnosisFragmentPart4"
+        android:label="DiagnosisFragmentPart4" />
+</navigation>
