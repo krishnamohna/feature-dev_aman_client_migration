@@ -48,7 +48,6 @@
                     android:background="@drawable/edt_rounded_corner"
                     android:dropDownWidth="match_parent"
                     android:entries="@array/array_ailment"
-                    android:onItemSelected="@{(parent,view,pos,id)->userProfileViewModel.selectGender(parent,view,pos,id)}"
                     android:paddingStart="@dimen/_12sdp"
                     android:paddingEnd="@dimen/_16sdp"
                     android:popupBackground="@color/white"

@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.activity.change_email
+package com.cardio.doctor.ui.views.change_email
 
 import android.os.Bundle
 import android.text.Editable

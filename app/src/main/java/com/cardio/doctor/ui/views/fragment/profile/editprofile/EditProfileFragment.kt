@@ -31,7 +31,7 @@ import com.cardio.doctor.network.api.Constants
 import com.cardio.doctor.network.api.EXTRAS
 import com.cardio.doctor.ui.common.base.fragment.BaseFragment
 import com.cardio.doctor.ui.common.utils.*
-import com.cardio.doctor.ui.views.activity.change_email.ChangeEmailActivity
+import com.cardio.doctor.ui.views.change_email.ChangeEmailActivity
 import com.google.firebase.firestore.DocumentSnapshot
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView

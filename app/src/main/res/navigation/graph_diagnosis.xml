@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/diagnosisFragmentPart1"
-        android:name="com.cardio.doctor.ui.views.diagnosis.step1.DiagnosisFragmentPart1"
+        android:name="com.cardio.doctor.ui.views.diagnosis.step1.DiagnosisFragmentStep1"
         android:label="DiagnosisFragmentPart1" >
         <action
             android:id="@+id/action_diagnosisFragmentPart1_to_diagnosisFragmentPart2"
@@ -13,7 +13,7 @@
     </fragment>
     <fragment
         android:id="@+id/diagnosisFragmentPart2"
-        android:name="com.cardio.doctor.ui.views.diagnosis.step2.DiagnosisFragmentPart2"
+        android:name="com.cardio.doctor.ui.views.diagnosis.step2.DiagnosisFragmentStep2"
         android:label="DiagnosisFragmentPart2" >
         <action
             android:id="@+id/action_diagnosisFragmentPart2_to_diagnosisFragmentPart3"
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/diagnosisFragmentPart3"
-        android:name="com.cardio.doctor.ui.views.diagnosis.step3.DiagnosisFragmentPart3"
+        android:name="com.cardio.doctor.ui.views.diagnosis.step3.DiagnosisFragmentStep3"
         android:label="DiagnosisFragmentPart3" >
         <action
             android:id="@+id/action_diagnosisFragmentPart3_to_diagnosisFragmentPart4"
@@ -29,6 +29,6 @@
     </fragment>
     <fragment
         android:id="@+id/diagnosisFragmentPart4"
-        android:name="com.cardio.doctor.ui.views.diagnosis.step4.DiagnosisFragmentPart4"
+        android:name="com.cardio.doctor.ui.views.diagnosis.step4.DiagnosisFragmentStep4"
         android:label="DiagnosisFragmentPart4" />
 </navigation>
