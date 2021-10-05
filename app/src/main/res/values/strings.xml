@@ -167,6 +167,7 @@
     <string name="top_bp">Top BP*(Systolic)</string>
     <string name="bottom_bp">Bottom BP*(Diastolic)</string>
     <string name="heart_rate_bps">Heart Rate*(bps)</string>
+    <string name="title_diagnosis">Diagnosis</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="TutorialTitle">
         <item>Connect with Experience Practitioners </item>

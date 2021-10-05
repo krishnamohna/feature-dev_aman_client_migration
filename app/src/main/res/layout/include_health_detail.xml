@@ -5,8 +5,7 @@
     android:id="@+id/clPatientDetail"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:visibility="gone"
-    tools:visibility="visible">
+    >
     <!--first name-->
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -51,10 +50,11 @@
         android:layout_marginTop="@dimen/_5sdp"
         android:text="@string/enter_weight"
         android:textColor="@color/red_validation"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/edtWeight"
         app:layout_constraintStart_toStartOf="@+id/edtWeight"
-        app:layout_constraintTop_toBottomOf="@+id/edtWeight" />
+        app:layout_constraintTop_toBottomOf="@+id/edtWeight"
+        tools:visibility="visible" />
 
 
     <androidx.appcompat.widget.AppCompatTextView

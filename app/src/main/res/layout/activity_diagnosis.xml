@@ -13,18 +13,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.cardio.doctor.ui.common.customviews.StepView
+        android:id="@+id/step_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerView"
+        app:sv_animationType="Line"
+        app:sv_doneCircleColor="@color/step_diagnosis_color"
+        app:sv_doneCircleRadius="@dimen/_16sdp"
+        app:sv_doneStepLineColor="@color/step_diagnosis_color"
+        app:sv_doneStepMarkColor="@color/white"
+        app:sv_nextStepLineColor="@color/grey"
+        app:sv_nextTextColor="@color/white"
+        app:sv_selectedCircleColor="@color/step_diagnosis_color"
+        app:sv_selectedCircleRadius="@dimen/_16sdp"
+        app:sv_selectedStepNumberColor="@color/white"
+        app:sv_selectedTextColor="@color/white"
+        app:sv_stepLineWidth="1dp"
+        app:sv_stepNumberTextSize="12sp"
+        app:sv_stepPadding="4dp"
+        app:sv_stepsNumber="4"
+        app:sv_typeface="@font/nunito_regular" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/navHostFragment"
+        android:id="@+id/navHostFragmentDiagnoises"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerView"
+        app:layout_constraintTop_toBottomOf="@id/step_view"
         app:layout_constraintVertical_weight="@integer/int_1"
         app:navGraph="@navigation/graph_diagnosis" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

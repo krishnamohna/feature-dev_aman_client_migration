@@ -3,8 +3,8 @@ package com.cardio.doctor.ui.views.dashboard
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import com.cardio.doctor.R
-import com.cardio.doctor.ui.common.base.activity.BaseActivity
 import com.cardio.doctor.databinding.ActivityDashboardBinding
+import com.cardio.doctor.ui.common.base.activity.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -16,6 +16,7 @@ class DashboardActivity : BaseActivity(){
         setContentView(binding.root)
         setNavigationController()
     }
+
 
     private fun setNavigationController() {
         val navController =

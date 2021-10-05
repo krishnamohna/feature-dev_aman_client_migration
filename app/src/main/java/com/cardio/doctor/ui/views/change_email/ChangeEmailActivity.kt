@@ -19,6 +19,8 @@ import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
 import com.cardio.doctor.network.api.EXTRAS
 import com.cardio.doctor.ui.common.base.activity.BaseActivity
+import com.cardio.doctor.ui.common.base.fragment.toolbar.IToolbar
+import com.cardio.doctor.ui.common.base.fragment.toolbar.NoImp
 import com.cardio.doctor.ui.common.utils.customAnimationForTextInput
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.isTextEmpty

@@ -30,6 +30,9 @@ import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
 import com.cardio.doctor.network.api.EXTRAS
 import com.cardio.doctor.ui.common.base.fragment.BaseFragment
+import com.cardio.doctor.ui.common.base.fragment.toolbar.BaseToolBarFragment
+import com.cardio.doctor.ui.common.base.fragment.toolbar.IToolbar
+import com.cardio.doctor.ui.common.base.fragment.toolbar.NoImp
 import com.cardio.doctor.ui.common.utils.*
 import com.cardio.doctor.ui.views.change_email.ChangeEmailActivity
 import com.google.firebase.firestore.DocumentSnapshot
@@ -49,9 +52,9 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
     private val viewModel: EditUserProfileViewModel by viewModels()
     private var birthDate: Date? = null
 
-    var isEmailEdited: (email:String) -> Unit ={
+    var isEmailEdited: (email: String) -> Unit = {
         Intent(requireContext(), ChangeEmailActivity::class.java).apply {
-            putExtra(EXTRAS.NEW_EMAIL_ADDRESS,it)
+            putExtra(EXTRAS.NEW_EMAIL_ADDRESS, it)
         }.run {
             resultLauncher.launch(this)
         }
@@ -84,7 +87,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding=FragmentEditProfileBinding.inflate(inflater,container,false)
+        binding = FragmentEditProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -94,7 +97,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
         setListener()
         setObservers()
         binding.userProfileViewModel = viewModel
-        launchWithMinDelay{
+        launchWithMinDelay {
             viewModel.getUserDetail()
         }
     }
@@ -222,7 +225,6 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
     }
 
 
-
     private fun handleApiCallback(apiResponse: Resource<Any>) {
         when (apiResponse.status) {
             Status.SUCCESS -> {
@@ -346,19 +348,19 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
                 }
             }
             phoneNumber?.let {
-                if(!it.trim().isEmpty()) {
+                if (!it.trim().isEmpty()) {
                     binding.phoneNumberContainer.visibility = View.VISIBLE
                     binding.countryCode.text = countryCode ?: ""
                     binding.edtPhoneNumber.setText(it ?: "")
-                }else{
+                } else {
                     binding.phoneNumberContainer.visibility = View.GONE
                 }
             }
             viewModel.isEmailVerified().let {
                 if (it == false) {
-                    binding.edtEmailId.isClickable=true
-                    binding.edtEmailId.alpha=1.0f
-                    binding.edtEmailId.isFocusableInTouchMode= true
+                    binding.edtEmailId.isClickable = true
+                    binding.edtEmailId.alpha = 1.0f
+                    binding.edtEmailId.isFocusableInTouchMode = true
                     binding.txtResendVerificationLink.visibility = View.VISIBLE
                 } else {
                     binding.txtResendVerificationLink.visibility = View.GONE
@@ -467,4 +469,5 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
         binding.btnSave.isEnabled = clickable
         binding.btnSave.alpha = alpha
     }
+
 }

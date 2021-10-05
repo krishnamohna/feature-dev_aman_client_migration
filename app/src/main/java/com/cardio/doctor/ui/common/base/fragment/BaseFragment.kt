@@ -1,6 +1,7 @@
 package com.cardio.doctor.ui.common.base.fragment
 
 import android.content.Context
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.cardio.doctor.R
+import com.cardio.doctor.ui.common.base.activity.BaseActivity
 import com.cardio.doctor.ui.common.listeners.DialogHelper
 import com.cardio.doctor.ui.common.listeners.DialogProvider
 import com.cardio.doctor.ui.common.utils.extentions.setUpToolbar
@@ -21,6 +23,8 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
     private val handler:Handler by lazy {
         Handler(Looper.getMainLooper())
     }
+    val parentActivity: BaseActivity?
+    get() = activity as? BaseActivity
 
     override fun onAttach(context: Context) {
         dialogHelper = provideDialogHelper()
@@ -40,6 +44,11 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
         if (requireActivity is DialogProvider)
             return requireActivity.provideDialogHelper()
         throw UnsupportedOperationException()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 
     protected fun setUpToolbar(

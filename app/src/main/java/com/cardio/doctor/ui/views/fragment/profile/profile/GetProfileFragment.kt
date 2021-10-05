@@ -40,10 +40,7 @@ class GetProfileFragment : BaseFragment<FragmentGetProfileBinding>(), View.OnCli
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setUpToolbar(
-            binding.root, getString(R.string.profile), backBtnVisibility = true,
-            editProfile = true
-        )
+        setUpToolbar(binding.root, getString(R.string.profile), backBtnVisibility = true, editProfile = true)
         setListener()
         setObservers()
         launchWithMinDelay{
@@ -173,5 +170,6 @@ class GetProfileFragment : BaseFragment<FragmentGetProfileBinding>(), View.OnCli
             }
         }
     }
+
 
 }

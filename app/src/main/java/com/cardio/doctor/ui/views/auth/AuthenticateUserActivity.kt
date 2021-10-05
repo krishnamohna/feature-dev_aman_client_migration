@@ -17,6 +17,7 @@ class AuthenticateUserActivity : BaseGoogleAuthActivity() {
         setNavigationController()
     }
 
+
     private fun setNavigationController() {
         val navController = (supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment)
             .navController

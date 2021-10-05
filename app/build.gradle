@@ -39,6 +39,7 @@ android {
         }
         dev {
             dimension "env"
+            resConfigs("en", "xxhdpi")
         }
     }
 
