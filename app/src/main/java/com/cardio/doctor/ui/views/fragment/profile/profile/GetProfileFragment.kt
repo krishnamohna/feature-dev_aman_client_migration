@@ -89,6 +89,7 @@ class GetProfileFragment : BaseFragment<FragmentGetProfileBinding>(), View.OnCli
                             .apply(RequestOptions().circleCrop())
                             .placeholder(R.drawable.ic_profile_placeholder)
                             .into(binding.imgProfilePic)
+                       // binding.imgProfilePic.loadImage(storageReference,true,true)
                     }
                 }
             }
