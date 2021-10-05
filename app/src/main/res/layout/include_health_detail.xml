@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clPatientDetail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    tools:visibility="visible">
+    <!--first name-->
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvWeight"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="@string/weight_in_lbs"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/edtWeight"
+        app:layout_constraintStart_toStartOf="@+id/edtWeight"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtWeight"
+        style="@style/BaseAppTheme.EdtTxt"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginEnd="8dp"
+        android:hint="@string/weight_in_lbs"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords"
+        android:maxLength="@integer/int_20"
+        android:maxLines="@integer/int_1"
+        android:paddingLeft="@dimen/_16sdp"
+        android:paddingRight="@dimen/_16sdp"
+        app:layout_constraintEnd_toStartOf="@+id/edtHeartRate"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWeight" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvWeightError"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/enter_weight"
+        android:textColor="@color/red_validation"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/edtWeight"
+        app:layout_constraintStart_toStartOf="@+id/edtWeight"
+        app:layout_constraintTop_toBottomOf="@+id/edtWeight" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtHeartRate"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="@string/heart_rate_bps"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/edtHeartRate"
+        app:layout_constraintStart_toStartOf="@+id/edtHeartRate"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtHeartRate"
+        style="@style/BaseAppTheme.EdtTxt"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="8dp"
+        android:hint="@string/heart_rate_bps"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords"
+        android:maxLength="@integer/int_20"
+        android:maxLines="@integer/int_1"
+        android:paddingLeft="@dimen/_16sdp"
+        android:paddingRight="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/edtWeight"
+        app:layout_constraintTop_toTopOf="@+id/edtWeight" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvErrorHeartRate"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/enter_heart_rate"
+        android:textColor="@color/red_validation"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/edtHeartRate"
+        app:layout_constraintStart_toStartOf="@+id/edtHeartRate"
+        app:layout_constraintTop_toBottomOf="@+id/edtHeartRate"
+        tools:visibility="visible" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierNames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tvWeightError,tvErrorHeartRate"
+        tools:layout_editor_absoluteX="195dp"
+        tools:layout_editor_absoluteY="129dp" />
+
+    <!--age-->
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtTopBp"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="@string/top_bp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/edtTopBp"
+        app:layout_constraintStart_toStartOf="@+id/edtTopBp"
+        app:layout_constraintTop_toBottomOf="@id/barrierNames"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtTopBp"
+        style="@style/BaseAppTheme.EdtTxt"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/top_bp"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords"
+        android:maxLength="@integer/int_20"
+        android:maxLines="@integer/int_1"
+        android:paddingLeft="@dimen/_16sdp"
+        android:paddingRight="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="@+id/edtWeight"
+        app:layout_constraintStart_toStartOf="@+id/edtWeight"
+        app:layout_constraintTop_toBottomOf="@+id/txtTopBp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTopBpErrro"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/enter_top_bp"
+        android:textColor="@color/red_validation"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/edtTopBp"
+        app:layout_constraintStart_toStartOf="@+id/edtTopBp"
+        app:layout_constraintTop_toBottomOf="@+id/edtTopBp"
+        tools:visibility="visible" />
+
+    <!--bottom bp-->
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtBottomBp"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="@string/bottom_bp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/edtBottomBp"
+        app:layout_constraintTop_toBottomOf="@id/barrierNames"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtBottomBp"
+        style="@style/BaseAppTheme.EdtTxt"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:hint="@string/bottom_bp"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords"
+        android:maxLength="@integer/int_20"
+        android:maxLines="@integer/int_1"
+        android:paddingLeft="@dimen/_16sdp"
+        android:paddingRight="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/edtHeartRate"
+        app:layout_constraintTop_toTopOf="@+id/edtTopBp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBottomBpErrror"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/enter_bottom_bp"
+        android:textColor="@color/red_validation"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/edtBottomBp"
+        app:layout_constraintStart_toStartOf="@+id/edtBottomBp"
+        app:layout_constraintTop_toBottomOf="@+id/edtBottomBp"
+        tools:visibility="visible" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,6 +42,10 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="enter_first_name">Please enter first name</string>
+    <string name="enter_weight">Please enter weight</string>
+    <string name="enter_heart_rate">Please heart rate</string>
+    <string name="enter_top_bp">Please top bp</string>
+    <string name="enter_bottom_bp">Please bottom bp</string>
     <string name="enter_valid_first_name">First name must be atleast 3 characters long</string>
     <string name="enter_email_address">Please enter your email</string>
     <string name="err_valid_email">Please enter a valid email</string>
@@ -160,8 +164,9 @@
     <string name="patient_detail">PATIENT DETAIL</string>
     <string name="age">Age</string>
     <string name="health_detail">HEALTH DETAIL</string>
-    <string name="top_bp">Top BP(Systolic)</string>
-    <string name="bottom_bp">Bottom BP(Diastolic)</string>
+    <string name="top_bp">Top BP*(Systolic)</string>
+    <string name="bottom_bp">Bottom BP*(Diastolic)</string>
+    <string name="heart_rate_bps">Heart Rate*(bps)</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="TutorialTitle">
         <item>Connect with Experience Practitioners </item>

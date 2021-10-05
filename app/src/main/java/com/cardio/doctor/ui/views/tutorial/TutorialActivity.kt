@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.activity.tutorial
+package com.cardio.doctor.ui.views.tutorial
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,8 @@ import com.cardio.doctor.R
 import com.cardio.doctor.ui.common.base.activity.BaseActivity
 import com.cardio.doctor.databinding.ActivityTutorialBinding
 import com.cardio.doctor.domain.tutorial.TutorialModel
-import com.cardio.doctor.ui.views.activity.AuthenticateUserActivity
-import com.cardio.doctor.ui.views.activity.tutorial.adapter.SliderAdapter
+import com.cardio.doctor.ui.views.auth.AuthenticateUserActivity
+import com.cardio.doctor.ui.views.tutorial.adapter.SliderAdapter
 import com.cardio.doctor.ui.common.utils.setDoubleClickListener
 import dagger.hilt.android.AndroidEntryPoint
 

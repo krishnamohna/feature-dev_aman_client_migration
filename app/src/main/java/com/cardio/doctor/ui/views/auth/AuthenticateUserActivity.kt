@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.activity
+package com.cardio.doctor.ui.views.auth
 
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment

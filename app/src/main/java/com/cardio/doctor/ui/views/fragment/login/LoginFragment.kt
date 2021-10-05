@@ -28,7 +28,7 @@ import com.cardio.doctor.ui.common.utils.*
 import com.cardio.doctor.ui.common.utils.Timer.Companion.API_TIMEOUT
 import com.cardio.doctor.ui.common.utils.Timer.Companion.OTP_EXPIRED
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
-import com.cardio.doctor.ui.views.activity.dashboard.DashboardActivity
+import com.cardio.doctor.ui.views.dashboard.DashboardActivity
 import com.countrypicker.CountrySelectActivity
 import com.countrypicker.bean.CountryData
 import com.google.android.gms.auth.api.signin.GoogleSignIn

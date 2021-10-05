@@ -32,7 +32,7 @@ import com.cardio.doctor.ui.common.utils.Timer.Companion.OTP_TIME_FORMAT
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.showAlertDialog
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
-import com.cardio.doctor.ui.views.activity.dashboard.DashboardActivity
+import com.cardio.doctor.ui.views.dashboard.DashboardActivity
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider

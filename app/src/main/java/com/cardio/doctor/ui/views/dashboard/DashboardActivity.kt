@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.activity.dashboard
+package com.cardio.doctor.ui.views.dashboard
 
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment

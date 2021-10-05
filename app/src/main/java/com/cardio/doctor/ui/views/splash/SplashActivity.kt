@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.activity.splash
+package com.cardio.doctor.ui.views.splash
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,9 +6,9 @@ import androidx.lifecycle.lifecycleScope
 import com.cardio.doctor.ui.common.base.activity.BaseActivity
 import com.cardio.doctor.data.local.UserManager
 import com.cardio.doctor.databinding.ActivitySplashBinding
-import com.cardio.doctor.ui.views.activity.AuthenticateUserActivity
-import com.cardio.doctor.ui.views.activity.dashboard.DashboardActivity
-import com.cardio.doctor.ui.views.activity.tutorial.TutorialActivity
+import com.cardio.doctor.ui.views.auth.AuthenticateUserActivity
+import com.cardio.doctor.ui.views.dashboard.DashboardActivity
+import com.cardio.doctor.ui.views.tutorial.TutorialActivity
 import com.cardio.doctor.ui.common.utils.Preference
 import com.cardio.doctor.ui.common.utils.Timer.Companion.SPLASH_TIME
 import dagger.hilt.android.AndroidEntryPoint

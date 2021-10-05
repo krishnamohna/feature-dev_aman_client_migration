@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.activity.tutorial.adapter
+package com.cardio.doctor.ui.views.tutorial.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

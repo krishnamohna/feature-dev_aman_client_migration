@@ -12,7 +12,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutAilment"
@@ -102,171 +102,16 @@
                 app:layout_constraintStart_toStartOf="@+id/constraintLayoutAilment"
                 app:layout_constraintTop_toBottomOf="@id/constraintLayoutAilment" />
 
-            <!--first name-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/firstNameContainer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/lastNameValContainer"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="spread"
-                app:layout_constraintStart_toStartOf="@+id/constraintLayoutAilment"
-                app:layout_constraintTop_toBottomOf="@+id/txtPatientDetail">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/firstNameLabel"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="@string/first_name"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtFirstName"
-                    style="@style/BaseAppTheme.EdtTxt"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:hint="@string/first_name"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapWords"
-                    android:maxLength="@integer/int_20"
-                    android:maxLines="@integer/int_1"
-                    android:paddingLeft="@dimen/_16sdp"
-                    android:paddingRight="@dimen/_16sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/firstNameLabel" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvFirstNameError"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/enter_first_name"
-                    android:textColor="@color/red_validation"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtFirstName" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <!--last name-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/lastNameValContainer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/constraintLayoutAilment"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/firstNameContainer"
-                app:layout_constraintTop_toTopOf="@id/firstNameContainer">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtLastName"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="@string/last_name"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtLastName"
-                    style="@style/BaseAppTheme.EdtTxt"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:hint="@string/last_name"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapWords"
-                    android:maxLength="@integer/int_20"
-                    android:maxLines="@integer/int_1"
-                    android:paddingLeft="@dimen/_16sdp"
-                    android:paddingRight="@dimen/_16sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtLastName" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvLastName"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/enter_valid_last_name"
-                    android:textColor="@color/red_validation"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtLastName" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--age-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/ageContainer"
+            <include
+                android:id="@+id/clPatientDetail"
+                layout="@layout/include_patient_detail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/firstNameContainer"
-                app:layout_constraintStart_toStartOf="@+id/firstNameContainer"
-                app:layout_constraintTop_toBottomOf="@+id/firstNameContainer">
+                app:layout_constraintEnd_toEndOf="@+id/txtPatientDetail"
+                app:layout_constraintStart_toStartOf="@+id/txtPatientDetail"
+                app:layout_constraintTop_toBottomOf="@id/txtPatientDetail" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtAge"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="@string/age"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtAge"
-                    style="@style/BaseAppTheme.EdtTxt"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="8dp"
-                    android:hint="@string/age"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapWords"
-                    android:maxLength="@integer/int_20"
-                    android:maxLines="@integer/int_1"
-                    android:paddingLeft="@dimen/_16sdp"
-                    android:paddingRight="@dimen/_16sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtAge" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvAgeError"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/enter_first_name"
-                    android:textColor="@color/red_validation"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtAge" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--Helthe detail label-->
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtHealthDetail"
                 style="@style/BaseAppTheme.TxtView"
@@ -278,221 +123,17 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/constraintLayoutAilment"
                 app:layout_constraintStart_toStartOf="@+id/constraintLayoutAilment"
-                app:layout_constraintTop_toBottomOf="@id/ageContainer" />
+                app:layout_constraintTop_toBottomOf="@+id/clPatientDetail" />
 
-            <!--Weight-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/weightContainer"
+            <include
+                android:id="@+id/clHealthDetail"
+                layout="@layout/include_health_detail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/heartRateContainer"
-                app:layout_constraintStart_toStartOf="@+id/constraintLayoutAilment"
-                app:layout_constraintTop_toBottomOf="@+id/txtHealthDetail">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/weightLabel"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="@string/weight_in_lbs"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtWeight"
-                    style="@style/BaseAppTheme.EdtTxt"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:hint="@string/first_name"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapWords"
-                    android:maxLength="@integer/int_20"
-                    android:maxLines="@integer/int_1"
-                    android:paddingLeft="@dimen/_16sdp"
-                    android:paddingRight="@dimen/_16sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/weightLabel" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvWeightError"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/enter_first_name"
-                    android:textColor="@color/red_validation"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtWeight" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <!--Heart rate-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/heartRateContainer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/constraintLayoutAilment"
-                app:layout_constraintStart_toEndOf="@+id/weightContainer"
-                app:layout_constraintTop_toTopOf="@id/weightContainer">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtHeartRate"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Heart Rate*(bps)"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtHeartRate"
-                    style="@style/BaseAppTheme.EdtTxt"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:hint="@string/last_name"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapWords"
-                    android:maxLength="@integer/int_20"
-                    android:maxLines="@integer/int_1"
-                    android:paddingLeft="@dimen/_16sdp"
-                    android:paddingRight="@dimen/_16sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtHeartRate" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvHeartError"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/enter_valid_last_name"
-                    android:textColor="@color/red_validation"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtHeartRate" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <!--top bp-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/topBpContainer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/bottomBpContainer"
-                app:layout_constraintHorizontal_chainStyle="spread"
-                app:layout_constraintStart_toStartOf="@+id/constraintLayoutAilment"
-                app:layout_constraintTop_toBottomOf="@+id/weightContainer">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/topBpLabel"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="@string/top_bp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtTopBp"
-                    style="@style/BaseAppTheme.EdtTxt"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:hint="@string/top_bp"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapWords"
-                    android:maxLength="@integer/int_20"
-                    android:maxLines="@integer/int_1"
-                    android:paddingLeft="@dimen/_16sdp"
-                    android:paddingRight="@dimen/_16sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/topBpLabel" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvTopBpError"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/enter_first_name"
-                    android:textColor="@color/red_validation"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtTopBp" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <!--bottom bp-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/bottomBpContainer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/constraintLayoutAilment"
-                app:layout_constraintStart_toEndOf="@+id/topBpContainer"
-                app:layout_constraintTop_toTopOf="@id/topBpContainer">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtBottomBp"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="@string/bottom_bp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtBottomBp"
-                    style="@style/BaseAppTheme.EdtTxt"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:hint="@string/bottom_bp"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapWords"
-                    android:maxLength="@integer/int_20"
-                    android:maxLines="@integer/int_1"
-                    android:paddingLeft="@dimen/_16sdp"
-                    android:paddingRight="@dimen/_16sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtBottomBp" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvBottomBpError"
-                    style="@style/BaseAppTheme.TxtView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/enter_valid_last_name"
-                    android:textColor="@color/red_validation"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtBottomBp" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/txtPatientDetail"
+                app:layout_constraintStart_toStartOf="@+id/txtPatientDetail"
+                app:layout_constraintTop_toBottomOf="@id/txtHealthDetail" />
 
 
 
