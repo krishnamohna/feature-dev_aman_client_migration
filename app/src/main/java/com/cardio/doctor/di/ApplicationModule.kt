@@ -1,7 +1,6 @@
 package com.cardio.doctor.di
 
 import android.content.Context
-import com.cardio.doctor.ui.AppCardioPatient
 import com.cardio.doctor.BuildConfig
 import com.cardio.doctor.data.local.SharedPreferences
 import com.cardio.doctor.data.local.UserManager
@@ -14,6 +13,9 @@ import com.cardio.doctor.network.api.ApiHeader.Companion.CONTENT_TYPE
 import com.cardio.doctor.network.api.ApiHeader.Companion.PLATFORM
 import com.cardio.doctor.network.api.ApiHeader.Companion.PLATFORM_TYPE
 import com.cardio.doctor.network.api.ApiService
+import com.cardio.doctor.ui.AppCardioPatient
+import com.cardio.doctor.ui.common.utils.validation.DefaultFieldValidation
+import com.cardio.doctor.ui.common.utils.validation.Validater
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -127,4 +129,11 @@ class ApplicationModule {
     fun provideFirebaseStorageReference(firebaseStorage : FirebaseStorage) : StorageReference {
         return firebaseStorage.reference
     }
+
+    @Provides
+    @Singleton
+    fun provideFieldValidator(@ApplicationContext context : Context): Validater {
+        return Validater(DefaultFieldValidation(context))
+    }
+
 }

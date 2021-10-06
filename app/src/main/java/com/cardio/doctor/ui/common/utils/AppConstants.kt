@@ -77,7 +77,6 @@ interface FireStoreDocKey{
         const val HEIGHT = "height"
         const val WEIGHT = "weight"
 
-
     }
 }
 

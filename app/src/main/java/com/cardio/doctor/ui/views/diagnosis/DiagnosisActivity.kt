@@ -10,8 +10,10 @@ import com.cardio.doctor.databinding.ActivityDiagnosisBinding
 import com.cardio.doctor.ui.common.base.activity.BaseToolbarActivity
 import com.cardio.doctor.ui.common.base.fragment.toolbar.DiagnosisToolbarImp
 import com.cardio.doctor.ui.common.base.fragment.toolbar.IToolbar
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class DiagnosisActivity : BaseToolbarActivity() {
 
     companion object {

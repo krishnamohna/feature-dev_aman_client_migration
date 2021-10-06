@@ -17,10 +17,11 @@
         android:fontFamily="@font/nunito_semibold"
         android:text="@string/search_medicine"
         android:textStyle="bold"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edtMedicineSearch"

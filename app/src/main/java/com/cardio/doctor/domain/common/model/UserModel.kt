@@ -11,5 +11,5 @@ data class UserModel(var uid: String?,
                      val phoneNumber: String?,
                      val email: String?,
                      val imagePath: String?,
-                     val userType: UserType
+                     val userType: UserType,
 ): Parcelable

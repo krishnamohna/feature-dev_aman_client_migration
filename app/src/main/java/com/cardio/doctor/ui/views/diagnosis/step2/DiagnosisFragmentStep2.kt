@@ -44,7 +44,7 @@ class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Bindi
         if (mBottomSheetDialog != null && mBottomSheetDialog!!.isShowing()) {
             mBottomSheetDialog!!.dismiss()
         }
-        mBottomSheetDialog = BottomSheetDialog(parentActivity!!)
+        mBottomSheetDialog = BottomSheetDialog(parentActivity!!,R.style.CustomBottomSheetDialogTheme)
         val sheetView: View =
             parentActivity!!.layoutInflater.inflate(R.layout.bottom_sheet_image_picker, null)
         mBottomSheetDialog?.setContentView(sheetView)

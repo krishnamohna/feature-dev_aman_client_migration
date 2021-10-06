@@ -42,6 +42,7 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="enter_first_name">Please enter first name</string>
+    <string name="enter_age">Please age</string>
     <string name="enter_weight">Please enter weight</string>
     <string name="enter_heart_rate">Please heart rate</string>
     <string name="enter_top_bp">Please top bp</string>
