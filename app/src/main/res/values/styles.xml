@@ -15,7 +15,7 @@
         <item name="android:textColorSecondary">@color/btn_gradient_start</item>
         <item name="colorControlActivated">@color/btn_gradient_start</item>
         <item name="colorControlNormal">@color/colorPrimaryLight</item>
-        <item name="colorControlHighlight">@color/btn_gradient_start</item>
+        <item name="colorControlHighlight">@color/ripple_icon_state_pressed</item>
         <item name="android:textColorLink">@color/blue</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowEnterTransition">@android:transition/slide_right</item>
@@ -58,6 +58,11 @@
         <item name="android:textColor">@color/black_tutorial_text</item>
         <item name="android:textSize">@dimen/_11ssp</item>
     </style>
+
+    <style name="BaseAppTheme.TxtView.bold" parent="BaseAppTheme.TxtView">
+        <item name="fontFamily">@font/nunito_bold</item>
+    </style>
+
 
     <style name="textStyle" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/white</item>
@@ -125,5 +130,15 @@
         <item name="sv_animationDuration">200</item>
         <item name="sv_textSize">14sp</item>
         <item name="sv_animationType">Line</item>
+    </style>
+
+    <style name="CustomCardCorners" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance_custom_corners</item>
+    </style>
+
+    <style name="ShapeAppearance_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
     </style>
 </resources>

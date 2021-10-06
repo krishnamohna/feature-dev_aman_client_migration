@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentDashboardBinding
 import com.cardio.doctor.ui.common.base.fragment.BaseFragmentAuth
-import com.cardio.doctor.ui.common.utils.customSnackBarFail
+import com.cardio.doctor.ui.common.utils.showToast
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
 import com.cardio.doctor.ui.views.diagnosis.DiagnosisActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,7 +40,7 @@ class DashboardFragment : BaseFragmentAuth(R.layout.fragment_dashboard), View.On
     override fun onClick(view: View?) {
         when (view) {
             binding.btnDashboardOne -> {
-                customSnackBarFail(requireContext(), binding.root, getString(R.string.coming_soon))
+                showToast(requireContext(),getString(R.string.coming_soon))
             }
             binding.btnDashboardTwo -> {
                 activity?.let { DiagnosisActivity.start(it) }

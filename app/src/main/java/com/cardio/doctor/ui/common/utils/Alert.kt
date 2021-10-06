@@ -25,11 +25,12 @@ fun customSnackBarFail(
     view: View,
     msg: String,
     duration: Int = 3000,
-){
-    if (context!= null && msg.isNotBlank()){
+) {
+    if (context != null && msg.isNotBlank()) {
         val snack = Snackbar.make(view, msg, Snackbar.LENGTH_INDEFINITE)
         val snackView = snack.view
-        val textView = snackView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+        val textView =
+            snackView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
         //textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_alert_yellow, 0, 0, 0)
         textView.compoundDrawablePadding = context.resources.getDimensionPixelOffset(R.dimen._10sdp)
         textView.setTextColor(ContextCompat.getColor(context, R.color.white))
@@ -54,7 +55,7 @@ fun showAlertDialog(
     builder.setPositiveButton(btnOneTitle) { dialogInterface, _ ->
         mCallBack.invoke(btnOneTitle, dialogInterface)
     }
-    if(btnTwoVisibility){
+    if (btnTwoVisibility) {
         builder.setNegativeButton(btnTwoTitle) { dialogInterface, _ ->
             mCallBack.invoke(btnTwoTitle, dialogInterface)
         }

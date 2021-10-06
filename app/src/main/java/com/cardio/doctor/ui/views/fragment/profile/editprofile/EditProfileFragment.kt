@@ -30,10 +30,8 @@ import com.cardio.doctor.network.Status
 import com.cardio.doctor.network.api.Constants
 import com.cardio.doctor.network.api.EXTRAS
 import com.cardio.doctor.ui.common.base.fragment.BaseFragment
-import com.cardio.doctor.ui.common.base.fragment.toolbar.BaseToolBarFragment
-import com.cardio.doctor.ui.common.base.fragment.toolbar.IToolbar
-import com.cardio.doctor.ui.common.base.fragment.toolbar.NoImp
 import com.cardio.doctor.ui.common.utils.*
+import com.cardio.doctor.ui.common.utils.extentions.loadImage
 import com.cardio.doctor.ui.views.change_email.ChangeEmailActivity
 import com.google.firebase.firestore.DocumentSnapshot
 import com.theartofdev.edmodo.cropper.CropImage
@@ -241,11 +239,12 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
 
                     Constants.USER_PROFILE_PIC -> {
                         val storageReference = apiResponse.data as Uri
-                        Glide.with(requireContext())
-                            .load(storageReference)
-                            .apply(RequestOptions().circleCrop())
-                            .placeholder(R.drawable.ic_profile_placeholder)
-                            .into(binding.imgProfilePic)
+//                        Glide.with(requireContext())
+//                            .load(storageReference)
+//                            .apply(RequestOptions().circleCrop())
+//                            .placeholder(R.drawable.ic_profile_placeholder)
+//                            .into(binding.imgProfilePic)
+                        binding.imgProfilePic.loadImage(storageReference,true,true)
                     }
 
                     Constants.USER_GENDER -> {

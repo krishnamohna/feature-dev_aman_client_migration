@@ -44,7 +44,7 @@ class DiagnosisActivity : BaseToolbarActivity() {
     }
 
     var onBackClick: (() -> Unit)? = {
-        onBackPressed()
+       finish()
     }
 
     override fun getToolbarImp(): IToolbar {

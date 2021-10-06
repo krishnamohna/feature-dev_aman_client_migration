@@ -33,17 +33,6 @@
             app:layout_constraintTop_toBottomOf="@+id/textView"/>
 
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/btnDashboardTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_dashboard_add"
-            android:translationZ="@dimen/_90sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="@dimen/_5sdp"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -103,6 +92,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btnDashboardTwo"
+            android:layout_width="@dimen/home_add_diagnosis"
+            android:layout_height="@dimen/home_add_diagnosis"
+            android:src="@drawable/ic_add"
+            android:padding="@dimen/_8sdp"
+            android:background="@drawable/drawable_green_circular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.94" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -18,6 +18,7 @@ import com.cardio.doctor.network.api.Constants
 import com.cardio.doctor.ui.common.base.fragment.BaseFragment
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
+import com.cardio.doctor.ui.common.utils.extentions.loadImage
 import com.cardio.doctor.ui.common.utils.extentions.toUserModel
 import com.google.firebase.firestore.DocumentSnapshot
 import dagger.hilt.android.AndroidEntryPoint
@@ -81,12 +82,12 @@ class GetProfileFragment : BaseFragment<FragmentGetProfileBinding>(), View.OnCli
 
                     Constants.USER_PROFILE_PIC -> {
                         val storageReference = apiResponse.data as Uri
-                        Glide.with(requireContext())
+                        /*Glide.with(requireContext())
                             .load(storageReference)
                             .apply(RequestOptions().circleCrop())
                             .placeholder(R.drawable.ic_profile_placeholder)
-                            .into(binding.imgProfilePic)
-                       // binding.imgProfilePic.loadImage(storageReference,true,true)
+                            .into(binding.imgProfilePic)*/
+                        binding.imgProfilePic.loadImage(storageReference,true,true)
                     }
                 }
             }

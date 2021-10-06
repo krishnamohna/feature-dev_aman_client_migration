@@ -168,6 +168,11 @@
     <string name="bottom_bp">Bottom BP*(Diastolic)</string>
     <string name="heart_rate_bps">Heart Rate*(bps)</string>
     <string name="title_diagnosis">Diagnosis</string>
+    <string name="search_medicine">Search Medicine</string>
+    <string name="add_via_speech">Add Via Speech</string>
+    <string name="add_via_image">Add Via Image</string>
+    <string name="questionnaire">Questionnaire</string>
+    <string name="add_image">Add Image</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="TutorialTitle">
         <item>Connect with Experience Practitioners </item>

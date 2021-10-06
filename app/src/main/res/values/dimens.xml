@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_button_corner_radius">@dimen/_25sdp</dimen>
+    <dimen name="text_large">@dimen/_13ssp</dimen>
+    <dimen name="home_add_diagnosis">@dimen/_55sdp</dimen>
+    <dimen name="bottom_sheet_item">@dimen/_42sdp</dimen>
+</resources>

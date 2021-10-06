@@ -28,6 +28,9 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         binding.cvDiagnosisBottomContainer.btNext.setOnClickListener {
             findNavController().navigate(DiagnosisFragmentStep1Directions.actionDiagnosisFragmentPart1ToDiagnosisFragmentPart2())
         }
+        binding.cvDiagnosisBottomContainer.btCancel.setOnClickListener {
+            parentActivity?.onBackPressed()
+        }
     }
 
 }
