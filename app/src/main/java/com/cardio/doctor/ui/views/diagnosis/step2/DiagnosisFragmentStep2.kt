@@ -28,6 +28,11 @@ class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Bindi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setListeners()
+        setViews()
+    }
+
+    private fun setViews() {
+        setStepView(binding.stepView.stepView)
     }
 
     private fun setListeners() {

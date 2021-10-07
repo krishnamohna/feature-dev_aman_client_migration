@@ -15,7 +15,7 @@ class TextChangeWatcher( var input:EditText, private val errorTxt: TextView, pri
           //  customAnimationForTextInput(input.context, label!!, s, before)
             if (s.isNotEmpty()) label.visibility = View.VISIBLE
             else  label.visibility = View.GONE
-            input.requestFocus()
+           // input.requestFocus()
         }
 
         override fun afterTextChanged(p0: Editable?) {

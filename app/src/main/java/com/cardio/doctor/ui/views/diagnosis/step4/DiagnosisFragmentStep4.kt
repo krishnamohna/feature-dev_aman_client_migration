@@ -18,5 +18,13 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setViews()
+    }
+
+    private fun setViews() {
+        setStepView(binding.stepView.stepView)
+    }
 
 }

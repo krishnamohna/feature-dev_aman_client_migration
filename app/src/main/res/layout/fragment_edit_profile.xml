@@ -355,7 +355,7 @@
                     android:layout_marginTop="@dimen/_6sdp"
                     android:text="@string/gender"
                     android:textStyle="bold"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     style="@style/BaseAppTheme.TxtView"
                     android:fontFamily="@font/nunito_semibold"
                     app:layout_constraintStart_toStartOf="parent"

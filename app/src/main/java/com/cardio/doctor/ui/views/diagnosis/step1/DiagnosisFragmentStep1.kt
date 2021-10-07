@@ -1,5 +1,6 @@
 package com.cardio.doctor.ui.views.diagnosis.step1
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.cardio.doctor.databinding.FragmentDiagnosisPart1Binding
 import com.cardio.doctor.domain.common.model.validation.ValidationModelV2
 import com.cardio.doctor.network.Status
 import com.cardio.doctor.ui.common.utils.extentions.getTrimmedText
+import com.cardio.doctor.ui.common.utils.showConfirmAlertDialog
 import com.cardio.doctor.ui.common.utils.textwatcher.LabelVisiblityHelper
 import com.cardio.doctor.ui.common.utils.validation.FieldType
 import com.cardio.doctor.ui.views.diagnosis.common.BaseDiagnosisFragment
@@ -23,6 +25,7 @@ import javax.inject.Inject
 class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Binding>() {
 
     private val viewModel: DiagnosisViewStep1ViewModel by viewModels()
+
     @Inject
     lateinit var labelVisiblityHelper: LabelVisiblityHelper
 
@@ -38,6 +41,42 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setListeners()
+        setViews()
+        setDataInViewIfExist()
+    }
+
+    private fun setViews() {
+        setStepView(binding.stepView.stepView)
+    }
+
+    private fun setDataInViewIfExist() {
+        diagnosisActivity?.getDiagnosisModel()?.firstName?.run {
+            binding.clPatientDetail.edtFirstName.setText(
+                this
+            )
+        }
+        diagnosisActivity?.getDiagnosisModel()?.lastName?.run {
+            binding.clPatientDetail.edtLastName.setText(
+                this
+            )
+        }
+        diagnosisActivity?.getDiagnosisModel()?.age?.run { binding.clPatientDetail.edtAge.setText(this) }
+        diagnosisActivity?.getDiagnosisModel()?.weight?.run {
+            binding.clHealthDetail.edtWeight.setText(
+                this
+            )
+        }
+        diagnosisActivity?.getDiagnosisModel()?.heartRate?.run {
+            binding.clHealthDetail.edtHeartRate.setText(
+                this
+            )
+        }
+        diagnosisActivity?.getDiagnosisModel()?.topBp?.run { binding.clHealthDetail.edtTopBp.setText(this) }
+        diagnosisActivity?.getDiagnosisModel()?.bottomBp?.run {
+            binding.clHealthDetail.edtBottomBp.setText(
+                this
+            )
+        }
     }
 
     private fun setListeners() {
@@ -45,15 +84,53 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
             onSubmitClick()
         }
         binding.cvDiagnosisBottomContainer.btCancel.setOnClickListener {
-            parentActivity?.onBackPressed()
+            showConfirmAlertDialog(
+                parentActivity!!,
+                getString(R.string.confirm),
+                getString(R.string.confirm_dismiss_diagnosis)
+            ) { btnText: String, dialog: DialogInterface->
+                when (btnText) {
+                    getString(R.string.yes) -> {
+                        parentActivity?.finish()
+                    }
+                }
+            }
         }
-        labelVisiblityHelper.addView(binding.clPatientDetail.edtFirstName,binding.clPatientDetail.tvFirstNameError,binding.clPatientDetail.firstNameLabel)
-        labelVisiblityHelper.addView(binding.clPatientDetail.edtLastName,binding.clPatientDetail.tvErrorLastName,binding.clPatientDetail.txtLastName)
-        labelVisiblityHelper.addView(binding.clPatientDetail.edtAge,binding.clPatientDetail.tvAgeError,binding.clPatientDetail.txtAge)
-        labelVisiblityHelper.addView(binding.clHealthDetail.edtWeight,binding.clHealthDetail.tvWeightError,binding.clHealthDetail.tvWeight)
-        labelVisiblityHelper.addView(binding.clHealthDetail.edtHeartRate,binding.clHealthDetail.tvErrorHeartRate,binding.clHealthDetail.txtHeartRate)
-        labelVisiblityHelper.addView(binding.clHealthDetail.edtTopBp,binding.clHealthDetail.tvTopBpErrro,binding.clHealthDetail.txtTopBp)
-        labelVisiblityHelper.addView(binding.clHealthDetail.edtBottomBp,binding.clHealthDetail.tvBottomBpErrror,binding.clHealthDetail.txtBottomBp)
+        labelVisiblityHelper.addView(
+            binding.clPatientDetail.edtFirstName,
+            binding.clPatientDetail.tvFirstNameError,
+            binding.clPatientDetail.firstNameLabel
+        )
+        labelVisiblityHelper.addView(
+            binding.clPatientDetail.edtLastName,
+            binding.clPatientDetail.tvErrorLastName,
+            binding.clPatientDetail.txtLastName
+        )
+        labelVisiblityHelper.addView(
+            binding.clPatientDetail.edtAge,
+            binding.clPatientDetail.tvAgeError,
+            binding.clPatientDetail.txtAge
+        )
+        labelVisiblityHelper.addView(
+            binding.clHealthDetail.edtWeight,
+            binding.clHealthDetail.tvWeightError,
+            binding.clHealthDetail.tvWeight
+        )
+        labelVisiblityHelper.addView(
+            binding.clHealthDetail.edtHeartRate,
+            binding.clHealthDetail.tvErrorHeartRate,
+            binding.clHealthDetail.txtHeartRate
+        )
+        labelVisiblityHelper.addView(
+            binding.clHealthDetail.edtTopBp,
+            binding.clHealthDetail.tvTopBpErrro,
+            binding.clHealthDetail.txtTopBp
+        )
+        labelVisiblityHelper.addView(
+            binding.clHealthDetail.edtBottomBp,
+            binding.clHealthDetail.tvBottomBpErrror,
+            binding.clHealthDetail.txtBottomBp
+        )
     }
 
     private fun onSubmitClick() {
@@ -65,10 +142,29 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         var topBp = binding.clHealthDetail.edtTopBp.getTrimmedText()
         var bottomBp = binding.clHealthDetail.edtBottomBp.getTrimmedText()
         viewModel.checkValidation(firstName, lastName, age, weight, heartRate, topBp, bottomBp, {
+            saveStateToParent(firstName, lastName, age, weight, heartRate, topBp, bottomBp)
             findNavController().navigate(DiagnosisFragmentStep1Directions.actionDiagnosisFragmentPart1ToDiagnosisFragmentPart2())
         }, {
             onValidationsFailed(it)
         })
+    }
+
+    private fun saveStateToParent(
+        firstName: String,
+        lastName: String,
+        age: String,
+        weight: String,
+        heartRate: String,
+        topBp: String,
+        bottomBp: String
+    ) {
+        diagnosisActivity?.getDiagnosisModel()?.firstName = firstName
+        diagnosisActivity?.getDiagnosisModel()?.lastName = lastName
+        diagnosisActivity?.getDiagnosisModel()?.age = age
+        diagnosisActivity?.getDiagnosisModel()?.weight = weight as? Int
+        diagnosisActivity?.getDiagnosisModel()?.heartRate = heartRate as? Int
+        diagnosisActivity?.getDiagnosisModel()?.topBp = topBp as? Int
+        diagnosisActivity?.getDiagnosisModel()?.bottomBp = bottomBp as? Int
     }
 
     private fun onValidationsFailed(it: List<ValidationModelV2>) {

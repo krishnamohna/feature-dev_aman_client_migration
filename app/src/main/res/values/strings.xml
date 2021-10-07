@@ -175,6 +175,10 @@
     <string name="add_via_image">Add Via Image</string>
     <string name="questionnaire">Questionnaire</string>
     <string name="add_image">Add Image</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_dismiss_diagnosis">Do you want to discard changes?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="TutorialTitle">
         <item>Connect with Experience Practitioners </item>

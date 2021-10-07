@@ -9,6 +9,7 @@
     </style>
 
     <style name="AppTheme" parent="BaseAppTheme">
+        <item name="colorOnBackground">@color/black</item>
         <item name="android:textColorPrimary">@color/black_tutorial_text</item>
         <item name="android:windowBackground">@drawable/app_gradient_background</item>
         <item name="android:navigationBarColor">@color/colorPrimaryLight</item>
@@ -71,7 +72,7 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
-    <style name="CustomAlertDialogCommon" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="CustomAlertDialogCommon" parent="Theme.AppCompat.DayNight.Dialog.Alert">
         <item name="android:windowBackground">@color/grey_dark</item>
         <item name="colorAccent">@color/blue</item>
         <item name="android:textColorPrimary">@color/white</item>

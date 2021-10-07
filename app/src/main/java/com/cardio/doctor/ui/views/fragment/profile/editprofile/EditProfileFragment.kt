@@ -19,10 +19,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentEditProfileBinding
+import com.cardio.doctor.domain.common.model.UserModel
 import com.cardio.doctor.domain.common.model.UserType
 import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.Resource
@@ -49,6 +51,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
     private var selectedImageUri: Uri? = null
     private val viewModel: EditUserProfileViewModel by viewModels()
     private var birthDate: Date? = null
+    private val navArgs by navArgs<EditProfileFragmentArgs>()
 
     var isEmailEdited: (email: String) -> Unit = {
         Intent(requireContext(), ChangeEmailActivity::class.java).apply {
@@ -89,8 +92,8 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setUpToolbar(binding.root, getString(R.string.edit_profile), backBtnVisibility = true)
         setListener()
         setObservers()
@@ -98,6 +101,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
         launchWithMinDelay {
             viewModel.getUserDetail()
         }
+        setViewVisiblitiesForData(navArgs.extrasUserModel)
     }
 
     private fun setListener() {
@@ -244,7 +248,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
 //                            .apply(RequestOptions().circleCrop())
 //                            .placeholder(R.drawable.ic_profile_placeholder)
 //                            .into(binding.imgProfilePic)
-                        binding.imgProfilePic.loadImage(storageReference,true,true)
+                        binding.imgProfilePic.loadImage(storageReference, true, true)
                     }
 
                     Constants.USER_GENDER -> {
@@ -468,5 +472,33 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
         binding.btnSave.isEnabled = clickable
         binding.btnSave.alpha = alpha
     }
+
+    /*
+    setting labels visibilities in advance to avoid flicker when data is set
+     */
+    private fun setViewVisiblitiesForData(extrasUserModel: UserModel?) {
+        extrasUserModel?.run {
+            firstName?.isNotEmpty()?.let { if (it) binding.txtFirstName.visibility = View.VISIBLE }
+            lastName?.isNotEmpty()?.let { if (it) binding.txtLastName.visibility = View.VISIBLE }
+            email?.isNotEmpty()?.let { if (it) binding.txtEmailAddress.visibility = View.VISIBLE }
+            phoneNumber?.isNotEmpty()
+                ?.let {
+                    if (it) {
+                        binding.txtPhoneNumber.visibility = View.VISIBLE
+                        binding.phoneNumberContainer.visibility = View.VISIBLE
+                    }
+                }
+            gender?.isNotEmpty()
+                ?.let { if (it) {
+                    try {
+                        val genderList = resources.getStringArray(R.array.gender_list).toList()
+                        binding.spinnerCategory.setSelection(genderList.indexOf(gender))
+                    }catch (exp:java.lang.Exception){}
+                } }
+            dob?.isNotEmpty()
+                ?.let { if (it) binding.dobTxtTitle.visibility = View.VISIBLE }
+        }
+    }
+
 
 }

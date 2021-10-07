@@ -43,14 +43,20 @@ fun customSnackBarFail(
     }
 }
 
+fun showConfirmAlertDialog(
+    context: AppCompatActivity, title: String, description: String,
+    mCallBack: (String, DialogInterface) -> Unit,
+) {
+    showAlertDialog(context,title,description,context.getString(R.string.yes),context.getString(R.string.no),true,mCallBack)
+}
+
 fun showAlertDialog(
     context: AppCompatActivity, title: String, description: String,
     btnOneTitle: String, btnTwoTitle: String,
     btnTwoVisibility: Boolean = false, mCallBack: (String, DialogInterface) -> Unit,
 ) {
-    val builder = AlertDialog.Builder(context, R.style.CustomAlertDialogCommon)
+    val builder = AlertDialog.Builder(context)
     builder.setTitle(title)
-    builder.setCancelable(false)
     builder.setMessage(description)
     builder.setPositiveButton(btnOneTitle) { dialogInterface, _ ->
         mCallBack.invoke(btnOneTitle, dialogInterface)

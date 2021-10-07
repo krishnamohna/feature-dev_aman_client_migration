@@ -21,8 +21,8 @@ fun DocumentSnapshot.toUserModel():UserModel{
     val gender = data?.get(FireStoreDocKey.GENDER) as? String?
     val dob = data?.get(FireStoreDocKey.DOB) as? String?
     val height = data?.get(FireStoreDocKey.HEIGHT) as? String?
-    val heartRate = data?.get(FireStoreDocKey.WEIGHT) as? String?
+    val weight = data?.get(FireStoreDocKey.WEIGHT) as? String?
     val imageUrl = data?.get(FireStoreDocKey.IMAGE_URL) as? String?
     val userType= data?.get(FireStoreDocKey.SIGN_UP_TYPE) as? String?
-    return UserModel(uid,firstName,lastName,countryCode,phoneNumber,email,imageUrl, UserType.fromName(userType))
+    return UserModel(uid,firstName,lastName,countryCode,phoneNumber,email,imageUrl, UserType.fromName(userType),gender,height,weight,dob)
 }
