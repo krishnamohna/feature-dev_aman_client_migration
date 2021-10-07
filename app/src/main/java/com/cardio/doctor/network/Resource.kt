@@ -43,6 +43,11 @@ data class Resource<out T>(val apiConstant: String?, val apiCode :Int, val statu
             return Resource(apiConstant,0, Status.LOADING, data, null,0)
         }
 
+        fun <T> setLoading(): Resource<T> {
+            return Resource("",0, Status.LOADING, null, null,0)
+        }
+
+
         fun <T> firebaseException(e : Exception): Resource<T> {
             var message = ""
             message = when(e){

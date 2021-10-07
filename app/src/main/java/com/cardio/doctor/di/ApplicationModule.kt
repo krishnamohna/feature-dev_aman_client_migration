@@ -43,8 +43,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent ::class)
 class ApplicationModule {
 
-    @Provides
-    fun provideBaseUrl() = BuildConfig.BASE_URL
 
     @Provides
     @Singleton
@@ -56,50 +54,6 @@ class ApplicationModule {
         return UserManager(sharedPreferences)
     }
 
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(userManager: UserManager, internetInterceptor: InternetInterceptor)
-    : OkHttpClient{
-       val builder = OkHttpClient.Builder()
-        builder.connectTimeout(30, TimeUnit.MINUTES)
-            .readTimeout(30, TimeUnit.MINUTES)
-            .writeTimeout(30, TimeUnit.MINUTES)
-            .connectionPool(ConnectionPool(0, 30, TimeUnit.MINUTES))
-            .protocols(listOf(Protocol.HTTP_1_1))
-            .followRedirects(true)
-            .followSslRedirects(true)
-            .addInterceptor(internetInterceptor)
-            .addInterceptor { chain ->
-               val newRequest = chain.request().newBuilder()
-                        .addHeader(ACCEPT, APPLICATION_JSON)
-                        .addHeader(CONTENT_TYPE, APPLICATION_JSON)
-                        .addHeader(PLATFORM, PLATFORM_TYPE)
-                        .addHeader(AUTHORIZATION, BEARER.plus(""))
-                        .build()
-                    chain.proceed(newRequest)
-            }
-        if (BuildConfig.DEBUG) {
-            val loggingInterceptor = HttpLoggingInterceptor()
-            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-            return builder.addInterceptor(loggingInterceptor)
-                .build()
-        } else
-            return builder.build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient, BASE_URL: String): Retrofit {
-        return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().excludeFieldsWithModifiers().create()))
-            .baseUrl(BASE_URL)
-            .client(okHttpClient)
-            .build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
     @Provides
     @Singleton

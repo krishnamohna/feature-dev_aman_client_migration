@@ -20,7 +20,7 @@ android {
         versionCode build_versions.version_code
         versionName build_versions.version_name
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField 'String', 'BASE_URL', '"http://cryptoqaapi.appskeeper.in/"'
+        buildConfigField 'String', 'BASE_URL', '"https://rxnav.nlm.nih.gov/"'
     }
 
     buildTypes {
@@ -128,6 +128,8 @@ dependencies {
 
     //Tab Indicator
     implementation 'com.tbuonomo:dotsindicator:4.2'
+    // retrofit rx java extension
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
 
 }
 

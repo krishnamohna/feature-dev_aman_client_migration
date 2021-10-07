@@ -1,7 +1,11 @@
 package com.cardio.doctor.network.api
 
-interface ApiService {
+import com.cardio.doctor.data.remote.diagnosis.entity.MedicineEntity
+import retrofit2.Call
+import retrofit2.http.POST
+import retrofit2.http.Query
 
-    /*@POST(LOGIN)
-    suspend fun userLogin(@Body loginRequest: LoginRequest): Response<UserAuthenticationResponse>*/
+interface ApiService {
+    @POST(Commands.COMMAND_SEARCH_DRUG)
+    suspend fun searchMedicine(@Query("name") name: String): Call<MedicineEntity>
 }

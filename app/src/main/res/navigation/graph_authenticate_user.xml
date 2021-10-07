@@ -78,7 +78,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.cardio.doctor.ui.views.fragment.forgot_password.ForgotPasswordFragment"
+        android:name="com.cardio.doctor.ui.views.forgot_password.ForgotPasswordFragment"
         android:label="ForgotPasswordFragment" />
     <fragment
         android:id="@+id/webViewFragment"

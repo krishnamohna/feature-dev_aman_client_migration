@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.forgot_password
+package com.cardio.doctor.ui.views.forgot_password
 
 import android.content.DialogInterface
 import android.os.Bundle

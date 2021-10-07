@@ -2,9 +2,8 @@
 <resources>
 
     <string-array name="array_ailment">
-        <item>value 1 </item>
-        <item>value 1 </item>
-        <item>value 1 </item>
+        <item>Cardiac Heart Failure </item>
+        <item>Atrial Fibrillation </item>
     </string-array>
 
     <string-array name="steps_diagnosis">

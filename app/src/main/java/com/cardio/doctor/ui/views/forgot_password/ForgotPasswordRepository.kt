@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.forgot_password
+package com.cardio.doctor.ui.views.forgot_password
 
 import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.domain.common.repository.BaseRepository
