@@ -14,6 +14,7 @@ import com.cardio.doctor.network.api.ApiHeader.Companion.PLATFORM
 import com.cardio.doctor.network.api.ApiHeader.Companion.PLATFORM_TYPE
 import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.ui.AppCardioPatient
+import com.cardio.doctor.ui.common.utils.textwatcher.LabelVisiblityHelper
 import com.cardio.doctor.ui.common.utils.validation.DefaultFieldValidation
 import com.cardio.doctor.ui.common.utils.validation.Validater
 import com.google.firebase.auth.FirebaseAuth
@@ -135,5 +136,7 @@ class ApplicationModule {
     fun provideFieldValidator(@ApplicationContext context : Context): Validater {
         return Validater(DefaultFieldValidation(context))
     }
+
+
 
 }

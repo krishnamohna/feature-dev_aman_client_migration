@@ -27,6 +27,7 @@
     <string name="emailpassword_title_text">Email and Password</string>
     <string name="plus_one">+91</string>
     <string name="first_name">First Name</string>
+    <string name="large_dummy_text">sdfsdfdsfsdfsdfsdfsdfsdfsdfdsfsdfdsfdfds</string>
     <string name="last_name">Last Name (optional)</string>
     <string name="submit_caps">SUBMIT</string>
     <string name="email">Email</string>
@@ -42,7 +43,7 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="enter_first_name">Please enter first name</string>
-    <string name="enter_age">Please age</string>
+    <string name="enter_age">Please enter age</string>
     <string name="enter_weight">Please enter weight</string>
     <string name="enter_heart_rate">Please heart rate</string>
     <string name="enter_top_bp">Please top bp</string>

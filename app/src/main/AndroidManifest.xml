@@ -21,7 +21,11 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,LockedOrientationActivity"
         tools:targetApi="m">
-        <activity android:name="com.cardio.doctor.ui.views.diagnosis.DiagnosisActivity"></activity>
+        <activity
+            android:name="com.cardio.doctor.ui.views.diagnosis.DiagnosisActivity"
+            >
+
+        </activity>
         <activity
             android:name="com.cardio.doctor.ui.views.splash.SplashActivity"
             android:screenOrientation="portrait">

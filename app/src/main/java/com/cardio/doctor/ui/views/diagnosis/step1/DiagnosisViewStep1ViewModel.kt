@@ -14,8 +14,8 @@ class DiagnosisViewStep1ViewModel @Inject constructor(val validater: Validater):
         lastName: String,
         age: String,
         weight: String,
-        topBp: String,
         heartRate: String,
+        topBp: String,
         bottomBp: String,
         succcess: () -> Unit,
         failed: (validations:List<ValidationModelV2>) -> Unit
