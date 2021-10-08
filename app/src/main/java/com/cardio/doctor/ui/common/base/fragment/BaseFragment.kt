@@ -20,11 +20,11 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
 
     lateinit var binding: Binding
     private lateinit var dialogHelper: DialogHelper
-    private val handler:Handler by lazy {
+    private val handler: Handler by lazy {
         Handler(Looper.getMainLooper())
     }
     val parentActivity: BaseActivity?
-    get() = activity as? BaseActivity
+        get() = activity as? BaseActivity
 
     override fun onAttach(context: Context) {
         dialogHelper = provideDialogHelper()
@@ -33,6 +33,13 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
 
     protected fun showProgress() {
         dialogHelper.showProgress()
+    }
+
+    protected fun showProgress(showProgress: Boolean) {
+        if (showProgress)
+            dialogHelper.showProgress()
+        else
+            dialogHelper.hideProgress()
     }
 
     protected fun hideProgress() {
@@ -62,7 +69,7 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
         }
     }
 
-    fun launchWithMinDelay(function: () -> Unit){
+    fun launchWithMinDelay(function: () -> Unit) {
         val Delay_min = 300L
         handler.postDelayed({
             function.invoke()

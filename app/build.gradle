@@ -128,8 +128,6 @@ dependencies {
 
     //Tab Indicator
     implementation 'com.tbuonomo:dotsindicator:4.2'
-    // retrofit rx java extension
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
 
 }
 

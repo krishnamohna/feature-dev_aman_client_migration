@@ -5,6 +5,7 @@ import com.cardio.doctor.domain.common.repository.BaseRepository
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.ui.common.utils.FireStoreCollection
+import com.cardio.doctor.ui.common.utils.extentions.toUserModel
 import com.cardio.doctor.ui.common.utils.firebaseDocumentQuery
 import com.cardio.doctor.ui.common.utils.firebaseQuery
 import com.google.firebase.auth.FirebaseAuth
@@ -23,6 +24,19 @@ class UserProfileRepository @Inject constructor(
 ) : BaseRepository(
     firebaseAuth, fireStore, storageReference, apiService
 ) {
+
+    suspend fun fetchUserDetailByModel(
+        errorLiveData: MutableLiveData<Resource<Exception>>,
+    ) = firebaseDocumentQuery(
+        operation = {
+            val userId = firebaseAuth.currentUser?.uid
+            fireStore.collection(FireStoreCollection.USERS).document(userId ?: "")
+                .get().await()
+        }, parse = {
+            return@firebaseDocumentQuery it.toUserModel()
+        }, errorLiveData
+    )
+
 
     suspend fun storeUserDataInFireStore(
             firebaseUser: FirebaseUser,

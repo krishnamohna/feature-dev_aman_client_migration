@@ -325,7 +325,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
                 viewModel.getImageDownloadUrl(imageUrl)
             }
             try {
-                if (!dob.isNullOrEmpty()) birthDate = dob.toDate("dd MMM yyyy")
+                if (!dob.isNullOrEmpty()) birthDate = dob.toDate(Constants.DATE_FORMAT_DOB)
             } catch (ex: Exception) {
 
             }

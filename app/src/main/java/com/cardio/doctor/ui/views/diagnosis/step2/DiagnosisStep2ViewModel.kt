@@ -20,14 +20,16 @@ class DiagnosisStep2ViewModel @Inject constructor(val diagnosisRepo: DiagnosisRe
 
     var mutableMedicineData = MutableLiveData<Resource<MedicineModel>>()
 
-    fun getMedidicneLiveData() = mutableMedicineData as LiveData<Resource<MedicineModel>>
+    fun getMedicineLiveData(): LiveData<Resource<MedicineModel>> {
+        return mutableMedicineData
+    }
 
     fun searchMed(query: String) {
         viewModelScope.launch {
             try {
                 mutableMedicineData.setLoading()
                 observeApi(diagnosisRepo.searchMedicine(query), mutableMedicineData)
-            }catch (exp:Exception){
+            } catch (exp: Exception) {
                 mutableMedicineData.setError(exp)
             }
         }

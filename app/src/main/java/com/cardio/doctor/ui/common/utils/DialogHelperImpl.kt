@@ -4,8 +4,8 @@ import android.app.Dialog
 import android.util.Log
 import android.view.WindowManager
 import com.cardio.doctor.R
-import com.cardio.doctor.ui.common.listeners.DialogHelper
 import com.cardio.doctor.ui.common.base.activity.BaseActivity
+import com.cardio.doctor.ui.common.listeners.DialogHelper
 import com.cardio.doctor.ui.common.utils.Log.Companion.TAG
 
 class DialogHelperImpl(context: BaseActivity) : DialogHelper {
@@ -15,7 +15,7 @@ class DialogHelperImpl(context: BaseActivity) : DialogHelper {
         try {
             val customDialog = dialog
             Log.e(TAG,customDialog.toString())
-            customDialog.setCancelable(false)
+          //  customDialog.setCancelable(false)
             customDialog.setContentView(R.layout.dialog_progress_bar)
             val lp = WindowManager.LayoutParams()
             val window = customDialog.window

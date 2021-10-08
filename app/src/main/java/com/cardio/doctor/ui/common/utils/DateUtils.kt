@@ -3,9 +3,11 @@ package com.cardio.doctor.ui.common.utils
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Context
+import com.cardio.doctor.network.api.Constants
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.Calendar.*
 
 fun getBirthDatePicker(
     context: Context?,
@@ -53,4 +55,27 @@ fun getStringFromDate(mDate: Date?): String? {
         return dateFormat.format(mDate)
     }
     return ""
+}
+
+fun String.getNoYearsFromDate(): Int {
+    var dateDob=toDate(Constants.DATE_FORMAT_DOB)
+    var years=getDiffYears(dateDob, Date())
+    return years
+}
+
+fun getDiffYears(first: Date?, last: Date): Int {
+    val a: Calendar = getCalendar(first)
+    val b: Calendar = getCalendar(last)
+    var diff = b[YEAR] - a[YEAR]
+    if (a[MONTH] > b[MONTH] ||
+        a[MONTH] === b[MONTH] && a[DATE] > b[DATE]
+    ) {
+        diff--
+    }
+    return diff
+}
+fun getCalendar(date: Date?): Calendar {
+    val cal = Calendar.getInstance(Locale.US)
+    cal.time = date
+    return cal
 }

@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentDiagnosisPart2Binding
+import com.cardio.doctor.ui.common.utils.extentions.customObserver
 import com.cardio.doctor.ui.views.diagnosis.common.BaseDiagnosisFragment
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,10 +43,16 @@ class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Bindi
     }
 
     private fun init() {
-        viewModel.getMedidicneLiveData().observe(
+        viewModel.getMedicineLiveData().customObserver(
             viewLifecycleOwner,
-            { result ->
+            onLoading = {
+                showProgress(it)
+            },
+            onSuccess = {
                 Log.i("", "")
+            },
+            onError = {
+                Log.i("", it?:"")
             }
         )
         viewModel.searchMed("dfdfdf")

@@ -6,6 +6,7 @@ import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.ui.common.utils.FireStoreCollection
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey
+import com.cardio.doctor.ui.common.utils.extentions.toUserModel
 import com.cardio.doctor.ui.common.utils.firebaseDocumentQuery
 import com.cardio.doctor.ui.common.utils.firebaseQuery
 import com.google.firebase.auth.FirebaseAuth
@@ -21,6 +22,8 @@ open class BaseRepository @Inject constructor(
     private val storageReference: StorageReference,
     apiService: ApiService,
 ) {
+
+
     suspend fun fetchUserDetail(
             errorLiveData: MutableLiveData<Resource<Exception>>,
     ) = firebaseDocumentQuery(
@@ -32,6 +35,7 @@ open class BaseRepository @Inject constructor(
             return@firebaseDocumentQuery it
         }, errorLiveData
     )
+
 
     suspend fun uploadImageOnFirebaseStorage(
             fileUri: Uri?, fileName: String,

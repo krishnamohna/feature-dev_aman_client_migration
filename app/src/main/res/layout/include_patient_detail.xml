@@ -33,14 +33,13 @@
         tools:layout_editor_absoluteY="35dp" />
 
 
-
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edtFirstName"
         style="@style/BaseAppTheme.EdtTxt"
         android:layout_width="0dp"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_6sdp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="4dp"
         android:hint="@string/first_name"
         android:imeOptions="actionNext"
         android:inputType="textCapWords"
@@ -88,7 +87,7 @@
         style="@style/BaseAppTheme.EdtTxt"
         android:layout_width="0dp"
         android:layout_height="@dimen/_40sdp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:hint="@string/last_name"
         android:imeOptions="actionNext"

@@ -1,5 +1,6 @@
 package com.cardio.doctor.ui.views.diagnosis.step1
 
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +12,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentDiagnosisPart1Binding
+import com.cardio.doctor.domain.common.model.UserModel
 import com.cardio.doctor.domain.common.model.validation.ValidationModelV2
 import com.cardio.doctor.network.Status
+import com.cardio.doctor.ui.common.utils.extentions.customObserver
 import com.cardio.doctor.ui.common.utils.extentions.getTrimmedText
+import com.cardio.doctor.ui.common.utils.getNoYearsFromDate
 import com.cardio.doctor.ui.common.utils.showConfirmAlertDialog
 import com.cardio.doctor.ui.common.utils.textwatcher.LabelVisiblityHelper
 import com.cardio.doctor.ui.common.utils.validation.FieldType
@@ -43,11 +47,44 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         setListeners()
         setViews()
         setDataInViewIfExist()
+        setObservers()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        launchWithMinDelay { viewModel.getUserProfile() }
+    }
+
+
+    private fun setObservers() {
+        viewModel.userDetailDocument.customObserver(
+            viewLifecycleOwner,
+            onLoading = {
+                showProgress(it)
+            },
+            onSuccess = {
+                setPatientDetail(it)
+            },
+            onError = {}
+        )
+    }
+
+    private fun setPatientDetail(userModel: UserModel?) {
+        userModel?.run {
+            firstName?.let { binding.clPatientDetail.edtFirstName.setText(it) }
+            lastName?.let { binding.clPatientDetail.edtLastName.setText(it) }
+            weight?.let { binding.clHealthDetail.edtWeight.setText(it) }
+            dob?.isNotEmpty()?.also {
+                if(it)
+                binding.clPatientDetail.edtAge.setText(dob.getNoYearsFromDate().toString())
+            }
+        }
     }
 
     private fun setViews() {
         setStepView(binding.stepView.stepView)
     }
+
 
     private fun setDataInViewIfExist() {
         diagnosisActivity?.getDiagnosisModel()?.firstName?.run {
@@ -60,7 +97,11 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
                 this
             )
         }
-        diagnosisActivity?.getDiagnosisModel()?.age?.run { binding.clPatientDetail.edtAge.setText(this) }
+        diagnosisActivity?.getDiagnosisModel()?.age?.run {
+            binding.clPatientDetail.edtAge.setText(
+                this
+            )
+        }
         diagnosisActivity?.getDiagnosisModel()?.weight?.run {
             binding.clHealthDetail.edtWeight.setText(
                 this
@@ -71,7 +112,11 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
                 this
             )
         }
-        diagnosisActivity?.getDiagnosisModel()?.topBp?.run { binding.clHealthDetail.edtTopBp.setText(this) }
+        diagnosisActivity?.getDiagnosisModel()?.topBp?.run {
+            binding.clHealthDetail.edtTopBp.setText(
+                this
+            )
+        }
         diagnosisActivity?.getDiagnosisModel()?.bottomBp?.run {
             binding.clHealthDetail.edtBottomBp.setText(
                 this
@@ -88,7 +133,7 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
                 parentActivity!!,
                 getString(R.string.confirm),
                 getString(R.string.confirm_dismiss_diagnosis)
-            ) { btnText: String, dialog: DialogInterface->
+            ) { btnText: String, dialog: DialogInterface ->
                 when (btnText) {
                     getString(R.string.yes) -> {
                         parentActivity?.finish()
