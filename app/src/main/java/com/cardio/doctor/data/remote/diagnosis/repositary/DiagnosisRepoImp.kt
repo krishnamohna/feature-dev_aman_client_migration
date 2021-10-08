@@ -11,12 +11,12 @@ import javax.inject.Inject
 class DiagnosisRepoImp @Inject constructor(val apiService: ApiService) : DiagnosisRepo {
 
     override suspend fun searchMedicine(name: String): BaseModel<MedicineModel> {
-        return apiService.searchMedicine(name).execute().run {
-            body()?.let {
-                return it.toModel()
+        apiService.searchMedicine(name)?.body()?.let { entity ->
+            entity?.drugGroup?.conceptGroup?.let {
+                return entity.toModel()
             }
-            return throw NetworkError()
         }
+        return throw NetworkError()
     }
 
 

@@ -5,7 +5,6 @@ import com.cardio.doctor.data.local.UserManager
 import com.cardio.doctor.network.InternetInterceptor
 import com.cardio.doctor.network.api.ApiHeader
 import com.cardio.doctor.network.api.ApiService
-import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -61,7 +60,9 @@ class NetworkModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient, BASE_URL: String): Retrofit {
         return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().excludeFieldsWithModifiers().create()))
+            .addConverterFactory(
+                GsonConverterFactory
+                    .create())
             .baseUrl(BASE_URL)
             .client(okHttpClient)
             .build()

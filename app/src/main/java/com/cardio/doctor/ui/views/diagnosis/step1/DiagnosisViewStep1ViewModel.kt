@@ -13,7 +13,6 @@ import com.cardio.doctor.ui.common.base.viewmodel.BaseAuthViewModel
 import com.cardio.doctor.ui.common.utils.livedata.SingleLiveEvent
 import com.cardio.doctor.ui.common.utils.validation.Validater
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

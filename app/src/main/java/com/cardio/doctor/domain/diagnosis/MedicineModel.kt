@@ -1,3 +1,3 @@
 package com.cardio.doctor.domain.diagnosis
 
-data class MedicineModel(val name:String)
+data class MedicineModel(val drugGroupName:String, val drugName: String?)

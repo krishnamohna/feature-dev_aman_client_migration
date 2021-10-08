@@ -4,10 +4,13 @@ import com.cardio.doctor.domain.common.model.BaseModel
 import com.cardio.doctor.domain.diagnosis.MedicineModel
 
 data class MedicineEntity(
-    val drugGroup: DrugGroup
+    var drugGroup: DrugGroup
 ) {
 
     fun toModel(): BaseModel<MedicineModel> {
-       return BaseModel(MedicineModel(drugGroup.name))
+        var drugName=drugGroup.conceptGroup?.find {
+            it.conceptProperties!=null
+        }?.conceptProperties?.get(0)?.name
+       return BaseModel(MedicineModel(drugGroup.name,drugName))
     }
 }

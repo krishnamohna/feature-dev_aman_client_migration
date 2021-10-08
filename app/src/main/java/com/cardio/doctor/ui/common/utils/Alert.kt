@@ -3,6 +3,8 @@ package com.cardio.doctor.ui.common.utils
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
+import android.os.Handler
+import android.os.Looper
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
@@ -12,8 +14,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import com.cardio.doctor.R
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 
+
+var mBottomSheetDialog: BottomSheetDialog? = null
 
 fun showToast(context: Context, msg: String) {
     Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
@@ -68,4 +73,39 @@ fun showAlertDialog(
     }
     val dialog = builder.create()
     dialog.show()
+}
+
+ fun showFilePickOptions(activity: AppCompatActivity) {
+    if (mBottomSheetDialog != null && mBottomSheetDialog!!.isShowing()) {
+        mBottomSheetDialog!!.dismiss()
+    }
+    mBottomSheetDialog =
+        BottomSheetDialog(activity, R.style.CustomBottomSheetDialogTheme)
+    val sheetView: View =
+        activity.layoutInflater.inflate(R.layout.bottom_sheet_image_picker, null)
+    mBottomSheetDialog?.setContentView(sheetView)
+    mBottomSheetDialog?.show()
+    sheetView.findViewById<View>(R.id.tvTakePic).setOnClickListener {
+        takePicture()
+        dismissFilePicker()
+    }
+    sheetView.findViewById<View>(R.id.tvPickImage).setOnClickListener {
+        pickImage()
+        dismissFilePicker()
+    }
+}
+
+fun dismissFilePicker() {
+    Handler(Looper.getMainLooper()).postDelayed(
+        { if (mBottomSheetDialog != null && mBottomSheetDialog!!.isShowing) mBottomSheetDialog!!.dismiss() },
+        500
+    )
+}
+
+private fun pickImage() {
+
+}
+
+private fun takePicture() {
+
 }

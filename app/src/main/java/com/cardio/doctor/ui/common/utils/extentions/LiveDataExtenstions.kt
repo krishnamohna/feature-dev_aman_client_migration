@@ -14,13 +14,20 @@ import kotlinx.coroutines.CoroutineScope
 fun <T> MutableLiveData<Resource<T>>.setLoading() = postValue(Resource.setLoading())
 fun <T> MutableLiveData<Resource<T>>.setSuccess(data: T) = postValue(Resource.success("", data))
 fun <T> MutableLiveData<Resource<T>>.setError(networkException: Exception) =
-    postValue(Resource.error("", STATUS_500, networkException.localizedMessage, null))
+    postValue(
+        Resource.error(
+            "",
+            STATUS_500,
+            networkException.message ?: "Something went wrong!!",
+            null
+        )
+    )
 
 fun CoroutineScope.observeApi(
     searchMedicine: BaseModel<MedicineModel>,
     mutableMedicineData: MutableLiveData<Resource<MedicineModel>>
 ) {
-    mutableMedicineData.setSuccess(searchMedicine.data)
+    mutableMedicineData.setSuccess(searchMedicine?.data)
 }
 
 fun <T> LiveData<Resource<T>>.customObserver(
