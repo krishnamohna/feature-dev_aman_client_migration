@@ -4,4 +4,6 @@
     <dimen name="text_large">@dimen/_13ssp</dimen>
     <dimen name="home_add_diagnosis">@dimen/_55sdp</dimen>
     <dimen name="bottom_sheet_item">@dimen/_42sdp</dimen>
+    <dimen name="offset_scroll_label_up_medium">@dimen/_20sdp</dimen>
+    <dimen name="offset_scroll_label_up_small">@dimen/_5sdp</dimen>
 </resources>

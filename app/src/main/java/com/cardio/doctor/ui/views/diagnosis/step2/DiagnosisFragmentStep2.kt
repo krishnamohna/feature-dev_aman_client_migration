@@ -1,10 +1,15 @@
 package com.cardio.doctor.ui.views.diagnosis.step2
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.speech.RecognizerIntent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.databinding.FragmentDiagnosisPart2Binding
@@ -12,6 +17,8 @@ import com.cardio.doctor.ui.common.utils.extentions.customObserver
 import com.cardio.doctor.ui.common.utils.showFilePickOptions
 import com.cardio.doctor.ui.views.diagnosis.common.BaseDiagnosisFragment
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
+
 
 @AndroidEntryPoint
 class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Binding>() {
@@ -34,6 +41,14 @@ class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Bindi
         init()
     }
 
+    private var resultLauncherSpeechToText: ActivityResultLauncher<Intent> =
+    registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result->
+        if (result.resultCode == Activity.RESULT_OK) {
+                val result = result.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+                Log.i("", "" + result)
+        }
+    }
+
     private fun setViews() {
         setStepView(binding.stepView.stepView)
     }
@@ -45,10 +60,10 @@ class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Bindi
                 showProgress(it)
             },
             onSuccess = {
-                Log.i("", ""+it)
+                Log.i("", "" + it)
             },
             onError = {
-                Log.i("", it?:"")
+                Log.i("", it ?: "")
             }
         )
         viewModel.searchMed("Persantine")
@@ -61,7 +76,22 @@ class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Bindi
         binding.cvDiagnosisBottomContainer.btCancel.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.materialCardViewImage.setOnClickListener { parentActivity?.let { showFilePickOptions(it) }}
+        binding.materialCardViewImage.setOnClickListener { parentActivity?.let { showFilePickOptions(
+            activity = it
+        ) }}
+        binding.materialCardViewSpeech.setOnClickListener {
+            val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+            intent.putExtra(
+                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+            )
+            intent.putExtra(
+                RecognizerIntent.EXTRA_LANGUAGE,
+                Locale.getDefault()
+            )
+            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak to text")
+            resultLauncherSpeechToText.launch(intent)
+        }
     }
 
 

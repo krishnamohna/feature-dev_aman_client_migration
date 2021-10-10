@@ -3,6 +3,8 @@ package com.cardio.doctor.ui.views.diagnosis.step1
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +20,9 @@ import com.cardio.doctor.network.Status
 import com.cardio.doctor.ui.common.utils.extentions.customObserver
 import com.cardio.doctor.ui.common.utils.extentions.getTrimmedText
 import com.cardio.doctor.ui.common.utils.getNoYearsFromDate
+import com.cardio.doctor.ui.common.utils.keyboard.KeyboardEventListener
 import com.cardio.doctor.ui.common.utils.showConfirmAlertDialog
+import com.cardio.doctor.ui.common.utils.textwatcher.DELAY_SMALL_ANIMATION
 import com.cardio.doctor.ui.common.utils.textwatcher.LabelVisiblityHelper
 import com.cardio.doctor.ui.common.utils.validation.FieldType
 import com.cardio.doctor.ui.views.diagnosis.common.BaseDiagnosisFragment
@@ -55,6 +59,17 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         launchWithMinDelay { viewModel.getUserProfile() }
     }
 
+    override fun onResume() {
+        super.onResume()
+        KeyboardEventListener(R.id.clScrollViewContainer,parentActivity!!) {
+            if (it) {
+                var labelHeight=resources.getDimension(R.dimen.offset_scroll_label_up_medium).toInt()
+                Handler(Looper.getMainLooper()).postDelayed({
+                    binding.scrollViewStep1.smoothScrollBy(0, labelHeight)
+                }, DELAY_SMALL_ANIMATION)
+            }
+        }
+    }
 
     private fun setObservers() {
         viewModel.userDetailDocument.customObserver(
@@ -144,37 +159,50 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         labelVisiblityHelper.addView(
             binding.clPatientDetail.edtFirstName,
             binding.clPatientDetail.tvFirstNameError,
-            binding.clPatientDetail.firstNameLabel
+            binding.clPatientDetail.firstNameLabel,
+            binding.scrollViewStep1,parentActivity
         )
         labelVisiblityHelper.addView(
             binding.clPatientDetail.edtLastName,
             binding.clPatientDetail.tvErrorLastName,
-            binding.clPatientDetail.txtLastName
+            binding.clPatientDetail.txtLastName,
+            binding.scrollViewStep1,
+            parentActivity
         )
         labelVisiblityHelper.addView(
             binding.clPatientDetail.edtAge,
             binding.clPatientDetail.tvAgeError,
-            binding.clPatientDetail.txtAge
+            binding.clPatientDetail.txtAge,
+            binding.scrollViewStep1,
+            parentActivity
         )
         labelVisiblityHelper.addView(
             binding.clHealthDetail.edtWeight,
             binding.clHealthDetail.tvWeightError,
-            binding.clHealthDetail.tvWeight
+            binding.clHealthDetail.tvWeight,
+            binding.scrollViewStep1,
+            parentActivity
         )
         labelVisiblityHelper.addView(
             binding.clHealthDetail.edtHeartRate,
             binding.clHealthDetail.tvErrorHeartRate,
-            binding.clHealthDetail.txtHeartRate
+            binding.clHealthDetail.txtHeartRate,
+            binding.scrollViewStep1,
+            parentActivity
         )
         labelVisiblityHelper.addView(
             binding.clHealthDetail.edtTopBp,
             binding.clHealthDetail.tvTopBpErrro,
-            binding.clHealthDetail.txtTopBp
+            binding.clHealthDetail.txtTopBp,
+            binding.scrollViewStep1,
+            parentActivity
         )
         labelVisiblityHelper.addView(
             binding.clHealthDetail.edtBottomBp,
             binding.clHealthDetail.tvBottomBpErrror,
-            binding.clHealthDetail.txtBottomBp
+            binding.clHealthDetail.txtBottomBp,
+            binding.scrollViewStep1,
+            parentActivity
         )
     }
 

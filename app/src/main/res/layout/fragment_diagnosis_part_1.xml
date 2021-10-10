@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:id="@+id/clStep1RootView"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -18,6 +19,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:id="@+id/clScrollViewContainer"
             android:layout_height="wrap_content"
             >
 
@@ -148,7 +150,7 @@
                 layout="@layout/include_health_detail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/txtPatientDetail"
                 app:layout_constraintStart_toStartOf="@+id/txtPatientDetail"

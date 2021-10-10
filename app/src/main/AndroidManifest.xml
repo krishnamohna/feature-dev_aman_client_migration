@@ -24,7 +24,6 @@
         <activity
             android:name="com.cardio.doctor.ui.views.diagnosis.DiagnosisActivity"
             >
-
         </activity>
         <activity
             android:name="com.cardio.doctor.ui.views.splash.SplashActivity"
