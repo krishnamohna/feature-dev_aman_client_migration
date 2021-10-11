@@ -11,6 +11,11 @@ data class MedicineEntity(
         var drugName=drugGroup.conceptGroup?.find {
             it.conceptProperties!=null
         }?.conceptProperties?.get(0)?.name?:drugGroup.name
+        drugName?.split(" ")?.let {
+            if(it.isNotEmpty()) {
+                drugName=it.get(0)
+            }
+        }
        return BaseModel(MedicineModel(drugGroup.name,drugName))
     }
 }
