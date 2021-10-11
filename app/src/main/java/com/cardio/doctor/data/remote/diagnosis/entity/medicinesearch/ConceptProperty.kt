@@ -1,4 +1,4 @@
-package com.cardio.doctor.data.remote.diagnosis.entity
+package com.cardio.doctor.data.remote.diagnosis.entity.medicinesearch
 
 data class ConceptProperty(
     val language: String,

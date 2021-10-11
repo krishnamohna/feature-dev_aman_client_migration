@@ -1,6 +1,6 @@
 package com.cardio.doctor.network.api
 
-import com.cardio.doctor.data.remote.diagnosis.entity.MedicineEntity
+import com.cardio.doctor.data.remote.diagnosis.entity.medicinesearch.MedicineEntity
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

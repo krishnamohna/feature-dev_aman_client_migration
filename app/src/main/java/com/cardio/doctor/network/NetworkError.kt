@@ -1,3 +1,3 @@
 package com.cardio.doctor.network
 
-data class NetworkError(val msg: String="Something went wrong") : Exception(msg)
+data class NetworkError(val errorCode:Int,val msg: String) : Exception(msg)

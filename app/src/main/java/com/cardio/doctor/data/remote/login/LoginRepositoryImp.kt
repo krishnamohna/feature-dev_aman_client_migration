@@ -66,7 +66,6 @@ class LoginRepositoryImp @Inject constructor(
     ) = firebaseQuery<SignInMethodQueryResult, Boolean>(
             operation = { firebaseAuth.fetchSignInMethodsForEmail(email) },
             parse = { result ->
-                var isExist = false
                 result.signInMethods?.forEach {
                     if (it == EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD) {
                         return@firebaseQuery true

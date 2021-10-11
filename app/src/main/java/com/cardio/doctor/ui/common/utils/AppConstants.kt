@@ -48,6 +48,7 @@ interface ENUM{
 interface FireStoreCollection{
     companion object {
         const val USERS = "Users"
+        const val DRUGS = "Drugs"
     }
 }
 
@@ -76,7 +77,9 @@ interface FireStoreDocKey{
         const val GENDER = "gender"
         const val HEIGHT = "height"
         const val WEIGHT = "weight"
-
+        const val NAME="name"
+        const val CATEGORY="category"
+        const val OTHER="others"
     }
 }
 
