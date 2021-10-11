@@ -48,6 +48,7 @@
         android:inputType="textCapWords"
         android:maxLength="@integer/int_20"
         android:maxLines="@integer/int_1"
+        android:text="Persantine"
         android:paddingLeft="@dimen/_16sdp"
         android:paddingRight="@dimen/_16sdp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,5 +153,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/scrollViewStep1"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewAddMed"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="0dp"
+        android:paddingEnd="@dimen/_8sdp"
+        android:paddingStart="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/edtMedicineSearch"
+        app:layout_constraintEnd_toEndOf="@+id/edtMedicineSearch"
+        app:layout_constraintTop_toTopOf="@+id/edtMedicineSearch"
+        app:srcCompat="@drawable/ic_add_black" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclarAddedMed"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/cvDiagnosisBottomContainer"
+        app:layout_constraintEnd_toEndOf="@+id/materialCardViewSpeech"
+        app:layout_constraintStart_toStartOf="@+id/materialCardViewImage"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardViewImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

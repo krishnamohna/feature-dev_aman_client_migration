@@ -6,7 +6,7 @@ import android.graphics.Rect
 import android.util.TypedValue
 import android.view.View
 
-fun Activity.getRootView(rootView:Int): View {
+fun Activity.getRootView(rootView:Int): View? {
     return findViewById<View>(rootView)
 }
 fun Context.convertDpToPx(dp: Float): Float {
@@ -17,17 +17,18 @@ fun Context.convertDpToPx(dp: Float): Float {
     )
 }
 fun Activity.isKeyboardOpen(rootView: Int): Boolean {
-    val visibleBounds = Rect()
-    //finding screen height
-    getRootView(rootView).getWindowVisibleDisplayFrame(visibleBounds)
-    val screenHeight = getRootView(rootView).height
-    //finding keyboard height
-    val keypadHeight = screenHeight - visibleBounds.bottom
-    if (keypadHeight > screenHeight * 0.15)
-        return true
-    else return false
-//    val marginOfError = Math.round(this.convertDpToPx(50F))
-//    return keypadHeight > marginOfError
+    getRootView(rootView)?.let {
+        val visibleBounds = Rect()
+        //finding screen height
+        it.getWindowVisibleDisplayFrame(visibleBounds)
+        val screenHeight =it.height
+        //finding keyboard height
+        val keypadHeight = screenHeight - visibleBounds.bottom
+        if (keypadHeight > screenHeight * 0.15)
+            return true
+        else return false
+    }
+    return false
 }
 
 fun Activity.isKeyboardClosed(rootView: Int): Boolean {

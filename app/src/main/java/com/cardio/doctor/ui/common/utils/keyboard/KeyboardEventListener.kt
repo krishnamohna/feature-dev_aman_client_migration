@@ -35,7 +35,7 @@ class KeyboardEventListener(private val rootView: Int,
     }
 
     private fun registerKeyboardListener() {
-        activity.getRootView(rootView).viewTreeObserver.addOnGlobalLayoutListener(listener)
+        activity.getRootView(rootView)?.viewTreeObserver?.addOnGlobalLayoutListener(listener)
     }
 
     private fun dispatchKeyboardEvent(isOpen: Boolean) {
@@ -52,6 +52,6 @@ class KeyboardEventListener(private val rootView: Int,
     }
 
     private fun unregisterKeyboardListener() {
-        activity.getRootView(rootView).viewTreeObserver.removeOnGlobalLayoutListener(listener)
+        activity.getRootView(rootView)?.viewTreeObserver?.removeOnGlobalLayoutListener(listener)
     }
 }

@@ -49,6 +49,7 @@
     <string name="enter_top_bp">Please top bp</string>
     <string name="enter_bottom_bp">Please bottom bp</string>
     <string name="enter_valid_first_name">First name must be atleast 3 characters long</string>
+    <string name="enter_medicine">Enter medicine</string>
     <string name="enter_email_address">Please enter your email</string>
     <string name="err_valid_email">Please enter a valid email</string>
     <string name="enter_valid_last_name">Last name must be atleast 3 characters long</string>
@@ -179,6 +180,7 @@
     <string name="confirm_dismiss_diagnosis">Do you want to discard changes?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="device_does_not_support_speech_to_text">Your Device Don\'t Support Speech Input</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="TutorialTitle">
         <item>Connect with Experience Practitioners </item>

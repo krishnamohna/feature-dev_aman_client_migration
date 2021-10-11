@@ -78,7 +78,6 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
                     return@forEach
                 }
             }
-
             if (isGranted)
                 fetchImage()
         }

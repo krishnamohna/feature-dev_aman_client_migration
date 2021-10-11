@@ -6,4 +6,6 @@ interface DiagnosisRepo {
 
    suspend fun searchMedicine(name: String): BaseModel<MedicineModel>
 
+   suspend fun doesMedExistInCollection(name:String):Boolean
+
 }
