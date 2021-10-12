@@ -52,6 +52,7 @@ class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Bindi
                 val result = result.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
                 result?.isNotEmpty()?.let {
                     binding.edtMedicineSearch.setText(result.get(0))
+                    binding.imageViewAddMed.performClick()
                 }
             }
         }

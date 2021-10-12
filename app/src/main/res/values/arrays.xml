@@ -20,4 +20,25 @@
         <item>Post step</item>
     </string-array>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="TutorialTitle">
+        <item>Connect with Experience Practitioners </item>
+        <item>Lorem Ipsum is simply dummy text of printing.</item>
+        <item>Lorem Ipsum is simply dummy text of printing.</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="TutorialDescription">
+        <item>Reach out to the experts </item>
+        <item>View report to monitor your illness</item>
+        <item>Download and share latest reports with your doctor anytime</item>
+    </string-array>
+
+    <string-array name="gender_list">
+        <item>@string/select_gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>other</item>
+    </string-array>
+
+
 </resources>

@@ -128,6 +128,6 @@ dependencies {
 
     //Tab Indicator
     implementation 'com.tbuonomo:dotsindicator:4.2'
-
+    compileOnly group: 'commons-codec', name: 'commons-codec', version: '1.15'
 }
 

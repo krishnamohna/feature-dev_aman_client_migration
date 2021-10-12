@@ -14,6 +14,7 @@ import com.cardio.doctor.ui.common.base.fragment.toolbar.DiagnosisToolbarImp
 import com.cardio.doctor.ui.common.base.fragment.toolbar.IToolbar
 import com.cardio.doctor.ui.common.customviews.StepView
 import com.cardio.doctor.ui.common.utils.showConfirmAlertDialog
+import com.cardio.doctor.ui.views.fitbit.RootActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -66,6 +67,7 @@ class DiagnosisActivity : BaseToolbarActivity() {
                 setStepNo(it)
             }
         }
+        binding.headerView.buttonConnect.setOnClickListener { RootActivity.start(DiagnosisActivity@this) }
     }
 
     var onBackClick: (() -> Unit)? = {

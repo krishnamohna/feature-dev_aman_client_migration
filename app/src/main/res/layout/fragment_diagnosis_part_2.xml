@@ -48,7 +48,6 @@
         android:inputType="textCapWords"
         android:maxLength="@integer/int_20"
         android:maxLines="@integer/int_1"
-        android:text="Ticagrelor"
         android:paddingLeft="@dimen/_16sdp"
         android:paddingRight="@dimen/_16sdp"
         app:layout_constraintEnd_toEndOf="parent"

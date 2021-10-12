@@ -72,6 +72,12 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <activity
+            android:name=".ui.views.fitbit.RootActivity"
+            android:label="Root Activity"
+            >
+        </activity>
     </application>
 
 </manifest>

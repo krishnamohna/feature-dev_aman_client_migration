@@ -7,12 +7,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 
-class KeyboardEventListener(private val rootView: Int,
-        private val activity: AppCompatActivity,
-        private val callback: (isOpen: Boolean) -> Unit
+class KeyboardEventListener(
+    private val rootView: Int,
+    private val activity: AppCompatActivity,
+    private val callback: (isOpen: Boolean) -> Unit
 ) : LifecycleObserver {
 
     private val listener = object : ViewTreeObserver.OnGlobalLayoutListener {
+
         private var lastState: Boolean = activity.isKeyboardOpen(rootView)
 
         override fun onGlobalLayout() {
@@ -40,7 +42,7 @@ class KeyboardEventListener(private val rootView: Int,
 
     private fun dispatchKeyboardEvent(isOpen: Boolean) {
         when {
-            isOpen  -> callback(true)
+            isOpen -> callback(true)
             !isOpen -> callback(false)
         }
     }
