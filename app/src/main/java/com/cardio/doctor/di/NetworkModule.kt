@@ -9,17 +9,14 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.ConnectionPool
 import okhttp3.OkHttpClient
-import okhttp3.Protocol
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module()
-@InstallIn(SingletonComponent ::class)
+@InstallIn(SingletonComponent::class)
 class NetworkModule {
 
     @Provides
@@ -30,14 +27,7 @@ class NetworkModule {
     fun provideOkHttpClient(userManager: UserManager, internetInterceptor: InternetInterceptor)
             : OkHttpClient {
         val builder = OkHttpClient.Builder()
-        builder.connectTimeout(30, TimeUnit.MINUTES)
-            .readTimeout(30, TimeUnit.MINUTES)
-            .writeTimeout(30, TimeUnit.MINUTES)
-            .connectionPool(ConnectionPool(0, 30, TimeUnit.MINUTES))
-            .protocols(listOf(Protocol.HTTP_1_1))
-            .followRedirects(true)
-            .followSslRedirects(true)
-            .addInterceptor(internetInterceptor)
+        builder.addInterceptor(internetInterceptor)
             .addInterceptor { chain ->
                 val newRequest = chain.request().newBuilder()
                     .addHeader(ApiHeader.ACCEPT, ApiHeader.APPLICATION_JSON)
@@ -62,7 +52,8 @@ class NetworkModule {
         return Retrofit.Builder()
             .addConverterFactory(
                 GsonConverterFactory
-                    .create())
+                    .create()
+            )
             .baseUrl(BASE_URL)
             .client(okHttpClient)
             .build()

@@ -22,6 +22,7 @@ import com.cardio.doctor.ui.common.utils.extentions.getTrimmedText
 import com.cardio.doctor.ui.common.utils.getNoYearsFromDate
 import com.cardio.doctor.ui.common.utils.keyboard.KeyboardEventListener
 import com.cardio.doctor.ui.common.utils.showConfirmAlertDialog
+import com.cardio.doctor.ui.common.utils.showToast
 import com.cardio.doctor.ui.common.utils.textwatcher.DELAY_SMALL_ANIMATION
 import com.cardio.doctor.ui.common.utils.textwatcher.LabelVisiblityHelper
 import com.cardio.doctor.ui.common.utils.validation.FieldType
@@ -80,7 +81,9 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
             onSuccess = {
                 setPatientDetail(it)
             },
-            onError = {}
+            onError = {msg->
+                parentActivity?.let { showToast(it,msg?:getString(R.string.getting_some_error)) }
+            }
         )
     }
 

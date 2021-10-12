@@ -147,7 +147,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
         binding.edtWeight.addTextChangedListener(
             TextChangeWatcher(
                 binding.edtWeight,
-                binding.tvHeartError
+                binding.tvWeightEditProfileError
             )
         )
         binding.txtResendVerificationLink.setOnClickListener(this)

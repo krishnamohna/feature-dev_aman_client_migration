@@ -18,16 +18,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:fontFamily="@font/nunito_extrabold"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_15ssp"
-                tools:text="Ajajsjakdasjdkjaskdjalskdl"
                 android:gravity="center"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:paddingStart="@dimen/_16sdp"
                 android:paddingEnd="@dimen/_16sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgProfilePic"
-                 />
+                tools:text="User Name" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtEmailAddress"
@@ -49,13 +48,13 @@
                 android:layout_marginTop="@dimen/_3sdp"
                 android:fontFamily="@font/nunito_semibold"
                 android:textColor="@color/black"
-                android:visibility="invisible"
-                tools:visibility="invisible"
                 android:textSize="@dimen/_11ssp"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/txtEmailAddress"
-                tools:text="+971  7309438172" />
+                tools:text="+971  7309438172"
+                tools:visibility="invisible" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtOtherDetail"
@@ -69,6 +68,7 @@
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/txtPhoneNumber" />
 
+            <!--gender container-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/genderContainer"
                 android:layout_width="0dp"
@@ -76,6 +76,7 @@
                 android:layout_marginTop="@dimen/_6sdp"
                 app:layout_constraintEnd_toStartOf="@+id/weightContainer"
                 app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/txtOtherDetail">
 
@@ -111,12 +112,10 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toStartOf="@+id/txtTitleGender"
-                    app:layout_constraintTop_toBottomOf="@+id/txtTitleGender"
-                    />
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitleGender" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+            <!--wight container-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/weightContainer"
                 android:layout_width="0dp"
@@ -145,8 +144,8 @@
                     android:text="@string/weight_in_lbs"
                     android:textColor="@color/grey_text_hint"
                     android:textSize="@dimen/_10ssp"
-                    app:layout_constraintStart_toEndOf="@+id/imgWeight"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgWeight"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -158,11 +157,10 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toStartOf="@+id/txtTitleWeight"
-                    app:layout_constraintTop_toBottomOf="@+id/txtTitleWeight"
-                     />
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitleWeight" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
+            <!--height container-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/heightContainer"
                 android:layout_width="0dp"
@@ -188,13 +186,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_6sdp"
-                    android:layout_marginEnd="@dimen/_3sdp"
                     android:fontFamily="@font/nunito_extrabold"
                     android:text="@string/height_in_centimeter"
                     android:textColor="@color/grey_text_hint"
                     android:textSize="@dimen/_10ssp"
-                    app:layout_constraintStart_toEndOf="@+id/imgHeight"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgHeight"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -206,8 +203,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toStartOf="@+id/txtTitleHeight"
-                    app:layout_constraintTop_toBottomOf="@+id/txtTitleHeight"
-                     />
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitleHeight" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -230,9 +226,9 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginTop="@dimen/_16sdp"
+                android:background="@drawable/btn_white_bg_with_white_corner"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp"
-                android:background="@drawable/btn_white_bg_with_white_corner"
                 app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/weightContainer">
@@ -255,8 +251,8 @@
                     android:layout_marginStart="@dimen/_15sdp"
                     android:fontFamily="@font/nunito_extrabold"
                     android:text="@string/wearable"
-                    android:textSize="@dimen/_13ssp"
                     android:textColor="@color/black"
+                    android:textSize="@dimen/_13ssp"
                     app:layout_constraintBottom_toBottomOf="@+id/imgWearable"
                     app:layout_constraintStart_toEndOf="@+id/imgWearable"
                     app:layout_constraintTop_toTopOf="@+id/imgWearable" />
@@ -266,16 +262,17 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:fontFamily="@font/nunito_extrabold"
-                    tools:text="Apple Healthkit"
-                    android:textSize="@dimen/_10ssp"
-                    android:textColor="@color/black_tutorial_text"
-                    android:gravity="end"
                     android:layout_marginEnd="@dimen/_7sdp"
+                    android:fontFamily="@font/nunito_extrabold"
+                    android:gravity="end"
+                    android:textColor="@color/black_tutorial_text"
+                    android:textSize="@dimen/_10ssp"
                     app:layout_constraintBottom_toBottomOf="@+id/imgWearable"
                     app:layout_constraintEnd_toStartOf="@+id/imgSelectWearable"
                     app:layout_constraintStart_toEndOf="@+id/txtWearableTitle"
-                    app:layout_constraintTop_toTopOf="@+id/imgWearable" />
+                    app:layout_constraintTop_toTopOf="@+id/imgWearable"
+                    tools:text="Apple Healthkit" />
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgSelectWearable"
                     android:layout_width="wrap_content"
@@ -293,9 +290,9 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginTop="@dimen/_16sdp"
+                android:background="@drawable/btn_white_bg_with_white_corner"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp"
-                android:background="@drawable/btn_white_bg_with_white_corner"
                 app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/wearableContainer">
@@ -318,8 +315,8 @@
                     android:layout_marginStart="@dimen/_15sdp"
                     android:fontFamily="@font/nunito_extrabold"
                     android:text="@string/setting"
-                    android:textSize="@dimen/_13ssp"
                     android:textColor="@color/black"
+                    android:textSize="@dimen/_13ssp"
                     app:layout_constraintBottom_toBottomOf="@+id/imgSetting"
                     app:layout_constraintStart_toEndOf="@+id/imgSetting"
                     app:layout_constraintTop_toTopOf="@+id/imgSetting" />
@@ -340,6 +337,7 @@
                 layout="@layout/toolbar" />
 
             <include layout="@layout/guideline_left" />
+
             <include layout="@layout/guideline_right" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

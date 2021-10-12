@@ -21,8 +21,13 @@ import com.google.android.material.snackbar.Snackbar
 var mBottomSheetDialog: BottomSheetDialog? = null
 
 fun showToast(context: Context, msg: String) {
-    Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
+    Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
 }
+
+fun showToast(context: Context, msg: Int) {
+    Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+}
+
 
 @SuppressLint("UseCompatLoadingForDrawables")
 fun customSnackBarFail(

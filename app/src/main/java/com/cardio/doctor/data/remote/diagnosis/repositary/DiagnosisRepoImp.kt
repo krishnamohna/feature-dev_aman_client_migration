@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class DiagnosisRepoImp @Inject constructor(
     val apiService: ApiService,
-    val fireStoreDb: FirebaseFirestore,
+    private val fireStoreDb: FirebaseFirestore,
 ) : DiagnosisRepo {
 
     override suspend fun searchMedicine(name: String): BaseModel<MedicineModel> {

@@ -5,7 +5,6 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -140,11 +139,11 @@ class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Bindi
                 showProgress(it)
             },
             onSuccess = {
-                Log.i("", "" + it)
+                parentActivity?.let { showToast(it,"Medicine Added ") }
                 it?.let { adapterMed.addMed(it) }
             },
-            onError = {
-                Log.i("", it ?: "")
+            onError = {msg->
+                parentActivity?.let { showToast(it,msg?:getString(R.string.getting_some_error)) }
             }
         )
     }

@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentDiagnosisPart4Binding
+import com.cardio.doctor.ui.common.utils.showToast
 import com.cardio.doctor.ui.views.diagnosis.common.BaseDiagnosisFragment
-import com.cardio.doctor.ui.views.diagnosis.step3.DiagnosisFragmentStep3Directions
 
 class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Binding>() {
 
@@ -32,7 +33,7 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
 
     private fun setListeners() {
         binding.cvDiagnosisBottomContainer.btNext.setOnClickListener {
-            findNavController().navigate(DiagnosisFragmentStep3Directions.actionDiagnosisFragmentPart3ToDiagnosisFragmentPart4())
+            showToast(parentActivity!!, R.string.coming_soon)
         }
         binding.cvDiagnosisBottomContainer.btCancel.setOnClickListener {
             findNavController().popBackStack()
