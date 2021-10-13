@@ -2,7 +2,9 @@ package com.cardio.doctor.ui.views.diagnosis.step2
 
 import android.Manifest
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.view.LayoutInflater
@@ -81,16 +83,37 @@ class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Bindi
             Locale.getDefault()
         )
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak to text")
-        if (intent.resolveActivity(parentActivity!!.getPackageManager()) != null) {
+        try{
             resultLauncherSpeechToText.launch(intent)
-        } else {
+        }catch(exp:Exception){
             showToast(parentActivity!!, getString(R.string.device_does_not_support_speech_to_text))
+            promptToInstallApp()
+        }
+    }
+
+    private fun promptToInstallApp() {
+        val appPackageName = "com.google.android.googlequicksearchbox"
+        try {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=$appPackageName")
+                )
+            )
+        } catch (anfe: ActivityNotFoundException) {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                )
+            )
         }
     }
 
     private fun setViews() {
         binding.recyclarAddedMed.layoutManager = LinearLayoutManager(parentActivity!!)
         binding.recyclarAddedMed.adapter = adapterMed
+        binding.cvDiagnosisBottomContainer.btCancel.setText(getString(R.string.back))
         setStepView(binding.stepView.stepView)
     }
 
@@ -117,7 +140,7 @@ class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Bindi
                 if(it.isNotEmpty()){
                     viewModel.searchMed(binding.edtMedicineSearch.text.toString().trim())
                 }else{
-                    showToast(parentActivity!!,getString(R.string.enter_medicine))
+                    showToast(parentActivity!!, getString(R.string.enter_medicine))
                 }
             }
         }
@@ -140,11 +163,12 @@ class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Bindi
                 showProgress(it)
             },
             onSuccess = {
-                parentActivity?.let { showToast(it,"Medicine Added ") }
+                binding.edtMedicineSearch.setText("")
+                parentActivity?.let { showToast(it, "Medicine Added ") }
                 it?.let { adapterMed.addMed(it) }
             },
-            onError = {msg->
-                parentActivity?.let { showToast(it,msg?:getString(R.string.getting_some_error)) }
+            onError = { msg ->
+                parentActivity?.let { showToast(it, msg ?: getString(R.string.getting_some_error)) }
             }
         )
     }

@@ -64,15 +64,18 @@
             app:srcCompat="@drawable/ic_edit_profile"
             tools:visibility="visible" />
 
-        <com.cardio.doctor.ui.common.customviews.AppButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonConnect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/connect"
+            android:visibility="gone"
             style="@style/ButtonDefaultStyle"
             android:background="@drawable/drawable_connect_background"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/toolbarTitle"
+            app:layout_constraintBottom_toBottomOf="@id/toolbarTitle"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

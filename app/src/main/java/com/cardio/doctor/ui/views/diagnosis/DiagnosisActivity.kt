@@ -28,12 +28,12 @@ class DiagnosisActivity : BaseToolbarActivity() {
     }
 
     private var lastStep: Int? = null
-    private val navController:NavController by lazy {
-                (supportFragmentManager.findFragmentById(R.id.navHostFragmentDiagnoises) as NavHostFragment).navController
+    private val navController: NavController by lazy {
+        (supportFragmentManager.findFragmentById(R.id.navHostFragmentDiagnoises) as NavHostFragment).navController
     }
     private val binding by viewBinding(ActivityDiagnosisBinding::inflate)
-    private var stepView:StepView?=null
-    private val diagnosisModel=DiagnosisModel()
+    private var stepView: StepView? = null
+    private val diagnosisModel = DiagnosisModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,7 @@ class DiagnosisActivity : BaseToolbarActivity() {
     }
 
     private fun initViews() {
-       //setStepView(binding.stepView.stepView)
+        //setStepView(binding.stepView.stepView)
     }
 
     override fun onBackPressed() {
@@ -51,10 +51,10 @@ class DiagnosisActivity : BaseToolbarActivity() {
             this!!,
             getString(R.string.confirm),
             getString(R.string.confirm_dismiss_diagnosis)
-        ) {btnText: String, dialog: DialogInterface ->
+        ) { btnText: String, dialog: DialogInterface ->
             when (btnText) {
                 getString(R.string.yes) -> {
-                   finish()
+                    finish()
                 }
             }
         }
@@ -63,11 +63,11 @@ class DiagnosisActivity : BaseToolbarActivity() {
     private fun setListeners() {
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             destination.label.toString().toInt().let {
-                lastStep=it
+                lastStep = it
                 setStepNo(it)
             }
         }
-        binding.headerView.buttonConnect.setOnClickListener { RootActivity.start(DiagnosisActivity@this) }
+        binding.headerView.buttonConnect.setOnClickListener { RootActivity.start(DiagnosisActivity@ this) }
     }
 
     var onBackClick: (() -> Unit)? = {
@@ -75,7 +75,7 @@ class DiagnosisActivity : BaseToolbarActivity() {
             this!!,
             getString(R.string.confirm),
             getString(R.string.confirm_dismiss_diagnosis)
-        ) {btnText: String, dialog: DialogInterface ->
+        ) { btnText: String, dialog: DialogInterface ->
             when (btnText) {
                 getString(R.string.yes) -> {
                     finish()
@@ -97,7 +97,7 @@ class DiagnosisActivity : BaseToolbarActivity() {
     }
 
     fun setStepView(stepView: StepView) {
-        this.stepView =stepView
+        this.stepView = stepView
         lastStep?.let { setStepNo(it) }
     }
 

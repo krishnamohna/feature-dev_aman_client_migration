@@ -43,6 +43,7 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="enter_first_name">Please enter first name</string>
+    <string name="select_ailment">Please select Ailment</string>
     <string name="enter_age">Please enter age</string>
     <string name="enter_weight">Please enter weight</string>
     <string name="enter_heart_rate">Please heart rate</string>
@@ -99,6 +100,7 @@
     <string name="weight_in_lbs">Weight (in lbs)</string>
     <string name="date_of_birth">Date Of Birth</string>
     <string name="please_select_gender">Please select gender</string>
+    <string name="please_select_ailment">Please select Ailment</string>
     <string name="date_of_birth_val">Please enter valid date of birth</string>
     <string name="valid_height">Please enter valid height</string>
     <string name="valid_weight">Please enter valid weight rate</string>
@@ -196,4 +198,6 @@
         again later.
     </string>
     <string name="connect">Connect</string>
+    <string name="back">Back</string>
+    <string name="take_a_picture">Take a picture</string>
 </resources>

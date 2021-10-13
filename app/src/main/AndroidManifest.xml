@@ -12,7 +12,11 @@
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
     <application
         android:name=".ui.AppCardioPatient"
         android:icon="@mipmap/ic_launcher"
@@ -72,12 +76,24 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
+         <!--fitbit activities-->
         <activity
             android:name=".ui.views.fitbit.RootActivity"
             android:label="Root Activity"
             >
         </activity>
+        <activity
+            android:name=".ui.views.fitbit.auth.LoginActivity"
+            >
+        </activity>
+        <meta-data
+            android:name="com.fitbit.sampleandroidoauth2.CLIENT_ID"
+            android:value="227YZT"/>
+        <meta-data
+            android:name="com.fitbit.sampleandroidoauth2.REDIRECT_URL"
+            android:value="https://finished"/>
+
+
     </application>
 
 </manifest>

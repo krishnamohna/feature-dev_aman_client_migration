@@ -29,13 +29,20 @@ class MedRecylarAdapter : RecyclerView.Adapter<MedRecylarAdapter.MedViewHolder>(
 
     fun addMed(it: MedicineModel) {
         listMeds.add(it)
-        notifyItemInserted(listMeds.size-1)
+        notifyItemInserted(listMeds.size - 1)
+    }
+
+    private fun removeItem(adapterPosition: Int) {
+        listMeds.removeAt(adapterPosition)
+        notifyItemRemoved(adapterPosition)
     }
 
     inner class MedViewHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
         var binding = ItemMedicineSearchBinding.bind(itemView)
         fun bind(model: MedicineModel) {
             model.drugName?.let { binding.tvMed.setText(it) }
+            binding.ivRemoveMed.setOnClickListener { removeItem(adapterPosition) }
         }
+
     }
 }

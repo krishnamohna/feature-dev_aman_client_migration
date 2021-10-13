@@ -29,6 +29,7 @@ class DiagnosisViewStep1ViewModel @Inject constructor(
         _userDetailDocument
 
     fun checkValidation(
+        ailmentPosition:Int,
         firstName: String,
         lastName: String,
         age: String,
@@ -40,6 +41,7 @@ class DiagnosisViewStep1ViewModel @Inject constructor(
         failed: (validations:List<ValidationModelV2>) -> Unit
     ) {
         var validations = validater.validateDiagnosisFirstStep(
+            ailmentPosition,
             firstName,
             lastName,
             age,
@@ -58,7 +60,7 @@ class DiagnosisViewStep1ViewModel @Inject constructor(
         try {
             _userDetailDocument.postValue(Resource.loading(Constants.USER_DETAIL, null))
             viewModelScope.launch {
-                //fetch user detai now
+                //fetch user detail now
                 var userDetail = userProfileRepository.fetchUserDetailByModel(_firebaseException)
                 _userDetailDocument.postValue(Resource.success(Constants.USER_DETAIL, userDetail))
             }

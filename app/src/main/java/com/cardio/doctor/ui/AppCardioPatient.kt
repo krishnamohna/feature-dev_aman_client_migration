@@ -5,10 +5,8 @@ import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationConfiguration
-import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationConfigurationBuilder
-import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.ClientCredentials
-import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.Scope
+import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.*
+import com.cardio.doctor.ui.views.fitbit.RootActivity
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -27,7 +25,6 @@ open class AppCardioPatient : Application() {
                 PackageManager.GET_META_DATA
             )
             val bundle = ai.metaData
-
             // Load clientId and redirectUrl from application manifest
             val clientId = bundle.getString("com.fitbit.sampleandroidoauth2.CLIENT_ID")
             val redirectUrl = bundle.getString("com.fitbit.sampleandroidoauth2.REDIRECT_URL")
@@ -48,13 +45,13 @@ open class AppCardioPatient : Application() {
 
     override fun onCreate() {
         super.onCreate()
-       /* AuthenticationManager.configure(
+        AuthenticationManager.configure(
             this,
             generateAuthenticationConfiguration(
                 this,
                 RootActivity::class.java
             )
-        )*/
+        )
     }
 }
 

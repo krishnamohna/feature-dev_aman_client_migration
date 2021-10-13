@@ -10,6 +10,22 @@ class DefaultFieldValidation constructor(val context: Context):Validation {
 
     var validations = mutableListOf<ValidationModelV2>()
 
+    override fun validateAilment(ailmentPosition: Int) {
+        if(ailmentPosition==0){
+            queueValidationRequest(
+                Status.ERROR,
+                context.getString(R.string.select_ailment),
+                FieldType.AILMENT
+            )
+        }else{
+            queueValidationRequest(
+                Status.SUCCESS, "",
+                FieldType.AILMENT
+            )
+            true
+        }
+    }
+
     override fun validateFirstName(firstName: String) {
        when {
             firstName.isEmpty() -> {
@@ -78,6 +94,7 @@ class DefaultFieldValidation constructor(val context: Context):Validation {
     override fun init() {
         validations.clear()
     }
+
 
 
 }

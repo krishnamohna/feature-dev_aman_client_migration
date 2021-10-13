@@ -27,6 +27,7 @@ import com.cardio.doctor.ui.common.utils.textwatcher.DELAY_SMALL_ANIMATION
 import com.cardio.doctor.ui.common.utils.textwatcher.LabelVisiblityHelper
 import com.cardio.doctor.ui.common.utils.validation.FieldType
 import com.cardio.doctor.ui.views.diagnosis.common.BaseDiagnosisFragment
+import com.cardio.doctor.ui.views.diagnosis.step1.adapter.AilmentDropDownAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -100,7 +101,7 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
     }
 
     private fun setViews() {
-        setStepView(binding.stepView.stepView)
+        binding.spinnerCategory.adapter=AilmentDropDownAdapter(parentActivity!!,R.layout.item_dropdown_ailment, resources.getStringArray(R.array.array_ailment))
     }
 
 
@@ -217,7 +218,8 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         var heartRate = binding.clHealthDetail.edtHeartRate.getTrimmedText()
         var topBp = binding.clHealthDetail.edtTopBp.getTrimmedText()
         var bottomBp = binding.clHealthDetail.edtBottomBp.getTrimmedText()
-        viewModel.checkValidation(firstName, lastName, age, weight, heartRate, topBp, bottomBp, {
+        var ailment=binding.spinnerCategory.selectedItemPosition
+        viewModel.checkValidation(ailment,firstName, lastName, age, weight, heartRate, topBp, bottomBp, {
             saveStateToParent(firstName, lastName, age, weight, heartRate, topBp, bottomBp)
             findNavController().navigate(DiagnosisFragmentStep1Directions.actionDiagnosisFragmentPart1ToDiagnosisFragmentPart2())
         }, {
@@ -275,6 +277,9 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         var editText: EditText? = null
         var txtError: TextView? = null
         when (fieldType) {
+            FieldType.AILMENT->{
+                txtError = binding.tvAilmentError
+            }
             FieldType.FIRST_NAME -> {
                 editText = binding.clPatientDetail.edtFirstName
                 txtError = binding.clPatientDetail.tvFirstNameError

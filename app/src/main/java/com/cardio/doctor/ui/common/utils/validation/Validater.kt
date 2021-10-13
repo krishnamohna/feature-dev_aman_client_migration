@@ -6,6 +6,7 @@ import com.cardio.doctor.network.Status
 class Validater constructor(val validation: Validation){
 
     fun validateDiagnosisFirstStep(
+        ailmentPosition:Int,
         firstName: String,
         lastName: String,
         age: String,
@@ -15,6 +16,7 @@ class Validater constructor(val validation: Validation){
         bottomBp: String
     ) : List<ValidationModelV2>{
         validation.init()
+        validation.validateAilment(ailmentPosition)
         validation.validateFirstName(firstName)
         validation.validateLastname(lastName)
         validation.validateAge(age)
@@ -24,6 +26,7 @@ class Validater constructor(val validation: Validation){
         validation.validateBottomBp(bottomBp)
         return validation.build()
     }
+
 
     fun areAllFieldValidated(validations:List<ValidationModelV2>): Boolean {
         var validation=validations.find {

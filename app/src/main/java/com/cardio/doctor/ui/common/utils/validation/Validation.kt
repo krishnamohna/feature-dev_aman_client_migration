@@ -12,4 +12,5 @@ interface Validation {
     fun validateTopBp(heartRate: String)
     fun validateBottomBp(bottomBp: String)
     fun init()
+    fun validateAilment(ailmentPosition: Int)
 }

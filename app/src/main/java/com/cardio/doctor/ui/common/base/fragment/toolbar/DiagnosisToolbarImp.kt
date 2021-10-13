@@ -14,6 +14,7 @@ class DiagnosisToolbarImp(val view: View) : IToolbar {
         //change back button icon
         view?.run {
             findViewById<ImageView>(R.id.backBtn).setImageResource(R.drawable.ic_close)
+          //  findViewById<View>(R.id.buttonConnect).visibility=View.VISIBLE
             findViewById<ImageView>(R.id.backBtn).setOnClickListener { onBackClick?.invoke() }
         }
     }

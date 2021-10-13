@@ -39,7 +39,7 @@
         android:gravity="center_vertical"
         android:minHeight="@dimen/bottom_sheet_item"
         android:paddingLeft="8dp"
-        android:text="Take a pickure"
+        android:text="@string/take_a_picture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAddImageLabel" />
