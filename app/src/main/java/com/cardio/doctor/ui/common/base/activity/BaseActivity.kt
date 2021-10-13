@@ -16,6 +16,7 @@ import com.cardio.doctor.ui.common.base.viewmodel.BaseAuthViewModel
 import com.cardio.doctor.ui.common.listeners.DialogHelper
 import com.cardio.doctor.ui.common.listeners.DialogProvider
 import com.cardio.doctor.ui.common.utils.DialogHelperImpl
+import com.cardio.doctor.ui.common.utils.showToast
 import com.cardio.doctor.ui.views.auth.AuthenticateUserActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -75,9 +76,21 @@ abstract class BaseActivity : AppCompatActivity(), DialogProvider {
         dialogHelper.showProgress()
     }
 
+    protected fun showProgress(showProgress: Boolean) {
+        if (showProgress)
+            dialogHelper.showProgress()
+        else
+            dialogHelper.hideProgress()
+    }
+
     protected fun hideProgress() {
         dialogHelper.hideProgress()
     }
+
+    protected fun onError(msg:String?) {
+        showToast(this,msg?:"Something went wrong!!!")
+    }
+
 
     protected fun setUpToolbar(
         view: View, title: String, backBtnVisibility: Boolean = false, editProfile: Boolean = false

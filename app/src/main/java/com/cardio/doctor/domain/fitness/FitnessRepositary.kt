@@ -1,9 +1,10 @@
 package com.cardio.doctor.domain.fitness
 
-import com.cardio.doctor.domain.common.model.UserModel
+import android.app.Activity
 
 interface FitnessRepositary {
-    fun getProfileData(): UserModel
-    fun login()
+    fun getProfileData(activity: Activity, onSuccess: (FitnessModel) -> Unit, onFailure: () -> Unit)
+    fun isLoggedIn():Boolean
+    fun login(activity: Activity)
     fun logout()
 }

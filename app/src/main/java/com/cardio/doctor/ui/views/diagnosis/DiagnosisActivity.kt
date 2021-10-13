@@ -4,17 +4,19 @@ import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cardio.doctor.R
+import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager
 import com.cardio.doctor.databinding.ActivityDiagnosisBinding
 import com.cardio.doctor.domain.diagnosis.DiagnosisModel
 import com.cardio.doctor.ui.common.base.activity.BaseToolbarActivity
 import com.cardio.doctor.ui.common.base.fragment.toolbar.DiagnosisToolbarImp
 import com.cardio.doctor.ui.common.base.fragment.toolbar.IToolbar
 import com.cardio.doctor.ui.common.customviews.StepView
+import com.cardio.doctor.ui.common.utils.extentions.customObserver
 import com.cardio.doctor.ui.common.utils.showConfirmAlertDialog
-import com.cardio.doctor.ui.views.fitbit.RootActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -31,20 +33,31 @@ class DiagnosisActivity : BaseToolbarActivity() {
     private val navController: NavController by lazy {
         (supportFragmentManager.findFragmentById(R.id.navHostFragmentDiagnoises) as NavHostFragment).navController
     }
+    private lateinit var itoolbar: DiagnosisToolbarImp
     private val binding by viewBinding(ActivityDiagnosisBinding::inflate)
     private var stepView: StepView? = null
     private val diagnosisModel = DiagnosisModel()
+    private val viewModel: DiagnosisActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        initViews()
         setListeners()
+        setObservers()
     }
 
-    private fun initViews() {
-        //setStepView(binding.stepView.stepView)
+    private fun setObservers() {
+        viewModel.getUserFitnessData()
+            .customObserver(
+                this,
+                onLoading = ::showProgress,
+                onSuccess = {
+
+                },
+                onError = ::onError
+            )
     }
+
 
     override fun onBackPressed() {
         showConfirmAlertDialog(
@@ -67,7 +80,13 @@ class DiagnosisActivity : BaseToolbarActivity() {
                 setStepNo(it)
             }
         }
-        binding.headerView.buttonConnect.setOnClickListener { RootActivity.start(DiagnosisActivity@ this) }
+        binding.headerView.buttonConnect.setOnClickListener {
+            if (viewModel.isLoggedIn()) {
+                viewModel.getUserData(this)
+            } else {
+                viewModel.login(this)
+            }
+        }
     }
 
     var onBackClick: (() -> Unit)? = {
@@ -85,15 +104,25 @@ class DiagnosisActivity : BaseToolbarActivity() {
     }
 
     override fun getToolbarImp(): IToolbar {
-        return DiagnosisToolbarImp(binding.headerView.toolBarContainer).apply {
+        itoolbar = DiagnosisToolbarImp(binding.headerView.toolBarContainer).apply {
             onBackClick = this@DiagnosisActivity.onBackClick
         }
+        return itoolbar
+    }
+
+    fun setConnectButtonVisibility(visible: Boolean) {
+        itoolbar.setConnectButtonVisibility(visible)
     }
 
     fun setStepNo(step: Int) {
         if (step == 4) stepView?.done(true)
         else
             stepView?.go(step, true);
+        //set connect button visibility
+        if (step == 0)
+            setConnectButtonVisibility(true)
+        else
+            setConnectButtonVisibility(false)
     }
 
     fun setStepView(stepView: StepView) {

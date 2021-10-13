@@ -35,7 +35,7 @@ open class AppCardioPatient : Application() {
                 .setTokenExpiresIn(2592000L) // 30 days
                 .setBeforeLoginActivity(Intent(context, mainActivityClass))
                 .addRequiredScopes(Scope.profile, Scope.settings)
-                .addOptionalScopes(Scope.activity, Scope.weight)
+                .addOptionalScopes(Scope.activity, Scope.weight,Scope.heartrate)
                 .setLogoutOnAuthFailure(true)
                 .build()
         } catch (e: Exception) {

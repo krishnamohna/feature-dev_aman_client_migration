@@ -1,7 +1,10 @@
 package com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.models;
 
+import com.cardio.doctor.domain.fitness.FitnessModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -604,4 +607,8 @@ public class User {
         this.weightUnit = weightUnit;
     }
 
+    @NotNull
+    public FitnessModel toFinessModel() {
+        return new FitnessModel(weight,height,null);
+    }
 }
