@@ -1,6 +1,7 @@
 package com.cardio.doctor.ui.common.base.viewmodel
 
 import android.app.Application
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavDirections
@@ -23,11 +24,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 open class BaseAuthViewModel @Inject constructor(
-     protected val userManager: UserManager,
-     application: Application
+    protected val userManager: UserManager,
+    application: Application
 ) : AndroidViewModel(application) {
 
-    val applicationContext:Application by lazy {
+    val applicationContext: Application by lazy {
         getApplication<AppCardioPatient>()
     }
 
@@ -58,9 +59,9 @@ open class BaseAuthViewModel @Inject constructor(
         _navDirectionLiveData.value = navDirections
     }
 
-    fun clearPreference(){
+    fun clearPreference() {
         userManager.clearAllPreference()
-        userManager.setBoolean(Preference.IS_TUTORIAL_SHOWN,true)
+        userManager.setBoolean(Preference.IS_TUTORIAL_SHOWN, true)
     }
 
     fun initializePhoneAuthCallBack() {
@@ -101,13 +102,15 @@ open class BaseAuthViewModel @Inject constructor(
             Resource.error(Constants.PHONE_VERIFICATION, 0, message, null)
     }
 
-    fun createModelForPhoneVerification(firstName :String,lastName : String, countryCode: String,
-                                        phoneNumber: String,email: String,
-                                        password: String, imageUrl : String
+    fun createModelForPhoneVerification(
+        firstName: String, lastName: String, countryCode: String,
+        phoneNumber: String, email: String,
+        password: String, imageUrl: String
     ): PhoneVerificationDetails {
-        return PhoneVerificationDetails(firstName,lastName,
+        return PhoneVerificationDetails(
+            firstName, lastName,
             countryCode, phoneNumber, email, password,
-            storedVerificationId, imageUrl,resendToken
+            storedVerificationId, imageUrl, resendToken
         )
     }
 
@@ -123,7 +126,7 @@ open class BaseAuthViewModel @Inject constructor(
             is FirebaseAuthUserCollisionException -> {
                 showFirebaseException(context.getString(R.string.email_already_in_use))
             }*/
-            is FirebaseNetworkException ->{
+            is FirebaseNetworkException -> {
                 showFirebaseException(context.getString(R.string.err_no_network_available))
             }
             else -> {
@@ -141,16 +144,22 @@ open class BaseAuthViewModel @Inject constructor(
 
     protected fun getExceptionMessage(e: Exception): String {
         var message = ""
-        message = when(e){
-            is FirebaseNetworkException ->{
+        message = when (e) {
+            is FirebaseNetworkException -> {
                 getApplication<AppCardioPatient>().getString(R.string.err_no_network_available)
             }
-            else ->{
+            else -> {
                 e.localizedMessage
                     ?: getApplication<AppCardioPatient>().getString(R.string.getting_some_error)
             }
         }
         return message
+    }
+
+    fun logoutFitnessTracker(activity: FragmentActivity?) {
+        activity?.let {
+           // fitbitRepo.logout(activity)
+        }
     }
 }
 

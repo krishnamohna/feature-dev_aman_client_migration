@@ -113,10 +113,10 @@ public class AuthenticationManager {
                 new LogoutTaskCompletionHandler() {
                     @Override
                     public void logoutSuccess() {
-                        Intent beforeLoginActivity = authenticationConfiguration.getBeforeLoginActivity();
+                       /* Intent beforeLoginActivity = authenticationConfiguration.getBeforeLoginActivity();
                         if (beforeLoginActivity != null) {
                             contextActivity.startActivity(beforeLoginActivity);
-                        }
+                        }*/
                         if (logoutTaskCompletionHandler != null) {
                             logoutTaskCompletionHandler.logoutSuccess();
                         }
@@ -125,9 +125,9 @@ public class AuthenticationManager {
                     @Override
                     public void logoutError(String message) {
                         Intent beforeLoginActivity = authenticationConfiguration.getBeforeLoginActivity();
-                        if (beforeLoginActivity != null) {
+                        /*if (beforeLoginActivity != null) {
                             contextActivity.startActivity(beforeLoginActivity);
-                        }
+                        }*/
                         if (logoutTaskCompletionHandler != null) {
                             logoutTaskCompletionHandler.logoutError(message);
                         }

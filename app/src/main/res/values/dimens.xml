@@ -6,4 +6,5 @@
     <dimen name="bottom_sheet_item">@dimen/_45sdp</dimen>
     <dimen name="offset_scroll_label_up_medium">@dimen/_20sdp</dimen>
     <dimen name="offset_scroll_label_up_small">@dimen/_5sdp</dimen>
+    <dimen name="height_connect_button">@dimen/_30sdp</dimen>
 </resources>

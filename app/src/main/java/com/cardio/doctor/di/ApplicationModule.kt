@@ -1,20 +1,9 @@
 package com.cardio.doctor.di
 
 import android.content.Context
-import com.cardio.doctor.BuildConfig
 import com.cardio.doctor.data.local.SharedPreferences
 import com.cardio.doctor.data.local.UserManager
-import com.cardio.doctor.network.InternetInterceptor
-import com.cardio.doctor.network.api.ApiHeader.Companion.ACCEPT
-import com.cardio.doctor.network.api.ApiHeader.Companion.APPLICATION_JSON
-import com.cardio.doctor.network.api.ApiHeader.Companion.AUTHORIZATION
-import com.cardio.doctor.network.api.ApiHeader.Companion.BEARER
-import com.cardio.doctor.network.api.ApiHeader.Companion.CONTENT_TYPE
-import com.cardio.doctor.network.api.ApiHeader.Companion.PLATFORM
-import com.cardio.doctor.network.api.ApiHeader.Companion.PLATFORM_TYPE
-import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.ui.AppCardioPatient
-import com.cardio.doctor.ui.common.utils.textwatcher.LabelVisiblityHelper
 import com.cardio.doctor.ui.common.utils.validation.DefaultFieldValidation
 import com.cardio.doctor.ui.common.utils.validation.Validater
 import com.google.firebase.auth.FirebaseAuth
@@ -24,19 +13,11 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import okhttp3.ConnectionPool
-import okhttp3.OkHttpClient
-import okhttp3.Protocol
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module()
@@ -90,7 +71,6 @@ class ApplicationModule {
     fun provideFieldValidator(@ApplicationContext context : Context): Validater {
         return Validater(DefaultFieldValidation(context))
     }
-
 
 
 }

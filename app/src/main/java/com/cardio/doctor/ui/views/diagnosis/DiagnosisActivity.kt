@@ -8,20 +8,21 @@ import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cardio.doctor.R
+import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationHandler
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager
+import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationResult
 import com.cardio.doctor.databinding.ActivityDiagnosisBinding
 import com.cardio.doctor.domain.diagnosis.DiagnosisModel
 import com.cardio.doctor.ui.common.base.activity.BaseToolbarActivity
 import com.cardio.doctor.ui.common.base.fragment.toolbar.DiagnosisToolbarImp
 import com.cardio.doctor.ui.common.base.fragment.toolbar.IToolbar
 import com.cardio.doctor.ui.common.customviews.StepView
-import com.cardio.doctor.ui.common.utils.extentions.customObserver
 import com.cardio.doctor.ui.common.utils.showConfirmAlertDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class DiagnosisActivity : BaseToolbarActivity() {
+class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
 
     companion object {
         fun start(activity: Activity) {
@@ -29,6 +30,7 @@ class DiagnosisActivity : BaseToolbarActivity() {
         }
     }
 
+    private var onConnectClick: (() -> Unit?)? = null
     private var lastStep: Int? = null
     private val navController: NavController by lazy {
         (supportFragmentManager.findFragmentById(R.id.navHostFragmentDiagnoises) as NavHostFragment).navController
@@ -43,21 +45,14 @@ class DiagnosisActivity : BaseToolbarActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setListeners()
-        setObservers()
     }
 
-    private fun setObservers() {
-        viewModel.getUserFitnessData()
-            .customObserver(
-                this,
-                onLoading = ::showProgress,
-                onSuccess = {
-
-                },
-                onError = ::onError
-            )
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (!AuthenticationManager.onActivityResult(requestCode, resultCode, data, this)) {
+            // Handle other activity results, if needed
+        }
     }
-
 
     override fun onBackPressed() {
         showConfirmAlertDialog(
@@ -81,11 +76,7 @@ class DiagnosisActivity : BaseToolbarActivity() {
             }
         }
         binding.headerView.buttonConnect.setOnClickListener {
-            if (viewModel.isLoggedIn()) {
-                viewModel.getUserData(this)
-            } else {
-                viewModel.login(this)
-            }
+            onConnectClick?.invoke()
         }
     }
 
@@ -132,6 +123,18 @@ class DiagnosisActivity : BaseToolbarActivity() {
 
     fun getDiagnosisModel(): DiagnosisModel {
         return diagnosisModel
+    }
+
+    fun onConnectClick(function: () -> Unit?) {
+        this.onConnectClick = function
+    }
+
+    override fun onAuthFinished(authenticationResult: AuthenticationResult?) {
+        if (authenticationResult!=null && authenticationResult.isSuccessful()) {
+            onConnectClick?.invoke()
+        } /*else {
+            displayAuthError(authenticationResult)
+        }*/
     }
 
 }

@@ -9,11 +9,13 @@ import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders.ResourceL
 
 abstract class InfoLoader<T>(
     private val activity: Activity,
-    private val onFailure: () -> Unit
+    private val onFailure: (msg:String?) -> Unit
 ) : LoaderManager.LoaderCallbacks<ResourceLoaderResult<T>> {
     fun load() {
-        activity.getLoaderManager().initLoader(1, null, this).forceLoad()
+        activity.getLoaderManager().initLoader(getLoaderId(), null, this).forceLoad()
     }
+
+    abstract fun getLoaderId(): Int
 
     override fun onLoadFinished(
         p0: Loader<ResourceLoaderResult<T>>?,
@@ -21,19 +23,19 @@ abstract class InfoLoader<T>(
     ) {
         when (data?.getResultType()) {
             ResourceLoaderResult.ResultType.ERROR -> {
-                onFailure.invoke()
+                onFailure.invoke(data?.errorMessage)
                 Toast.makeText(activity, R.string.error_loading_data, Toast.LENGTH_LONG)
                     .show()
             }
             ResourceLoaderResult.ResultType.EXCEPTION -> {
-                onFailure.invoke()
+                onFailure.invoke(data?.errorMessage)
                 Toast.makeText(activity, R.string.error_loading_data, Toast.LENGTH_LONG).show()
             }
         }
     }
 
     override fun onLoaderReset(p0: Loader<ResourceLoaderResult<T>>?) {
-        TODO("Not yet implemented")
+
     }
 
 

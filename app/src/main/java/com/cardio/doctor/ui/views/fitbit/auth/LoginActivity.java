@@ -83,7 +83,6 @@ public class LoginActivity extends AppCompatActivity implements AuthenticationHa
     @Override
     public void onAuthFinished(AuthenticationResult result) {
         binding.loginWebview.setVisibility(View.GONE);
-
         Intent resultIntent = new Intent();
         resultIntent.putExtra(AUTHENTICATION_RESULT_KEY, result);
         resultIntent.putExtra(CONFIGURATION_VERSION, getIntent().getIntExtra(CONFIGURATION_VERSION, 0));

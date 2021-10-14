@@ -49,13 +49,15 @@ abstract class BaseFragmentAuth(@LayoutRes layoutResId: Int) : Fragment(layoutRe
         }
     }
 
-    fun showLogout(title :String,description : String,cancelVisibility :Boolean=true)
+    fun showLogout(title: String, description: String, onLogout: () -> Unit)
     {
         showAlertDialog(requireActivity() as AppCompatActivity,
             title, description,
             getString(R.string.ok),
-            getString(R.string.cancel),btnTwoVisibility =cancelVisibility){ btnText: String, dialog: DialogInterface ->
+            getString(R.string.cancel),true){ btnText: String, dialog: DialogInterface ->
             if(btnText.equals(getString(R.string.ok),true)){
+                onLogout.invoke()
+                baseViewModel.logoutFitnessTracker(activity)
                 (requireActivity() as BaseActivity).signOut()
             }else dialog.dismiss()
         }

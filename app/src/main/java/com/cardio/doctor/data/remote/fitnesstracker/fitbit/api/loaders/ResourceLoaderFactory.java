@@ -20,12 +20,10 @@ public class ResourceLoaderFactory<T> {
     }
 
     public ResourceLoader<T> newResourceLoader(Activity contextActivity, Scope[] requiredScopes, String... pathParams) {
-
         String url = urlFormat;
         if (pathParams != null && pathParams.length > 0) {
             url = String.format(urlFormat, pathParams);
         }
-
         return new ResourceLoader<T>(contextActivity, url, requiredScopes, new Handler(), classType);
     }
 }

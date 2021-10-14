@@ -1,7 +1,6 @@
 package com.cardio.doctor.ui.common.base.fragment
 
 import android.content.Context
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
@@ -15,6 +14,7 @@ import com.cardio.doctor.ui.common.base.activity.BaseActivity
 import com.cardio.doctor.ui.common.listeners.DialogHelper
 import com.cardio.doctor.ui.common.listeners.DialogProvider
 import com.cardio.doctor.ui.common.utils.extentions.setUpToolbar
+import com.cardio.doctor.ui.common.utils.showToast
 
 abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
 
@@ -53,9 +53,10 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
         throw UnsupportedOperationException()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    protected fun onError(msg:String?) {
+        parentActivity?.let {
+            showToast(it,msg?:"Something went wrong!!!")
+        }
     }
 
     protected fun setUpToolbar(

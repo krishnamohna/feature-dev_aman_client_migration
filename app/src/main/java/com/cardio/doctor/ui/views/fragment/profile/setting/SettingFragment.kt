@@ -72,7 +72,9 @@ class SettingFragment : BaseFragmentAuth(R.layout.fragment_setting), View.OnClic
                 openWebUrl(getString(R.string.terms_and_conditions), WEBURL.TERMS_AND_CONDITION)
             }
             binding.logoutContainer -> {
-                showLogout(getString(R.string.logout), getString(R.string.logout_description))
+                showLogout(getString(R.string.logout), getString(R.string.logout_description)) {
+                    viewModel.logout(requireActivity())
+                }
             }
 
             binding.switchNotification -> {

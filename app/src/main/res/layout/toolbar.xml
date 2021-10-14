@@ -67,9 +67,11 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonConnect"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/height_connect_button"
             android:text="@string/connect"
             android:visibility="gone"
+            android:textSize="@dimen/_11ssp"
+            tools:visibility="visible"
             style="@style/ButtonDefaultStyle"
             android:background="@drawable/drawable_connect_background"
             app:layout_constraintEnd_toEndOf="parent"

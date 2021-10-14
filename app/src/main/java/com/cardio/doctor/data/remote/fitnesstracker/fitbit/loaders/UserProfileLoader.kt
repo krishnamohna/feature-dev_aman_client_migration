@@ -7,12 +7,12 @@ import android.os.Bundle
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.models.UserContainer
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.services.UserService
-import com.cardio.doctor.domain.fitness.FitnessModel
+import com.cardio.doctor.domain.fitness.model.FitnessModel
 
 class UserProfileLoader(
     private val activity: Activity,
     private val onSuccess: (FitnessModel) -> Unit,
-    private val  onFailure: () -> Unit
+    private val  onFailure: (msg:String?) -> Unit
 ) : InfoLoader<UserContainer>(activity, onFailure),
     LoaderManager.LoaderCallbacks<ResourceLoaderResult<UserContainer>> {
 
@@ -28,7 +28,11 @@ class UserProfileLoader(
         data?.result?.user?.let {
            return onSuccess.invoke(it.toFinessModel())
         }
-        return onFailure.invoke()
+        activity.getLoaderManager().destroyLoader(getLoaderId());
+    }
+
+    override fun getLoaderId(): Int {
+        return 5
     }
 
 }

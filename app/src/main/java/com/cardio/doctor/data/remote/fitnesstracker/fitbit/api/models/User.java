@@ -1,6 +1,6 @@
 package com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.models;
 
-import com.cardio.doctor.domain.fitness.FitnessModel;
+import com.cardio.doctor.domain.fitness.model.FitnessModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -609,6 +609,6 @@ public class User {
 
     @NotNull
     public FitnessModel toFinessModel() {
-        return new FitnessModel(weight,height,null);
+        return new FitnessModel(weight,height,null,weightUnit);
     }
 }
