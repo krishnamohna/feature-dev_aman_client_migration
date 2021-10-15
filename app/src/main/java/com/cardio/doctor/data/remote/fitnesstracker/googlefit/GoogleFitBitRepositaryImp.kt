@@ -1,6 +1,9 @@
 package com.cardio.doctor.data.remote.fitnesstracker.googlefit
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import androidx.activity.result.ActivityResultLauncher
 import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.fitness.model.FitnessModel
 import com.cardio.doctor.domain.fitness.model.HeartRateModel
@@ -31,6 +34,11 @@ class GoogleFitBitRepositaryImp @Inject  constructor() :FitnessRepositary {
     override fun login(activity: Activity) {
         TODO("Not yet implemented")
     }
+
+    override fun login(activity: ActivityResultLauncher<Intent>, context: Context) {
+        TODO("Not yet implemented")
+    }
+
 
     override fun logout(activity: Activity) {
         TODO("Not yet implemented")

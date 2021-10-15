@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.cardio.doctor.data.local.UserManager
 import com.cardio.doctor.data.remote.profile.UserProfileRepository
+import com.cardio.doctor.di.REPO_FITNESS_SELECTED
 import com.cardio.doctor.domain.common.model.UserModel
 import com.cardio.doctor.domain.common.model.validation.ValidationModelV2
 import com.cardio.doctor.domain.fitness.FitnessRepositary
@@ -27,7 +28,7 @@ class DiagnosisViewStep1ViewModel @Inject constructor(
     val userProfileRepository: UserProfileRepository,
     userManager: UserManager,
     application: Application,
-    @Named("selectedFinessRepo") val fitnessRepositary: FitnessRepositary
+    @Named(REPO_FITNESS_SELECTED) val fitnessRepositary: FitnessRepositary
 ): BaseAuthViewModel(userManager, application){
 
 

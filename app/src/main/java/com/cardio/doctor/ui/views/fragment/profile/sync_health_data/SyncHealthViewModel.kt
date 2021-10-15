@@ -1,30 +1,46 @@
 package com.cardio.doctor.ui.views.fragment.profile.sync_health_data
 
 import android.app.Application
-import com.cardio.doctor.ui.AppCardioPatient
+import android.content.Context
+import android.content.Intent
+import androidx.activity.result.ActivityResultLauncher
 import com.cardio.doctor.R
-import com.cardio.doctor.domain.common.repository.BaseRepository
-import com.cardio.doctor.ui.common.base.viewmodel.BaseAuthViewModel
 import com.cardio.doctor.data.local.UserManager
+import com.cardio.doctor.di.REPO_FITBIT
+import com.cardio.doctor.domain.fitness.FitnessRepositary
+import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
 import com.cardio.doctor.ui.common.utils.Preference.Companion.SYNC_HEALTH
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import javax.inject.Named
 
 @HiltViewModel
 class SyncHealthViewModel @Inject constructor(
-    userManager: UserManager, baseRepository: BaseRepository,
-    application: Application
-) : BaseAuthViewModel(userManager, application) {
+    val userManager: UserManager, @Named(REPO_FITBIT) val fitnessRepositary: FitnessRepositary,
+    val application: Application
+) : BaseViewModel() {
 
-    fun storeSyncSelectionInPreference(name : String){
-        userManager.setString(SYNC_HEALTH,name)
+    fun storeSyncSelectionInPreference(name: String) {
+        userManager.setString(SYNC_HEALTH, name)
     }
 
     fun getSelectedHealthKit(): String {
         var selectedTab = userManager.getString(SYNC_HEALTH)
         if (selectedTab.isEmpty())
-            selectedTab = getApplication<AppCardioPatient>().getString(R.string.fitbit)
+            selectedTab = application.getString(R.string.fitbit)
         return selectedTab
     }
+
+    fun connectWithFitbit(resultLauncher: ActivityResultLauncher<Intent>,context: Context) {
+        if(!fitnessRepositary.isLoggedIn()){
+            fitnessRepositary.login(resultLauncher,context)
+        }
+    }
+
+    fun connectWithGoogleFit() {
+
+    }
+
+    fun isFitbitLoggedIn(): Boolean=fitnessRepositary.isLoggedIn()
 
 }

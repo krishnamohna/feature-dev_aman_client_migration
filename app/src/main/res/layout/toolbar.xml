@@ -70,6 +70,8 @@
             android:layout_height="@dimen/height_connect_button"
             android:text="@string/connect"
             android:visibility="gone"
+            android:drawableStart="@drawable/ic_connect"
+            android:drawablePadding="@dimen/_6sdp"
             android:textSize="@dimen/_11ssp"
             tools:visibility="visible"
             style="@style/ButtonDefaultStyle"

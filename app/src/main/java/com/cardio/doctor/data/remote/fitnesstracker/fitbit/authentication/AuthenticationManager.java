@@ -5,12 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.sveinungkb.SecurePreferences;
 import com.cardio.doctor.network.basichttp.BasicHttpRequestBuilder;
 import com.cardio.doctor.ui.views.fitbit.auth.LoginActivity;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -58,8 +61,19 @@ public class AuthenticationManager {
                 authenticationConfiguration.getClientCredentials(),
                 authenticationConfiguration.getTokenExpiresIn(),
                 scopes);
-
         activity.startActivityForResult(intent, RESULT_CODE);
+    }
+
+    public static void login(@NotNull ActivityResultLauncher<Intent> activity,Context context) {
+        Set<Scope> scopes = new HashSet<>();
+        scopes.addAll(authenticationConfiguration.getRequiredScopes());
+        scopes.addAll(authenticationConfiguration.getOptionalScopes());
+        Intent intent = LoginActivity.createIntent(
+                context,
+                authenticationConfiguration.getClientCredentials(),
+                authenticationConfiguration.getTokenExpiresIn(),
+                scopes);
+        activity.launch(intent);
     }
 
     public static boolean onActivityResult(int requestCode, int resultCode, Intent data, @NonNull AuthenticationHandler authenticationHandler) {
@@ -155,5 +169,6 @@ public class AuthenticationManager {
             throw new IllegalArgumentException("You must call `configure` on AuthenticationManager before using its methods!");
         }
     }
+
 
 }

@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.dashboard
+package com.cardio.doctor.ui.views.dashboard.fragment
 
 import android.app.Application
 import com.cardio.doctor.data.local.UserManager

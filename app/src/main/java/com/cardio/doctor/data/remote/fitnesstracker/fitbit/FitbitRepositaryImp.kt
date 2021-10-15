@@ -1,9 +1,12 @@
 package com.cardio.doctor.data.remote.fitnesstracker.fitbit
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import androidx.activity.result.ActivityResultLauncher
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager
-import com.cardio.doctor.data.remote.fitnesstracker.fitbit.loaders.HeartRateLoader
-import com.cardio.doctor.data.remote.fitnesstracker.fitbit.loaders.UserProfileLoader
+import com.cardio.doctor.data.remote.fitnesstracker.fitbit.infoloaders.HeartRateLoader
+import com.cardio.doctor.data.remote.fitnesstracker.fitbit.infoloaders.UserProfileLoader
 import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.fitness.model.FitnessModel
 import com.cardio.doctor.domain.fitness.model.HeartRateModel
@@ -29,6 +32,10 @@ class FitbitRepositaryImp @Inject constructor() : FitnessRepositary {
 
     override fun isLoggedIn(): Boolean {
        return AuthenticationManager.isLoggedIn()
+    }
+
+    override fun login(activity: ActivityResultLauncher<Intent>,context: Context) {
+        AuthenticationManager.login(activity,context)
     }
 
     override fun login(activity: Activity) {

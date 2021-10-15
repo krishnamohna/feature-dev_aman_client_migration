@@ -43,7 +43,7 @@ class RepositaryModule {
 
     @Provides
     @Singleton
-    @Named("selectedFinessRepo")
+    @Named(REPO_FITNESS_SELECTED)
     fun provideFitnessRepositary(
         @Named(REPO_FITBIT)
         fitBitRepo: FitnessRepositary,

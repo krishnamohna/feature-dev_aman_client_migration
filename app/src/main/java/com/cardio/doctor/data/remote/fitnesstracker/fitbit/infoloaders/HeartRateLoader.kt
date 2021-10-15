@@ -1,4 +1,4 @@
-package com.cardio.doctor.data.remote.fitnesstracker.fitbit.loaders
+package com.cardio.doctor.data.remote.fitnesstracker.fitbit.infoloaders
 
 import android.app.Activity
 import android.app.LoaderManager
