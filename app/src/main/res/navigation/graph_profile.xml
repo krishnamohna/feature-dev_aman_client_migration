@@ -79,7 +79,7 @@
     </fragment>
     <fragment
         android:id="@+id/syncHealthDataFragment"
-        android:name="com.cardio.doctor.ui.views.fragment.profile.sync_health_data.SyncHealthDataFragment"
+        android:name="com.cardio.doctor.ui.views.sync_health_data.SyncHealthDataFragment"
         android:label="SyncHealthDataFragment" />
     <fragment
         android:id="@+id/changePasswordFragment"

@@ -3,30 +3,30 @@
 
 package com.cardio.doctor.network.api
 
-interface ApiHeader{
+interface ApiHeader {
     companion object {
         const val CONTENT_TYPE = "Content-Type"
-        const val ACCEPT="accept"
-        const val APPLICATION_JSON="application/json"
-        const val PLATFORM="platform"
-        const val AUTHORIZATION="authorization"
-        const val BEARER="Bearer "
-        const val PLATFORM_TYPE="1"
+        const val ACCEPT = "accept"
+        const val APPLICATION_JSON = "application/json"
+        const val PLATFORM = "platform"
+        const val AUTHORIZATION = "authorization"
+        const val BEARER = "Bearer "
+        const val PLATFORM_TYPE = "1"
     }
 }
 
-interface ApiStatus{
+interface ApiStatus {
     companion object {
-        const val STATUS_200=200
-        const val STATUS_201=201
-        const val STATUS_400=400
-        const val STATUS_403=403
-        const val STATUS_404=400
-        const val STATUS_500=500
+        const val STATUS_200 = 200
+        const val STATUS_201 = 201
+        const val STATUS_400 = 400
+        const val STATUS_403 = 403
+        const val STATUS_404 = 400
+        const val STATUS_500 = 500
     }
 }
 
-interface Constants{
+interface Constants {
     companion object {
         const val LOGIN = "Login"
         const val SIGNUP = "Signup"
@@ -44,17 +44,19 @@ interface Constants{
         const val CHANGE_PASSWORD = "ChangePassword"
         const val CHANGE_EMAIL = "Change_email"
         const val EMAIL_SEND_VERIFICATION = "email_send_verification"
-        const val DATE_FORMAT_DOB="dd MMM yyyy"
+        const val DATE_FORMAT_DOB = "dd MMM yyyy"
     }
 
 }
 
-object EXTRAS{
-    const val NEW_EMAIL_ADDRESS= "new_email_address"
+object EXTRAS {
+    val USER_PROFILE = "user_profile"
+    val HEAR_RATE = "heart_rate"
+    const val NEW_EMAIL_ADDRESS = "new_email_address"
 }
 
-object OTHER_CONST{
-    const val DELAY_MINIMUM=700L
+object OTHER_CONST {
+    const val DELAY_MINIMUM = 700L
 }
 
 

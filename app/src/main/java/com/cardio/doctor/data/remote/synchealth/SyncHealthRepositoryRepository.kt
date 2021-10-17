@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.profile.sync_health_data
+package com.cardio.doctor.data.remote.synchealth
 
 import com.cardio.doctor.domain.common.repository.BaseRepository
 import com.cardio.doctor.network.api.ApiService

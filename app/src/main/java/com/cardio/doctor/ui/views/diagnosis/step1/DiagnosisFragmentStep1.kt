@@ -1,7 +1,9 @@
 package com.cardio.doctor.ui.views.diagnosis.step1
 
+import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,6 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
@@ -19,6 +23,7 @@ import com.cardio.doctor.domain.common.model.validation.ValidationModelV2
 import com.cardio.doctor.domain.fitness.model.FitnessModel
 import com.cardio.doctor.domain.fitness.model.HeartRateModel
 import com.cardio.doctor.network.Status
+import com.cardio.doctor.network.api.EXTRAS
 import com.cardio.doctor.ui.common.utils.convertMetricWeightToPound
 import com.cardio.doctor.ui.common.utils.extentions.customObserver
 import com.cardio.doctor.ui.common.utils.extentions.getTrimmedText
@@ -31,17 +36,25 @@ import com.cardio.doctor.ui.common.utils.textwatcher.LabelVisiblityHelper
 import com.cardio.doctor.ui.common.utils.validation.FieldType
 import com.cardio.doctor.ui.views.diagnosis.common.BaseDiagnosisFragment
 import com.cardio.doctor.ui.views.diagnosis.step1.adapter.AilmentDropDownAdapter
+import com.cardio.doctor.ui.views.sync_health_data.activity.SyncHealthActivty
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Binding>() {
 
-    private var isKeyBoardOpen: Boolean=false
+    private var isKeyBoardOpen: Boolean = false
     private val viewModel: DiagnosisViewStep1ViewModel by viewModels()
-
     @Inject
     lateinit var labelVisiblityHelper: LabelVisiblityHelper
+
+    private var resultLauncherSpeechToText: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result?.data?.getParcelableExtra<FitnessModel>(EXTRAS.USER_PROFILE)?.let { setPatientDetail(it) }
+                result?.data?.getParcelableExtra<HeartRateModel>(EXTRAS.HEAR_RATE)?.let { setPatientDetail(it) }
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -170,12 +183,13 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
 
     private fun setListeners() {
         diagnosisActivity?.onConnectClick({
-            if (viewModel.isLoggedIn()) {
+            Intent(requireContext(),SyncHealthActivty::class.java).run {  resultLauncherSpeechToText.launch(this) }
+            /* if (viewModel.isLoggedIn()) {
                 viewModel.getUserData(parentActivity!!)
                 viewModel.getHeartRate(parentActivity!!)
             } else {
                 viewModel.login(parentActivity!!)
-            }
+            }*/
         })
         binding.cvDiagnosisBottomContainer.btNext.setOnClickListener {
             onSubmitClick()

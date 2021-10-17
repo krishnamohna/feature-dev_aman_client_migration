@@ -93,6 +93,11 @@
             android:name="com.fitbit.sampleandroidoauth2.REDIRECT_URL"
             android:value="https://finished"/>
 
+        <activity
+            android:name=".ui.views.sync_health_data.activity.SyncHealthActivty"
+            >
+        </activity>
+
 
     </application>
 

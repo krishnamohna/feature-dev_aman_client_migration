@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.profile.sync_health_data
+package com.cardio.doctor.ui.views.sync_health_data
 
 import android.app.Activity
 import android.content.Intent
@@ -16,16 +16,21 @@ import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.Authen
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationResult
 import com.cardio.doctor.databinding.FragmentSyncHealthDataBinding
+import com.cardio.doctor.domain.fitness.model.FitnessModel
+import com.cardio.doctor.domain.fitness.model.HeartRateModel
 import com.cardio.doctor.ui.common.base.fragment.BaseFragment
+import com.cardio.doctor.ui.common.utils.extentions.customObserver
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(),
     View.OnClickListener, AuthenticationHandler {
 
-    private val viewModel: SyncHealthViewModel by viewModels()
+    val viewModel: SyncHealthViewModel by viewModels()
     private val listOfSyncingOption = arrayListOf<Boolean>()
     private lateinit var arrayOfImageView: Array<ImageView>
+    var isFitBitHeartRatefetched = false
+    var isFitBitProfilefetched = false
 
     var resultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -42,7 +47,7 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding=FragmentSyncHealthDataBinding.inflate(inflater,container,false)
+        binding = FragmentSyncHealthDataBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -56,19 +61,15 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
 
     override fun onAuthFinished(result: AuthenticationResult?) {
         result?.isSuccessful?.let {
-            if (it) onFitBitSelection()
+            if (it) onFitBitAuthenticated()
         }
     }
 
     private fun setListener() {
-        /*
-        * We can use Recycler view instead to handle static selection
-        * */
         val selectedHealthKit = viewModel.getSelectedHealthKit()
         listOfSyncingOption.add(0, false)
         listOfSyncingOption.add(1, false)
         setVisibilityOfSelection()
-
         if (selectedHealthKit.equals(getString(R.string.fitbit), true)) {
             listOfSyncingOption[0] = true
             arrayOfImageView[0].visibility = View.VISIBLE
@@ -76,7 +77,6 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
             listOfSyncingOption[1] = true
             arrayOfImageView[1].visibility = View.VISIBLE
         }
-
         binding.fitbitContainer.setOnClickListener(this)
         binding.googleFitContainer.setOnClickListener(this)
     }
@@ -85,11 +85,39 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
         listOfSyncingOption.forEachIndexed { position: Int, _: Boolean ->
             arrayOfImageView[position].visibility = View.GONE
         }
-
     }
 
-    private fun setObservers() {
+    open fun setObservers() {
+        viewModel.getUserFitnessData()
+            .customObserver(this, onLoading = ::showProgress, onSuccess = {
+                it?.let {
+                    isFitBitProfilefetched = true
+                    onFitbitProfileDataRecieved(it)
+                }
+            }, onError = {
+                ::onError
+                isFitBitProfilefetched = true
+            })
+        viewModel.getHeartRateLiveData()
+            .customObserver(this, onLoading = ::showProgress, onSuccess = {
+                it?.let {
+                    isFitBitHeartRatefetched = true
+                    onFitbitHeartRateDataRecieved(it)
+                }
+            }, onError = {
+                ::onError
+                isFitBitHeartRatefetched = true
+            })
+    }
 
+    open fun isCompleteFitBitDataRecieved() = isFitBitHeartRatefetched && isFitBitProfilefetched
+
+    open fun onFitbitHeartRateDataRecieved(it: HeartRateModel) {
+        //do what you need to do here may be update user profile
+    }
+
+    open fun onFitbitProfileDataRecieved(fitnessModel: FitnessModel) {
+        //do what you need to do here may be update user profile
     }
 
     override fun onClick(view: View?) {
@@ -98,35 +126,40 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
                 if (!viewModel.isFitbitLoggedIn())
                     viewModel.connectWithFitbit(resultLauncher, requireContext())
                 else
-                    onFitBitSelection()
+                    onFitBitAuthenticated()
             }
 
             binding.googleFitContainer -> {
                 viewModel.connectWithGoogleFit()
-                onGoogleFitSelection()
+                onGoogleAuthenticated()
             }
         }
     }
 
-    private fun onGoogleFitSelection() {
+    private fun onGoogleAuthenticated() {
         resetListForSelection()
         listOfSyncingOption[1] = true
         arrayOfImageView[1].visibility = View.VISIBLE
         viewModel.storeSyncSelectionInPreference(getString(R.string.google_fit))
-        onWearableSelection()
+        onGoogleSelection()
     }
 
-    private fun onFitBitSelection() {
+    private fun onFitBitAuthenticated() {
         viewModel.storeSyncSelectionInPreference(getString(R.string.fitbit))
         resetListForSelection()
         listOfSyncingOption[0] = true
         arrayOfImageView[0].visibility = View.VISIBLE
-        onWearableSelection()
+        onFitbitSelection()
     }
 
-    private fun onWearableSelection() {
+    fun onGoogleSelection() {
         findNavController().popBackStack()
     }
+
+    open fun onFitbitSelection() {
+        findNavController().popBackStack()
+    }
+
 
     private fun resetListForSelection() {
         listOfSyncingOption.forEachIndexed { position: Int, _: Boolean ->

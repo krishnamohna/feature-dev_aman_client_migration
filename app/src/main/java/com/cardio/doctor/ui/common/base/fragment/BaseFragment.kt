@@ -53,9 +53,9 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
         throw UnsupportedOperationException()
     }
 
-    protected fun onError(msg:String?) {
+    protected fun onError(msg: String?) {
         parentActivity?.let {
-            showToast(it,msg?:"Something went wrong!!!")
+            showToast(it, msg ?: "Something went wrong!!!")
         }
     }
 
@@ -66,8 +66,12 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
             view.setUpToolbar(title, backBtnVisibility, editProfile, activity as AppCompatActivity)
         }
         view.findViewById<ImageView>(R.id.backBtn).setOnClickListener {
-            findNavController().popBackStack()
+            onBackButtonClick()
         }
+    }
+
+    open fun onBackButtonClick() {
+        findNavController()?.popBackStack()
     }
 
     fun launchWithMinDelay(function: () -> Unit) {
