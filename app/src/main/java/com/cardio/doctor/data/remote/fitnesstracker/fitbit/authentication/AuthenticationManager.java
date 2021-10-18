@@ -23,7 +23,7 @@ import java.util.Set;
  */
 public class AuthenticationManager {
 
-    private static final int RESULT_CODE = 1;
+    public static final int RESULT_CODE = 1;
     private static final String AUTH_TOKEN_KEY = "AUTH_TOKEN";
     private static boolean configured = false;
     private static AuthenticationConfiguration authenticationConfiguration;

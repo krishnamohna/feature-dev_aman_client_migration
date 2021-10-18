@@ -36,7 +36,7 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-            if (!AuthenticationManager.onActivityResult(0, result.resultCode, result.data, this)) {
+            if (!AuthenticationManager.onActivityResult(AuthenticationManager.RESULT_CODE, result.resultCode, result.data, this)) {
                 // Handle other activity results, if needed
             }
         }
@@ -65,7 +65,7 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
         }
     }
 
-    private fun setListener() {
+    open fun setListener() {
         val selectedHealthKit = viewModel.getSelectedHealthKit()
         listOfSyncingOption.add(0, false)
         listOfSyncingOption.add(1, false)
@@ -151,15 +151,14 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
         arrayOfImageView[0].visibility = View.VISIBLE
         onFitbitSelection()
     }
-
-    fun onGoogleSelection() {
+    /*if instance was directly made of this class then following method will be called*/
+    open fun onGoogleSelection() {
         findNavController().popBackStack()
     }
-
+    /*if instance was directly made of this class then following method will be called*/
     open fun onFitbitSelection() {
         findNavController().popBackStack()
     }
-
 
     private fun resetListForSelection() {
         listOfSyncingOption.forEachIndexed { position: Int, _: Boolean ->

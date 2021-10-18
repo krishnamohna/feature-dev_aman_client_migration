@@ -1,7 +1,6 @@
 package com.cardio.doctor.ui.views.fragment.phone_verification
 
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
@@ -15,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentPhoneNumberVerificationBinding
@@ -32,7 +32,6 @@ import com.cardio.doctor.ui.common.utils.Timer.Companion.OTP_TIME_FORMAT
 import com.cardio.doctor.ui.common.utils.customSnackBarFail
 import com.cardio.doctor.ui.common.utils.showAlertDialog
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
-import com.cardio.doctor.ui.views.dashboard.DashboardActivity
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
@@ -240,7 +239,7 @@ class PhoneNumberVerificationFragment :
                                     navArgs.phoneVerificationDetail,
                                 )
                             }
-                        } else startDashboardActivity()
+                        } else moveToNextScreen()
                     }
 
                     Constants.SEND_OTP -> setOtpTimer()
@@ -284,7 +283,7 @@ class PhoneNumberVerificationFragment :
             btnTwoVisibility = false
         ) { _: String, dialog: DialogInterface ->
             //baseViewModel.setDirection(PhoneNumberVerificationFragmentDirections.phoneVerificationToLoginScreen())
-            startDashboardActivity()
+            moveToNextScreen()
             dialog.dismiss()
         }
     }
@@ -302,9 +301,10 @@ class PhoneNumberVerificationFragment :
         }
     }
 
-    private fun startDashboardActivity() {
-        startActivity(Intent(requireContext(), DashboardActivity::class.java))
-        requireActivity().finish()
+    private fun moveToNextScreen() {
+       /* startActivity(Intent(requireContext(), DashboardActivity::class.java))
+        requireActivity().finish()*/
+        findNavController().navigate(PhoneNumberVerificationFragmentDirections.actionPhoneNumberVerificationFragmentToSyncHealthDataFragmentDuringSignUp())
     }
 
     private fun setOtpTimer() {

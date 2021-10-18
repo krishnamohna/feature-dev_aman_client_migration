@@ -212,7 +212,7 @@ class LoginViewModel @Inject constructor(
                             var userModel = account.toUserModel()
                             userModel.uid = it
                             if (storeUserDetailInFireStore(userModel))
-                                _loginApiResponse.value = Resource.success(Constants.LOGIN, null)
+                                _loginApiResponse.value = Resource.success(Constants.GOOGLE_SIGNUP, null)
                             else
                                 throw Exception(applicationContext.getString(R.string.unable_to_save_values_to_database))
                         } else

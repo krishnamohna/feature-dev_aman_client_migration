@@ -118,16 +118,30 @@
             layout="@layout/guideline_right"
             tools:layout_editor_absoluteX="395dp" />
 
-        <TextView
-            android:id="@+id/textViewSkipWearables"
-            android:layout_width="wrap_content"
+        <com.cardio.doctor.ui.common.customviews.AppButton
+            android:id="@+id/btSkipWearables"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
             android:text="@string/skip"
             android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/googleFitContainer"
+            app:layout_constraintEnd_toStartOf="@+id/btNext"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/googleFitContainer"
             app:layout_constraintTop_toBottomOf="@+id/googleFitContainer"
             tools:visibility="visible" />
+
+        <com.cardio.doctor.ui.common.customviews.AppButton
+            android:id="@+id/btNext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/continue_"
+            app:layout_constraintEnd_toEndOf="@+id/googleFitContainer"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btSkipWearables"
+            app:layout_constraintTop_toBottomOf="@+id/googleFitContainer" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

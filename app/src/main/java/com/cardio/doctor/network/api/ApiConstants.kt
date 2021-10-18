@@ -29,6 +29,7 @@ interface ApiStatus {
 interface Constants {
     companion object {
         const val LOGIN = "Login"
+        const val GOOGLE_SIGNUP = "google_sign_up"
         const val SIGNUP = "Signup"
         const val VALIDATION = "Validation"
         const val FORGOT_PASSWORD = "ForgotPassword"

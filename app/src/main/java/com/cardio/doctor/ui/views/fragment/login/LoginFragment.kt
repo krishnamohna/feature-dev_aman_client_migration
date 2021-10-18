@@ -16,6 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentLoginBinding
 import com.cardio.doctor.domain.common.model.ValidationModel
@@ -104,7 +105,7 @@ class LoginFragment : BaseFragmentAuth(R.layout.fragment_login), View.OnClickLis
             binding.tvPasswordError))
         preventSpaceOnEditText(binding.edtUserName)
         binding.btnLogin.setOnClickListener(this)
-        binding.btnGoogleSignIn.setOnClickListener(this)
+        binding.btnGoogleContainer.setOnClickListener(this)
         binding.forgotPassword.setOnClickListener(this)
         binding.txtSignup.setOnClickListener(this)
         binding.countryCode.setOnClickListener(this)
@@ -151,7 +152,7 @@ class LoginFragment : BaseFragmentAuth(R.layout.fragment_login), View.OnClickLis
                     viewModel.validateFields(email, password, binding.countryCode.text.toString())
                 }
             }
-            binding.btnGoogleSignIn -> {
+            binding.btnGoogleContainer -> {
                 if (networkHelper.isNetworkConnected()) {
                     signWithGoogle()
                 } else customSnackBarFail(requireContext(),
@@ -194,7 +195,8 @@ class LoginFragment : BaseFragmentAuth(R.layout.fragment_login), View.OnClickLis
             Status.SUCCESS -> {
                 hideProgress()
                 when (apiResponse.apiConstant) {
-                    Constants.LOGIN -> checkIsUserVerified()
+                    Constants.GOOGLE_SIGNUP-> checkIsUserVerified(apiResponse.apiConstant)
+                    Constants.LOGIN -> checkIsUserVerified(apiResponse.apiConstant)
 
                     Constants.VALIDATION -> {
                         if (isNumericValue(binding.edtUserName.text.toString())) startPhoneNumberVerification(
@@ -246,12 +248,12 @@ class LoginFragment : BaseFragmentAuth(R.layout.fragment_login), View.OnClickLis
         resultGoogleSignIn.launch(signInIntent)
     }
 
-    private fun checkIsUserVerified() {
+    private fun checkIsUserVerified(apiConstant: String) {
         val user = viewModel.auth.currentUser
         user?.let {
             if (user.isEmailVerified) {
                 showToast(requireContext(), getString(R.string.user_logged_in_successfully))
-                openDashboardActivity()
+                moveToNextScreen(apiConstant)
             } else showDialogEmailNotVerified(user)
         }
     }
@@ -284,9 +286,13 @@ class LoginFragment : BaseFragmentAuth(R.layout.fragment_login), View.OnClickLis
         }
     }
 
-    private fun openDashboardActivity() {
-        startActivity(Intent(requireContext(), DashboardActivity::class.java))
-        requireActivity().finish()
+    private fun moveToNextScreen(apiConstant: String) {
+        if(apiConstant==Constants.GOOGLE_SIGNUP){
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSyncHealthDataFragmentDuringSignUp())
+        }else{
+            startActivity(Intent(requireContext(), DashboardActivity::class.java))
+            requireActivity().finish()
+        }
     }
 
     private fun enableButtonClick(alpha: Float, clickable: Boolean) {
