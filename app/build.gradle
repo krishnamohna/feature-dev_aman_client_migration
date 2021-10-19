@@ -122,12 +122,12 @@ dependencies {
     // Google Sign In SDK (only required for Google Sign In)
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
     implementation project(path: ':countrypicker')
-
     //Crop Image
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
-
     //Tab Indicator
     implementation 'com.tbuonomo:dotsindicator:4.2'
     compileOnly group: 'commons-codec', name: 'commons-codec', version: '1.15'
+    //google fitness
+    implementation("com.google.android.gms:play-services-fitness:20.0.0")
 }
 

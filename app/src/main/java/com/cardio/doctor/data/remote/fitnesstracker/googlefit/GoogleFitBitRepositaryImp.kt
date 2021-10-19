@@ -4,19 +4,21 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
+import androidx.fragment.app.Fragment
 import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.fitness.model.FitnessModel
 import com.cardio.doctor.domain.fitness.model.HeartRateModel
 import javax.inject.Inject
 
-class GoogleFitBitRepositaryImp @Inject  constructor() :FitnessRepositary {
+class GoogleFitBitRepositaryImp @Inject constructor(val googleFitManager: GoogleFitManager) :
+    FitnessRepositary {
 
     override fun getProfileData(
         activity: Activity,
         onSuccess: (FitnessModel) -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {
-        TODO("Not yet implemented")
+        googleFitManager.getProfileData(activity,onSuccess,onFailure)
     }
 
     override fun getHeartRate(
@@ -24,24 +26,27 @@ class GoogleFitBitRepositaryImp @Inject  constructor() :FitnessRepositary {
         onSuccess: (HeartRateModel) -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {
-        TODO("Not yet implemented")
+        googleFitManager.getHeartRate(activity,onSuccess,onFailure)
     }
 
     override fun isLoggedIn(): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun login(activity: Activity) {
-        TODO("Not yet implemented")
+        return googleFitManager.isLoggedIn()
     }
 
     override fun login(activity: ActivityResultLauncher<Intent>, context: Context) {
         TODO("Not yet implemented")
     }
 
+    override fun login(fragment: Fragment) {
+        return googleFitManager.login(fragment)
+    }
 
     override fun logout(activity: Activity) {
-        TODO("Not yet implemented")
+        googleFitManager.logout(activity)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        googleFitManager.onActivityResult(requestCode,resultCode,data)
     }
 
 }

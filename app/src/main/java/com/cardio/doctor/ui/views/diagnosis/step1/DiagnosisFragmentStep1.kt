@@ -119,7 +119,9 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
     }
 
     private fun setPatientDetail(userModel: FitnessModel) {
-        binding.clHealthDetail.edtWeight.setText(userModel.weight?.toString()?.convertMetricWeightToPound(userModel.weightUnit))
+        userModel.weight?.let {
+            binding.clHealthDetail.edtWeight.setText(it.toString()?.convertMetricWeightToPound(userModel.weightUnit))
+        }
     }
 
     private fun setPatientDetail(userModel: UserModel?) {

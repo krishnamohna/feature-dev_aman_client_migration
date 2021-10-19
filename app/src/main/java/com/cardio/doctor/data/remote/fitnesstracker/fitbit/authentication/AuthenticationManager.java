@@ -47,7 +47,6 @@ public class AuthenticationManager {
     public static synchronized void setCurrentAccessToken(AccessToken currentAccessToken) {
         checkPreconditions();
         AuthenticationManager.currentAccessToken = currentAccessToken;
-
         //Save to shared preferences
         preferences.put(AUTH_TOKEN_KEY, currentAccessToken == null ? null : currentAccessToken.toBase64String());
     }

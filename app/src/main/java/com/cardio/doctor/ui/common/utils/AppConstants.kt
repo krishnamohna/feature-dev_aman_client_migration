@@ -83,6 +83,11 @@ interface FireStoreDocKey{
     }
 }
 
+object GoogleFit{
+    const val DATA_POINT_HEART="com.google.heart_rate.summary"
+    const val DATA_POINT_WEIGHT="com.google.weight.summary"
+    const val DATA_POINT_STEP_COUNT="com.google.step_count.delta"
+}
 
 
 

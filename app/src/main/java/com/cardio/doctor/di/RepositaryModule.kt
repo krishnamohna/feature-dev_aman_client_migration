@@ -1,18 +1,16 @@
 package com.cardio.doctor.di
 
 import android.content.Context
-import com.cardio.doctor.R
-import com.cardio.doctor.data.local.UserManager
 import com.cardio.doctor.data.remote.common.repositary.UserAuthRepositaryImp
 import com.cardio.doctor.data.remote.diagnosis.repositary.DiagnosisRepoImp
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.FitbitRepositaryImp
 import com.cardio.doctor.data.remote.fitnesstracker.googlefit.GoogleFitBitRepositaryImp
+import com.cardio.doctor.data.remote.fitnesstracker.googlefit.GoogleFitManager
 import com.cardio.doctor.data.remote.login.LoginRepositoryImp
 import com.cardio.doctor.domain.common.repository.UserAuthRepositary
 import com.cardio.doctor.domain.diagnosis.DiagnosisRepo
 import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.login.LoginRepositary
-import com.cardio.doctor.ui.common.utils.Preference
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,6 +39,7 @@ class RepositaryModule {
     @Singleton
     fun provideDiagnosisRepo(diagnosisRepo: DiagnosisRepoImp) = diagnosisRepo as DiagnosisRepo
 
+/*
     @Provides
     @Singleton
     @Named(REPO_FITNESS_SELECTED)
@@ -65,6 +64,7 @@ class RepositaryModule {
             }
         }
     }
+*/
 
     @Provides
     @Singleton
@@ -74,8 +74,11 @@ class RepositaryModule {
     @Provides
     @Singleton
     @Named(REPO_GOOGLE)
-    fun provideGoogleRepositary(fitBitRepo: GoogleFitBitRepositaryImp) =
-        fitBitRepo as FitnessRepositary
+    fun provideGoogleRepositary(fitBitRepo: GoogleFitBitRepositaryImp) = fitBitRepo as FitnessRepositary
 
+
+    @Singleton
+    @Provides
+    fun provideGoogleFitManager(@ApplicationContext activity: Context)= GoogleFitManager(activity)
 
 }

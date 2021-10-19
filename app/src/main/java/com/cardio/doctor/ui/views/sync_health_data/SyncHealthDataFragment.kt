@@ -3,42 +3,74 @@ package com.cardio.doctor.ui.views.sync_health_data
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationHandler
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationResult
+import com.cardio.doctor.data.remote.fitnesstracker.googlefit.GoogleFitManager
 import com.cardio.doctor.databinding.FragmentSyncHealthDataBinding
+import com.cardio.doctor.di.REPO_GOOGLE
+import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.fitness.model.FitnessModel
 import com.cardio.doctor.domain.fitness.model.HeartRateModel
 import com.cardio.doctor.ui.common.base.fragment.BaseFragment
 import com.cardio.doctor.ui.common.utils.extentions.customObserver
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+import javax.inject.Named
 
 @AndroidEntryPoint
 open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(),
     View.OnClickListener, AuthenticationHandler {
 
+    val TAG = "SyncHealthDataFragment"
     val viewModel: SyncHealthViewModel by viewModels()
     private val listOfSyncingOption = arrayListOf<Boolean>()
     private lateinit var arrayOfImageView: Array<ImageView>
     var isFitBitHeartRatefetched = false
     var isFitBitProfilefetched = false
 
+    @Inject
+    @Named(REPO_GOOGLE)
+    lateinit var googlefitRepositary: FitnessRepositary
+
     var resultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-            if (!AuthenticationManager.onActivityResult(AuthenticationManager.RESULT_CODE, result.resultCode, result.data, this)) {
+            if (!AuthenticationManager.onActivityResult(
+                    AuthenticationManager.RESULT_CODE,
+                    result.resultCode,
+                    result.data,
+                    this
+                )
+            ) {
                 // Handle other activity results, if needed
             }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        googlefitRepositary.onActivityResult(requestCode, resultCode, data)
+        when (resultCode) {
+            AppCompatActivity.RESULT_OK -> {
+                val postSignInAction = GoogleFitManager.FitActionRequestCode.values()[requestCode]
+                postSignInAction.let {
+                    binding.googleFitContainer.performClick()
+                }
+            }
+            else -> oAuthErrorMsg(requestCode, resultCode)
         }
     }
 
@@ -69,26 +101,32 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
         val selectedHealthKit = viewModel.getSelectedHealthKit()
         listOfSyncingOption.add(0, false)
         listOfSyncingOption.add(1, false)
-        setVisibilityOfSelection()
         if (selectedHealthKit.equals(getString(R.string.fitbit), true)) {
-            listOfSyncingOption[0] = true
-            arrayOfImageView[0].visibility = View.VISIBLE
-        } else {
-            listOfSyncingOption[1] = true
-            arrayOfImageView[1].visibility = View.VISIBLE
+            if (viewModel.isFitbitLoggedIn()) {
+                listOfSyncingOption[0] = true
+                arrayOfImageView[0].visibility = View.VISIBLE
+                onFitBitAuthenticated()
+            }
+        } else if (selectedHealthKit.equals(getString(R.string.google_fit), true)) {
+            if (viewModel.isGooglefitLoggedIn()) {
+                listOfSyncingOption[1] = true
+                arrayOfImageView[1].visibility = View.VISIBLE
+                onGoogleAuthenticated()
+            }
         }
+     //   setVisibilityOfSelection()
         binding.fitbitContainer.setOnClickListener(this)
         binding.googleFitContainer.setOnClickListener(this)
     }
 
-    private fun setVisibilityOfSelection() {
+/*    private fun setVisibilityOfSelection() {
         listOfSyncingOption.forEachIndexed { position: Int, _: Boolean ->
             arrayOfImageView[position].visibility = View.GONE
         }
-    }
+    }*/
 
     open fun setObservers() {
-        viewModel.getUserFitnessData()
+        viewModel.getUserFitbitData()
             .customObserver(this, onLoading = ::showProgress, onSuccess = {
                 it?.let {
                     isFitBitProfilefetched = true
@@ -98,7 +136,7 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
                 ::onError
                 isFitBitProfilefetched = true
             })
-        viewModel.getHeartRateLiveData()
+        viewModel.getHeartRateFitbitLiveData()
             .customObserver(this, onLoading = ::showProgress, onSuccess = {
                 it?.let {
                     isFitBitHeartRatefetched = true
@@ -108,6 +146,33 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
                 ::onError
                 isFitBitHeartRatefetched = true
             })
+        viewModel.getUserGoogleFitLiveData().customObserver(this, onLoading = ::showProgress, onSuccess = {
+                it?.let {
+                    isFitBitProfilefetched = true
+                    onGoogleProfileDataRecieved(it)
+                }
+            }, onError = {
+                ::onError
+                isFitBitProfilefetched = true
+            })
+        viewModel.getHeartRateGoogleLiveData()
+            .customObserver(this, onLoading = ::showProgress, onSuccess = {
+                it?.let {
+                    isFitBitHeartRatefetched = true
+                    onGoogleHeartRateDataRecieved(it)
+                }
+            }, onError = {
+                ::onError
+                isFitBitHeartRatefetched = true
+            })
+
+    }
+
+    open fun onGoogleHeartRateDataRecieved(it: HeartRateModel) {
+
+    }
+
+    open fun onGoogleProfileDataRecieved(it: FitnessModel) {
     }
 
     open fun isCompleteFitBitDataRecieved() = isFitBitHeartRatefetched && isFitBitProfilefetched
@@ -130,8 +195,10 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
             }
 
             binding.googleFitContainer -> {
-                viewModel.connectWithGoogleFit()
-                onGoogleAuthenticated()
+                if (!viewModel.isGooglefitLoggedIn())
+                    viewModel.connectWithGooglefit(this)
+                else
+                    onGoogleAuthenticated()
             }
         }
     }
@@ -151,10 +218,12 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
         arrayOfImageView[0].visibility = View.VISIBLE
         onFitbitSelection()
     }
+
     /*if instance was directly made of this class then following method will be called*/
     open fun onGoogleSelection() {
         findNavController().popBackStack()
     }
+
     /*if instance was directly made of this class then following method will be called*/
     open fun onFitbitSelection() {
         findNavController().popBackStack()
@@ -167,5 +236,18 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
         }
     }
 
+    private fun oAuthErrorMsg(requestCode: Int, resultCode: Int) {
+        val message = """
+            There was an error signing into Fit. Check the troubleshooting section of the README
+            for potential issues.
+            Request code was: $requestCode
+            Result code was: $resultCode
+        """.trimIndent()
+        Log.e(TAG, message)
+    }
+
+    fun logout(activity: Activity) {
+        TODO("Not yet implemented")
+    }
 
 }

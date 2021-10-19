@@ -5,8 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class FitnessModel(
-    val weight: Double?,
-    val height: Double?,
-    val heartRate: Int?,
-    val weightUnit: String
+    var weight: Double?=null,
+    val height: Double?=null,
+    var heartRate: Float?=null,
+    val weightUnit: String?=null
 ) : Parcelable

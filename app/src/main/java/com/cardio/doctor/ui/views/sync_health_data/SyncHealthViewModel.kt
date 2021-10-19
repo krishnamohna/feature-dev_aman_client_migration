@@ -5,10 +5,12 @@ import android.app.Application
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import com.cardio.doctor.R
 import com.cardio.doctor.data.local.UserManager
 import com.cardio.doctor.di.REPO_FITBIT
+import com.cardio.doctor.di.REPO_GOOGLE
 import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.fitness.model.FitnessModel
 import com.cardio.doctor.domain.fitness.model.HeartRateModel
@@ -22,7 +24,8 @@ import javax.inject.Named
 
 @HiltViewModel
 class SyncHealthViewModel @Inject constructor(
-    val userManager: UserManager, @Named(REPO_FITBIT) val fitnessRepositary: FitnessRepositary,
+    val userManager: UserManager, @Named(REPO_FITBIT) val fitbitRepositary: FitnessRepositary,
+    @Named(REPO_GOOGLE) val googlefitRepositary: FitnessRepositary,
     val application: Application
 ) : BaseViewModel() {
 
@@ -31,62 +34,103 @@ class SyncHealthViewModel @Inject constructor(
     }
 
     fun getSelectedHealthKit(): String {
-        var selectedTab = userManager.getString(SYNC_HEALTH)
+        var selectedTab = userManager.getString(SYNC_HEALTH,"")
         if (selectedTab.isEmpty())
             selectedTab = application.getString(R.string.fitbit)
         return selectedTab
     }
 
     fun connectWithFitbit(resultLauncher: ActivityResultLauncher<Intent>,context: Context) {
-        if(!fitnessRepositary.isLoggedIn()){
-            fitnessRepositary.login(resultLauncher,context)
+        if(!fitbitRepositary.isLoggedIn()){
+            fitbitRepositary.login(resultLauncher,context)
         }
     }
 
-    fun connectWithGoogleFit() {
-
+    fun connectWithGooglefit(fragment: Fragment) {
+        if(!fitbitRepositary.isLoggedIn()){
+            fitbitRepositary.login(fragment)
+        }
     }
 
-    fun isFitbitLoggedIn(): Boolean=fitnessRepositary.isLoggedIn()
+    fun isFitbitLoggedIn(): Boolean=fitbitRepositary.isLoggedIn()
+    fun isGooglefitLoggedIn(): Boolean=googlefitRepositary.isLoggedIn()
 
+    /*--------------------get fitness data ----------------------*/
+    /*fitbit*/
+    private val _userFitbitSingleLiveData = SingleLiveEvent<Resource<FitnessModel>>()
+    val userFitbitLiveData: LiveData<Resource<FitnessModel>> =
+        _userFitbitSingleLiveData
+    private val _heartRateFitbitSingleLiveData = SingleLiveEvent<Resource<HeartRateModel>>()
+    val _heartRateFitbitLiveData: LiveData<Resource<HeartRateModel>> =
+        _heartRateFitbitSingleLiveData
+    /*googlefit*/
+    private val _userGoogleSingleLiveData = SingleLiveEvent<Resource<FitnessModel>>()
+    val userGoogleLiveData: LiveData<Resource<FitnessModel>> =
+        _userGoogleSingleLiveData
+    private val _heartRateGoogleSingleLiveData = SingleLiveEvent<Resource<HeartRateModel>>()
+    val _heartRateGoogleLiveData: LiveData<Resource<HeartRateModel>> =
+        _heartRateGoogleSingleLiveData
 
-    /*get fitness data */
-
-    private val _userSingleLiveData = SingleLiveEvent<Resource<FitnessModel>>()
-    val userLiveData: LiveData<Resource<FitnessModel>> =
-        _userSingleLiveData
-    private val _heartRateSingleLiveData = SingleLiveEvent<Resource<HeartRateModel>>()
-    val _heartRateLiveData: LiveData<Resource<HeartRateModel>> =
-        _heartRateSingleLiveData
-
-    fun getUserFitnessData(): LiveData<Resource<FitnessModel>> {
-        return userLiveData
+    fun getUserFitbitData(): LiveData<Resource<FitnessModel>> {
+        return userFitbitLiveData
     }
 
-    fun getHeartRateLiveData(): LiveData<Resource<HeartRateModel>> {
-        return _heartRateLiveData
+    fun getHeartRateFitbitLiveData(): LiveData<Resource<HeartRateModel>> {
+        return _heartRateFitbitLiveData
     }
 
-    fun getUserData(activity: Activity) {
-        _userSingleLiveData.postValue(Resource.setLoading())
-        fitnessRepositary.getProfileData(activity,
+    fun getUserGoogleFitLiveData(): LiveData<Resource<FitnessModel>> {
+        return userGoogleLiveData
+    }
+
+    fun getHeartRateGoogleLiveData(): LiveData<Resource<HeartRateModel>> {
+        return _heartRateGoogleLiveData
+    }
+
+    fun getFitbitUserData(activity: Activity) {
+        _userFitbitSingleLiveData.postValue(Resource.setLoading())
+        fitbitRepositary.getProfileData(activity,
             onSuccess = {
-                _userSingleLiveData.postValue(Resource.success("", it))
+                _userFitbitSingleLiveData.postValue(Resource.success("", it))
             },
             onFailure = {
-                _userSingleLiveData.postValue(Resource.error(0, it))
+                _userFitbitSingleLiveData.postValue(Resource.error(0, it))
             }
         )
     }
 
-    fun getHeartRate(activity: Activity) {
-        _heartRateSingleLiveData.postValue(Resource.setLoading())
-        fitnessRepositary.getHeartRate(activity,
+    fun getFitbitHeartRate(activity: Activity) {
+        _heartRateFitbitSingleLiveData.postValue(Resource.setLoading())
+        fitbitRepositary.getHeartRate(activity,
             onSuccess = {
-                _heartRateSingleLiveData.postValue(Resource.success("", it))
+                _heartRateFitbitSingleLiveData.postValue(Resource.success("", it))
             },
             onFailure = {
-                _heartRateSingleLiveData.postValue(Resource.error(0, it))
+                _heartRateFitbitSingleLiveData.postValue(Resource.error(0, it))
+            }
+        )
+    }
+
+    fun getGoogleUserData(activity: Activity) {
+        _userGoogleSingleLiveData.postValue(Resource.setLoading())
+        googlefitRepositary.getProfileData(activity,
+            onSuccess = {
+                _userGoogleSingleLiveData.postValue(Resource.success("", it))
+            },
+            onFailure = {
+                _userGoogleSingleLiveData.postValue(Resource.error(0, it))
+            }
+        )
+    }
+
+    fun getGoogleHeartRate(activity: Activity) {
+        _heartRateGoogleSingleLiveData.postValue(Resource.setLoading())
+        googlefitRepositary.getHeartRate(activity,
+            onSuccess = {
+                _heartRateGoogleSingleLiveData.postValue(Resource.success("", it))
+            },
+            onFailure = {
+                _heartRateGoogleSingleLiveData.postValue(Resource.error(0, it))
             }
         )
     }

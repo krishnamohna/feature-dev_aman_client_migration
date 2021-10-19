@@ -30,10 +30,12 @@ class SyncHealthDataFragmentForResult : SyncHealthDataFragment() {
         super.setListener()
         binding.btNext.setOnClickListener {
             if (isFitSelected) {
-                viewModel.getUserData(requireActivity())
-                viewModel.getHeartRate(requireActivity())
+                viewModel.getFitbitUserData(requireActivity())
+                viewModel.getFitbitHeartRate(requireActivity())
             }else if(isGoogleFitSelected){
-                requireActivity().onBackPressed()
+                viewModel.getGoogleUserData(requireActivity())
+               // viewModel.getGoogleHeartRate(requireActivity())
+               // requireActivity().onBackPressed()
             }
         }
     }
@@ -77,5 +79,18 @@ class SyncHealthDataFragmentForResult : SyncHealthDataFragment() {
             sendResultBack()
     }
 
+    override fun onGoogleProfileDataRecieved(it: FitnessModel) {
+        super.onGoogleProfileDataRecieved(it)
+        this.fitnessModel = fitnessModel
+       /* if (isCompleteFitBitDataRecieved())
+            sendResultBack()*/
+    }
+
+    override fun onGoogleHeartRateDataRecieved(it: HeartRateModel) {
+        super.onGoogleHeartRateDataRecieved(it)
+        this.heartRateModel = it
+       /* if (isCompleteFitBitDataRecieved())
+            sendResultBack()*/
+    }
 
 }

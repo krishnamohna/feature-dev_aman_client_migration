@@ -13,7 +13,7 @@ import javax.crypto.SecretKey;
 
 public class SecureKeyGenerator {
 
-    public static void main(String[] args) {
+    public static void main() {
         try {
             KeyGenerator keyGen = KeyGenerator.getInstance("AES");
             keyGen.init(256);

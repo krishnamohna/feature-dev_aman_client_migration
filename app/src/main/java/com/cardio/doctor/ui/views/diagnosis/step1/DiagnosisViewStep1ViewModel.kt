@@ -6,10 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.cardio.doctor.data.local.UserManager
 import com.cardio.doctor.data.remote.profile.UserProfileRepository
-import com.cardio.doctor.di.REPO_FITNESS_SELECTED
 import com.cardio.doctor.domain.common.model.UserModel
 import com.cardio.doctor.domain.common.model.validation.ValidationModelV2
-import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.fitness.model.FitnessModel
 import com.cardio.doctor.domain.fitness.model.HeartRateModel
 import com.cardio.doctor.network.Resource
@@ -20,15 +18,14 @@ import com.cardio.doctor.ui.common.utils.validation.Validater
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import javax.inject.Named
 
 @HiltViewModel
 class DiagnosisViewStep1ViewModel @Inject constructor(
     val validater: Validater,
     val userProfileRepository: UserProfileRepository,
     userManager: UserManager,
-    application: Application,
-    @Named(REPO_FITNESS_SELECTED) val fitnessRepositary: FitnessRepositary
+    application: Application/*,
+    @Named(REPO_FITNESS_SELECTED) val fitnessRepositary: FitnessRepositary*/
 ): BaseAuthViewModel(userManager, application){
 
 
@@ -95,35 +92,37 @@ class DiagnosisViewStep1ViewModel @Inject constructor(
 
     fun getUserData(activity: Activity) {
         _userSingleLiveData.postValue(Resource.setLoading())
-        fitnessRepositary.getProfileData(activity,
+        /*fitnessRepositary.getProfileData(activity,
             onSuccess = {
                 _userSingleLiveData.postValue(Resource.success("", it))
             },
             onFailure = {
                 _userSingleLiveData.postValue(Resource.error(0, it))
             }
-        )
+        )*/
     }
 
     fun getHeartRate(activity: Activity) {
         _heartRateSingleLiveData.postValue(Resource.setLoading())
-        fitnessRepositary.getHeartRate(activity,
+      /*  fitnessRepositary.getHeartRate(activity,
             onSuccess = {
                 _heartRateSingleLiveData.postValue(Resource.success("", it))
             },
             onFailure = {
                 _heartRateSingleLiveData.postValue(Resource.error(0, it))
             }
-        )
+        )*/
     }
 
 
     fun isLoggedIn(): Boolean {
-        return fitnessRepositary.isLoggedIn()
+        TODO()
+       // return fitnessRepositary.isLoggedIn()
     }
 
     fun login(activity: Activity) {
-        fitnessRepositary.login(activity)
+        TODO()
+       // fitnessRepositary.login(activity)
     }
 
 

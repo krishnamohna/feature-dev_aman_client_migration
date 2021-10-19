@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -46,6 +47,7 @@ class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
         setContentView(binding.root)
         setListeners()
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
