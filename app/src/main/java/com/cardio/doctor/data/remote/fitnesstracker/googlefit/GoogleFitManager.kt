@@ -7,7 +7,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.cardio.doctor.domain.fitness.model.FitnessModel
-import com.cardio.doctor.domain.fitness.model.HeartRateModel
 import com.cardio.doctor.ui.common.utils.GoogleFit
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.fitness.Fitness
@@ -118,15 +117,6 @@ class GoogleFitManager constructor(val context: Context) {
                 Log.e(TAG, "There was a problem reading the data.", e)
                 onFailure.invoke(e.message)
             }
-    }
-
-    fun getHeartRate(
-        activity: Activity,
-        onSuccess: (HeartRateModel) -> Unit,
-        onFailure: (msg: String?) -> Unit
-    ) {
-        onFailure.invoke("nill")
-
     }
 
     fun logout(activity: Activity) {

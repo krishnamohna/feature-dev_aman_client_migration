@@ -52,7 +52,6 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 result?.data?.getParcelableExtra<FitnessModel>(EXTRAS.USER_PROFILE)?.let { setPatientDetail(it) }
-                result?.data?.getParcelableExtra<HeartRateModel>(EXTRAS.HEAR_RATE)?.let { setPatientDetail(it) }
             }
         }
 
@@ -119,9 +118,8 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
     }
 
     private fun setPatientDetail(userModel: FitnessModel) {
-        userModel.weight?.let {
-            binding.clHealthDetail.edtWeight.setText(it.toString()?.convertMetricWeightToPound(userModel.weightUnit))
-        }
+        binding.clHealthDetail.edtWeight.setText(userModel.weight?.toString()?.convertMetricWeightToPound(userModel.weightUnit))
+        binding.clHealthDetail.edtHeartRate.setText(userModel.heartRate?.toString())
     }
 
     private fun setPatientDetail(userModel: UserModel?) {

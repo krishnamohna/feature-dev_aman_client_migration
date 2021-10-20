@@ -7,7 +7,6 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.fragment.app.Fragment
 import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.fitness.model.FitnessModel
-import com.cardio.doctor.domain.fitness.model.HeartRateModel
 import javax.inject.Inject
 
 class GoogleFitBitRepositaryImp @Inject constructor(val googleFitManager: GoogleFitManager) :
@@ -21,13 +20,6 @@ class GoogleFitBitRepositaryImp @Inject constructor(val googleFitManager: Google
         googleFitManager.getProfileData(activity,onSuccess,onFailure)
     }
 
-    override fun getHeartRate(
-        activity: Activity,
-        onSuccess: (HeartRateModel) -> Unit,
-        onFailure: (msg: String?) -> Unit
-    ) {
-        googleFitManager.getHeartRate(activity,onSuccess,onFailure)
-    }
 
     override fun isLoggedIn(): Boolean {
         return googleFitManager.isLoggedIn()
@@ -43,10 +35,6 @@ class GoogleFitBitRepositaryImp @Inject constructor(val googleFitManager: Google
 
     override fun logout(activity: Activity) {
         googleFitManager.logout(activity)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        googleFitManager.onActivityResult(requestCode,resultCode,data)
     }
 
 }

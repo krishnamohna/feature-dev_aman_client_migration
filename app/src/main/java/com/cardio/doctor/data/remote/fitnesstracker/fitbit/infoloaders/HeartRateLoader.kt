@@ -12,7 +12,7 @@ import com.cardio.doctor.domain.fitness.model.HeartRateModel
 class HeartRateLoader(
     private val activity: Activity,
     private val onSuccess: (HeartRateModel) -> Unit,
-    private val  onFailure: (msg:String?) -> Unit
+    private val onFailure: (msg:String?) -> Unit
 ) : InfoLoader<HeartRateEntity>(activity, onFailure),
     LoaderManager.LoaderCallbacks<ResourceLoaderResult<HeartRateEntity>> {
 

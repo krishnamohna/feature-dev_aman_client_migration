@@ -19,30 +19,21 @@ import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.Authen
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationResult
 import com.cardio.doctor.data.remote.fitnesstracker.googlefit.GoogleFitManager
 import com.cardio.doctor.databinding.FragmentSyncHealthDataBinding
-import com.cardio.doctor.di.REPO_GOOGLE
-import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.fitness.model.FitnessModel
-import com.cardio.doctor.domain.fitness.model.HeartRateModel
 import com.cardio.doctor.ui.common.base.fragment.BaseFragment
 import com.cardio.doctor.ui.common.utils.extentions.customObserver
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
-import javax.inject.Named
 
 @AndroidEntryPoint
 open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(),
-    View.OnClickListener, AuthenticationHandler {
+    AuthenticationHandler {
 
+    protected var isFitSelected = false
+    protected var isGoogleFitSelected = false
     val TAG = "SyncHealthDataFragment"
     val viewModel: SyncHealthViewModel by viewModels()
-    private val listOfSyncingOption = arrayListOf<Boolean>()
     private lateinit var arrayOfImageView: Array<ImageView>
-    var isFitBitHeartRatefetched = false
-    var isFitBitProfilefetched = false
 
-    @Inject
-    @Named(REPO_GOOGLE)
-    lateinit var googlefitRepositary: FitnessRepositary
 
     var resultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -62,7 +53,6 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        googlefitRepositary.onActivityResult(requestCode, resultCode, data)
         when (resultCode) {
             AppCompatActivity.RESULT_OK -> {
                 val postSignInAction = GoogleFitManager.FitActionRequestCode.values()[requestCode]
@@ -87,8 +77,22 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
         super.onViewCreated(view, savedInstanceState)
         setUpToolbar(binding.root, getString(R.string.sync_health_data), backBtnVisibility = true)
         arrayOfImageView = arrayOf(binding.imgFitBitDone, binding.imgGoogleFitDone)
+        setViews()
         setListener()
         setObservers()
+    }
+
+    private fun setViews() {
+        val selectedHealthKit = viewModel.getSelectedHealthKit()
+        if (selectedHealthKit.equals(getString(R.string.fitbit), true)) {
+            if (viewModel.isFitbitLoggedIn()) {
+                onFitBitAuthenticated()
+            }
+        } else if (selectedHealthKit.equals(getString(R.string.google_fit), true)) {
+            if (viewModel.isGooglefitLoggedIn()) {
+                onGoogleAuthenticated()
+            }
+        }
     }
 
     override fun onAuthFinished(result: AuthenticationResult?) {
@@ -98,86 +102,44 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
     }
 
     open fun setListener() {
-        val selectedHealthKit = viewModel.getSelectedHealthKit()
-        listOfSyncingOption.add(0, false)
-        listOfSyncingOption.add(1, false)
-        if (selectedHealthKit.equals(getString(R.string.fitbit), true)) {
-            if (viewModel.isFitbitLoggedIn()) {
-                listOfSyncingOption[0] = true
-                arrayOfImageView[0].visibility = View.VISIBLE
+        binding.fitbitContainer.setOnClickListener {
+            if (!viewModel.isFitbitLoggedIn())
+                viewModel.connectWithFitbit(resultLauncher, requireContext())
+            else {
                 onFitBitAuthenticated()
+                onFitbitSelection()
             }
-        } else if (selectedHealthKit.equals(getString(R.string.google_fit), true)) {
-            if (viewModel.isGooglefitLoggedIn()) {
-                listOfSyncingOption[1] = true
-                arrayOfImageView[1].visibility = View.VISIBLE
+        }
+        binding.googleFitContainer.setOnClickListener {
+            if (!viewModel.isGooglefitLoggedIn())
+                viewModel.connectWithGooglefit(this)
+            else {
                 onGoogleAuthenticated()
+                onGoogleSelection()
             }
         }
-     //   setVisibilityOfSelection()
-        binding.fitbitContainer.setOnClickListener(this)
-        binding.googleFitContainer.setOnClickListener(this)
     }
-
-/*    private fun setVisibilityOfSelection() {
-        listOfSyncingOption.forEachIndexed { position: Int, _: Boolean ->
-            arrayOfImageView[position].visibility = View.GONE
-        }
-    }*/
 
     open fun setObservers() {
         viewModel.getUserFitbitData()
             .customObserver(this, onLoading = ::showProgress, onSuccess = {
                 it?.let {
-                    isFitBitProfilefetched = true
                     onFitbitProfileDataRecieved(it)
                 }
             }, onError = {
                 ::onError
-                isFitBitProfilefetched = true
             })
-        viewModel.getHeartRateFitbitLiveData()
+        viewModel.getUserGoogleFitLiveData()
             .customObserver(this, onLoading = ::showProgress, onSuccess = {
                 it?.let {
-                    isFitBitHeartRatefetched = true
-                    onFitbitHeartRateDataRecieved(it)
-                }
-            }, onError = {
-                ::onError
-                isFitBitHeartRatefetched = true
-            })
-        viewModel.getUserGoogleFitLiveData().customObserver(this, onLoading = ::showProgress, onSuccess = {
-                it?.let {
-                    isFitBitProfilefetched = true
                     onGoogleProfileDataRecieved(it)
                 }
             }, onError = {
                 ::onError
-                isFitBitProfilefetched = true
             })
-        viewModel.getHeartRateGoogleLiveData()
-            .customObserver(this, onLoading = ::showProgress, onSuccess = {
-                it?.let {
-                    isFitBitHeartRatefetched = true
-                    onGoogleHeartRateDataRecieved(it)
-                }
-            }, onError = {
-                ::onError
-                isFitBitHeartRatefetched = true
-            })
-
-    }
-
-    open fun onGoogleHeartRateDataRecieved(it: HeartRateModel) {
-
     }
 
     open fun onGoogleProfileDataRecieved(it: FitnessModel) {
-    }
-
-    open fun isCompleteFitBitDataRecieved() = isFitBitHeartRatefetched && isFitBitProfilefetched
-
-    open fun onFitbitHeartRateDataRecieved(it: HeartRateModel) {
         //do what you need to do here may be update user profile
     }
 
@@ -185,38 +147,21 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
         //do what you need to do here may be update user profile
     }
 
-    override fun onClick(view: View?) {
-        when (view) {
-            binding.fitbitContainer -> {
-                if (!viewModel.isFitbitLoggedIn())
-                    viewModel.connectWithFitbit(resultLauncher, requireContext())
-                else
-                    onFitBitAuthenticated()
-            }
-
-            binding.googleFitContainer -> {
-                if (!viewModel.isGooglefitLoggedIn())
-                    viewModel.connectWithGooglefit(this)
-                else
-                    onGoogleAuthenticated()
-            }
-        }
-    }
 
     private fun onGoogleAuthenticated() {
-        resetListForSelection()
-        listOfSyncingOption[1] = true
+        isFitSelected = false
+        isGoogleFitSelected = true
         arrayOfImageView[1].visibility = View.VISIBLE
+        arrayOfImageView[0].visibility = View.GONE
         viewModel.storeSyncSelectionInPreference(getString(R.string.google_fit))
-        onGoogleSelection()
     }
 
     private fun onFitBitAuthenticated() {
+        isFitSelected = true
+        isGoogleFitSelected = false
         viewModel.storeSyncSelectionInPreference(getString(R.string.fitbit))
-        resetListForSelection()
-        listOfSyncingOption[0] = true
+        arrayOfImageView[1].visibility = View.GONE
         arrayOfImageView[0].visibility = View.VISIBLE
-        onFitbitSelection()
     }
 
     /*if instance was directly made of this class then following method will be called*/
@@ -227,13 +172,6 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
     /*if instance was directly made of this class then following method will be called*/
     open fun onFitbitSelection() {
         findNavController().popBackStack()
-    }
-
-    private fun resetListForSelection() {
-        listOfSyncingOption.forEachIndexed { position: Int, _: Boolean ->
-            listOfSyncingOption[position] = false
-            arrayOfImageView[position].visibility = View.GONE
-        }
     }
 
     private fun oAuthErrorMsg(requestCode: Int, resultCode: Int) {

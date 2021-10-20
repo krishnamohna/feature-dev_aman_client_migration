@@ -12,7 +12,7 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 open class AppCardioPatient : Application() {
 
-    private val CLIENT_SECRET = "aa660d599c83661dea59642f63cc56f2"
+    private val CLIENT_SECRET = "79a4baa0d161be1c4e286f61c7ab3edc"
     private val SECURE_KEY = "CVPdQNAT6fBI4rrPLEn9x0+UV84DoqLFiNHpKOPLRW0="
 
     open fun generateAuthenticationConfiguration(

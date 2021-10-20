@@ -4,14 +4,12 @@ import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.cardio.doctor.R
 import com.cardio.doctor.data.local.UserManager
 import com.cardio.doctor.data.remote.profile.UserProfileRepository
 import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.NetworkHelper
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.ui.AppCardioPatient
 import com.cardio.doctor.ui.common.base.viewmodel.BaseAuthViewModel
 import com.cardio.doctor.ui.common.utils.ENUM
 import com.cardio.doctor.ui.common.utils.Preference
@@ -76,13 +74,9 @@ class UserProfileViewModel @Inject constructor(
     }
 
 
-
     fun getSelectedHealthKit(): String {
         var selectedTab = userManager.getString(Preference.SYNC_HEALTH)
-        if (selectedTab.isEmpty())
-            selectedTab = getApplication<AppCardioPatient>().getString(R.string.fitbit)
         return selectedTab
     }
-
 
 }

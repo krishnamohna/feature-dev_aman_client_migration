@@ -92,7 +92,7 @@
         android:layout_marginTop="8dp"
         android:hint="@string/heart_rate_bps"
         android:imeOptions="actionNext"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:maxLength="@integer/int_3"
         android:maxLines="@integer/int_1"
         android:paddingLeft="@dimen/_16sdp"

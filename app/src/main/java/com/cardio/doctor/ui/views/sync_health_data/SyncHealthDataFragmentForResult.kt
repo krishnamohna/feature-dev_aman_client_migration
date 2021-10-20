@@ -5,17 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.cardio.doctor.domain.fitness.model.FitnessModel
-import com.cardio.doctor.domain.fitness.model.HeartRateModel
 import com.cardio.doctor.network.api.EXTRAS
 import com.cardio.doctor.ui.views.sync_health_data.activity.SyncHealthActivty
 
 
 class SyncHealthDataFragmentForResult : SyncHealthDataFragment() {
-
-    private var fitnessModel: FitnessModel? = null
-    private var heartRateModel: HeartRateModel? = null
-    private var isFitSelected = false
-    private var isGoogleFitSelected = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,34 +25,20 @@ class SyncHealthDataFragmentForResult : SyncHealthDataFragment() {
         binding.btNext.setOnClickListener {
             if (isFitSelected) {
                 viewModel.getFitbitUserData(requireActivity())
-                viewModel.getFitbitHeartRate(requireActivity())
             }else if(isGoogleFitSelected){
                 viewModel.getGoogleUserData(requireActivity())
-               // viewModel.getGoogleHeartRate(requireActivity())
-               // requireActivity().onBackPressed()
             }
         }
-    }
-
-    override fun onFitbitSelection() {
-        //do not call supper here
-        isFitSelected = true
-    }
-
-    override fun onGoogleSelection() {
-        //do not call supper here
-        isGoogleFitSelected = true
     }
 
     override fun onBackButtonClick() {
         requireActivity().onBackPressed()
     }
 
-    private fun sendResultBack() {
+    private fun sendResultBack(fitnessModel: FitnessModel) {
         (requireActivity() as? SyncHealthActivty)?.apply {
             Intent().apply {
                 putExtra(EXTRAS.USER_PROFILE, fitnessModel)
-                putExtra(EXTRAS.HEAR_RATE, heartRateModel)
                 setResult(Activity.RESULT_OK, this)
                 finish()
             }
@@ -67,30 +47,21 @@ class SyncHealthDataFragmentForResult : SyncHealthDataFragment() {
 
     override fun onFitbitProfileDataRecieved(fitnessModel: FitnessModel) {
         super.onFitbitProfileDataRecieved(fitnessModel)
-        this.fitnessModel = fitnessModel
-        if (isCompleteFitBitDataRecieved())
-            sendResultBack()
-    }
-
-    override fun onFitbitHeartRateDataRecieved(it: HeartRateModel) {
-        super.onFitbitHeartRateDataRecieved(it)
-        this.heartRateModel = it
-        if (isCompleteFitBitDataRecieved())
-            sendResultBack()
+        sendResultBack(fitnessModel)
     }
 
     override fun onGoogleProfileDataRecieved(it: FitnessModel) {
         super.onGoogleProfileDataRecieved(it)
-        this.fitnessModel = fitnessModel
-       /* if (isCompleteFitBitDataRecieved())
-            sendResultBack()*/
+        sendResultBack(it)
     }
 
-    override fun onGoogleHeartRateDataRecieved(it: HeartRateModel) {
-        super.onGoogleHeartRateDataRecieved(it)
-        this.heartRateModel = it
-       /* if (isCompleteFitBitDataRecieved())
-            sendResultBack()*/
+    /*overide this method so that use won't navigate back on selelection when coming from step 1 */
+    override fun onFitbitSelection() {
+        //do not call supper here
+    }
+    /*overide this method so that use won't navigate back on selelection when coming from step 1 */
+    override fun onGoogleSelection() {
+        //do not call supper here
     }
 
 }
