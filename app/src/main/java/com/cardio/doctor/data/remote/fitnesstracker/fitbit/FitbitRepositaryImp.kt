@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager
 import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.fitness.model.FitnessModel
+import com.cardio.doctor.domain.fitness.model.SyncModel
 import javax.inject.Inject
 
 class FitbitRepositaryImp @Inject constructor(val fitbitManager:FitbitManager) : FitnessRepositary {
@@ -18,6 +19,15 @@ class FitbitRepositaryImp @Inject constructor(val fitbitManager:FitbitManager) :
         onFailure: (msg:String?) -> Unit
     ) {
         fitbitManager.getUserProfile(activity,onSuccess,onFailure)
+    }
+
+    override fun getSyncModel(
+        activity: Context,
+        onSuccess: (SyncModel) -> Unit,
+        onFailure: (msg: String?) -> Unit,
+        periodDays: Int
+    ) {
+        fitbitManager.getFitnessLogs(activity,onSuccess,onFailure,periodDays)
     }
 
     override fun isLoggedIn(): Boolean {

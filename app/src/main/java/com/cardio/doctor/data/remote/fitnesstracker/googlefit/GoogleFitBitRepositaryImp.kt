@@ -7,6 +7,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.fragment.app.Fragment
 import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.fitness.model.FitnessModel
+import com.cardio.doctor.domain.fitness.model.SyncModel
 import javax.inject.Inject
 
 class GoogleFitBitRepositaryImp @Inject constructor(val googleFitManager: GoogleFitManager) :
@@ -20,6 +21,14 @@ class GoogleFitBitRepositaryImp @Inject constructor(val googleFitManager: Google
         googleFitManager.getProfileData(activity,onSuccess,onFailure)
     }
 
+    override fun getSyncModel(
+        activity: Context,
+        onSuccess: (SyncModel) -> Unit,
+        onFailure: (msg: String?) -> Unit,
+        periodDays: Int
+    ) {
+        googleFitManager.getFitnessLogs(activity,onSuccess,onFailure,periodDays)
+    }
 
     override fun isLoggedIn(): Boolean {
         return googleFitManager.isLoggedIn()

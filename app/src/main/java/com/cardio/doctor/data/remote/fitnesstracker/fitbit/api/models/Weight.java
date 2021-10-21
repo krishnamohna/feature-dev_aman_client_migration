@@ -1,5 +1,6 @@
 package com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.models;
 
+import com.cardio.doctor.domain.fitness.model.WeightModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -141,4 +142,7 @@ public class Weight {
         }
     }
 
+    public WeightModel toWeightModel() {
+        return new WeightModel(getWeight());
+    }
 }

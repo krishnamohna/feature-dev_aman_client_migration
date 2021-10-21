@@ -4,4 +4,4 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class HeartRateModel(val restHeartRate: Int?) : Parcelable
+data class WeightModel(val weight: Double?) : Parcelable

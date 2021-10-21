@@ -1,7 +1,10 @@
 package com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.models;
 
+import com.cardio.doctor.domain.fitness.model.WeightModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,4 +29,16 @@ public class WeightLogs {
         this.weight = weight;
     }
 
+    @NotNull
+    public List<WeightModel> toModel() {
+        return toWeightModelList();
+    }
+
+    private List<WeightModel> toWeightModelList(){
+        List<WeightModel>list=new ArrayList<>();
+        for (Weight weight1 : weight) {
+            list.add(weight1.toWeightModel());
+        }
+        return list;
+    }
 }

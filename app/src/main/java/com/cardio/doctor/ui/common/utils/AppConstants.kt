@@ -49,6 +49,7 @@ interface FireStoreCollection{
     companion object {
         const val USERS = "Users"
         const val DRUGS = "Drugs"
+        const val HEALTH_LOGS = "health_logs"
     }
 }
 
@@ -87,6 +88,7 @@ object GoogleFit{
     const val DATA_POINT_HEART="com.google.heart_rate.summary"
     const val DATA_POINT_WEIGHT="com.google.weight.summary"
     const val DATA_POINT_STEP_COUNT="com.google.step_count.delta"
+    const val DATA_POINT_BLOOD_PRESURE="blood_pressure_systolic_average"
 }
 
 

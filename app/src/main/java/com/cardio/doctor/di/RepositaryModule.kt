@@ -1,16 +1,21 @@
 package com.cardio.doctor.di
 
 import android.content.Context
+import com.cardio.doctor.R
+import com.cardio.doctor.data.local.UserManager
 import com.cardio.doctor.data.remote.common.repositary.UserAuthRepositaryImp
 import com.cardio.doctor.data.remote.diagnosis.repositary.DiagnosisRepoImp
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.FitbitRepositaryImp
 import com.cardio.doctor.data.remote.fitnesstracker.googlefit.GoogleFitBitRepositaryImp
 import com.cardio.doctor.data.remote.fitnesstracker.googlefit.GoogleFitManager
 import com.cardio.doctor.data.remote.login.LoginRepositoryImp
+import com.cardio.doctor.data.remote.synchealth.SyncHealthRepositoryImp
 import com.cardio.doctor.domain.common.repository.UserAuthRepositary
 import com.cardio.doctor.domain.diagnosis.DiagnosisRepo
 import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.login.LoginRepositary
+import com.cardio.doctor.domain.synchealth.SyncHealthRepositary
+import com.cardio.doctor.ui.common.utils.Preference
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,32 +44,30 @@ class RepositaryModule {
     @Singleton
     fun provideDiagnosisRepo(diagnosisRepo: DiagnosisRepoImp) = diagnosisRepo as DiagnosisRepo
 
-/*
     @Provides
     @Singleton
     @Named(REPO_FITNESS_SELECTED)
     fun provideFitnessRepositary(
         @Named(REPO_FITBIT)
         fitBitRepo: FitnessRepositary,
-        @Named(REPO_FITBIT)
+        @Named(REPO_GOOGLE)
         googlefitBitRepo: FitnessRepositary,
         userManager: UserManager,
         @ApplicationContext context: Context
     ): FitnessRepositary {
         return when (userManager.getString(Preference.SYNC_HEALTH,context.getString(R.string.fitbit))) {
             context.getString(R.string.fitbit) -> {
-                fitBitRepo
+                //fitBitRepo
+                googlefitBitRepo
             }
             context.getString(R.string.google_fit) -> {
-                //returning fitbit for now
-                fitBitRepo
+                googlefitBitRepo
             }
             else -> {
                 throw Exception("No other implementation !!")
             }
         }
     }
-*/
 
     @Provides
     @Singleton
@@ -80,5 +83,10 @@ class RepositaryModule {
     @Singleton
     @Provides
     fun provideGoogleFitManager(@ApplicationContext activity: Context)= GoogleFitManager(activity)
+
+
+    @Singleton
+    @Provides
+    fun provideSyncHealthRepo(respositaryImp:SyncHealthRepositoryImp)=respositaryImp as SyncHealthRepositary
 
 }

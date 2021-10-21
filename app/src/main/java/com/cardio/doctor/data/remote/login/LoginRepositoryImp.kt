@@ -50,7 +50,10 @@ class LoginRepositoryImp @Inject constructor(
     }, errorLiveData
     )
 
-    override suspend fun isCollectionExist(uuid: String, errorLiveData: MutableLiveData<Resource<Exception>>) =
+    override suspend fun isCollectionExist(
+        uuid: String,
+        errorLiveData: MutableLiveData<Resource<Exception>>
+    ) =
             firebaseQuery<DocumentSnapshot, Boolean?>(
                     operation = {
                         fireStore.collection(FireStoreCollection.USERS).document(uuid ?: "").get()

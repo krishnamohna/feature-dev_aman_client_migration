@@ -27,7 +27,6 @@ class UserManager @Inject constructor(
         return sharedPreferences.getString(key,default)
     }
 
-
     fun clearAllPreference(){
         sharedPreferences.clearSharedPreference()
     }
