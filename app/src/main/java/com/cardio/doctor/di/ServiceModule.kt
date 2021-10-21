@@ -2,6 +2,7 @@ package com.cardio.doctor.di
 
 import android.app.Service
 import com.cardio.doctor.domain.fitness.FitnessRepositary
+import com.cardio.doctor.domain.synchealth.SyncHealthRepositary
 import com.cardio.doctor.ui.service.SyncHealthServiceFacade
 import dagger.Module
 import dagger.Provides
@@ -19,6 +20,7 @@ class ServiceModule {
     @Provides
     fun provideServiceFacade(
         service: Service,
-        @Named(REPO_FITNESS_SELECTED) fitnessRepositary: FitnessRepositary
-    )=SyncHealthServiceFacade(service,fitnessRepositary)
+        @Named(REPO_FITNESS_SELECTED) fitnessRepositary: FitnessRepositary,
+        syncHealthRepositary: SyncHealthRepositary
+    )=SyncHealthServiceFacade(service,fitnessRepositary,syncHealthRepositary)
 }

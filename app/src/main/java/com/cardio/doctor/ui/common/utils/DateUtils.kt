@@ -4,10 +4,12 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Context
 import com.cardio.doctor.network.api.Constants
+import com.cardio.doctor.ui.common.utils.Constants.DATE_FORMAT_DD_MMM_YYYY
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.Calendar.*
+import java.util.concurrent.TimeUnit
 
 fun getBirthDatePicker(
     context: Context?,
@@ -58,8 +60,8 @@ fun getStringFromDate(mDate: Date?): String? {
 }
 
 fun String.getNoYearsFromDate(): Int {
-    var dateDob=toDate(Constants.DATE_FORMAT_DOB)
-    var years=getDiffYears(dateDob, Date())
+    var dateDob = toDate(Constants.DATE_FORMAT_DD_MMM_YYYY)
+    var years = getDiffYears(dateDob, Date())
     return years
 }
 
@@ -74,8 +76,25 @@ fun getDiffYears(first: Date?, last: Date): Int {
     }
     return diff
 }
+
 fun getCalendar(date: Date?): Calendar {
     val cal = Calendar.getInstance(Locale.US)
     cal.time = date
     return cal
+}
+
+fun getCurrentDate(): String {
+    val parser = SimpleDateFormat(DATE_FORMAT_DD_MMM_YYYY, Locale.getDefault())
+    return parser.format(Date())
+}
+
+fun getDaysDiffrence(date: String?): Int {
+    val parser = SimpleDateFormat(DATE_FORMAT_DD_MMM_YYYY, Locale.getDefault())
+    var date=parser.parse(date)
+    var currentDate=Date()
+    val diff: Long = currentDate.getTime() - date.getTime()
+    if(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)>30){
+        return 30
+    }
+    return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS).toInt()
 }

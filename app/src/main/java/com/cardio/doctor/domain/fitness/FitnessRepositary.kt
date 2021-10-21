@@ -10,7 +10,10 @@ import com.cardio.doctor.domain.fitness.model.SyncModel
 
 interface FitnessRepositary {
     fun getProfileData(activity: Activity, onSuccess: (FitnessModel) -> Unit, onFailure: (msg:String?) -> Unit)
-    fun getSyncModel(activity: Context, onSuccess: (SyncModel) -> Unit, onFailure: (msg:String?) -> Unit,periodDays:Int)
+    fun getSyncModel(
+        activity: Context, onSuccess: (SyncModel) -> Unit, onFailure: (msg:String?) -> Unit,
+        periodDays: Int
+    )
     fun isLoggedIn():Boolean
     fun login(activity: ActivityResultLauncher<Intent>,context: Context)
     fun login(fragment:Fragment)

@@ -81,6 +81,10 @@ interface FireStoreDocKey{
         const val NAME="name"
         const val CATEGORY="category"
         const val OTHER="others"
+        //for sync colection
+        const val HEART_RATE="heartRate"
+        const val BLOOD_PRESURE="bloodPressure"
+        const val TIME_STAMP="time_stamp"
     }
 }
 
@@ -91,5 +95,12 @@ object GoogleFit{
     const val DATA_POINT_BLOOD_PRESURE="blood_pressure_systolic_average"
 }
 
+object Constants{
+    const val DATE_FORMAT_DD_MMM_YYYY = "dd MMM yyyy"
+}
+
+object DateFormat_{
+    const val DATE_FORMAT_DD_MMM_YYYY = "dd MMM yyyy"
+}
 
 
