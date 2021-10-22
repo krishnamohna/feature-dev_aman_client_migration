@@ -3,9 +3,8 @@ package com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders;
 import android.app.Activity;
 import android.os.Handler;
 
-import androidx.loader.content.AsyncTaskLoader;
-
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.APIUtils;
+import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders.base.SyncLoader;
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager;
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.Scope;
 import com.cardio.doctor.network.basichttp.BasicHttpRequest;
@@ -17,7 +16,7 @@ import java.util.Locale;
 /**
  * Created by jboggess on 9/19/16.
  */
-public class ResourceLoader<T> extends AsyncTaskLoader<ResourceLoaderResult<T>> {
+public class ResourceLoaderSync<T> extends SyncLoader<ResourceLoaderResult<T>> {
 
     private final static String EOL = System.getProperty("line.separator");
 
@@ -27,15 +26,13 @@ public class ResourceLoader<T> extends AsyncTaskLoader<ResourceLoaderResult<T>> 
     private final Handler handler;
     private final Scope[] requiredScopes;
 
-    public ResourceLoader(Activity context, String url, Scope[] requiredScopes, Handler handler, Class<T> classType) {
-        super(context);
+    public ResourceLoaderSync(Activity context, String url, Scope[] requiredScopes, Handler handler, Class<T> classType) {
         this.contextActivity = context;
         this.url = url;
         this.classType = classType;
         this.handler = handler;
         this.requiredScopes = requiredScopes;
     }
-
 
     @Override
     public ResourceLoaderResult<T> loadInBackground() {

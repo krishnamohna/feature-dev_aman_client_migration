@@ -2,25 +2,24 @@ package com.cardio.doctor.data.remote.fitnesstracker.fitbit.infoloaders
 
 import android.app.Activity
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.loader.app.LoaderManager
-import androidx.loader.content.Loader
 import com.cardio.doctor.R
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult
+import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderSync
+import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders.base.SyncLoader
 
-abstract class InfoLoader<T>(
+abstract class InfoLoaderSync<T>(
     private val activity: Activity,
     private val onFailure: (msg: String?) -> Unit
-) : LoaderManager.LoaderCallbacks<ResourceLoaderResult<T>> {
+) : SyncLoader.LoaderCallbacks<ResourceLoaderResult<T>> {
 
     open fun load() {
-        LoaderManager.getInstance(activity as AppCompatActivity).initLoader(getLoaderId(), null, this).forceLoad()
+        var loader = onCreateSyncLoader()
+        loader?.initLoader(this)
     }
 
-    abstract fun getLoaderId(): Int
+    abstract fun onCreateSyncLoader(): ResourceLoaderSync<T>?
 
     override fun onLoadFinished(
-        loader: Loader<ResourceLoaderResult<T>>,
         data: ResourceLoaderResult<T>?
     ) {
         when (data?.getResultType()) {
@@ -36,8 +35,5 @@ abstract class InfoLoader<T>(
         }
     }
 
-    override fun onLoaderReset(loader: Loader<ResourceLoaderResult<T>>) {
-
-    }
 
 }

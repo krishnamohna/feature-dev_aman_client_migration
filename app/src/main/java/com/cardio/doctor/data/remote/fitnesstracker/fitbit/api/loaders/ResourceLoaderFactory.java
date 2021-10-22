@@ -26,4 +26,12 @@ public class ResourceLoaderFactory<T> {
         }
         return new ResourceLoader<T>(contextActivity, url, requiredScopes, new Handler(), classType);
     }
+
+    public ResourceLoaderSync<T> newResourceLoaderSync(Activity contextActivity, Scope[] requiredScopes, String... pathParams) {
+        String url = urlFormat;
+        if (pathParams != null && pathParams.length > 0) {
+            url = String.format(urlFormat, pathParams);
+        }
+        return new ResourceLoaderSync<T>(contextActivity, url, requiredScopes, new Handler(), classType);
+    }
 }

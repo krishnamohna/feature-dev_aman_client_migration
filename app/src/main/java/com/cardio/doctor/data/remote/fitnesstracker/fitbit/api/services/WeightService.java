@@ -2,12 +2,10 @@ package com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.services;
 
 import android.app.Activity;
 
-import androidx.loader.content.Loader;
-
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.exceptions.MissingScopesException;
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.exceptions.TokenExpiredException;
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderFactory;
-import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult;
+import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderSync;
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.models.WeightLogs;
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.Scope;
 
@@ -25,8 +23,7 @@ public class WeightService {
     private final static String WEIGHT_URL = "https://api.fitbit.com/1/user/-/body/log/weight/date/%s/%s.json";
     private static final ResourceLoaderFactory<WeightLogs> WEIGHT_LOG_LOADER_FACTORY = new ResourceLoaderFactory<>(WEIGHT_URL, WeightLogs.class);
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-
-    public static Loader<ResourceLoaderResult<WeightLogs>> getWeightLogLoader(Activity activityContext, Date startDate, int calendarDateType, int number) throws MissingScopesException, TokenExpiredException {
+    public static ResourceLoaderSync<WeightLogs> getWeightLogLoader(Activity activityContext, Date startDate, int calendarDateType, int number) throws MissingScopesException, TokenExpiredException {
         String periodSuffix = "d";
         switch (calendarDateType) {
             case Calendar.WEEK_OF_YEAR:
@@ -36,8 +33,7 @@ public class WeightService {
                 periodSuffix = "m";
                 break;
         }
-
-        return WEIGHT_LOG_LOADER_FACTORY.newResourceLoader(
+        return WEIGHT_LOG_LOADER_FACTORY.newResourceLoaderSync(
                 activityContext,
                 new Scope[]{Scope.weight},
                 dateFormat.format(startDate),
