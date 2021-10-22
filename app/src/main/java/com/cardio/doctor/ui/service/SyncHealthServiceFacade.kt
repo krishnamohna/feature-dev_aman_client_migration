@@ -18,7 +18,7 @@ class SyncHealthServiceFacade @Inject constructor(
     val syncHealthRepositary: SyncHealthRepositary
 ) {
 
-    private val DEFALT_PREVIOUS_DAY_PERIOD = 3
+    private val DEFALT_PREVIOUS_DAY_PERIOD = 7
 
 
     fun onCreate() {

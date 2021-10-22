@@ -8,4 +8,12 @@ data class HeartRateEntity(@SerializedName("activities-heart")val activities_hea
     fun toModel(): HeartRateModel {
         return HeartRateModel(activities_heart?.first()?.value?.restingHeartRate)
     }
+
+    fun toModelList(): MutableList<HeartRateModel> {
+        var list= mutableListOf<HeartRateModel>()
+        activities_heart?.forEach {
+            list.add(HeartRateModel(it.value?.restingHeartRate))
+        }
+        return list
+    }
 }

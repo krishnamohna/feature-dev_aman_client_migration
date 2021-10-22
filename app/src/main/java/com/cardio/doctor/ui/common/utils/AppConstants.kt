@@ -49,7 +49,7 @@ interface FireStoreCollection{
     companion object {
         const val USERS = "Users"
         const val DRUGS = "Drugs"
-        const val HEALTH_LOGS = "HealthLogs"
+        const val HEALTH_LOGS = "HealthLogsdfdfdf"
         const val LOGS = "logs"
     }
 }

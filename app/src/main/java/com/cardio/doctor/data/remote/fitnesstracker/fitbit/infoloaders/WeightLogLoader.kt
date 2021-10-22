@@ -8,7 +8,7 @@ import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.services.WeightSe
 import com.cardio.doctor.domain.fitness.model.WeightModel
 import java.util.*
 
-class WeightLoader(
+class WeightLogLoader(
     private val onSuccess: (List<WeightModel>) -> Unit,
     private val onFailure: (msg: String?) -> Unit,
     private val periodDays: Int
@@ -25,9 +25,10 @@ class WeightLoader(
     }
 
     override fun onCreateSyncLoader(): ResourceLoaderSync<WeightLogs>? {
-        val calendar = Calendar.getInstance()
-        calendar.add(Calendar.DAY_OF_MONTH, -periodDays)
-        return WeightService.getWeightLogLoader(calendar.time, Calendar.DAY_OF_MONTH, 1)
+        val calenderEnd = Calendar.getInstance()
+        val calendarStart = Calendar.getInstance()
+        calendarStart.add(Calendar.DAY_OF_MONTH, -periodDays)
+        return WeightService.getWeightLogLoader(calendarStart.time, calenderEnd.time, 1)
     }
 
 }

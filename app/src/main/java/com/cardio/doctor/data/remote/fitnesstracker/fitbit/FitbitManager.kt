@@ -3,7 +3,7 @@ package com.cardio.doctor.data.remote.fitnesstracker.fitbit
 import android.app.Activity
 import android.content.Context
 import android.os.Handler
-import com.cardio.doctor.data.remote.fitnesstracker.fitbit.infoloaders.HealthLogsLoader
+import com.cardio.doctor.data.remote.fitnesstracker.fitbit.infoloaders.CompositeHealthLogsLoader
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.infoloaders.TodayHeartRateLoader
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.infoloaders.UserProfileLoader
 import com.cardio.doctor.domain.fitness.model.FitnessModel
@@ -57,7 +57,7 @@ class FitbitManager @Inject constructor(val executerService: ExecutorService,val
         onFailure: (msg: String?) -> Unit,
         periodDays: Int
     ) {
-        HealthLogsLoader(
+        CompositeHealthLogsLoader(
             activity,
             onSuccess,
             onFailure,
