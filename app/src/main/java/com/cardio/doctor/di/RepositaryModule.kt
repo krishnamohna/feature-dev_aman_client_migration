@@ -57,8 +57,8 @@ class RepositaryModule {
     ): FitnessRepositary {
         return when (userManager.getString(Preference.SYNC_HEALTH,context.getString(R.string.fitbit))) {
             context.getString(R.string.fitbit) -> {
-                //fitBitRepo
-                googlefitBitRepo
+                fitBitRepo
+                //googlefitBitRepo
             }
             context.getString(R.string.google_fit) -> {
                 googlefitBitRepo

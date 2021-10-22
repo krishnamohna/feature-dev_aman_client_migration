@@ -2,6 +2,7 @@ package com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders;
 
 import android.app.Activity;
 import android.os.Handler;
+import android.os.Looper;
 
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.Scope;
 
@@ -19,7 +20,7 @@ public class ResourceLoaderFactory<T> {
         this.classType = classType;
     }
 
-    public ResourceLoader<T> newResourceLoader(Activity contextActivity, Scope[] requiredScopes, String... pathParams) {
+    public ResourceLoader<T> newResourceLoaderAsync(Activity contextActivity, Scope[] requiredScopes, String... pathParams) {
         String url = urlFormat;
         if (pathParams != null && pathParams.length > 0) {
             url = String.format(urlFormat, pathParams);
@@ -27,11 +28,11 @@ public class ResourceLoaderFactory<T> {
         return new ResourceLoader<T>(contextActivity, url, requiredScopes, new Handler(), classType);
     }
 
-    public ResourceLoaderSync<T> newResourceLoaderSync(Activity contextActivity, Scope[] requiredScopes, String... pathParams) {
+    public ResourceLoaderSync<T> newResourceLoaderSync( Scope[] requiredScopes, String... pathParams) {
         String url = urlFormat;
         if (pathParams != null && pathParams.length > 0) {
             url = String.format(urlFormat, pathParams);
         }
-        return new ResourceLoaderSync<T>(contextActivity, url, requiredScopes, new Handler(), classType);
+        return new ResourceLoaderSync<T>( url, requiredScopes, new Handler(Looper.getMainLooper()), classType);
     }
 }

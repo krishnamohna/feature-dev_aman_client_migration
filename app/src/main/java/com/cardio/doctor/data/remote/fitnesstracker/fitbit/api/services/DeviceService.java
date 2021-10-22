@@ -21,7 +21,7 @@ public class DeviceService {
     private static final ResourceLoaderFactory<Device[]> USER_DEVICES_LOADER_FACTORY = new ResourceLoaderFactory<>(DEVICE_URL, Device[].class);
 
     public static Loader<ResourceLoaderResult<Device[]>> getUserDevicesLoader(Activity activityContext) throws MissingScopesException, TokenExpiredException {
-        return USER_DEVICES_LOADER_FACTORY.newResourceLoader(activityContext, new Scope[]{Scope.settings});
+        return USER_DEVICES_LOADER_FACTORY.newResourceLoaderAsync(activityContext, new Scope[]{Scope.settings});
     }
 
 }

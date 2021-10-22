@@ -1,6 +1,5 @@
 package com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders;
 
-import android.app.Activity;
 import android.os.Handler;
 
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.APIUtils;
@@ -22,12 +21,11 @@ public class ResourceLoaderSync<T> extends SyncLoader<ResourceLoaderResult<T>> {
 
     private final String url;
     private final Class<T> classType;
-    private final Activity contextActivity;
     private final Handler handler;
     private final Scope[] requiredScopes;
 
-    public ResourceLoaderSync(Activity context, String url, Scope[] requiredScopes, Handler handler, Class<T> classType) {
-        this.contextActivity = context;
+    public ResourceLoaderSync(String url, Scope[] requiredScopes, Handler handler, Class<T> classType) {
+        super();
         this.url = url;
         this.classType = classType;
         this.handler = handler;
@@ -37,7 +35,7 @@ public class ResourceLoaderSync<T> extends SyncLoader<ResourceLoaderResult<T>> {
     @Override
     public ResourceLoaderResult<T> loadInBackground() {
         try {
-            APIUtils.validateToken(contextActivity, AuthenticationManager.getCurrentAccessToken(), requiredScopes);
+            APIUtils.validateToken(null, AuthenticationManager.getCurrentAccessToken(), requiredScopes);
             BasicHttpRequest request = AuthenticationManager
                     .createSignedRequest()
                     .setContentType("Application/json")
@@ -57,7 +55,7 @@ public class ResourceLoaderSync<T> extends SyncLoader<ResourceLoaderResult<T>> {
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
-                                AuthenticationManager.logout(contextActivity);
+                                AuthenticationManager.logout(null);
                             }
                         });
                     }

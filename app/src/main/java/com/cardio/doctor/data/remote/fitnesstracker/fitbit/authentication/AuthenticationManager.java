@@ -111,6 +111,10 @@ public class AuthenticationManager {
         return currentAccessToken != null && !currentAccessToken.hasExpired();
     }
 
+    public static void logout() {
+        logout(null, null);
+    }
+
     public static void logout(final Activity contextActivity) {
         logout(contextActivity, null);
     }
@@ -127,7 +131,7 @@ public class AuthenticationManager {
                     @Override
                     public void logoutSuccess() {
                        /* Intent beforeLoginActivity = authenticationConfiguration.getBeforeLoginActivity();
-                        if (beforeLoginActivity != null) {
+                        if (beforeLoginActivity != null && contextActivity!=null) {
                             contextActivity.startActivity(beforeLoginActivity);
                         }*/
                         if (logoutTaskCompletionHandler != null) {
@@ -138,7 +142,7 @@ public class AuthenticationManager {
                     @Override
                     public void logoutError(String message) {
                         Intent beforeLoginActivity = authenticationConfiguration.getBeforeLoginActivity();
-                        /*if (beforeLoginActivity != null) {
+                        /*if (beforeLoginActivity != null && contextActivity!=null) {
                             contextActivity.startActivity(beforeLoginActivity);
                         }*/
                         if (logoutTaskCompletionHandler != null) {

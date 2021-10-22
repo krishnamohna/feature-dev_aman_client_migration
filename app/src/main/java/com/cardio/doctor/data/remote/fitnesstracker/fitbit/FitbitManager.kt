@@ -2,14 +2,17 @@ package com.cardio.doctor.data.remote.fitnesstracker.fitbit
 
 import android.app.Activity
 import android.content.Context
-import com.cardio.doctor.data.remote.fitnesstracker.fitbit.infoloaders.HeartRateLoader
+import android.os.Handler
+import com.cardio.doctor.data.remote.fitnesstracker.fitbit.infoloaders.HealthLogsLoader
+import com.cardio.doctor.data.remote.fitnesstracker.fitbit.infoloaders.TodayHeartRateLoader
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.infoloaders.UserProfileLoader
 import com.cardio.doctor.domain.fitness.model.FitnessModel
 import com.cardio.doctor.domain.fitness.model.HeartRateModel
 import com.cardio.doctor.domain.fitness.model.SyncModel
+import java.util.concurrent.ExecutorService
 import javax.inject.Inject
 
-class FitbitManager @Inject constructor() {
+class FitbitManager @Inject constructor(val executerService: ExecutorService,val handler: Handler) {
     /*load user profile first then load heart rate*/
     fun getUserProfile(
         activity: Activity,
@@ -45,7 +48,7 @@ class FitbitManager @Inject constructor() {
         onSuccess: (HeartRateModel) -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {
-        HeartRateLoader(activity, onSuccess, onFailure).load()
+        TodayHeartRateLoader(activity, onSuccess, onFailure).load()
     }
 
     fun getFitnessLogs(
@@ -54,6 +57,13 @@ class FitbitManager @Inject constructor() {
         onFailure: (msg: String?) -> Unit,
         periodDays: Int
     ) {
-        TODO("Not yet implemented")
+        HealthLogsLoader(
+            activity,
+            onSuccess,
+            onFailure,
+            periodDays,
+            executerService,
+            handler
+        ).load()
     }
 }

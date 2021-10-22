@@ -7,18 +7,15 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.cardio.doctor.domain.fitness.model.*
-import com.cardio.doctor.ui.common.utils.GoogleFit
-import com.cardio.doctor.ui.common.utils.getDatesOfLastDays
-import com.cardio.doctor.ui.common.utils.getEndTimeString
-import com.cardio.doctor.ui.common.utils.getStartTimeString
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.fitness.Fitness
 import com.google.android.gms.fitness.FitnessOptions
 import com.google.android.gms.fitness.data.DataType
 import com.google.android.gms.fitness.data.HealthDataTypes
 import java.util.*
+import java.util.concurrent.ExecutorService
 
-class GoogleFitManager constructor(val context: Context) {
+class GoogleFitManager(val context: Context) {
 
     private val TAG = "GoogleFitManager"
     private val fitnessOptions: FitnessOptions by lazy {
@@ -76,44 +73,8 @@ class GoogleFitManager constructor(val context: Context) {
         Fitness.getHistoryClient(activity, getGoogleAccount())
             .readData(queryProfileFitnessData())
             .addOnSuccessListener { dataReadResult ->
-                var fitnessModel = FitnessModel()
                 if (dataReadResult.buckets.isNotEmpty()) {
-                    for (bucket in dataReadResult.buckets) {
-                        bucket.dataSets.forEach {
-                            for (dp in it.dataPoints) {
-                                Log.i(TAG, "Data point:")
-                                Log.i(TAG, "\tType: ${dp.dataType.name}")
-                                /*  Log.i(TAG, "\tStart: ${dp.getStartTimeString()}")
-                                  Log.i(TAG, "\tEnd: ${dp.getEndTimeString()}")*/
-                                dp.dataType.fields.forEach {
-                                    //get heart rate here
-                                    if (dp.dataType.name.equals(GoogleFit.DATA_POINT_HEART) && it.name.equals(
-                                            "average",
-                                            true
-                                        )
-                                    ) {
-                                        fitnessModel.heartRate = dp.getValue(it).asFloat()
-                                    }
-                                    if (dp.dataType.name.equals(GoogleFit.DATA_POINT_WEIGHT) && it.name.equals(
-                                            "average",
-                                            true
-                                        )
-                                    ) {
-                                        fitnessModel.weight = dp.getValue(it).asFloat().toDouble()
-                                    }
-                                    if (dp.dataType.name.equals(GoogleFit.DATA_POINT_STEP_COUNT) && it.name.equals(
-                                            "average",
-                                            true
-                                        )
-                                    ) {
-                                        fitnessModel.weight = dp.getValue(it).asFloat().toDouble()
-                                    }
-                                    Log.i(TAG, "\tField: ${it.name} Value: ${dp.getValue(it)}")
-                                }
-                            }
-                        }
-                    }
-                    onSuccess.invoke(fitnessModel)
+                    onSuccess.invoke(DataParser().parseSingleData(dataReadResult))
                     return@addOnSuccessListener
                 } else if (dataReadResult.dataSets.isNotEmpty()) {
                     dataReadResult.dataSets.forEach {
@@ -151,61 +112,8 @@ class GoogleFitManager constructor(val context: Context) {
         Fitness.getHistoryClient(context, getGoogleAccount())
             .readData(queryProfileLogsFitnessData(periodDays))
             .addOnSuccessListener { dataReadResult ->
-                var arrayHeartLogs: Array<HeartRateModel?> = arrayOfNulls(periodDays)
-                var arrayWeight: Array<WeightModel?> = arrayOfNulls(periodDays)
-                var arrayBloodPressure: Array<BloodPressureModel?> = arrayOfNulls(periodDays)
-                var arrayDates= mutableListOf<DateModel>()
-                getDatesOfLastDays(periodDays,arrayDates)
-                val syncModel = SyncModel(arrayHeartLogs, arrayWeight, arrayBloodPressure,arrayDates)
                 if (dataReadResult.buckets.isNotEmpty()) {
-                    var dayIndex = 0
-                    for (bucket in dataReadResult.buckets) {
-                        bucket.dataSets.forEach {
-                            for (dp in it.dataPoints) {
-                                Log.i(TAG, "Data point:")
-                                Log.i(TAG, "\tType: ${dp.dataType.name}")
-                                Log.i(TAG, "\tStart: ${dp.getStartTimeString()}")
-                                Log.i(TAG, "\tEnd: ${dp.getEndTimeString()}")
-                                var date = dp.getStartTimeString()
-                                dp.dataType.fields.forEach {
-                                    //get heart rate here
-                                    if (dp.dataType.name.equals(GoogleFit.DATA_POINT_HEART) && it.name.equals(
-                                            "average",
-                                            true
-                                        )
-                                    ) {
-                                        arrayHeartLogs.set(
-                                            dayIndex,
-                                            HeartRateModel(dp.getValue(it).asFloat().toInt())
-                                        )
-                                    }
-                                    if (dp.dataType.name.equals(GoogleFit.DATA_POINT_WEIGHT) && it.name.equals(
-                                            "average",
-                                            true
-                                        )
-                                    ) {
-                                        arrayWeight.set(
-                                            dayIndex,
-                                            WeightModel(dp.getValue(it).asFloat().toDouble(),date)
-                                        )
-                                    }
-                                    if (dp.dataType.name.equals(GoogleFit.DATA_POINT_BLOOD_PRESURE) && it.name.equals(
-                                            "average",
-                                            true
-                                        )
-                                    ) {
-                                        arrayBloodPressure.set(
-                                            dayIndex,
-                                            BloodPressureModel(dp.getValue(it).asFloat().toDouble())
-                                        )
-                                    }
-                                    Log.i(TAG, "\tField: ${it.name} Value: ${dp.getValue(it)}")
-                                }
-                            }
-                        }
-                        dayIndex++
-                    }
-                    onSuccess.invoke(syncModel)
+                    onSuccess.invoke(DataParser().parseLogsBucket(dataReadResult.buckets,periodDays))
                     return@addOnSuccessListener
                 } else if (dataReadResult.dataSets.isNotEmpty()) {
                     onFailure.invoke("No Data Found")
@@ -218,5 +126,6 @@ class GoogleFitManager constructor(val context: Context) {
                 onFailure.invoke(e.message)
             }
     }
+
 
 }

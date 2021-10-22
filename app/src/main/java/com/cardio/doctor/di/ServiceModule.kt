@@ -22,5 +22,6 @@ class ServiceModule {
         service: Service,
         @Named(REPO_FITNESS_SELECTED) fitnessRepositary: FitnessRepositary,
         syncHealthRepositary: SyncHealthRepositary
-    )=SyncHealthServiceFacade(service,fitnessRepositary,syncHealthRepositary)
+    )=SyncHealthServiceFacade(service, fitnessRepositary, syncHealthRepositary)
+
 }

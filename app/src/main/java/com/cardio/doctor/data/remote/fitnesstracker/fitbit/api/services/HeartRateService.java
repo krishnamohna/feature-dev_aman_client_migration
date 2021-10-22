@@ -21,7 +21,7 @@ public class HeartRateService {
     private static final ResourceLoaderFactory<HeartRateEntity> HEART_RATE_RESOURCE_FACTORY = new ResourceLoaderFactory<>(HEART_RATE_URL, HeartRateEntity.class);
 
     public static Loader<ResourceLoaderResult<HeartRateEntity>> getHeartRate(Activity activityContext) throws MissingScopesException, TokenExpiredException {
-        return HEART_RATE_RESOURCE_FACTORY.newResourceLoader(activityContext, new Scope[]{Scope.heartrate});
+        return HEART_RATE_RESOURCE_FACTORY.newResourceLoaderAsync(activityContext, new Scope[]{Scope.heartrate});
     }
 
 }

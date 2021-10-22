@@ -9,7 +9,7 @@ import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.models.heartrate.
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.services.HeartRateService
 import com.cardio.doctor.domain.fitness.model.HeartRateModel
 
-class HeartRateLoader(
+class TodayHeartRateLoader(
     private val activity: Activity,
     private val onSuccess: (HeartRateModel) -> Unit,
     private val onFailure: (msg:String?) -> Unit

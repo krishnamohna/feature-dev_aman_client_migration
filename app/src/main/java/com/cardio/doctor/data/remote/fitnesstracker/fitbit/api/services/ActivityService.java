@@ -26,7 +26,7 @@ public class ActivityService {
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 
     public static Loader<ResourceLoaderResult<DailyActivitySummary>> getDailyActivitySummaryLoader(Activity activityContext, Date date) throws MissingScopesException, TokenExpiredException {
-        return USER_ACTIVITIES_LOADER_FACTORY.newResourceLoader(activityContext, new Scope[]{Scope.activity}, dateFormat.format(date));
+        return USER_ACTIVITIES_LOADER_FACTORY.newResourceLoaderAsync(activityContext, new Scope[]{Scope.activity}, dateFormat.format(date));
     }
 
 }

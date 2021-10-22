@@ -21,7 +21,7 @@ public class UserService {
     private static final ResourceLoaderFactory<UserContainer> USER_PROFILE_LOADER_FACTORY = new ResourceLoaderFactory<>(USER_URL, UserContainer.class);
 
     public static Loader<ResourceLoaderResult<UserContainer>> getLoggedInUserLoader(Activity activityContext) throws MissingScopesException, TokenExpiredException {
-        return USER_PROFILE_LOADER_FACTORY.newResourceLoader(activityContext, new Scope[]{Scope.profile});
+        return USER_PROFILE_LOADER_FACTORY.newResourceLoaderAsync(activityContext, new Scope[]{Scope.profile});
     }
 
 }
