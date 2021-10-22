@@ -143,6 +143,6 @@ public class Weight {
     }
 
     public WeightModel toWeightModel() {
-        return new WeightModel(getWeight());
+        return new WeightModel(getWeight(), date);
     }
 }

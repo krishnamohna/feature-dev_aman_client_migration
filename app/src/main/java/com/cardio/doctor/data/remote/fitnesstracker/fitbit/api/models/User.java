@@ -606,6 +606,6 @@ public class User {
     }
 
     public FitnessModel toFinessModel() {
-        return new FitnessModel(weight,height,null,weightUnit,null,null);
+        return new FitnessModel(weight,height,null,weightUnit,null,null,null);
     }
 }

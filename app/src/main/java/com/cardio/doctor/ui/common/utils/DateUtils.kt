@@ -3,8 +3,10 @@ package com.cardio.doctor.ui.common.utils
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Context
+import com.cardio.doctor.domain.fitness.model.DateModel
 import com.cardio.doctor.network.api.Constants
 import com.cardio.doctor.ui.common.utils.Constants.DATE_FORMAT_DD_MMM_YYYY
+import com.google.android.gms.fitness.data.DataPoint
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -89,7 +91,7 @@ fun getCurrentDate(): String {
 }
 
 fun getDaysDiffrence(date: String?): Int {
-    val parser = SimpleDateFormat(DATE_FORMAT_DD_MMM_YYYY, Locale.getDefault())
+    val parser = getDefaultDateFormatter()
     var date=parser.parse(date)
     var currentDate=Date()
     val diff: Long = currentDate.getTime() - date.getTime()
@@ -97,4 +99,23 @@ fun getDaysDiffrence(date: String?): Int {
         return 30
     }
     return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS).toInt()
+}
+
+fun getDefaultDateFormatter()=SimpleDateFormat(DATE_FORMAT_DD_MMM_YYYY, Locale.getDefault())
+
+fun DataPoint.getStartTimeString(): String = getDefaultDateFormatter()
+    .format(this.getStartTime(TimeUnit.MILLISECONDS))
+
+fun DataPoint.getEndTimeString(): String = getDefaultDateFormatter()
+    .format(this.getEndTime(TimeUnit.MILLISECONDS))
+
+fun getDatesOfLastDays(days: Int, listDates: MutableList<DateModel>){
+    for (i in days downTo 1) {
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_MONTH, -i)
+        var now = Date()
+        now.time=calendar.timeInMillis
+        var date=getDefaultDateFormatter().format(now)
+        listDates.add(DateModel(date,now.time))
+    }
 }

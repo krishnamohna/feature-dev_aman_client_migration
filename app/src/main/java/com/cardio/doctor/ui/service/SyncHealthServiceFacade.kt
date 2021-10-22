@@ -18,6 +18,9 @@ class SyncHealthServiceFacade @Inject constructor(
     val syncHealthRepositary: SyncHealthRepositary
 ) {
 
+    private val DEFALT_PREVIOUS_DAY_PERIOD = 3
+
+
     fun onCreate() {
 
     }
@@ -39,38 +42,45 @@ class SyncHealthServiceFacade @Inject constructor(
     }
 
     private fun calculateDayDiff(fitnessModel: FitnessModel?): Int {
-        if (fitnessModel == null || fitnessModel.date == null) {
-            return 0
+        if (fitnessModel?.date == null) {
+            return DEFALT_PREVIOUS_DAY_PERIOD
         } else {
             return getDaysDiffrence(fitnessModel.date)
         }
     }
 
     private fun getHealthLogsFromWearable(fitnessModel: FitnessModel?) {
-        fitnessRepositary.getSyncModel(
-            service,
-            {
-                saveToCollection(it, fitnessModel ?: FitnessModel())
-            },
-            {
-                it?.let { showToast(service, it) }
-            },
-            calculateDayDiff(fitnessModel)
-        )
+        if (!isTodayDataAlreadySynched(calculateDayDiff(fitnessModel))) {
+            fitnessRepositary.getSyncModel(
+                service,
+                {
+                    saveToCollection(it, fitnessModel ?: FitnessModel())
+                },
+                {
+                    it?.let { showToast(service, it) }
+                },
+                calculateDayDiff(fitnessModel)
+            )
+        }
     }
+
+    private fun isTodayDataAlreadySynched(calculateDayDiff: Int) = calculateDayDiff == 0
 
     private fun saveToCollection(syncModel: SyncModel, fitnessModel: FitnessModel) {
         GlobalScope.launch {
-            syncModel.listWeightLogs.forEachIndexed { i, value ->
-                fitnessModel.weight = syncModel.listWeightLogs.get(i)?.weight ?: fitnessModel.weight
-                fitnessModel.heartRate = syncModel.listHeartLogs.get(i)?.restHeartRate?.toFloat()
+            syncModel.arrayDates.forEachIndexed { i, value ->
+                fitnessModel.weight =
+                    syncModel.arrayWeightLogs.get(i)?.weight?: fitnessModel.weight
+                fitnessModel.date = syncModel.arrayDates.get(i)?.date
+                fitnessModel.timeStamp = syncModel.arrayDates.get(i)?.timeStamp
+                fitnessModel.heartRate = syncModel.arrayHeartLogs.get(i)?.restHeartRate?.toFloat()
                     ?: fitnessModel.heartRate
                 fitnessModel.bloodPressure =
-                    syncModel.listBloodPresure.get(i)?.bp ?: fitnessModel.bloodPressure
+                    syncModel.arrayBloodPresure.get(i)?.bp ?: fitnessModel.bloodPressure
                 try {
                     syncHealthRepositary.saveHealthData(fitnessModel)
-                }catch (exp:Exception){
-                    Log.i("","")
+                } catch (exp: Exception) {
+                    Log.i("", "")
                 }
             }
         }

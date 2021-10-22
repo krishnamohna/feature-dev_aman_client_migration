@@ -49,7 +49,8 @@ interface FireStoreCollection{
     companion object {
         const val USERS = "Users"
         const val DRUGS = "Drugs"
-        const val HEALTH_LOGS = "health_logs"
+        const val HEALTH_LOGS = "HealthLogs"
+        const val LOGS = "logs"
     }
 }
 
@@ -85,6 +86,7 @@ interface FireStoreDocKey{
         const val HEART_RATE="heartRate"
         const val BLOOD_PRESURE="bloodPressure"
         const val TIME_STAMP="time_stamp"
+        const val DATE="date"
     }
 }
 
