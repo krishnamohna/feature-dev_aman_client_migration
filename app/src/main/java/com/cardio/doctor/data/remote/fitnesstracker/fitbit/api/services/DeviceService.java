@@ -1,7 +1,8 @@
 package com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.services;
 
 import android.app.Activity;
-import android.content.Loader;
+
+import androidx.loader.content.Loader;
 
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.exceptions.MissingScopesException;
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.exceptions.TokenExpiredException;

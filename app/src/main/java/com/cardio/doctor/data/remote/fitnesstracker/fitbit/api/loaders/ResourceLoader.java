@@ -1,8 +1,9 @@
 package com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders;
 
 import android.app.Activity;
-import android.content.AsyncTaskLoader;
 import android.os.Handler;
+
+import androidx.loader.content.AsyncTaskLoader;
 
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.APIUtils;
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager;

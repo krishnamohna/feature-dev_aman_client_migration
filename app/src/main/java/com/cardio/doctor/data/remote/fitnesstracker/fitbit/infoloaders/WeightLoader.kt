@@ -1,9 +1,9 @@
 package com.cardio.doctor.data.remote.fitnesstracker.fitbit.infoloaders
 
 import android.app.Activity
-import android.app.LoaderManager
-import android.content.Loader
 import android.os.Bundle
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.Loader
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.models.WeightLogs
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.services.WeightService
@@ -24,10 +24,10 @@ class WeightLoader(
     }
 
     override fun onLoadFinished(
-        p0: Loader<ResourceLoaderResult<WeightLogs>>?,
+        loader: Loader<ResourceLoaderResult<WeightLogs>>,
         data: ResourceLoaderResult<WeightLogs>?
     ) {
-        super.onLoadFinished(p0, data)
+        super.onLoadFinished(loader, data)
         data?.result?.let {
            return onSuccess.invoke(it.toModel())
         }

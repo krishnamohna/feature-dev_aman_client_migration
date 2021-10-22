@@ -1,14 +1,14 @@
 package com.cardio.doctor.ui.service
 
-import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
+import androidx.lifecycle.LifecycleService
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SyncHeathDataService : Service() {
+class SyncHeathDataService : LifecycleService() {
 
     companion object{
         fun start(context: Context){
@@ -37,6 +37,7 @@ class SyncHeathDataService : Service() {
     }
 
     override fun onBind(intent: Intent): IBinder {
+        super.onBind(intent)
         TODO("Return the communication channel to the service.")
     }
 }
