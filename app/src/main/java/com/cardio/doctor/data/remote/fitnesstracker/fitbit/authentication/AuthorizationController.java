@@ -80,7 +80,7 @@ public class AuthorizationController implements UrlChangeHandler {
 
     @Override
     public void onUrlChanged(String newUrl) {
-        if (newUrl.startsWith(clientCredentials.getRedirectUrl())) {
+        if (newUrl.startsWith(clientCredentials.getRedirectUrl().toLowerCase())) {
             webView.setVisibility(View.GONE);
             Matcher successMatcher = TOKEN_MATCH_PATTERN.matcher(newUrl);
             Matcher dismissedMatcher = DISMISSED_PATTERN.matcher(newUrl);

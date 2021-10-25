@@ -9,7 +9,8 @@ data class FitnessModel(
     val height: Double?=null,
     var heartRate: Float?=null,
     val weightUnit: String?=null,
-    var bloodPressure: Double?=null,
+    var bloodPressureTopBp: Double?=null,
     var date:String?=null,
-    var timeStamp:Long?=null
+    var timeStamp:Long?=null,
+    var bloodPressureBottomBp: Double?=null,
 ) : Parcelable

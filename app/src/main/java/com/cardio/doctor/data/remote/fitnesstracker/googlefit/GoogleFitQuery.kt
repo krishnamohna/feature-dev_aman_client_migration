@@ -2,6 +2,7 @@ package com.cardio.doctor.data.remote.fitnesstracker.googlefit
 
 import android.util.Log
 import com.google.android.gms.fitness.data.DataType
+import com.google.android.gms.fitness.data.HealthDataTypes
 import com.google.android.gms.fitness.request.DataReadRequest
 import java.text.DateFormat
 import java.util.*
@@ -30,7 +31,7 @@ fun queryProfileFitnessData(): DataReadRequest {
 
 fun queryProfileLogsFitnessData(periodDays: Int): DataReadRequest {
     val dateFormat = DateFormat.getDateInstance()
-    val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+    val calendar = Calendar.getInstance(/*TimeZone.getTimeZone("UTC")*/)
     val now = Date()
     calendar.time = now
     val endTime = calendar.timeInMillis
@@ -41,7 +42,8 @@ fun queryProfileLogsFitnessData(periodDays: Int): DataReadRequest {
     return DataReadRequest.Builder()
         .aggregate(DataType.TYPE_HEART_RATE_BPM, DataType.AGGREGATE_HEART_RATE_SUMMARY)
         .aggregate(DataType.TYPE_WEIGHT, DataType.AGGREGATE_WEIGHT_SUMMARY)
-        .aggregate(DataType.TYPE_STEP_COUNT_DELTA, DataType.TYPE_STEP_COUNT_DELTA)
+       // .aggregate(DataType.TYPE_STEP_COUNT_DELTA, DataType.TYPE_STEP_COUNT_DELTA)
+        .aggregate(HealthDataTypes.TYPE_BLOOD_PRESSURE, HealthDataTypes.AGGREGATE_BLOOD_PRESSURE_SUMMARY)
         .bucketByTime(1, TimeUnit.DAYS)
         .setTimeRange(startTime, endTime, TimeUnit.MILLISECONDS)
         .build()

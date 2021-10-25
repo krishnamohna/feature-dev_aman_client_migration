@@ -85,6 +85,8 @@ interface FireStoreDocKey{
         //for sync colection
         const val HEART_RATE="heartRate"
         const val BLOOD_PRESURE="bloodPressure"
+        const val BLOOD_SYSTOLIC_BP="systolicBP"
+        const val BLOOD_DIASTOLIC_BP="diastolicBP"
         const val TIME_STAMP="time_stamp"
         const val DATE="date"
     }
@@ -94,7 +96,10 @@ object GoogleFit{
     const val DATA_POINT_HEART="com.google.heart_rate.summary"
     const val DATA_POINT_WEIGHT="com.google.weight.summary"
     const val DATA_POINT_STEP_COUNT="com.google.step_count.delta"
-    const val DATA_POINT_BLOOD_PRESURE="blood_pressure_systolic_average"
+    const val DATA_POINT_BLOOD_PRESURE="com.google.blood_pressure.summary"
+    const val DATA_POINT_TYPE_AVERAGE="average"
+    const val DATA_POINT_FIELD_SYSTOLIC_AVERAGE="blood_pressure_systolic_average"
+    const val DATA_POINT_FIELD_DIASTOLIC_AVERAGE="blood_pressure_diastolic_average"
 }
 
 object Constants{

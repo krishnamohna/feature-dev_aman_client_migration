@@ -13,9 +13,12 @@ import com.google.android.gms.fitness.FitnessOptions
 import com.google.android.gms.fitness.data.DataType
 import com.google.android.gms.fitness.data.HealthDataTypes
 import java.util.*
-import java.util.concurrent.ExecutorService
 
 class GoogleFitManager(val context: Context) {
+
+    val dataParser:DataParser by lazy {
+        DataParser()
+    }
 
     private val TAG = "GoogleFitManager"
     private val fitnessOptions: FitnessOptions by lazy {
@@ -74,7 +77,7 @@ class GoogleFitManager(val context: Context) {
             .readData(queryProfileFitnessData())
             .addOnSuccessListener { dataReadResult ->
                 if (dataReadResult.buckets.isNotEmpty()) {
-                    onSuccess.invoke(DataParser().parseSingleData(dataReadResult))
+                    onSuccess.invoke(dataParser.parseSingleData(dataReadResult))
                     return@addOnSuccessListener
                 } else if (dataReadResult.dataSets.isNotEmpty()) {
                     dataReadResult.dataSets.forEach {
@@ -113,7 +116,7 @@ class GoogleFitManager(val context: Context) {
             .readData(queryProfileLogsFitnessData(periodDays))
             .addOnSuccessListener { dataReadResult ->
                 if (dataReadResult.buckets.isNotEmpty()) {
-                    onSuccess.invoke(DataParser().parseLogsBucket(dataReadResult.buckets,periodDays))
+                    onSuccess.invoke(dataParser.parseLogsBucket(dataReadResult.buckets,periodDays))
                     return@addOnSuccessListener
                 } else if (dataReadResult.dataSets.isNotEmpty()) {
                     onFailure.invoke("No Data Found")

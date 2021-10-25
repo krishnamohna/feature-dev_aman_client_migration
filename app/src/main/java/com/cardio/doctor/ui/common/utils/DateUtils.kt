@@ -110,9 +110,9 @@ fun DataPoint.getEndTimeString(): String = getDefaultDateFormatter()
     .format(this.getEndTime(TimeUnit.MILLISECONDS))
 
 fun getDatesOfLastDays(days: Int, listDates: MutableList<DateModel>) {
-    for (i in days downTo 1) {
+    for (i in (days-1) downTo 0) {
         val calendar = Calendar.getInstance()
-        calendar.add(Calendar.DAY_OF_MONTH, -i)
+        calendar.add(Calendar.DAY_OF_YEAR, -i)
         var now = Date()
         now.time = calendar.timeInMillis
         var date = getDefaultDateFormatter().format(now)

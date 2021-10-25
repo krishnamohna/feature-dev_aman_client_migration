@@ -30,8 +30,8 @@ class SyncHealthServiceFacade @Inject constructor(
     }
 
     fun syncData() {
-        //get last collection from firebase first
-        loadLastCollection()
+        if (fitnessRepositary.isLoggedIn())
+            loadLastCollection()
     }
 
     private fun loadLastCollection() {
@@ -69,14 +69,13 @@ class SyncHealthServiceFacade @Inject constructor(
     private fun saveToCollection(syncModel: SyncModel, fitnessModel: FitnessModel) {
         GlobalScope.launch {
             syncModel.arrayDates.forEachIndexed { i, value ->
-                fitnessModel.weight =
-                    syncModel.arrayWeightLogs.get(i)?.weight?: fitnessModel.weight
+                fitnessModel.weight = syncModel.arrayWeightLogs.get(i)?.weight ?: fitnessModel.weight
                 fitnessModel.date = syncModel.arrayDates.get(i)?.date
                 fitnessModel.timeStamp = syncModel.arrayDates.get(i)?.timeStamp
                 fitnessModel.heartRate = syncModel.arrayHeartLogs.get(i)?.restHeartRate?.toFloat()
                     ?: fitnessModel.heartRate
-                fitnessModel.bloodPressure =
-                    syncModel.arrayBloodPresure.get(i)?.bp ?: fitnessModel.bloodPressure
+                fitnessModel.bloodPressureTopBp = syncModel.arrayBloodPresure.get(i)?.topBp ?: fitnessModel.bloodPressureTopBp
+                fitnessModel.bloodPressureBottomBp = syncModel.arrayBloodPresure.get(i)?.bottomBp ?: fitnessModel.bloodPressureBottomBp
                 try {
                     syncHealthRepositary.saveHealthData(fitnessModel)
                 } catch (exp: Exception) {

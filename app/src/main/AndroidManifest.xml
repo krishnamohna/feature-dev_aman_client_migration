@@ -89,10 +89,10 @@
 
         <meta-data
             android:name="com.fitbit.sampleandroidoauth2.CLIENT_ID"
-            android:value="227YZT" />
+            android:value="23BD79" />
         <meta-data
             android:name="com.fitbit.sampleandroidoauth2.REDIRECT_URL"
-            android:value="https://finished" />
+            android:value="pocketCardio://fitbit/auth" />
 
         <activity android:name=".ui.views.sync_health_data.activity.SyncHealthActivty"
             android:screenOrientation="portrait"

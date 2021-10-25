@@ -15,9 +15,9 @@ class DataParser {
         var arrayHeartLogs: Array<HeartRateModel?> = arrayOfNulls(periodDays)
         var arrayWeight: Array<WeightModel?> = arrayOfNulls(periodDays)
         var arrayBloodPressure: Array<BloodPressureModel?> = arrayOfNulls(periodDays)
-        var arrayDates= mutableListOf<DateModel>()
-        getDatesOfLastDays(periodDays,arrayDates)
-        val syncModel = SyncModel(arrayHeartLogs, arrayWeight, arrayBloodPressure,arrayDates)
+        var arrayDates = mutableListOf<DateModel>()
+        getDatesOfLastDays(periodDays, arrayDates)
+        val syncModel = SyncModel(arrayHeartLogs, arrayWeight, arrayBloodPressure, arrayDates)
         var dayIndex = 0
         for (bucket in buckets) {
             bucket.dataSets.forEach {
@@ -30,7 +30,7 @@ class DataParser {
                     dp.dataType.fields.forEach {
                         //get heart rate here
                         if (dp.dataType.name.equals(GoogleFit.DATA_POINT_HEART) && it.name.equals(
-                                "average",
+                                GoogleFit.DATA_POINT_TYPE_AVERAGE,
                                 true
                             )
                         ) {
@@ -40,24 +40,30 @@ class DataParser {
                             )
                         }
                         if (dp.dataType.name.equals(GoogleFit.DATA_POINT_WEIGHT) && it.name.equals(
-                                "average",
+                                GoogleFit.DATA_POINT_TYPE_AVERAGE,
                                 true
                             )
                         ) {
                             arrayWeight.set(
                                 dayIndex,
-                                WeightModel(dp.getValue(it).asFloat().toDouble(),date)
+                                WeightModel(dp.getValue(it).asFloat().toDouble(), date)
                             )
                         }
                         if (dp.dataType.name.equals(GoogleFit.DATA_POINT_BLOOD_PRESURE) && it.name.equals(
-                                "average",
+                                GoogleFit.DATA_POINT_FIELD_SYSTOLIC_AVERAGE,
                                 true
                             )
                         ) {
-                            arrayBloodPressure.set(
-                                dayIndex,
-                                BloodPressureModel(dp.getValue(it).asFloat().toDouble())
+                            arrayBloodPressure.set(dayIndex,arrayBloodPressure.get(dayIndex)?: BloodPressureModel())
+                            arrayBloodPressure.get(dayIndex)?.topBp=dp.getValue(it).asFloat().toDouble()
+                        }
+                        if (dp.dataType.name.equals(GoogleFit.DATA_POINT_BLOOD_PRESURE) && it.name.equals(
+                                GoogleFit.DATA_POINT_FIELD_DIASTOLIC_AVERAGE,
+                                true
                             )
+                        ) {
+                            arrayBloodPressure.set(dayIndex,arrayBloodPressure.get(dayIndex)?: BloodPressureModel())
+                            arrayBloodPressure.get(dayIndex)?.bottomBp=dp.getValue(it).asFloat().toDouble()
                         }
                         Log.i(TAG, "\tField: ${it.name} Value: ${dp.getValue(it)}")
                     }

@@ -30,7 +30,8 @@ class SyncHealthRepositoryImp @Inject constructor(
             for (document in querySnapshot) {
                 fitnessModel.weight = document.data[FireStoreDocKey.WEIGHT] as? Double?
                 fitnessModel.heartRate = document.data[FireStoreDocKey.HEART_RATE] as? Float?
-                fitnessModel.bloodPressure = document.data[FireStoreDocKey.BLOOD_PRESURE] as? Double?
+                fitnessModel.bloodPressureTopBp =
+                    document.data[FireStoreDocKey.BLOOD_PRESURE] as? Double?
                 fitnessModel.date = document.data[FireStoreDocKey.DATE] as? String?
                 fitnessModel.timeStamp = document.data[FireStoreDocKey.DATE] as? Long?
             }
@@ -43,17 +44,18 @@ class SyncHealthRepositoryImp @Inject constructor(
             hashMapOf(
                 FireStoreDocKey.WEIGHT to fitnessModel.weight,
                 FireStoreDocKey.HEART_RATE to fitnessModel.heartRate,
-                FireStoreDocKey.BLOOD_PRESURE to fitnessModel.bloodPressure,
+                FireStoreDocKey.BLOOD_SYSTOLIC_BP to fitnessModel.bloodPressureTopBp,
                 FireStoreDocKey.TIME_STAMP to fitnessModel.timeStamp,
                 FireStoreDocKey.DATE to fitnessModel.date,
+                FireStoreDocKey.BLOOD_DIASTOLIC_BP to fitnessModel.bloodPressureBottomBp
             )
         firebaseAuth.currentUser?.uid?.let {
             fitnessModel.date?.let { date ->
-               /*fireStore.collection(FireStoreCollection.HEALTH_LOGS)
+                fireStore.collection(FireStoreCollection.HEALTH_LOGS)
                     .document(it)
                     .collection(FireStoreCollection.LOGS)
                     .document(date).set(mapHealth)
-                    .await()*/
+                    .await()
             }
         }
     }
