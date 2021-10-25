@@ -8,6 +8,7 @@ import com.cardio.doctor.databinding.FragmentDashboardBinding
 import com.cardio.doctor.ui.common.base.fragment.BaseFragmentAuth
 import com.cardio.doctor.ui.common.utils.showToast
 import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
+import com.cardio.doctor.ui.views.dashboard.DashboardActivity
 import com.cardio.doctor.ui.views.diagnosis.DiagnosisActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,7 +22,6 @@ class DashboardFragment : BaseFragmentAuth(R.layout.fragment_dashboard), View.On
         super.onViewCreated(view, savedInstanceState)
         setListener()
         setObservers()
-        //googleSignIn()
         binding.btnLogOut.setOnClickListener(this)
     }
 
@@ -29,7 +29,10 @@ class DashboardFragment : BaseFragmentAuth(R.layout.fragment_dashboard), View.On
         binding.btnDashboardOne.setOnClickListener(this)
         binding.btnDashboardTwo.setOnClickListener(this)
         binding.btnProfileMenu.setOnClickListener(this)
-        binding.appButton.setOnClickListener {  }
+        binding.appButton.setOnClickListener { }
+        (requireActivity() as DashboardActivity).startSynService {
+            binding.progressBarSync.visibility = if (it) View.VISIBLE else View.GONE
+        }
     }
 
     private fun setObservers() {
@@ -40,7 +43,7 @@ class DashboardFragment : BaseFragmentAuth(R.layout.fragment_dashboard), View.On
     override fun onClick(view: View?) {
         when (view) {
             binding.btnDashboardOne -> {
-                showToast(requireContext(),getString(R.string.coming_soon))
+                showToast(requireContext(), getString(R.string.coming_soon))
             }
             binding.btnDashboardTwo -> {
                 activity?.let { DiagnosisActivity.start(it) }

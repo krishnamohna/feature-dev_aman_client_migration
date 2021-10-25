@@ -2,6 +2,7 @@ package com.cardio.doctor.ui.service
 
 import android.content.Context
 import android.content.Intent
+import android.os.Binder
 import android.os.IBinder
 import androidx.lifecycle.LifecycleService
 import dagger.hilt.android.AndroidEntryPoint
@@ -9,6 +10,12 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class SyncHeathDataService : LifecycleService() {
+
+    private val binder = LocalBinder()
+
+    inner class LocalBinder : Binder() {
+        fun getService(): SyncHeathDataService = this@SyncHeathDataService
+    }
 
     companion object{
         fun start(context: Context){
@@ -38,6 +45,6 @@ class SyncHeathDataService : LifecycleService() {
 
     override fun onBind(intent: Intent): IBinder {
         super.onBind(intent)
-        TODO("Return the communication channel to the service.")
+        return binder
     }
 }

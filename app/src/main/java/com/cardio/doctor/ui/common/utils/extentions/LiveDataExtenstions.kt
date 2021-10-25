@@ -13,6 +13,15 @@ import kotlinx.coroutines.CoroutineScope
 
 fun <T> MutableLiveData<Resource<T>>.setLoading() = postValue(Resource.setLoading())
 fun <T> MutableLiveData<Resource<T>>.setSuccess(data: T) = postValue(Resource.success("", data))
+fun <T> MutableLiveData<Resource<T>>.setError(msg: String?) =
+    postValue(
+        Resource.error(
+            "",
+            STATUS_500,
+            msg ?: "Something went wrong!!",
+            null
+        )
+    )
 fun <T> MutableLiveData<Resource<T>>.setError(networkException: Exception) =
     postValue(
         Resource.error(
