@@ -49,7 +49,7 @@ interface FireStoreCollection{
     companion object {
         const val USERS = "Users"
         const val DRUGS = "Drugs"
-        const val HEALTH_LOGS = "HealthLogsdfdfdf"
+        const val HEALTH_LOGS = "HealthLogs"
         const val LOGS = "logs"
     }
 }
@@ -103,6 +103,7 @@ object Constants{
 
 object DateFormat_{
     const val DATE_FORMAT_DD_MMM_YYYY = "dd MMM yyyy"
+    const val DATE_FORMAT_YYYY_MMM_DD = "yyyy-MM-dd"  //2021-10-18
 }
 
 

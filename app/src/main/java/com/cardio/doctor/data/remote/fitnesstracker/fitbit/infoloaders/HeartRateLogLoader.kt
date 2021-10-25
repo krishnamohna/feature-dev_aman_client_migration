@@ -28,7 +28,7 @@ class HeartRateLogLoader(
         val calenderEnd = Calendar.getInstance()
         val calendarStart = Calendar.getInstance()
         calendarStart.add(Calendar.DAY_OF_MONTH, -periodDays)
-        return HeartRateService.getHeartRateLogs(calendarStart.time, calenderEnd.time, 1)
+        return HeartRateService.getHeartRateLogs(calendarStart.time, calenderEnd.time, 7)
     }
 
 }

@@ -20,25 +20,39 @@ class CompositeHealthLogsLoader(
         var arrayHeartLogs: Array<HeartRateModel?> = arrayOfNulls(periodDays)
         var arrayWeight: Array<WeightModel?> = arrayOfNulls(periodDays)
         var arrayBloodPressure: Array<BloodPressureModel?> = arrayOfNulls(periodDays)
-        var arrayDates= mutableListOf<DateModel>()
-        getDatesOfLastDays(periodDays,arrayDates)
-        val syncModel = SyncModel(arrayHeartLogs, arrayWeight, arrayBloodPressure,arrayDates)
-        executerService.submit{
+        var arrayDates = mutableListOf<DateModel>()
+        getDatesOfLastDays(periodDays, arrayDates)
+        val syncModel = SyncModel(arrayHeartLogs, arrayWeight, arrayBloodPressure, arrayDates)
+        executerService.submit {
             //load weight
             WeightLogLoader({
-                Log.i("","")
-                //syncModel.arrayWeightLogs=it.toTypedArray()
+                updateWeightLogsAsPerDate(syncModel, it)
+                Log.i("", "")
             }, {
-                Log.i("","")
-            },periodDays).load()
+                Log.i("", "")
+            }, periodDays).load()
             //load heart rate
             HeartRateLogLoader({
-                Log.i("","")
-               // syncModel.arrayHeartLogs=it.toTypedArray()
+                updateHeartLogsAsPerDate(syncModel, it)
+                Log.i("", "")
             }, {
-                Log.i("","")
-            },periodDays).load()
+                Log.i("", "")
+            }, periodDays).load()
             onSuccess.invoke(syncModel)
+        }
+    }
+
+    private fun updateHeartLogsAsPerDate(syncModel: SyncModel, heartLogs: List<HeartRateModel>) {
+        syncModel.arrayDates.forEachIndexed() { index, dateModel ->
+            val heartLog =heartLogs.find { it.date==dateModel.date}
+            syncModel.arrayHeartLogs.set(index,heartLog)
+        }
+    }
+
+    private fun updateWeightLogsAsPerDate(syncModel: SyncModel, weightLogs: List<WeightModel>) {
+        syncModel.arrayDates.forEachIndexed() { index, dateModel ->
+            val weightLog =weightLogs.find { it.date==dateModel.date}
+            syncModel.arrayWeightLogs.set(index,weightLog)
         }
     }
 

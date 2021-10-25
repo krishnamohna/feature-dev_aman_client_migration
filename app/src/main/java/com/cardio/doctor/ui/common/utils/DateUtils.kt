@@ -92,16 +92,16 @@ fun getCurrentDate(): String {
 
 fun getDaysDiffrence(date: String?): Int {
     val parser = getDefaultDateFormatter()
-    var date=parser.parse(date)
-    var currentDate=Date()
+    var date = parser.parse(date)
+    var currentDate = Date()
     val diff: Long = currentDate.getTime() - date.getTime()
-    if(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)>30){
+    if (TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) > 30) {
         return 30
     }
     return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS).toInt()
 }
 
-fun getDefaultDateFormatter()=SimpleDateFormat(DATE_FORMAT_DD_MMM_YYYY, Locale.getDefault())
+fun getDefaultDateFormatter() = SimpleDateFormat(DATE_FORMAT_DD_MMM_YYYY, Locale.getDefault())
 
 fun DataPoint.getStartTimeString(): String = getDefaultDateFormatter()
     .format(this.getStartTime(TimeUnit.MILLISECONDS))
@@ -109,13 +109,18 @@ fun DataPoint.getStartTimeString(): String = getDefaultDateFormatter()
 fun DataPoint.getEndTimeString(): String = getDefaultDateFormatter()
     .format(this.getEndTime(TimeUnit.MILLISECONDS))
 
-fun getDatesOfLastDays(days: Int, listDates: MutableList<DateModel>){
+fun getDatesOfLastDays(days: Int, listDates: MutableList<DateModel>) {
     for (i in days downTo 1) {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_MONTH, -i)
         var now = Date()
-        now.time=calendar.timeInMillis
-        var date=getDefaultDateFormatter().format(now)
-        listDates.add(DateModel(date,now.time))
+        now.time = calendar.timeInMillis
+        var date = getDefaultDateFormatter().format(now)
+        listDates.add(DateModel(date, now.time))
     }
+}
+
+fun formatDate(inputFormat: String, inputDate: String): String? {
+    var dateformat = SimpleDateFormat(inputFormat, Locale.getDefault())
+    return getDefaultDateFormatter().format(dateformat.parse(inputDate))
 }

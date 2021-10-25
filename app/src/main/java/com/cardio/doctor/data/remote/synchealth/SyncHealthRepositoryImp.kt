@@ -49,7 +49,7 @@ class SyncHealthRepositoryImp @Inject constructor(
             )
         firebaseAuth.currentUser?.uid?.let {
             fitnessModel.date?.let { date ->
-              /* fireStore.collection(FireStoreCollection.HEALTH_LOGS)
+               /*fireStore.collection(FireStoreCollection.HEALTH_LOGS)
                     .document(it)
                     .collection(FireStoreCollection.LOGS)
                     .document(date).set(mapHealth)

@@ -1,6 +1,8 @@
 package com.cardio.doctor.data.remote.fitnesstracker.fitbit.api.models;
 
 import com.cardio.doctor.domain.fitness.model.WeightModel;
+import com.cardio.doctor.ui.common.utils.DateFormat_;
+import com.cardio.doctor.ui.common.utils.DateUtilsKt;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -143,6 +145,6 @@ public class Weight {
     }
 
     public WeightModel toWeightModel() {
-        return new WeightModel(getWeight(), date);
+        return new WeightModel(getWeight(), DateUtilsKt.formatDate(DateFormat_.DATE_FORMAT_YYYY_MMM_DD,date));
     }
 }
