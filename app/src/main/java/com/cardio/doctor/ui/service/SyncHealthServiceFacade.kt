@@ -2,6 +2,7 @@ package com.cardio.doctor.ui.service
 
 import android.app.Service
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.fitness.model.FitnessModel
 import com.cardio.doctor.domain.fitness.model.SyncModel
@@ -11,7 +12,6 @@ import com.cardio.doctor.ui.common.utils.extentions.setError
 import com.cardio.doctor.ui.common.utils.extentions.setLoading
 import com.cardio.doctor.ui.common.utils.extentions.setSuccess
 import com.cardio.doctor.ui.common.utils.getDaysDiffrence
-import com.cardio.doctor.ui.common.utils.livedata.SingleLiveEvent
 import com.cardio.doctor.ui.common.utils.showToast
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -19,46 +19,38 @@ import javax.inject.Inject
 
 class SyncHealthServiceFacade @Inject constructor(
     val service: Service,
-    val fitnessRepositary: FitnessRepositary,
-    val syncHealthRepositary: SyncHealthRepositary
+    private val fitnessRepositary: FitnessRepositary,
+    private val syncHealthRepositary: SyncHealthRepositary
 ) {
 
     private val DEFALT_PREVIOUS_DAY_PERIOD = 7
-    private val _syncSingleLiveData = SingleLiveEvent<Resource<Boolean>>()
-    val syncLiveData: LiveData<Resource<Boolean>> =
-        _syncSingleLiveData
+    private val _syncSingleLiveData = MutableLiveData<Resource<Boolean>>()
 
-    fun onCreate() {
-
+    fun getSyncData():LiveData<Resource<Boolean>>{
+        return _syncSingleLiveData
     }
-
-    fun onDestroy() {
-
-    }
-
-    fun getSyncData()=syncLiveData
 
     fun syncData() {
         if (fitnessRepositary.isLoggedIn())
             loadLastCollection()
     }
-
+    /*load last collection from firestore to get last saved collection*/
     private fun loadLastCollection() {
         _syncSingleLiveData.setLoading()
         GlobalScope.launch {
-            var lastCollection = syncHealthRepositary.getLastSavedCollectionDate()
+            val lastCollection = syncHealthRepositary.getLastSavedCollectionDate()
             getHealthLogsFromWearable(lastCollection)
         }
     }
 
     private fun calculateDayDiff(fitnessModel: FitnessModel?): Int {
-        if (fitnessModel?.date == null) {
-            return DEFALT_PREVIOUS_DAY_PERIOD
+        return if (fitnessModel?.date == null) {
+            DEFALT_PREVIOUS_DAY_PERIOD
         } else {
-            return getDaysDiffrence(fitnessModel.date)
+            getDaysDiffrence(fitnessModel.date)
         }
     }
-
+    /*get health logs from selected wearable for given period of time*/
     private fun getHealthLogsFromWearable(fitnessModel: FitnessModel?) {
         if (!isTodayDataAlreadySynched(calculateDayDiff(fitnessModel))) {
             fitnessRepositary.getSyncModel(
@@ -79,22 +71,24 @@ class SyncHealthServiceFacade @Inject constructor(
 
     private fun isTodayDataAlreadySynched(calculateDayDiff: Int) = calculateDayDiff == 0
 
+    /*save health logs to server */
     private fun saveToCollection(syncModel: SyncModel, fitnessModel: FitnessModel) {
         GlobalScope.launch {
-            syncModel.arrayDates.forEachIndexed { i, value ->
+            syncModel.arrayDates.forEachIndexed { i, dateModel ->
                 fitnessModel.weight =
-                    syncModel.arrayWeightLogs.get(i)?.weight ?: fitnessModel.weight
-                fitnessModel.date = syncModel.arrayDates.get(i)?.date
-                fitnessModel.timeStamp = syncModel.arrayDates.get(i)?.timeStamp
-                fitnessModel.heartRate = syncModel.arrayHeartLogs.get(i)?.restHeartRate?.toFloat()
+                    syncModel.arrayWeightLogs[i]?.weight ?: fitnessModel.weight
+                fitnessModel.date = dateModel.date
+                fitnessModel.timeStamp = syncModel.arrayDates[i].timeStamp
+                fitnessModel.heartRate = syncModel.arrayHeartLogs[i]?.restHeartRate?.toFloat()
                     ?: fitnessModel.heartRate
                 fitnessModel.bloodPressureTopBp =
-                    syncModel.arrayBloodPresure.get(i)?.topBp ?: fitnessModel.bloodPressureTopBp
-                fitnessModel.bloodPressureBottomBp = syncModel.arrayBloodPresure.get(i)?.bottomBp
+                    syncModel.arrayBloodPresure[i]?.topBp ?: fitnessModel.bloodPressureTopBp
+                fitnessModel.bloodPressureBottomBp = syncModel.arrayBloodPresure[i]?.bottomBp
                     ?: fitnessModel.bloodPressureBottomBp
                 try {
                     syncHealthRepositary.saveHealthData(fitnessModel)
                     _syncSingleLiveData.setSuccess(true)
+                    service.stopSelf()
                 } catch (exp: Exception) {
                     _syncSingleLiveData.setError(exp)
                 }

@@ -28,16 +28,6 @@ class SyncHeathDataService : LifecycleService() {
     @Inject
     lateinit var facade: SyncHealthServiceFacade
 
-    override fun onCreate() {
-        super.onCreate()
-        facade.onCreate()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        facade.onDestroy()
-    }
-
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         facade.syncData()
         return super.onStartCommand(intent, flags, startId)

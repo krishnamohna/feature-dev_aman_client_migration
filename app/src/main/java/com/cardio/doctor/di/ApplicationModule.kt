@@ -27,7 +27,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class ApplicationModule {
 
-
     @Provides
     @Singleton
     fun getApplicationContext() = AppCardioPatient()
@@ -37,7 +36,6 @@ class ApplicationModule {
     fun getUserManager(sharedPreferences: SharedPreferences): UserManager {
         return UserManager(sharedPreferences)
     }
-
 
     @Provides
     @Singleton

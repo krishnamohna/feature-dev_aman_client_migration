@@ -7,11 +7,27 @@ import com.cardio.doctor.domain.fitness.model.DateModel
 import com.cardio.doctor.network.api.Constants
 import com.cardio.doctor.ui.common.utils.Constants.DATE_FORMAT_DD_MMM_YYYY
 import com.google.android.gms.fitness.data.DataPoint
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.Calendar.*
 import java.util.concurrent.TimeUnit
+
+fun getDatePicker(
+    context: Context?,
+    mDate: Date?,
+    callback: OnDateSetListener?,
+): DatePickerDialog? {
+    val calendar = Calendar.getInstance()
+    if (mDate != null) calendar.time = mDate
+    val year = calendar[Calendar.YEAR]
+    val month = calendar[Calendar.MONTH]
+    val day = calendar[Calendar.DAY_OF_MONTH]
+    val datePickerDialog = DatePickerDialog(context!!, callback, year, month, day)
+    datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
+    //datePickerDialog.datePicker.minDate = (System.currentTimeMillis() -1000*60*60*24*365*100)
+    return datePickerDialog
+}
+
 
 fun getBirthDatePicker(
     context: Context?,
@@ -55,7 +71,7 @@ fun String.toDate(
 
 fun getStringFromDate(mDate: Date?): String? {
     if (mDate != null) {
-        val dateFormat: DateFormat = SimpleDateFormat("dd MMM yyyy")
+        val dateFormat = getDefaultDateFormatter()
         return dateFormat.format(mDate)
     }
     return ""

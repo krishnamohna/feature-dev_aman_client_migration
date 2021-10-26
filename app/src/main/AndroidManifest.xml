@@ -28,10 +28,15 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,LockedOrientationActivity"
         tools:targetApi="m">
+        <activity android:name=".ui.views.healthlogs.HealthLogsActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+
         <service
             android:name=".ui.service.SyncHeathDataService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity
             android:name=".ui.views.diagnosis.DiagnosisActivity"
@@ -94,9 +99,9 @@
             android:name="com.fitbit.sampleandroidoauth2.REDIRECT_URL"
             android:value="pocketCardio://fitbit/auth" />
 
-        <activity android:name=".ui.views.sync_health_data.activity.SyncHealthActivty"
-            android:screenOrientation="portrait"
-            />
+        <activity
+            android:name=".ui.views.sync_health_data.activity.SyncHealthActivty"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

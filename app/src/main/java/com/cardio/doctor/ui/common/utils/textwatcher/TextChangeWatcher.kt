@@ -16,7 +16,7 @@ val DELAY_SMALL_ANIMATION: Long=250
 class TextChangeWatcher(
     private val errorTxt: TextView,
     private val label: TextView,
-    private val scrollView: ScrollView,
+    private val scrollView: ScrollView?,
     private val parentActivity: BaseActivity?
 ) :
     TextWatcher {
@@ -35,7 +35,7 @@ class TextChangeWatcher(
                 parentActivity?.let {
                     if(it.isKeyboardOpen(getScrollRootView()))
                         handler.postDelayed({
-                            scrollView.smoothScrollBy(0, labelHeight)
+                            scrollView?.smoothScrollBy(0, labelHeight)
                         }, DELAY_SMALL_ANIMATION)
                 }
             }

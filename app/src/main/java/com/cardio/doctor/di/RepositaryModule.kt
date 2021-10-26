@@ -77,11 +77,9 @@ class RepositaryModule {
     @Named(REPO_GOOGLE)
     fun provideGoogleRepositary(fitBitRepo: GoogleFitBitRepositaryImp) = fitBitRepo as FitnessRepositary
 
-
     @Singleton
     @Provides
     fun provideGoogleFitManager(@ApplicationContext activity: Context)= GoogleFitManager(activity)
-
 
     @Singleton
     @Provides

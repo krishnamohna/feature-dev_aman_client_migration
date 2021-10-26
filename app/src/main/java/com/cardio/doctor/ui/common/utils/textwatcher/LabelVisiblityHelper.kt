@@ -12,7 +12,7 @@ class LabelVisiblityHelper @Inject constructor() {
         input: EditText,
         error: TextView,
         label: TextView,
-        scrollView: ScrollView,
+        scrollView: ScrollView?,
         parentActivity: BaseActivity?
     ){
         input.addTextChangedListener(TextChangeWatcher(error,label,scrollView,parentActivity))

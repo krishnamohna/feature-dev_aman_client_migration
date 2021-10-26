@@ -59,7 +59,7 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDiagnosisPart1Binding.inflate(inflater, container, false)
         return binding.root
     }
@@ -82,7 +82,7 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         KeyboardEventListener(R.id.clScrollViewContainer, parentActivity!!) {
             isKeyBoardOpen=it
             if (it) {
-                var labelHeight =
+                val labelHeight =
                     resources.getDimension(R.dimen.offset_scroll_label_up_medium).toInt()
                 Handler(Looper.getMainLooper()).postDelayed({
                     binding.scrollViewStep1.smoothScrollBy(0, labelHeight)
@@ -114,7 +114,7 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
     }
 
     private fun setPatientDetail(it: HeartRateModel) {
-        it?.restHeartRate?.let {  binding.clHealthDetail.edtHeartRate.setText(it.toString()) }
+        it.restHeartRate?.let {  binding.clHealthDetail.edtHeartRate.setText(it.toString()) }
     }
 
     private fun setPatientDetail(userModel: FitnessModel) {
@@ -182,15 +182,18 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
     }
 
     private fun setListeners() {
-        diagnosisActivity?.onConnectClick({
-            Intent(requireContext(),SyncHealthActivty::class.java).run {  resultLauncherSpeechToText.launch(this) }
+        diagnosisActivity?.onConnectClick {
+            Intent(
+                requireContext(),
+                SyncHealthActivty::class.java
+            ).run { resultLauncherSpeechToText.launch(this) }
             /* if (viewModel.isLoggedIn()) {
                 viewModel.getUserData(parentActivity!!)
                 viewModel.getHeartRate(parentActivity!!)
             } else {
                 viewModel.login(parentActivity!!)
             }*/
-        })
+        }
         binding.cvDiagnosisBottomContainer.btNext.setOnClickListener {
             onSubmitClick()
         }
@@ -258,14 +261,14 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
     }
 
     private fun onSubmitClick() {
-        var firstName = binding.clPatientDetail.edtFirstName.getTrimmedText()
-        var lastName = binding.clPatientDetail.edtLastName.getTrimmedText()
-        var age = binding.clPatientDetail.edtAge.getTrimmedText()
-        var weight = binding.clHealthDetail.edtWeight.getTrimmedText()
-        var heartRate = binding.clHealthDetail.edtHeartRate.getTrimmedText()
-        var topBp = binding.clHealthDetail.edtTopBp.getTrimmedText()
-        var bottomBp = binding.clHealthDetail.edtBottomBp.getTrimmedText()
-        var ailment = binding.spinnerCategory.selectedItemPosition
+        val firstName = binding.clPatientDetail.edtFirstName.getTrimmedText()
+        val lastName = binding.clPatientDetail.edtLastName.getTrimmedText()
+        val age = binding.clPatientDetail.edtAge.getTrimmedText()
+        val weight = binding.clHealthDetail.edtWeight.getTrimmedText()
+        val heartRate = binding.clHealthDetail.edtHeartRate.getTrimmedText()
+        val topBp = binding.clHealthDetail.edtTopBp.getTrimmedText()
+        val bottomBp = binding.clHealthDetail.edtBottomBp.getTrimmedText()
+        val ailment = binding.spinnerCategory.selectedItemPosition
         viewModel.checkValidation(
             ailment,
             firstName,
@@ -371,7 +374,7 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         editText?.run {
             setBackgroundResource(edtRoundedCorner)
         }
-        txtError?.run {
+        txtError.run {
             txtError.text = message
             setVisibility(visibility)
         }

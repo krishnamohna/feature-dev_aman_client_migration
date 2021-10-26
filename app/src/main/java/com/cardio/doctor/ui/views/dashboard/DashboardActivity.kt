@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DashboardActivity : BaseActivity() {
 
-    private  var onSynLoading: ((Boolean) -> Unit?)? =null
+    var onSynLoading: ((Boolean) -> Unit?)? =null
     private lateinit var mService: SyncHeathDataService
     private var mBound: Boolean = false
     private val binding by viewBinding(ActivityDashboardBinding::inflate)
@@ -26,21 +26,16 @@ class DashboardActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setNavigationController()
-    }
-
-    override fun onStart() {
-        super.onStart()
         Intent(this, SyncHeathDataService::class.java).also { intent ->
             bindService(intent, connection, Context.BIND_AUTO_CREATE)
         }
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroy() {
+        super.onDestroy()
         unbindService(connection)
         mBound = false
     }
-
 
     fun startSynService(onSynLoading: (Boolean) -> Unit) {
         this.onSynLoading=onSynLoading
@@ -86,5 +81,9 @@ class DashboardActivity : BaseActivity() {
                 }
             )
         }
+    }
+
+    fun unregisterSyncUpdates() {
+        onSynLoading==null
     }
 }

@@ -22,6 +22,7 @@ import com.cardio.doctor.databinding.FragmentSyncHealthDataBinding
 import com.cardio.doctor.domain.fitness.model.FitnessModel
 import com.cardio.doctor.ui.common.base.fragment.BaseFragment
 import com.cardio.doctor.ui.common.utils.extentions.customObserver
+import com.cardio.doctor.ui.views.healthlogs.HealthLogsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,7 +34,6 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
     val TAG = "SyncHealthDataFragment"
     val viewModel: SyncHealthViewModel by viewModels()
     private lateinit var arrayOfImageView: Array<ImageView>
-
 
     var resultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -117,6 +117,9 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
                 onGoogleAuthenticated()
                 onGoogleSelection()
             }
+        }
+        binding.healthLogsContainer.setOnClickListener {
+           HealthLogsActivity.start(requireActivity())
         }
     }
 

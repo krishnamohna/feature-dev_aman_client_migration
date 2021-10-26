@@ -22,11 +22,11 @@ class SyncHealthRepositoryImp @Inject constructor(
             .collection(FireStoreCollection.LOGS)
             .orderBy(FireStoreDocKey.TIME_STAMP, Query.Direction.DESCENDING)
             .limit(1)
-        var querySnapshot = query.get().await()
-        if (querySnapshot.isEmpty) {
-            return null
+        val querySnapshot = query.get().await()
+        return if (querySnapshot.isEmpty) {
+            null
         } else {
-            var fitnessModel = FitnessModel()
+            val fitnessModel = FitnessModel()
             for (document in querySnapshot) {
                 fitnessModel.weight = document.data[FireStoreDocKey.WEIGHT] as? Double?
                 fitnessModel.heartRate = document.data[FireStoreDocKey.HEART_RATE] as? Float?
@@ -35,7 +35,7 @@ class SyncHealthRepositoryImp @Inject constructor(
                 fitnessModel.date = document.data[FireStoreDocKey.DATE] as? String?
                 fitnessModel.timeStamp = document.data[FireStoreDocKey.DATE] as? Long?
             }
-            return fitnessModel
+            fitnessModel
         }
     }
 
@@ -55,6 +55,24 @@ class SyncHealthRepositoryImp @Inject constructor(
                     .document(it)
                     .collection(FireStoreCollection.LOGS)
                     .document(date).set(mapHealth)
+                    .await()
+            }
+        }
+    }
+
+    override suspend fun updateHealthLogByDate(fitnessModel: FitnessModel) {
+        val mapHealth= mutableMapOf<String,Any?>()
+        fitnessModel.weight?.let {mapHealth.put( FireStoreDocKey.WEIGHT,it)}
+        fitnessModel.heartRate?.let {mapHealth.put( FireStoreDocKey.HEART_RATE,it)}
+        fitnessModel.bloodPressureTopBp?.let {mapHealth.put( FireStoreDocKey.BLOOD_SYSTOLIC_BP,it)}
+        fitnessModel.timeStamp?.let {mapHealth.put( FireStoreDocKey.TIME_STAMP,it)}
+        fitnessModel.bloodPressureBottomBp?.let {mapHealth.put( FireStoreDocKey.BLOOD_DIASTOLIC_BP,it)}
+        firebaseAuth.currentUser?.uid?.let {
+            fitnessModel.date?.let { date ->
+                fireStore.collection(FireStoreCollection.HEALTH_LOGS)
+                    .document(it)
+                    .collection(FireStoreCollection.LOGS)
+                    .document(date).update(mapHealth)
                     .await()
             }
         }

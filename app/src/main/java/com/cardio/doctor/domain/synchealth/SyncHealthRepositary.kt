@@ -7,4 +7,5 @@ interface SyncHealthRepositary {
     suspend fun saveHealthData(
         fitnessModel: FitnessModel
     )
+    suspend fun updateHealthLogByDate(fitnessModel: FitnessModel)
 }

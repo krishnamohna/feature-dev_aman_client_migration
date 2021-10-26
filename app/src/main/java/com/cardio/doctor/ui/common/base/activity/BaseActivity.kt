@@ -31,7 +31,6 @@ abstract class BaseActivity : AppCompatActivity(), DialogProvider {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dialogHelper = provideDialogHelper()
-
     }
 
     private val dialogHelperImps by lazy {

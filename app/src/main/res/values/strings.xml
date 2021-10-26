@@ -201,4 +201,7 @@
     <string name="back">Back</string>
     <string name="take_a_picture">Take a picture</string>
     <string name="continue_">Continue</string>
+    <string name="select_date">Select Date</string>
+    <string name="title_health_logs">Health Logs</string>
+    <string name="succss_response_health_log">Health Log added successfully</string>
 </resources>
