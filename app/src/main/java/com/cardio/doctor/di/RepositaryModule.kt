@@ -45,7 +45,6 @@ class RepositaryModule {
     fun provideDiagnosisRepo(diagnosisRepo: DiagnosisRepoImp) = diagnosisRepo as DiagnosisRepo
 
     @Provides
-    @Singleton
     @Named(REPO_FITNESS_SELECTED)
     fun provideFitnessRepositary(
         @Named(REPO_FITBIT)
@@ -58,7 +57,6 @@ class RepositaryModule {
         return when (userManager.getString(Preference.SYNC_HEALTH,context.getString(R.string.fitbit))) {
             context.getString(R.string.fitbit) -> {
                 fitBitRepo
-                //googlefitBitRepo
             }
             context.getString(R.string.google_fit) -> {
                 googlefitBitRepo
