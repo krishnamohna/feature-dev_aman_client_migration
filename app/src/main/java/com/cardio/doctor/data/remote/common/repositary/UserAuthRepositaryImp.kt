@@ -30,5 +30,9 @@ class UserAuthRepositaryImp @Inject constructor(val firebaseAuth: FirebaseAuth) 
         }
     }
 
+    override fun getUserCreatedTime(): Long? {
+       return firebaseAuth.currentUser?.metadata?.creationTimestamp
+    }
+
 
 }

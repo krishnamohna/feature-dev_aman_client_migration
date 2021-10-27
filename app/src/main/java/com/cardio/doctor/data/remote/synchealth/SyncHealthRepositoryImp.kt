@@ -2,10 +2,12 @@ package com.cardio.doctor.data.remote.synchealth
 
 import com.cardio.doctor.domain.fitness.model.FitnessModel
 import com.cardio.doctor.domain.synchealth.SyncHealthRepositary
+import com.cardio.doctor.network.api.ApiStatus.Companion.STATUS_NOT_FOUND
 import com.cardio.doctor.ui.common.utils.FireStoreCollection
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.tasks.await
 import java.util.*
@@ -67,13 +69,27 @@ class SyncHealthRepositoryImp @Inject constructor(
         fitnessModel.bloodPressureTopBp?.let {mapHealth.put( FireStoreDocKey.BLOOD_SYSTOLIC_BP,it)}
         fitnessModel.timeStamp?.let {mapHealth.put( FireStoreDocKey.TIME_STAMP,it)}
         fitnessModel.bloodPressureBottomBp?.let {mapHealth.put( FireStoreDocKey.BLOOD_DIASTOLIC_BP,it)}
-        firebaseAuth.currentUser?.uid?.let {
+        firebaseAuth.currentUser?.uid?.let {uid->
             fitnessModel.date?.let { date ->
-                fireStore.collection(FireStoreCollection.HEALTH_LOGS)
-                    .document(it)
-                    .collection(FireStoreCollection.LOGS)
-                    .document(date).set(mapHealth)
-                    .await()
+                try{
+                    //TRY UPDATE VALUE FIRST
+                    fireStore.collection(FireStoreCollection.HEALTH_LOGS)
+                        .document(uid)
+                        .collection(FireStoreCollection.LOGS)
+                        .document(date).update(mapHealth)
+                        .await()
+                }catch (exp:Exception){
+                    //INSERT VALUE IF UPDATE FAIL
+                    (exp as? FirebaseFirestoreException)?.code?.name?.let {
+                        if(it.equals(STATUS_NOT_FOUND)){
+                            fireStore.collection(FireStoreCollection.HEALTH_LOGS)
+                                .document(uid)
+                                .collection(FireStoreCollection.LOGS)
+                                .document(date).set(mapHealth)
+                                .await()
+                        }
+                    }
+                }
             }
         }
     }

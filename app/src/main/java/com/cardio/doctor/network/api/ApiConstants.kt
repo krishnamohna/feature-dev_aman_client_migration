@@ -23,6 +23,7 @@ interface ApiStatus {
         const val STATUS_403 = 403
         const val STATUS_404 = 400
         const val STATUS_500 = 500
+        const val STATUS_NOT_FOUND = "NOT_FOUND"
     }
 }
 

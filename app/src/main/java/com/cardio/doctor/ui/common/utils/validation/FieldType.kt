@@ -8,5 +8,6 @@ enum class FieldType{
     WEIGHT,
     HEART_RATE,
     BOTTOM_BP,
-    TOP_BP
+    TOP_BP,
+    LOG_DATE
 }

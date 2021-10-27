@@ -13,6 +13,92 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<!--    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/BaseAppTheme.TxtView"
+        android:id="@+id/tvSelectedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:text="@string/select_date"
+        app:layout_constraintStart_toStartOf="@+id/clHealthDetail"
+        app:layout_constraintTop_toBottomOf="@id/headerView"
+        />-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dobContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/headerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerView">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dobTxtTitle"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="@string/select_date"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtHealthLogDate"
+            style="@style/BaseAppTheme.EdtTxt"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:drawableEnd="@drawable/ic_calendar"
+            android:focusable="false"
+            android:hint="@string/select_date_lower"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:maxLength="@integer/int_50"
+            android:maxLines="@integer/int_1"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dobTxtTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLogDateError"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/date_of_birth_val"
+            android:textColor="@color/red_validation"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtHealthLogDate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtHealthDetail"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="@string/health_detail"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutAilment"
+        app:layout_constraintStart_toStartOf="@+id/dobContainer"
+        app:layout_constraintTop_toBottomOf="@+id/dobContainer" />
+
+
     <include
         android:id="@+id/clHealthDetail"
         layout="@layout/include_health_detail"
@@ -23,7 +109,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSelectedDate" />
+        app:layout_constraintTop_toBottomOf="@+id/txtHealthDetail" />
 
     <com.cardio.doctor.ui.common.customviews.AppButton
         android:id="@+id/btSaveLog"
@@ -31,20 +117,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/save"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/clHealthDetail"
         app:layout_constraintStart_toStartOf="@+id/clHealthDetail"
         app:layout_constraintTop_toBottomOf="@+id/clHealthDetail" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        style="@style/BaseAppTheme.TxtView"
-        android:id="@+id/tvSelectedDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/select_date"
-        app:layout_constraintStart_toStartOf="@+id/clHealthDetail"
-        app:layout_constraintTop_toBottomOf="@id/headerView"
-         />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

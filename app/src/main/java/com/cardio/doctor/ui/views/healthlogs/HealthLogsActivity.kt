@@ -3,9 +3,14 @@ package com.cardio.doctor.ui.views.healthlogs
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.viewModels
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.ActivityHealthLogsBinding
+import com.cardio.doctor.domain.common.model.validation.ValidationModelV2
+import com.cardio.doctor.network.Status
 import com.cardio.doctor.ui.common.base.activity.BaseToolbarActivity
 import com.cardio.doctor.ui.common.base.fragment.toolbar.HealthLogsToolbarImp
 import com.cardio.doctor.ui.common.base.fragment.toolbar.IToolbar
@@ -13,6 +18,7 @@ import com.cardio.doctor.ui.common.utils.*
 import com.cardio.doctor.ui.common.utils.extentions.customObserver
 import com.cardio.doctor.ui.common.utils.extentions.getTrimmedText
 import com.cardio.doctor.ui.common.utils.textwatcher.LabelVisiblityHelper
+import com.cardio.doctor.ui.common.utils.validation.FieldType
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 import javax.inject.Inject
@@ -93,13 +99,19 @@ class HealthLogsActivity : BaseToolbarActivity() {
         binding.btSaveLog.setOnClickListener {
             onSubmitClick()
         }
-        binding.tvSelectedDate.setOnClickListener {
-            getDatePicker(HealthLogsActivity@ this, null) { _, year, month, date ->
+        binding.edtHealthLogDate.setOnClickListener {
+            val dateStart=Date()
+            var calender=Calendar.getInstance()
+            calender.add(Calendar.MONTH,-1)
+            dateStart.time=calender.timeInMillis
+            //if user created date is found
+            viewModel.getUserSignedUpDate()?.let { dateStart.time=it }
+            getDatePicker(HealthLogsActivity@ this,null, dateStart) { _, year, month, date ->
                 val dateString = getDate(date).plus("-")
                     .plus(getMonthNumber(month).toString().plus("-"))
                     .plus(year)
                 selectedDate = dateString.toDate()
-                binding.tvSelectedDate.setText(getStringFromDate(selectedDate))
+                binding.edtHealthLogDate.setText(getStringFromDate(selectedDate))
             }?.show()
         }
     }
@@ -109,7 +121,7 @@ class HealthLogsActivity : BaseToolbarActivity() {
         val heartRate = binding.clHealthDetail.edtHeartRate.getTrimmedText()
         val topBp = binding.clHealthDetail.edtTopBp.getTrimmedText()
         val bottomBp = binding.clHealthDetail.edtBottomBp.getTrimmedText()
-        val selectedDate = binding.tvSelectedDate.text.toString().trim()
+        val selectedDate = binding.edtHealthLogDate.text.toString().trim()
         viewModel.checkValidation(weight, heartRate, topBp, bottomBp, this.selectedDate, {
             viewModel.updateData(
                 weight,
@@ -119,8 +131,55 @@ class HealthLogsActivity : BaseToolbarActivity() {
                 selectedDate,
                 this.selectedDate?.time
             )
-        }) {
-            onError(it)
+        },{errorMsg,validationModel->
+            onError(errorMsg)
+            setViewsForValidations(validationModel)
+        },{
+            setViewsForValidations(it)
+        })
+    }
+
+    private fun setViewsForValidations(it: ValidationModelV2) {
+        when (it.status) {
+            Status.SUCCESS -> {
+                setValidationOnViews(
+                    it.field_type,
+                    R.drawable.edt_rounded_corner,
+                    View.GONE,
+                    it.message
+                )
+            }
+            Status.ERROR -> {
+                setValidationOnViews(
+                    it.field_type,
+                    R.drawable.edt_rounded_corner_red,
+                    View.VISIBLE,
+                    it.message
+                )
+            }
+        }
+    }
+
+    private fun setValidationOnViews(
+        fieldType: FieldType,
+        edtRoundedCorner: Int,
+        visibility: Int,
+        message: String
+    ) {
+        var editText: EditText? = null
+        var txtError: TextView? = null
+        when (fieldType) {
+            FieldType.LOG_DATE -> {
+                editText = binding.edtHealthLogDate
+                txtError = binding.tvLogDateError
+            }
+        }
+        editText?.run {
+            setBackgroundResource(edtRoundedCorner)
+        }
+        txtError?.run {
+            setText(message)
+            setVisibility(visibility)
         }
     }
 

@@ -10,5 +10,6 @@ interface UserAuthRepositary {
         _firebaseException: SingleLiveEvent<Resource<Exception>>
     ): Boolean
 
+    fun getUserCreatedTime():Long?
 
 }

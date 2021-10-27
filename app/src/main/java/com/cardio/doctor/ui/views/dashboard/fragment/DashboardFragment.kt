@@ -1,20 +1,29 @@
 package com.cardio.doctor.ui.views.dashboard.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentDashboardBinding
-import com.cardio.doctor.ui.common.base.fragment.BaseFragmentAuth
+import com.cardio.doctor.ui.common.base.fragment.BaseFragment
 import com.cardio.doctor.ui.common.utils.showToast
-import com.cardio.doctor.ui.common.utils.viewbinding.viewBinding
 import com.cardio.doctor.ui.views.dashboard.DashboardActivity
 import com.cardio.doctor.ui.views.diagnosis.DiagnosisActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DashboardFragment : BaseFragmentAuth(R.layout.fragment_dashboard), View.OnClickListener {
+class DashboardFragment : BaseFragment<FragmentDashboardBinding>(), View.OnClickListener {
 
-    private val binding by viewBinding(FragmentDashboardBinding::bind)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding=FragmentDashboardBinding.inflate(inflater,container,false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,7 +33,9 @@ class DashboardFragment : BaseFragmentAuth(R.layout.fragment_dashboard), View.On
 
     override fun onDestroyView() {
         super.onDestroyView()
-        (requireActivity() as DashboardActivity).unregisterSyncUpdates()
+        activity?.let {
+            (requireActivity() as? DashboardActivity)?.unregisterSyncUpdates()
+        }
     }
 
     private fun setListener() {
@@ -32,8 +43,10 @@ class DashboardFragment : BaseFragmentAuth(R.layout.fragment_dashboard), View.On
         binding.btnDashboardTwo.setOnClickListener(this)
         binding.btnProfileMenu.setOnClickListener(this)
         binding.appButton.setOnClickListener { }
-        (requireActivity() as DashboardActivity).registerSyncUpdates {
-            binding.progressBarSync.visibility = if (it) View.VISIBLE else View.GONE
+        activity?.let {
+            (requireActivity() as? DashboardActivity)?.registerSyncUpdates {
+                binding.progressBarSync.visibility = if (it) View.VISIBLE else View.GONE
+            }
         }
     }
 
@@ -46,7 +59,7 @@ class DashboardFragment : BaseFragmentAuth(R.layout.fragment_dashboard), View.On
                 activity?.let { DiagnosisActivity.start(it) }
             }
             binding.btnProfileMenu -> {
-                baseViewModel.setDirection(DashboardFragmentDirections.dashboardToProfileFragment())
+                findNavController().navigate(DashboardFragmentDirections.dashboardToProfileFragment())
             }
         }
     }

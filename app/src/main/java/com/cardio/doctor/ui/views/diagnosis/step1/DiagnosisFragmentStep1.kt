@@ -374,8 +374,8 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         editText?.run {
             setBackgroundResource(edtRoundedCorner)
         }
-        txtError.run {
-            txtError.text = message
+        txtError?.run {
+            setText(message)
             setVisibility(visibility)
         }
     }

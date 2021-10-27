@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit
 fun getDatePicker(
     context: Context?,
     mDate: Date?,
+    minDate:Date,
     callback: OnDateSetListener?,
 ): DatePickerDialog? {
     val calendar = Calendar.getInstance()
@@ -24,7 +25,7 @@ fun getDatePicker(
     val day = calendar[Calendar.DAY_OF_MONTH]
     val datePickerDialog = DatePickerDialog(context!!, callback, year, month, day)
     datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
-    //datePickerDialog.datePicker.minDate = (System.currentTimeMillis() -1000*60*60*24*365*100)
+    datePickerDialog.datePicker.minDate = minDate.time
     return datePickerDialog
 }
 
