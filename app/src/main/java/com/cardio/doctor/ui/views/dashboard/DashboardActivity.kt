@@ -26,9 +26,7 @@ class DashboardActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setNavigationController()
-        Intent(this, SyncHeathDataService::class.java).also { intent ->
-            bindService(intent, connection, Context.BIND_AUTO_CREATE)
-        }
+        startAndBindSyncService()
     }
 
     override fun onDestroy() {
@@ -37,8 +35,10 @@ class DashboardActivity : BaseActivity() {
         mBound = false
     }
 
-    fun startSynService(onSynLoading: (Boolean) -> Unit) {
-        this.onSynLoading=onSynLoading
+    fun startAndBindSyncService() {
+        Intent(this, SyncHeathDataService::class.java).also { intent ->
+            bindService(intent, connection, Context.BIND_AUTO_CREATE)
+        }
         SyncHeathDataService.start(this)
     }
 
@@ -81,6 +81,10 @@ class DashboardActivity : BaseActivity() {
                 }
             )
         }
+    }
+
+    fun registerSyncUpdates(onSynLoading: (Boolean) -> Unit){
+        this.onSynLoading=onSynLoading
     }
 
     fun unregisterSyncUpdates() {

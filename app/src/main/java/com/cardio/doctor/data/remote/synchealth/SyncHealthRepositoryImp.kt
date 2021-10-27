@@ -72,7 +72,7 @@ class SyncHealthRepositoryImp @Inject constructor(
                 fireStore.collection(FireStoreCollection.HEALTH_LOGS)
                     .document(it)
                     .collection(FireStoreCollection.LOGS)
-                    .document(date).update(mapHealth)
+                    .document(date).set(mapHealth)
                     .await()
             }
         }

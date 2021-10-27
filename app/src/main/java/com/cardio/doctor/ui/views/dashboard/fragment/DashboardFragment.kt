@@ -27,13 +27,12 @@ class DashboardFragment : BaseFragmentAuth(R.layout.fragment_dashboard), View.On
         (requireActivity() as DashboardActivity).unregisterSyncUpdates()
     }
 
-
     private fun setListener() {
         binding.btnDashboardOne.setOnClickListener(this)
         binding.btnDashboardTwo.setOnClickListener(this)
         binding.btnProfileMenu.setOnClickListener(this)
         binding.appButton.setOnClickListener { }
-        (requireActivity() as DashboardActivity).startSynService {
+        (requireActivity() as DashboardActivity).registerSyncUpdates {
             binding.progressBarSync.visibility = if (it) View.VISIBLE else View.GONE
         }
     }
