@@ -49,8 +49,9 @@ interface FireStoreCollection{
     companion object {
         const val USERS = "Users"
         const val DRUGS = "Drugs"
-        const val HEALTH_LOGS = "HealthLogs_Temp_Android"
+        const val HEALTH_LOGS = "HealthLogs"
         const val LOGS = "logs"
+        const val QUESTIONNAIRE = "Questionnaire"
     }
 }
 
@@ -89,6 +90,14 @@ interface FireStoreDocKey{
         const val BLOOD_DIASTOLIC_BP="diastolicBP"
         const val TIME_STAMP="time_stamp"
         const val DATE="date"
+        const val ATRIAL_FABRILLATION="Atrial Fibrillation"
+        const val CARDIAC_HEART_FAILURE="Cardiac Heart Failure"
+        const val QUESTIONS="Questions"
+        val QUESTION_KEY="question"
+        val OPTION_1="option_1"
+        val OPTION_2="option_2"
+        val OPTION_3="option_3"
+        val TYPE="type"
     }
 }
 
@@ -111,4 +120,9 @@ object DateFormat_{
     const val DATE_FORMAT_YYYY_MMM_DD = "yyyy-MM-dd"  //2021-10-18
 }
 
+object QuestionTypes{
+    const val TYPE_1=1L
+    const val TYPE_2=2L
+    const val TYPE_3=3L
+}
 

@@ -83,5 +83,15 @@
         app:layout_constraintStart_toEndOf="@+id/scrollViewStep1"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <FrameLayout
+        android:id="@+id/frameLayoutQuestionContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/cvDiagnosisBottomContainer"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewQuestionLeft"
+        tools:layout_editor_absoluteX="192dp">
+
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

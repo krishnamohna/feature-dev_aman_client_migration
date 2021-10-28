@@ -338,7 +338,7 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         var txtError: TextView? = null
         when (fieldType) {
             FieldType.AILMENT -> {
-                if(isKeyBoardOpen)
+                if(isKeyBoardOpen && message.isNotEmpty())
                 showToast(parentActivity!!,message)
                 txtError = binding.tvAilmentError
             }

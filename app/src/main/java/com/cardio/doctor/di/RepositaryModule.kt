@@ -3,6 +3,7 @@ package com.cardio.doctor.di
 import android.content.Context
 import com.cardio.doctor.R
 import com.cardio.doctor.data.local.UserManager
+import com.cardio.doctor.data.remote.questionnaire.QuestionnaireRepoImp
 import com.cardio.doctor.data.remote.common.repositary.UserAuthRepositaryImp
 import com.cardio.doctor.data.remote.diagnosis.repositary.DiagnosisRepoImp
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.FitbitRepositaryImp
@@ -14,6 +15,7 @@ import com.cardio.doctor.domain.common.repository.UserAuthRepositary
 import com.cardio.doctor.domain.diagnosis.DiagnosisRepo
 import com.cardio.doctor.domain.fitness.FitnessRepositary
 import com.cardio.doctor.domain.login.LoginRepositary
+import com.cardio.doctor.domain.questionare.QuestionnaireRepo
 import com.cardio.doctor.domain.synchealth.SyncHealthRepositary
 import com.cardio.doctor.ui.common.utils.Preference
 import dagger.Module
@@ -84,5 +86,10 @@ class RepositaryModule {
     @Singleton
     @Provides
     fun provideSyncHealthRepo(respositaryImp:SyncHealthRepositoryImp)=respositaryImp as SyncHealthRepositary
+
+    @Singleton
+    @Provides
+    fun provideQuestionareRepo(questionnaireRepoImp: QuestionnaireRepoImp)=questionnaireRepoImp as QuestionnaireRepo
+
 
 }
