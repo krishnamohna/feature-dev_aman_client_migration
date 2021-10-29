@@ -6,6 +6,7 @@ import com.cardio.doctor.ui.common.utils.FireStoreCollection
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey
 import com.cardio.doctor.ui.common.utils.extentions.toQuestionModel
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -17,6 +18,7 @@ class QuestionnaireRepoImp @Inject constructor(
     override suspend fun getQuestionnaires(): List<QuestionModel> {
         var result = fireStore.collection(FireStoreCollection.QUESTIONNAIRE)
             .document(FireStoreDocKey.ATRIAL_FABRILLATION).collection(FireStoreDocKey.QUESTIONS)
+            .orderBy(FireStoreDocKey.POSITION, Query.Direction.ASCENDING)
             .get().await()
         return result.toQuestionModel()
     }

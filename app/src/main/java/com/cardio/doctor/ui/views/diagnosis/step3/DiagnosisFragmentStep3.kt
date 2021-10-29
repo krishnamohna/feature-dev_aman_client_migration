@@ -8,9 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.databinding.FragmentDiagnosisPart3Binding
 import com.cardio.doctor.domain.questionare.model.QuestionModel
-import com.cardio.doctor.ui.common.customviews.questions.QuestionType1View
-import com.cardio.doctor.ui.common.customviews.questions.QuestionType2View
-import com.cardio.doctor.ui.common.customviews.questions.QuestionType3View
+import com.cardio.doctor.ui.common.customviews.questions.*
 import com.cardio.doctor.ui.common.utils.QuestionTypes
 import com.cardio.doctor.ui.common.utils.extentions.customObserver
 import com.cardio.doctor.ui.views.diagnosis.common.BaseDiagnosisFragment
@@ -66,6 +64,7 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
     }
 
     private fun showQuestion(questionView: View) {
+        binding.tvQuestionTotalVsCurrent.setText("${(lastQuestionIndex+1)}/${questionList?.size}")
         binding.frameLayoutQuestionContainer.removeAllViews()
         binding.frameLayoutQuestionContainer.addView(questionView,
             ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -83,7 +82,10 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
             QuestionTypes.TYPE_3 -> {
                 QuestionType3View(requireActivity(), question)
             }
-            else -> QuestionType1View(requireActivity(), question)
+            QuestionTypes.TYPE_4 -> {
+                QuestionType4View(requireActivity(), question)
+            }
+            else -> QuestionTypeNotSupportedView(requireActivity(), question)
         }
     }
 

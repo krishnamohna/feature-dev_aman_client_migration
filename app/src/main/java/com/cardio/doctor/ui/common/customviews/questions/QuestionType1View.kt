@@ -16,7 +16,7 @@ class QuestionType1View @JvmOverloads constructor(context: Context, question: Qu
 
     override fun showQuestion(questionModel: QuestionModel) {
         if (isQuestionValid(questionModel)) {
-            binding.tvQuestion.setText(questionModel.question)
+            binding.tvQuestion.setText("${questionModel.position}. ${questionModel.question}")
             binding.rbOption1.setText(questionModel.option_1)
             binding.rbOption2.setText(questionModel.option_2)
             binding.rbOption3.setText(questionModel.option_3)

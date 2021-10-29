@@ -97,7 +97,11 @@ interface FireStoreDocKey{
         val OPTION_1="option_1"
         val OPTION_2="option_2"
         val OPTION_3="option_3"
+        val OPTION_4="option_4"
         val TYPE="type"
+        val POSITION="position"
+        val SECONDARY_OPTION_1="secondary_option_1"
+        val SECONDARY_OPTION_2="secondary_option_2"
     }
 }
 
@@ -124,5 +128,6 @@ object QuestionTypes{
     const val TYPE_1=1L
     const val TYPE_2=2L
     const val TYPE_3=3L
+    const val TYPE_4=4L
 }
 

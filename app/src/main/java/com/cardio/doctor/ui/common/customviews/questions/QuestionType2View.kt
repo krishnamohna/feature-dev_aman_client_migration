@@ -20,7 +20,7 @@ class QuestionType2View @JvmOverloads constructor(
 
     override fun showQuestion(questionModel: QuestionModel) {
         if (isQuestionValid(questionModel)) {
-            binding.tvQuestionType2.setText(questionModel.question)
+            binding.tvQuestionType2.setText("${questionModel.position}. ${questionModel.question}")
             binding.rbOption2Type2.setText(questionModel.option_2)
         }
     }

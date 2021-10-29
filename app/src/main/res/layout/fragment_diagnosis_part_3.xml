@@ -42,7 +42,7 @@
         android:padding="@dimen/_4sdp"
         android:clickable="true"
         android:background="@drawable/drawable_green_circular"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/tvQuestionTotalVsCurrent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:srcCompat="@drawable/ic_left_white" />
 
@@ -54,12 +54,12 @@
         android:padding="@dimen/_4sdp"
         android:clickable="true"
         android:background="@drawable/drawable_green_border_circular"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/tvQuestionTotalVsCurrent"
         app:layout_constraintTop_toTopOf="@+id/imageViewQuestionLeft"
         app:srcCompat="@drawable/ic_right_green" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvQuestionTotalVsCurrent"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,6 +72,18 @@
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/imageViewQuestionLeft" />
 
+    <FrameLayout
+        android:id="@+id/frameLayoutQuestionContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/cvDiagnosisBottomContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewQuestionLeft">
+
+    </FrameLayout>
+
+
     <include
         android:id="@+id/cvDiagnosisBottomContainer"
         layout="@layout/include_diagnosis_bottom_views"
@@ -83,15 +95,6 @@
         app:layout_constraintStart_toEndOf="@+id/scrollViewStep1"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/frameLayoutQuestionContainer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/cvDiagnosisBottomContainer"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewQuestionLeft"
-        tools:layout_editor_absoluteX="192dp">
-
-    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
