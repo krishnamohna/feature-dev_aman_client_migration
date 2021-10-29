@@ -182,6 +182,7 @@
     <string name="confirm_dismiss_diagnosis">Do you want to discard changes?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="unknown">Unkown</string>
     <string name="device_does_not_support_speech_to_text">Your Device Don\'t Support Speech Input</string>
     <!--fitbit-->
     <string name="fitbit_logo_description">Fitbit Logo</string>

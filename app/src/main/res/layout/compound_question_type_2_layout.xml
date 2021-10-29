@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edtFirstName"
+        android:id="@+id/edtInput"
         style="@style/BaseAppTheme.EdtTxt"
         android:layout_width="0dp"
         android:layout_height="@dimen/_40sdp"
@@ -44,8 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         app:layout_constraintEnd_toEndOf="@+id/tvQuestionType2"
-        app:layout_constraintStart_toEndOf="@+id/edtFirstName"
-        app:layout_constraintTop_toTopOf="@+id/edtFirstName"
+        app:layout_constraintStart_toEndOf="@+id/edtInput"
+        app:layout_constraintTop_toTopOf="@+id/edtInput"
         tools:text="Unknown" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

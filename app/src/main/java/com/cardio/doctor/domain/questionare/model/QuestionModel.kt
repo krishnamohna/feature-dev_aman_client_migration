@@ -9,5 +9,6 @@ data class QuestionModel(
     val option_4: String?,
     val position: Long?,
     val secondary_option_1: String?,
-    val secondary_option_2: String?
+    val secondary_option_2: String?,
+    var answer:String?=null
 )

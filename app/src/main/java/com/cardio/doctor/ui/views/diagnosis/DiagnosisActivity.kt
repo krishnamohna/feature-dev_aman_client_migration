@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -14,6 +13,7 @@ import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.Authen
 import com.cardio.doctor.data.remote.fitnesstracker.fitbit.authentication.AuthenticationResult
 import com.cardio.doctor.databinding.ActivityDiagnosisBinding
 import com.cardio.doctor.domain.diagnosis.DiagnosisModel
+import com.cardio.doctor.domain.questionare.model.QuestionModel
 import com.cardio.doctor.ui.common.base.activity.BaseToolbarActivity
 import com.cardio.doctor.ui.common.base.fragment.toolbar.DiagnosisToolbarImp
 import com.cardio.doctor.ui.common.base.fragment.toolbar.IToolbar
@@ -31,6 +31,8 @@ class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
         }
     }
 
+    var questionList: List<QuestionModel>?=null
+    var lastQuestionIndex = 0
     private var onConnectClick: (() -> Unit?)? = null
     private var lastStep: Int? = null
     private val navController: NavController by lazy {
@@ -132,7 +134,7 @@ class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
     }
 
     override fun onAuthFinished(authenticationResult: AuthenticationResult?) {
-        if (authenticationResult!=null && authenticationResult.isSuccessful()) {
+        if (authenticationResult != null && authenticationResult.isSuccessful()) {
             onConnectClick?.invoke()
         } /*else {
             displayAuthError(authenticationResult)

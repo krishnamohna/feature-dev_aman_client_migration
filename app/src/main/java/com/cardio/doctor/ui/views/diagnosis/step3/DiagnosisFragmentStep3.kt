@@ -19,7 +19,6 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
 
     private var questionList: List<QuestionModel>? = null
     private val viewModel: DiagnosisFragmentStep3ViewModel by viewModels()
-    private var lastQuestionIndex = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,8 +37,13 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
         init()
     }
 
-    private fun init() {
-        viewModel.getQuestions()
+    private fun init(){
+        //check if question list already exist then do not load from api
+        if(diagnosisActivity?.questionList!=null){
+            setQuestionsInViews(diagnosisActivity?.questionList)
+        }else{
+            viewModel.getQuestions()
+        }
     }
 
     private fun setObservers() {
@@ -47,16 +51,17 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
             this,
             onLoading = ::showProgress,
             onSuccess = {
-                questionList = it
-                setQuestionsInViews(questionList)
+                diagnosisActivity?.questionList=it
+                setQuestionsInViews(it)
             },
             onError = ::onError
         )
     }
 
-    private fun setQuestionsInViews(questionList: List<QuestionModel>?) {
+    private fun setQuestionsInViews(it: List<QuestionModel>?) {
+        questionList = it
         questionList?.isNotEmpty().let {
-            var question = questionList?.get(lastQuestionIndex)
+            var question = questionList?.get(viewModel.lastQuestionIndex)
             question?.run {
                 showQuestion(getQuestionView(question))
             }
@@ -64,7 +69,7 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
     }
 
     private fun showQuestion(questionView: View) {
-        binding.tvQuestionTotalVsCurrent.setText("${(lastQuestionIndex+1)}/${questionList?.size}")
+        binding.tvQuestionTotalVsCurrent.setText("${(diagnosisActivity?.lastQuestionIndex?.plus(1))}/${questionList?.size}")
         binding.frameLayoutQuestionContainer.removeAllViews()
         binding.frameLayoutQuestionContainer.addView(questionView,
             ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -110,9 +115,9 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
 
     private fun showPreviousQuestion() {
         questionList?.let {
-            if (lastQuestionIndex > 0) {
-                lastQuestionIndex--
-                var question = it.get(lastQuestionIndex)
+            if (diagnosisActivity?.lastQuestionIndex!! > 0) {
+                diagnosisActivity?.lastQuestionIndex=diagnosisActivity?.lastQuestionIndex!!-1
+                var question = it.get(diagnosisActivity?.lastQuestionIndex!!)
                 showQuestion(getQuestionView(question))
             }
         }
@@ -120,9 +125,9 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
 
     private fun showNextQuestion() {
         questionList?.let {
-            if (lastQuestionIndex < it.size - 1) {
-                lastQuestionIndex++
-                var question = it.get(lastQuestionIndex)
+            if (diagnosisActivity?.lastQuestionIndex!! < it.size - 1) {
+                diagnosisActivity?.lastQuestionIndex=diagnosisActivity?.lastQuestionIndex!!+1
+                var question = it.get(diagnosisActivity?.lastQuestionIndex!!)
                 showQuestion(getQuestionView(question))
             }
         }
