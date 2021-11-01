@@ -102,6 +102,7 @@ interface FireStoreDocKey{
         val POSITION="position"
         val SECONDARY_OPTION_1="secondary_option_1"
         val SECONDARY_OPTION_2="secondary_option_2"
+        val SECONDARY_OPTION_3="secondary_option_3"
     }
 }
 
@@ -116,6 +117,7 @@ object GoogleFit{
 }
 
 object Constants{
+    const val GOOGLE_SPEECH_SEARCH_APP="com.google.android.googlequicksearchbox"
     const val DATE_FORMAT_DD_MMM_YYYY = "dd MMM yyyy"
 }
 

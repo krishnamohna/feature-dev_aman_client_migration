@@ -45,20 +45,22 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
 
     private var isKeyBoardOpen: Boolean = false
     private val viewModel: DiagnosisViewStep1ViewModel by viewModels()
+
     @Inject
     lateinit var labelVisiblityHelper: LabelVisiblityHelper
 
     private var resultLauncherSpeechToText: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                result?.data?.getParcelableExtra<FitnessModel>(EXTRAS.USER_PROFILE)?.let { setPatientDetail(it) }
+                result?.data?.getParcelableExtra<FitnessModel>(EXTRAS.USER_PROFILE)
+                    ?.let { setPatientDetail(it) }
             }
         }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentDiagnosisPart1Binding.inflate(inflater, container, false)
         return binding.root
@@ -68,7 +70,6 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         super.onViewCreated(view, savedInstanceState)
         setListeners()
         setViews()
-      //  setDataInViewIfExist()
         setObservers()
     }
 
@@ -80,7 +81,7 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
     override fun onResume() {
         super.onResume()
         KeyboardEventListener(R.id.clScrollViewContainer, parentActivity!!) {
-            isKeyBoardOpen=it
+            isKeyBoardOpen = it
             if (it) {
                 val labelHeight =
                     resources.getDimension(R.dimen.offset_scroll_label_up_medium).toInt()
@@ -114,11 +115,12 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
     }
 
     private fun setPatientDetail(it: HeartRateModel) {
-        it.restHeartRate?.let {  binding.clHealthDetail.edtHeartRate.setText(it.toString()) }
+        it.restHeartRate?.let { binding.clHealthDetail.edtHeartRate.setText(it.toString()) }
     }
 
     private fun setPatientDetail(userModel: FitnessModel) {
-        binding.clHealthDetail.edtWeight.setText(userModel.weight?.toString()?.convertMetricWeightToPound(userModel.weightUnit))
+        binding.clHealthDetail.edtWeight.setText(userModel.weight?.toString()
+            ?.convertMetricWeightToPound(userModel.weightUnit))
         binding.clHealthDetail.edtHeartRate.setText(userModel.heartRate?.toString())
     }
 
@@ -142,57 +144,12 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         )
     }
 
-
-    private fun setDataInViewIfExist() {
-        diagnosisActivity?.getDiagnosisModel()?.firstName?.run {
-            binding.clPatientDetail.edtFirstName.setText(
-                this
-            )
-        }
-        diagnosisActivity?.getDiagnosisModel()?.lastName?.run {
-            binding.clPatientDetail.edtLastName.setText(
-                this
-            )
-        }
-        diagnosisActivity?.getDiagnosisModel()?.age?.run {
-            binding.clPatientDetail.edtAge.setText(
-                this
-            )
-        }
-        diagnosisActivity?.getDiagnosisModel()?.weight?.run {
-            binding.clHealthDetail.edtWeight.setText(
-                this
-            )
-        }
-        diagnosisActivity?.getDiagnosisModel()?.heartRate?.run {
-            binding.clHealthDetail.edtHeartRate.setText(
-                this
-            )
-        }
-        diagnosisActivity?.getDiagnosisModel()?.topBp?.run {
-            binding.clHealthDetail.edtTopBp.setText(
-                this
-            )
-        }
-        diagnosisActivity?.getDiagnosisModel()?.bottomBp?.run {
-            binding.clHealthDetail.edtBottomBp.setText(
-                this
-            )
-        }
-    }
-
     private fun setListeners() {
         diagnosisActivity?.onConnectClick {
             Intent(
                 requireContext(),
                 SyncHealthActivty::class.java
             ).run { resultLauncherSpeechToText.launch(this) }
-            /* if (viewModel.isLoggedIn()) {
-                viewModel.getUserData(parentActivity!!)
-                viewModel.getHeartRate(parentActivity!!)
-            } else {
-                viewModel.login(parentActivity!!)
-            }*/
         }
         binding.cvDiagnosisBottomContainer.btNext.setOnClickListener {
             onSubmitClick()
@@ -261,6 +218,17 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
     }
 
     private fun onSubmitClick() {
+        isAllValidationSuccessFull({
+            findNavController().navigate(DiagnosisFragmentStep1Directions.actionDiagnosisFragmentPart1ToDiagnosisFragmentPart2())
+        }, {
+            onValidationsFailed(it)
+        })
+    }
+
+    private fun isAllValidationSuccessFull(
+        succcess: () -> Unit,
+        failed: (validations: List<ValidationModelV2>) -> Unit,
+    ) {
         val firstName = binding.clPatientDetail.edtFirstName.getTrimmedText()
         val lastName = binding.clPatientDetail.edtLastName.getTrimmedText()
         val age = binding.clPatientDetail.edtAge.getTrimmedText()
@@ -280,11 +248,9 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
             bottomBp,
             {
                 saveStateToParent(firstName, lastName, age, weight, heartRate, topBp, bottomBp)
-                findNavController().navigate(DiagnosisFragmentStep1Directions.actionDiagnosisFragmentPart1ToDiagnosisFragmentPart2())
+                succcess.invoke()
             },
-            {
-                onValidationsFailed(it)
-            })
+            failed)
     }
 
     private fun saveStateToParent(
@@ -294,7 +260,7 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         weight: String,
         heartRate: String,
         topBp: String,
-        bottomBp: String
+        bottomBp: String,
     ) {
         diagnosisActivity?.getDiagnosisModel()?.firstName = firstName
         diagnosisActivity?.getDiagnosisModel()?.lastName = lastName
@@ -332,14 +298,14 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         fieldType: FieldType,
         edtRoundedCorner: Int,
         visibility: Int,
-        message: String
+        message: String,
     ) {
         var editText: EditText? = null
         var txtError: TextView? = null
         when (fieldType) {
             FieldType.AILMENT -> {
-                if(isKeyBoardOpen && message.isNotEmpty())
-                showToast(parentActivity!!,message)
+                if (isKeyBoardOpen && message.isNotEmpty())
+                    showToast(parentActivity!!, message)
                 txtError = binding.tvAilmentError
             }
             FieldType.FIRST_NAME -> {

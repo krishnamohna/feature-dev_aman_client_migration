@@ -206,4 +206,7 @@
     <string name="select_date_lower">Select Date</string>
     <string name="title_health_logs">Health Logs</string>
     <string name="succss_response_health_log">Health Log added successfully</string>
+    <string name="validate_all_questions">Please answer all questions first!!</string>
+    <string name="leads">Leads</string>
+    <string name="vaidation_answer_current_question_first">Please answer current question first !!</string>
 </resources>

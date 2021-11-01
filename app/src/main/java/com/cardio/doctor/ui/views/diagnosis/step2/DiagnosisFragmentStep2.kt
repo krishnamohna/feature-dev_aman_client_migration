@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentDiagnosisPart2Binding
+import com.cardio.doctor.ui.common.utils.Constants
 import com.cardio.doctor.ui.common.utils.extentions.customObserver
 import com.cardio.doctor.ui.common.utils.showFilePickOptions
 import com.cardio.doctor.ui.common.utils.showToast
@@ -92,7 +93,7 @@ class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Bindi
     }
 
     private fun promptToInstallApp() {
-        val appPackageName = "com.google.android.googlequicksearchbox"
+        val appPackageName = Constants.GOOGLE_SPEECH_SEARCH_APP
         try {
             startActivity(
                 Intent(

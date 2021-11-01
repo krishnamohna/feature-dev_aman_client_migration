@@ -2,18 +2,19 @@ package com.cardio.doctor.ui.common.customviews.questions
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.widget.FrameLayout
 import android.widget.RadioButton
 import com.cardio.doctor.databinding.CompoundQuestionType1LayoutBinding
 import com.cardio.doctor.domain.questionare.model.QuestionModel
+import com.cardio.doctor.ui.common.customviews.questions.base.BaseQuestionView
 
-class QuestionType1View @JvmOverloads constructor(context: Context, val question: QuestionModel) :
-    FrameLayout(context), QuestionView {
+class QuestionType1View @JvmOverloads constructor(context: Context,  question: QuestionModel) :
+    BaseQuestionView(context,question){
     private var binding: CompoundQuestionType1LayoutBinding =
         CompoundQuestionType1LayoutBinding.inflate(LayoutInflater.from(context), this, true)
+
     init {
-        showQuestion(question)
         setListeners()
+        showQuestion(question)
     }
 
     private fun setListeners() {
@@ -21,12 +22,13 @@ class QuestionType1View @JvmOverloads constructor(context: Context, val question
             if((radioGroup.findViewById<RadioButton>(id)).isChecked){
                 var answer=(radioGroup.findViewById<RadioButton>(id)).text.toString()
                 question.answer=answer
+                answerChanged()
             }else if(radioGroup.checkedRadioButtonId==-1){
                 question.answer=null
+                answerChanged()
             }
         }
     }
-
 
     override fun showQuestion(questionModel: QuestionModel) {
         if (isQuestionValid(questionModel)) {
@@ -50,33 +52,13 @@ class QuestionType1View @JvmOverloads constructor(context: Context, val question
         }
     }
 
-/*
-    private fun setSelection() {
-       */
-/* question.answer?.let {
-            when(it){
-                context.getString(R.string.yes)->{
-                    binding.rbOption1.isChecked=true
-                }
-                context.getString(R.string.no)->{
-                    binding.rbOption2.isChecked=true
-                }
-                context.getString(R.string.unknown)->{
-                    binding.rbOption3.isChecked=true
-                }
-            }
-        }*//*
-
-
-    }
-*/
-
     override fun isQuestionValid(questionModel: QuestionModel): Boolean {
         //check all parameter here first
         return true
     }
 
-    override fun getAnswer() {
-        TODO("Not yet implemented")
+    override fun isQuestionAnswered(): Boolean {
+        return !question.answer.isNullOrBlank()
     }
+
 }

@@ -50,9 +50,10 @@ fun QuerySnapshot.toQuestionModel(): List<QuestionModel> {
         var option_3 = it.get(FireStoreDocKey.OPTION_3) as? String
         var option_4 = it.get(FireStoreDocKey.OPTION_4) as? String
         var position = it.get(FireStoreDocKey.POSITION) as? Long
-        var secondary_option_1 = it.get(FireStoreDocKey.POSITION) as? String
-        var secondary_option_2 = it.get(FireStoreDocKey.POSITION) as? String
-        list.add(QuestionModel(type, question,option_1,option_2,option_3,option_4,position,secondary_option_1,secondary_option_1))
+        var secondary_option_1 = it.get(FireStoreDocKey.SECONDARY_OPTION_1) as? String
+        var secondary_option_2 = it.get(FireStoreDocKey.SECONDARY_OPTION_2) as? String
+        var secondary_option_3 = it.get(FireStoreDocKey.SECONDARY_OPTION_3) as? String
+        list.add(QuestionModel(type, question,option_1,option_2,option_3,option_4,position,secondary_option_1,secondary_option_2,secondary_option_3))
     }
     return list
 }

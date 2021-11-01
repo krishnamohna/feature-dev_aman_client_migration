@@ -2,12 +2,12 @@ package com.cardio.doctor.ui.common.customviews.questions
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.widget.FrameLayout
 import com.cardio.doctor.databinding.CompoundQuestionTypeNotSupportedLayoutBinding
 import com.cardio.doctor.domain.questionare.model.QuestionModel
+import com.cardio.doctor.ui.common.customviews.questions.base.BaseQuestionView
 
-class QuestionTypeNotSupportedView @JvmOverloads constructor(context: Context, val queston: QuestionModel) :
-    FrameLayout(context), QuestionView {
+class QuestionTypeNotSupportedView @JvmOverloads constructor(context: Context, question: QuestionModel) :
+    BaseQuestionView(context,question) {
     private var binding: CompoundQuestionTypeNotSupportedLayoutBinding =
         CompoundQuestionTypeNotSupportedLayoutBinding.inflate(LayoutInflater.from(context), this, true)
 
@@ -15,12 +15,12 @@ class QuestionTypeNotSupportedView @JvmOverloads constructor(context: Context, v
 
     }
 
-    override fun getAnswer() {
+    override fun isQuestionValid(question: QuestionModel): Boolean {
         TODO("Not yet implemented")
     }
 
-    override fun isQuestionValid(questionModel: QuestionModel): Boolean {
-        //check all parameter here first
-        return true
+    override fun isQuestionAnswered(): Boolean {
+        TODO("Not yet implemented")
     }
+
 }
