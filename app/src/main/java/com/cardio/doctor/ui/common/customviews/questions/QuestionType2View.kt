@@ -22,13 +22,17 @@ class QuestionType2View @JvmOverloads constructor(
 
     private fun setListeners() {
         binding.rbOption2Type2.setOnCheckedChangeListener { compoundButton, b ->
-            if(b){
-                question.answer=binding.rbOption2Type2.text.toString()
+            if (b) {
+                question.answer = binding.rbOption2Type2.text.toString()
+                binding.edtInput.setText("")
             }
         }
-        binding.edtInput.addTextChangedListener {
-            it?.isNotEmpty().let {
-                binding.rbOption2Type2.isChecked=false
+        binding.edtInput.addTextChangedListener { editable->
+            editable?.isNotEmpty()?.let {
+                binding.rbOption2Type2.isChecked = false
+                if(it){
+                    question.answer=editable.toString()
+                }
             }
         }
     }
@@ -38,6 +42,17 @@ class QuestionType2View @JvmOverloads constructor(
         if (isQuestionValid(questionModel)) {
             binding.tvQuestionType2.setText("${questionModel.position}. ${questionModel.question}")
             binding.rbOption2Type2.setText(questionModel.option_2)
+            setSelection()
+        }
+    }
+
+    private fun setSelection() {
+        question.answer?.let {
+            if (it == binding.rbOption2Type2.text.toString()) {
+                binding.rbOption2Type2.isChecked = true
+            } else {
+                binding.edtInput.setText(it)
+            }
         }
     }
 
