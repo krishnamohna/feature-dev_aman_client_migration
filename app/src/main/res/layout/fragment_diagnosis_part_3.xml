@@ -63,7 +63,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1/10"
+        tools:text="1/10"
         style="@style/BaseAppTheme.TxtView"
         android:textColor="@color/black"
         android:textStyle="bold"
