@@ -81,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/leads"
+                android:textStyle="bold"
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/radioGroupQuestion"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroupQuestion"

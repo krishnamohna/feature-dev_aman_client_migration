@@ -107,6 +107,8 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
     private fun setListeners() {
         binding.cvDiagnosisBottomContainer.btNext.setOnClickListener {
             if (hasUserGivenAllAnswers()) {
+                //save all questions to diagnoss model in diagnosis activity
+                diagnosisActivity?.getDiagnosisModel()?.questionnaire = questionList
                 findNavController().navigate(DiagnosisFragmentStep3Directions.actionDiagnosisFragmentPart3ToDiagnosisFragmentPart4())
             } else {
                 context?.let { it1 -> showToast(it1, getString(R.string.validate_all_questions)) }

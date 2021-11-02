@@ -8,9 +8,17 @@ import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentDiagnosisPart4Binding
 import com.cardio.doctor.ui.common.utils.showToast
+import com.cardio.doctor.ui.common.utils.textwatcher.LabelVisiblityHelper
 import com.cardio.doctor.ui.views.diagnosis.common.BaseDiagnosisFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Binding>() {
+
+    @Inject
+    lateinit var labelVisiblityHelper: LabelVisiblityHelper
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +46,54 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
         binding.cvDiagnosisBottomContainer.btCancel.setOnClickListener {
             findNavController().popBackStack()
         }
+        labelVisiblityHelper.addView(
+            binding.clPatientDetail.edtFirstName,
+            binding.clPatientDetail.tvFirstNameError,
+            binding.clPatientDetail.firstNameLabel,
+            binding.scrollViewStep4, parentActivity
+        )
+        labelVisiblityHelper.addView(
+            binding.clPatientDetail.edtLastName,
+            binding.clPatientDetail.tvErrorLastName,
+            binding.clPatientDetail.txtLastName,
+            binding.scrollViewStep4,
+            parentActivity
+        )
+        labelVisiblityHelper.addView(
+            binding.clPatientDetail.edtAge,
+            binding.clPatientDetail.tvAgeError,
+            binding.clPatientDetail.txtAge,
+            binding.scrollViewStep4,
+            parentActivity
+        )
+        labelVisiblityHelper.addView(
+            binding.clPatientDetail.edtWeight,
+            binding.clPatientDetail.tvWeightError,
+            binding.clPatientDetail.tvWeight,
+            binding.scrollViewStep4,
+            parentActivity
+        )
+        labelVisiblityHelper.addView(
+            binding.clPatientDetail.edtHeightAilment,
+            binding.clPatientDetail.tvHeightErorAilment,
+            binding.clPatientDetail.txtHeightAilment,
+            binding.scrollViewStep4,
+            parentActivity
+        )
+        labelVisiblityHelper.addView(
+            binding.clPatientDetail.edtHeartRateAilment,
+            binding.clPatientDetail.tvHearRateErorAilment,
+            binding.clPatientDetail.txtHeartRateAilment,
+            binding.scrollViewStep4,
+            parentActivity
+        )
+        labelVisiblityHelper.addView(
+            binding.clPatientDetail.edtEnergy,
+            binding.clPatientDetail.tvErrorEnergy,
+            binding.clPatientDetail.tvAilment2,
+            binding.scrollViewStep4,
+            parentActivity
+        )
     }
 
 

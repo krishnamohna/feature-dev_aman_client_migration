@@ -46,9 +46,11 @@
     <string name="select_ailment">Please select Ailment</string>
     <string name="enter_age">Please enter age</string>
     <string name="enter_weight">Please enter weight</string>
-    <string name="enter_heart_rate">Please heart rate</string>
-    <string name="enter_top_bp">Please top bp</string>
-    <string name="enter_bottom_bp">Please bottom bp</string>
+    <string name="enter_heart_rate">Please enter heart rate</string>
+    <string name="enter_top_bp">Please enter top bp</string>
+    <string name="enter_bottom_bp">Please enter bottom bp</string>
+    <string name="enter_energy">Please enter Active Energy</string>
+    <string name="enter_ailment">Please enter Ailment</string>
     <string name="enter_valid_first_name">First name must be atleast 3 characters long</string>
     <string name="enter_medicine">Enter medicine</string>
     <string name="enter_email_address">Please enter your email</string>
@@ -166,6 +168,7 @@
     <string name="verify_password">Verify Password</string>
     <string name="msg_change_email_label">To edit your email please enter your password</string>
     <string name="ailment">AILMENT</string>
+    <string name="ailment_lowercap">Ailment</string>
     <string name="patient_detail">PATIENT DETAIL</string>
     <string name="age">Age</string>
     <string name="health_detail">HEALTH DETAIL</string>
@@ -209,4 +212,5 @@
     <string name="validate_all_questions">Please answer all questions first!!</string>
     <string name="leads">Leads</string>
     <string name="vaidation_answer_current_question_first">Please answer current question first !!</string>
+    <string name="active_energy_in_kcal">Active Energy (in kcal)</string>
 </resources>
