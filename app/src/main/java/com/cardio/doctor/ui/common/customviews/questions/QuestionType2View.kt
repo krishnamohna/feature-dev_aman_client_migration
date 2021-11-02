@@ -23,22 +23,28 @@ class QuestionType2View @JvmOverloads constructor(
     private fun setListeners() {
         binding.rbOption2Type2.setOnCheckedChangeListener { compoundButton, b ->
             if (b) {
-                answerChanged()
                 question.answer = binding.rbOption2Type2.text.toString()
-                binding.edtInput.setText("")
+                clearEdtField()
+                answerChanged()
             }
         }
         binding.edtInput.addTextChangedListener { editable->
             editable?.isNotEmpty()?.let {
-                binding.rbOption2Type2.isChecked = false
-                if(it){
-                    answerChanged()
-                    question.answer=editable.toString()
+                if (binding.edtInput.hasFocus()) {
+                    binding.rbOption2Type2.isChecked = false
+                    if(it){
+                        question.answer=editable.toString()
+                        answerChanged()
+                    }
                 }
             }
         }
     }
 
+    private fun clearEdtField() {
+        binding.edtInput.clearFocus()
+        binding.edtInput.text?.clear()
+    }
 
     override fun showQuestion(questionModel: QuestionModel) {
         if (isQuestionValid(questionModel)) {

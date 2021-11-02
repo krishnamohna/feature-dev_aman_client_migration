@@ -98,15 +98,10 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
         }
     }
 
-    private fun registerAnswerListerner(questionType4View: QuestionType4View): View {
-        questionType4View.registerOnAnswerChange {
-            enableButtonClick(it)
-        }
-        return questionType4View
-    }
 
     private fun setViews() {
         setStepView(binding.stepView.stepView)
+        enableButtonClick(hasUserGivenAllAnswers())
     }
 
     private fun setListeners() {
@@ -129,6 +124,7 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
     }
 
     private fun hasUserGivenAllAnswers(): Boolean {
+        if (questionList == null) return false
         questionList?.forEach {
             if (it.answer.isNullOrBlank()) return false
         }
