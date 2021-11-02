@@ -6,6 +6,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id "androidx.navigation.safeargs.kotlin"
     id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 
@@ -129,5 +130,6 @@ dependencies {
     compileOnly group: 'commons-codec', name: 'commons-codec', version: '1.15'
     //google fitness
     implementation("com.google.android.gms:play-services-fitness:20.0.0")
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
 }
 

@@ -90,7 +90,7 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
         labelVisiblityHelper.addView(
             binding.clPatientDetail.edtEnergy,
             binding.clPatientDetail.tvErrorEnergy,
-            binding.clPatientDetail.tvAilment2,
+            binding.clPatientDetail.tvEnergyLabel,
             binding.scrollViewStep4,
             parentActivity
         )
