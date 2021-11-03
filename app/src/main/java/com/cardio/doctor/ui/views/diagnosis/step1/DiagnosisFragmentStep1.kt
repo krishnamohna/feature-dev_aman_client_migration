@@ -247,13 +247,14 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
             topBp,
             bottomBp,
             {
-                saveStateToParent(firstName, lastName, age, weight, heartRate, topBp, bottomBp)
+                saveStateToParent(binding.spinnerCategory.selectedItem.toString(),firstName, lastName, age, weight, heartRate, topBp, bottomBp)
                 succcess.invoke()
             },
             failed)
     }
 
     private fun saveStateToParent(
+        ailment:String,
         firstName: String,
         lastName: String,
         age: String,
@@ -265,10 +266,11 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         diagnosisActivity?.getDiagnosisModel()?.firstName = firstName
         diagnosisActivity?.getDiagnosisModel()?.lastName = lastName
         diagnosisActivity?.getDiagnosisModel()?.age = age
-        diagnosisActivity?.getDiagnosisModel()?.weight = weight as? Int
-        diagnosisActivity?.getDiagnosisModel()?.heartRate = heartRate as? Int
-        diagnosisActivity?.getDiagnosisModel()?.topBp = topBp as? Int
-        diagnosisActivity?.getDiagnosisModel()?.bottomBp = bottomBp as? Int
+        diagnosisActivity?.getDiagnosisModel()?.weight = weight.toDouble()
+        diagnosisActivity?.getDiagnosisModel()?.heartRate = heartRate.toInt()
+        diagnosisActivity?.getDiagnosisModel()?.topBp = topBp.toInt()
+        diagnosisActivity?.getDiagnosisModel()?.bottomBp = bottomBp.toInt()
+        diagnosisActivity?.getDiagnosisModel()?.ailment = ailment
     }
 
     private fun onValidationsFailed(it: List<ValidationModelV2>) {

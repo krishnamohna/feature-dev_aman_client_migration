@@ -10,7 +10,7 @@ class DiagnosisModel(
     var firstName: String? = null
     var lastName: String? = null
     var age: String? = null
-    var weight: Int? = null
+    var weight: Double? = null
     var heartRate: Int? = null
     var topBp: Int? = null
     var bottomBp: Int? = null

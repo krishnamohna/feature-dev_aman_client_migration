@@ -8,17 +8,15 @@ import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentDiagnosisPart4Binding
 import com.cardio.doctor.ui.common.utils.showToast
-import com.cardio.doctor.ui.common.utils.textwatcher.LabelVisiblityHelper
 import com.cardio.doctor.ui.views.diagnosis.common.BaseDiagnosisFragment
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Binding>() {
 
-    @Inject
+  /*  @Inject
     lateinit var labelVisiblityHelper: LabelVisiblityHelper
-
+*/
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +35,12 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
 
     private fun setViews() {
         setStepView(binding.stepView.stepView)
+        diagnosisActivity?.getDiagnosisModel()?.firstName?.let { binding.clPatientDetail.edtFirstName.setText(it)}
+        diagnosisActivity?.getDiagnosisModel()?.lastName?.let { binding.clPatientDetail.edtLastName.setText(it)}
+        diagnosisActivity?.getDiagnosisModel()?.heartRate?.let { binding.clPatientDetail.edtHeartRateAilment.setText(it.toString())}
+        diagnosisActivity?.getDiagnosisModel()?.weight?.let { binding.clPatientDetail.edtWeight.setText(it.toString())}
+        diagnosisActivity?.getDiagnosisModel()?.ailment?.let { binding.clPatientDetail.edtAilment.setText(it)}
+        diagnosisActivity?.getDiagnosisModel()?.age?.let { binding.clPatientDetail.edtAge.setText(it.toString())}
     }
 
     private fun setListeners() {
@@ -46,6 +50,7 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
         binding.cvDiagnosisBottomContainer.btCancel.setOnClickListener {
             findNavController().popBackStack()
         }
+/*
         labelVisiblityHelper.addView(
             binding.clPatientDetail.edtFirstName,
             binding.clPatientDetail.tvFirstNameError,
@@ -94,6 +99,7 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
             binding.scrollViewStep4,
             parentActivity
         )
+*/
     }
 
 
