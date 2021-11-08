@@ -17,7 +17,7 @@ class QuestionnaireRepoImp @Inject constructor(
 
     override suspend fun getQuestionnaires(): List<QuestionModel> {
         var result = fireStore.collection(FireStoreCollection.QUESTIONNAIRE)
-            .document(FireStoreDocKey.ATRIAL_FABRILLATION).collection(FireStoreDocKey.QUESTIONS)
+            .document(FireStoreDocKey.CARDIAC_HEART_FAILURE).collection(FireStoreDocKey.QUESTIONS)
             .orderBy(FireStoreDocKey.POSITION, Query.Direction.ASCENDING)
             .get().await()
         return result.toQuestionModel()

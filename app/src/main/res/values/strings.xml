@@ -30,6 +30,7 @@
     <string name="large_dummy_text">sdfsdfdsfsdfsdfsdfsdfsdfsdfdsfsdfdsfdfds</string>
     <string name="last_name">Last Name(optional)</string>
     <string name="submit_caps">SUBMIT</string>
+    <string name="submit_lower_caps">Submit</string>
     <string name="email">Email</string>
     <string name="email_address">Email Address</string>
     <string name="enter_password">Enter Password</string>

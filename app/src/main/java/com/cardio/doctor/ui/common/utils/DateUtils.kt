@@ -103,8 +103,7 @@ fun getCalendar(date: Date?): Calendar {
 }
 
 fun getCurrentDate(): String {
-    val parser = SimpleDateFormat(DATE_FORMAT_DD_MMM_YYYY, Locale.getDefault())
-    return parser.format(Date())
+    return getDefaultDateFormatter().format(Date())
 }
 
 fun getDaysDiffrence(date: String?): Int {

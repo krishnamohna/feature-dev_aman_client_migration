@@ -52,6 +52,7 @@ interface FireStoreCollection{
         const val HEALTH_LOGS = "HealthLogs"
         const val LOGS = "logs"
         const val QUESTIONNAIRE = "Questionnaire"
+        const val DIAGNOSIS = "Diagnosis"
     }
 }
 
