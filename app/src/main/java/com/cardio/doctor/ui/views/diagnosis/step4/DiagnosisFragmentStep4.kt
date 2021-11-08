@@ -14,10 +14,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Binding>() {
 
-  /*  @Inject
-    lateinit var labelVisiblityHelper: LabelVisiblityHelper
-*/
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
