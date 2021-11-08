@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.cardio.doctor.ui.views.fragment.login.LoginFragment"
+        android:name="com.cardio.doctor.ui.views.auth.login.LoginFragment"
         android:label="LoginFragment" >
         <action
             android:id="@+id/loginToSignUp"

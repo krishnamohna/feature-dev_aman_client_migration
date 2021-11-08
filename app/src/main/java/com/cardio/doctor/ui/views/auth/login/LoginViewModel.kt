@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.login
+package com.cardio.doctor.ui.views.auth.login
 
 import android.app.Application
 import androidx.lifecycle.LiveData
