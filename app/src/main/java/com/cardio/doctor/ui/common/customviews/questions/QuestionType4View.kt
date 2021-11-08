@@ -7,7 +7,11 @@ import com.cardio.doctor.databinding.CompoundQuestionType4LayoutBinding
 import com.cardio.doctor.domain.questionare.model.QuestionModel
 import com.cardio.doctor.ui.common.customviews.questions.base.BaseQuestionView
 
-class QuestionType4View @JvmOverloads constructor(context: Context,  question: QuestionModel) :
+class QuestionType4View @JvmOverloads constructor(
+    context: Context,
+    question: QuestionModel,
+    isEnabled:Boolean=true
+) :
     BaseQuestionView(context,question) {
 
     private var binding: CompoundQuestionType4LayoutBinding =
@@ -16,6 +20,7 @@ class QuestionType4View @JvmOverloads constructor(context: Context,  question: Q
     init {
         setListeners()
         showQuestion(question)
+        setViewEnabled(isEnabled)
     }
 
     private fun setListeners() {
@@ -59,6 +64,12 @@ class QuestionType4View @JvmOverloads constructor(context: Context,  question: Q
         return true
     }
 
+    override fun setViewEnabled(isEnabled: Boolean) {
+        binding.rbOption1.isEnabled=isEnabled
+        binding.rbOption2.isEnabled=isEnabled
+        binding.rbOption3.isEnabled=isEnabled
+        binding.rbOption4.isEnabled=isEnabled
+    }
 
     override fun isQuestionAnswered(): Boolean {
         return !question.answer.isNullOrBlank()

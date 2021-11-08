@@ -10,6 +10,7 @@ import com.cardio.doctor.ui.common.customviews.questions.base.BaseQuestionView
 class QuestionType2View @JvmOverloads constructor(
     context: Context,
     question: QuestionModel,
+    isEnabled:Boolean=true
 ) :
     BaseQuestionView(context,question) {
     private val binding: CompoundQuestionType2LayoutBinding =
@@ -18,6 +19,7 @@ class QuestionType2View @JvmOverloads constructor(
     init {
         setListeners()
         showQuestion(question)
+        setViewEnabled(isEnabled)
     }
 
     private fun setListeners() {
@@ -66,6 +68,11 @@ class QuestionType2View @JvmOverloads constructor(
 
     override fun isQuestionValid(questionModel: QuestionModel): Boolean {
         return true
+    }
+
+    override fun setViewEnabled(isEnabled: Boolean) {
+         binding.edtInput.isEnabled=isEnabled
+         binding.rbOption2Type2.isEnabled=isEnabled
     }
 
     override fun isQuestionAnswered(): Boolean {

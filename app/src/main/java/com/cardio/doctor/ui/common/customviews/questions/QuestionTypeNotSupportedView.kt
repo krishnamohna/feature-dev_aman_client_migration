@@ -6,7 +6,11 @@ import com.cardio.doctor.databinding.CompoundQuestionTypeNotSupportedLayoutBindi
 import com.cardio.doctor.domain.questionare.model.QuestionModel
 import com.cardio.doctor.ui.common.customviews.questions.base.BaseQuestionView
 
-class QuestionTypeNotSupportedView @JvmOverloads constructor(context: Context, question: QuestionModel) :
+class QuestionTypeNotSupportedView @JvmOverloads constructor(
+    context: Context,
+    question: QuestionModel,
+    isEnabled:Boolean=true
+) :
     BaseQuestionView(context,question) {
     private var binding: CompoundQuestionTypeNotSupportedLayoutBinding =
         CompoundQuestionTypeNotSupportedLayoutBinding.inflate(LayoutInflater.from(context), this, true)
@@ -16,6 +20,10 @@ class QuestionTypeNotSupportedView @JvmOverloads constructor(context: Context, q
     }
 
     override fun isQuestionValid(question: QuestionModel): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun setViewEnabled(isEnabled: Boolean) {
         TODO("Not yet implemented")
     }
 

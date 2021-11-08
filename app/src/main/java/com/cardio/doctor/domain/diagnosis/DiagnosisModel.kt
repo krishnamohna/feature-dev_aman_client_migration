@@ -15,4 +15,5 @@ class DiagnosisModel(
     var topBp: Int? = null
     var bottomBp: Int? = null
     var mediciene: String? = null
+    var medications: List<MedicineModel>? = null
 }

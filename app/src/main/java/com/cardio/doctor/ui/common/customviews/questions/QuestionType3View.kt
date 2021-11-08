@@ -9,7 +9,11 @@ import com.cardio.doctor.databinding.CompoundQuestionType1LayoutBinding
 import com.cardio.doctor.domain.questionare.model.QuestionModel
 import com.cardio.doctor.ui.common.customviews.questions.base.BaseQuestionView
 
-class QuestionType3View @JvmOverloads constructor(context: Context, question: QuestionModel) :
+class QuestionType3View @JvmOverloads constructor(
+    context: Context,
+    question: QuestionModel,
+    isEnabled:Boolean=true
+) :
     BaseQuestionView(context,question){
     private var binding: CompoundQuestionType1LayoutBinding =
         CompoundQuestionType1LayoutBinding.inflate(LayoutInflater.from(context), this, true)
@@ -17,6 +21,7 @@ class QuestionType3View @JvmOverloads constructor(context: Context, question: Qu
     init {
         setListeners()
         showQuestion(question)
+        setViewEnabled(isEnabled)
     }
 
     private fun setListeners() {
@@ -98,6 +103,15 @@ class QuestionType3View @JvmOverloads constructor(context: Context, question: Qu
      override fun isQuestionValid(questionModel: QuestionModel): Boolean {
         //check all parameter here first
         return true
+    }
+
+    override fun setViewEnabled(isEnabled: Boolean) {
+        binding.rbOption1.isEnabled=isEnabled
+        binding.rbOption2.isEnabled=isEnabled
+        binding.rbOption3.isEnabled=isEnabled
+        binding.rbLead2.isEnabled=isEnabled
+        binding.rbLead3.isEnabled=isEnabled
+        binding.rbUnknown.isEnabled=isEnabled
     }
 
     override fun isQuestionAnswered(): Boolean {

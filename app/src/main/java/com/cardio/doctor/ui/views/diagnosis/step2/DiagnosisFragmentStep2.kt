@@ -121,6 +121,7 @@ class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Bindi
 
     private fun setListeners() {
         binding.cvDiagnosisBottomContainer.btNext.setOnClickListener {
+            diagnosisActivity?.getDiagnosisModel()?.medications=adapterMed.listMeds
             findNavController().navigate(DiagnosisFragmentStep2Directions.actionDiagnosisFragmentPart2ToDiagnosisFragmentPart3())
         }
         binding.cvDiagnosisBottomContainer.btCancel.setOnClickListener {

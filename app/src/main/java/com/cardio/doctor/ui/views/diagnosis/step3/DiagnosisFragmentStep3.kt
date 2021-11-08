@@ -77,7 +77,7 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
         binding.frameLayoutQuestionContainer.removeAllViews()
         binding.frameLayoutQuestionContainer.addView(questionView,
             ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT))
+                ViewGroup.LayoutParams.WRAP_CONTENT))
     }
 
     private fun getQuestionView(question: QuestionModel): View {
@@ -101,6 +101,7 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
 
     private fun setViews() {
         setStepView(binding.stepView.stepView)
+        binding.cvDiagnosisBottomContainer.btCancel.setText(getString(R.string.back))
         enableButtonClick(hasUserGivenAllAnswers())
     }
 

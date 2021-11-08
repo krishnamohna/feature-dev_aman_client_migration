@@ -13,6 +13,7 @@ abstract class BaseQuestionView @JvmOverloads constructor(
 
     abstract fun showQuestion(question: QuestionModel)
     abstract fun isQuestionValid(question: QuestionModel): Boolean
+    abstract fun setViewEnabled(isEnabled:Boolean)
 
     fun answerChanged() {
         callback?.invoke(isQuestionAnswered())
@@ -20,5 +21,7 @@ abstract class BaseQuestionView @JvmOverloads constructor(
 
     override fun registerOnAnswerChange(callback: (Boolean) -> Unit) {
         this.callback = callback
+        //lets update once
+        answerChanged()
     }
 }
