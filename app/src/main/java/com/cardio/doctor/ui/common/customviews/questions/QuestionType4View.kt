@@ -65,10 +65,10 @@ class QuestionType4View @JvmOverloads constructor(
     }
 
     override fun setViewEnabled(isEnabled: Boolean) {
-        binding.rbOption1.isEnabled=isEnabled
-        binding.rbOption2.isEnabled=isEnabled
-        binding.rbOption3.isEnabled=isEnabled
-        binding.rbOption4.isEnabled=isEnabled
+        binding.rbOption1.isClickable=isEnabled
+        binding.rbOption2.isClickable=isEnabled
+        binding.rbOption3.isClickable=isEnabled
+        binding.rbOption4.isClickable=isEnabled
     }
 
     override fun isQuestionAnswered(): Boolean {

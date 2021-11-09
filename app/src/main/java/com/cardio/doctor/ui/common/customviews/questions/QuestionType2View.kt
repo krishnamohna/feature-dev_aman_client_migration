@@ -72,7 +72,7 @@ class QuestionType2View @JvmOverloads constructor(
 
     override fun setViewEnabled(isEnabled: Boolean) {
          binding.edtInput.isEnabled=isEnabled
-         binding.rbOption2Type2.isEnabled=isEnabled
+         binding.rbOption2Type2.isClickable=isEnabled
     }
 
     override fun isQuestionAnswered(): Boolean {

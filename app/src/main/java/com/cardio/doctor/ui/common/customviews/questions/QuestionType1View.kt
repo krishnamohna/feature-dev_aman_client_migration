@@ -59,12 +59,12 @@ class QuestionType1View @JvmOverloads constructor(context: Context,  question: Q
     }
 
     override fun setViewEnabled(isEnabled: Boolean) {
-        binding.rbOption1.isEnabled=isEnabled
-        binding.rbOption2.isEnabled=isEnabled
-        binding.rbOption3.isEnabled=isEnabled
-        binding.rbLead2.isEnabled=isEnabled
-        binding.rbLead3.isEnabled=isEnabled
-        binding.rbUnknown.isEnabled=isEnabled
+        binding.rbOption1.isClickable=isEnabled
+        binding.rbOption2.isClickable=isEnabled
+        binding.rbOption3.isClickable=isEnabled
+        binding.rbLead2.isClickable=isEnabled
+        binding.rbLead3.isClickable=isEnabled
+        binding.rbUnknown.isClickable=isEnabled
     }
 
     override fun isQuestionAnswered(): Boolean {
