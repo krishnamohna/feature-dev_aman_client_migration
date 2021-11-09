@@ -20,15 +20,15 @@ class QuestionTypeNotSupportedView @JvmOverloads constructor(
     }
 
     override fun isQuestionValid(question: QuestionModel): Boolean {
-        TODO("Not yet implemented")
+        return true
     }
 
     override fun setViewEnabled(isEnabled: Boolean) {
-        TODO("Not yet implemented")
+
     }
 
     override fun isQuestionAnswered(): Boolean {
-        TODO("Not yet implemented")
+        return true
     }
 
 }

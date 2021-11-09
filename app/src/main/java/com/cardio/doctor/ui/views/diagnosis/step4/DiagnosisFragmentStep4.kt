@@ -36,14 +36,8 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
         setViews()
         setObserver()
         setListeners()
-        init()
     }
 
-    private fun init() {
-        diagnosisActivity?.getDiagnosisModel()?.let {
-            viewModel.submitDiagnosisReport(it)
-        }
-    }
 
     private fun setObserver() {
         viewModel.liveSubmitDiagnosis.customObserver(
@@ -144,7 +138,9 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
 
     private fun setListeners() {
         binding.cvDiagnosisBottomContainer.btNext.setOnClickListener {
-            showToast(parentActivity!!, R.string.coming_soon)
+            diagnosisActivity?.getDiagnosisModel()?.let {
+                viewModel.submitDiagnosisReport(it)
+            }
         }
         binding.cvDiagnosisBottomContainer.btCancel.setOnClickListener {
             findNavController().popBackStack()

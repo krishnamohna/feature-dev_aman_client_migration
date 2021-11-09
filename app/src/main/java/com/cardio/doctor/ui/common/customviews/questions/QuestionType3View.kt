@@ -12,9 +12,9 @@ import com.cardio.doctor.ui.common.customviews.questions.base.BaseQuestionView
 class QuestionType3View @JvmOverloads constructor(
     context: Context,
     question: QuestionModel,
-    isEnabled:Boolean=true
+    isEnabled: Boolean = true,
 ) :
-    BaseQuestionView(context,question){
+    BaseQuestionView(context, question) {
     private var binding: CompoundQuestionType1LayoutBinding =
         CompoundQuestionType1LayoutBinding.inflate(LayoutInflater.from(context), this, true)
 
@@ -100,21 +100,29 @@ class QuestionType3View @JvmOverloads constructor(
         }
     }
 
-     override fun isQuestionValid(questionModel: QuestionModel): Boolean {
+    override fun isQuestionValid(questionModel: QuestionModel): Boolean {
         //check all parameter here first
         return true
     }
 
     override fun setViewEnabled(isEnabled: Boolean) {
-        binding.rbOption1.isEnabled=isEnabled
-        binding.rbOption2.isEnabled=isEnabled
-        binding.rbOption3.isEnabled=isEnabled
-        binding.rbLead2.isEnabled=isEnabled
-        binding.rbLead3.isEnabled=isEnabled
-        binding.rbUnknown.isEnabled=isEnabled
+        binding.rbOption1.isEnabled = isEnabled
+        binding.rbOption2.isEnabled = isEnabled
+        binding.rbOption3.isEnabled = isEnabled
+        binding.rbLead2.isEnabled = isEnabled
+        binding.rbLead3.isEnabled = isEnabled
+        binding.rbUnknown.isEnabled = isEnabled
     }
 
     override fun isQuestionAnswered(): Boolean {
-        return !question.answer.isNullOrBlank()
+        return !question.answer.isNullOrBlank() && hasGivenSecondaryAns()
+    }
+
+    private fun hasGivenSecondaryAns(): Boolean {
+        if (binding.rbOption1.isChecked) {
+            if (binding.rbGroupLeads.checkedRadioButtonId == -1)
+                return false
+        }
+        return true
     }
 }

@@ -28,10 +28,9 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,LockedOrientationActivity"
         tools:targetApi="m">
-        <activity android:name=".ui.views.healthlogs.HealthLogsActivity"
-            android:screenOrientation="portrait"
-            >
-        </activity>
+        <activity
+            android:name=".ui.views.healthlogs.HealthLogsActivity"
+            android:screenOrientation="portrait"></activity>
 
         <service
             android:name=".ui.service.SyncHeathDataService"
