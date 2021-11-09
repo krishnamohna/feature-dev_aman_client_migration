@@ -396,11 +396,11 @@
         android:fontFamily="@font/nunito_semibold"
         android:text="@string/active_energy_in_kcal"
         android:textStyle="bold"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
         app:layout_constraintStart_toStartOf="@+id/edtFirstName"
         app:layout_constraintTop_toBottomOf="@id/barrieHeightHearRateError"
-        tools:visibility="visible" />
+        tools:visibility="gone" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edtEnergy"
@@ -414,6 +414,7 @@
         android:maxLength="@integer/int_20"
         android:enabled="false"
         android:maxLines="@integer/int_1"
+        android:visibility="gone"
         android:paddingLeft="@dimen/_16sdp"
         android:paddingRight="@dimen/_16sdp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -432,7 +433,7 @@
         app:layout_constraintEnd_toEndOf="@+id/edtEnergy"
         app:layout_constraintStart_toStartOf="@+id/edtEnergy"
         app:layout_constraintTop_toBottomOf="@+id/edtEnergy"
-        tools:visibility="visible" />
+        tools:visibility="gone" />
 
     <!--Ailment-->
 

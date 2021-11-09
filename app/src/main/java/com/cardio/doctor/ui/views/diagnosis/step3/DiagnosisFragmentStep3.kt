@@ -65,7 +65,7 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
     private fun setQuestionsInViews(it: List<QuestionModel>?) {
         questionList = it
         questionList?.isNotEmpty().let {
-            var question = questionList?.get(viewModel.lastQuestionIndex)
+            var question = questionList?.get(diagnosisActivity?.lastQuestionIndex!!)
             question?.run {
                 showQuestion(getQuestionView(question))
             }
@@ -77,7 +77,7 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
         binding.frameLayoutQuestionContainer.removeAllViews()
         binding.frameLayoutQuestionContainer.addView(questionView,
             ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT))
+                ViewGroup.LayoutParams.MATCH_PARENT))
     }
 
     private fun getQuestionView(question: QuestionModel): View {

@@ -18,7 +18,6 @@ import javax.inject.Inject
 class DiagnosisFragmentStep3ViewModel @Inject constructor(val questionnaireRepo: QuestionnaireRepo) :
     BaseViewModel() {
 
-    internal var lastQuestionIndex = 0
     private val singleLiveDataQuestions = SingleLiveEvent<Resource<List<QuestionModel>>>()
     val liveDataQuestions: LiveData<Resource<List<QuestionModel>>> = singleLiveDataQuestions
 
