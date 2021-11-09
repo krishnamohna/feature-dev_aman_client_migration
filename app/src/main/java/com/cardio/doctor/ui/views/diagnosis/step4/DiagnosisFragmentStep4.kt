@@ -139,6 +139,8 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
     private fun setListeners() {
         binding.cvDiagnosisBottomContainer.btNext.setOnClickListener {
             diagnosisActivity?.getDiagnosisModel()?.let {
+                //set current times millis to model
+                it.timeStamp=System.currentTimeMillis()
                 viewModel.submitDiagnosisReport(it)
             }
         }

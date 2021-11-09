@@ -9,7 +9,6 @@ import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.network.api.ApiStatus
 import com.cardio.doctor.ui.common.utils.FireStoreCollection
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey
-import com.cardio.doctor.ui.common.utils.getCurrentDate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
@@ -64,13 +63,16 @@ class DiagnosisRepoImp @Inject constructor(
         var mapDiagnosis: Map<String, Any> = HashMap()
         mapDiagnosis = Gson().fromJson(json, mapDiagnosis.javaClass)
         firebaseAuth.currentUser?.uid?.let { uuid ->
-             fireStoreDb.collection(FireStoreCollection.DIAGNOSIS)
-                 .document(uuid)
-                 .collection(FireStoreCollection.LOGS).document(getCurrentDate())
-                 .set(mapDiagnosis)
-                 .await()
-             return true
-         }
+            fireStoreDb.collection(FireStoreCollection.DIAGNOSIS)
+                .document(uuid)
+                .collection(diagnosisModel.ailment!!)
+              /*  .document(getCurrentDate())
+                .collection(FireStoreCollection.LOGS)*/
+                .document()
+                .set(mapDiagnosis)
+                .await()
+            return true
+        }
         return false
     }
 
