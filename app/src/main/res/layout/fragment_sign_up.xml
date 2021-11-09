@@ -5,7 +5,7 @@
     <data>
         <variable
             name="mViewModel"
-            type="com.cardio.doctor.ui.views.fragment.signup.SignUpViewModel" />
+            type="com.cardio.doctor.ui.views.auth.signup.SignUpViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

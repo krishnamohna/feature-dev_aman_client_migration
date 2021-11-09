@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.phone_verification
+package com.cardio.doctor.ui.views.auth.phone_verification
 
 import android.app.Application
 import android.net.Uri

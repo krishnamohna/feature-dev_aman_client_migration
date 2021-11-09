@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.profile.change_password
+package com.cardio.doctor.ui.views.profile.change_password
 
 import android.app.Application
 import android.text.TextUtils

@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.profile.setting
+package com.cardio.doctor.ui.views.profile.setting
 
 import com.cardio.doctor.domain.common.repository.BaseRepository
 import com.cardio.doctor.network.api.ApiService

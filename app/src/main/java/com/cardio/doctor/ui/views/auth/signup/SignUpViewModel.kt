@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.signup
+package com.cardio.doctor.ui.views.auth.signup
 
 import android.app.Application
 import android.net.Uri

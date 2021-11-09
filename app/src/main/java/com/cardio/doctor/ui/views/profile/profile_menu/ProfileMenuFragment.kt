@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.profile.profile_menu
+package com.cardio.doctor.ui.views.profile.profile_menu
 
 import android.os.Bundle
 import android.view.View

@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.signup
+package com.cardio.doctor.ui.views.auth.signup
 
 import android.Manifest
 import android.annotation.SuppressLint

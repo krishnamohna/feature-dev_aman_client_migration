@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.profile.profile
+package com.cardio.doctor.ui.views.profile.profile
 
 import android.app.Application
 import android.net.Uri

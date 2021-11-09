@@ -1,4 +1,4 @@
-package com.cardio.doctor.ui.views.fragment.profile.web_view
+package com.cardio.doctor.ui.views.profile.web_view
 
 import android.os.Bundle
 import android.view.View
