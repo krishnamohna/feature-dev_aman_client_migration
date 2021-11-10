@@ -9,8 +9,10 @@ import com.cardio.doctor.network.api.ApiService
 import com.cardio.doctor.network.api.ApiStatus
 import com.cardio.doctor.ui.common.utils.FireStoreCollection
 import com.cardio.doctor.ui.common.utils.FireStoreDocKey
+import com.cardio.doctor.ui.common.utils.extentions.toDiagnosisModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.gson.Gson
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -66,14 +68,29 @@ class DiagnosisRepoImp @Inject constructor(
             fireStoreDb.collection(FireStoreCollection.DIAGNOSIS)
                 .document(uuid)
                 .collection(diagnosisModel.ailment!!)
-              /*  .document(getCurrentDate())
-                .collection(FireStoreCollection.LOGS)*/
+                /*  .document(getCurrentDate())
+                  .collection(FireStoreCollection.LOGS)*/
                 .document()
                 .set(mapDiagnosis)
                 .await()
             return true
         }
         return false
+    }
+
+    override suspend fun getDiagnosisByDate(date: String): List<DiagnosisModel> {
+        val query: Query = fireStoreDb.collection(FireStoreCollection.DIAGNOSIS)
+            .document(firebaseAuth.currentUser?.uid!!)
+            .collection(FireStoreDocKey.ATRIAL_FABRILLATION)
+            .whereEqualTo(FireStoreDocKey.DATE,date)
+            .orderBy(FireStoreDocKey.TIME_STAMP_CAMEL, Query.Direction.DESCENDING)
+            .limit(1)
+        val querySnapshot = query.get().await()
+        return if (querySnapshot.isEmpty) {
+            throw NetworkError(404,"No record found")
+        } else {
+            querySnapshot.toDiagnosisModel()
+        }
     }
 
     private suspend fun saveMedToCollection(medName: String) {

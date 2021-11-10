@@ -1,17 +1,28 @@
 package com.cardio.doctor.ui.views.dashboard.fragment
 
-import android.app.Application
-import com.cardio.doctor.data.local.UserManager
-import com.cardio.doctor.domain.common.repository.BaseRepository
-import com.cardio.doctor.ui.common.base.viewmodel.BaseAuthViewModel
+import android.util.Log
+import androidx.lifecycle.viewModelScope
+import com.cardio.doctor.domain.diagnosis.DiagnosisRepo
+import com.cardio.doctor.ui.common.base.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class DashboardViewModel @Inject constructor(
-        userManager: UserManager, baseRepository: BaseRepository,
-        application: Application
-) : BaseAuthViewModel(userManager, application) {
+    private val diagnosisRepo: DiagnosisRepo,
+) : BaseViewModel() {
+
+    fun getDiagnosis(currentDate: String) {
+        viewModelScope.launch {
+           try {
+               var list = diagnosisRepo.getDiagnosisByDate(currentDate)
+               Log.i("",""+list)
+           }catch (exp:Exception){
+              Log.i("", exp.message?:"error")
+           }
+        }
+    }
 
 
 }

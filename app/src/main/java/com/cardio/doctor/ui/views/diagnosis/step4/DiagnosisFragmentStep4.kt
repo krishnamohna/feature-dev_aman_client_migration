@@ -13,6 +13,7 @@ import com.cardio.doctor.domain.questionare.model.QuestionModel
 import com.cardio.doctor.ui.common.customviews.questions.*
 import com.cardio.doctor.ui.common.utils.QuestionTypes
 import com.cardio.doctor.ui.common.utils.extentions.customObserver
+import com.cardio.doctor.ui.common.utils.getDateFromTimeMills
 import com.cardio.doctor.ui.common.utils.showToast
 import com.cardio.doctor.ui.views.diagnosis.common.BaseDiagnosisFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -141,6 +142,7 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
             diagnosisActivity?.getDiagnosisModel()?.let {
                 //set current times millis to model
                 it.timeStamp=System.currentTimeMillis()
+                it.date= getDateFromTimeMills(System.currentTimeMillis())
                 viewModel.submitDiagnosisReport(it)
             }
         }

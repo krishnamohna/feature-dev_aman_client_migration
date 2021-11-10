@@ -73,11 +73,43 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
     }
 
     private fun showQuestion(questionView: View) {
+        manageNextBackButtonBackground()
         binding.tvQuestionTotalVsCurrent.setText("${(diagnosisActivity?.lastQuestionIndex?.plus(1))}/${questionList?.size}")
         binding.frameLayoutQuestionContainer.removeAllViews()
         binding.frameLayoutQuestionContainer.addView(questionView,
             ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT))
+    }
+
+    private fun manageNextBackButtonBackground() {
+        diagnosisActivity?.lastQuestionIndex?.let { lastIndex ->
+            questionList?.let { list ->
+                if (lastIndex == 0) enableLeftButton(false)
+                if (lastIndex == list.size - 1) enableRightButton(false)
+                if (lastIndex < list.size - 1) enableRightButton(true)
+                if (lastIndex > 0) enableLeftButton(true)
+            }
+        }
+    }
+
+    private fun enableLeftButton(isEnable: Boolean) {
+        if (isEnable) {
+            binding.imageViewQuestionLeft.setImageResource(R.drawable.ic_left_white)
+            binding.imageViewQuestionLeft.setBackgroundResource(R.drawable.drawable_green_circular)
+        } else {
+            binding.imageViewQuestionLeft.setImageResource(R.drawable.ic_left_green)
+            binding.imageViewQuestionLeft.setBackgroundResource(R.drawable.drawable_green_circular_border)
+        }
+    }
+
+    private fun enableRightButton(isEnable: Boolean) {
+        if (isEnable) {
+            binding.imageViewQuestionRight.setImageResource(R.drawable.ic_right_white)
+            binding.imageViewQuestionRight.setBackgroundResource(R.drawable.drawable_green_circular)
+        } else {
+            binding.imageViewQuestionRight.setImageResource(R.drawable.ic_right_green)
+            binding.imageViewQuestionRight.setBackgroundResource(R.drawable.drawable_green_circular_border)
+        }
     }
 
     private fun getQuestionView(question: QuestionModel): View {

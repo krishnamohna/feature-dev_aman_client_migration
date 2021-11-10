@@ -266,10 +266,10 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         diagnosisActivity?.getDiagnosisModel()?.firstName = firstName
         diagnosisActivity?.getDiagnosisModel()?.lastName = lastName
         diagnosisActivity?.getDiagnosisModel()?.age = age
-        diagnosisActivity?.getDiagnosisModel()?.weight = weight.toDouble()
-        diagnosisActivity?.getDiagnosisModel()?.heartRate = heartRate.toInt()
-        diagnosisActivity?.getDiagnosisModel()?.topBp = topBp.toInt()
-        diagnosisActivity?.getDiagnosisModel()?.bottomBp = bottomBp.toInt()
+        diagnosisActivity?.getDiagnosisModel()?.weight = weight
+        diagnosisActivity?.getDiagnosisModel()?.heartRate = heartRate
+        diagnosisActivity?.getDiagnosisModel()?.topBp = topBp
+        diagnosisActivity?.getDiagnosisModel()?.bottomBp = bottomBp
         diagnosisActivity?.getDiagnosisModel()?.ailment = ailment
     }
 

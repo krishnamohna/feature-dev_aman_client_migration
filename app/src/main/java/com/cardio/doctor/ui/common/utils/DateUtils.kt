@@ -78,6 +78,12 @@ fun getStringFromDate(mDate: Date?): String? {
     return ""
 }
 
+fun getDateFromTimeMills(timeMills: Long): String {
+    val dateFormat = getDefaultDateFormatter()
+    return dateFormat.format(Date(timeMills))
+}
+
+
 fun String.getNoYearsFromDate(): Int {
     var dateDob = toDate(Constants.DATE_FORMAT_DD_MMM_YYYY)
     var years = getDiffYears(dateDob, Date())

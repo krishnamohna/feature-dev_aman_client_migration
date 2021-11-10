@@ -43,4 +43,8 @@ class DiagnosisActivityViewModel @Inject constructor(/*@Named(REPO_FITNESS_SELEC
     //    fitnessRepositary.login(diagnosisActivity)
     }
 
+    fun getDiagnosis(date:String){
+
+    }
+
 }

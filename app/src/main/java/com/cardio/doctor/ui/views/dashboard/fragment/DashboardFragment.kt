@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cardio.doctor.R
 import com.cardio.doctor.databinding.FragmentDashboardBinding
 import com.cardio.doctor.ui.common.base.fragment.BaseFragment
+import com.cardio.doctor.ui.common.utils.getCurrentDate
 import com.cardio.doctor.ui.common.utils.showToast
 import com.cardio.doctor.ui.views.dashboard.DashboardActivity
 import com.cardio.doctor.ui.views.diagnosis.DiagnosisActivity
@@ -15,6 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DashboardFragment : BaseFragment<FragmentDashboardBinding>(), View.OnClickListener {
+
+    val viewModel:DashboardViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +32,11 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>(), View.OnClick
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setListener()
-        binding.btnLogOut.setOnClickListener(this)
+        init()
+    }
+
+    fun init(){
+        viewModel.getDiagnosis(getCurrentDate())
     }
 
     override fun onDestroyView() {
@@ -39,6 +47,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>(), View.OnClick
     }
 
     private fun setListener() {
+        binding.btnLogOut.setOnClickListener(this)
         binding.btnDashboardOne.setOnClickListener(this)
         binding.btnDashboardTwo.setOnClickListener(this)
         binding.btnProfileMenu.setOnClickListener(this)

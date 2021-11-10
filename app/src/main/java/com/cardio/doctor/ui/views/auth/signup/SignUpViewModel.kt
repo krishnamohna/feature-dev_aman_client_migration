@@ -4,16 +4,16 @@ import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.cardio.doctor.ui.AppCardioPatient
 import com.cardio.doctor.R
-import com.cardio.doctor.network.api.Constants
-import com.cardio.doctor.ui.common.base.viewmodel.BaseAuthViewModel
 import com.cardio.doctor.data.local.UserManager
 import com.cardio.doctor.data.remote.signup.SignUpRepository
 import com.cardio.doctor.domain.common.model.ValidationModel
 import com.cardio.doctor.network.NetworkHelper
 import com.cardio.doctor.network.Resource
 import com.cardio.doctor.network.Status
+import com.cardio.doctor.network.api.Constants
+import com.cardio.doctor.ui.AppCardioPatient
+import com.cardio.doctor.ui.common.base.viewmodel.BaseAuthViewModel
 import com.cardio.doctor.ui.common.utils.*
 import com.cardio.doctor.ui.common.utils.livedata.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -76,12 +76,10 @@ class SignUpViewModel @Inject constructor(
         password: String, confirmPassword: String,
     ) {
         val context = getApplication<AppCardioPatient>()
-
         /*
         * Signup button is not enable for the empty fields and for that reason
         * some validation are not required in this method
         * */
-
         val isValidFirstName = when {
             firstName.isEmpty() -> {
                 queueValidationRequest(Status.ERROR,
@@ -217,17 +215,6 @@ class SignUpViewModel @Inject constructor(
                 }
                 val emailDeferred =
                     async { signUpRepository.isEmailAlreadyExist(email, _firebaseException) }
-              /*  var isImageSelected = false
-                if (deviceUri != null && firebaseUri == null) {
-                    val firebaseUriDeferred = async {
-                        signUpRepository.uploadImageOnFirebaseStorage(
-                            deviceUri, fileName ?: UUID.randomUUID().toString(),
-                            _firebaseException
-                        )
-                    }
-                    isImageSelected = true
-                    firebaseUri = firebaseUriDeferred.await()
-                }*/
                 val isPhoneNumberExist = phoneNumberDeferred.await()
                 val isEmailExist = emailDeferred.await()
 
@@ -245,7 +232,6 @@ class SignUpViewModel @Inject constructor(
                     queueValidationRequest(Status.ERROR,
                         getApplication<AppCardioPatient>().getString(R.string.err_phonenumber_already_exist),
                         R.id.edtPhoneNumber, R.id.tvPhoneNoError)
-                   // showValidationMessage(getApplication<AppCardioPatient>().getString(R.string.err_phonenumber_already_exist))
                 }  /*else if (isImageSelected && firebaseUri == null) {
                     showValidationMessage(getApplication<AppCardioPatient>().getString(R.string.err_email_exist))
                 }*/
@@ -255,28 +241,9 @@ class SignUpViewModel @Inject constructor(
         }
     }
 
-    /* fun storeUserDetailInFireStore(phoneNumber: String) {
-         viewModelScope.launch {
-             val user: HashMap<String, Any> =
-                 hashMapOf(FireStoreDocKey.PHONE_NUMBER to phoneNumber)
-             signUpRepository.storeUserDataInFireStore("", user)
-         }
-     }*/
-
     private fun showValidationMessage(message: String) {
         _signUpApiResponse.value = Resource.error(Constants.VALIDATION, 0, message, null)
     }
-
-    /*fun uploadProfileImage(resultUri: Uri?, fileName: String?) {
-        try {
-            viewModelScope.launch {
-                firebaseUri = signUpRepository.uploadImageOnFirebaseStorage(resultUri,
-                    fileName!!, _firebaseException)
-            }
-        } catch (e: Exception) {
-            showValidationMessage(getExceptionMessage(e))
-        }
-    }*/
 
     private suspend fun queueValidationRequest(
         status: Status, message: String,
