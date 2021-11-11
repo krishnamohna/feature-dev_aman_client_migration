@@ -1,4 +1,4 @@
-package com.cardio.doctor
+package com.cardio.physician
 
 import org.junit.Test
 

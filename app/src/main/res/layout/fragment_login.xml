@@ -5,7 +5,7 @@
     <data>
         <variable
             name="mViewModel"
-            type="com.cardio.doctor.ui.views.auth.login.LoginViewModel" />
+            type="com.cardio.physician.ui.views.auth.login.LoginViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

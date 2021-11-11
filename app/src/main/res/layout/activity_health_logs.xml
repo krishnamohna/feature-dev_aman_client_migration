@@ -111,7 +111,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtHealthDetail" />
 
-    <com.cardio.doctor.ui.common.customviews.AppButton
+    <com.cardio.physician.ui.common.customviews.AppButton
         android:id="@+id/btSaveLog"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

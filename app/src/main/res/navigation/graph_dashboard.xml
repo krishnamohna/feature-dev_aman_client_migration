@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.cardio.doctor.ui.views.dashboard.fragment.DashboardFragment"
+        android:name="com.cardio.physician.ui.views.dashboard.fragment.DashboardFragment"
         android:label="DashboardFragment" >
         <action
             android:id="@+id/dashboardToProfileFragment"

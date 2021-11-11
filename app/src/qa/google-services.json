@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:202279192016:android:f4e64de1a4f87d2d3925d5",
         "android_client_info": {
-          "package_name": "com.cardio.doctor.qa"
+          "package_name": "com.cardio.physician.qa"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "202279192016-7i8ou6rcn6q0ld2o41oissgrq5ekmcb8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.cardio.doctor.qa",
+            "package_name": "com.cardio.physician.qa",
             "certificate_hash": "8cb054b8c0f01dfeae05ebd77695ddbf821556af"
           }
         },
@@ -25,7 +25,7 @@
           "client_id": "202279192016-ads52lsro7rnkbnvd165e4acsff12522.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.cardio.doctor.qa",
+            "package_name": "com.cardio.physician.qa",
             "certificate_hash": "287cd35898eae14be2c12d0ecb94d0204c8855b9"
           }
         },

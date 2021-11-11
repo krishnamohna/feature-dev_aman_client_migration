@@ -33,7 +33,6 @@
         android:maxLines="@integer/int_1"
         android:paddingLeft="@dimen/_16sdp"
         android:paddingRight="@dimen/_16sdp"
-        app:layout_constraintEnd_toStartOf="@+id/edtLastName"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/tvQuestionType2"
         app:layout_constraintTop_toBottomOf="@+id/tvQuestionType2" />

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.cardio.doctor">
+    package="com.cardio.physician">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -79,7 +79,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="{applicationId}.fileprovider"
+            android:authorities="@{applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -87,9 +87,9 @@
                 android:resource="@xml/file_paths" />
         </provider> <!-- fitbit activities -->
         <activity
-            android:name=".ui.views.fitbit.RootActivity"
+            android:name="com.cardio.physician.ui.views.fitbit.RootActivity"
             android:label="Root Activity" />
-        <activity android:name=".ui.views.fitbit.auth.LoginActivity" />
+        <activity android:name="com.cardio.physician.ui.views.fitbit.auth.LoginActivity" />
 
         <meta-data
             android:name="com.fitbit.sampleandroidoauth2.CLIENT_ID"

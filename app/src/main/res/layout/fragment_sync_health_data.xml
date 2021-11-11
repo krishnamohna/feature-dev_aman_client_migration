@@ -163,7 +163,7 @@
             layout="@layout/guideline_right"
             tools:layout_editor_absoluteX="395dp" />
 
-        <com.cardio.doctor.ui.common.customviews.AppButton
+        <com.cardio.physician.ui.common.customviews.AppButton
             android:id="@+id/btSkipWearables"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -179,7 +179,7 @@
             app:layout_constraintVertical_bias="0.6"
             tools:visibility="visible" />
 
-        <com.cardio.doctor.ui.common.customviews.AppButton
+        <com.cardio.physician.ui.common.customviews.AppButton
             android:id="@+id/btNext"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

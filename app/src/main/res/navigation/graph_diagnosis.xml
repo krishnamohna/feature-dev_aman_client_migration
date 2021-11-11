@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/diagnosisFragmentPart1"
-        android:name="com.cardio.doctor.ui.views.diagnosis.step1.DiagnosisFragmentStep1"
+        android:name="com.cardio.physician.ui.views.diagnosis.step1.DiagnosisFragmentStep1"
         android:label="0" >
         <action
             android:id="@+id/action_diagnosisFragmentPart1_to_diagnosisFragmentPart2"
@@ -13,7 +13,7 @@
     </fragment>
     <fragment
         android:id="@+id/diagnosisFragmentPart2"
-        android:name="com.cardio.doctor.ui.views.diagnosis.step2.DiagnosisFragmentStep2"
+        android:name="com.cardio.physician.ui.views.diagnosis.step2.DiagnosisFragmentStep2"
         android:label="1" >
         <action
             android:id="@+id/action_diagnosisFragmentPart2_to_diagnosisFragmentPart3"
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/diagnosisFragmentPart3"
-        android:name="com.cardio.doctor.ui.views.diagnosis.step3.DiagnosisFragmentStep3"
+        android:name="com.cardio.physician.ui.views.diagnosis.step3.DiagnosisFragmentStep3"
         android:label="2" >
         <action
             android:id="@+id/action_diagnosisFragmentPart3_to_diagnosisFragmentPart4"
@@ -29,6 +29,6 @@
     </fragment>
     <fragment
         android:id="@+id/diagnosisFragmentPart4"
-        android:name="com.cardio.doctor.ui.views.diagnosis.step4.DiagnosisFragmentStep4"
+        android:name="com.cardio.physician.ui.views.diagnosis.step4.DiagnosisFragmentStep4"
         android:label="3" />
 </navigation>

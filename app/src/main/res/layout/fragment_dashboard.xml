@@ -82,7 +82,7 @@
                 tools:layout_editor_absoluteY="22dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.cardio.doctor.ui.common.customviews.AppButton
+        <com.cardio.physician.ui.common.customviews.AppButton
             android:id="@+id/appButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -8,7 +8,7 @@
     android:background="@color/white"
     android:padding="@dimen/_10sdp">
 
-    <com.cardio.doctor.ui.common.customviews.AppButton
+    <com.cardio.physician.ui.common.customviews.AppButton
         android:id="@+id/btCancel"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="0dp"
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="@color/colorPrimary" />
 
-    <com.cardio.doctor.ui.common.customviews.AppButton
+    <com.cardio.physician.ui.common.customviews.AppButton
         android:id="@+id/btNext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
