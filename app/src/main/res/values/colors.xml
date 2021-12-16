@@ -7,8 +7,8 @@
     <color name="black_tutorial_text">#333333</color>
     <color name="white">#ffffff</color>
     <color name="grey">#9aa1c8</color>
-    <color name="grey_divider">#c4c4c4</color>
     <color name="grey_bg">#e0e5e4</color>
+    <color name="grey_divider">#c4c4c4</color>
     <color name="grey_text">#8e9aab</color>
     <color name="grey_text_hint">#999999</color>
     <color name="grey_dark">#25242d</color>
@@ -41,5 +41,6 @@
     <color name="stepview_selected_number">#25448a</color>
     <color name="stepview_mark">@color/stepview_selected_number</color>
     <color name="step_diagnosis_color">@color/colorPrimary</color>
+    <color name="cardview_light">#fbfbfc</color>
 
 </resources>

@@ -82,8 +82,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_profile_circle_bg"
                     android:scaleType="center"
-                    app:srcCompat="@drawable/ic_change_password"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/ic_change_password"                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     />
@@ -180,8 +179,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_profile_circle_bg"
                     android:scaleType="center"
-                    app:srcCompat="@drawable/ic_faq"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/ic_faq"                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

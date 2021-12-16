@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/getProfileFragment"
         android:name="com.cardio.physician.ui.views.profile.profile.GetProfileFragment"
-        android:label="GetProfileFragment">
+        android:label="@string/title_profile">
         <action
             android:id="@+id/getProfileToEditProfile"
             app:destination="@id/editProfileFragment"

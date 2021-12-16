@@ -6,7 +6,6 @@ import com.cardio.physician.network.Resource
 import com.cardio.physician.network.api.ApiService
 import com.cardio.physician.ui.common.utils.FireStoreCollection
 import com.cardio.physician.ui.common.utils.FireStoreDocKey
-import com.cardio.physician.ui.common.utils.extentions.toUserModel
 import com.cardio.physician.ui.common.utils.firebaseDocumentQuery
 import com.cardio.physician.ui.common.utils.firebaseQuery
 import com.google.firebase.auth.FirebaseAuth
@@ -71,8 +70,7 @@ open class BaseRepository @Inject constructor(
                 for (document in querySnapshot) {
                     var phoneNo = document.data[FireStoreDocKey.PHONE_NUMBER] as? String?
                     phoneNo?.let {
-                        if(it.isEmpty()) return@firebaseQuery false
-                        if (phoneNumber.contains(it)) {
+                        if(it.isNotBlank() && phoneNumber.contains(it)) {
                             return@firebaseQuery true
                         }
                     }

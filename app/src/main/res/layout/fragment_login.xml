@@ -82,6 +82,7 @@
                         android:imeOptions="actionNext"
                         android:inputType="text"
                         android:maxLines="@integer/int_1"
+                        android:textSize="@dimen/_13ssp"
                         android:paddingLeft="@dimen/_16sdp"
                         android:paddingRight="@dimen/_16sdp"
                         android:maxLength="@integer/int_35"

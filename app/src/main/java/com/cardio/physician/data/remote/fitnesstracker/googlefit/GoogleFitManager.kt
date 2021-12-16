@@ -74,10 +74,10 @@ class GoogleFitManager(val context: Context) {
         onFailure: (msg: String?) -> Unit
     ) {
         Fitness.getHistoryClient(activity, getGoogleAccount())
-            .readData(queryProfileFitnessData())
+            .readData(queryProfileLogsFitnessData(7))
             .addOnSuccessListener { dataReadResult ->
                 if (dataReadResult.buckets.isNotEmpty()) {
-                    onSuccess.invoke(dataParser.parseSingleData(dataReadResult))
+                    onSuccess.invoke(dataParser.parseSingleData(dataReadResult.buckets))
                     return@addOnSuccessListener
                 } else if (dataReadResult.dataSets.isNotEmpty()) {
                     dataReadResult.dataSets.forEach {
@@ -104,7 +104,6 @@ class GoogleFitManager(val context: Context) {
     fun logout(activity: Activity) {
         // yet to find way to revoke third party access
     }
-
 
     fun getFitnessLogs(
         context: Context,

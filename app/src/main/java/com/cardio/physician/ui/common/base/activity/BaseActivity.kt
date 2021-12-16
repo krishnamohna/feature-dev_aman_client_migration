@@ -27,10 +27,22 @@ abstract class BaseActivity : AppCompatActivity(), DialogProvider {
     protected val baseViewModel: BaseAuthViewModel by viewModels()
     private var googleSignInClient: GoogleSignInClient? = null
     private lateinit var dialogHelper: DialogHelper
+    var isBackButtonDisabled = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dialogHelper = provideDialogHelper()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        isBackButtonDisabled = false
+    }
+
+
+    override fun onBackPressed() {
+        if (!isBackButtonDisabled)
+            super.onBackPressed()
     }
 
     private val dialogHelperImps by lazy {
@@ -42,7 +54,7 @@ abstract class BaseActivity : AppCompatActivity(), DialogProvider {
     }
 
     inline fun <T : ViewBinding> AppCompatActivity.viewBinding(
-        crossinline bindingInflater: (LayoutInflater) -> T
+        crossinline bindingInflater: (LayoutInflater) -> T,
     ) =
         lazy(LazyThreadSafetyMode.NONE) {
             bindingInflater.invoke(layoutInflater)
@@ -86,13 +98,13 @@ abstract class BaseActivity : AppCompatActivity(), DialogProvider {
         dialogHelper.hideProgress()
     }
 
-    protected fun onError(msg:String?) {
-        showToast(this,msg?:"Something went wrong!!!")
+    protected fun onError(msg: String?) {
+        showToast(this, msg ?: "Something went wrong!!!")
     }
 
 
     protected fun setUpToolbar(
-        view: View, title: String, backBtnVisibility: Boolean = false, editProfile: Boolean = false
+        view: View, title: String, backBtnVisibility: Boolean = false, editProfile: Boolean = false,
     ) {
         val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
         val backBtn = view.findViewById<ImageView>(R.id.backBtn)

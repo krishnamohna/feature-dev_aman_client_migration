@@ -7,7 +7,7 @@ data class MedicineEntity(
     var drugGroup: DrugGroup
 ) {
 
-    fun toModel(): BaseModel<MedicineModel> {
+    fun toModel(searchedMed: String): BaseModel<MedicineModel> {
         var drugName=drugGroup.conceptGroup?.find {
             it.conceptProperties!=null
         }?.conceptProperties?.get(0)?.name
@@ -16,6 +16,6 @@ data class MedicineEntity(
                 drugName=it.get(0).capitalize()
             }
         }
-       return BaseModel(MedicineModel(drugGroup.name,drugName?:drugGroup.name))
+       return BaseModel(MedicineModel(drugGroup.name,drugName?:drugGroup.name,searchedMed))
     }
 }

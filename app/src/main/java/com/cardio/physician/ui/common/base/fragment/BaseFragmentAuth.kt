@@ -16,6 +16,9 @@ import com.cardio.physician.ui.common.listeners.DialogHelper
 import com.cardio.physician.ui.common.listeners.DialogProvider
 import com.cardio.physician.ui.common.utils.extentions.setUpToolbar
 import com.cardio.physician.ui.common.utils.showAlertDialog
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+
 
 abstract class BaseFragmentAuth(@LayoutRes layoutResId: Int) : Fragment(layoutResId), DialogProvider {
     protected val baseViewModel : BaseAuthViewModel by activityViewModels()
@@ -39,8 +42,10 @@ abstract class BaseFragmentAuth(@LayoutRes layoutResId: Int) : Fragment(layoutRe
         hideProgress()
     }
 
-    protected fun setUpToolbar(view: View, title: String, backBtnVisibility: Boolean = false
-                               , editProfile : Boolean = false) {
+    protected fun setUpToolbar(
+        view: View, title: String, backBtnVisibility: Boolean = false,
+        editProfile: Boolean = false,
+    ) {
         activity.let {
             view.setUpToolbar(title, backBtnVisibility, editProfile, activity as AppCompatActivity)
         }
@@ -54,8 +59,8 @@ abstract class BaseFragmentAuth(@LayoutRes layoutResId: Int) : Fragment(layoutRe
         showAlertDialog(requireActivity() as AppCompatActivity,
             title, description,
             getString(R.string.ok),
-            getString(R.string.cancel),true){ btnText: String, dialog: DialogInterface ->
-            if(btnText.equals(getString(R.string.ok),true)){
+            getString(R.string.cancel), true){ btnText: String, dialog: DialogInterface ->
+            if(btnText.equals(getString(R.string.ok), true)){
                 onLogout.invoke()
                 baseViewModel.logoutFitnessTracker(activity)
                 (requireActivity() as BaseActivity).signOut()

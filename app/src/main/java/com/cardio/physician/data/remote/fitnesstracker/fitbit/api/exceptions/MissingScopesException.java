@@ -2,7 +2,6 @@ package com.cardio.physician.data.remote.fitnesstracker.fitbit.api.exceptions;
 
 
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
 
 import java.util.Collection;
 

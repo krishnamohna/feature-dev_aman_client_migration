@@ -31,11 +31,11 @@ class FitbitRepositaryImp @Inject constructor(val fitbitManager:FitbitManager) :
     }
 
     override fun isLoggedIn(): Boolean {
-       return com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager.isLoggedIn()
+       return AuthenticationManager.isLoggedIn()
     }
 
     override fun login(activity: ActivityResultLauncher<Intent>,context: Context) {
-        com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager.login(activity,context)
+        AuthenticationManager.login(activity,context)
     }
 
     override fun login(fragment: Fragment) {
@@ -43,7 +43,7 @@ class FitbitRepositaryImp @Inject constructor(val fitbitManager:FitbitManager) :
     }
 
     override fun logout(activity: Activity) {
-        com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager.logout(activity)
+        AuthenticationManager.logout(activity)
     }
 
 }

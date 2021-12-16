@@ -22,7 +22,7 @@ class SyncHealthRepositoryImp @Inject constructor(
         val query: Query = fireStore.collection(FireStoreCollection.HEALTH_LOGS)
             .document(firebaseAuth.currentUser?.uid!!)
             .collection(FireStoreCollection.LOGS)
-            .orderBy(FireStoreDocKey.TIME_STAMP, Query.Direction.DESCENDING)
+            .orderBy(FireStoreDocKey.TIME_STAMP_CAMEL, Query.Direction.DESCENDING)
             .limit(1)
         val querySnapshot = query.get().await()
         return if (querySnapshot.isEmpty) {
@@ -30,10 +30,10 @@ class SyncHealthRepositoryImp @Inject constructor(
         } else {
             val fitnessModel = FitnessModel()
             for (document in querySnapshot) {
-                fitnessModel.weight = document.data[FireStoreDocKey.WEIGHT] as? Double?
-                fitnessModel.heartRate = document.data[FireStoreDocKey.HEART_RATE] as? Float?
+                fitnessModel.weight = document.data[FireStoreDocKey.WEIGHT] as? String?
+                fitnessModel.heartRate = document.data[FireStoreDocKey.HEART_RATE] as? String?
                 fitnessModel.bloodPressureTopBp =
-                    document.data[FireStoreDocKey.BLOOD_PRESURE] as? Double?
+                    document.data[FireStoreDocKey.BLOOD_PRESURE] as? String?
                 fitnessModel.date = document.data[FireStoreDocKey.DATE] as? String?
                 fitnessModel.timeStamp = document.data[FireStoreDocKey.DATE] as? Long?
             }

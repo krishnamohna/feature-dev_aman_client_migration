@@ -21,11 +21,11 @@ class DiagnosisFragmentStep4ViewModel @Inject constructor(val diagnosisRepo: Dia
     var liveSubmitDiagnosis: LiveData<Resource<Boolean>> =
         mutableSubmitDiagnosis
 
-    fun submitDiagnosisReport(diagnosisModel: DiagnosisModel){
+    fun submitDiagnosisReport(diagnosisModel: DiagnosisModel, userId: String?){
         viewModelScope.launch {
             mutableSubmitDiagnosis.setLoading()
             try{
-                mutableSubmitDiagnosis.setSuccess(diagnosisRepo.submitReport(diagnosisModel))
+                mutableSubmitDiagnosis.setSuccess(diagnosisRepo.submitReport(diagnosisModel, userId))
             }catch (exp:Exception){
                 mutableSubmitDiagnosis.setError(exp)
             }

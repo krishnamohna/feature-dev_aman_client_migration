@@ -12,11 +12,12 @@ import com.cardio.physician.databinding.ActivityHealthLogsBinding
 import com.cardio.physician.domain.common.model.validation.ValidationModelV2
 import com.cardio.physician.network.Status
 import com.cardio.physician.ui.common.base.activity.BaseToolbarActivity
-import com.cardio.physician.ui.common.base.fragment.toolbar.HealthLogsToolbarImp
-import com.cardio.physician.ui.common.base.fragment.toolbar.IToolbar
+import com.cardio.physician.ui.common.base.toolbar.HealthLogsToolbarImp
+import com.cardio.physician.ui.common.base.toolbar.IToolbar
 import com.cardio.physician.ui.common.utils.*
 import com.cardio.physician.ui.common.utils.extentions.customObserver
 import com.cardio.physician.ui.common.utils.extentions.getTrimmedText
+import com.cardio.physician.ui.common.utils.extentions.isConnectedOrThrowMsg
 import com.cardio.physician.ui.common.utils.textwatcher.LabelVisiblityHelper
 import com.cardio.physician.ui.common.utils.validation.FieldType
 import dagger.hilt.android.AndroidEntryPoint
@@ -65,6 +66,7 @@ class HealthLogsActivity : BaseToolbarActivity() {
     }
 
     private fun setViews() {
+        enableButtonSave(false)
         labelVisiblityHelper.addView(
             binding.clHealthDetail.edtWeight,
             binding.clHealthDetail.tvWeightError,
@@ -110,9 +112,38 @@ class HealthLogsActivity : BaseToolbarActivity() {
                 val dateString = getDate(date).plus("-")
                     .plus(getMonthNumber(month).toString().plus("-"))
                     .plus(year)
-                selectedDate = dateString.toDate()
+                selectedDate = dateString.datePickerStringToDate(DateFormat_.DATE_FORMAT_DD_MM_YYYY_DATE_PICKER)
                 binding.edtHealthLogDate.setText(getStringFromDate(selectedDate))
             }?.show()
+        }
+        var listFieldsf= listOf<EditText>(binding.clHealthDetail.edtWeight,binding.clHealthDetail.edtHeartRate,binding.clHealthDetail.edtBottomBp,binding.clHealthDetail.edtTopBp)
+        viewModel.addTextChangeListener(listFieldsf) {
+            setAlphaVisibility()
+        }
+    }
+
+    private fun setAlphaVisibility() {
+        val weight = binding.clHealthDetail.edtWeight.getTrimmedText()
+        val heartRate = binding.clHealthDetail.edtHeartRate.getTrimmedText()
+        val topBp = binding.clHealthDetail.edtTopBp.getTrimmedText()
+        val bottomBp = binding.clHealthDetail.edtBottomBp.getTrimmedText()
+        val selectedDate = binding.edtHealthLogDate.text.toString().trim()
+        viewModel.checkValidation(weight, heartRate, topBp, bottomBp, this.selectedDate, {
+           enableButtonSave(true)
+        },{errorMsg,validationModel->
+            enableButtonSave(false)
+        },{
+            enableButtonSave(true)
+        })
+    }
+
+    private fun enableButtonSave(isEnable: Boolean) {
+        if(isEnable){
+            binding.btSaveLog.isEnabled=true
+            binding.btSaveLog.alpha= 1.0F
+        }else{
+            binding.btSaveLog.isEnabled=false
+            binding.btSaveLog.alpha= 0.3F
         }
     }
 
@@ -123,14 +154,16 @@ class HealthLogsActivity : BaseToolbarActivity() {
         val bottomBp = binding.clHealthDetail.edtBottomBp.getTrimmedText()
         val selectedDate = binding.edtHealthLogDate.text.toString().trim()
         viewModel.checkValidation(weight, heartRate, topBp, bottomBp, this.selectedDate, {
-            viewModel.updateData(
-                weight,
-                heartRate,
-                topBp,
-                bottomBp,
-                selectedDate,
-                this.selectedDate?.time
-            )
+           isConnectedOrThrowMsg {
+               viewModel.updateData(
+                   weight,
+                   heartRate,
+                   topBp,
+                   bottomBp,
+                   selectedDate,
+                   this.selectedDate?.time
+               )
+           }
         },{errorMsg,validationModel->
             onError(errorMsg)
             setViewsForValidations(validationModel)

@@ -15,20 +15,22 @@ import com.cardio.physician.databinding.ActivityDiagnosisBinding
 import com.cardio.physician.domain.diagnosis.DiagnosisModel
 import com.cardio.physician.domain.questionare.model.QuestionModel
 import com.cardio.physician.ui.common.base.activity.BaseToolbarActivity
-import com.cardio.physician.ui.common.base.fragment.toolbar.DiagnosisToolbarImp
-import com.cardio.physician.ui.common.base.fragment.toolbar.IToolbar
+import com.cardio.physician.ui.common.base.toolbar.DiagnosisToolbarImp
+import com.cardio.physician.ui.common.base.toolbar.IToolbar
 import com.cardio.physician.ui.common.customviews.StepView
+import com.cardio.physician.ui.common.utils.FireStoreDocKey
 import com.cardio.physician.ui.common.utils.showConfirmAlertDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class DiagnosisActivity : BaseToolbarActivity(),
-    AuthenticationHandler {
+class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
 
     companion object {
-        fun start(activity: Activity) {
-            activity?.startActivity(Intent(activity, DiagnosisActivity::class.java))
+        fun start(activity: Activity, userId: String?) {
+            val intent = Intent(activity, DiagnosisActivity::class.java)
+            intent.putExtra(FireStoreDocKey.USER_ID, userId)
+            activity.startActivity(intent)
         }
     }
 
@@ -43,11 +45,13 @@ class DiagnosisActivity : BaseToolbarActivity(),
     private val binding by viewBinding(ActivityDiagnosisBinding::inflate)
     private var stepView: StepView? = null
     private val diagnosisModel = DiagnosisModel()
+    private var userId: String?= null
     private val viewModel: DiagnosisActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        userId = intent.getStringExtra(FireStoreDocKey.USER_ID)
         setListeners()
     }
 
@@ -74,6 +78,9 @@ class DiagnosisActivity : BaseToolbarActivity(),
     }
 
     private fun setListeners() {
+        val bundle = Bundle()
+        bundle.putString(FireStoreDocKey.USER_ID, userId)
+        navController.setGraph(R.navigation.graph_diagnosis,bundle)
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             destination.label.toString().toInt().let {
                 lastStep = it

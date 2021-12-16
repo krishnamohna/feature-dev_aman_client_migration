@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_6sdp"
         android:fontFamily="@font/nunito_semibold"
-        android:text="@string/first_name"
+        android:text="@string/first_name_star"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
@@ -40,7 +40,7 @@
         android:layout_height="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_6sdp"
         android:layout_marginEnd="4dp"
-        android:hint="@string/first_name"
+        android:hint="@string/first_name_hint"
         android:imeOptions="actionNext"
         android:inputType="textCapWords"
         android:maxLength="@integer/int_20"
@@ -89,7 +89,7 @@
         android:layout_height="@dimen/_40sdp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
-        android:hint="@string/last_name"
+        android:hint="@string/last_name_hint"
         android:imeOptions="actionNext"
         android:inputType="textCapWords"
         android:maxLength="@integer/int_20"
@@ -138,8 +138,8 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/edtAge"
         app:layout_constraintStart_toStartOf="@+id/edtAge"
-        app:layout_constraintTop_toBottomOf="@id/barrierNames"
-        tools:visibility="gone" />
+        app:layout_constraintTop_toBottomOf="@id/tvFirstNameError"
+        tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edtAge"
@@ -147,7 +147,8 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginTop="8dp"
-        android:hint="@string/age"
+        android:hint="@string/age_hint"
+        android:focusable="false"
         android:imeOptions="actionNext"
         android:inputType="number"
         android:maxLength="@integer/int_3"

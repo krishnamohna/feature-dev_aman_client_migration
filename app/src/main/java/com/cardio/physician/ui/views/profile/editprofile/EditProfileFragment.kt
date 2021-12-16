@@ -30,7 +30,6 @@ import com.cardio.physician.domain.common.model.ValidationModel
 import com.cardio.physician.network.Resource
 import com.cardio.physician.network.Status
 import com.cardio.physician.network.api.Constants
-import com.cardio.physician.network.api.EXTRAS
 import com.cardio.physician.ui.common.base.fragment.BaseFragment
 import com.cardio.physician.ui.common.utils.*
 import com.cardio.physician.ui.common.utils.extentions.loadImage
@@ -55,7 +54,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
 
     var isEmailEdited: (email: String) -> Unit = {
         Intent(requireContext(), ChangeEmailActivity::class.java).apply {
-            putExtra(EXTRAS.NEW_EMAIL_ADDRESS, it)
+            putExtra(com.cardio.physician.ui.common.utils.EXTRAS.NEW_EMAIL_ADDRESS, it)
         }.run {
             resultLauncher.launch(this)
         }
@@ -157,7 +156,6 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
         viewModel.firebaseException.observe(viewLifecycleOwner, {
             handleApiCallback(it)
         })
-
         viewModel.userDetailDocument.observe(viewLifecycleOwner, {
             handleApiCallback(it)
         })
@@ -194,7 +192,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
                     val dateString = getDate(date).plus("-")
                         .plus(getMonthNumber(month).toString().plus("-"))
                         .plus(year)
-                    birthDate = dateString.toDate()
+                    birthDate = dateString.datePickerStringToDate(DateFormat_.DATE_FORMAT_DD_MM_YYYY_DATE_PICKER)
                     binding.edtDob.setText(getStringFromDate(birthDate))
                 }?.show()
             }
@@ -319,12 +317,13 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
             val genderList = resources.getStringArray(R.array.gender_list).toList()
             val imageUrl = documentReference.data?.get(FireStoreDocKey.IMAGE_URL) as String?
             userType = documentReference.data?.get(FireStoreDocKey.SIGN_UP_TYPE) as String?
-            if (!imageUrl.isNullOrEmpty()) {
+            if (!imageUrl.isNullOrBlank()) {
                 viewModel.firebaseUri = imageUrl.convertIntoUri()
-                viewModel.getImageDownloadUrl(imageUrl)
+               // viewModel.getImageDownloadUrl(imageUrl)
+                binding.imgProfilePic.loadImage(imageUrl,true,true)
             }
             try {
-                if (!dob.isNullOrEmpty()) birthDate = dob.toDate(Constants.DATE_FORMAT_DD_MMM_YYYY)
+                if (!dob.isNullOrEmpty()) birthDate = dob.datePickerStringToDate(com.cardio.physician.ui.common.utils.Constants.DATE_FORMAT_DD_MMM_YYYY)
             } catch (ex: Exception) {
 
             }
@@ -343,7 +342,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(), View.OnC
             binding.edtHeight.setText(height ?: "")
             binding.edtWeight.setText(heartRate ?: "")
             userType?.let {
-                binding.phoneNumberContainer.visibility = if (it == UserType.GOOGLE.name) {
+                binding.phoneNumberValContainer.visibility = if (it == UserType.GOOGLE.name) {
                     View.GONE
                 } else {
                     View.VISIBLE

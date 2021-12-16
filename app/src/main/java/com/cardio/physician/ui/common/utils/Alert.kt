@@ -67,6 +67,7 @@ fun showAlertDialog(
 ) {
     val builder = AlertDialog.Builder(context)
     builder.setTitle(title)
+    builder.setCancelable(false)
     builder.setMessage(description)
     builder.setPositiveButton(btnOneTitle) { dialogInterface, _ ->
         mCallBack.invoke(btnOneTitle, dialogInterface)
@@ -80,7 +81,7 @@ fun showAlertDialog(
     dialog.show()
 }
 
- fun showFilePickOptions(activity: AppCompatActivity) {
+ fun showFilePickOptions(activity: AppCompatActivity,onTakePicture:()->Unit,onGalleryClick:()->Unit) {
     if (mBottomSheetDialog != null && mBottomSheetDialog!!.isShowing()) {
         mBottomSheetDialog!!.dismiss()
     }
@@ -91,26 +92,41 @@ fun showAlertDialog(
     mBottomSheetDialog?.setContentView(sheetView)
     mBottomSheetDialog?.show()
     sheetView.findViewById<View>(R.id.tvTakePic).setOnClickListener {
-        takePicture()
-        dismissFilePicker()
+        onTakePicture.invoke()
+        dismissBottomSheet()
     }
     sheetView.findViewById<View>(R.id.tvPickImage).setOnClickListener {
-        pickImage()
-        dismissFilePicker()
+        onGalleryClick.invoke()
+        dismissBottomSheet()
     }
 }
 
-fun dismissFilePicker() {
+fun showPhysicianPickOption(activity: AppCompatActivity, onPatientClicked:()->Unit, onIllnessClicked:()->Unit){
+    if (mBottomSheetDialog != null && mBottomSheetDialog!!.isShowing()) {
+        mBottomSheetDialog!!.dismiss()
+    }
+    mBottomSheetDialog =
+        BottomSheetDialog(activity, R.style.CustomBottomSheetDialogTheme)
+    val sheetView: View =
+        activity.layoutInflater.inflate(R.layout.bottom_sheet_physician_operation, null)
+    mBottomSheetDialog?.setContentView(sheetView)
+    mBottomSheetDialog?.show()
+    sheetView.findViewById<View>(R.id.tvPatientLabel).setOnClickListener {
+        onPatientClicked.invoke()
+        dismissBottomSheet()
+    }
+    sheetView.findViewById<View>(R.id.tvIllnessLabel).setOnClickListener {
+        onIllnessClicked.invoke()
+        dismissBottomSheet()
+    }
+    sheetView.findViewById<View>(R.id.tvCancelLabel).setOnClickListener {
+        dismissBottomSheet()
+    }
+}
+
+fun dismissBottomSheet() {
     Handler(Looper.getMainLooper()).postDelayed(
         { if (mBottomSheetDialog != null && mBottomSheetDialog!!.isShowing) mBottomSheetDialog!!.dismiss() },
         500
     )
-}
-
-private fun pickImage() {
-
-}
-
-private fun takePicture() {
-
 }

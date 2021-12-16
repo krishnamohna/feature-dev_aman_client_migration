@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.cardio.physician.R
 import com.cardio.physician.databinding.FragmentDiagnosisPart3Binding
 import com.cardio.physician.domain.questionare.model.QuestionModel
@@ -16,6 +17,7 @@ import com.cardio.physician.ui.common.utils.QuestionTypes
 import com.cardio.physician.ui.common.utils.extentions.customObserver
 import com.cardio.physician.ui.common.utils.showToast
 import com.cardio.physician.ui.views.diagnosis.common.BaseDiagnosisFragment
+import com.cardio.physician.ui.views.diagnosis.step2.DiagnosisFragmentStep2Args
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,6 +25,7 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
 
     private var questionList: List<QuestionModel>? = null
     private val viewModel: DiagnosisFragmentStep3ViewModel by viewModels()
+    val args: DiagnosisFragmentStep3Args by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -142,7 +145,7 @@ class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3Bindi
             if (hasUserGivenAllAnswers()) {
                 //save all questions to diagnoss model in diagnosis activity
                 diagnosisActivity?.getDiagnosisModel()?.questionnaire = questionList
-                findNavController().navigate(DiagnosisFragmentStep3Directions.actionDiagnosisFragmentPart3ToDiagnosisFragmentPart4())
+                findNavController().navigate(DiagnosisFragmentStep3Directions.actionDiagnosisFragmentPart3ToDiagnosisFragmentPart4(args.userId))
             } else {
                 context?.let { it1 -> showToast(it1, getString(R.string.validate_all_questions)) }
             }

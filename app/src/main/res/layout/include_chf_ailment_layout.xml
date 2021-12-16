@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvNameLabel"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="CHF Type : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNameDashboard"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            tools:text="Hfrfe"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNameLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvNameLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvNameLabel" />
+
+        <TextView
+            android:id="@+id/textView9"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/ef"
+            app:layout_constraintStart_toStartOf="@+id/tvNameLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameLabel" />
+
+        <TextView
+            android:id="@+id/tvGenderDash"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            tools:text="Incomplete"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintEnd_toStartOf="@+id/tvNhayLabel"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toTopOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/tvNhayLabel"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NYHA Class : "
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            tools:text="2"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNhayLabel"
+            app:layout_constraintStart_toEndOf="@+id/tvNhayLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvNhayLabel" />
+
+        <TextView
+            android:id="@+id/tvDryWeightLabelDash"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Dry Weight : "
+            app:layout_constraintBottom_toBottomOf="@+id/tvNhayLabel"
+            app:layout_constraintEnd_toStartOf="@+id/tvDryWeightDash"
+            app:layout_constraintTop_toTopOf="@+id/tvNhayLabel" />
+
+        <TextView
+            android:id="@+id/tvDryWeightDash"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            tools:text="25"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDryWeightLabelDash"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvDryWeightLabelDash" />
+
+        <TextView
+            android:id="@+id/tvCardiacDevicesLabel"
+            android:layout_width="wrap_content"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Cardiac Device(s): "
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/tvCardiacDevices"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            tools:text="2 Leads"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvCardiacDevicesLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvCardiacDevicesLabel" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:607768524761:android:9f5d18d707650f0e624bc8",
         "android_client_info": {
-          "package_name": "com.cardio.physician"
+          "package_name": "com.cardio.doctor"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "607768524761-8vui39rodt905364nlf8bfujpu7fe5q7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.cardio.physician",
+            "package_name": "com.cardio.doctor",
             "certificate_hash": "13525c71f87845c3328625f132778cb46f20f87c"
           }
         },
@@ -25,7 +25,7 @@
           "client_id": "607768524761-9g72notbht5424robfginshgdh9a6cd7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.cardio.physician",
+            "package_name": "com.cardio.doctor",
             "certificate_hash": "287cd35898eae14be2c12d0ecb94d0204c8855b9"
           }
         },
@@ -33,7 +33,7 @@
           "client_id": "607768524761-oeimja95pd0q3oqrj46knq9uf1mmnf88.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.cardio.physician",
+            "package_name": "com.cardio.doctor",
             "certificate_hash": "8cb054b8c0f01dfeae05ebd77695ddbf821556af"
           }
         },

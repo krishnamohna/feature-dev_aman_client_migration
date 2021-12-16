@@ -21,11 +21,6 @@ import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Aut
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.ClientCredentials;
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
 import com.cardio.physician.databinding.ActivityFitbitLoginBinding;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationHandler;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationResult;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthorizationController;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.ClientCredentials;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -39,6 +34,7 @@ public class LoginActivity extends AppCompatActivity implements AuthenticationHa
     private static final String EXPIRES_IN_KEY = "EXPIRES_IN_KEY";
     private static final String SCOPES_KEY = "SCOPES_KEY";
     private ActivityFitbitLoginBinding binding;
+    private AuthorizationController authorizationController;
 
     public static Intent createIntent(Context context, @NonNull ClientCredentials clientCredentials, @Nullable Long expiresIn, Set<Scope> scopes) {
         return createIntent(context, null, clientCredentials, expiresIn, scopes);
@@ -78,11 +74,21 @@ public class LoginActivity extends AppCompatActivity implements AuthenticationHa
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             binding.loginWebview.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
-        AuthorizationController authorizationController = new AuthorizationController(
+        authorizationController = new AuthorizationController(
                 binding.loginWebview,
                 clientCredentials,
                 this);
-        authorizationController.authenticate(expiresIn, scopesSet);
+        if(getIntent().getAction()==null) {
+            authorizationController.authenticate(expiresIn, scopesSet, this);
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if(intent.getAction().equalsIgnoreCase("android.intent.action.VIEW")){
+            authorizationController.onUrlChanged(intent.getDataString());
+        }
     }
 
     @Override

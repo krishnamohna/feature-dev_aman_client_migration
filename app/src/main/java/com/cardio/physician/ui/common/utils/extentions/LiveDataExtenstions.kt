@@ -41,22 +41,22 @@ fun CoroutineScope.observeApi(
 
 fun <T> LiveData<Resource<T>>.customObserver(
     viewLifecycleOwner: LifecycleOwner,
-    onLoading: (showProgress: Boolean) -> Unit,
+    onLoading: ((showProgress: Boolean) -> Unit)?,
     onSuccess: (T?) -> Unit,
-    onError: (String?) -> Unit
+    onError: ((String?) -> Unit)?
 ) {
     this.observe(viewLifecycleOwner, {
         when (it.status) {
             Status.LOADING -> {
-                onLoading.invoke(true)
+                onLoading?.invoke(true)
             }
             Status.SUCCESS -> {
-                onLoading.invoke(false)
+                onLoading?.invoke(false)
                 onSuccess.invoke(it.data)
             }
             Status.ERROR -> {
-                onLoading.invoke(false)
-                onError.invoke(it.message)
+                onLoading?.invoke(false)
+                onError?.invoke(it.message)
             }
         }
     })

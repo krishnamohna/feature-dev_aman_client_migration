@@ -9,14 +9,11 @@
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.cardio.physician.ui.views.dashboard.fragment.DashboardFragment"
-        android:label="DashboardFragment" >
+        android:label="@string/title_dashboard" >
         <action
             android:id="@+id/dashboardToProfileFragment"
             app:destination="@id/graphProfile"
-            app:enterAnim="@anim/in_from_right"
-            app:exitAnim="@anim/out_to_left"
-            app:popEnterAnim="@anim/in_from_left"
-            app:popExitAnim="@anim/out_to_right" />
+            />
     </fragment>
 
 </navigation>

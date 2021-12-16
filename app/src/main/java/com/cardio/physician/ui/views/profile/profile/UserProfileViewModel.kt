@@ -43,7 +43,7 @@ class UserProfileViewModel @Inject constructor(
         try {
             _userDetailDocument.postValue(Resource.loading(Constants.USER_DETAIL, null))
             viewModelScope.launch {
-                //fetch user detai now
+                //fetch user detail now
                 var userDetail = repository.fetchUserDetail(_firebaseException)
                 _userDetailDocument.postValue(Resource.success(Constants.USER_DETAIL, userDetail))
             }

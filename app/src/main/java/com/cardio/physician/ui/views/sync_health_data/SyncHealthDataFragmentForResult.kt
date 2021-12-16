@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.cardio.physician.domain.fitness.model.FitnessModel
-import com.cardio.physician.network.api.EXTRAS
 import com.cardio.physician.ui.views.sync_health_data.activity.SyncHealthActivty
 
 
@@ -18,6 +17,7 @@ class SyncHealthDataFragmentForResult : SyncHealthDataFragment() {
 
     private fun setViews() {
         binding.btNext.visibility = View.VISIBLE
+        binding.healthLogsContainer.visibility=View.INVISIBLE
     }
 
     override fun setListener() {
@@ -38,7 +38,7 @@ class SyncHealthDataFragmentForResult : SyncHealthDataFragment() {
     private fun sendResultBack(fitnessModel: FitnessModel) {
         (requireActivity() as? SyncHealthActivty)?.apply {
             Intent().apply {
-                putExtra(EXTRAS.USER_PROFILE, fitnessModel)
+                putExtra(com.cardio.physician.ui.common.utils.EXTRAS.USER_PROFILE, fitnessModel)
                 setResult(Activity.RESULT_OK, this)
                 finish()
             }

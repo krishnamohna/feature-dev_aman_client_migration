@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:backgroundTint="@color/cardview_light"
+    android:id="@+id/cvPatienDetail"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/tvAfibLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Afib Type : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvAfibDashboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PAF"
+            style="@style/BaseAppTheme.TxtView.bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvAfibLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvAfibLabel" />
+
+        <TextView
+            android:id="@+id/tvAfibSymtomLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Afib Symptoms (EHAR)"
+            style="@style/BaseAppTheme.TxtView"
+            app:layout_constraintStart_toStartOf="@+id/tvAfibLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvAfibLabel" />
+
+        <TextView
+            android:id="@+id/tvAfibSymptomDash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diziness"
+            style="@style/BaseAppTheme.TxtView.bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvAfibDashboard"
+            app:layout_constraintTop_toTopOf="@+id/tvAfibSymtomLabel" />
+
+        <TextView
+            android:id="@+id/tvAfibActivityLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            style="@style/BaseAppTheme.TxtView"
+            android:text="@string/date_of_birth"
+            app:layout_constraintStart_toStartOf="@+id/tvAfibSymtomLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvAfibSymtomLabel" />
+
+        <TextView
+            android:id="@+id/tvAfibActivityDash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daily Activity affected"
+            style="@style/BaseAppTheme.TxtView.bold"
+            app:layout_constraintStart_toStartOf="@+id/tvAfibSymptomDash"
+            app:layout_constraintTop_toTopOf="@+id/tvAfibActivityLabel" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            style="@style/BaseAppTheme.TxtView"
+            android:text="@string/title_diagnosis"
+            app:layout_constraintStart_toStartOf="@+id/tvAfibActivityLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvAfibActivityLabel" />
+
+        <TextView
+            android:id="@+id/tvDiagnosis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CHF,Afib"
+            style="@style/BaseAppTheme.TxtView.bold"
+            app:layout_constraintStart_toStartOf="@+id/tvAfibActivityDash"
+            app:layout_constraintTop_toTopOf="@+id/textView13" />
+
+        <TextView
+            android:id="@+id/tvAgeLabelDash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/age_only"
+            style="@style/BaseAppTheme.TxtView"
+            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <TextView
+            android:id="@+id/tvAgeDash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="21 years"
+            style="@style/BaseAppTheme.TxtView.bold"
+            app:layout_constraintStart_toStartOf="@+id/tvDiagnosis"
+            app:layout_constraintTop_toTopOf="@+id/tvAgeLabelDash" />
+
+        <TextView
+            android:id="@+id/tvAssesmentYearLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="Assesment Year"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvAgeLabelDash"
+            app:layout_constraintTop_toBottomOf="@+id/tvAgeLabelDash" />
+
+        <TextView
+            android:id="@+id/tvAssesmentYearDash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20 Dec1991"
+            style="@style/BaseAppTheme.TxtView.bold"
+            app:layout_constraintStart_toStartOf="@+id/tvAgeDash"
+            app:layout_constraintTop_toTopOf="@+id/tvAssesmentYearLabel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

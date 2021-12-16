@@ -2,7 +2,7 @@
 <resources>
 
     <string-array name="array_ailment">
-        <item>Select Ailment</item>
+        <item>Select Ailment *</item>
         <item>Cardiac Heart Failure </item>
         <item>Atrial Fibrillation </item>
     </string-array>

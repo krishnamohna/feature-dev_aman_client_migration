@@ -6,6 +6,7 @@ import android.os.Looper
 import com.cardio.physician.data.local.SharedPreferences
 import com.cardio.physician.data.local.UserManager
 import com.cardio.physician.ui.AppCardioPatient
+import com.cardio.physician.ui.common.utils.validation.DefaultAlphaFieldValidation
 import com.cardio.physician.ui.common.utils.validation.DefaultFieldValidation
 import com.cardio.physician.ui.common.utils.validation.Validater
 import com.google.firebase.auth.FirebaseAuth
@@ -21,6 +22,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import java.util.concurrent.Executors
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module()
@@ -69,8 +71,16 @@ class ApplicationModule {
 
     @Provides
     @Singleton
+    @Named(DEFAULT_VALIDATOR)
     fun provideFieldValidator(@ApplicationContext context: Context): Validater {
         return Validater(DefaultFieldValidation(context))
+    }
+
+    @Provides
+    @Singleton
+    @Named(DEFAULT_ALPHA_VALIDATOR)
+    fun provideAlphaFieldValidator(@ApplicationContext context: Context): Validater {
+        return Validater(DefaultAlphaFieldValidation(context))
     }
 
     @Provides

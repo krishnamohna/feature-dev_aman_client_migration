@@ -29,8 +29,11 @@
         tools:ignore="AllowBackup,LockedOrientationActivity"
         tools:targetApi="m">
         <activity
+            android:name=".ui.views.add_patient.AddPatientActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.views.healthlogs.HealthLogsActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".ui.service.SyncHeathDataService"
@@ -68,7 +71,7 @@
         <activity
             android:name=".ui.views.dashboard.DashboardActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".ui.views.change_email.ChangeEmailActivity"
             android:screenOrientation="portrait" />
@@ -87,9 +90,9 @@
                 android:resource="@xml/file_paths" />
         </provider> <!-- fitbit activities -->
         <activity
-            android:name="com.cardio.physician.ui.views.fitbit.RootActivity"
+            android:name=".ui.views.fitbit.RootActivity"
             android:label="Root Activity" />
-        <activity android:name="com.cardio.physician.ui.views.fitbit.auth.LoginActivity" />
+        <activity android:name=".ui.views.fitbit.auth.LoginActivity" />
 
         <meta-data
             android:name="com.fitbit.sampleandroidoauth2.CLIENT_ID"

@@ -13,7 +13,9 @@ import com.cardio.physician.domain.common.model.UserModel
 import com.cardio.physician.network.Resource
 import com.cardio.physician.network.Status
 import com.cardio.physician.network.api.Constants
-import com.cardio.physician.ui.common.base.fragment.BaseFragment
+import com.cardio.physician.ui.common.base.fragment.BaseToolBarFragment
+import com.cardio.physician.ui.common.base.toolbar.IToolbar
+import com.cardio.physician.ui.common.base.toolbar.ProfileToolbarImp
 import com.cardio.physician.ui.common.utils.FireStoreDocKey
 import com.cardio.physician.ui.common.utils.customSnackBarFail
 import com.cardio.physician.ui.common.utils.extentions.loadImage
@@ -22,7 +24,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class GetProfileFragment : BaseFragment<FragmentGetProfileBinding>(), View.OnClickListener {
+class GetProfileFragment : BaseToolBarFragment<FragmentGetProfileBinding>(), View.OnClickListener {
 
     private var userType: String?=null
     private var userModel: UserModel? = null
@@ -37,16 +39,14 @@ class GetProfileFragment : BaseFragment<FragmentGetProfileBinding>(), View.OnCli
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        setUpToolbar(binding.root, getString(R.string.profile), backBtnVisibility = true, editProfile = true)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setListener()
         setObservers()
         launchWithMinDelay{
             viewModel.getUserDetail()
         }
     }
-
 
     private fun setListener() {
         binding.wearableContainer.setOnClickListener(this)
@@ -129,7 +129,7 @@ class GetProfileFragment : BaseFragment<FragmentGetProfileBinding>(), View.OnCli
                     binding.txtPhoneNumber.visibility = View.VISIBLE
                     binding.txtPhoneNumber.text = "$countryCode  $phoneNumber"
                 }else{
-                    binding.txtPhoneNumber.visibility = View.GONE
+                    binding.txtPhoneNumber.visibility = View.INVISIBLE
                 }
             }
             if (gender.isNullOrEmpty()) {
@@ -144,8 +144,9 @@ class GetProfileFragment : BaseFragment<FragmentGetProfileBinding>(), View.OnCli
             binding.txtHeight.text = height
             binding.txtWeight.text = weight
             binding.txtSelectedWearable.text = viewModel.getSelectedHealthKit()
-            if (!imageUrl.isNullOrEmpty()) {
-                viewModel.getImageDownloadUrl(imageUrl)
+            if (!imageUrl.isNullOrBlank()) {
+               // viewModel.getImageDownloadUrl(imageUrl)
+                binding.imgProfilePic.loadImage(imageUrl,true,true)
             }
         } else {
             customSnackBarFail(
@@ -168,6 +169,10 @@ class GetProfileFragment : BaseFragment<FragmentGetProfileBinding>(), View.OnCli
                 findNavController().navigate(GetProfileFragmentDirections.getProfileToEditProfile(userModel))
             }
         }
+    }
+
+    override fun getToolbarImp(): IToolbar? {
+        return ProfileToolbarImp(binding.headerView.toolBarContainer)
     }
 
 

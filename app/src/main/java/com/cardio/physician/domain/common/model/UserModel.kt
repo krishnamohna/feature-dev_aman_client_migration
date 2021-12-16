@@ -15,6 +15,6 @@ data class UserModel(var uid: String?,
                      val gender:String?=null,
                      val height:String?=null,
                      val weight:String?=null,
-                     val dob:String?=null,
-                     val appUserType:String?
+                     val dob:String?=null
+
 ): Parcelable

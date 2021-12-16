@@ -29,6 +29,7 @@ import com.cardio.physician.ui.common.utils.*
 import com.cardio.physician.ui.common.utils.Timer.Companion.API_TIMEOUT
 import com.cardio.physician.ui.common.utils.Timer.Companion.OTP_EXPIRED
 import com.cardio.physician.ui.common.utils.viewbinding.viewBinding
+import com.cardio.physician.ui.views.auth.login.LoginViewModel
 import com.cardio.physician.ui.views.dashboard.DashboardActivity
 import com.countrypicker.CountrySelectActivity
 import com.countrypicker.bean.CountryData

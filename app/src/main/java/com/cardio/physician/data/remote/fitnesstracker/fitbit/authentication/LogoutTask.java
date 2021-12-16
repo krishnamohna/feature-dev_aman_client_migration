@@ -6,9 +6,9 @@ import android.util.Base64;
 
 import androidx.annotation.NonNull;
 
-import com.cardio.physician.network.basichttp.BasicHttpRequest;
-import com.cardio.physician.network.basichttp.BasicHttpRequestBuilder;
-import com.cardio.physician.network.basichttp.BasicHttpResponse;
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.basichttp.BasicHttpRequest;
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.basichttp.BasicHttpRequestBuilder;
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.basichttp.BasicHttpResponse;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

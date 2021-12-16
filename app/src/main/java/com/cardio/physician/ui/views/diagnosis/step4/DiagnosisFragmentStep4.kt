@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.cardio.physician.R
 import com.cardio.physician.databinding.FragmentDiagnosisPart4Binding
 import com.cardio.physician.databinding.ItemMedicationPreviewLayoutBinding
@@ -13,15 +14,18 @@ import com.cardio.physician.domain.questionare.model.QuestionModel
 import com.cardio.physician.ui.common.customviews.questions.*
 import com.cardio.physician.ui.common.utils.QuestionTypes
 import com.cardio.physician.ui.common.utils.extentions.customObserver
+import com.cardio.physician.ui.common.utils.extentions.isConnectedOrThrowMsg
 import com.cardio.physician.ui.common.utils.getDateFromTimeMills
 import com.cardio.physician.ui.common.utils.showToast
 import com.cardio.physician.ui.views.diagnosis.common.BaseDiagnosisFragment
+import com.cardio.physician.ui.views.diagnosis.step2.DiagnosisFragmentStep2Args
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Binding>() {
 
     val viewModel: DiagnosisFragmentStep4ViewModel by viewModels()
+    val args: DiagnosisFragmentStep4Args by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -143,62 +147,14 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
                 //set current times millis to model
                 it.timeStamp=System.currentTimeMillis()
                 it.date= getDateFromTimeMills(System.currentTimeMillis())
-                viewModel.submitDiagnosisReport(it)
+                isConnectedOrThrowMsg {
+                    viewModel.submitDiagnosisReport(it, userId = args.userId)
+                }
             }
         }
         binding.cvDiagnosisBottomContainer.btCancel.setOnClickListener {
             findNavController().popBackStack()
         }
-/*
-        labelVisiblityHelper.addView(
-            binding.clPatientDetail.edtFirstName,
-            binding.clPatientDetail.tvFirstNameError,
-            binding.clPatientDetail.firstNameLabel,
-            binding.scrollViewStep4, parentActivity
-        )
-        labelVisiblityHelper.addView(
-            binding.clPatientDetail.edtLastName,
-            binding.clPatientDetail.tvErrorLastName,
-            binding.clPatientDetail.txtLastName,
-            binding.scrollViewStep4,
-            parentActivity
-        )
-        labelVisiblityHelper.addView(
-            binding.clPatientDetail.edtAge,
-            binding.clPatientDetail.tvAgeError,
-            binding.clPatientDetail.txtAge,
-            binding.scrollViewStep4,
-            parentActivity
-        )
-        labelVisiblityHelper.addView(
-            binding.clPatientDetail.edtWeight,
-            binding.clPatientDetail.tvWeightError,
-            binding.clPatientDetail.tvWeight,
-            binding.scrollViewStep4,
-            parentActivity
-        )
-        labelVisiblityHelper.addView(
-            binding.clPatientDetail.edtHeightAilment,
-            binding.clPatientDetail.tvHeightErorAilment,
-            binding.clPatientDetail.txtHeightAilment,
-            binding.scrollViewStep4,
-            parentActivity
-        )
-        labelVisiblityHelper.addView(
-            binding.clPatientDetail.edtHeartRateAilment,
-            binding.clPatientDetail.tvHearRateErorAilment,
-            binding.clPatientDetail.txtHeartRateAilment,
-            binding.scrollViewStep4,
-            parentActivity
-        )
-        labelVisiblityHelper.addView(
-            binding.clPatientDetail.edtEnergy,
-            binding.clPatientDetail.tvErrorEnergy,
-            binding.clPatientDetail.tvEnergyLabel,
-            binding.scrollViewStep4,
-            parentActivity
-        )
-*/
     }
 
 

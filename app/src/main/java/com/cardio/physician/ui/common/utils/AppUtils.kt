@@ -141,7 +141,7 @@ fun View.setDoubleClickListener(onSafeClick: (View) -> Unit) {
 }
 
 fun String.convertMetricWeightToPound(weightUnit: String?): String {
-    if(weightUnit.equals("METRIC")){
+    if(weightUnit.isNullOrBlank() || weightUnit.equals("METRIC")){
         return (this.toDouble() * 2.2046226218488).toString()
     }
     return this

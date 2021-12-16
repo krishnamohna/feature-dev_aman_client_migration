@@ -1,5 +1,6 @@
 package com.cardio.physician.ui.views.healthlogs
 
+import android.widget.EditText
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -13,8 +14,8 @@ import com.cardio.physician.ui.common.base.viewmodel.BaseViewModel
 import com.cardio.physician.ui.common.utils.extentions.setError
 import com.cardio.physician.ui.common.utils.extentions.setLoading
 import com.cardio.physician.ui.common.utils.extentions.setSuccess
+import com.cardio.physician.ui.common.utils.textwatcher.alphaVisibility.AlphaVisibilityHelper
 import com.cardio.physician.ui.common.utils.validation.FieldType
-import com.cardio.physician.ui.common.utils.validation.Validater
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.util.*
@@ -22,12 +23,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HealthLogsViewModel @Inject constructor(
-    val validater: Validater,
     val syncHealthRepositary: SyncHealthRepositary,
-    val userAuthRepositary: UserAuthRepositary
+    val userAuthRepositary: UserAuthRepositary,
 ) : BaseViewModel() {
 
     var updateLogLiveData = MutableLiveData<Resource<Boolean>>()
+    val alphaVisibilityHelper = AlphaVisibilityHelper()
 
     fun getUpdateLiveData(): LiveData<Resource<Boolean>> {
         return updateLogLiveData
@@ -41,7 +42,7 @@ class HealthLogsViewModel @Inject constructor(
         selectedDate: Date?,
         onSuccess: () -> Unit,
         onFailure: (String, ValidationModelV2) -> Unit,
-        onFailure2: (ValidationModelV2) -> Unit
+        onFailure2: (ValidationModelV2) -> Unit,
     ) {
         if (selectedDate == null) {
             onFailure2.invoke(
@@ -69,13 +70,13 @@ class HealthLogsViewModel @Inject constructor(
         topBp: String,
         bottomBp: String,
         selectedDate: String,
-        timeStamp: Long?
+        timeStamp: Long?,
     ) {
         var fitnessModel = FitnessModel()
-        if (weight.isNotEmpty()) fitnessModel.weight = weight.toDouble()
-        if (heartRate.isNotEmpty()) fitnessModel.heartRate = heartRate.toFloat()
-        if (topBp.isNotEmpty()) fitnessModel.bloodPressureTopBp = topBp.toDouble()
-        if (bottomBp.isNotEmpty()) fitnessModel.bloodPressureBottomBp = bottomBp.toDouble()
+        if (weight.isNotEmpty()) fitnessModel.weight = weight
+        if (heartRate.isNotEmpty()) fitnessModel.heartRate = heartRate
+        if (topBp.isNotEmpty()) fitnessModel.bloodPressureTopBp = topBp
+        if (bottomBp.isNotEmpty()) fitnessModel.bloodPressureBottomBp = bottomBp
         if (selectedDate.isNotEmpty()) fitnessModel.date = selectedDate
         fitnessModel.timeStamp = timeStamp
         viewModelScope.launch {
@@ -91,5 +92,12 @@ class HealthLogsViewModel @Inject constructor(
 
     fun getUserSignedUpDate(): Long? {
         return userAuthRepositary.getUserCreatedTime()
+    }
+
+    fun addTextChangeListener(
+        list: List<EditText>,
+        onTextChanged: () -> Unit,
+    ) {
+        alphaVisibilityHelper.addEditTextWatcher(list, onTextChanged)
     }
 }

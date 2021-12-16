@@ -16,6 +16,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/grey_divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/step_view" />
+
+    <TextView
+        android:id="@+id/tvMedicationLabelStep2"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/nunito_regular"
+        android:text="@string/select_medication"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider" />
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -24,15 +47,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/nunito_semibold"
-        android:text="@string/search_medicine"
+        android:text="Select Medication"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/step_view"
+        app:layout_constraintTop_toBottomOf="@id/tvMedicationLabelStep2"
         tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -46,7 +69,8 @@
         android:hint="@string/search_medicine"
         android:imeOptions="actionNext"
         android:inputType="textCapWords"
-        android:maxLength="@integer/int_20"
+        android:maxLength="@integer/int_30"
+        app:layout_goneMarginTop="16dp"
         android:maxLines="@integer/int_1"
         android:paddingLeft="@dimen/_16sdp"
         android:paddingRight="@dimen/_16sdp"
@@ -162,7 +186,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/edtMedicineSearch"
         app:layout_constraintEnd_toEndOf="@+id/edtMedicineSearch"
         app:layout_constraintTop_toTopOf="@+id/edtMedicineSearch"
-        app:srcCompat="@drawable/ic_add_black" />
+        app:srcCompat="@drawable/ic_add_v2" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclarAddedMed"

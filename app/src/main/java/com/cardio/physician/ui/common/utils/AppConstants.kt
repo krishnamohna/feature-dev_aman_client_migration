@@ -54,6 +54,7 @@ interface FireStoreCollection {
         const val LOGS = "logs"
         const val QUESTIONNAIRE = "Questionnaire"
         const val DIAGNOSIS = "Diagnosis"
+        const val CONNECTIONS = "Connections"
     }
 }
 
@@ -79,21 +80,21 @@ interface FireStoreDocKey {
         const val PHONE_NUMBER = "phoneNumber"
         const val DOB = "dob"
         const val SIGN_UP_TYPE = "signupType"
-        const val USER_TYPE = "userType"
         const val GENDER = "gender"
         const val HEIGHT = "height"
         const val WEIGHT = "weight"
         const val NAME = "name"
         const val CATEGORY = "category"
         const val OTHER = "others"
+        const val SEARCH_NAME = "searchName"
 
         //for sync colection
         const val HEART_RATE = "heartRate"
         const val BLOOD_PRESURE = "bloodPressure"
         const val BLOOD_SYSTOLIC_BP = "systolicBP"
         const val BLOOD_DIASTOLIC_BP = "diastolicBP"
-        const val TIME_STAMP = "time_stamp"
         const val TIME_STAMP_CAMEL = "timeStamp"
+        const val TIME_STAMP = TIME_STAMP_CAMEL
 
         //for diagnosis
         const val TOP_BP = "topBp"
@@ -116,15 +117,20 @@ interface FireStoreDocKey {
         const val SECONDARY_OPTION_1 = "secondary_option_1"
         const val SECONDARY_OPTION_2 = "secondary_option_2"
         const val SECONDARY_OPTION_3 = "secondary_option_3"
+
+        const val USER_TYPE = "userType"
+        const val TIMESTAMP = "timeStamp"
+        const val REQUEST_STATUS = "requestStatus"
     }
 }
 
 object GoogleFit {
-    const val DATA_POINT_HEART = "com.google.heart_rate.summary"
-    const val DATA_POINT_WEIGHT = "com.google.weight.summary"
-    const val DATA_POINT_STEP_COUNT = "com.google.step_count.delta"
-    const val DATA_POINT_BLOOD_PRESURE = "com.google.blood_pressure.summary"
+    const val DATA_TYPE_HEART = "com.google.heart_rate.summary"
+    const val DATA_TYPE_WEIGHT = "com.google.weight.summary"
+    const val DATA_TYPE_STEP_COUNT = "com.google.step_count.delta"
+    const val DATA_TYPE_BLOOD_PRESURE = "com.google.blood_pressure.summary"
     const val DATA_POINT_TYPE_AVERAGE = "average"
+    const val DATA_POINT_STEPS = "steps"
     const val DATA_POINT_FIELD_SYSTOLIC_AVERAGE = "blood_pressure_systolic_average"
     const val DATA_POINT_FIELD_DIASTOLIC_AVERAGE = "blood_pressure_diastolic_average"
 }
@@ -134,9 +140,14 @@ object Constants {
     const val DATE_FORMAT_DD_MMM_YYYY = "dd MMM yyyy"
 }
 
+object UserType{
+    const val USER_TYPE_PATIENT = "patient"
+    const val USER_TYPE_PHYSICIAN = "physician"
+}
+
 object DateFormat_ {
-    const val DATE_FORMAT_DD_MMM_YYYY = "dd MMM yyyy"
     const val DATE_FORMAT_YYYY_MMM_DD = "yyyy-MM-dd"  //2021-10-18
+    const val DATE_FORMAT_DD_MM_YYYY_DATE_PICKER = "dd-MM-yyyy"  //2021-10-18
 }
 
 object QuestionTypes {
@@ -146,7 +157,12 @@ object QuestionTypes {
     const val TYPE_4 = 4L
 }
 
-object AppUserType {
-    const val PHYSICIAN = "physician"
-    const val PATIENT = "patient"
+object EXTRAS {
+    const val CHOOSE_TYPE = "extras_choose_type"
+    const val USER_PROFILE = "user_profile"
+    const val HEAR_RATE = "heart_rate"
+    const val NEW_EMAIL_ADDRESS = "new_email_address"
+    const val TEXT_RECOGNIZATION = "text_recognization"
 }
+
+

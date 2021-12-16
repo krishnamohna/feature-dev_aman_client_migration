@@ -3,14 +3,11 @@ package com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders;
 import android.os.Handler;
 
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.APIUtils;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.base.SyncLoader;
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.base.SynTaskLoader;
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager;
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
-import com.cardio.physician.network.basichttp.BasicHttpRequest;
-import com.cardio.physician.network.basichttp.BasicHttpResponse;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.APIUtils;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.basichttp.BasicHttpRequest;
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.basichttp.BasicHttpResponse;
 import com.google.gson.Gson;
 
 import java.util.Locale;
@@ -18,7 +15,7 @@ import java.util.Locale;
 /**
  * Created by jboggess on 9/19/16.
  */
-public class ResourceLoaderSync<T> extends SyncLoader<ResourceLoaderResult<T>> {
+public class ResourceLoaderSync<T> extends SynTaskLoader<ResourceLoaderResult<T>> {
 
     private final static String EOL = System.getProperty("line.separator");
 

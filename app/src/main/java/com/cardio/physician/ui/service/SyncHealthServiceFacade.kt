@@ -23,7 +23,7 @@ class SyncHealthServiceFacade @Inject constructor(
     private val syncHealthRepositary: SyncHealthRepositary
 ) {
 
-    private val DEFALT_PREVIOUS_DAY_PERIOD = 7
+    private val DEFALT_PREVIOUS_DAY_PERIOD = 1
     private val _syncSingleLiveData = MutableLiveData<Resource<Boolean>>()
 
     fun getSyncData():LiveData<Resource<Boolean>>{
@@ -79,14 +79,14 @@ class SyncHealthServiceFacade @Inject constructor(
                     syncModel.arrayWeightLogs[i]?.weight ?: fitnessModel.weight
                 fitnessModel.date = dateModel.date
                 fitnessModel.timeStamp = syncModel.arrayDates[i].timeStamp
-                fitnessModel.heartRate = syncModel.arrayHeartLogs[i]?.restHeartRate?.toFloat()
+                fitnessModel.heartRate = syncModel.arrayHeartLogs[i]?.restHeartRate
                     ?: fitnessModel.heartRate
                 fitnessModel.bloodPressureTopBp =
                     syncModel.arrayBloodPresure[i]?.topBp ?: fitnessModel.bloodPressureTopBp
                 fitnessModel.bloodPressureBottomBp = syncModel.arrayBloodPresure[i]?.bottomBp
                     ?: fitnessModel.bloodPressureBottomBp
                 try {
-                    syncHealthRepositary.saveHealthData(fitnessModel)
+                  //  syncHealthRepositary.saveHealthData(fitnessModel)
                     _syncSingleLiveData.setSuccess(true)
                     service.stopSelf()
                 } catch (exp: Exception) {

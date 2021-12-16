@@ -1,10 +1,11 @@
 package com.cardio.physician.ui.common.utils.extentions
 
+import com.cardio.physician.domain.addpatient.PatientModel
 import com.cardio.physician.domain.common.model.UserModel
 import com.cardio.physician.domain.common.model.UserType
+import com.cardio.physician.domain.connection.ConnectionModel
 import com.cardio.physician.domain.diagnosis.DiagnosisModel
 import com.cardio.physician.domain.questionare.model.QuestionModel
-import com.cardio.physician.ui.common.utils.AppUserType
 import com.cardio.physician.ui.common.utils.FireStoreDocKey
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.firestore.DocumentSnapshot
@@ -13,7 +14,7 @@ import com.google.gson.Gson
 
 
 fun GoogleSignInAccount.toUserModel(): UserModel {
-    return UserModel("", "", null, null, null, email, null, UserType.GOOGLE, appUserType = AppUserType.PHYSICIAN)
+    return UserModel("", "", null, null, null, email, photoUrl.toString(), UserType.GOOGLE)
 }
 
 fun DocumentSnapshot.toUserModel(): UserModel {
@@ -29,7 +30,6 @@ fun DocumentSnapshot.toUserModel(): UserModel {
     val weight = data?.get(FireStoreDocKey.WEIGHT) as? String?
     val imageUrl = data?.get(FireStoreDocKey.IMAGE_URL) as? String?
     val userType = data?.get(FireStoreDocKey.SIGN_UP_TYPE) as? String?
-    val appUserType = data?.get(FireStoreDocKey.USER_TYPE) as? String?
     return UserModel(uid,
         firstName,
         lastName,
@@ -41,9 +41,7 @@ fun DocumentSnapshot.toUserModel(): UserModel {
         gender,
         height,
         weight,
-        dob,
-        appUserType
-    )
+        dob)
 }
 
 fun QuerySnapshot.toQuestionModel(): List<QuestionModel> {
@@ -80,6 +78,32 @@ fun QuerySnapshot.toDiagnosisModel(): List<DiagnosisModel> {
         diagnosisModel.date =it?.get(FireStoreDocKey.DATE) as? String?
         var listMedications=it?.get(FireStoreDocKey.MEDICATIONS) as ArrayList<HashMap<String,String>>*/
         list.add(diagnosisModel)
+    }
+    return list
+}
+
+fun QuerySnapshot.toPatientModel(): List<PatientModel> {
+    var list = mutableListOf<PatientModel>()
+    documents.forEach {
+        val userId = it.get(FireStoreDocKey.USER_ID) as? String?
+        val firstName = it.get(FireStoreDocKey.FIRST_NAME) as? String?
+        val lastName = it.get(FireStoreDocKey.LAST_NAME) as? String?
+        val imageUrl = it.get(FireStoreDocKey.IMAGE_URL) as? String?
+        list.add(PatientModel(userId, firstName, lastName, imageUrl))
+    }
+    return list
+}
+
+fun QuerySnapshot.toConnectionModel(): List<ConnectionModel> {
+    var list = mutableListOf<ConnectionModel>()
+    documents.forEach {
+        val userId = it.id as? String?
+        val firstName = it.get(FireStoreDocKey.FIRST_NAME) as? String?
+        val lastName = it.get(FireStoreDocKey.LAST_NAME) as? String?
+        val imageUrl = it.get(FireStoreDocKey.IMAGE_URL) as? String?
+        val timestamp = it.get(FireStoreDocKey.TIME_STAMP) as? Long?
+        if(it.get(FireStoreDocKey.REQUEST_STATUS) as? Boolean? == true)
+        list.add(ConnectionModel(userId, firstName, lastName, imageUrl, timestamp))
     }
     return list
 }

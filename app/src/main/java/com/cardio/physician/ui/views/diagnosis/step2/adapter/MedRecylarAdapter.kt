@@ -32,6 +32,18 @@ class MedRecylarAdapter : RecyclerView.Adapter<MedRecylarAdapter.MedViewHolder>(
         notifyItemInserted(listMeds.size - 1)
     }
 
+    fun isMedSearchExist(searchedMed: String): Boolean {
+        return listMeds.find {
+            it.searchedMed!!.equals(searchedMed,true)
+        } != null
+    }
+
+    fun isMedExist(medName: String): Boolean {
+        return listMeds.find {
+            it.drugName!!.equals(medName,true)
+        } != null
+    }
+
     private fun removeItem(adapterPosition: Int) {
         listMeds.removeAt(adapterPosition)
         notifyItemRemoved(adapterPosition)

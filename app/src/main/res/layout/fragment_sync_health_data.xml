@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:fontFamily="@font/nunito_extrabold"
-                android:text="@string/title_health_logs"
+                android:text="@string/manual"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_13ssp"
                 app:layout_constraintBottom_toBottomOf="@+id/imgHealthLogs"

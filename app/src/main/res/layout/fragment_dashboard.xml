@@ -1,124 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/parentContainer"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/_8sdp"
+    tools:context=".ui.views.dashboard.fragment.DashboardFragment">
+
+
+    <include
+        android:id="@+id/headerView"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.views.dashboard.fragment.DashboardFragment">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/welcome_to_dashboard"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLogOut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/logout"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_14sdp"
-            android:visibility="gone"
-            android:layout_marginTop="@dimen/_16sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"/>
-
-
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_45sdp"
-            android:background="@drawable/btn_white_bg_with_white_corner"
-            android:layout_margin="@dimen/_16sdp"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btnDashboardOne"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_all_patient_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_8sdp"
-                android:background="@drawable/ripple_normal"
-                android:src="@drawable/ic_home_select"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnTempDashboardTwo"
-                app:layout_constraintHorizontal_bias="0.5"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/nunito_extrabold"
+                android:includeFontPadding="false"
+                android:text="All Patients"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <View
-                android:id="@+id/btnTempDashboardTwo"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
-                android:padding="@dimen/_8sdp"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btnProfileMenu"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_11sdp"
+                android:fontFamily="@font/nunito_regular"
+                android:includeFontPadding="false"
+                android:text="16th July 2021"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_all_patient_label"
+                app:layout_constraintStart_toEndOf="@id/tv_all_patient_label"
+                app:layout_constraintTop_toTopOf="@id/tv_all_patient_label" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:elevation="@dimen/_7sdp"
+                android:src="@drawable/ic_search_normal"
+                app:layout_constraintBottom_toBottomOf="@id/view"
+                app:layout_constraintStart_toStartOf="@id/view"
+                app:layout_constraintTop_toTopOf="@id/view" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:backgroundTint="@android:color/transparent"
+                android:background="@null"
+                android:elevation="@dimen/_6sdp"
+                android:fontFamily="@font/nunito_medium"
+                android:hint="Search by Patient Name"
+                android:includeFontPadding="false"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_text_hint"
+                android:inputType="text"
+                android:textSize="@dimen/_14ssp"
+                android:outlineAmbientShadowColor="@android:color/white"
+                android:outlineSpotShadowColor="@android:color/white"
+                android:shadowColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/view"
+                app:layout_constraintEnd_toStartOf="@id/iv_filter"
+                app:layout_constraintStart_toEndOf="@id/iv_search"
+                app:layout_constraintTop_toTopOf="@id/view" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_filter"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/ic_home_diagnosis_background"
+                android:elevation="@dimen/_7sdp"
                 android:padding="@dimen/_8sdp"
-                android:src="@drawable/ic_dashboard_profile"
-                android:background="@drawable/ripple_normal"
-                app:layout_constraintBottom_toBottomOf="@+id/btnDashboardOne"
+                android:src="@drawable/ic_search_filter"
+                app:layout_constraintBottom_toBottomOf="@id/view"
+                app:layout_constraintEnd_toEndOf="@id/view"
+                app:layout_constraintTop_toTopOf="@id/view" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginHorizontal="@dimen/_18sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/et_white_bg_search_with_corners"
+                android:elevation="@dimen/_4sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/btnTempDashboardTwo"
-                app:layout_constraintTop_toTopOf="@+id/btnDashboardOne"
-                tools:layout_editor_absoluteY="22dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_all_patient_label" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_connections"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
-        <com.cardio.physician.ui.common.customviews.AppButton
-            android:id="@+id/appButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="test Button"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+    <ProgressBar
+        android:id="@+id/progressBarSync"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:elevation="@dimen/_9sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerView" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/btnDashboardTwo"
-            android:layout_width="@dimen/home_add_diagnosis"
-            android:layout_height="@dimen/home_add_diagnosis"
-            android:src="@drawable/ic_add"
-            android:padding="@dimen/_8sdp"
-            android:background="@drawable/drawable_green_circular"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.94" />
-
-        <ProgressBar
-            android:id="@+id/progressBarSync"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:visibility="visible" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>

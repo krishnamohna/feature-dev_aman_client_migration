@@ -1,5 +1,8 @@
 package com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication;
 
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
@@ -8,6 +11,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
+
+import com.cardio.physician.ui.common.utils.AlertKt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +39,7 @@ public class AuthorizationController implements UrlChangeHandler {
         this.authenticationHandler = authenticationHandler;
     }
 
-    public void authenticate(@NonNull Long expiresIn, Set<Scope> scopes) {
+    public void authenticate(@NonNull Long expiresIn, Set<Scope> scopes, Activity activity) {
         WebSettings webSettings = webView.getSettings();
         webSettings.setDomStorageEnabled(true);
         webSettings.setJavaScriptEnabled(true);
@@ -47,7 +52,15 @@ public class AuthorizationController implements UrlChangeHandler {
                 clientCredentials.getRedirectUrl(),
                 TextUtils.join("%20", scopes),
                 expiresIn);
-        webView.loadUrl(url);
+        //lets not use webview its gives error when login with google
+        //webView.loadUrl(url);
+        try {
+            //lets use webview
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            activity.startActivity(browserIntent);
+        } catch (ActivityNotFoundException e) {
+            AlertKt.showToast(activity, "No Browser is installed !!");
+        }
     }
 
     private List<Scope> parseScopes(String scopes) {
@@ -99,6 +112,6 @@ public class AuthorizationController implements UrlChangeHandler {
 
     @Override
     public void onLoadError(int errorCode, CharSequence description) {
-        authenticationHandler.onAuthFinished(AuthenticationResult.error(description.toString()));
+        //   authenticationHandler.onAuthFinished(AuthenticationResult.error(description.toString()));
     }
 }

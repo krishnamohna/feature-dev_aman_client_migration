@@ -12,4 +12,12 @@ class AlphaVisibilityHelper {
         }
     }
 
+    fun addDiagnosisStep1Listner(listEdtFields: List<EditText>,onTextChange:()->Unit) {
+        listEdtFields.forEach {
+            it.addTextChangedListener {
+                onTextChange.invoke()
+            }
+        }
+    }
+
 }

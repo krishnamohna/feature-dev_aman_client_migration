@@ -291,6 +291,7 @@
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtPhoneNumber"
                         android:layout_width="0dp"
+                        style="@style/BaseAppTheme.EdtTxt"
                         android:layout_height="@dimen/_40sdp"
                         android:hint="@string/phone_number"
                         android:imeOptions="actionNext"
@@ -366,7 +367,6 @@
                         android:paddingStart="@dimen/_16sdp"
                         android:paddingEnd="0dp"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_13ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/imgShowPassword"
                         app:layout_constraintHorizontal_weight="@integer/int_1"

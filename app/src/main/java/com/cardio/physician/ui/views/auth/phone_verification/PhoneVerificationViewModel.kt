@@ -13,7 +13,6 @@ import com.cardio.physician.network.Resource
 import com.cardio.physician.network.api.Constants
 import com.cardio.physician.ui.AppCardioPatient
 import com.cardio.physician.ui.common.base.viewmodel.BaseAuthViewModel
-import com.cardio.physician.ui.common.utils.AppUserType
 import com.cardio.physician.ui.common.utils.FireStoreDocKey
 import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.COUNTRY_CODE
 import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.EMAIL
@@ -186,8 +185,9 @@ class PhoneVerificationViewModel @Inject constructor(
                                     PHONE_NUMBER to userDetail.phoneNumber,
                                     EMAIL to userDetail.email,
                                     IMAGE_URL to imagePath,
-                                    SIGN_UP_TYPE to UserType.NORMAL.name,
-                                    USER_TYPE to AppUserType.PHYSICIAN
+                                    USER_TYPE to com.cardio.physician.ui.common.utils.UserType.USER_TYPE_PHYSICIAN,
+                                    FireStoreDocKey.SEARCH_NAME to (userDetail.firstName?.lowercase() +" "+ userDetail.lastName?.lowercase()),
+                                    SIGN_UP_TYPE to UserType.NORMAL.name
                             )
                     phoneVerificationRepository.storeUserDataInFireStore("", user)
                 }

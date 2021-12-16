@@ -23,7 +23,7 @@ class FitbitManager @Inject constructor(val executerService: ExecutorService,val
             activity,
             { fitnessModel ->
                 getHeartRate(activity, {
-                    fitnessModel.heartRate = it.restHeartRate?.toFloat()
+                    fitnessModel.heartRate = it.restHeartRate?.toString()
                     onSuccess.invoke(fitnessModel)
                 }, {
                     onFailure.invoke(it)
@@ -34,7 +34,7 @@ class FitbitManager @Inject constructor(val executerService: ExecutorService,val
                     activity,
                     {
                         var fitnesModel = FitnessModel()
-                        fitnesModel.heartRate = it.restHeartRate?.toFloat()
+                        fitnesModel.heartRate = it.restHeartRate?.toString()
                         onSuccess.invoke(fitnesModel)
                     },
                     { onFailure.invoke(it) }

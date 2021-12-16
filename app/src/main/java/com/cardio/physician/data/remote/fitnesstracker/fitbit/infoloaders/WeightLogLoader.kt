@@ -1,9 +1,9 @@
 package com.cardio.physician.data.remote.fitnesstracker.fitbit.infoloaders
 
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.WeightLogs
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderSync
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.base.SyncLoader
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.models.WeightLogs
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.base.SynTaskLoader
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.services.WeightService
 import com.cardio.physician.domain.fitness.model.WeightModel
 import java.util.*
@@ -13,7 +13,7 @@ class WeightLogLoader(
     private val onFailure: (msg: String?) -> Unit,
     private val periodDays: Int
 ) : InfoLoaderSync<WeightLogs>( onFailure),
-    SyncLoader.LoaderCallbacks<ResourceLoaderResult<WeightLogs>> {
+    SynTaskLoader.LoaderCallbacks<ResourceLoaderResult<WeightLogs>> {
 
     override fun onLoadFinished(
         data: ResourceLoaderResult<WeightLogs>?

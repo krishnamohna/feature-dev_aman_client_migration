@@ -13,12 +13,17 @@ import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
 import com.cardio.physician.R
 
 
-
 /** ImageView Extensions */
-fun ImageView.loadImage(context: Context, @DrawableRes image: Int, circleCrop: Boolean = false, cache: Boolean = false) {
+fun ImageView.loadImage(
+    context: Context,
+    @DrawableRes image: Int,
+    circleCrop: Boolean = false,
+    cache: Boolean = false
+) {
     Glide.with(context)
         .load(image)
-        .transition(withCrossFade(DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()))
+        .transition(withCrossFade(DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true)
+            .build()))
         .apply {
             if (circleCrop) circleCrop()
             if (!cache) {
@@ -29,10 +34,11 @@ fun ImageView.loadImage(context: Context, @DrawableRes image: Int, circleCrop: B
 }
 
 @SuppressLint("CheckResult")
-fun ImageView.loadImage(imageUrl: Uri, circleCrop: Boolean = false, showProgress:Boolean=true) {
+fun ImageView.loadImage(imageUrl: Uri, circleCrop: Boolean = false, showProgress: Boolean = true) {
     Glide.with(context)
         .load(imageUrl)
-        .transition(withCrossFade(DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()))
+        .transition(withCrossFade(DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true)
+            .build()))
         .apply {
             if (circleCrop) circleCrop()
             diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -43,20 +49,20 @@ fun ImageView.loadImage(imageUrl: Uri, circleCrop: Boolean = false, showProgress
         .error(R.drawable.ic_profile_placeholder)
         .into(this)
 }
-
+var factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
 @SuppressLint("CheckResult")
-fun ImageView.loadImage(imageUrl: String, circleCrop: Boolean = false, showProgress:Boolean=true) {
+fun ImageView.loadImage(imageUrl: String, circleCrop: Boolean = false, showProgress: Boolean = true,errorImage:Int=R.drawable.ic_profile_placeholder) {
     Glide.with(context)
         .load(imageUrl)
-        .transition(withCrossFade(DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()))
+        .transition(withCrossFade(factory))
         .apply {
-            if (circleCrop) circleCrop()
-            diskCacheStrategy(DiskCacheStrategy.ALL)
+           // if (circleCrop) circleCrop()
+          //  diskCacheStrategy(DiskCacheStrategy.ALL)
             if (showProgress) {
                 placeholder(getProgressDrawable(context))
             }
         }
-        .error(R.drawable.ic_profile_placeholder)
+        .error(errorImage)
         .into(this)
 }
 

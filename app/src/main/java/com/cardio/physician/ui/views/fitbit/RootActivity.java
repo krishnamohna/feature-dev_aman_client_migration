@@ -17,10 +17,6 @@ import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Aut
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
 import com.cardio.physician.databinding.ActivityRootBinding;
 import com.cardio.physician.ui.views.diagnosis.DiagnosisActivity;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationHandler;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationResult;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
 
 import org.jetbrains.annotations.NotNull;
 

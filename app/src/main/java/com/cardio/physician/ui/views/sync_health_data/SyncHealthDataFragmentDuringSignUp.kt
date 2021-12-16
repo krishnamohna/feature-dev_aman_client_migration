@@ -3,6 +3,7 @@ package com.cardio.physician.ui.views.sync_health_data
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.cardio.physician.ui.common.base.activity.BaseActivity
 import com.cardio.physician.ui.views.dashboard.DashboardActivity
 
 class SyncHealthDataFragmentDuringSignUp : SyncHealthDataFragment() {
@@ -10,6 +11,16 @@ class SyncHealthDataFragmentDuringSignUp : SyncHealthDataFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setViews()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as? BaseActivity?)?.isBackButtonDisabled=true
+    }
+
+    override fun onPause() {
+        super.onPause()
+        (activity as? BaseActivity?)?.isBackButtonDisabled=false
     }
 
     override fun onFitbitSelection() {

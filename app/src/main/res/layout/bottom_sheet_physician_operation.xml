@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/CustomCardCorners"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:contentPadding="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <View
+            android:id="@+id/view_1"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_3sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="#929393"
+            />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvAddDataLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/add"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            android:fontFamily="@font/nunito_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_1" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCancelLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="@string/cancel"
+            android:textAllCaps="true"
+            android:fontFamily="@font/nunito_regular"
+            android:textSize="@dimen/text_meadium"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@id/tvAddDataLabel"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvPatientLabel"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center"
+            android:fontFamily="@font/nunito_regular"
+            android:minHeight="@dimen/bottom_sheet_item"
+            android:paddingLeft="8dp"
+            android:text="@string/patient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddDataLabel" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="#EEEEF4"
+            app:layout_constraintTop_toBottomOf="@id/tvPatientLabel"
+            />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvIllnessLabel"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:fontFamily="@font/nunito_regular"
+            android:gravity="center"
+            android:minHeight="@dimen/bottom_sheet_item"
+            android:paddingLeft="8dp"
+            android:text="@string/illness"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
+

@@ -7,63 +7,73 @@ import com.cardio.physician.ui.common.utils.getDatesOfLastDays
 import com.cardio.physician.ui.common.utils.getEndTimeString
 import com.cardio.physician.ui.common.utils.getStartTimeString
 import com.google.android.gms.fitness.data.Bucket
-import com.google.android.gms.fitness.result.DataReadResponse
 
 class DataParser {
 
     fun parseLogsBucket(buckets: List<Bucket>, periodDays: Int): SyncModel {
         var arrayHeartLogs: Array<HeartRateModel?> = arrayOfNulls(periodDays)
+        var arrayStepCounts: Array<StepCountModel?> = arrayOfNulls(periodDays)
         var arrayWeight: Array<WeightModel?> = arrayOfNulls(periodDays)
         var arrayBloodPressure: Array<BloodPressureModel?> = arrayOfNulls(periodDays)
         var arrayDates = mutableListOf<DateModel>()
         getDatesOfLastDays(periodDays, arrayDates)
-        val syncModel = SyncModel(arrayHeartLogs, arrayWeight, arrayBloodPressure, arrayDates)
+        val syncModel = SyncModel(arrayHeartLogs, arrayWeight, arrayBloodPressure, arrayDates,arrayStepCounts)
         var dayIndex = 0
         for (bucket in buckets) {
-            bucket.dataSets.forEach {
+            bucket.dataSets.forEach { it ->
                 for (dp in it.dataPoints) {
                     Log.i(TAG, "Data point:")
                     Log.i(TAG, "\tType: ${dp.dataType.name}")
                     Log.i(TAG, "\tStart: ${dp.getStartTimeString()}")
                     Log.i(TAG, "\tEnd: ${dp.getEndTimeString()}")
-                    var date = dp.getStartTimeString()
+                    val date = dp.getStartTimeString()
                     dp.dataType.fields.forEach {
                         //get heart rate here
-                        if (dp.dataType.name.equals(GoogleFit.DATA_POINT_HEART) && it.name.equals(
+                        if (dp.dataType.name.equals(GoogleFit.DATA_TYPE_STEP_COUNT) && it.name.equals(
+                                GoogleFit.DATA_POINT_STEPS,
+                                true)
+                        ) {
+                            arrayStepCounts[dayIndex] =
+                                StepCountModel(dp.getValue(it).toString())
+                        }
+                        //get heart rate here
+                        if (dp.dataType.name.equals(GoogleFit.DATA_TYPE_HEART) && it.name.equals(
+                                GoogleFit.DATA_POINT_TYPE_AVERAGE,
+                                true)
+                        ) {
+                            arrayHeartLogs[dayIndex] =
+                                HeartRateModel(dp.getValue(it).asFloat().toString())
+                        }
+                        //get weight here
+                        if (dp.dataType.name.equals(GoogleFit.DATA_TYPE_WEIGHT) && it.name.equals(
                                 GoogleFit.DATA_POINT_TYPE_AVERAGE,
                                 true
                             )
                         ) {
-                            arrayHeartLogs.set(
-                                dayIndex,
-                                HeartRateModel(dp.getValue(it).asFloat().toInt())
-                            )
+                            arrayWeight[dayIndex] =
+                                WeightModel(dp.getValue(it).asFloat().toString(), date)
                         }
-                        if (dp.dataType.name.equals(GoogleFit.DATA_POINT_WEIGHT) && it.name.equals(
-                                GoogleFit.DATA_POINT_TYPE_AVERAGE,
-                                true
-                            )
-                        ) {
-                            arrayWeight.set(
-                                dayIndex,
-                                WeightModel(dp.getValue(it).asFloat().toDouble(), date)
-                            )
-                        }
-                        if (dp.dataType.name.equals(GoogleFit.DATA_POINT_BLOOD_PRESURE) && it.name.equals(
+                        //get systolic blood pressure here
+                        if (dp.dataType.name.equals(GoogleFit.DATA_TYPE_BLOOD_PRESURE) && it.name.equals(
                                 GoogleFit.DATA_POINT_FIELD_SYSTOLIC_AVERAGE,
                                 true
                             )
                         ) {
-                            arrayBloodPressure.set(dayIndex,arrayBloodPressure.get(dayIndex)?: BloodPressureModel())
-                            arrayBloodPressure.get(dayIndex)?.topBp=dp.getValue(it).asFloat().toDouble()
+                            arrayBloodPressure[dayIndex] =
+                                arrayBloodPressure[dayIndex] ?: BloodPressureModel()
+                            arrayBloodPressure[dayIndex]?.topBp =
+                                dp.getValue(it).asFloat().toString()
                         }
-                        if (dp.dataType.name.equals(GoogleFit.DATA_POINT_BLOOD_PRESURE) && it.name.equals(
+                        //get diastolic blood pressure here
+                        if (dp.dataType.name.equals(GoogleFit.DATA_TYPE_BLOOD_PRESURE) && it.name.equals(
                                 GoogleFit.DATA_POINT_FIELD_DIASTOLIC_AVERAGE,
                                 true
                             )
                         ) {
-                            arrayBloodPressure.set(dayIndex,arrayBloodPressure.get(dayIndex)?: BloodPressureModel())
-                            arrayBloodPressure.get(dayIndex)?.bottomBp=dp.getValue(it).asFloat().toDouble()
+                            arrayBloodPressure[dayIndex] =
+                                arrayBloodPressure[dayIndex] ?: BloodPressureModel()
+                            arrayBloodPressure[dayIndex]?.bottomBp =
+                                dp.getValue(it).asFloat().toString()
                         }
                         Log.i(TAG, "\tField: ${it.name} Value: ${dp.getValue(it)}")
                     }
@@ -74,41 +84,21 @@ class DataParser {
         return syncModel
     }
 
-    fun parseSingleData(dataReadResult: DataReadResponse): FitnessModel {
-        var fitnessModel = FitnessModel()
-        for (bucket in dataReadResult.buckets) {
-            bucket.dataSets.forEach {
-                for (dp in it.dataPoints) {
-                    Log.i(TAG, "Data point:")
-                    Log.i(TAG, "\tType: ${dp.dataType.name}")
-                    dp.dataType.fields.forEach {
-                        //get heart rate here
-                        if (dp.dataType.name.equals(GoogleFit.DATA_POINT_HEART) && it.name.equals(
-                                "average",
-                                true
-                            )
-                        ) {
-                            fitnessModel.heartRate = dp.getValue(it).asFloat()
-                        }
-                        if (dp.dataType.name.equals(GoogleFit.DATA_POINT_WEIGHT) && it.name.equals(
-                                "average",
-                                true
-                            )
-                        ) {
-                            fitnessModel.weight = dp.getValue(it).asFloat().toDouble()
-                        }
-                        if (dp.dataType.name.equals(GoogleFit.DATA_POINT_STEP_COUNT) && it.name.equals(
-                                "average",
-                                true
-                            )
-                        ) {
-                            fitnessModel.weight = dp.getValue(it).asFloat().toDouble()
-                        }
-                        Log.i(TAG, "\tField: ${it.name} Value: ${dp.getValue(it)}")
-                    }
-                }
-            }
-        }
+    fun parseSingleData(listBuckets: MutableList<Bucket>): FitnessModel {
+        val syncModel = parseLogsBucket(listBuckets, 7)
+        val fitnessModel = FitnessModel()
+        fitnessModel.weight = (syncModel.arrayWeightLogs.findLast {
+            it != null
+        })?.weight
+        fitnessModel.heartRate = (syncModel.arrayHeartLogs.findLast {
+            it != null
+        })?.restHeartRate
+        fitnessModel.bloodPressureTopBp = (syncModel.arrayBloodPresure.findLast {
+            it != null
+        })?.topBp
+        fitnessModel.bloodPressureBottomBp = (syncModel.arrayBloodPresure.findLast {
+            it != null
+        })?.bottomBp
         return fitnessModel
     }
 

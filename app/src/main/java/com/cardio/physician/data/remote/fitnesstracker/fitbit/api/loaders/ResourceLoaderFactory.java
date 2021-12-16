@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
 
 
 /**

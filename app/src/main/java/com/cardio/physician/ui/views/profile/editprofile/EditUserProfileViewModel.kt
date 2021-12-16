@@ -323,6 +323,8 @@ class EditUserProfileViewModel @Inject constructor(
                                 FireStoreDocKey.HEIGHT to height,
                                 FireStoreDocKey.WEIGHT to heartRate,
                                 FireStoreDocKey.IMAGE_URL to imagePath,
+                                FireStoreDocKey.USER_TYPE to com.cardio.physician.ui.common.utils.UserType.USER_TYPE_PHYSICIAN,
+                                FireStoreDocKey.SEARCH_NAME to (firstName + " " + lastName).lowercase(),
                                 FireStoreDocKey.SIGN_UP_TYPE to userType
                             )
 

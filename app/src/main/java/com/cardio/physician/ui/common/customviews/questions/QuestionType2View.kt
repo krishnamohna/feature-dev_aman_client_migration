@@ -51,6 +51,7 @@ class QuestionType2View @JvmOverloads constructor(
     override fun showQuestion(questionModel: QuestionModel) {
         if (isQuestionValid(questionModel)) {
             binding.tvQuestionType2.setText("${questionModel.position}. ${questionModel.question}")
+            binding.edtInput.setHint(questionModel.option_1)
             binding.rbOption2Type2.setText(questionModel.option_2)
             setSelection()
         }

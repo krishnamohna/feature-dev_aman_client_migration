@@ -4,5 +4,6 @@ data class SyncModel(
     var arrayHeartLogs: Array<HeartRateModel?>,
     var arrayWeightLogs: Array<WeightModel?>,
     var arrayBloodPresure: Array<BloodPressureModel?>,
-    var arrayDates: MutableList<DateModel>
+    var arrayDates: MutableList<DateModel>,
+    var arrayStepCounts: Array<StepCountModel?>
 )

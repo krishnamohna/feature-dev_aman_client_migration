@@ -28,21 +28,14 @@ open class AppCardioPatient : Application() {
             // Load clientId and redirectUrl from application manifest
             val clientId = bundle.getString("com.fitbit.sampleandroidoauth2.CLIENT_ID")
             val redirectUrl = bundle.getString("com.fitbit.sampleandroidoauth2.REDIRECT_URL")
-            val CLIENT_CREDENTIALS =
-                ClientCredentials(
-                    clientId,
-                    CLIENT_SECRET,
-                    redirectUrl
-                )
+            val CLIENT_CREDENTIALS = ClientCredentials(clientId, CLIENT_SECRET, redirectUrl)
             AuthenticationConfigurationBuilder()
                 .setClientCredentials(CLIENT_CREDENTIALS)
                 .setEncryptionKey(SECURE_KEY)
                 .setTokenExpiresIn(2592000L) // 30 days
                 .setBeforeLoginActivity(Intent(context, mainActivityClass))
                 .addRequiredScopes(Scope.profile, Scope.settings)
-                .addOptionalScopes(
-                    Scope.activity, Scope.weight,
-                    Scope.heartrate)
+                .addOptionalScopes(Scope.activity, Scope.weight,Scope.heartrate)
                 .setLogoutOnAuthFailure(true)
                 .build()
         } catch (e: Exception) {

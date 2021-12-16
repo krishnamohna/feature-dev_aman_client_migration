@@ -4,4 +4,4 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class WeightModel(val weight: Double?, val date: String?) : Parcelable
+data class WeightModel(val weight: String?, val date: String?) : Parcelable

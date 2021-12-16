@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
 import androidx.lifecycle.LifecycleService
+import com.cardio.physician.ui.common.utils.extentions.isConnectedOrThrowMsg
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -29,7 +30,9 @@ class SyncHeathDataService : LifecycleService() {
     lateinit var facade: SyncHealthServiceFacade
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        facade.syncData()
+        isConnectedOrThrowMsg {
+            facade.syncData()
+        }
         return super.onStartCommand(intent, flags, startId)
     }
 

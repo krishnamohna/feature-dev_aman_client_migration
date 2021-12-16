@@ -11,7 +11,7 @@ import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.Resour
 abstract class InfoLoader<T>(
     private val activity: Activity,
     private val onFailure: (msg: String?) -> Unit
-) : LoaderManager.LoaderCallbacks<com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult<T>> {
+) : LoaderManager.LoaderCallbacks<ResourceLoaderResult<T>> {
 
     open fun load() {
         LoaderManager.getInstance(activity as AppCompatActivity).initLoader(getLoaderId(), null, this).forceLoad()
@@ -20,23 +20,23 @@ abstract class InfoLoader<T>(
     abstract fun getLoaderId(): Int
 
     override fun onLoadFinished(
-        loader: Loader<com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult<T>>,
-        data: com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult<T>?
+        loader: Loader<ResourceLoaderResult<T>>,
+        data: ResourceLoaderResult<T>?
     ) {
         when (data?.getResultType()) {
-            com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult.ResultType.ERROR -> {
+            ResourceLoaderResult.ResultType.ERROR -> {
                 onFailure.invoke(data?.errorMessage)
                 Toast.makeText(activity, R.string.error_loading_data, Toast.LENGTH_LONG)
                     .show()
             }
-            com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult.ResultType.EXCEPTION -> {
+            ResourceLoaderResult.ResultType.EXCEPTION -> {
                 onFailure.invoke(data?.errorMessage)
                 Toast.makeText(activity, R.string.error_loading_data, Toast.LENGTH_LONG).show()
             }
         }
     }
 
-    override fun onLoaderReset(loader: Loader<com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult<T>>) {
+    override fun onLoaderReset(loader: Loader<ResourceLoaderResult<T>>) {
 
     }
 

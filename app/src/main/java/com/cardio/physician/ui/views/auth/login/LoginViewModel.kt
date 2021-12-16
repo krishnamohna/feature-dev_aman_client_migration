@@ -13,11 +13,8 @@ import com.cardio.physician.network.Status
 import com.cardio.physician.network.api.Constants
 import com.cardio.physician.ui.AppCardioPatient
 import com.cardio.physician.ui.common.base.viewmodel.BaseAuthViewModel
-import com.cardio.physician.ui.common.utils.FireStoreDocKey
+import com.cardio.physician.ui.common.utils.*
 import com.cardio.physician.ui.common.utils.extentions.toUserModel
-import com.cardio.physician.ui.common.utils.isNumericValue
-import com.cardio.physician.ui.common.utils.isValidEmail
-import com.cardio.physician.ui.common.utils.isValidMobileNumber
 import com.cardio.physician.ui.common.utils.livedata.SingleLiveEvent
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
@@ -257,8 +254,9 @@ class LoginViewModel @Inject constructor(
                             FireStoreDocKey.PHONE_NUMBER to user.phoneNumber,
                             FireStoreDocKey.EMAIL to user.email,
                             FireStoreDocKey.IMAGE_URL to user.imagePath,
-                            FireStoreDocKey.SIGN_UP_TYPE to user.userType.name,
-                            FireStoreDocKey.USER_TYPE to user.appUserType.toString()
+                            FireStoreDocKey.USER_TYPE to UserType.USER_TYPE_PHYSICIAN,
+                            FireStoreDocKey.SEARCH_NAME to (user.firstName?.lowercase() +" "+ user.lastName?.lowercase()),
+                            FireStoreDocKey.SIGN_UP_TYPE to user.userType.name
                     )
             return loginRepository.storeUserDataInFireStore("", user)
         }

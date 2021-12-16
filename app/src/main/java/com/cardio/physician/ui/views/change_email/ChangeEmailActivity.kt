@@ -17,10 +17,8 @@ import com.cardio.physician.domain.common.model.ValidationModel
 import com.cardio.physician.network.Resource
 import com.cardio.physician.network.Status
 import com.cardio.physician.network.api.Constants
-import com.cardio.physician.network.api.EXTRAS
 import com.cardio.physician.ui.common.base.activity.BaseActivity
-import com.cardio.physician.ui.common.base.fragment.toolbar.IToolbar
-import com.cardio.physician.ui.common.base.fragment.toolbar.NoImp
+import com.cardio.physician.ui.common.utils.EXTRAS.NEW_EMAIL_ADDRESS
 import com.cardio.physician.ui.common.utils.customAnimationForTextInput
 import com.cardio.physician.ui.common.utils.customSnackBarFail
 import com.cardio.physician.ui.common.utils.isTextEmpty
@@ -76,7 +74,7 @@ class ChangeEmailActivity : BaseActivity(),
             }
 
             binding.btnChangePassword -> {
-                viewModel.validatePassword(binding.edtOldPassword.text.toString(),intent.getStringExtra(EXTRAS.NEW_EMAIL_ADDRESS))
+                viewModel.validatePassword(binding.edtOldPassword.text.toString(),intent.getStringExtra(NEW_EMAIL_ADDRESS))
             }
 
             binding.headerView.backBtn -> {

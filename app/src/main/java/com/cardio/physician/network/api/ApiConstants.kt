@@ -46,19 +46,9 @@ interface Constants {
         const val CHANGE_PASSWORD = "ChangePassword"
         const val CHANGE_EMAIL = "Change_email"
         const val EMAIL_SEND_VERIFICATION = "email_send_verification"
-        const val DATE_FORMAT_DD_MMM_YYYY = "dd MMM yyyy"
+        const val ADD_PATIENT = "AddPatient"
     }
 
-}
-
-object EXTRAS {
-    val USER_PROFILE = "user_profile"
-    val HEAR_RATE = "heart_rate"
-    const val NEW_EMAIL_ADDRESS = "new_email_address"
-}
-
-object OTHER_CONST {
-    const val DELAY_MINIMUM = 700L
 }
 
 

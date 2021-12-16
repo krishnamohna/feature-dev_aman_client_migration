@@ -68,7 +68,7 @@ class DefaultFieldValidation constructor(val context: Context):Validation {
     }
 
     override fun validateLastname(lastName: String) {
-        validations.add(CommonValidations.minThreeCharValidation(lastName,FieldType.LAST_NAME,R.string.enter_valid_last_name,context))
+        validations.add(CommonValidations.minThreeCharIfEnteredValidation(lastName,FieldType.LAST_NAME,R.string.enter_valid_last_name,context))
     }
 
     override fun validateAge(age: String){

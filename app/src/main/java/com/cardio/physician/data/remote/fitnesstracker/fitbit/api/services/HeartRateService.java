@@ -9,11 +9,7 @@ import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.exceptions.Tok
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderFactory;
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult;
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderSync;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.models.heartrate.HeartRateEntity;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderFactory;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderSync;
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.heartrate.HeartRateEntity;
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
 
 import java.text.DateFormat;
@@ -38,19 +34,6 @@ public class HeartRateService {
     }
 
     public static ResourceLoaderSync<HeartRateEntity> getHeartRateLogs(Date startDate, Date endDate, int number) throws MissingScopesException, TokenExpiredException {
-        /*String periodSuffix = "d";
-        switch (calendarDateType) {
-            case Calendar.WEEK_OF_YEAR:
-                periodSuffix = "w";
-                break;
-            case Calendar.MONTH:
-                periodSuffix = "m";
-                break;
-        }
-        return HEART_RATE_LOGS_RESOURCE_FACTORY.newResourceLoaderSync(
-                new Scope[]{Scope.heartrate},
-                dateFormat.format(startDate),
-                String.format(Locale.US, "%d%s", number, periodSuffix));*/
         return HEART_RATE_LOGS_RESOURCE_FACTORY.newResourceLoaderSync(
                 new Scope[]{Scope.heartrate},
                 dateFormat.format(startDate),

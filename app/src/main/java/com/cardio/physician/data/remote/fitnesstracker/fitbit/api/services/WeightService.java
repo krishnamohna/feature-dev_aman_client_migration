@@ -4,11 +4,7 @@ import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.exceptions.Mis
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.exceptions.TokenExpiredException;
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderFactory;
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderSync;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.models.WeightLogs;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderFactory;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderSync;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.models.WeightLogs;
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.WeightLogs;
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
 
 import java.text.DateFormat;
@@ -24,7 +20,7 @@ public class WeightService {
     private final static String WEIGHT_URL = "https://api.fitbit.com/1/user/-/body/log/weight/date/%s/%s.json";
     private static final ResourceLoaderFactory<WeightLogs> WEIGHT_LOG_LOADER_FACTORY = new ResourceLoaderFactory<>(WEIGHT_URL, WeightLogs.class);
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-    public static ResourceLoaderSync<WeightLogs> getWeightLogLoader(Date startDate, Date endDate, int number) throws MissingScopesException, TokenExpiredException {
+    public static ResourceLoaderSync<WeightLogs> getWeightLogLoader( Date startDate, Date endDate, int number) throws MissingScopesException, TokenExpiredException {
         /*String periodSuffix = "d";
         switch (calendarDateType) {
             case Calendar.WEEK_OF_YEAR:

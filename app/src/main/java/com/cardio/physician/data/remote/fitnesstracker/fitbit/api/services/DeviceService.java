@@ -8,10 +8,7 @@ import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.exceptions.Mis
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.exceptions.TokenExpiredException;
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderFactory;
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.models.Device;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.models.Device;
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Device;
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope;
 
 

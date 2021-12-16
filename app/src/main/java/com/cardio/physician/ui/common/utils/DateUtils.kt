@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Context
 import com.cardio.physician.domain.fitness.model.DateModel
-import com.cardio.physician.network.api.Constants
 import com.cardio.physician.ui.common.utils.Constants.DATE_FORMAT_DD_MMM_YYYY
 import com.google.android.gms.fitness.data.DataPoint
 import java.text.SimpleDateFormat
@@ -42,8 +41,9 @@ fun getBirthDatePicker(
     val day = calendar[Calendar.DAY_OF_MONTH]
     val datePickerDialog = DatePickerDialog(context!!, callback, year, month, day)
     datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
-    //datePickerDialog.datePicker.minDate = (System.currentTimeMillis() -1000*60*60*24*365*100)
-
+    val calenderEnd=Calendar.getInstance()
+    calenderEnd.add(Calendar.YEAR,-121)
+    datePickerDialog.datePicker.minDate = calenderEnd.timeInMillis
     return datePickerDialog
 }
 
@@ -62,8 +62,8 @@ fun getDate(date: Int): String? {
     return date.toString() + ""
 }
 
-fun String.toDate(
-    dateFormat: String = "dd-MM-yyyy", timeZone: TimeZone = TimeZone.getDefault(),
+fun String.datePickerStringToDate(
+    dateFormat: String, timeZone: TimeZone = TimeZone.getDefault(),
 ): Date {
     val parser = SimpleDateFormat(dateFormat, Locale.getDefault())
     parser.timeZone = timeZone
@@ -85,7 +85,7 @@ fun getDateFromTimeMills(timeMills: Long): String {
 
 
 fun String.getNoYearsFromDate(): Int {
-    var dateDob = toDate(Constants.DATE_FORMAT_DD_MMM_YYYY)
+    var dateDob = datePickerStringToDate(DATE_FORMAT_DD_MMM_YYYY)
     var years = getDiffYears(dateDob, Date())
     return years
 }
@@ -111,6 +111,7 @@ fun getCalendar(date: Date?): Calendar {
 fun getCurrentDate(): String {
     return getDefaultDateFormatter().format(Date())
 }
+
 
 fun getDaysDiffrence(date: String?): Int {
     val parser = getDefaultDateFormatter()

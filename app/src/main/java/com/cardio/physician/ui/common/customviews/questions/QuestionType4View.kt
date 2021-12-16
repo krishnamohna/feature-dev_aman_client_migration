@@ -42,7 +42,7 @@ class QuestionType4View @JvmOverloads constructor(
             binding.rbOption1.setText(questionModel.option_1)
             binding.rbOption2.setText(questionModel.option_2)
             binding.rbOption3.setText(questionModel.option_3)
-            binding.rbOption4.setText(questionModel.option_1)
+            binding.rbOption4.setText(questionModel.option_4)
             setSelection()
         }
     }

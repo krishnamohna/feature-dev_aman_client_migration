@@ -40,4 +40,20 @@ object CommonValidations {
         }
         return validation
     }
+
+    fun minThreeCharIfEnteredValidation(value: String,fieldtype:FieldType,errorMsg:Int,context: Context): ValidationModelV2 {
+        var validation = when {
+            value.isNotEmpty() && value.length < ENUM.INT_3 -> {
+                ValidationModelV2(Status.ERROR,
+                    context.getString(errorMsg),
+                    fieldtype)
+            }
+            else -> {
+                ValidationModelV2(Status.SUCCESS,
+                    "",
+                    fieldtype)
+            }
+        }
+        return validation
+    }
 }

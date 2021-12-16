@@ -7,15 +7,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.cardio.physician.R
 import com.cardio.physician.databinding.FragmentDiagnosisPart1Binding
 import com.cardio.physician.domain.common.model.UserModel
@@ -23,36 +26,40 @@ import com.cardio.physician.domain.common.model.validation.ValidationModelV2
 import com.cardio.physician.domain.fitness.model.FitnessModel
 import com.cardio.physician.domain.fitness.model.HeartRateModel
 import com.cardio.physician.network.Status
-import com.cardio.physician.network.api.EXTRAS
-import com.cardio.physician.ui.common.utils.convertMetricWeightToPound
+import com.cardio.physician.ui.common.utils.*
+import com.cardio.physician.ui.common.utils.Constants.DATE_FORMAT_DD_MMM_YYYY
+import com.cardio.physician.ui.common.utils.DateFormat_.DATE_FORMAT_DD_MM_YYYY_DATE_PICKER
+import com.cardio.physician.ui.common.utils.EXTRAS.USER_PROFILE
 import com.cardio.physician.ui.common.utils.extentions.customObserver
 import com.cardio.physician.ui.common.utils.extentions.getTrimmedText
-import com.cardio.physician.ui.common.utils.getNoYearsFromDate
+import com.cardio.physician.ui.common.utils.inputfilter.DecimalDigitsInputFilter
 import com.cardio.physician.ui.common.utils.keyboard.KeyboardEventListener
-import com.cardio.physician.ui.common.utils.showConfirmAlertDialog
-import com.cardio.physician.ui.common.utils.showToast
 import com.cardio.physician.ui.common.utils.textwatcher.DELAY_SMALL_ANIMATION
 import com.cardio.physician.ui.common.utils.textwatcher.LabelVisiblityHelper
 import com.cardio.physician.ui.common.utils.validation.FieldType
 import com.cardio.physician.ui.views.diagnosis.common.BaseDiagnosisFragment
 import com.cardio.physician.ui.views.diagnosis.step1.adapter.AilmentDropDownAdapter
+import com.cardio.physician.ui.views.diagnosis.step2.DiagnosisFragmentStep2Args
 import com.cardio.physician.ui.views.sync_health_data.activity.SyncHealthActivty
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Binding>() {
 
+    private var birthDate: Date? = null
     private var isKeyBoardOpen: Boolean = false
     private val viewModel: DiagnosisViewStep1ViewModel by viewModels()
-
     @Inject
     lateinit var labelVisiblityHelper: LabelVisiblityHelper
+    val args: DiagnosisFragmentStep1Args by navArgs()
 
-    private var resultLauncherSpeechToText: ActivityResultLauncher<Intent> =
+    private var resultLauncherFitnessData: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                result?.data?.getParcelableExtra<FitnessModel>(EXTRAS.USER_PROFILE)
+                result?.data?.getParcelableExtra<FitnessModel>(USER_PROFILE)
                     ?.let { setPatientDetail(it) }
             }
         }
@@ -71,11 +78,22 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         setListeners()
         setViews()
         setObservers()
+        setInputFilters()
+    }
+
+    private fun setInputFilters() {
+        binding.clHealthDetail.edtWeight.filters=arrayOf<InputFilter>(DecimalDigitsInputFilter(5, 2))
+        binding.clHealthDetail.edtBottomBp.filters=arrayOf<InputFilter>(DecimalDigitsInputFilter(5, 2))
+        binding.clHealthDetail.edtTopBp.filters=arrayOf<InputFilter>(DecimalDigitsInputFilter(5, 2))
+        binding.clHealthDetail.edtHeartRate.filters=arrayOf<InputFilter>(DecimalDigitsInputFilter(5, 2))
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        launchWithMinDelay { viewModel.getUserProfile() }
+        launchWithMinDelay {
+            val args: DiagnosisFragmentStep1Args by navArgs()
+            viewModel.getUserProfile(userId = args.userId)
+        }
     }
 
     override fun onResume() {
@@ -100,18 +118,6 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         }, onError = { msg ->
             parentActivity?.let { showToast(it, msg ?: getString(R.string.getting_some_error)) }
         })
-        viewModel.getUserFitnessData()
-            .customObserver(this, onLoading = ::showProgress, onSuccess = {
-                it?.let {
-                    setPatientDetail(it)
-                }
-            }, onError = ::onError)
-        viewModel.getHeartRateLiveData()
-            .customObserver(this, onLoading = ::showProgress, onSuccess = {
-                it?.let {
-                    setPatientDetail(it)
-                }
-            }, onError = ::onError)
     }
 
     private fun setPatientDetail(it: HeartRateModel) {
@@ -119,9 +125,13 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
     }
 
     private fun setPatientDetail(userModel: FitnessModel) {
-        binding.clHealthDetail.edtWeight.setText(userModel.weight?.toString()
-            ?.convertMetricWeightToPound(userModel.weightUnit))
-        binding.clHealthDetail.edtHeartRate.setText(userModel.heartRate?.toString())
+        userModel.weight?.let {
+            binding.clHealthDetail.edtWeight.setText(it
+                ?.convertMetricWeightToPound(userModel.weightUnit))
+        }
+        userModel.heartRate?.let { binding.clHealthDetail.edtHeartRate.setText(it) }
+        userModel.bloodPressureTopBp?.let { binding.clHealthDetail.edtTopBp.setText(it) }
+        userModel.bloodPressureBottomBp?.let { binding.clHealthDetail.edtBottomBp.setText(it) }
     }
 
     private fun setPatientDetail(userModel: UserModel?) {
@@ -130,8 +140,10 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
             lastName?.let { binding.clPatientDetail.edtLastName.setText(it) }
             weight?.let { binding.clHealthDetail.edtWeight.setText(it) }
             dob?.isNotEmpty()?.also {
-                if (it)
+                if (it) {
+                    birthDate = dob.datePickerStringToDate(DATE_FORMAT_DD_MMM_YYYY)
                     binding.clPatientDetail.edtAge.setText(dob.getNoYearsFromDate().toString())
+                }
             }
         }
     }
@@ -142,14 +154,46 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
             R.layout.item_dropdown_ailment,
             resources.getStringArray(R.array.array_ailment)
         )
+        setStepView(binding.stepView.stepView)
     }
 
     private fun setListeners() {
+        setViewListener()
+        setLabelVisibilityListener()
+        setAlphaVisibilityListener()
+    }
+
+    private fun setViewListener() {
+        binding.spinnerCategory?.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long,
+                ) {
+                    onFieldTextChange()
+                }
+            }
+        binding.clPatientDetail.edtAge.setOnClickListener { view ->
+            getBirthDatePicker(requireContext(), birthDate) { _, year, month, date ->
+                val dateString = getDate(date).plus("-")
+                    .plus(getMonthNumber(month).toString().plus("-"))
+                    .plus(year)
+                birthDate = dateString.datePickerStringToDate(DATE_FORMAT_DD_MM_YYYY_DATE_PICKER)
+                getStringFromDate(birthDate)?.let { date ->
+                    binding.clPatientDetail.edtAge.setText(date.getNoYearsFromDate().toString())
+                }
+            }?.show()
+        }
         diagnosisActivity?.onConnectClick {
             Intent(
                 requireContext(),
                 SyncHealthActivty::class.java
-            ).run { resultLauncherSpeechToText.launch(this) }
+            ).run { resultLauncherFitnessData.launch(this) }
         }
         binding.cvDiagnosisBottomContainer.btNext.setOnClickListener {
             onSubmitClick()
@@ -167,6 +211,31 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
                 }
             }
         }
+    }
+
+    private fun setAlphaVisibilityListener() {
+        var listEdtFields = listOf<EditText>(
+            binding.clPatientDetail.edtFirstName,
+            binding.clPatientDetail.edtAge,
+            binding.clHealthDetail.edtWeight,
+            binding.clHealthDetail.edtHeartRate,
+            binding.clHealthDetail.edtTopBp,
+            binding.clHealthDetail.edtBottomBp,
+        )
+        viewModel.setAlphaValidationListener(listEdtFields, {
+            onFieldTextChange()
+        })
+    }
+
+    private fun onFieldTextChange() {
+        isAllAlphaValidationSuccessFull({
+            enableButtonClick(true)
+        }, {
+            enableButtonClick(false)
+        })
+    }
+
+    private fun setLabelVisibilityListener() {
         labelVisiblityHelper.addView(
             binding.clPatientDetail.edtFirstName,
             binding.clPatientDetail.tvFirstNameError,
@@ -219,14 +288,15 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
 
     private fun onSubmitClick() {
         isAllValidationSuccessFull({
-            findNavController().navigate(DiagnosisFragmentStep1Directions.actionDiagnosisFragmentPart1ToDiagnosisFragmentPart2())
+            findNavController().navigate(DiagnosisFragmentStep1Directions.actionDiagnosisFragmentPart1ToDiagnosisFragmentPart2(args.userId))
         }, {
             onValidationsFailed(it)
         })
     }
 
+
     private fun isAllValidationSuccessFull(
-        succcess: () -> Unit,
+        success: () -> Unit,
         failed: (validations: List<ValidationModelV2>) -> Unit,
     ) {
         val firstName = binding.clPatientDetail.edtFirstName.getTrimmedText()
@@ -247,14 +317,56 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
             topBp,
             bottomBp,
             {
-                saveStateToParent(binding.spinnerCategory.selectedItem.toString(),firstName, lastName, age, weight, heartRate, topBp, bottomBp)
-                succcess.invoke()
+                saveStateToParent(binding.spinnerCategory.selectedItem.toString(),
+                    firstName,
+                    lastName,
+                    age,
+                    weight,
+                    heartRate,
+                    topBp,
+                    bottomBp)
+                success.invoke()
+            },
+            failed)
+    }
+
+    private fun isAllAlphaValidationSuccessFull(
+        success: () -> Unit,
+        failed: (validations: List<ValidationModelV2>) -> Unit,
+    ) {
+        val firstName = binding.clPatientDetail.edtFirstName.getTrimmedText()
+        val lastName = binding.clPatientDetail.edtLastName.getTrimmedText()
+        val age = binding.clPatientDetail.edtAge.getTrimmedText()
+        val weight = binding.clHealthDetail.edtWeight.getTrimmedText()
+        val heartRate = binding.clHealthDetail.edtHeartRate.getTrimmedText()
+        val topBp = binding.clHealthDetail.edtTopBp.getTrimmedText()
+        val bottomBp = binding.clHealthDetail.edtBottomBp.getTrimmedText()
+        val ailment = binding.spinnerCategory.selectedItemPosition
+        viewModel.checkAlphaValidation(
+            ailment,
+            firstName,
+            lastName,
+            age,
+            weight,
+            heartRate,
+            topBp,
+            bottomBp,
+            {
+                saveStateToParent(binding.spinnerCategory.selectedItem.toString(),
+                    firstName,
+                    lastName,
+                    age,
+                    weight,
+                    heartRate,
+                    topBp,
+                    bottomBp)
+                success.invoke()
             },
             failed)
     }
 
     private fun saveStateToParent(
-        ailment:String,
+        ailment: String,
         firstName: String,
         lastName: String,
         age: String,
@@ -345,6 +457,16 @@ class DiagnosisFragmentStep1 : BaseDiagnosisFragment<FragmentDiagnosisPart1Bindi
         txtError?.run {
             setText(message)
             setVisibility(visibility)
+        }
+    }
+
+    private fun enableButtonClick(isEnable: Boolean) {
+        if (isEnable) {
+            binding.cvDiagnosisBottomContainer.btNext.isEnabled = true
+            binding.cvDiagnosisBottomContainer.btNext.alpha = 1.0f
+        } else {
+            binding.cvDiagnosisBottomContainer.btNext.isEnabled = false
+            binding.cvDiagnosisBottomContainer.btNext.alpha = 0.3f
         }
     }
 

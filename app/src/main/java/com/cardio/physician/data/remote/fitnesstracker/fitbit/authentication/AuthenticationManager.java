@@ -10,9 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.cardio.physician.data.remote.fitnesstracker.fitbit.sveinungkb.SecurePreferences;
-import com.cardio.physician.network.basichttp.BasicHttpRequestBuilder;
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.basichttp.BasicHttpRequestBuilder;
 import com.cardio.physician.ui.views.fitbit.auth.LoginActivity;
-import com.cardio.physician.data.remote.fitnesstracker.fitbit.sveinungkb.SecurePreferences;
 
 import org.jetbrains.annotations.NotNull;
 

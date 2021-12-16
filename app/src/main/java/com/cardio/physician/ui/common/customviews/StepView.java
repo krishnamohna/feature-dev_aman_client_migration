@@ -644,7 +644,7 @@ public class StepView extends View {
         final boolean isDone = done ? step <= currentStep : step < currentStep;
         final String number = String.valueOf(step + 1);
 
-        if (/*isSelected &&*/ !isDone) {
+        if (isSelected && !isDone) {
             paint.setColor(selectedCircleColor);
             int radius;
             if (state == ANIMATE_STEP_TRANSITION && (animationType == ANIMATION_CIRCLE || animationType == ANIMATION_ALL)

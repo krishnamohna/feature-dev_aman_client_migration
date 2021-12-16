@@ -22,6 +22,7 @@ import com.cardio.physician.databinding.FragmentSyncHealthDataBinding
 import com.cardio.physician.domain.fitness.model.FitnessModel
 import com.cardio.physician.ui.common.base.fragment.BaseFragment
 import com.cardio.physician.ui.common.utils.extentions.customObserver
+import com.cardio.physician.ui.common.utils.extentions.isConnectedOrThrowMsg
 import com.cardio.physician.ui.views.healthlogs.HealthLogsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -67,7 +68,7 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentSyncHealthDataBinding.inflate(inflater, container, false)
         return binding.root
@@ -83,6 +84,8 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
     }
 
     private fun setViews() {
+        //initialy set continue button disabled
+        enableContinueButton(false)
         val selectedHealthKit = viewModel.getSelectedHealthKit()
         if (selectedHealthKit.equals(getString(R.string.fitbit), true)) {
             if (viewModel.isFitbitLoggedIn()) {
@@ -95,6 +98,16 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
         }
     }
 
+    private fun enableContinueButton(isEnable: Boolean) {
+        if (isEnable) {
+            binding.btNext.isEnabled = true
+            binding.btNext.alpha = 1.0f
+        } else {
+            binding.btNext.isEnabled = false
+            binding.btNext.alpha = 0.3f
+        }
+    }
+
     override fun onAuthFinished(result: AuthenticationResult?) {
         result?.isSuccessful?.let {
             if (it) onFitBitAuthenticated()
@@ -103,23 +116,27 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
 
     open fun setListener() {
         binding.fitbitContainer.setOnClickListener {
-            if (!viewModel.isFitbitLoggedIn())
-                viewModel.connectWithFitbit(resultLauncher, requireContext())
-            else {
-                onFitBitAuthenticated()
-                onFitbitSelection()
+            isConnectedOrThrowMsg {
+                if (!viewModel.isFitbitLoggedIn())
+                    viewModel.connectWithFitbit(resultLauncher, requireContext())
+                else {
+                    onFitBitAuthenticated()
+                    onFitbitSelection()
+                }
             }
         }
         binding.googleFitContainer.setOnClickListener {
-            if (!viewModel.isGooglefitLoggedIn())
-                viewModel.connectWithGooglefit(this)
-            else {
-                onGoogleAuthenticated()
-                onGoogleSelection()
-            }
+           isConnectedOrThrowMsg {
+               if (!viewModel.isGooglefitLoggedIn())
+                   viewModel.connectWithGooglefit(this)
+               else {
+                   onGoogleAuthenticated()
+                   onGoogleSelection()
+               }
+           }
         }
         binding.healthLogsContainer.setOnClickListener {
-           HealthLogsActivity.start(requireActivity())
+            HealthLogsActivity.start(requireActivity())
         }
     }
 
@@ -157,6 +174,7 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
         arrayOfImageView[1].visibility = View.VISIBLE
         arrayOfImageView[0].visibility = View.GONE
         viewModel.storeSyncSelectionInPreference(getString(R.string.google_fit))
+        enableContinueButton(true)
     }
 
     private fun onFitBitAuthenticated() {
@@ -165,6 +183,7 @@ open class SyncHealthDataFragment : BaseFragment<FragmentSyncHealthDataBinding>(
         viewModel.storeSyncSelectionInPreference(getString(R.string.fitbit))
         arrayOfImageView[1].visibility = View.GONE
         arrayOfImageView[0].visibility = View.VISIBLE
+        enableContinueButton(true)
     }
 
     /*if instance was directly made of this class then following method will be called*/
