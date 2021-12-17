@@ -12,6 +12,7 @@ import com.cardio.physician.network.api.Constants
 import com.cardio.physician.ui.common.base.viewmodel.BaseAuthViewModel
 import com.cardio.physician.ui.common.utils.FireStoreDocKey
 import com.cardio.physician.ui.common.utils.UserType
+import com.cardio.physician.ui.common.utils.getCurrentDate
 import com.cardio.physician.ui.common.utils.isValidEmail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -78,6 +79,26 @@ class AddPatientViewModel @Inject constructor(
             userSearchSingleLiveData.value = Resource.error(Constants.ADD_PATIENT, 203, "203", null)
         }else{
             userSearchSingleLiveData.value = Resource.error(Constants.ADD_PATIENT, 201, "201", null)
+        }
+    }
+
+    fun getAllPatientList(){
+        try {
+            viewModelScope.launch {
+                val data = addPatientRepositoryImp.getPatientListByDate(getCurrentDate())
+                if(data.isEmpty()){
+                    userSearchSingleLiveData.value = Resource.error(Constants.ADD_PATIENT, 202, "202", null)
+                }else{
+                    userSearchSingleLiveData.postValue(
+                        Resource.success(
+                            Constants.ADD_PATIENT,
+                            data
+                        )
+                    )
+                }
+            }
+        }catch (e: Exception){
+            userSearchSingleLiveData.value = Resource.error(Constants.ADD_PATIENT, 202, "202", null)
         }
     }
 

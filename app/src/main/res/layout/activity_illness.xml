@@ -113,15 +113,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_patient_list"
         android:layout_width="0dp"
-        android:overScrollMode="never"
         android:layout_height="0dp"
         android:paddingVertical="@dimen/_7sdp"
-        tools:itemCount="8"
+        android:overScrollMode="never"
+        android:nestedScrollingEnabled="true"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="@id/view_et_bg"
         app:layout_constraintStart_toStartOf="@id/view_et_bg"
-        tools:listitem="@layout/item_patient"
         app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_patient"
         app:layout_constraintTop_toBottomOf="@id/view_et_bg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

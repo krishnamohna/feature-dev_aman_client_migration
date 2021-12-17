@@ -9,26 +9,35 @@ import com.cardio.physician.R
 import com.cardio.physician.databinding.ItemPatientBinding
 import com.cardio.physician.domain.addpatient.PatientModel
 
-class PatientAdapter(val onRecyclerViewItemClick : (view: View, position: Int)-> Unit?) : RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() {
+class PatientAdapter(val onRecyclerViewItemClick : (view: View, position: Int)-> Unit?, val isFromIllness : Boolean) : RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() {
 
     val patientList : ArrayList<PatientModel> = ArrayList()
 
     inner class PatientViewHolder(val binding: ItemPatientBinding) : RecyclerView.ViewHolder(binding.root){
         fun bindData(){
-            if(patientList[adapterPosition].isAdded){
-                binding.tvAdd.text = "Requested"
-            }else{
-                binding.tvAdd.text = "Add"
+            if(isFromIllness){
+                binding.tvAdd.visibility = View.GONE
+                binding.clMain.setOnClickListener {
+                    onRecyclerViewItemClick.invoke(it, adapterPosition)
+                }
+            }else {
+                binding.tvAdd.visibility = View.VISIBLE
+                if (patientList[adapterPosition].isAdded) {
+                    binding.tvAdd.text = "Requested"
+                } else {
+                    binding.tvAdd.text = "Add"
+                }
+                binding.tvAdd.setOnClickListener {
+                    if(!patientList[adapterPosition].isAdded) {
+                        patientList[adapterPosition].isAdded = true
+                        notifyItemChanged(adapterPosition)
+                        onRecyclerViewItemClick.invoke(it, adapterPosition)
+                    }
+                }
             }
             Glide.with(binding.root.context).load(patientList[adapterPosition].imageUrl).error(R.drawable.drawable_user_placeholder).placeholder(R.drawable.drawable_user_placeholder).circleCrop().into(binding.ivUserImage)
             binding.tvUserName.text = "${patientList[adapterPosition].firstName} ${patientList[adapterPosition].lastName}"
-            binding.tvAdd.setOnClickListener {
-                if(!patientList[adapterPosition].isAdded) {
-                    patientList[adapterPosition].isAdded = true
-                    notifyItemChanged(adapterPosition)
-                    onRecyclerViewItemClick.invoke(it, adapterPosition)
-                }
-            }
+
         }
     }
 

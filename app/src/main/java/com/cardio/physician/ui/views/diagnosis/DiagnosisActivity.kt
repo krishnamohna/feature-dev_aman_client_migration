@@ -123,7 +123,7 @@ class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
             stepView?.go(step, true);
         //set connect button visibility
         if (step == 0)
-            setConnectButtonVisibility(true)
+            setConnectButtonVisibility(false)
         else
             setConnectButtonVisibility(false)
     }

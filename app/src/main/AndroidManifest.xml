@@ -29,6 +29,9 @@
         tools:ignore="AllowBackup,LockedOrientationActivity"
         tools:targetApi="m">
         <activity
+            android:name=".ui.views.illness.IllnessActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.views.add_patient.AddPatientActivity"
             android:exported="false" />
         <activity
@@ -82,7 +85,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="@{applicationId}.fileprovider"
+            android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

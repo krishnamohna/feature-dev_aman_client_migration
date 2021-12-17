@@ -17,6 +17,7 @@ import com.cardio.physician.ui.common.base.toolbar.DashBoardToolbarImp
 import com.cardio.physician.ui.common.base.toolbar.IToolbar
 import com.cardio.physician.ui.common.utils.extentions.customObserver
 import com.cardio.physician.ui.common.utils.getCurrentDate
+import com.cardio.physician.ui.common.utils.showToast
 import com.cardio.physician.ui.views.dashboard.DashboardActivity
 import com.cardio.physician.ui.views.diagnosis.DiagnosisActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -100,6 +101,7 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
             }
         }
         binding.etSearch.addTextChangedListener(TextChangeWatcher(binding.etSearch))
+        binding.ivFilter.setOnClickListener { showToast(requireContext(), "Under Development") }
     }
 
     private fun setUserDataInView(userModel: UserModel?) {

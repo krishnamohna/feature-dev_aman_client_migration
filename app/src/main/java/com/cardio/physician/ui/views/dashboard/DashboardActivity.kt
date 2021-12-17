@@ -19,6 +19,7 @@ import com.cardio.physician.ui.service.SyncHeathDataService
 import com.cardio.physician.ui.views.add_patient.AddPatientActivity
 import com.cardio.physician.ui.views.dashboard.fragment.DashboardFragmentDirections
 import com.cardio.physician.ui.views.diagnosis.DiagnosisActivity
+import com.cardio.physician.ui.views.illness.IllnessActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -111,7 +112,7 @@ class DashboardActivity : BaseActivity(), View.OnClickListener {
                     showPhysicianPickOption(this, {
                         AddPatientActivity.start(this)
                     }, {
-                        DiagnosisActivity.start(this, null)
+                        IllnessActivity.start(this)
                     })
 
                 }
