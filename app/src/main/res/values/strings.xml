@@ -25,7 +25,7 @@
     <string name="do_not_have_an_account">Don’t have an account?</string>
     <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
     <string name="emailpassword_title_text">Email and Password</string>
-    <string name="plus_one">+91</string>
+    <string name="plus_one">+1</string>
     <string name="first_name">First Name</string>
     <string name="first_name_star">First Name<font fgcolor='#FF0000'>*</font></string>
     <string name="first_name_hint"><font size="15">First Name*</font></string>

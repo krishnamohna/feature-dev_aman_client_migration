@@ -112,6 +112,23 @@ class DiagnosisRepoImp @Inject constructor(
         }
     }
 
+    override suspend fun getPatientListByRange(startDate: Long, endDate: Long): List<ConnectionModel> {
+        val query = firebaseAuth.currentUser?.uid?.let {
+            fireStoreDb.collection(FireStoreCollection.CONNECTIONS)
+                .document(UserType.USER_TYPE_PHYSICIAN)
+                .collection(it)
+                .whereGreaterThan(FireStoreDocKey.TIME_STAMP_CAMEL, startDate)
+                .whereLessThan(FireStoreDocKey.TIME_STAMP_CAMEL, endDate)
+                .orderBy(FireStoreDocKey.TIME_STAMP_CAMEL, Query.Direction.DESCENDING)
+        }
+        val querySnapshot = query?.get()?.await()
+        return if(querySnapshot == null || querySnapshot.isEmpty){
+            throw NetworkError(404,"No record found")
+        }else{
+            querySnapshot.toConnectionModel()
+        }
+    }
+
     private suspend fun saveMedToCollection(medName: String) {
         var mapDrugs = mutableMapOf<String, String>()
         mapDrugs.put(FireStoreDocKey.NAME, medName)

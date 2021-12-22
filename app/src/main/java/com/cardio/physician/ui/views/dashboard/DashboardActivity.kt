@@ -109,10 +109,10 @@ class DashboardActivity : BaseActivity(), View.OnClickListener {
             }
             binding.btnDashboardTwo -> {
                 isConnectedOrThrowMsg {
-                    showPhysicianPickOption(this, {
-                        AddPatientActivity.start(this)
+                    showPhysicianPickOption(this@DashboardActivity, {
+                        AddPatientActivity.start(this@DashboardActivity)
                     }, {
-                        IllnessActivity.start(this)
+                        IllnessActivity.start(this@DashboardActivity)
                     })
 
                 }

@@ -187,7 +187,7 @@ class LoginFragment : BaseFragmentAuth(R.layout.fragment_login), View.OnClickLis
 
     private fun startActivityForCountryCode() {
         val intent = Intent(requireContext(), CountrySelectActivity::class.java)
-        intent.putExtra(CountrySelectActivity.EXTRA_SELECTED_COUNTRY, CountryData("IN"))
+        intent.putExtra(CountrySelectActivity.EXTRA_SELECTED_COUNTRY, CountryData("US"))
         resultLauncher.launch(intent)
     }
 

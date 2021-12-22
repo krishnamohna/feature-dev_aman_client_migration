@@ -55,5 +55,16 @@ class DashboardViewModel @Inject constructor(
         }
     }
 
+    fun filterListData(startDate: Long, endDate: Long) {
+        viewModelScope.launch {
+            try {
+                singleEventConnections.setLoading()
+                singleEventConnections.setSuccess(diagnosisRepo.getPatientListByRange(startDate, endDate))
+            }catch (exp:Exception){
+                singleEventConnections.setError(exp.message)
+            }
+        }
+    }
+
 
 }

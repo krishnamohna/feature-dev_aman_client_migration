@@ -9,4 +9,5 @@ interface DiagnosisRepo {
     suspend fun submitReport(diagnosisModel: DiagnosisModel, userId: String?): Boolean
     suspend fun getDiagnosisByDate(date: String, ailment: String):List<DiagnosisModel>
     suspend fun getPatientListByDate(date: String):List<ConnectionModel>
+    suspend fun getPatientListByRange(startDate: Long, endDate: Long):List<ConnectionModel>
 }

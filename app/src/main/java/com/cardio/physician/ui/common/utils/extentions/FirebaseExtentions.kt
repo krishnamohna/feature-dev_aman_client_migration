@@ -101,7 +101,9 @@ fun QuerySnapshot.toCPatientModel(): List<PatientModel> {
         val firstName = it.get(FireStoreDocKey.FIRST_NAME) as? String?
         val lastName = it.get(FireStoreDocKey.LAST_NAME) as? String?
         val imageUrl = it.get(FireStoreDocKey.IMAGE_URL) as? String?
-        list.add(PatientModel(userId, firstName, lastName, imageUrl))
+        val patientModel = PatientModel(userId, firstName, lastName, imageUrl)
+        patientModel.isAdded = if(it.get(FireStoreDocKey.REQUEST_STATUS) as? Boolean? == true) 1 else 2
+        list.add(patientModel)
     }
     return list
 }
@@ -114,7 +116,7 @@ fun QuerySnapshot.toConnectionModel(): List<ConnectionModel> {
         val lastName = it.get(FireStoreDocKey.LAST_NAME) as? String?
         val imageUrl = it.get(FireStoreDocKey.IMAGE_URL) as? String?
         val timestamp = it.get(FireStoreDocKey.TIME_STAMP) as? Long?
-//        if(it.get(FireStoreDocKey.REQUEST_STATUS) as? Boolean? == true)
+        if(it.get(FireStoreDocKey.REQUEST_STATUS) as? Boolean? == true)
         list.add(ConnectionModel(userId, firstName, lastName, imageUrl, timestamp))
     }
     return list

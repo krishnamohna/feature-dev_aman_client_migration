@@ -22,14 +22,18 @@ class PatientAdapter(val onRecyclerViewItemClick : (view: View, position: Int)->
                 }
             }else {
                 binding.tvAdd.visibility = View.VISIBLE
-                if (patientList[adapterPosition].isAdded) {
-                    binding.tvAdd.text = "Requested"
+                if (patientList[adapterPosition].isAdded != 0) {
+                    if(patientList[adapterPosition].isAdded == 1){
+                        binding.tvAdd.text = ""
+                    }else{
+                        binding.tvAdd.text = "Requested"
+                    }
                 } else {
                     binding.tvAdd.text = "Add"
                 }
                 binding.tvAdd.setOnClickListener {
-                    if(!patientList[adapterPosition].isAdded) {
-                        patientList[adapterPosition].isAdded = true
+                    if(patientList[adapterPosition].isAdded == 0) {
+                        patientList[adapterPosition].isAdded = 2
                         notifyItemChanged(adapterPosition)
                         onRecyclerViewItemClick.invoke(it, adapterPosition)
                     }

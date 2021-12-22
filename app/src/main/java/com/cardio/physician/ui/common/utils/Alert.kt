@@ -1,6 +1,7 @@
 package com.cardio.physician.ui.common.utils
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Handler
@@ -11,11 +12,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import com.cardio.physician.R
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
+import java.util.*
 
 
 var mBottomSheetDialog: BottomSheetDialog? = null
@@ -124,28 +127,45 @@ fun showPhysicianPickOption(activity: AppCompatActivity, onPatientClicked:()->Un
     }
 }
 
-/*fun showDashboardFilter(activity: AppCompatActivity, onApplyClicked : (startDate: Long, endDate : Long) -> Unit){
+fun openCalendarDialog(context: Context, calendar: Calendar, listener : DatePickerDialog.OnDateSetListener){
+    val datePicker = DatePickerDialog(context, listener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+    datePicker.updateDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+    datePicker.show()
+}
+
+fun showDashboardFilter(
+    activity: AppCompatActivity,
+    onStartDateClicked: (view: AppCompatTextView) -> Unit,
+    onEndDateClicked: (view: AppCompatTextView) -> Unit,
+    onApplyClicked: () -> Unit,
+    startDate: Long?,
+    endDate: Long?
+){
     if (mBottomSheetDialog != null && mBottomSheetDialog!!.isShowing()) {
         mBottomSheetDialog!!.dismiss()
     }
     mBottomSheetDialog =
         BottomSheetDialog(activity, R.style.CustomBottomSheetDialogTheme)
     val sheetView: View =
-        activity.layoutInflater.inflate(R.layout.bottom_sheet_physician_operation, null)
+        activity.layoutInflater.inflate(R.layout.bottom_sheet_dashboard_filter, null)
     mBottomSheetDialog?.setContentView(sheetView)
     mBottomSheetDialog?.show()
-    sheetView.findViewById<View>(R.id.tvPatientLabel).setOnClickListener {
-        onPatientClicked.invoke()
+    val startTextView = sheetView.findViewById<AppCompatTextView>(R.id.tv_start_date)
+    startTextView.setOnClickListener {
+        onStartDateClicked.invoke(it as AppCompatTextView)
+    }
+    startTextView.text = startDate?.let { if(it > 0) getDateFromTimeMills(it) else "From" }
+    val endDateTextView = sheetView.findViewById<AppCompatTextView>(R.id.tv_end_date)
+    endDateTextView.setOnClickListener {
+        onEndDateClicked.invoke(it as AppCompatTextView)
+    }
+    endDateTextView.text = endDate?.let { if(it > 0) getDateFromTimeMills(it) else "To" }
+    sheetView.findViewById<View>(R.id.btn_apply).setOnClickListener {
+        onApplyClicked.invoke()
         dismissBottomSheet()
     }
-    sheetView.findViewById<View>(R.id.tvIllnessLabel).setOnClickListener {
-        onIllnessClicked.invoke()
-        dismissBottomSheet()
-    }
-    sheetView.findViewById<View>(R.id.tvCancelLabel).setOnClickListener {
-        dismissBottomSheet()
-    }
-}*/
+}
+
 
 fun dismissBottomSheet() {
     Handler(Looper.getMainLooper()).postDelayed(

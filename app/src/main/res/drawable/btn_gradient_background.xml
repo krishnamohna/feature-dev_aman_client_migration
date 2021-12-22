@@ -12,7 +12,7 @@ android:color="@color/ripple_icon_state_pressed">
 <item android:id="@android:id/background">
     <shape android:shape="rectangle">
         <gradient
-            android:angle="90"
+            android:angle="0"
             android:endColor="@color/btn_gradient_end"
             android:startColor="@color/btn_gradient_start"
             android:type="linear" />

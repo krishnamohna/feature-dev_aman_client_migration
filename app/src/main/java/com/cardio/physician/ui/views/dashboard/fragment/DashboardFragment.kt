@@ -3,7 +3,6 @@ package com.cardio.physician.ui.views.dashboard.fragment
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +14,12 @@ import com.cardio.physician.domain.common.model.UserModel
 import com.cardio.physician.ui.common.base.fragment.BaseToolBarFragment
 import com.cardio.physician.ui.common.base.toolbar.DashBoardToolbarImp
 import com.cardio.physician.ui.common.base.toolbar.IToolbar
+import com.cardio.physician.ui.common.utils.*
 import com.cardio.physician.ui.common.utils.extentions.customObserver
-import com.cardio.physician.ui.common.utils.getCurrentDate
-import com.cardio.physician.ui.common.utils.showToast
 import com.cardio.physician.ui.views.dashboard.DashboardActivity
 import com.cardio.physician.ui.views.diagnosis.DiagnosisActivity
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
@@ -28,6 +27,8 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
     private var toolbar: DashBoardToolbarImp? = null
     val viewModel: DashboardViewModel by viewModels()
     lateinit var adapter: ConnectionsAdapter
+    private var startDate: Long ?= 0L
+    private var endDate: Long ?= 0L
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -101,7 +102,40 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
             }
         }
         binding.etSearch.addTextChangedListener(TextChangeWatcher(binding.etSearch))
-        binding.ivFilter.setOnClickListener { showToast(requireContext(), "Under Development") }
+        binding.ivFilter.setOnClickListener { (activity as? DashboardActivity)?. let { it1 ->
+            showDashboardFilter(
+                it1, { view ->
+                    val calendar = if(startDate!! > 0) {
+                        val cal = Calendar.getInstance()
+                        cal.timeInMillis = startDate!!
+                        cal
+                    }else Calendar.getInstance()
+                    openCalendarDialog(requireContext(), calendar
+                    ) { p0, p1, p2, p3 ->
+                        val calendar = Calendar.getInstance()
+                        calendar.set(p1, p2, p3)
+                        startDate = calendar.timeInMillis
+                        if(startDate!! > 0) view.text = getDateFromTimeMills(startDate!!)
+                        else view.text = "From"
+                    }
+                }, { view ->
+                    val calendar = if(endDate!! > 0) {
+                        val cal = Calendar.getInstance()
+                        cal.timeInMillis = endDate!!
+                        cal
+                    }else Calendar.getInstance()
+                    openCalendarDialog(requireContext(), calendar
+                    ) { p0, p1, p2, p3 ->
+                        val calendar = Calendar.getInstance()
+                        calendar.set(p1, p2, p3)
+                        endDate = calendar.timeInMillis
+                        if(endDate!! > 0) view.text = getDateFromTimeMills(endDate!!)
+                        else view.text = "To"
+                    }
+                }, {
+                    endDate?.let { it2 -> startDate?.let { it3 -> adapter.updateList(it3, it2) } }
+                }, startDate, endDate)
+        } }
     }
 
     private fun setUserDataInView(userModel: UserModel?) {

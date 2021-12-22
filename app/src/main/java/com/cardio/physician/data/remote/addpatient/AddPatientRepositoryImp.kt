@@ -35,6 +35,15 @@ class AddPatientRepositoryImp @Inject constructor(override val firebaseAuth: Fir
             .get().await().toPatientModel()
     }
 
+    suspend fun getConnectedPatientList(): List<PatientModel> {
+        return firebaseAuth.currentUser?.uid?.let {
+            fireStore.collection(FireStoreCollection.CONNECTIONS)
+                .document(UserType.USER_TYPE_PHYSICIAN)
+                .collection(it)
+                .orderBy(FireStoreDocKey.TIME_STAMP_CAMEL, Query.Direction.DESCENDING)
+        }!!.get().await().toCPatientModel()
+    }
+
     suspend fun getAllPatientList(): List<PatientModel> {
         return fireStore.collection(FireStoreCollection.USERS).
         whereEqualTo(FireStoreDocKey.USER_TYPE, UserType.USER_TYPE_PATIENT)

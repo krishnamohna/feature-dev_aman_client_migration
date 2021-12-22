@@ -50,6 +50,8 @@ class ConnectionsAdapter(val recyclerViewListener : (view: View, position: Int)-
     }
 
     fun updateConnectionList(list: List<ConnectionModel>){
+        connectionsList.clear()
+        connectionsListFiltered.clear()
         connectionsList.addAll(list)
         connectionsListFiltered.addAll(connectionsList)
         notifyDataSetChanged()
@@ -81,5 +83,21 @@ class ConnectionsAdapter(val recyclerViewListener : (view: View, position: Int)-
                 notifyDataSetChanged()
             }
         }
+    }
+
+    fun updateList(startDate: Long, endDate: Long){
+        val filterableList : ArrayList<ConnectionModel> = ArrayList()
+        if (startDate <= 0L || endDate <= 0L) {
+            filterableList.addAll(connectionsList)
+        } else {
+            for (connection in connectionsList){
+                if(connection.timestamp!! > startDate && connection.timestamp < endDate){
+                    filterableList.add(connection)
+                }
+            }
+            connectionsListFiltered.clear()
+            connectionsListFiltered.addAll(filterableList)
+        }
+        notifyDataSetChanged()
     }
 }

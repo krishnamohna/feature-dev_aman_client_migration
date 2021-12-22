@@ -34,14 +34,24 @@ class AddPatientViewModel @Inject constructor(
     fun searchUserInFirestore(searchString: String) {
             try {
                 viewModelScope.launch {
+                    val connectedPatientList = addPatientRepositoryImp.getConnectedPatientList()
                     val data = addPatientRepositoryImp.getPatientList(searchString)
                     if(data.isEmpty()){
                         searchUserInFirestoreWithEmail(searchString)
                     }else{
+                        val map = LinkedHashMap<String?, PatientModel>()
+                        for (patient in data){
+                            map.put(patient.userId, patient)
+                        }
+                        for (connected in connectedPatientList){
+                            map.put(connected.userId, connected)
+                        }
+                        val outputString = ArrayList<PatientModel>()
+                        outputString.addAll(map.values)
                         userSearchSingleLiveData.postValue(
                             Resource.success(
                                 Constants.ADD_PATIENT,
-                                data
+                                outputString
                             )
                         )
                     }
@@ -55,15 +65,25 @@ class AddPatientViewModel @Inject constructor(
     private fun searchUserInFirestoreWithEmail(searchString: String){
         try {
             viewModelScope.launch {
+                val connectedPatientList = addPatientRepositoryImp.getConnectedPatientList()
                 val data = addPatientRepositoryImp.getPatientListWithEmail(searchString)
                 if(data.isEmpty()){
                     userSearchSingleLiveData.value = Resource.error(Constants.ADD_PATIENT, 202, "202", null)
                     checkValidEmailAddress(searchString)
                 }else{
+                    val map = LinkedHashMap<String?, PatientModel>()
+                    for (patient in data){
+                        map.put(patient.userId, patient)
+                    }
+                    for (connected in connectedPatientList){
+                        map.put(connected.userId, connected)
+                    }
+                    val outputString = ArrayList<PatientModel>()
+                    outputString.addAll(map.values)
                     userSearchSingleLiveData.postValue(
                         Resource.success(
                             Constants.ADD_PATIENT,
-                            data
+                            outputString
                         )
                     )
                 }

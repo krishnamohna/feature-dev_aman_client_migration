@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_30sdp"
+        android:overScrollMode="never"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerView">
@@ -122,6 +123,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:nestedScrollingEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:paddingBottom="@dimen/_80sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view" />
         </androidx.constraintlayout.widget.ConstraintLayout>
