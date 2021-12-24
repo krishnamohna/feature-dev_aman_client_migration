@@ -20,6 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.DocumentSnapshot
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
@@ -37,6 +38,23 @@ class LoginViewModel @Inject constructor(
 
     val validationChannel = Channel<ValidationModel>(2)
 
+    private val _userDetailDocument = SingleLiveEvent<Resource<DocumentSnapshot>>()
+    val userDetailDocument: LiveData<Resource<DocumentSnapshot>> =
+        _userDetailDocument
+
+    fun getUserDetail() {
+        try {
+            _userDetailDocument.postValue(Resource.loading(Constants.USER_DETAIL, null))
+            viewModelScope.launch {
+                //fetch user detail now
+                var userDetail = loginRepository.fetchUserDetail(_firebaseException)
+                _userDetailDocument.postValue(Resource.success(Constants.USER_DETAIL, userDetail))
+            }
+        } catch (e: Exception) {
+            _userDetailDocument.value =
+                Resource.error(Constants.USER_DETAIL, 0, getExceptionMessage(e), null)
+        }
+    }
 
     fun validateFieldsToSetAlpha(userId: String, password: String) {
         if (userId.isEmpty()) setObserverForAlpha(R.string.alpha_false)

@@ -14,11 +14,14 @@ import com.cardio.physician.network.Status
 import com.cardio.physician.network.api.Constants
 import com.cardio.physician.network.api.Constants.Companion.FORGOT_PASSWORD
 import com.cardio.physician.ui.common.utils.ENUM
+import com.cardio.physician.ui.common.utils.FireStoreCollection
 import com.cardio.physician.ui.common.utils.isValidEmail
 import com.cardio.physician.ui.common.utils.livedata.SingleLiveEvent
+import com.google.firebase.firestore.DocumentSnapshot
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 @HiltViewModel

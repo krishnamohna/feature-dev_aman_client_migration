@@ -4,6 +4,7 @@ import androidx.annotation.NonNull
 import androidx.lifecycle.MutableLiveData
 import com.cardio.physician.network.Resource
 import com.google.firebase.auth.AuthCredential
+import com.google.firebase.firestore.DocumentSnapshot
 import java.util.*
 
 
@@ -36,4 +37,8 @@ interface LoginRepositary {
     ):Boolean?
 
     suspend fun isCollectionExist(uuid: String, errorLiveData: MutableLiveData<Resource<Exception>>): Boolean?
+
+    suspend fun fetchUserDetail(
+        errorLiveData: MutableLiveData<Resource<Exception>>,
+    ): DocumentSnapshot?
 }

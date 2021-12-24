@@ -8,6 +8,7 @@ import com.cardio.physician.network.Resource
 import com.cardio.physician.network.api.ApiService
 import com.cardio.physician.ui.common.utils.FireStoreCollection
 import com.cardio.physician.ui.common.utils.FireStoreDocKey
+import com.cardio.physician.ui.common.utils.firebaseDocumentQuery
 import com.cardio.physician.ui.common.utils.firebaseQuery
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.DocumentSnapshot
@@ -115,5 +116,16 @@ class LoginRepositoryImp @Inject constructor(
         }
     }
 
+    override suspend fun fetchUserDetail(
+        errorLiveData: MutableLiveData<Resource<Exception>>,
+    ) = firebaseDocumentQuery(
+        operation = {
+            val userId = firebaseAuth.currentUser?.uid
+            fireStore.collection(FireStoreCollection.USERS).document(userId ?: "")
+                .get().await()
+        }, parse = {
+            return@firebaseDocumentQuery it
+        }, errorLiveData
+    )
 }
 

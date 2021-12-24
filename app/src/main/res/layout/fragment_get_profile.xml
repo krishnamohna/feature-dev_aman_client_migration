@@ -228,6 +228,7 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:background="@drawable/btn_white_bg_with_white_corner"
                 android:paddingStart="@dimen/_10sdp"
+                android:visibility="gone"
                 android:paddingEnd="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
                 app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"

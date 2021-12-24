@@ -6,7 +6,6 @@
         <activity
             android:name=".CountrySelectActivity"
             android:theme="@style/CountryAppTheme"
-            android:screenOrientation="portrait"
             />
     </application>
 

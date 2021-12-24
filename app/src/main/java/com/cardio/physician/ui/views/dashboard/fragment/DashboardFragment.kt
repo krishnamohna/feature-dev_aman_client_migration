@@ -47,6 +47,16 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
         init()
     }
 
+    private fun showHidePatientView(showHide: Int){
+        binding.tvNoPatientFound.visibility = showHide
+        binding.ivNoPatientFound.visibility = showHide
+        if(showHide == View.VISIBLE){
+            binding.rvConnections.visibility = View.GONE
+        }else{
+            binding.rvConnections.visibility = View.VISIBLE
+        }
+    }
+
     override fun getToolbarImp(): IToolbar? {
         toolbar = DashBoardToolbarImp(binding.headerView.toolBarContainer)
         return toolbar
@@ -65,7 +75,12 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
             this,
             onLoading = ::showProgress,
             onSuccess = { connectionList ->
-                connectionList?.let { adapter.updateConnectionList(it) }
+                if(connectionList.isNullOrEmpty()){
+                    showHidePatientView(View.VISIBLE)
+                }else{
+                    showHidePatientView(View.GONE)
+                    connectionList?.let { adapter.updateConnectionList(it) }
+                }
             },
             onError = {
             }
@@ -81,9 +96,9 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
 
     private fun setRecyclerView(){
         val layoutManager = LinearLayoutManager(activity)
-        adapter = ConnectionsAdapter {
+        adapter = ConnectionsAdapter( {
             view, position -> DiagnosisActivity.start(requireActivity(), adapter.connectionsList[position].userId)
-        };
+        }, { showEmptyView -> if(showEmptyView) showHidePatientView(View.VISIBLE) else showHidePatientView(View.GONE) })
         binding.rvConnections.layoutManager = layoutManager
         binding.rvConnections.adapter = adapter
     }

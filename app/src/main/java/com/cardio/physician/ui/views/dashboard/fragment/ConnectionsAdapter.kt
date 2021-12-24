@@ -16,7 +16,7 @@ import com.cardio.physician.ui.common.utils.getDefaultDateFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ConnectionsAdapter(val recyclerViewListener : (view: View, position: Int)-> Unit?) :
+class ConnectionsAdapter(val recyclerViewListener : (view: View, position: Int)-> Unit?, val emptyListView : (showHideView : Boolean)-> Unit?) :
     RecyclerView.Adapter<ConnectionsAdapter.ConnectionsViewHolder>(), Filterable {
 
     val connectionsList : ArrayList<ConnectionModel> = ArrayList()
@@ -54,6 +54,7 @@ class ConnectionsAdapter(val recyclerViewListener : (view: View, position: Int)-
         connectionsListFiltered.clear()
         connectionsList.addAll(list)
         connectionsListFiltered.addAll(connectionsList)
+        emptyListView.invoke(connectionsListFiltered.isEmpty())
         notifyDataSetChanged()
     }
 
@@ -80,6 +81,7 @@ class ConnectionsAdapter(val recyclerViewListener : (view: View, position: Int)-
             override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
                 connectionsListFiltered.clear()
                 connectionsListFiltered.addAll(p1?.values as ArrayList<ConnectionModel>)
+                emptyListView.invoke(connectionsListFiltered.isEmpty())
                 notifyDataSetChanged()
             }
         }
@@ -98,6 +100,7 @@ class ConnectionsAdapter(val recyclerViewListener : (view: View, position: Int)-
             connectionsListFiltered.clear()
             connectionsListFiltered.addAll(filterableList)
         }
+        emptyListView.invoke(connectionsListFiltered.isEmpty())
         notifyDataSetChanged()
     }
 }

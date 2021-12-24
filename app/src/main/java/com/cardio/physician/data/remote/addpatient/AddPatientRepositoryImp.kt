@@ -59,11 +59,7 @@ class AddPatientRepositoryImp @Inject constructor(override val firebaseAuth: Fir
                 .orderBy(FireStoreDocKey.TIME_STAMP_CAMEL, Query.Direction.DESCENDING)
         }
         val querySnapshot = query?.get()?.await()
-        return if(querySnapshot == null || querySnapshot.isEmpty){
-            throw NetworkError(404,"No record found")
-        }else{
-            querySnapshot.toCPatientModel()
-        }
+        return querySnapshot?.toCPatientModel()!!
     }
 
 

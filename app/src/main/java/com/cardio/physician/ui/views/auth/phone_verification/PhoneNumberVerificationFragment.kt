@@ -1,6 +1,7 @@
 package com.cardio.physician.ui.views.auth.phone_verification
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
@@ -32,6 +33,7 @@ import com.cardio.physician.ui.common.utils.Timer.Companion.OTP_TIME_FORMAT
 import com.cardio.physician.ui.common.utils.customSnackBarFail
 import com.cardio.physician.ui.common.utils.showAlertDialog
 import com.cardio.physician.ui.common.utils.viewbinding.viewBinding
+import com.cardio.physician.ui.views.dashboard.DashboardActivity
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
@@ -302,9 +304,9 @@ class PhoneNumberVerificationFragment :
     }
 
     private fun moveToNextScreen() {
-       /* startActivity(Intent(requireContext(), DashboardActivity::class.java))
-        requireActivity().finish()*/
-        findNavController().navigate(PhoneNumberVerificationFragmentDirections.actionPhoneNumberVerificationFragmentToSyncHealthDataFragmentDuringSignUp())
+        startActivity(Intent(requireContext(), DashboardActivity::class.java))
+        requireActivity().finish()
+//        findNavController().navigate(PhoneNumberVerificationFragmentDirections.actionPhoneNumberVerificationFragmentToSyncHealthDataFragmentDuringSignUp())
     }
 
     private fun setOtpTimer() {

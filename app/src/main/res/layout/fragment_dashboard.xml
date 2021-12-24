@@ -68,6 +68,31 @@
                 app:layout_constraintStart_toStartOf="@id/view"
                 app:layout_constraintTop_toTopOf="@id/view" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_no_patient_found"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_empty_data"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.4" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_no_patient_found"
+                style="@style/BaseAppTheme.TxtView.bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/txt_no_patient_found"
+                android:textSize="@dimen/text_large"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/iv_no_patient_found"
+                app:layout_constraintStart_toStartOf="@id/iv_no_patient_found"
+                app:layout_constraintTop_toBottomOf="@id/iv_no_patient_found" />
+
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_search"
                 android:layout_width="0dp"
@@ -75,9 +100,9 @@
                 android:layout_marginHorizontal="@dimen/_8sdp"
                 android:backgroundTint="@android:color/transparent"
                 android:background="@null"
-                android:elevation="@dimen/_6sdp"
+                android:elevation="@dimen/_5sdp"
                 android:fontFamily="@font/nunito_medium"
-                android:hint="Search by Patient Name"
+                android:hint="@string/txt_search"
                 android:includeFontPadding="false"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey_text_hint"

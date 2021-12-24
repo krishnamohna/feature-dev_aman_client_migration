@@ -239,7 +239,7 @@
     <string name="disease_specific_clinical_parameters">Disease Specific Clinical Parameters</string>
     <string name="ef">EF : </string>
     <string name="txt_no_patient_found">No Patient Found</string>
-    <string name="txt_search">Search</string>
+    <string name="txt_search">Search by Patient Name</string>
     <string name="txt_invite">Invite</string>
     <string name="add">Add</string>
     <string name="patient">Patient</string>

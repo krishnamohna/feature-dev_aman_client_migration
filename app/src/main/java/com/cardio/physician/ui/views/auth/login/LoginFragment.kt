@@ -18,6 +18,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.cardio.physician.R
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.User
 import com.cardio.physician.databinding.FragmentLoginBinding
 import com.cardio.physician.domain.common.model.ValidationModel
 import com.cardio.physician.network.NetworkHelper
@@ -141,6 +142,16 @@ class LoginFragment : BaseFragmentAuth(R.layout.fragment_login), View.OnClickLis
                 manageViewsForValidation(it)
             }
         }
+        viewModel.userDetailDocument.observe(viewLifecycleOwner, {
+            if(it.data!=null) {
+                if (it.data.get(FireStoreDocKey.USER_TYPE) == UserType.USER_TYPE_PHYSICIAN) {
+                    showToast(requireContext(), getString(R.string.user_logged_in_successfully))
+                    apiConstant?.let { it1 -> moveToNextScreen(it1) }
+                } else {
+                    showToast(requireContext(), getString(R.string.email_already_in_use))
+                }
+            }
+        })
     }
 
 
@@ -249,12 +260,14 @@ class LoginFragment : BaseFragmentAuth(R.layout.fragment_login), View.OnClickLis
         resultGoogleSignIn.launch(signInIntent)
     }
 
+    private var apiConstant: String ?= null
+
     private fun checkIsUserVerified(apiConstant: String) {
+        this.apiConstant = apiConstant
         val user = viewModel.auth.currentUser
         user?.let {
             if (user.isEmailVerified) {
-                showToast(requireContext(), getString(R.string.user_logged_in_successfully))
-                moveToNextScreen(apiConstant)
+                viewModel.getUserDetail()
             } else showDialogEmailNotVerified(user)
         }
     }
@@ -289,7 +302,9 @@ class LoginFragment : BaseFragmentAuth(R.layout.fragment_login), View.OnClickLis
 
     private fun moveToNextScreen(apiConstant: String) {
         if(apiConstant==Constants.GOOGLE_SIGNUP){
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSyncHealthDataFragmentDuringSignUp())
+//            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSyncHealthDataFragmentDuringSignUp())
+            startActivity(Intent(requireContext(), DashboardActivity::class.java))
+            requireActivity().finish()
         }else{
             startActivity(Intent(requireContext(), DashboardActivity::class.java))
             requireActivity().finish()
