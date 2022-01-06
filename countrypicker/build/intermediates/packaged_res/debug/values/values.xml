@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorSelected">#c2c2c2</color>
+    <color name="colorUnSelected">#ffffff</color>
+    <string name="app_name">CountryPicker</string>
+    <string name="country_select_hint_search">search</string>
+    <style name="CountryAppTheme" parent="Theme.AppCompat.Light.Dialog.MinWidth">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <declare-styleable name="CountryPickerView">
+        <attr format="boolean" name="showSearch"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/graphProfile"
+    app:startDestination="@id/getProfileFragment">
+
+    <fragment
+        android:id="@+id/profileMenuFragment"
+        android:name="com.cardio.physician.ui.views.profile.profile_menu.ProfileMenuFragment"
+        android:label="ProfileMenuFragment">
+        <action
+            android:id="@+id/profileMenuToGetProfile"
+            app:destination="@id/getProfileFragment"
+            app:enterAnim="@anim/in_from_right"
+            app:exitAnim="@anim/out_to_left"
+            app:popEnterAnim="@anim/in_from_left"
+            app:popExitAnim="@anim/out_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.cardio.physician.ui.views.profile.setting.SettingFragment"
+        android:label="SettingFragment">
+
+        <argument
+            android:name="extras_user_type"
+            app:argType="string"
+            app:nullable="true" />
+
+        <action
+            android:id="@+id/settingToChangePasswordFragment"
+            app:destination="@id/changePasswordFragment"
+            app:enterAnim="@anim/in_from_right"
+            app:exitAnim="@anim/out_to_left"
+            app:popEnterAnim="@anim/in_from_left"
+            app:popExitAnim="@anim/out_to_right" />
+        <action
+            android:id="@+id/settingToWebView"
+            app:destination="@id/webViewFragment"
+            app:enterAnim="@anim/in_from_right"
+            app:exitAnim="@anim/out_to_left"
+            app:popEnterAnim="@anim/in_from_left"
+            app:popExitAnim="@anim/out_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/getProfileFragment"
+        android:name="com.cardio.physician.ui.views.profile.profile.GetProfileFragment"
+        android:label="@string/title_profile">
+        <action
+            android:id="@+id/getProfileToEditProfile"
+            app:destination="@id/editProfileFragment"
+            app:enterAnim="@anim/in_from_right"
+            app:exitAnim="@anim/out_to_left"
+            app:popEnterAnim="@anim/in_from_left"
+            app:popExitAnim="@anim/out_to_right" />
+        <action
+            android:id="@+id/getProfileToSyncHealthData"
+            app:destination="@id/syncHealthDataFragment"
+            app:enterAnim="@anim/in_from_right"
+            app:exitAnim="@anim/out_to_left"
+            app:popEnterAnim="@anim/in_from_left"
+            app:popExitAnim="@anim/out_to_right" />
+        <action
+            android:id="@+id/getProfileToSettingFragment"
+            app:destination="@id/settingFragment"
+            app:enterAnim="@anim/in_from_right"
+            app:exitAnim="@anim/out_to_left"
+            app:popEnterAnim="@anim/in_from_left"
+            app:popExitAnim="@anim/out_to_right"  />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.cardio.physician.ui.views.profile.editprofile.EditProfileFragment"
+        android:label="EditProfileFragment" >
+        <argument
+            android:name="extras_user_model"
+            app:argType="com.cardio.physician.domain.common.model.UserModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/syncHealthDataFragment"
+        android:name="com.cardio.physician.ui.views.sync_health_data.SyncHealthDataFragment"
+        android:label="SyncHealthDataFragment" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.cardio.physician.ui.views.profile.change_password.ChangePasswordFragment"
+        android:label="ChangePasswordFragment" />
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.cardio.physician.ui.views.profile.web_view.WebViewFragment"
+        android:label="WebViewFragment">
+        <argument
+            android:name="toolBarTitle"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="webUrl"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+</navigation>

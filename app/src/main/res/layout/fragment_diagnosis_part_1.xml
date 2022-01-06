@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/clStep1RootView"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:id="@+id/scrollViewStep1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/cvDiagnosisBottomContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:id="@+id/clScrollViewContainer"
+            android:layout_height="wrap_content"
+            >
+
+            <include
+                android:id="@+id/step_view"
+                layout="@layout/include_step_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/grey_divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/step_view" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutAilment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:animateLayoutChanges="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtTitleAilment"
+                    style="@style/BaseAppTheme.TxtView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="@string/ailment"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinnerCategory"
+                    style="@style/mySpinnerItemStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:background="@drawable/edt_rounded_corner"
+                    android:dropDownWidth="match_parent"
+                    android:entries="@array/array_ailment"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:popupBackground="@color/white"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitleAilment" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/txtRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:entries="@array/gender_list"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_22sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:src="@drawable/ic_dropdown_mobile"
+                    android:theme="@style/mySpinnerItemStyle"
+                    app:layout_constraintBottom_toBottomOf="@+id/spinnerCategory"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/spinnerCategory" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvAilmentError"
+                    style="@style/BaseAppTheme.TxtView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/please_select_gender"
+                    android:textColor="@color/red_validation"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerCategory" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtPatientDetail"
+                style="@style/BaseAppTheme.TxtView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="@string/patient_details"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/constraintLayoutAilment"
+                app:layout_constraintStart_toStartOf="@+id/constraintLayoutAilment"
+                app:layout_constraintTop_toBottomOf="@id/constraintLayoutAilment" />
+
+            <include
+                android:id="@+id/clPatientDetail"
+                layout="@layout/include_patient_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/txtPatientDetail"
+                app:layout_constraintStart_toStartOf="@+id/txtPatientDetail"
+                app:layout_constraintTop_toBottomOf="@id/txtPatientDetail" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtHealthDetail"
+                style="@style/BaseAppTheme.TxtView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="@string/health_details"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/constraintLayoutAilment"
+                app:layout_constraintStart_toStartOf="@+id/constraintLayoutAilment"
+                app:layout_constraintTop_toBottomOf="@+id/clPatientDetail" />
+
+            <include
+                android:id="@+id/clHealthDetail"
+                layout="@layout/include_health_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/txtPatientDetail"
+                app:layout_constraintStart_toStartOf="@+id/txtPatientDetail"
+                app:layout_constraintTop_toBottomOf="@id/txtHealthDetail" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/cvDiagnosisBottomContainer"
+        layout="@layout/include_diagnosis_bottom_views"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/scrollViewStep1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

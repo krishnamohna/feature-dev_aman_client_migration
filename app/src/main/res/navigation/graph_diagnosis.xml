@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/graph_diagnosis"
+    app:startDestination="@id/diagnosisFragmentPart1">
+
+    <fragment
+        android:id="@+id/diagnosisFragmentPart1"
+        android:name="com.cardio.physician.ui.views.diagnosis.step1.DiagnosisFragmentStep1"
+        android:label="0" >
+        <action
+            android:id="@+id/action_diagnosisFragmentPart1_to_diagnosisFragmentPart2"
+            app:destination="@id/diagnosisFragmentPart2" />
+        <argument android:name="userId"
+            app:argType="string"
+            app:nullable="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/diagnosisFragmentPart2"
+        android:name="com.cardio.physician.ui.views.diagnosis.step2.DiagnosisFragmentStep2"
+        android:label="1" >
+        <action
+            android:id="@+id/action_diagnosisFragmentPart2_to_diagnosisFragmentPart3"
+            app:destination="@id/diagnosisFragmentPart3" />
+        <argument android:name="userId"
+            app:argType="string"
+            app:nullable="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/diagnosisFragmentPart3"
+        android:name="com.cardio.physician.ui.views.diagnosis.step3.DiagnosisFragmentStep3"
+        android:label="2" >
+        <action
+            android:id="@+id/action_diagnosisFragmentPart3_to_diagnosisFragmentPart4"
+            app:destination="@id/diagnosisFragmentPart4" />
+        <argument android:name="userId"
+            app:argType="string"
+            app:nullable="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/diagnosisFragmentPart4"
+        android:name="com.cardio.physician.ui.views.diagnosis.step4.DiagnosisFragmentStep4"
+        android:label="3" >
+    <argument android:name="userId"
+        app:argType="string"
+        app:nullable="true"/>
+    </fragment>
+</navigation>

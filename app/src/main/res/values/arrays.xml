@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="array_ailment">
+        <item>Select Diagnosis*</item>
+        <item>Heart Failure</item>
+        <item>Atrial Fibrillation</item>
+    </string-array>
+
+    <string-array name="steps_diagnosis">
+        <item>1 </item>
+        <item>2 </item>
+        <item>3 </item>
+        <item>4 </item>
+    </string-array>
+
+    <string-array name="steps">
+        <item>Beginning</item>
+        <item>Intermediate\npage</item>
+        <item>End</item>
+        <item>Post step</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="TutorialTitle">
+        <item>Connect with Experience Practitioners </item>
+        <item>Lorem Ipsum is simply dummy text of printing.</item>
+        <item>Lorem Ipsum is simply dummy text of printing.</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="TutorialDescription">
+        <item>Reach out to the experts </item>
+        <item>View report to monitor your illness</item>
+        <item>Download and share latest reports with your doctor anytime</item>
+    </string-array>
+
+    <string-array name="gender_list">
+        <item>@string/select_gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>other</item>
+    </string-array>
+
+
+</resources>

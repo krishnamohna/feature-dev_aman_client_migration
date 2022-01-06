@@ -1,0 +1,47 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+	package
+		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:3:5-32
+		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:5:5-11:19
+activity#com.countrypicker.CountrySelectActivity
+ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:6:9-10:15
+	android:screenOrientation
+		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:9:13-49
+	android:theme
+		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:8:13-51
+	android:name
+		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml:7:13-50
+uses-sdk
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml
+		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/src/main/AndroidManifest.xml

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/cvPatienDetail"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvBasicDetailLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/basic_details"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            style="@style/BaseAppTheme.TxtView"
+            android:text="@string/name_with_coulmn"
+            app:layout_constraintStart_toStartOf="@+id/tvBasicDetailLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvBasicDetailLabel" />
+
+        <TextView
+            android:id="@+id/tvNameDashboard"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNameLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toEndOf="@+id/tvAssesmentYearLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvNameLabel"
+            tools:text="Aman Attri" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/gender_with_coulmn"
+            style="@style/BaseAppTheme.TxtView"
+            app:layout_constraintStart_toStartOf="@+id/tvNameLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameLabel" />
+
+        <TextView
+            android:id="@+id/tvGenderDash"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvNameDashboard"
+            app:layout_constraintTop_toTopOf="@+id/textView9"
+            tools:text="@string/male" />
+
+        <TextView
+            android:id="@+id/tvDateOfBirthLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            style="@style/BaseAppTheme.TxtView"
+            android:text="@string/date_of_birth_with_column"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/tvDateDashboard"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDateOfBirthLabel"
+            app:layout_constraintStart_toStartOf="@+id/tvGenderDash"
+            app:layout_constraintTop_toTopOf="@+id/tvDateOfBirthLabel"
+            tools:text="12 july 2010" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            style="@style/BaseAppTheme.TxtView"
+            android:text="@string/title_diagnosis_column"
+            app:layout_constraintStart_toStartOf="@+id/tvDateOfBirthLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvDateOfBirthLabel" />
+
+        <TextView
+            android:id="@+id/tvDiagnosis"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView13"
+            app:layout_constraintStart_toStartOf="@+id/tvDateDashboard"
+            app:layout_constraintTop_toTopOf="@+id/textView13"
+            tools:text="CHF,Afib" />
+
+        <TextView
+            android:id="@+id/tvAgeLabelDash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/age_only_with_column"
+            style="@style/BaseAppTheme.TxtView"
+            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <TextView
+            android:id="@+id/tvAgeDash"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAgeLabelDash"
+            app:layout_constraintStart_toStartOf="@+id/tvDiagnosis"
+            app:layout_constraintTop_toTopOf="@+id/tvAgeLabelDash"
+            tools:text="21 years" />
+
+        <TextView
+            android:id="@+id/tvAssesmentYearLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/assesment_date"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvAgeLabelDash"
+            app:layout_constraintTop_toBottomOf="@+id/tvAgeLabelDash" />
+
+        <TextView
+            android:id="@+id/tvAssesmentYearDash"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAssesmentYearLabel"
+            app:layout_constraintStart_toStartOf="@+id/tvAgeDash"
+            app:layout_constraintTop_toTopOf="@+id/tvAssesmentYearLabel"
+            tools:text="20 Dec1991" />
+
+        <ImageView
+            android:id="@+id/ivEditBasicInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:layout_marginEnd="12dp"
+            android:visibility="invisible"
+            android:background="@drawable/ripple_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvBasicDetailLabel"
+            app:srcCompat="@drawable/ic_edit_profile" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

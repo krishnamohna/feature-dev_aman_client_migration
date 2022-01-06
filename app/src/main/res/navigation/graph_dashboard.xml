@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/graphDashboard"
+    app:startDestination="@id/dashboardFragment">
+
+    <include app:graph="@navigation/graph_profile" />
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.cardio.physician.ui.views.dashboard.fragment.PatientDashboardFragment"
+        android:label="@string/title_dashboard" >
+        <action
+            android:id="@+id/dashboardToProfileFragment"
+            app:destination="@id/graphProfile"
+            />
+        <!--<argument app:nullable="true"
+            android:name="userId"
+            app:argType="string"/>-->
+    </fragment>
+
+</navigation>

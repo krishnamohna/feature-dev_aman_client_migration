@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/cvFilterContainer"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.cardio.physician.ui.common.customviews.AppButton
+        android:id="@+id/btFilter30"
+        android:layout_width="@dimen/width_filter_button"
+        android:layout_height="@dimen/height_filter_button"
+        android:textSize="@dimen/_9ssp"
+        android:padding="0dp"
+        android:background="@drawable/btn_color_primary_left_rounded_background"
+        android:text="30D"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.cardio.physician.ui.common.customviews.AppButton
+        android:id="@+id/btFilter60"
+        android:layout_width="@dimen/width_filter_button_center"
+        android:layout_height="@dimen/height_filter_button"
+        android:background="@drawable/btn_color_primary_border_rounded_background"
+        android:text="60D"
+        android:padding="0dp"
+        android:textSize="@dimen/_9ssp"
+        android:textColor="@color/color_filter"
+        app:layout_constraintStart_toEndOf="@+id/btFilter30"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.cardio.physician.ui.common.customviews.AppButton
+        android:id="@+id/btFilter90"
+        android:layout_width="@dimen/width_filter_button"
+        android:layout_height="@dimen/height_filter_button"
+        android:background="@drawable/btn_color_primary_border_right_rounded_background"
+        android:text="90D"
+        android:padding="0dp"
+        android:textSize="@dimen/_9ssp"
+        android:textColor="@color/color_filter"
+        app:layout_constraintStart_toEndOf="@+id/btFilter60"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:clickable="true"
+    app:cardElevation="@dimen/_5sdp"
+    android:layout_marginHorizontal="@dimen/_15sdp"
+    android:layout_marginVertical="@dimen/_5sdp"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgProfilePicToolbar"
+            android:layout_width="@dimen/profile_image_notifications"
+            android:layout_height="@dimen/profile_image_notifications"
+            android:layout_marginStart="8dp"
+            android:scaleType="center"
+            android:layout_margin="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+            app:srcCompat="@drawable/ic_profile_placeholder_small"
+            app:strokeColor="@color/white"
+            app:strokeWidth="@dimen/_1sdp"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tvNotiUseerName"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Dr Aman Attri"
+            app:layout_constraintBottom_toTopOf="@+id/tvNotiDate"
+            app:layout_constraintEnd_toStartOf="@+id/ivNotiAcceptRequest"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imgProfilePicToolbar"
+            app:layout_constraintTop_toTopOf="@id/imgProfilePicToolbar" />
+
+        <TextView
+            android:id="@+id/tvNotiDate"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="2 hours ago 11 pm"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintBottom_toBottomOf="@id/imgProfilePicToolbar"
+            app:layout_constraintEnd_toStartOf="@+id/ivNotiAcceptRequest"
+            app:layout_constraintStart_toStartOf="@+id/tvNotiUseerName"
+            app:layout_constraintTop_toBottomOf="@+id/tvNotiUseerName" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivNotiAcceptRequest"
+            android:visibility="gone"
+            android:layout_width="@dimen/width_accept_reject"
+            android:layout_height="@dimen/width_accept_reject"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/drawable_green_circular"
+            android:scaleType="center"
+            app:layout_constraintBottom_toBottomOf="@+id/imgProfilePicToolbar"
+            app:layout_constraintEnd_toStartOf="@+id/ivNotiRejectRequest"
+            app:layout_constraintTop_toTopOf="@+id/imgProfilePicToolbar"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+            app:srcCompat="@drawable/ic_done_icon" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivNotiRejectRequest"
+            android:layout_width="@dimen/width_accept_reject"
+            android:layout_height="@dimen/width_accept_reject"
+            android:layout_marginEnd="8dp"
+            android:visibility="gone"
+            android:background="@drawable/drawable_light_red_circular"
+            android:scaleType="center"
+            app:layout_constraintBottom_toBottomOf="@+id/ivNotiAcceptRequest"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivNotiAcceptRequest"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+            app:srcCompat="@drawable/ic_remove_red" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

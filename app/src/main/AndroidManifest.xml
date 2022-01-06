@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.cardio.physician">
+
+    <uses-sdk tools:overrideLibrary="           androidx.camera.camera2, androidx.camera.core,           androidx.camera.view, androidx.camera.lifecycle" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".ui.AppCardioPatient"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="AllowBackup,LockedOrientationActivity"
+        tools:targetApi="m">
+        <activity android:name=".ui.views.profile.web_view.WebViewActivity" android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ui.views.healthlogs.HealthLogsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.views.diagnosis.DiagnosisActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.views.diagnosis.EditDiagnosisActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.views.notifications.NotificationsActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".ui.views.splash.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.views.tutorial.TutorialActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.views.auth.AuthenticateUserActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.views.dashboard.DashboardActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.views.change_email.ChangeEmailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name="com.cardio.physician.ui.views.fitbit.RootActivity"
+            android:label="Root Activity" />
+        <activity
+            android:name="com.cardio.physician.ui.views.fitbit.auth.LoginActivity"
+            android:launchMode="singleTop">
+            <intent-filter android:label="filter_fitbit_auth">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "example://gizmos” -->
+                <data
+                    android:host="fitbit"
+                    android:scheme="pocketcardio" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.fitbit.sampleandroidoauth2.CLIENT_ID"
+            android:value="23BD79" />
+        <meta-data
+            android:name="com.fitbit.sampleandroidoauth2.REDIRECT_URL"
+            android:value="pocketCardio://fitbit/auth" />
+
+        <activity
+            android:name=".ui.views.sync_health_data.activity.SyncHealthActivty"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.views.textrecognization.kotlin.CameraXLivePreviewActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.google.mlkit.vision.demo.kotlin.StillImageActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.views.add_patient.AddPatientActivity" />
+        <activity android:name=".ui.views.illness.IllnessActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider> <!-- fitbit activities -->
+        <service
+            android:name=".ui.service.SyncHeathDataService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <!--
+ Optional: Add it to automatically download ML model to device after
+  your app is installed.
+        -->
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="ocr,ica" />
+
+        <!--for firebase push notificatons -->
+        <service
+            android:name=".ui.service.FirebasePushNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+
+    </application>
+
+</manifest>

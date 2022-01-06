@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/graph_diagnosis"
+    app:startDestination="@id/diagnosisEditFragmentPart2">
+
+    <fragment
+        android:id="@+id/diagnosisEditFragmentPart2"
+        android:name="com.cardio.physician.ui.views.diagnosis.step2.EditFragmentStep2"
+        android:label="2" >
+        <argument android:name="userId"
+            app:argType="string"
+            app:nullable="true"/>
+    </fragment>
+
+</navigation>

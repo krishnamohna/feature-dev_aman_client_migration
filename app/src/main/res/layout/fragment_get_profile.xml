@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/headerView"
+            layout="@layout/toolbar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/headerView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/scrollview_dash_bottom_margin_150">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:fontFamily="@font/nunito_extrabold"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgProfilePic"
+                    tools:text="User Name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtEmailAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/txtUserName"
+                    tools:text="samanthajohndou@gmail.com" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtPhoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11ssp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/txtEmailAddress"
+                    tools:text="+971  7309438172"
+                    tools:visibility="visible" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtOtherDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/nunito_extrabold"
+                    android:text="@string/other_details"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/txtPhoneNumber" />
+
+                <!--gender container-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/genderContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/weightContainer"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/txtOtherDetail">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgGender"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@drawable/ic_profile_circle_bg"
+                        android:scaleType="center"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtGender"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txtTitleGender"
+                        app:srcCompat="@drawable/ic_gender" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtTitleGender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_6sdp"
+                        android:fontFamily="@font/nunito_extrabold"
+                        android:text="@string/gender"
+                        android:textColor="@color/grey_text_hint"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintStart_toEndOf="@+id/imgGender"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtGender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_bold"
+                        android:text="@string/na"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintStart_toStartOf="@+id/txtTitleGender"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTitleGender" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--wight container-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/weightContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@+id/heightContainer"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/genderContainer"
+                    app:layout_constraintTop_toTopOf="@+id/genderContainer">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgWeight"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@drawable/ic_profile_circle_bg"
+                        android:scaleType="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txtTitleWeight"
+                        app:srcCompat="@drawable/ic_weight" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtTitleWeight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_6sdp"
+                        android:fontFamily="@font/nunito_extrabold"
+                        android:text="@string/weight_in_lbs"
+                        android:textColor="@color/grey_text_hint"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imgWeight"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtWeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_bold"
+                        android:text="@string/na"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintStart_toStartOf="@+id/txtTitleWeight"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTitleWeight" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--height container-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/heightContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/verticalRightGuideline"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/weightContainer"
+                    app:layout_constraintTop_toTopOf="@+id/genderContainer">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgHeight"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@drawable/ic_profile_circle_bg"
+                        android:scaleType="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txtTitleHeight"
+                        app:srcCompat="@drawable/ic_height" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtTitleHeight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_6sdp"
+                        android:fontFamily="@font/nunito_extrabold"
+                        android:text="@string/height_in_centimeter"
+                        android:textColor="@color/grey_text_hint"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imgHeight"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtHeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_bold"
+                        android:text="@string/na"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintStart_toStartOf="@+id/txtTitleHeight"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTitleHeight" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgProfilePic"
+                    android:layout_width="@dimen/_85sdp"
+                    android:layout_height="@dimen/_85sdp"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:scaleType="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/headerView"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                    app:srcCompat="@drawable/ic_profile_placeholder"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="@dimen/_2sdp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/wearableContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:background="@drawable/btn_white_bg_with_white_corner"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:visibility="gone"
+                    android:paddingEnd="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/weightContainer">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgWearable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_profile_circle_bg"
+                        android:scaleType="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_wearable" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtWearableTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:fontFamily="@font/nunito_extrabold"
+                        android:text="@string/wearable"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgWearable"
+                        app:layout_constraintStart_toEndOf="@+id/imgWearable"
+                        app:layout_constraintTop_toTopOf="@+id/imgWearable" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtSelectedWearable"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_7sdp"
+                        android:fontFamily="@font/nunito_extrabold"
+                        android:gravity="end"
+                        android:textColor="@color/black_tutorial_text"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgWearable"
+                        app:layout_constraintEnd_toStartOf="@+id/imgSelectWearable"
+                        app:layout_constraintStart_toEndOf="@+id/txtWearableTitle"
+                        app:layout_constraintTop_toTopOf="@+id/imgWearable"
+                        tools:text="Apple Healthkit" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgSelectWearable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:rotation="180"
+                        android:src="@drawable/ic_forward"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgWearable"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imgWearable" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/healthLogsContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@drawable/btn_white_bg_with_white_corner"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:visibility="gone"
+                    android:paddingEnd="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/wearableContainer">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgHealthLogs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="center"
+                        android:layout_marginStart="@dimen/_6sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_health_logs_30dp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtHealthLogs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:fontFamily="@font/nunito_extrabold"
+                        android:text="@string/manual"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgHealthLogs"
+                        app:layout_constraintStart_toEndOf="@+id/imgHealthLogs"
+                        app:layout_constraintTop_toTopOf="@+id/imgHealthLogs" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/settingContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:background="@drawable/btn_white_bg_with_white_corner"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/healthLogsContainer">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgSetting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_profile_circle_bg"
+                        android:scaleType="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_setting" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtSettingTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:fontFamily="@font/nunito_extrabold"
+                        android:text="@string/setting"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgSetting"
+                        app:layout_constraintStart_toEndOf="@+id/imgSetting"
+                        app:layout_constraintTop_toTopOf="@+id/imgSetting" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgSelectSetting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:rotation="180"
+                        android:src="@drawable/ic_forward"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgSetting"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imgSetting" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <include layout="@layout/guideline_left" />
+
+                <include layout="@layout/guideline_right" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

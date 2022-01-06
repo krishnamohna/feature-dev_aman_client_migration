@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <com.cardio.physician.ui.common.customviews.StepView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/step_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_2sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerView"
+        app:sv_animationType="Line"
+        app:sv_doneCircleColor="@color/step_diagnosis_color"
+        app:sv_doneCircleRadius="@dimen/_16sdp"
+        app:sv_doneStepLineColor="@color/step_diagnosis_color"
+        app:sv_doneStepMarkColor="@color/white"
+        app:sv_nextStepCircleColor="@color/white"
+        app:sv_nextStepCircleEnabled="true"
+        app:sv_nextStepLineColor="@color/grey_divider"
+        app:sv_nextTextColor="@color/grey"
+        app:sv_selectedCircleColor="@color/step_diagnosis_color"
+        app:sv_selectedCircleRadius="@dimen/_16sdp"
+        app:sv_selectedStepNumberColor="@color/white"
+        app:sv_selectedTextColor="@color/white"
+        app:sv_stepLineWidth="1dp"
+        app:sv_stepNumberTextSize="12sp"
+        app:sv_stepPadding="4dp"
+        app:sv_stepsNumber="4"
+        app:sv_typeface="@font/nunito_regular"
+        tools:ignore="MissingClass" />
+
+

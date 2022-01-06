@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/_8sdp">
+
+
+    <include
+        android:id="@+id/headerView"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:overScrollMode="never"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerView">-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headerView">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_all_patient_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/nunito_extrabold"
+                android:includeFontPadding="false"
+                android:text="All Patients"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_11sdp"
+                android:fontFamily="@font/nunito_regular"
+                android:includeFontPadding="false"
+                android:text="16th July 2021"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_all_patient_label"
+                app:layout_constraintStart_toEndOf="@id/tv_all_patient_label"
+                app:layout_constraintTop_toTopOf="@id/tv_all_patient_label" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:elevation="@dimen/_7sdp"
+                android:src="@drawable/ic_search_normal"
+                app:layout_constraintBottom_toBottomOf="@id/view"
+                app:layout_constraintStart_toStartOf="@id/view"
+                app:layout_constraintTop_toTopOf="@id/view" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_no_patient_found"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_empty_data"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.4" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_no_patient_found"
+                style="@style/BaseAppTheme.TxtView.bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/txt_no_patient_found"
+                android:textSize="@dimen/text_large"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/iv_no_patient_found"
+                app:layout_constraintStart_toStartOf="@id/iv_no_patient_found"
+                app:layout_constraintTop_toBottomOf="@id/iv_no_patient_found" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:backgroundTint="@android:color/transparent"
+                android:background="@null"
+                android:elevation="@dimen/_5sdp"
+                android:fontFamily="@font/nunito_medium"
+                android:hint="@string/txt_search"
+                android:includeFontPadding="false"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_text_hint"
+                android:inputType="text|textNoSuggestions"
+                android:textSize="@dimen/_14ssp"
+                android:outlineAmbientShadowColor="@android:color/white"
+                android:outlineSpotShadowColor="@android:color/white"
+                android:shadowColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/view"
+                app:layout_constraintEnd_toStartOf="@id/iv_filter"
+                app:layout_constraintStart_toEndOf="@id/iv_search"
+                app:layout_constraintTop_toTopOf="@id/view" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_filter"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/ic_home_diagnosis_background"
+                android:elevation="@dimen/_7sdp"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/ic_search_filter"
+                app:layout_constraintBottom_toBottomOf="@id/view"
+                app:layout_constraintEnd_toEndOf="@id/view"
+                app:layout_constraintTop_toTopOf="@id/view" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginHorizontal="@dimen/_18sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/et_white_bg_search_with_corners"
+                android:elevation="@dimen/_4sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_all_patient_label" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_connections"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:overScrollMode="never"
+                android:paddingBottom="@dimen/_80sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    </androidx.core.widget.NestedScrollView>-->
+
+    <ProgressBar
+        android:id="@+id/progressBarSync"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:elevation="@dimen/_9sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerView" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+

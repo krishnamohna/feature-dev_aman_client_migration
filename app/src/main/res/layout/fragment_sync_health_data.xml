@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/headerView"
+            layout="@layout/toolbar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fitbitContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:background="@drawable/btn_white_bg_with_white_corner"
+            android:minHeight="@dimen/_50sdp"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+            app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/headerView">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgFitBit"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_margin="@dimen/_5sdp"
+                android:background="@drawable/bg_sync_profile"
+                android:padding="@dimen/_5sdp"
+                android:scaleType="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_fitbit" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtSettingTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/nunito_extrabold"
+                android:text="@string/fitbit"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgFitBit"
+                app:layout_constraintStart_toEndOf="@+id/imgFitBit"
+                app:layout_constraintTop_toTopOf="@+id/imgFitBit" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgFitBitDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_done"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/imgFitBit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgFitBit"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/googleFitContainer"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@drawable/btn_white_bg_with_white_corner"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+            app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/fitbitContainer">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgGoogleFit"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:background="@drawable/bg_sync_profile"
+                android:minHeight="@dimen/_45sdp"
+                android:padding="@dimen/_5sdp"
+                android:scaleType="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_google_fit" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtGoogleFit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/nunito_extrabold"
+                android:text="@string/google_fit"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgGoogleFit"
+                app:layout_constraintStart_toEndOf="@+id/imgGoogleFit"
+                app:layout_constraintTop_toTopOf="@+id/imgGoogleFit" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgGoogleFitDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_done"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/imgGoogleFit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgGoogleFit" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/healthLogsContainer"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_50sdp"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@drawable/btn_white_bg_with_white_corner"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="@+id/verticalRightGuideline"
+            app:layout_constraintStart_toStartOf="@+id/verticalLeftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/googleFitContainer">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgHealthLogs"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:background="@drawable/bg_sync_profile"
+                android:minHeight="@dimen/_45sdp"
+                android:padding="@dimen/_5sdp"
+                android:scaleType="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_health_logs" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtHealthLogs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/nunito_extrabold"
+                android:text="@string/manual"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgHealthLogs"
+                app:layout_constraintStart_toEndOf="@+id/imgHealthLogs"
+                app:layout_constraintTop_toTopOf="@+id/imgHealthLogs" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <include layout="@layout/guideline_left" />
+
+        <include
+            layout="@layout/guideline_right"
+            tools:layout_editor_absoluteX="395dp" />
+
+        <com.cardio.physician.ui.common.customviews.AppButton
+            android:id="@+id/btSkipWearables"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/skip"
+            android:visibility="gone"
+            app:backgroundTint="@color/white"
+            app:cornerRadius="@dimen/default_button_corner_radius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btNext"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginBottom="@dimen/button_bottom_margin"
+            app:layout_constraintStart_toStartOf="@+id/googleFitContainer"
+            app:strokeColor="@color/colorPrimary"
+            tools:visibility="visible" />
+
+        <com.cardio.physician.ui.common.customviews.AppButton
+            android:id="@+id/btNext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/continue_"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/button_bottom_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/googleFitContainer"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btSkipWearables"
+            tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

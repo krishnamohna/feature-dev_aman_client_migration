@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvQuestionType4"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:textStyle="bold"
+        android:text="Question"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvQuestionType4"
+        app:layout_constraintStart_toStartOf="@+id/tvQuestionType4"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionType4">
+
+        <RadioGroup
+            android:id="@+id/radioGroupType4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            >
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbOption1"
+                android:gravity="start"
+                android:text="sdfdsfsdfsdfsdfsdfdsfdsfsdfsdfsdfsdfdsfsdfsdfsdfsdfsdfsdfsdfdsfsdsdfsdfdsfdsfdsfdsffdsfdsfsdfdsfsdfdsfdsfdsfsdfsdf"
+                style="@style/BaseAppTheme.TxtView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbOption2"
+                android:gravity="start"
+                style="@style/BaseAppTheme.TxtView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbOption3"
+                android:gravity="start"
+                style="@style/BaseAppTheme.TxtView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbOption4"
+                android:gravity="start"
+                style="@style/BaseAppTheme.TxtView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RadioGroup>
+    </ScrollView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

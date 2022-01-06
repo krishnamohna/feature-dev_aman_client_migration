@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/cvAfibMed"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvAfibMedLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="AFib"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvAntiplateletLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/antiplatelet"
+            app:layout_constraintStart_toStartOf="@+id/tvAfibMedLabel"
+            app:layout_constraintTop_toTopOf="@+id/flAntiplatelet" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flAntiplatelet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:flexWrap="wrap"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toEndOf="@+id/tvRateControlAgentLabel"
+            app:layout_constraintTop_toBottomOf="@+id/ivEditAfibMed"
+            tools:layout_height="@dimen/_30sdp" />
+
+        <TextView
+            android:id="@+id/tvAnticoagulantLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/anticoagulant"
+            app:layout_constraintStart_toStartOf="@+id/tvAntiplateletLabel"
+            app:layout_constraintTop_toTopOf="@+id/flAnticoagulant" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:layout_height="@dimen/_30sdp"
+            android:id="@+id/flAnticoagulant"
+            android:layout_marginTop="8dp"
+            app:flexWrap="wrap"
+            app:layout_constraintEnd_toEndOf="@+id/flAntiplatelet"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/flAntiplatelet"
+            app:layout_constraintTop_toBottomOf="@+id/flAntiplatelet"
+            android:text="@string/none" />
+
+        <TextView
+            android:id="@+id/tvAntiarrhythmicLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/antiarrhythmic"
+            app:layout_constraintStart_toStartOf="@+id/tvAnticoagulantLabel"
+            app:layout_constraintTop_toTopOf="@+id/flAntiarrhythmic" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flAntiarrhythmic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:layout_height="@dimen/_30sdp"
+            android:layout_marginTop="8dp"
+            app:flexWrap="wrap"
+            app:layout_constraintEnd_toEndOf="@+id/flAnticoagulant"
+            app:layout_constraintStart_toStartOf="@+id/flAnticoagulant"
+            app:layout_constraintTop_toBottomOf="@+id/flAnticoagulant" />
+
+        <TextView
+            android:id="@+id/tvRateControlAgentLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rate_control_agent"
+            app:layout_constraintStart_toStartOf="@+id/tvAntiarrhythmicLabel"
+            app:layout_constraintTop_toTopOf="@+id/flRateControlAgent" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:layout_height="@dimen/_30sdp"
+            android:id="@+id/flRateControlAgent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:flexWrap="wrap"
+            app:layout_constraintEnd_toEndOf="@+id/flAntiarrhythmic"
+            app:layout_constraintStart_toStartOf="@+id/flAntiarrhythmic"
+            app:layout_constraintTop_toBottomOf="@+id/flAntiarrhythmic"
+            android:text="@string/none" />
+
+
+        <!--other-->
+
+        <TextView
+            android:id="@+id/tvOtherLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/other"
+            app:layout_constraintStart_toStartOf="@+id/tvRateControlAgentLabel"
+            app:layout_constraintTop_toBottomOf="@+id/flRateControlAgent" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flOther"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:layout_height="@dimen/_30sdp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/none"
+            app:flexWrap="wrap"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/flRateControlAgent"
+            app:layout_constraintStart_toStartOf="@+id/flRateControlAgent"
+            app:layout_constraintTop_toBottomOf="@+id/flRateControlAgent" />
+
+        <ImageView
+            android:id="@+id/ivEditAfibMed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:padding="6dp"
+            android:background="@drawable/ripple_normal"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAfibMedLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvAfibMedLabel"
+            app:srcCompat="@drawable/ic_edit_profile" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

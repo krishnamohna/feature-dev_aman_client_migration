@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/incremental/mergeQaDebugResources/merged.dir/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "map": [
+                {
+                    "source": "/home/appinventiv/.gradle/caches/transforms-2/files-2.1/6c1773b00d8b9963f674e37b40acf0ff/material-1.3.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,191",
+                        "endColumns": "135,140",
+                        "endOffsets": "186,327"
+                    }
+                }
+            ]
+        }
+    ]
+}

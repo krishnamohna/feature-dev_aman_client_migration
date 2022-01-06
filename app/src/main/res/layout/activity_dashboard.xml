@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        tools:context=".ui.views.dashboard.DashboardActivity">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/navHostFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/graph_dashboard" />
+
+
+        <!--bottom bar-->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cVBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="@dimen/_16sdp"
+        app:cardCornerRadius="@dimen/_12sdp"
+        app:cardElevation="@dimen/_2sdp"
+        app:cardPreventCornerOverlap="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/navHostFragment"
+        app:layout_constraintStart_toEndOf="@+id/navHostFragment">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnDashboardOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_normal"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/ic_home_select"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnTempDashboardTwo"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/btnTempDashboardTwo"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:padding="@dimen/_8sdp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnProfileMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_normal"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/ic_dashboard_profile_unselected"
+                app:layout_constraintBottom_toBottomOf="@+id/btnDashboardOne"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btnTempDashboardTwo"
+                app:layout_constraintTop_toTopOf="@+id/btnDashboardOne"
+                tools:layout_editor_absoluteY="22dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btnDashboardTwo"
+            android:layout_width="@dimen/home_add_diagnosis"
+            android:layout_height="@dimen/home_add_diagnosis"
+            android:background="@drawable/drawable_green_gradient_circle"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_add"
+            android:elevation="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.94" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

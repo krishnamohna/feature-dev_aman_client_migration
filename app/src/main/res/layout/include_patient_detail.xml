@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clPatientDetail"
+    android:layout_width="match_parent"
+    android:animateLayoutChanges="true"
+    android:layout_height="wrap_content">
+    <!--first name-->
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/firstNameLabel"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="@string/first_name_star"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
+        app:layout_constraintStart_toStartOf="@+id/edtFirstName"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrieNamesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="firstNameLabel,txtLastName"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="35dp" />
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtFirstName"
+        style="@style/BaseAppTheme.EdtTxt"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginEnd="4dp"
+        android:hint="@string/first_name_hint"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords"
+        android:maxLength="@integer/int_20"
+        android:maxLines="@integer/int_1"
+        android:paddingLeft="@dimen/_16sdp"
+        android:paddingRight="@dimen/_16sdp"
+        app:layout_constraintEnd_toStartOf="@+id/edtLastName"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrieNamesLabel" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvFirstNameError"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/enter_first_name"
+        android:textColor="@color/red_validation"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
+        app:layout_constraintStart_toStartOf="@+id/edtFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/edtFirstName"
+        tools:visibility="visible" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtLastName"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="@string/last_name_star"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/edtLastName"
+        app:layout_constraintStart_toStartOf="@+id/edtLastName"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtLastName"
+        style="@style/BaseAppTheme.EdtTxt"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/last_name_hint"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords"
+        android:maxLength="@integer/int_20"
+        android:maxLines="@integer/int_1"
+        android:paddingLeft="@dimen/_16sdp"
+        android:paddingRight="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/edtFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/barrieNamesLabel" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvErrorLastName"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/enter_valid_last_name"
+        android:textColor="@color/red_validation"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/edtLastName"
+        app:layout_constraintStart_toStartOf="@+id/edtLastName"
+        app:layout_constraintTop_toBottomOf="@+id/edtLastName"
+        tools:visibility="visible" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierNames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tvFirstNameError,tvErrorLastName"
+        tools:layout_editor_absoluteX="195dp"
+        tools:layout_editor_absoluteY="129dp" />
+
+    <!--age-->
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtAge"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="@string/date_of_birth_star"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/edtAge"
+        app:layout_constraintStart_toStartOf="@+id/edtAge"
+        app:layout_constraintTop_toBottomOf="@id/tvFirstNameError"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtAge"
+        style="@style/BaseAppTheme.EdtTxt"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/date_of_birth_star"
+        android:focusable="false"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:maxLines="@integer/int_1"
+        android:paddingLeft="@dimen/_16sdp"
+        android:paddingRight="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
+        app:layout_constraintStart_toStartOf="@+id/edtFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/txtAge" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAgeError"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/enter_dob"
+        android:textColor="@color/red_validation"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/edtAge"
+        app:layout_constraintStart_toStartOf="@+id/edtAge"
+        app:layout_constraintTop_toBottomOf="@+id/edtAge"
+        tools:visibility="visible" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolBarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:padding="4dp"
+            android:background="@drawable/ripple_normal"
+            android:visibility="visible"
+            app:layout_goneMarginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbarTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbarTitle"
+            app:srcCompat="@drawable/ic_back_v2"
+            tools:ignore="RtlSymmetry"
+            tools:visibility="visible" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgProfilePicToolbar"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginStart="8dp"
+        android:scaleType="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toStartOf="@+id/toolbarTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        app:srcCompat="@drawable/ic_profile_placeholder_small"
+        app:strokeColor="@color/white"
+        tools:visibility="visible"
+        app:strokeWidth="@dimen/_1sdp" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:maxLines="@integer/int_1"
+            android:paddingStart="0dp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+            app:layout_constraintEnd_toStartOf="@+id/imgEditProfile"
+            app:layout_constraintStart_toEndOf="@+id/backBtn"
+            app:layout_constraintTop_toTopOf="@+id/toolbar"
+            tools:text="Profile" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ripple_normal"
+            android:padding="@dimen/_8sdp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_edit_profile"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonConnect"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_connect_button"
+            android:text="@string/connect"
+            android:visibility="gone"
+            android:drawableStart="@drawable/ic_connect"
+            android:drawablePadding="@dimen/_6sdp"
+            android:textSize="@dimen/_11ssp"
+            tools:visibility="visible"
+            style="@style/ButtonDefaultStyle"
+            android:textAllCaps="true"
+            android:background="@drawable/drawable_connect_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/toolbarTitle"
+            app:layout_constraintBottom_toBottomOf="@id/toolbarTitle"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

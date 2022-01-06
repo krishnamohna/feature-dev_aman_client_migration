@@ -1,0 +1,1080 @@
+com/cardio/physician/ui/views/profile/profile_menu/Hilt_ProfileMenuFragment.java
+ com.cardio.physician.ui.views.profile.profile_menu.Hilt_ProfileMenuFragment
+com/cardio/physician/databinding/IncludeChbMedicationDashboardLayoutBinding.java
+ com.cardio.physician.databinding.IncludeChbMedicationDashboardLayoutBinding
+com/cardio/physician/ui/views/auth/login/LoginViewModel_HiltModules.java
+ com.cardio.physician.ui.views.auth.login.LoginViewModel_HiltModules
+ com.cardio.physician.ui.views.auth.login.LoginViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.auth.login.LoginViewModel_HiltModules$KeyModule
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_step4_DiagnosisFragmentStep4ViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_step4_DiagnosisFragmentStep4ViewModel_HiltModules_KeyModule
+com/cardio/physician/data/remote/fitnesstracker/fitbit/FitbitManager_Factory.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.FitbitManager_Factory
+com/cardio/physician/ui/views/diagnosis/step1/DiagnosisViewStep1ViewModel_HiltModules.java
+ com.cardio.physician.ui.views.diagnosis.step1.DiagnosisViewStep1ViewModel_HiltModules
+ com.cardio.physician.ui.views.diagnosis.step1.DiagnosisViewStep1ViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.diagnosis.step1.DiagnosisViewStep1ViewModel_HiltModules$KeyModule
+com/cardio/physician/ui/views/dashboard/fragment/DashboardFragment_MembersInjector.java
+ com.cardio.physician.ui.views.dashboard.fragment.DashboardFragment_MembersInjector
+com/cardio/physician/databinding/FragmentEditProfileBindingImpl.java
+ com.cardio.physician.databinding.FragmentEditProfileBindingImpl
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/RequestSigner.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.RequestSigner
+com/cardio/physician/databinding/FragmentSignUpBinding.java
+ com.cardio.physician.databinding.FragmentSignUpBinding
+com/cardio/physician/ui/views/profile/editprofile/EditUserProfileViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.profile.editprofile.EditUserProfileViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.profile.editprofile.EditUserProfileViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+hilt_aggregated_deps/_com_cardio_physician_ui_views_dashboard_DashboardActivity_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_dashboard_DashboardActivity_GeneratedInjector
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Total_.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Total_
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_step2_DiagnosisStep2ViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_step2_DiagnosisStep2ViewModel_HiltModules_BindsModule
+hilt_aggregated_deps/_com_cardio_physician_ui_views_add_patient_AddPatientViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_add_patient_AddPatientViewModel_HiltModules_KeyModule
+com/cardio/physician/ui/views/profile/profile/UserProfileViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.profile.profile.UserProfileViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.profile.profile.UserProfileViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/databinding/DialogProgressBarBinding.java
+ com.cardio.physician.databinding.DialogProgressBarBinding
+com/cardio/physician/ui/views/forgot_password/ForgotPasswordViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.forgot_password.ForgotPasswordViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.forgot_password.ForgotPasswordViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/ui/views/profile/profile/UserProfileViewModel_Factory.java
+ com.cardio.physician.ui.views.profile.profile.UserProfileViewModel_Factory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_forgot_password_ForgotPasswordViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_forgot_password_ForgotPasswordViewModel_HiltModules_BindsModule
+com/cardio/physician/databinding/CompoundQuestionTypeNotSupportedLayoutBinding.java
+ com.cardio.physician.databinding.CompoundQuestionTypeNotSupportedLayoutBinding
+com/cardio/physician/databinding/ItemMedicationPreviewLayoutBinding.java
+ com.cardio.physician.databinding.ItemMedicationPreviewLayoutBinding
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_setting_SettingFragment_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_setting_SettingFragment_GeneratedInjector
+com/cardio/physician/databinding/ActivityAuthenticateUserBindingImpl.java
+ com.cardio.physician.databinding.ActivityAuthenticateUserBindingImpl
+hilt_aggregated_deps/_com_cardio_physician_ui_views_auth_signup_SignUpViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_auth_signup_SignUpViewModel_HiltModules_BindsModule
+com/cardio/physician/ui/views/textrecognization/CameraImageGraphic.java
+ com.cardio.physician.ui.views.textrecognization.CameraImageGraphic
+com/cardio/physician/databinding/FragmentChangePasswordBinding.java
+ com.cardio.physician.databinding.FragmentChangePasswordBinding
+com/cardio/physician/databinding/ItemMedicineSearchLayoutBinding.java
+ com.cardio.physician.databinding.ItemMedicineSearchLayoutBinding
+com/cardio/physician/ui/views/dashboard/fragment/DashboardViewModel_HiltModules.java
+ com.cardio.physician.ui.views.dashboard.fragment.DashboardViewModel_HiltModules
+ com.cardio.physician.ui.views.dashboard.fragment.DashboardViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.dashboard.fragment.DashboardViewModel_HiltModules$KeyModule
+com/cardio/physician/data/remote/signup/SignUpRepository_Factory.java
+ com.cardio.physician.data.remote.signup.SignUpRepository_Factory
+com/cardio/physician/databinding/ItemDropdownAilmentBinding.java
+ com.cardio.physician.databinding.ItemDropdownAilmentBinding
+com/cardio/physician/ui/views/notifications/NotificatonsViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.notifications.NotificatonsViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.notifications.NotificatonsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/databinding/FragmentForgotPasswordBindingImpl.java
+ com.cardio.physician.databinding.FragmentForgotPasswordBindingImpl
+com/cardio/physician/databinding/IncludeHeartratevsdateLayoutBinding.java
+ com.cardio.physician.databinding.IncludeHeartratevsdateLayoutBinding
+com/cardio/physician/di/RepositaryModule_ProvideSyncHealthRepoFactory.java
+ com.cardio.physician.di.RepositaryModule_ProvideSyncHealthRepoFactory
+com/cardio/physician/di/RepositaryModule_ProvideUserAuthRepoFactory.java
+ com.cardio.physician.di.RepositaryModule_ProvideUserAuthRepoFactory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_notifications_NotificatonsViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_notifications_NotificatonsViewModel_HiltModules_BindsModule
+com/cardio/physician/databinding/ActivityTutorialBinding.java
+ com.cardio.physician.databinding.ActivityTutorialBinding
+com/cardio/physician/databinding/FragmentSignUpBindingImpl.java
+ com.cardio.physician.databinding.FragmentSignUpBindingImpl
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/AuthenticationResult.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationResult
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationResult$1
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationResult$Status
+com/cardio/physician/ui/views/change_email/ChangeEmailViewModel_HiltModules.java
+ com.cardio.physician.ui.views.change_email.ChangeEmailViewModel_HiltModules
+ com.cardio.physician.ui.views.change_email.ChangeEmailViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.change_email.ChangeEmailViewModel_HiltModules$KeyModule
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/loaders/ResourceLoaderFactory.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderFactory
+com/cardio/physician/databinding/ActivityDiagnosisBinding.java
+ com.cardio.physician.databinding.ActivityDiagnosisBinding
+com/cardio/physician/di/FragmentModule_ProvideWeightGraphFactory.java
+ com.cardio.physician.di.FragmentModule_ProvideWeightGraphFactory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_dashboard_fragment_PatientDashboardFragment_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_dashboard_fragment_PatientDashboardFragment_GeneratedInjector
+com/cardio/physician/ui/views/diagnosis/EditDiagnosisActivity_GeneratedInjector.java
+ com.cardio.physician.ui.views.diagnosis.EditDiagnosisActivity_GeneratedInjector
+com/cardio/physician/di/RepositaryModule_ProvideFitbitRepositaryFactory.java
+ com.cardio.physician.di.RepositaryModule_ProvideFitbitRepositaryFactory
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/exceptions/TokenExpiredException.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.exceptions.TokenExpiredException
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/ClientCredentials.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.ClientCredentials
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.ClientCredentials$1
+com/cardio/physician/ui/views/profile/setting/SettingFragment_MembersInjector.java
+ com.cardio.physician.ui.views.profile.setting.SettingFragment_MembersInjector
+com/cardio/physician/ui/views/change_email/ChangeEmailViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.change_email.ChangeEmailViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.change_email.ChangeEmailViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/ui/common/base/viewmodel/BaseAuthViewModel_HiltModules.java
+ com.cardio.physician.ui.common.base.viewmodel.BaseAuthViewModel_HiltModules
+ com.cardio.physician.ui.common.base.viewmodel.BaseAuthViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.common.base.viewmodel.BaseAuthViewModel_HiltModules$KeyModule
+com/cardio/physician/di/FragmentModule_ProvideBpGraphFactory.java
+ com.cardio.physician.di.FragmentModule_ProvideBpGraphFactory
+com/cardio/physician/databinding/ActivityTutorialBindingImpl.java
+ com.cardio.physician.databinding.ActivityTutorialBindingImpl
+hilt_aggregated_deps/_com_cardio_physician_ui_views_notifications_NotificationsActivity_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_notifications_NotificationsActivity_GeneratedInjector
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Floors.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Floors
+com/cardio/physician/data/remote/changepassword/ChangePasswordRepository_Factory.java
+ com.cardio.physician.data.remote.changepassword.ChangePasswordRepository_Factory
+com/cardio/physician/ui/views/diagnosis/step1/DiagnosisFragmentStep1_MembersInjector.java
+ com.cardio.physician.ui.views.diagnosis.step1.DiagnosisFragmentStep1_MembersInjector
+com/cardio/physician/domain/common/repository/BaseRepository_Factory.java
+ com.cardio.physician.domain.common.repository.BaseRepository_Factory
+com/cardio/physician/BuildConfig.java
+ com.cardio.physician.BuildConfig
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Total.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Total
+com/cardio/physician/databinding/FragmentLoginBinding.java
+ com.cardio.physician.databinding.FragmentLoginBinding
+com/cardio/physician/databinding/ItemConnectionBindingImpl.java
+ com.cardio.physician.databinding.ItemConnectionBindingImpl
+com/cardio/physician/ui/views/textrecognization/VisionImageProcessor.java
+ com.cardio.physician.ui.views.textrecognization.VisionImageProcessor
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/services/WeightService.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.services.WeightService
+com/cardio/physician/ui/DaggerAppCardioPatient_HiltComponents_SingletonC.java
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$1
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ActivityRetainedCBuilder
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ActivityRetainedCImpl
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCBuilder
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl$FragmentCBuilder
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl$FragmentCI
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl$FragmentCI$ViewWithFragmentCBuilder
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl$FragmentCI$ViewWithFragmentCI
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl$ViewCBuilder
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ActivityRetainedCImpl$ActivityCImpl$ViewCI
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ActivityRetainedCImpl$ViewModelCBuilder
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ActivityRetainedCImpl$ViewModelCImpl
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ActivityRetainedCImpl$ViewModelCImpl$SwitchingProvider
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$Builder
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ServiceCBuilder
+ com.cardio.physician.ui.DaggerAppCardioPatient_HiltComponents_SingletonC$ServiceCImpl
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/AccessToken.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AccessToken
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AccessToken$1
+com/cardio/physician/DataBindingTriggerClass.java
+ com.cardio.physician.DataBindingTriggerClass
+com/cardio/physician/ui/views/healthlogs/HealthLogsActivity_GeneratedInjector.java
+ com.cardio.physician.ui.views.healthlogs.HealthLogsActivity_GeneratedInjector
+com/cardio/physician/ui/views/fitbit/auth/LoginActivity.java
+ com.cardio.physician.ui.views.fitbit.auth.LoginActivity
+com/cardio/physician/di/RepositaryModule_ProvideLoginRepositaryFactory.java
+ com.cardio.physician.di.RepositaryModule_ProvideLoginRepositaryFactory
+com/cardio/physician/domain/common/model/BaseResponse.java
+ com.cardio.physician.domain.common.model.BaseResponse
+com/cardio/physician/di/ApplicationModule_ProvideFieldValidatorFactory.java
+ com.cardio.physician.di.ApplicationModule_ProvideFieldValidatorFactory
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Features.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Features
+com/cardio/physician/ui/views/profile/editprofile/EditProfileFragment_GeneratedInjector.java
+ com.cardio.physician.ui.views.profile.editprofile.EditProfileFragment_GeneratedInjector
+com/cardio/physician/ui/views/auth/login/LoginFragment_MembersInjector.java
+ com.cardio.physician.ui.views.auth.login.LoginFragment_MembersInjector
+hilt_aggregated_deps/_com_cardio_physician_ui_common_base_viewmodel_BaseAuthViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_common_base_viewmodel_BaseAuthViewModel_HiltModules_KeyModule
+hilt_aggregated_deps/_com_cardio_physician_di_NetworkModule.java
+ hilt_aggregated_deps._com_cardio_physician_di_NetworkModule
+com/cardio/physician/ui/views/sync_health_data/SyncHealthViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.sync_health_data.SyncHealthViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.sync_health_data.SyncHealthViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/databinding/FragmentPhoneNumberVerificationBindingImpl.java
+ com.cardio.physician.databinding.FragmentPhoneNumberVerificationBindingImpl
+hilt_aggregated_deps/_com_cardio_physician_ui_views_splash_SplashActivity_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_splash_SplashActivity_GeneratedInjector
+com/cardio/physician/databinding/ActivityDashboardBinding.java
+ com.cardio.physician.databinding.ActivityDashboardBinding
+hilt_aggregated_deps/_com_cardio_physician_di_ActivityModule.java
+ hilt_aggregated_deps._com_cardio_physician_di_ActivityModule
+com/cardio/physician/ui/views/diagnosis/step3/Hilt_DiagnosisFragmentStep3.java
+ com.cardio.physician.ui.views.diagnosis.step3.Hilt_DiagnosisFragmentStep3
+com/cardio/physician/di/RepositaryModule_ProvideGoogleFitManagerFactory.java
+ com.cardio.physician.di.RepositaryModule_ProvideGoogleFitManagerFactory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_sync_health_data_SyncHealthDataFragment_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_sync_health_data_SyncHealthDataFragment_GeneratedInjector
+com/cardio/physician/databinding/ActivityVisionEntryChoiceBinding.java
+ com.cardio.physician.databinding.ActivityVisionEntryChoiceBinding
+com/cardio/physician/ui/views/add_patient/AddPatientViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.add_patient.AddPatientViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.add_patient.AddPatientViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+hilt_aggregated_deps/_com_cardio_physician_ui_views_dashboard_fragment_DashboardViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_dashboard_fragment_DashboardViewModel_HiltModules_KeyModule
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Weight.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Weight
+com/cardio/physician/ui/common/utils/textwatcher/LabelVisiblityHelper_Factory.java
+ com.cardio.physician.ui.common.utils.textwatcher.LabelVisiblityHelper_Factory
+ com.cardio.physician.ui.common.utils.textwatcher.LabelVisiblityHelper_Factory$InstanceHolder
+com/cardio/physician/ui/views/auth/signup/Hilt_SignUpFragment.java
+ com.cardio.physician.ui.views.auth.signup.Hilt_SignUpFragment
+com/cardio/physician/di/RepositaryModule_ProvideQuestionareRepoFactory.java
+ com.cardio.physician.di.RepositaryModule_ProvideQuestionareRepoFactory
+com/cardio/physician/databinding/FragmentWebViewBindingImpl.java
+ com.cardio.physician.databinding.FragmentWebViewBindingImpl
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Distance_.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Distance_
+com/cardio/physician/di/ApplicationModule_ProvideFirebaseFireStoreFactory.java
+ com.cardio.physician.di.ApplicationModule_ProvideFirebaseFireStoreFactory
+com/cardio/physician/ui/views/textrecognization/CameraXViewModel.java
+ com.cardio.physician.ui.views.textrecognization.CameraXViewModel
+com/cardio/physician/databinding/FragmentSettingBinding.java
+ com.cardio.physician.databinding.FragmentSettingBinding
+com/cardio/physician/ui/views/diagnosis/step4/DiagnosisFragmentStep4ViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.diagnosis.step4.DiagnosisFragmentStep4ViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.diagnosis.step4.DiagnosisFragmentStep4ViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/databinding/DialogProgressBarBindingImpl.java
+ com.cardio.physician.databinding.DialogProgressBarBindingImpl
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/LogoutTask.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.LogoutTask
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.LogoutTask$1
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.LogoutTask$2
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_profile_menu_ProfileMenuFragment_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_profile_menu_ProfileMenuFragment_GeneratedInjector
+com/cardio/physician/ui/views/diagnosis/DiagnosisActivityViewModel_HiltModules.java
+ com.cardio.physician.ui.views.diagnosis.DiagnosisActivityViewModel_HiltModules
+ com.cardio.physician.ui.views.diagnosis.DiagnosisActivityViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.diagnosis.DiagnosisActivityViewModel_HiltModules$KeyModule
+com/cardio/physician/di/RepositaryModule_ProvideGoogleRepositaryFactory.java
+ com.cardio.physician.di.RepositaryModule_ProvideGoogleRepositaryFactory
+com/cardio/physician/ui/views/dashboard/common/graph/StepCountMpGraphImp_Factory.java
+ com.cardio.physician.ui.views.dashboard.common.graph.StepCountMpGraphImp_Factory
+ com.cardio.physician.ui.views.dashboard.common.graph.StepCountMpGraphImp_Factory$InstanceHolder
+com/cardio/physician/databinding/ItemNotificationLayoutBinding.java
+ com.cardio.physician.databinding.ItemNotificationLayoutBinding
+com/cardio/physician/ui/views/profile/setting/SettingViewModel_Factory.java
+ com.cardio.physician.ui.views.profile.setting.SettingViewModel_Factory
+com/cardio/physician/ui/views/profile/change_password/ChangePasswordFragment_GeneratedInjector.java
+ com.cardio.physician.ui.views.profile.change_password.ChangePasswordFragment_GeneratedInjector
+com/cardio/physician/databinding/ActivityFitbitLoginBindingImpl.java
+ com.cardio.physician.databinding.ActivityFitbitLoginBindingImpl
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/WeightLogs.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.WeightLogs
+com/cardio/physician/ui/views/notifications/NotificationsActivity_GeneratedInjector.java
+ com.cardio.physician.ui.views.notifications.NotificationsActivity_GeneratedInjector
+hilt_aggregated_deps/_com_cardio_physician_ui_views_change_email_ChangeEmailActivity_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_change_email_ChangeEmailActivity_GeneratedInjector
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Tracker.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Tracker
+com/cardio/physician/ui/common/utils/ItemOffsetDecoration.java
+ com.cardio.physician.ui.common.utils.ItemOffsetDecoration
+com/cardio/physician/ui/views/healthlogs/Hilt_HealthLogsActivity.java
+ com.cardio.physician.ui.views.healthlogs.Hilt_HealthLogsActivity
+ com.cardio.physician.ui.views.healthlogs.Hilt_HealthLogsActivity$1
+com/cardio/physician/ui/service/SyncHeathDataService_MembersInjector.java
+ com.cardio.physician.ui.service.SyncHeathDataService_MembersInjector
+com/cardio/physician/di/ApplicationModule_GetUserManagerFactory.java
+ com.cardio.physician.di.ApplicationModule_GetUserManagerFactory
+com/cardio/physician/ui/views/dashboard/Hilt_DashboardActivity.java
+ com.cardio.physician.ui.views.dashboard.Hilt_DashboardActivity
+ com.cardio.physician.ui.views.dashboard.Hilt_DashboardActivity$1
+com/cardio/physician/ui/views/profile/setting/SettingViewModel_HiltModules.java
+ com.cardio.physician.ui.views.profile.setting.SettingViewModel_HiltModules
+ com.cardio.physician.ui.views.profile.setting.SettingViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.profile.setting.SettingViewModel_HiltModules$KeyModule
+com/cardio/physician/data/local/UserManager_Factory.java
+ com.cardio.physician.data.local.UserManager_Factory
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/SimpleRequestSigner.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.SimpleRequestSigner
+com/cardio/physician/databinding/IncludeAfibMedicationDashboardLayoutBinding.java
+ com.cardio.physician.databinding.IncludeAfibMedicationDashboardLayoutBinding
+com/cardio/physician/databinding/IncludePatientDetailDashbordBinding.java
+ com.cardio.physician.databinding.IncludePatientDetailDashbordBinding
+com/cardio/physician/databinding/FragmentSettingBindingImpl.java
+ com.cardio.physician.databinding.FragmentSettingBindingImpl
+com/cardio/physician/databinding/CompoundQuestionType3LayoutBinding.java
+ com.cardio.physician.databinding.CompoundQuestionType3LayoutBinding
+com/cardio/physician/di/RepositaryModule_ProvideDiagnosisRepoFactory.java
+ com.cardio.physician.di.RepositaryModule_ProvideDiagnosisRepoFactory
+com/cardio/physician/ui/views/diagnosis/DiagnosisActivity_GeneratedInjector.java
+ com.cardio.physician.ui.views.diagnosis.DiagnosisActivity_GeneratedInjector
+com/cardio/physician/data/remote/phoneverification/PhoneVerificationRepository_Factory.java
+ com.cardio.physician.data.remote.phoneverification.PhoneVerificationRepository_Factory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_healthlogs_HealthLogsActivity_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_healthlogs_HealthLogsActivity_GeneratedInjector
+com/cardio/physician/di/ApplicationModule_ProvideAlphaFieldValidatorFactory.java
+ com.cardio.physician.di.ApplicationModule_ProvideAlphaFieldValidatorFactory
+com/cardio/physician/databinding/GuidelineRightBinding.java
+ com.cardio.physician.databinding.GuidelineRightBinding
+com/cardio/physician/ui/views/auth/phone_verification/PhoneNumberVerificationFragment_GeneratedInjector.java
+ com.cardio.physician.ui.views.auth.phone_verification.PhoneNumberVerificationFragment_GeneratedInjector
+com/cardio/physician/ui/views/textrecognization/InferenceInfoGraphic.java
+ com.cardio.physician.ui.views.textrecognization.InferenceInfoGraphic
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/AuthenticationWebviewClient.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationWebviewClient
+com/cardio/physician/ui/views/diagnosis/step2/DiagnosisStep2ViewModel_HiltModules.java
+ com.cardio.physician.ui.views.diagnosis.step2.DiagnosisStep2ViewModel_HiltModules
+ com.cardio.physician.ui.views.diagnosis.step2.DiagnosisStep2ViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.diagnosis.step2.DiagnosisStep2ViewModel_HiltModules$KeyModule
+hilt_aggregated_deps/_com_cardio_physician_di_RepositaryModule.java
+ hilt_aggregated_deps._com_cardio_physician_di_RepositaryModule
+com/cardio/physician/ui/common/base/viewmodel/BaseAuthViewModel_Factory.java
+ com.cardio.physician.ui.common.base.viewmodel.BaseAuthViewModel_Factory
+com/cardio/physician/ui/views/forgot_password/ForgotPasswordFragment_GeneratedInjector.java
+ com.cardio.physician.ui.views.forgot_password.ForgotPasswordFragment_GeneratedInjector
+com/cardio/physician/di/RepositaryModule_ProvideNotificationsRepoFactory.java
+ com.cardio.physician.di.RepositaryModule_ProvideNotificationsRepoFactory
+com/cardio/physician/ui/views/forgot_password/ForgotPasswordViewModel_Factory.java
+ com.cardio.physician.ui.views.forgot_password.ForgotPasswordViewModel_Factory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_step1_DiagnosisViewStep1ViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_step1_DiagnosisViewStep1ViewModel_HiltModules_BindsModule
+com/cardio/physician/ui/views/profile/profile/UserProfileViewModel_HiltModules.java
+ com.cardio.physician.ui.views.profile.profile.UserProfileViewModel_HiltModules
+ com.cardio.physician.ui.views.profile.profile.UserProfileViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.profile.profile.UserProfileViewModel_HiltModules$KeyModule
+com/cardio/physician/ui/views/healthlogs/HealthLogsViewModel_HiltModules.java
+ com.cardio.physician.ui.views.healthlogs.HealthLogsViewModel_HiltModules
+ com.cardio.physician.ui.views.healthlogs.HealthLogsViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.healthlogs.HealthLogsViewModel_HiltModules$KeyModule
+hilt_aggregated_deps/_com_cardio_physician_ui_views_forgot_password_ForgotPasswordFragment_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_forgot_password_ForgotPasswordFragment_GeneratedInjector
+hilt_aggregated_deps/_com_cardio_physician_ui_views_add_patient_AddPatientViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_add_patient_AddPatientViewModel_HiltModules_BindsModule
+com/cardio/physician/databinding/CompoundQuestionType2LayoutBinding.java
+ com.cardio.physician.databinding.CompoundQuestionType2LayoutBinding
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/DailyActivitySummary.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.DailyActivitySummary
+hilt_aggregated_deps/_com_cardio_physician_ui_views_illness_IllnessActivity_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_illness_IllnessActivity_GeneratedInjector
+com/cardio/physician/ui/views/auth/Hilt_AuthenticateUserActivity.java
+ com.cardio.physician.ui.views.auth.Hilt_AuthenticateUserActivity
+ com.cardio.physician.ui.views.auth.Hilt_AuthenticateUserActivity$1
+com/cardio/physician/databinding/FragmentDashboardBinding.java
+ com.cardio.physician.databinding.FragmentDashboardBinding
+com/cardio/physician/databinding/FragmentForgotPasswordBinding.java
+ com.cardio.physician.databinding.FragmentForgotPasswordBinding
+com/cardio/physician/databinding/ActivityIllnessBinding.java
+ com.cardio.physician.databinding.ActivityIllnessBinding
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_setting_SettingViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_setting_SettingViewModel_HiltModules_BindsModule
+com/cardio/physician/data/remote/fitnesstracker/fitbit/basichttp/BasicHttpResponse.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.basichttp.BasicHttpResponse
+com/cardio/physician/ui/views/diagnosis/Hilt_DiagnosisActivity.java
+ com.cardio.physician.ui.views.diagnosis.Hilt_DiagnosisActivity
+ com.cardio.physician.ui.views.diagnosis.Hilt_DiagnosisActivity$1
+com/cardio/physician/ui/views/textrecognization/CameraSourcePreview.java
+ com.cardio.physician.ui.views.textrecognization.CameraSourcePreview
+ com.cardio.physician.ui.views.textrecognization.CameraSourcePreview$1
+ com.cardio.physician.ui.views.textrecognization.CameraSourcePreview$SurfaceCallback
+com/cardio/physician/ui/common/base/activity/BaseActivity_MembersInjector.java
+ com.cardio.physician.ui.common.base.activity.BaseActivity_MembersInjector
+com/cardio/physician/databinding/CompoundQuestionType1LayoutBinding.java
+ com.cardio.physician.databinding.CompoundQuestionType1LayoutBinding
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Goals.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Goals
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/SecureKeyGenerator.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.SecureKeyGenerator
+com/cardio/physician/databinding/FragmentGetProfileBinding.java
+ com.cardio.physician.databinding.FragmentGetProfileBinding
+com/cardio/physician/ui/views/healthlogs/HealthLogsViewModel_Factory.java
+ com.cardio.physician.ui.views.healthlogs.HealthLogsViewModel_Factory
+com/cardio/physician/databinding/ItemMedicineAddedBinding.java
+ com.cardio.physician.databinding.ItemMedicineAddedBinding
+com/cardio/physician/di/ApplicationModule_ProvideFirebaseAuthFactory.java
+ com.cardio.physician.di.ApplicationModule_ProvideFirebaseAuthFactory
+com/cardio/physician/databinding/TutorialSlideLayoutBinding.java
+ com.cardio.physician.databinding.TutorialSlideLayoutBinding
+com/cardio/physician/databinding/FragmentChangePasswordBindingImpl.java
+ com.cardio.physician.databinding.FragmentChangePasswordBindingImpl
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/Scope.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.Scope$1
+com/cardio/physician/databinding/IncludeMedicationPreviewLayoutBinding.java
+ com.cardio.physician.databinding.IncludeMedicationPreviewLayoutBinding
+com/cardio/physician/ui/views/notifications/NotificatonsViewModel_HiltModules.java
+ com.cardio.physician.ui.views.notifications.NotificatonsViewModel_HiltModules
+ com.cardio.physician.ui.views.notifications.NotificatonsViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.notifications.NotificatonsViewModel_HiltModules$KeyModule
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/APIUtils.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.APIUtils
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_step4_DiagnosisFragmentStep4_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_step4_DiagnosisFragmentStep4_GeneratedInjector
+com/cardio/physician/databinding/ActivityChooserBinding.java
+ com.cardio.physician.databinding.ActivityChooserBinding
+com/cardio/physician/ui/views/auth/signup/SignUpFragment_GeneratedInjector.java
+ com.cardio.physician.ui.views.auth.signup.SignUpFragment_GeneratedInjector
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_editprofile_EditUserProfileViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_editprofile_EditUserProfileViewModel_HiltModules_KeyModule
+hilt_aggregated_deps/_com_cardio_physician_ui_views_sync_health_data_SyncHealthViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_sync_health_data_SyncHealthViewModel_HiltModules_KeyModule
+com/cardio/physician/ui/views/healthlogs/HealthLogsActivity_MembersInjector.java
+ com.cardio.physician.ui.views.healthlogs.HealthLogsActivity_MembersInjector
+com/cardio/physician/ui/views/diagnosis/step3/DiagnosisFragmentStep3ViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.diagnosis.step3.DiagnosisFragmentStep3ViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.diagnosis.step3.DiagnosisFragmentStep3ViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+androidx/databinding/DataBindingComponent.java
+ androidx.databinding.DataBindingComponent
+com/cardio/physician/ui/views/auth/phone_verification/Hilt_PhoneNumberVerificationFragment.java
+ com.cardio.physician.ui.views.auth.phone_verification.Hilt_PhoneNumberVerificationFragment
+com/cardio/physician/data/remote/fcm/FcmManager_Factory.java
+ com.cardio.physician.data.remote.fcm.FcmManager_Factory
+com/cardio/physician/databinding/ActivityWebViewBinding.java
+ com.cardio.physician.databinding.ActivityWebViewBinding
+com/cardio/physician/ui/views/sync_health_data/SyncHealthViewModel_HiltModules.java
+ com.cardio.physician.ui.views.sync_health_data.SyncHealthViewModel_HiltModules
+ com.cardio.physician.ui.views.sync_health_data.SyncHealthViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.sync_health_data.SyncHealthViewModel_HiltModules$KeyModule
+com/cardio/physician/ui/views/textrecognization/ScopedExecutor.java
+ com.cardio.physician.ui.views.textrecognization.ScopedExecutor
+com/cardio/physician/databinding/ActivityAuthenticateUserBinding.java
+ com.cardio.physician.databinding.ActivityAuthenticateUserBinding
+com/cardio/physician/databinding/IncludeWeightVsDateLayoutBinding.java
+ com.cardio.physician.databinding.IncludeWeightVsDateLayoutBinding
+com/cardio/physician/ui/views/profile/change_password/ChangePasswordViewModel_HiltModules.java
+ com.cardio.physician.ui.views.profile.change_password.ChangePasswordViewModel_HiltModules
+ com.cardio.physician.ui.views.profile.change_password.ChangePasswordViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.profile.change_password.ChangePasswordViewModel_HiltModules$KeyModule
+com/cardio/physician/di/ApplicationModule_ProvidePreferenceFactory.java
+ com.cardio.physician.di.ApplicationModule_ProvidePreferenceFactory
+com/cardio/physician/ui/views/diagnosis/step1/Hilt_DiagnosisFragmentStep1.java
+ com.cardio.physician.ui.views.diagnosis.step1.Hilt_DiagnosisFragmentStep1
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Device.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Device
+com/cardio/physician/ui/views/dashboard/common/graph/BpBarMpChartGraphImp_Factory.java
+ com.cardio.physician.ui.views.dashboard.common.graph.BpBarMpChartGraphImp_Factory
+ com.cardio.physician.ui.views.dashboard.common.graph.BpBarMpChartGraphImp_Factory$InstanceHolder
+com/cardio/physician/ui/views/diagnosis/step2/Hilt_DiagnosisFragmentStep2.java
+ com.cardio.physician.ui.views.diagnosis.step2.Hilt_DiagnosisFragmentStep2
+com/cardio/physician/ui/views/illness/Hilt_IllnessActivity.java
+ com.cardio.physician.ui.views.illness.Hilt_IllnessActivity
+ com.cardio.physician.ui.views.illness.Hilt_IllnessActivity$1
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Distance.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Distance
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/User.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.User
+com/cardio/physician/databinding/ActivitySplashBindingImpl.java
+ com.cardio.physician.databinding.ActivitySplashBindingImpl
+hilt_aggregated_deps/_com_cardio_physician_di_ViewModelModule.java
+ hilt_aggregated_deps._com_cardio_physician_di_ViewModelModule
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/services/ActivityService.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.services.ActivityService
+com/cardio/physician/ui/views/dashboard/common/graph/formatter/MyAxisValueFormatter.java
+ com.cardio.physician.ui.views.dashboard.common.graph.formatter.MyAxisValueFormatter
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/AuthenticationHandler.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationHandler
+com/cardio/physician/databinding/BottomSheetPhysicianOperationBinding.java
+ com.cardio.physician.databinding.BottomSheetPhysicianOperationBinding
+com/cardio/physician/ui/views/tutorial/TutorialActivity_GeneratedInjector.java
+ com.cardio.physician.ui.views.tutorial.TutorialActivity_GeneratedInjector
+com/cardio/physician/data/remote/notifications/NotificationsRepoImp_Factory.java
+ com.cardio.physician.data.remote.notifications.NotificationsRepoImp_Factory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_healthlogs_HealthLogsViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_healthlogs_HealthLogsViewModel_HiltModules_KeyModule
+com/cardio/physician/databinding/ItemPatientBinding.java
+ com.cardio.physician.databinding.ItemPatientBinding
+com/cardio/physician/data/remote/connections/ConnectionRepoImp_Factory.java
+ com.cardio.physician.data.remote.connections.ConnectionRepoImp_Factory
+com/cardio/physician/data/remote/login/LoginRepositoryImp_Factory.java
+ com.cardio.physician.data.remote.login.LoginRepositoryImp_Factory
+com/cardio/physician/ui/views/profile/change_password/ChangePasswordViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.profile.change_password.ChangePasswordViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.profile.change_password.ChangePasswordViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/ui/views/illness/IllnessActivity_GeneratedInjector.java
+ com.cardio.physician.ui.views.illness.IllnessActivity_GeneratedInjector
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_change_password_ChangePasswordViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_change_password_ChangePasswordViewModel_HiltModules_BindsModule
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_EditDiagnosisActivity_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_EditDiagnosisActivity_GeneratedInjector
+com/cardio/physician/databinding/ActivityHealthLogsBinding.java
+ com.cardio.physician.databinding.ActivityHealthLogsBinding
+com/cardio/physician/databinding/ActivityNotificationsBinding.java
+ com.cardio.physician.databinding.ActivityNotificationsBinding
+com/cardio/physician/databinding/ItemConnectionBinding.java
+ com.cardio.physician.databinding.ItemConnectionBinding
+com/cardio/physician/databinding/ActivityFitbitLoginBinding.java
+ com.cardio.physician.databinding.ActivityFitbitLoginBinding
+com/cardio/physician/ui/views/dashboard/fragment/DashboardRepository_Factory.java
+ com.cardio.physician.ui.views.dashboard.fragment.DashboardRepository_Factory
+com/cardio/physician/ui/views/sync_health_data/SyncHealthViewModel_Factory.java
+ com.cardio.physician.ui.views.sync_health_data.SyncHealthViewModel_Factory
+com/cardio/physician/ui/views/change_email/ChangeEmailActivity_GeneratedInjector.java
+ com.cardio.physician.ui.views.change_email.ChangeEmailActivity_GeneratedInjector
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/loaders/ResourceLoaderResult.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderResult$ResultType
+com/cardio/physician/ui/views/sync_health_data/activity/SyncHealthActivty_GeneratedInjector.java
+ com.cardio.physician.ui.views.sync_health_data.activity.SyncHealthActivty_GeneratedInjector
+com/cardio/physician/ui/views/diagnosis/step3/DiagnosisFragmentStep3ViewModel_Factory.java
+ com.cardio.physician.ui.views.diagnosis.step3.DiagnosisFragmentStep3ViewModel_Factory
+com/cardio/physician/databinding/FragmentLoginBindingImpl.java
+ com.cardio.physician.databinding.FragmentLoginBindingImpl
+com/cardio/physician/ui/views/forgot_password/ForgotPasswordViewModel_HiltModules.java
+ com.cardio.physician.ui.views.forgot_password.ForgotPasswordViewModel_HiltModules
+ com.cardio.physician.ui.views.forgot_password.ForgotPasswordViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.forgot_password.ForgotPasswordViewModel_HiltModules$KeyModule
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_editprofile_EditProfileFragment_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_editprofile_EditProfileFragment_GeneratedInjector
+com/cardio/physician/ui/views/diagnosis/step3/DiagnosisFragmentStep3_GeneratedInjector.java
+ com.cardio.physician.ui.views.diagnosis.step3.DiagnosisFragmentStep3_GeneratedInjector
+com/cardio/physician/di/NetworkModule_ProvideBaseUrlFactory.java
+ com.cardio.physician.di.NetworkModule_ProvideBaseUrlFactory
+com/cardio/physician/data/remote/questionnaire/QuestionnaireRepoImp_Factory.java
+ com.cardio.physician.data.remote.questionnaire.QuestionnaireRepoImp_Factory
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/AuthenticationManager.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager$1
+hilt_aggregated_deps/_com_cardio_physician_ui_views_change_email_ChangeEmailViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_change_email_ChangeEmailViewModel_HiltModules_KeyModule
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_DiagnosisActivityViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_DiagnosisActivityViewModel_HiltModules_BindsModule
+com/cardio/physician/databinding/BottomSheetDashboardFilterBinding.java
+ com.cardio.physician.databinding.BottomSheetDashboardFilterBinding
+com/cardio/physician/ui/views/diagnosis/step1/DiagnosisViewStep1ViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.diagnosis.step1.DiagnosisViewStep1ViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.diagnosis.step1.DiagnosisViewStep1ViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/AuthenticationConfigurationBuilder.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationConfigurationBuilder
+com/cardio/physician/databinding/IncludeBpVsDateLayoutBinding.java
+ com.cardio.physician.databinding.IncludeBpVsDateLayoutBinding
+com/cardio/physician/ui/views/sync_health_data/Hilt_SyncHealthDataFragment.java
+ com.cardio.physician.ui.views.sync_health_data.Hilt_SyncHealthDataFragment
+hilt_aggregated_deps/_com_cardio_physician_ui_views_forgot_password_ForgotPasswordViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_forgot_password_ForgotPasswordViewModel_HiltModules_KeyModule
+com/cardio/physician/databinding/IncludePatientDetailAilmentBinding.java
+ com.cardio.physician.databinding.IncludePatientDetailAilmentBinding
+com/cardio/physician/ui/views/diagnosis/step4/DiagnosisFragmentStep4_GeneratedInjector.java
+ com.cardio.physician.ui.views.diagnosis.step4.DiagnosisFragmentStep4_GeneratedInjector
+hilt_aggregated_deps/_com_cardio_physician_di_FragmentModule.java
+ hilt_aggregated_deps._com_cardio_physician_di_FragmentModule
+com/cardio/physician/ui/views/diagnosis/step2/DiagnosisStep2ViewModel_Factory.java
+ com.cardio.physician.ui.views.diagnosis.step2.DiagnosisStep2ViewModel_Factory
+com/cardio/physician/data/remote/synchealth/SyncHealthRepositoryImp_Factory.java
+ com.cardio.physician.data.remote.synchealth.SyncHealthRepositoryImp_Factory
+com/cardio/physician/databinding/GuidelineRightBindingImpl.java
+ com.cardio.physician.databinding.GuidelineRightBindingImpl
+com/cardio/physician/ui/views/auth/phone_verification/PhoneVerificationViewModel_Factory.java
+ com.cardio.physician.ui.views.auth.phone_verification.PhoneVerificationViewModel_Factory
+androidx/databinding/DataBinderMapperImpl.java
+ androidx.databinding.DataBinderMapperImpl
+com/cardio/physician/di/ServiceModule_ProvideServiceFacadeFactory.java
+ com.cardio.physician.di.ServiceModule_ProvideServiceFacadeFactory
+com/cardio/physician/ui/common/customviews/WrappableGridLayoutManager.java
+ com.cardio.physician.ui.common.customviews.WrappableGridLayoutManager
+com/cardio/physician/di/RepositaryModule_ProvideFitnessRepositaryFactory.java
+ com.cardio.physician.di.RepositaryModule_ProvideFitnessRepositaryFactory
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/exceptions/MissingScopesException.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.exceptions.MissingScopesException
+com/cardio/physician/data/remote/profile/UserProfileRepository_Factory.java
+ com.cardio.physician.data.remote.profile.UserProfileRepository_Factory
+com/cardio/physician/databinding/GuidelineLeftBinding.java
+ com.cardio.physician.databinding.GuidelineLeftBinding
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/UrlChangeHandler.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.UrlChangeHandler
+com/cardio/physician/data/remote/fitnesstracker/fitbit/basichttp/BasicHttpRequestBuilder.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.basichttp.BasicHttpRequestBuilder
+com/cardio/physician/ui/views/sync_health_data/SyncHealthDataFragment_GeneratedInjector.java
+ com.cardio.physician.ui.views.sync_health_data.SyncHealthDataFragment_GeneratedInjector
+hilt_aggregated_deps/_com_cardio_physician_di_ServiceModule.java
+ hilt_aggregated_deps._com_cardio_physician_di_ServiceModule
+hilt_aggregated_deps/_com_cardio_physician_ui_views_notifications_NotificatonsViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_notifications_NotificatonsViewModel_HiltModules_KeyModule
+com/cardio/physician/databinding/FragmentEditProfileBinding.java
+ com.cardio.physician.databinding.FragmentEditProfileBinding
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_step2_DiagnosisFragmentStep2_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_step2_DiagnosisFragmentStep2_GeneratedInjector
+com/cardio/physician/ui/views/profile/profile_menu/ProfileMenuFragment_GeneratedInjector.java
+ com.cardio.physician.ui.views.profile.profile_menu.ProfileMenuFragment_GeneratedInjector
+com/cardio/physician/databinding/CustomMarkerViewBinding.java
+ com.cardio.physician.databinding.CustomMarkerViewBinding
+com/cardio/physician/ui/views/healthlogs/HealthLogsViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.healthlogs.HealthLogsViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.healthlogs.HealthLogsViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/ui/views/auth/signup/SignUpViewModel_Factory.java
+ com.cardio.physician.ui.views.auth.signup.SignUpViewModel_Factory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_auth_phone_verification_PhoneNumberVerificationFragment_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_auth_phone_verification_PhoneNumberVerificationFragment_GeneratedInjector
+com/cardio/physician/ui/views/change_email/Hilt_ChangeEmailActivity.java
+ com.cardio.physician.ui.views.change_email.Hilt_ChangeEmailActivity
+ com.cardio.physician.ui.views.change_email.Hilt_ChangeEmailActivity$1
+dagger/hilt/internal/aggregatedroot/codegen/_com_cardio_physician_ui_AppCardioPatient.java
+ dagger.hilt.internal.aggregatedroot.codegen._com_cardio_physician_ui_AppCardioPatient
+com/cardio/physician/databinding/TutorialSlideLayoutBindingImpl.java
+ com.cardio.physician.databinding.TutorialSlideLayoutBindingImpl
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/loaders/base/SynTaskLoader.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.base.SynTaskLoader
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.base.SynTaskLoader$LoaderCallbacks
+hilt_aggregated_deps/_com_cardio_physician_ui_views_change_email_ChangeEmailViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_change_email_ChangeEmailViewModel_HiltModules_BindsModule
+com/cardio/physician/ui/AppCardioPatient_HiltComponents.java
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ActivityC
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ActivityC$Builder
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ActivityCBuilderModule
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ActivityRetainedC
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ActivityRetainedC$Builder
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ActivityRetainedCBuilderModule
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$FragmentC
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$FragmentC$Builder
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$FragmentCBuilderModule
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ServiceC
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ServiceC$Builder
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ServiceCBuilderModule
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$SingletonC
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ViewC
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ViewC$Builder
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ViewCBuilderModule
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ViewModelC
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ViewModelC$Builder
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ViewModelCBuilderModule
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ViewWithFragmentC
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ViewWithFragmentC$Builder
+ com.cardio.physician.ui.AppCardioPatient_HiltComponents$ViewWithFragmentCBuilderModule
+com/cardio/physician/di/ApplicationModule_ProvideUiHandlerFactory.java
+ com.cardio.physician.di.ApplicationModule_ProvideUiHandlerFactory
+com/cardio/physician/data/remote/fitnesstracker/googlefit/GoogleFitBitRepositaryImp_Factory.java
+ com.cardio.physician.data.remote.fitnesstracker.googlefit.GoogleFitBitRepositaryImp_Factory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_add_patient_AddPatientActivity_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_add_patient_AddPatientActivity_GeneratedInjector
+com/cardio/physician/databinding/ActivityRootBinding.java
+ com.cardio.physician.databinding.ActivityRootBinding
+com/cardio/physician/ui/views/dashboard/common/graph/HeartRateMpChartGraphImp_Factory.java
+ com.cardio.physician.ui.views.dashboard.common.graph.HeartRateMpChartGraphImp_Factory
+ com.cardio.physician.ui.views.dashboard.common.graph.HeartRateMpChartGraphImp_Factory$InstanceHolder
+com/cardio/physician/databinding/FragmentPatientDashboardBinding.java
+ com.cardio.physician.databinding.FragmentPatientDashboardBinding
+com/cardio/physician/databinding/ActivityRootBindingImpl.java
+ com.cardio.physician.databinding.ActivityRootBindingImpl
+com/cardio/physician/ui/views/dashboard/common/graph/customview/XYMarkerView.java
+ com.cardio.physician.ui.views.dashboard.common.graph.customview.XYMarkerView
+com/cardio/physician/databinding/ActivityChangeEmailBinding.java
+ com.cardio.physician.databinding.ActivityChangeEmailBinding
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/exceptions/FitbitAPIException.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.exceptions.FitbitAPIException
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/LogoutTaskCompletionHandler.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.LogoutTaskCompletionHandler
+com/cardio/physician/ui/views/notifications/NotificatonsViewModel_Factory.java
+ com.cardio.physician.ui.views.notifications.NotificatonsViewModel_Factory
+com/cardio/physician/ui/views/diagnosis/DiagnosisActivityViewModel_Factory.java
+ com.cardio.physician.ui.views.diagnosis.DiagnosisActivityViewModel_Factory
+ com.cardio.physician.ui.views.diagnosis.DiagnosisActivityViewModel_Factory$InstanceHolder
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_step1_DiagnosisViewStep1ViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_step1_DiagnosisViewStep1ViewModel_HiltModules_KeyModule
+com/cardio/physician/ui/views/dashboard/common/graph/WeightMpChartGraphImp_Factory.java
+ com.cardio.physician.ui.views.dashboard.common.graph.WeightMpChartGraphImp_Factory
+ com.cardio.physician.ui.views.dashboard.common.graph.WeightMpChartGraphImp_Factory$InstanceHolder
+com/cardio/physician/di/NetworkModule_ProvideApiServiceFactory.java
+ com.cardio.physician.di.NetworkModule_ProvideApiServiceFactory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_profile_GetProfileFragment_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_profile_GetProfileFragment_GeneratedInjector
+hilt_aggregated_deps/_com_cardio_physician_ui_views_auth_login_LoginViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_auth_login_LoginViewModel_HiltModules_KeyModule
+hilt_aggregated_deps/_com_cardio_physician_ui_common_base_activity_BaseActivity_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_common_base_activity_BaseActivity_GeneratedInjector
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_profile_UserProfileViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_profile_UserProfileViewModel_HiltModules_BindsModule
+com/cardio/physician/databinding/IncludeStepViewBinding.java
+ com.cardio.physician.databinding.IncludeStepViewBinding
+com/cardio/physician/databinding/FragmentDiagnosisPart4Binding.java
+ com.cardio.physician.databinding.FragmentDiagnosisPart4Binding
+hilt_aggregated_deps/_com_cardio_physician_ui_common_base_viewmodel_BaseAuthViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_common_base_viewmodel_BaseAuthViewModel_HiltModules_BindsModule
+com/cardio/physician/databinding/FragmentDiagnosisPart3Binding.java
+ com.cardio.physician.databinding.FragmentDiagnosisPart3Binding
+com/cardio/physician/databinding/FragmentDiagnosisPart2Binding.java
+ com.cardio.physician.databinding.FragmentDiagnosisPart2Binding
+com/cardio/physician/databinding/ActivitySplashBinding.java
+ com.cardio.physician.databinding.ActivitySplashBinding
+com/cardio/physician/databinding/ItemPatientBindingImpl.java
+ com.cardio.physician.databinding.ItemPatientBindingImpl
+com/cardio/physician/databinding/FragmentDiagnosisPart1Binding.java
+ com.cardio.physician.databinding.FragmentDiagnosisPart1Binding
+com/cardio/physician/ui/views/forgot_password/Hilt_ForgotPasswordFragment.java
+ com.cardio.physician.ui.views.forgot_password.Hilt_ForgotPasswordFragment
+com/cardio/physician/ui/service/SyncHealthServiceFacade_Factory.java
+ com.cardio.physician.ui.service.SyncHealthServiceFacade_Factory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_step1_DiagnosisFragmentStep1_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_step1_DiagnosisFragmentStep1_GeneratedInjector
+com/cardio/physician/databinding/ActivityAddPatientBinding.java
+ com.cardio.physician.databinding.ActivityAddPatientBinding
+com/cardio/physician/ui/views/profile/editprofile/EditUserProfileViewModel_Factory.java
+ com.cardio.physician.ui.views.profile.editprofile.EditUserProfileViewModel_Factory
+com/cardio/physician/ui/views/diagnosis/Hilt_EditDiagnosisActivity.java
+ com.cardio.physician.ui.views.diagnosis.Hilt_EditDiagnosisActivity
+ com.cardio.physician.ui.views.diagnosis.Hilt_EditDiagnosisActivity$1
+com/cardio/physician/databinding/IncludeDiagnosisBottomViewsBinding.java
+ com.cardio.physician.databinding.IncludeDiagnosisBottomViewsBinding
+com/cardio/physician/databinding/IncludeStepsVsDateLayoutBinding.java
+ com.cardio.physician.databinding.IncludeStepsVsDateLayoutBinding
+com/cardio/physician/ui/views/change_email/ChangeEmailViewModel_Factory.java
+ com.cardio.physician.ui.views.change_email.ChangeEmailViewModel_Factory
+com/cardio/physician/data/remote/fitnesstracker/fitbit/FitbitRepositaryImp_Factory.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.FitbitRepositaryImp_Factory
+com/cardio/physician/BR.java
+ com.cardio.physician.BR
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/AuthorizationController.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthorizationController
+com/cardio/physician/ui/views/add_patient/AddPatientViewModel_HiltModules.java
+ com.cardio.physician.ui.views.add_patient.AddPatientViewModel_HiltModules
+ com.cardio.physician.ui.views.add_patient.AddPatientViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.add_patient.AddPatientViewModel_HiltModules$KeyModule
+com/cardio/physician/ui/views/auth/signup/SignUpViewModel_HiltModules.java
+ com.cardio.physician.ui.views.auth.signup.SignUpViewModel_HiltModules
+ com.cardio.physician.ui.views.auth.signup.SignUpViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.auth.signup.SignUpViewModel_HiltModules$KeyModule
+com/cardio/physician/ui/common/base/activity/Hilt_BaseActivity.java
+ com.cardio.physician.ui.common.base.activity.Hilt_BaseActivity
+ com.cardio.physician.ui.common.base.activity.Hilt_BaseActivity$1
+com/cardio/physician/databinding/IncludeGraphFilterButtonLayoutBinding.java
+ com.cardio.physician.databinding.IncludeGraphFilterButtonLayoutBinding
+hilt_aggregated_deps/_com_cardio_physician_ui_views_auth_login_LoginViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_auth_login_LoginViewModel_HiltModules_BindsModule
+com/cardio/physician/ui/service/SyncHeathDataService_GeneratedInjector.java
+ com.cardio.physician.ui.service.SyncHeathDataService_GeneratedInjector
+com/cardio/physician/di/RepositaryModule_ProvideConnectionsRepoFactory.java
+ com.cardio.physician.di.RepositaryModule_ProvideConnectionsRepoFactory
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/UserContainer.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.UserContainer
+com/cardio/physician/ui/views/splash/SplashActivity_GeneratedInjector.java
+ com.cardio.physician.ui.views.splash.SplashActivity_GeneratedInjector
+com/cardio/physician/ui/views/auth/login/LoginViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.auth.login.LoginViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.auth.login.LoginViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/ui/views/dashboard/common/graph/formatter/MyValueFormatter.java
+ com.cardio.physician.ui.views.dashboard.common.graph.formatter.MyValueFormatter
+com/cardio/physician/data/local/SharedPreferences_Factory.java
+ com.cardio.physician.data.local.SharedPreferences_Factory
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/loaders/ResourceLoader.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoader
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoader$1
+com/cardio/physician/ui/views/dashboard/fragment/DashboardViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.dashboard.fragment.DashboardViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.dashboard.fragment.DashboardViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+hilt_aggregated_deps/_com_cardio_physician_ui_views_auth_phone_verification_PhoneVerificationViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_auth_phone_verification_PhoneVerificationViewModel_HiltModules_BindsModule
+com/cardio/physician/ui/views/diagnosis/step3/DiagnosisFragmentStep3ViewModel_HiltModules.java
+ com.cardio.physician.ui.views.diagnosis.step3.DiagnosisFragmentStep3ViewModel_HiltModules
+ com.cardio.physician.ui.views.diagnosis.step3.DiagnosisFragmentStep3ViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.diagnosis.step3.DiagnosisFragmentStep3ViewModel_HiltModules$KeyModule
+com/cardio/physician/ui/views/add_patient/Hilt_AddPatientActivity.java
+ com.cardio.physician.ui.views.add_patient.Hilt_AddPatientActivity
+ com.cardio.physician.ui.views.add_patient.Hilt_AddPatientActivity$1
+com/cardio/physician/ui/views/auth/phone_verification/PhoneVerificationViewModel_HiltModules.java
+ com.cardio.physician.ui.views.auth.phone_verification.PhoneVerificationViewModel_HiltModules
+ com.cardio.physician.ui.views.auth.phone_verification.PhoneVerificationViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.auth.phone_verification.PhoneVerificationViewModel_HiltModules$KeyModule
+com/cardio/physician/ui/common/base/activity/BaseActivity_GeneratedInjector.java
+ com.cardio.physician.ui.common.base.activity.BaseActivity_GeneratedInjector
+com/cardio/physician/ui/common/customviews/animation/AnimatorListener.java
+ com.cardio.physician.ui.common.customviews.animation.AnimatorListener
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Lifetime.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Lifetime
+com/cardio/physician/ui/views/profile/change_password/Hilt_ChangePasswordFragment.java
+ com.cardio.physician.ui.views.profile.change_password.Hilt_ChangePasswordFragment
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Summary.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Summary
+com/cardio/physician/di/FragmentModule_ProvideHeartRateGraphFactory.java
+ com.cardio.physician.di.FragmentModule_ProvideHeartRateGraphFactory
+com/cardio/physician/di/NetworkModule_ProvideRetrofitFactory.java
+ com.cardio.physician.di.NetworkModule_ProvideRetrofitFactory
+com/cardio/physician/databinding/BottomSheetImagePickerEditScreenBinding.java
+ com.cardio.physician.databinding.BottomSheetImagePickerEditScreenBinding
+com/cardio/physician/ui/views/dashboard/fragment/DashboardViewModel_Factory.java
+ com.cardio.physician.ui.views.dashboard.fragment.DashboardViewModel_Factory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_web_view_WebViewFragment_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_web_view_WebViewFragment_GeneratedInjector
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Steps.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Steps
+hilt_aggregated_deps/_com_cardio_physician_ui_views_auth_signup_SignUpViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_auth_signup_SignUpViewModel_HiltModules_KeyModule
+com/cardio/physician/ui/views/dashboard/common/graph/formatter/DayAxisValueFormatter.java
+ com.cardio.physician.ui.views.dashboard.common.graph.formatter.DayAxisValueFormatter
+com/cardio/physician/ui/views/forgot_password/ForgotPasswordRepository_Factory.java
+ com.cardio.physician.ui.views.forgot_password.ForgotPasswordRepository_Factory
+com/cardio/physician/ui/views/diagnosis/step4/Hilt_DiagnosisFragmentStep4.java
+ com.cardio.physician.ui.views.diagnosis.step4.Hilt_DiagnosisFragmentStep4
+hilt_aggregated_deps/_com_cardio_physician_ui_views_auth_login_LoginFragment_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_auth_login_LoginFragment_GeneratedInjector
+com/cardio/physician/ui/views/dashboard/fragment/PatientDashboardFragment_GeneratedInjector.java
+ com.cardio.physician.ui.views.dashboard.fragment.PatientDashboardFragment_GeneratedInjector
+com/cardio/physician/ui/views/profile/setting/SettingViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.profile.setting.SettingViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.profile.setting.SettingViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/ui/views/notifications/Hilt_NotificationsActivity.java
+ com.cardio.physician.ui.views.notifications.Hilt_NotificationsActivity
+ com.cardio.physician.ui.views.notifications.Hilt_NotificationsActivity$1
+com/cardio/physician/DataBinderMapperImpl.java
+ com.cardio.physician.DataBinderMapperImpl
+ com.cardio.physician.DataBinderMapperImpl$InnerBrLookup
+ com.cardio.physician.DataBinderMapperImpl$InnerLayoutIdLookup
+com/cardio/physician/ui/views/splash/Hilt_SplashActivity.java
+ com.cardio.physician.ui.views.splash.Hilt_SplashActivity
+ com.cardio.physician.ui.views.splash.Hilt_SplashActivity$1
+hilt_aggregated_deps/_com_cardio_physician_ui_views_auth_AuthenticateUserActivity_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_auth_AuthenticateUserActivity_GeneratedInjector
+com/cardio/physician/ui/views/sync_health_data/activity/Hilt_SyncHealthActivty.java
+ com.cardio.physician.ui.views.sync_health_data.activity.Hilt_SyncHealthActivty
+ com.cardio.physician.ui.views.sync_health_data.activity.Hilt_SyncHealthActivty$1
+com/cardio/physician/databinding/ActivityVisionLivePreviewBinding.java
+ com.cardio.physician.databinding.ActivityVisionLivePreviewBinding
+com/cardio/physician/data/remote/diagnosis/repositary/DiagnosisRepoImp_Factory.java
+ com.cardio.physician.data.remote.diagnosis.repositary.DiagnosisRepoImp_Factory
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/services/UserService.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.services.UserService
+com/cardio/physician/ui/views/auth/phone_verification/PhoneVerificationViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.auth.phone_verification.PhoneVerificationViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.auth.phone_verification.PhoneVerificationViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/databinding/BottomSheetImagePickerBinding.java
+ com.cardio.physician.databinding.BottomSheetImagePickerBinding
+com/cardio/physician/databinding/ActivityChangeEmailBindingImpl.java
+ com.cardio.physician.databinding.ActivityChangeEmailBindingImpl
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_change_password_ChangePasswordViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_change_password_ChangePasswordViewModel_HiltModules_KeyModule
+com/cardio/physician/ui/views/textrecognization/preference/PreferenceUtils.java
+ com.cardio.physician.ui.views.textrecognization.preference.PreferenceUtils
+com/cardio/physician/di/NetworkModule_ProvideOkHttpClientFactory.java
+ com.cardio.physician.di.NetworkModule_ProvideOkHttpClientFactory
+com/cardio/physician/ui/views/profile/profile/GetProfileFragment_GeneratedInjector.java
+ com.cardio.physician.ui.views.profile.profile.GetProfileFragment_GeneratedInjector
+com/cardio/physician/databinding/FragmentProfileMenuBindingImpl.java
+ com.cardio.physician.databinding.FragmentProfileMenuBindingImpl
+androidx/databinding/library/baseAdapters/BR.java
+ androidx.databinding.library.baseAdapters.BR
+com/cardio/physician/ui/views/diagnosis/DiagnosisActivityViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.diagnosis.DiagnosisActivityViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.diagnosis.DiagnosisActivityViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/databinding/IncludeChfAilmentLayoutBinding.java
+ com.cardio.physician.databinding.IncludeChfAilmentLayoutBinding
+hilt_aggregated_deps/_com_cardio_physician_ui_views_sync_health_data_SyncHealthViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_sync_health_data_SyncHealthViewModel_HiltModules_BindsModule
+com/cardio/physician/ui/views/diagnosis/step1/DiagnosisFragmentStep1_GeneratedInjector.java
+ com.cardio.physician.ui.views.diagnosis.step1.DiagnosisFragmentStep1_GeneratedInjector
+com/cardio/physician/ui/views/profile/editprofile/EditUserProfileViewModel_HiltModules.java
+ com.cardio.physician.ui.views.profile.editprofile.EditUserProfileViewModel_HiltModules
+ com.cardio.physician.ui.views.profile.editprofile.EditUserProfileViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.profile.editprofile.EditUserProfileViewModel_HiltModules$KeyModule
+com/cardio/physician/ui/views/auth/AuthenticateUserActivity_GeneratedInjector.java
+ com.cardio.physician.ui.views.auth.AuthenticateUserActivity_GeneratedInjector
+com/cardio/physician/ui/views/auth/signup/SignUpViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.auth.signup.SignUpViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.auth.signup.SignUpViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/di/ApplicationModule_ProvideFirebaseStorageFactory.java
+ com.cardio.physician.di.ApplicationModule_ProvideFirebaseStorageFactory
+com/cardio/physician/ui/views/add_patient/AddPatientViewModel_Factory.java
+ com.cardio.physician.ui.views.add_patient.AddPatientViewModel_Factory
+com/cardio/physician/ui/views/profile/setting/SettingFragment_GeneratedInjector.java
+ com.cardio.physician.ui.views.profile.setting.SettingFragment_GeneratedInjector
+com/cardio/physician/data/remote/addpatient/AddPatientRepositoryImp_Factory.java
+ com.cardio.physician.data.remote.addpatient.AddPatientRepositoryImp_Factory
+hilt_aggregated_deps/_com_cardio_physician_ui_AppCardioPatient_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_AppCardioPatient_GeneratedInjector
+com/cardio/physician/ui/views/profile/profile/Hilt_GetProfileFragment.java
+ com.cardio.physician.ui.views.profile.profile.Hilt_GetProfileFragment
+com/cardio/physician/ui/AppCardioPatient_GeneratedInjector.java
+ com.cardio.physician.ui.AppCardioPatient_GeneratedInjector
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Tracker_.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Tracker_
+com/cardio/physician/di/FragmentModule_ProvideStepCountGraphFactory.java
+ com.cardio.physician.di.FragmentModule_ProvideStepCountGraphFactory
+com/cardio/physician/ui/service/Hilt_SyncHeathDataService.java
+ com.cardio.physician.ui.service.Hilt_SyncHeathDataService
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/services/DeviceService.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.services.DeviceService
+com/cardio/physician/ui/views/textrecognization/BitmapUtils.java
+ com.cardio.physician.ui.views.textrecognization.BitmapUtils
+com/cardio/physician/databinding/IncludeAfibLayoutBinding.java
+ com.cardio.physician.databinding.IncludeAfibLayoutBinding
+com/cardio/physician/ui/views/profile/web_view/WebViewFragment_GeneratedInjector.java
+ com.cardio.physician.ui.views.profile.web_view.WebViewFragment_GeneratedInjector
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_step2_DiagnosisStep2ViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_step2_DiagnosisStep2ViewModel_HiltModules_KeyModule
+com/cardio/physician/databinding/ToolbarBinding.java
+ com.cardio.physician.databinding.ToolbarBinding
+com/cardio/physician/ui/views/diagnosis/step4/DiagnosisFragmentStep4ViewModel_HiltModules.java
+ com.cardio.physician.ui.views.diagnosis.step4.DiagnosisFragmentStep4ViewModel_HiltModules
+ com.cardio.physician.ui.views.diagnosis.step4.DiagnosisFragmentStep4ViewModel_HiltModules$BindsModule
+ com.cardio.physician.ui.views.diagnosis.step4.DiagnosisFragmentStep4ViewModel_HiltModules$KeyModule
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_step4_DiagnosisFragmentStep4ViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_step4_DiagnosisFragmentStep4ViewModel_HiltModules_BindsModule
+com/cardio/physician/ui/views/diagnosis/step2/DiagnosisFragmentStep2_GeneratedInjector.java
+ com.cardio.physician.ui.views.diagnosis.step2.DiagnosisFragmentStep2_GeneratedInjector
+com/cardio/physician/ui/Hilt_AppCardioPatient.java
+ com.cardio.physician.ui.Hilt_AppCardioPatient
+ com.cardio.physician.ui.Hilt_AppCardioPatient$1
+hilt_aggregated_deps/_com_cardio_physician_ui_views_dashboard_fragment_DashboardViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_dashboard_fragment_DashboardViewModel_HiltModules_BindsModule
+com/cardio/physician/data/remote/fitnesstracker/fitbit/sveinungkb/SecurePreferences.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.sveinungkb.SecurePreferences
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.sveinungkb.SecurePreferences$SecurePreferencesException
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_DiagnosisActivityViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_DiagnosisActivityViewModel_HiltModules_KeyModule
+com/cardio/physician/ui/views/textrecognization/FrameMetadata.java
+ com.cardio.physician.ui.views.textrecognization.FrameMetadata
+ com.cardio.physician.ui.views.textrecognization.FrameMetadata$1
+ com.cardio.physician.ui.views.textrecognization.FrameMetadata$Builder
+com/cardio/physician/ui/views/auth/login/LoginFragment_GeneratedInjector.java
+ com.cardio.physician.ui.views.auth.login.LoginFragment_GeneratedInjector
+hilt_aggregated_deps/_com_cardio_physician_ui_views_dashboard_fragment_DashboardFragment_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_dashboard_fragment_DashboardFragment_GeneratedInjector
+com/cardio/physician/databinding/ActivityVisionCameraxLivePreviewBinding.java
+ com.cardio.physician.databinding.ActivityVisionCameraxLivePreviewBinding
+com/cardio/physician/ui/common/customviews/StepView.java
+ com.cardio.physician.ui.common.customviews.StepView
+ com.cardio.physician.ui.common.customviews.StepView$1
+ com.cardio.physician.ui.common.customviews.StepView$2
+ com.cardio.physician.ui.common.customviews.StepView$AnimationType
+ com.cardio.physician.ui.common.customviews.StepView$DisplayMode
+ com.cardio.physician.ui.common.customviews.StepView$OnStepClickListener
+ com.cardio.physician.ui.common.customviews.StepView$State
+com/cardio/physician/ui/views/diagnosis/step4/DiagnosisFragmentStep4ViewModel_Factory.java
+ com.cardio.physician.ui.views.diagnosis.step4.DiagnosisFragmentStep4ViewModel_Factory
+com/cardio/physician/ui/views/tutorial/Hilt_TutorialActivity.java
+ com.cardio.physician.ui.views.tutorial.Hilt_TutorialActivity
+ com.cardio.physician.ui.views.tutorial.Hilt_TutorialActivity$1
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_step3_DiagnosisFragmentStep3ViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_step3_DiagnosisFragmentStep3ViewModel_HiltModules_BindsModule
+com/cardio/physician/databinding/CompoundQuestionType4LayoutBinding.java
+ com.cardio.physician.databinding.CompoundQuestionType4LayoutBinding
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/services/HeartRateService.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.services.HeartRateService
+com/cardio/physician/network/InternetInterceptor_Factory.java
+ com.cardio.physician.network.InternetInterceptor_Factory
+com/cardio/physician/generated/callback/OnItemSelected.java
+ com.cardio.physician.generated.callback.OnItemSelected
+ com.cardio.physician.generated.callback.OnItemSelected$Listener
+hilt_aggregated_deps/_com_cardio_physician_ui_service_SyncHeathDataService_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_service_SyncHeathDataService_GeneratedInjector
+com/cardio/physician/ui/views/dashboard/DashboardActivity_GeneratedInjector.java
+ com.cardio.physician.ui.views.dashboard.DashboardActivity_GeneratedInjector
+com/cardio/physician/ui/views/profile/setting/SettingRepository_Factory.java
+ com.cardio.physician.ui.views.profile.setting.SettingRepository_Factory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_step3_DiagnosisFragmentStep3ViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_step3_DiagnosisFragmentStep3ViewModel_HiltModules_KeyModule
+com/cardio/physician/databinding/FragmentGetProfileBindingImpl.java
+ com.cardio.physician.databinding.FragmentGetProfileBindingImpl
+hilt_aggregated_deps/_com_cardio_physician_ui_views_healthlogs_HealthLogsViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_healthlogs_HealthLogsViewModel_HiltModules_BindsModule
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Activities.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Activities
+com/cardio/physician/di/ApplicationModule_GetApplicationContextFactory.java
+ com.cardio.physician.di.ApplicationModule_GetApplicationContextFactory
+com/cardio/physician/data/remote/fitnesstracker/fitbit/authentication/AuthenticationConfiguration.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationConfiguration
+com/cardio/physician/network/NetworkHelper_Factory.java
+ com.cardio.physician.network.NetworkHelper_Factory
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Floors_.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Floors_
+com/cardio/physician/ui/views/auth/login/Hilt_LoginFragment.java
+ com.cardio.physician.ui.views.auth.login.Hilt_LoginFragment
+com/cardio/physician/data/remote/common/repositary/UserAuthRepositaryImp_Factory.java
+ com.cardio.physician.data.remote.common.repositary.UserAuthRepositaryImp_Factory
+com/cardio/physician/databinding/FragmentSyncHealthDataBinding.java
+ com.cardio.physician.databinding.FragmentSyncHealthDataBinding
+com/cardio/physician/databinding/SettingsStyleBinding.java
+ com.cardio.physician.databinding.SettingsStyleBinding
+com/cardio/physician/databinding/FragmentWebViewBinding.java
+ com.cardio.physician.databinding.FragmentWebViewBinding
+com/cardio/physician/databinding/ActivitySyncHealthBinding.java
+ com.cardio.physician.databinding.ActivitySyncHealthBinding
+com/cardio/physician/ui/views/profile/setting/Hilt_SettingFragment.java
+ com.cardio.physician.ui.views.profile.setting.Hilt_SettingFragment
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_setting_SettingViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_setting_SettingViewModel_HiltModules_KeyModule
+com/cardio/physician/ui/views/dashboard/fragment/Hilt_PatientDashboardFragment.java
+ com.cardio.physician.ui.views.dashboard.fragment.Hilt_PatientDashboardFragment
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Steps_.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Steps_
+com/cardio/physician/ui/views/profile/change_password/ChangePasswordViewModel_Factory.java
+ com.cardio.physician.ui.views.profile.change_password.ChangePasswordViewModel_Factory
+com/cardio/physician/ui/views/textrecognization/CameraSource.java
+ com.cardio.physician.ui.views.textrecognization.CameraSource
+ com.cardio.physician.ui.views.textrecognization.CameraSource$1
+ com.cardio.physician.ui.views.textrecognization.CameraSource$CameraPreviewCallback
+ com.cardio.physician.ui.views.textrecognization.CameraSource$FrameProcessingRunnable
+ com.cardio.physician.ui.views.textrecognization.CameraSource$SizePair
+com/cardio/physician/ui/views/auth/signup/SignUpFragment_MembersInjector.java
+ com.cardio.physician.ui.views.auth.signup.SignUpFragment_MembersInjector
+com/cardio/physician/databinding/IncludeHealthDetailBinding.java
+ com.cardio.physician.databinding.IncludeHealthDetailBinding
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_editprofile_EditUserProfileViewModel_HiltModules_BindsModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_editprofile_EditUserProfileViewModel_HiltModules_BindsModule
+com/cardio/physician/databinding/ActivitySettingsBinding.java
+ com.cardio.physician.databinding.ActivitySettingsBinding
+com/cardio/physician/ui/views/dashboard/fragment/Hilt_DashboardFragment.java
+ com.cardio.physician.ui.views.dashboard.fragment.Hilt_DashboardFragment
+hilt_aggregated_deps/_com_cardio_physician_ui_views_sync_health_data_activity_SyncHealthActivty_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_sync_health_data_activity_SyncHealthActivty_GeneratedInjector
+com/cardio/physician/ui/views/profile/editprofile/Hilt_EditProfileFragment.java
+ com.cardio.physician.ui.views.profile.editprofile.Hilt_EditProfileFragment
+com/cardio/physician/databinding/FragmentSyncHealthDataBindingImpl.java
+ com.cardio.physician.databinding.FragmentSyncHealthDataBindingImpl
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/loaders/ResourceLoaderSync.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderSync
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.loaders.ResourceLoaderSync$1
+com/cardio/physician/ui/views/dashboard/fragment/DashboardFragment_GeneratedInjector.java
+ com.cardio.physician.ui.views.dashboard.fragment.DashboardFragment_GeneratedInjector
+hilt_aggregated_deps/_com_cardio_physician_ui_views_auth_signup_SignUpFragment_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_auth_signup_SignUpFragment_GeneratedInjector
+com/cardio/physician/ui/views/diagnosis/step1/DiagnosisViewStep1ViewModel_Factory.java
+ com.cardio.physician.ui.views.diagnosis.step1.DiagnosisViewStep1ViewModel_Factory
+hilt_aggregated_deps/_com_cardio_physician_ui_views_tutorial_TutorialActivity_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_tutorial_TutorialActivity_GeneratedInjector
+com/cardio/physician/data/remote/fitnesstracker/fitbit/basichttp/BasicHttpRequest.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.basichttp.BasicHttpRequest
+hilt_aggregated_deps/_com_cardio_physician_ui_views_auth_phone_verification_PhoneVerificationViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_auth_phone_verification_PhoneVerificationViewModel_HiltModules_KeyModule
+com/cardio/physician/databinding/IncludePatientDetailBinding.java
+ com.cardio.physician.databinding.IncludePatientDetailBinding
+com/cardio/physician/ui/common/base/viewmodel/BaseAuthViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.common.base.viewmodel.BaseAuthViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.common.base.viewmodel.BaseAuthViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/Best.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.Best
+com/cardio/physician/ui/views/fitbit/RootActivity.java
+ com.cardio.physician.ui.views.fitbit.RootActivity
+ com.cardio.physician.ui.views.fitbit.RootActivity$1
+ com.cardio.physician.ui.views.fitbit.RootActivity$2
+com/cardio/physician/databinding/GuidelineLeftBindingImpl.java
+ com.cardio.physician.databinding.GuidelineLeftBindingImpl
+dagger/hilt/internal/processedrootsentinel/codegen/_com_cardio_physician_ui_AppCardioPatient.java
+ dagger.hilt.internal.processedrootsentinel.codegen._com_cardio_physician_ui_AppCardioPatient
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_DiagnosisActivity_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_DiagnosisActivity_GeneratedInjector
+com/cardio/physician/databinding/FragmentProfileMenuBinding.java
+ com.cardio.physician.databinding.FragmentProfileMenuBinding
+hilt_aggregated_deps/_com_cardio_physician_ui_views_diagnosis_step3_DiagnosisFragmentStep3_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_diagnosis_step3_DiagnosisFragmentStep3_GeneratedInjector
+com/cardio/physician/di/ApplicationModule_ProvideFirebaseStorageReferenceFactory.java
+ com.cardio.physician.di.ApplicationModule_ProvideFirebaseStorageReferenceFactory
+com/cardio/physician/databinding/ActivityStillImageBinding.java
+ com.cardio.physician.databinding.ActivityStillImageBinding
+com/cardio/physician/ui/views/diagnosis/step2/DiagnosisStep2ViewModel_HiltModules_KeyModule_ProvideFactory.java
+ com.cardio.physician.ui.views.diagnosis.step2.DiagnosisStep2ViewModel_HiltModules_KeyModule_ProvideFactory
+ com.cardio.physician.ui.views.diagnosis.step2.DiagnosisStep2ViewModel_HiltModules_KeyModule_ProvideFactory$InstanceHolder
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_change_password_ChangePasswordFragment_GeneratedInjector.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_change_password_ChangePasswordFragment_GeneratedInjector
+com/cardio/physician/data/remote/fitnesstracker/fitbit/api/entities/TopBadge.java
+ com.cardio.physician.data.remote.fitnesstracker.fitbit.api.entities.TopBadge
+com/cardio/physician/databinding/FragmentPhoneNumberVerificationBinding.java
+ com.cardio.physician.databinding.FragmentPhoneNumberVerificationBinding
+com/cardio/physician/ui/views/add_patient/AddPatientActivity_GeneratedInjector.java
+ com.cardio.physician.ui.views.add_patient.AddPatientActivity_GeneratedInjector
+com/cardio/physician/ui/views/profile/web_view/Hilt_WebViewFragment.java
+ com.cardio.physician.ui.views.profile.web_view.Hilt_WebViewFragment
+com/cardio/physician/ui/views/dashboard/fragment/PatientDashboardFragment_MembersInjector.java
+ com.cardio.physician.ui.views.dashboard.fragment.PatientDashboardFragment_MembersInjector
+com/cardio/physician/di/ApplicationModule_ProvideExecuterServiceFactory.java
+ com.cardio.physician.di.ApplicationModule_ProvideExecuterServiceFactory
+hilt_aggregated_deps/_com_cardio_physician_di_ApplicationModule.java
+ hilt_aggregated_deps._com_cardio_physician_di_ApplicationModule
+com/cardio/physician/databinding/SpinnerStyleBinding.java
+ com.cardio.physician.databinding.SpinnerStyleBinding
+com/cardio/physician/ui/views/auth/login/LoginViewModel_Factory.java
+ com.cardio.physician.ui.views.auth.login.LoginViewModel_Factory
+com/cardio/physician/ui/views/textrecognization/GraphicOverlay.java
+ com.cardio.physician.ui.views.textrecognization.GraphicOverlay
+ com.cardio.physician.ui.views.textrecognization.GraphicOverlay$Graphic
+hilt_aggregated_deps/_com_cardio_physician_ui_views_profile_profile_UserProfileViewModel_HiltModules_KeyModule.java
+ hilt_aggregated_deps._com_cardio_physician_ui_views_profile_profile_UserProfileViewModel_HiltModules_KeyModule

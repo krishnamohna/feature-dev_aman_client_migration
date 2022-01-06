@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.views.dashboard.fragment.DashboardFragment">
+
+
+    <!--<include
+        android:id="@+id/headerView"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:paddingBottom="@dimen/scrollview_dash_bottom_margin_100">
+
+
+            <TextView
+                android:id="@+id/tvMyReportlabel"
+                style="@style/BaseAppTheme.TxtView.bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="My Report"
+                android:visibility="gone"
+                android:textSize="@dimen/text_large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvReportDateDash"
+                style="@style/BaseAppTheme.TxtView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tvMyReportlabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.19"
+                app:layout_constraintStart_toEndOf="@+id/tvMyReportlabel"
+                app:layout_constraintTop_toTopOf="@+id/tvMyReportlabel"
+                tools:text="20 july 1991"
+                tools:visibility="visible" />
+
+            <ProgressBar
+                android:id="@+id/progressBarSync"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_marginEnd="16dp"
+                android:elevation="@dimen/_25sdp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tvReportDateDash"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvReportDateDash"
+                tools:visibility="visible" />
+
+
+            <!--patient detail-->
+            <include
+                android:id="@+id/includeBasicInfo"
+                layout="@layout/include_patient_detail_dashbord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMyReportlabel"
+                tools:visibility="visible" />
+
+
+            <TextView
+                android:id="@+id/tvLabeldisease"
+                style="@style/BaseAppTheme.TxtView.bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/disease_specific_clinical_parameters"
+                android:textSize="@dimen/text_medium"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/includeBasicInfo"
+                tools:visibility="visible" />
+
+
+            <!--chf ailment -->
+
+            <include
+                android:id="@+id/includeChf"
+                layout="@layout/include_chf_ailment_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/tvLabeldisease"
+                app:layout_constraintStart_toStartOf="@+id/tvLabeldisease"
+                app:layout_constraintTop_toBottomOf="@id/tvLabeldisease"
+                tools:visibility="gone" />
+
+            <!--afib ailment-->
+
+            <include
+                android:id="@+id/includeAfib"
+                layout="@layout/include_afib_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/includeBasicInfo"
+                app:layout_constraintStart_toStartOf="@+id/includeBasicInfo"
+                app:layout_constraintTop_toBottomOf="@+id/includeChf"
+                tools:visibility="gone" />
+
+            <!--Hemodynamic Data-->
+
+            <TextView
+                android:id="@+id/tvHemoDynamicData"
+                style="@style/BaseAppTheme.TxtView.bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/vitals_and_activity"
+                android:textSize="@dimen/text_medium"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/ivEditGraphHeathlogs"
+                app:layout_constraintEnd_toStartOf="@+id/ivEditGraphHeathlogs"
+                app:layout_constraintStart_toStartOf="@+id/includeBasicInfo"
+                app:layout_constraintTop_toTopOf="@+id/ivEditGraphHeathlogs"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/ivEditGraphHeathlogs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/ripple_normal"
+                android:padding="6dp"
+                android:src="@drawable/ic_edit_profile"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/includeChf"
+                tools:visibility="visible" />
+
+
+            <!--chart filters-->
+
+            <include
+                android:id="@+id/includeFilterDash"
+                layout="@layout/include_graph_filter_button_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivEditGraphHeathlogs"
+                tools:visibility="visible" />
+
+            <!--heart chat -->
+
+            <include
+                android:id="@+id/includeHeartVsDate"
+                layout="@layout/include_heartratevsdate_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/tvHemoDynamicData"
+                app:layout_constraintStart_toStartOf="@+id/tvHemoDynamicData"
+                app:layout_constraintTop_toBottomOf="@+id/progressBarForGraphs"
+                tools:visibility="gone" />
+
+            <!--bp chat -->
+
+            <include
+                android:id="@+id/includeBpVsDate"
+                layout="@layout/include_bp_vs_date_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/tvHemoDynamicData"
+                app:layout_constraintStart_toStartOf="@+id/tvHemoDynamicData"
+                app:layout_constraintTop_toBottomOf="@+id/includeHeartVsDate"
+                tools:visibility="gone" />
+
+            <!--weight chat -->
+
+            <include
+                android:id="@+id/includeWeightVsDate"
+                layout="@layout/include_weight_vs_date_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/tvHemoDynamicData"
+                app:layout_constraintStart_toStartOf="@+id/tvHemoDynamicData"
+                app:layout_constraintTop_toBottomOf="@+id/includeBpVsDate"
+                tools:visibility="gone" />
+
+            <!--steps chat -->
+
+            <include
+                android:id="@+id/includeStepstVsDate"
+                layout="@layout/include_steps_vs_date_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/tvHemoDynamicData"
+                app:layout_constraintStart_toStartOf="@+id/tvHemoDynamicData"
+                app:layout_constraintTop_toBottomOf="@+id/includeWeightVsDate"
+                tools:visibility="gone" />
+
+            <ProgressBar
+                android:id="@+id/progressBarForGraphs"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="@dimen/small_progress_bar"
+                android:layout_height="@dimen/small_progress_bar"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/includeFilterDash"
+                app:layout_constraintTop_toBottomOf="@+id/includeFilterDash"
+                tools:visibility="visible" />
+
+
+            <TextView
+                android:id="@+id/tvCvMedicationCategorized"
+                style="@style/BaseAppTheme.TxtView.bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/cv_medications_categorized_by_type_for_diagnosis"
+                android:textSize="@dimen/text_medium"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/includeStepstVsDate"
+                tools:visibility="visible" />
+
+            <!--medications-->
+
+            <include
+                android:id="@+id/includeChbMedications"
+                layout="@layout/include_chb_medication_dashboard_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/tvHemoDynamicData"
+                app:layout_constraintStart_toStartOf="@+id/tvHemoDynamicData"
+                app:layout_constraintTop_toBottomOf="@+id/tvCvMedicationCategorized"
+                tools:visibility="gone" />
+
+            <include
+                android:id="@+id/includeAfibMedications"
+                layout="@layout/include_afib_medication_dashboard_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/tvHemoDynamicData"
+                app:layout_constraintStart_toStartOf="@+id/tvHemoDynamicData"
+                app:layout_constraintTop_toBottomOf="@+id/includeChbMedications"
+                tools:visibility="gone" />
+
+
+            <!--erorr messges when no diagnosis is there-->
+
+
+            <TextView
+                android:id="@+id/tvNoDiagnosis"
+                style="@style/BaseAppTheme.TxtView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/error_no_diagnosis_dashboard"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvReportDateDash"
+                tools:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/tvAddDiagnosis"
+                style="@style/BaseAppTheme.TxtView.bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ripple_normal_bounded"
+                android:padding="8dp"
+                android:textSize="@dimen/text_large"
+                android:text="Add Diagnosis"
+                android:textColor="@color/colorPrimary"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/tvNoDiagnosis"
+                app:layout_constraintStart_toStartOf="@+id/tvNoDiagnosis"
+                app:layout_constraintTop_toBottomOf="@+id/tvNoDiagnosis"
+                tools:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvAddHealthLog"
+                style="@style/BaseAppTheme.TxtView.bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ripple_normal_bounded"
+                android:padding="8dp"
+                android:textSize="@dimen/text_large"
+                android:text="@string/add_health_logs"
+                android:textColor="@color/colorPrimary"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/tvAddDiagnosis"
+                app:layout_constraintStart_toStartOf="@+id/tvAddDiagnosis"
+                app:layout_constraintTop_toBottomOf="@+id/tvAddDiagnosis"
+                tools:visibility="gone" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

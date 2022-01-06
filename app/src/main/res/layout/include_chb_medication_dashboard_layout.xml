@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/cvChfMed"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvChfMedLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="CHF"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvBetaBlockerLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/beta_blocker"
+            app:layout_constraintStart_toStartOf="@+id/tvChfMedLabel"
+            app:layout_constraintTop_toTopOf="@+id/flBetaBlocker" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flBetaBlocker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:flexWrap="wrap"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toEndOf="@+id/tvSglLabel"
+            app:layout_constraintTop_toBottomOf="@+id/ivEditChbMed"
+            tools:layout_height="@dimen/_30sdp" />
+
+        <TextView
+            android:id="@+id/tvArniLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/arni"
+            app:layout_constraintStart_toStartOf="@+id/tvBetaBlockerLabel"
+            app:layout_constraintTop_toTopOf="@+id/flArni" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flArni"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:flexWrap="wrap"
+            app:layout_constraintEnd_toEndOf="@+id/flBetaBlocker"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/flBetaBlocker"
+            app:layout_constraintTop_toBottomOf="@+id/flBetaBlocker"
+            tools:layout_height="@dimen/_30sdp" />
+
+
+        <TextView
+            android:id="@+id/tvAceLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ace_arb"
+            app:layout_constraintStart_toStartOf="@+id/tvArniLabel"
+            app:layout_constraintTop_toTopOf="@+id/flAce" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flAce"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:flexWrap="wrap"
+            app:layout_constraintEnd_toEndOf="@+id/flBetaBlocker"
+            app:layout_constraintStart_toStartOf="@+id/flBetaBlocker"
+            app:layout_constraintTop_toBottomOf="@+id/flArni"
+            tools:layout_height="@dimen/_30sdp" />
+
+        <!--mra-->
+
+        <TextView
+            android:id="@+id/tvMraLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mra"
+            app:layout_constraintStart_toStartOf="@+id/tvArniLabel"
+            app:layout_constraintTop_toTopOf="@+id/flMra" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flMra"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:flexWrap="wrap"
+            app:layout_constraintEnd_toEndOf="@+id/flBetaBlocker"
+            app:layout_constraintStart_toStartOf="@+id/flBetaBlocker"
+            app:layout_constraintTop_toBottomOf="@+id/flAce"
+            tools:layout_height="@dimen/_30sdp" />
+
+
+        <!--sgl-->
+
+        <TextView
+            android:id="@+id/tvSglLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sglt2_inhibitor"
+            app:layout_constraintStart_toStartOf="@+id/tvArniLabel"
+            app:layout_constraintTop_toTopOf="@+id/flSgl" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flSgl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:flexWrap="wrap"
+            app:layout_goneMarginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@id/flOther"
+            app:layout_constraintEnd_toEndOf="@+id/flBetaBlocker"
+            app:layout_constraintStart_toStartOf="@+id/flBetaBlocker"
+            app:layout_constraintTop_toBottomOf="@+id/flMra"
+            tools:layout_height="@dimen/_30sdp" />
+
+
+         <!--other-->
+
+        <TextView
+            android:id="@+id/tvOtherLabel"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/other"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="@+id/tvBetaBlockerLabel"
+            app:layout_constraintTop_toTopOf="@+id/flOther" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flOther"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/none"
+            app:flexWrap="wrap"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/flBetaBlocker"
+            app:layout_constraintStart_toStartOf="@+id/flBetaBlocker"
+            app:layout_constraintTop_toBottomOf="@+id/flSgl"
+            tools:layout_height="@dimen/_30sdp" />
+
+        <ImageView
+            android:id="@+id/ivEditChbMed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ripple_normal"
+            android:padding="6dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvChfMedLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvChfMedLabel"
+            app:srcCompat="@drawable/ic_edit_profile" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

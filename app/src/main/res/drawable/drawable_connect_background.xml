@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/ripple_icon_state_pressed">
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/ripple_icon_state_pressed" />
+            <corners android:radius="@dimen/default_button_corner_radius" />
+        </shape>
+    </item>
+
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <corners
+                android:bottomLeftRadius="@dimen/default_button_corner_radius"
+                android:topLeftRadius="@dimen/default_button_corner_radius" />
+            <gradient
+                android:angle="90"
+                android:endColor="#00b191"
+                android:startColor="#0e88ac"
+                android:type="linear" />
+        </shape>
+    </item>
+</ripple>

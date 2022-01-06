@@ -1,0 +1,1106 @@
+[
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/xml_preference_still_image.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/xml/preference_still_image.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xhdpi_icon_via_speech.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xhdpi/icon_via_speech.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxhdpi_icon_via_speech.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xxhdpi/icon_via_speech.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_notifications.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_notifications.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_ic_tutorial_two.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxxhdpi/ic_tutorial_two.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_left_white.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_left_white.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-ldpi_ic_hide_password.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-ldpi/ic_hide_password.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xhdpi_ic_home_diagnosis_background.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xhdpi/ic_home_diagnosis_background.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_done.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_done.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/anim_in_from_right.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/anim/in_from_right.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_show_password.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_show_password.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-mdpi_icon_via_speech.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-mdpi/icon_via_speech.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/font_nunito_extrabold.ttf.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/font/nunito_extrabold.ttf"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_item_patient.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/item_patient.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_add_patient.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_add_patient.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_btn_white_bg_with_white_corner.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/btn_white_bg_with_white_corner.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_bg_snackbar.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/bg_snackbar.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_forward.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_forward.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_setting.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_setting.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_dashboard.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_authenticate_user.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_authenticate_user.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_add_black.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_add_black.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_et_white_bg_search_with_corners.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/et_white_bg_search_with_corners.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_get_profile.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_get_profile.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_graph_filter_button_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_graph_filter_button_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/xml_preference_live_preview_quickstart.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/xml/preference_live_preview_quickstart.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_wearable.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_wearable.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_compound_question_type_4_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/compound_question_type_4_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/navigation_graph_diagnosis_edit_questionare_info.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/navigation/graph_diagnosis_edit_questionare_info.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_custom_marker_view.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/custom_marker_view.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/menu_camera_button_menu.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/menu/camera_button_menu.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_ic_next.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xxxhdpi/ic_next.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_cursor_white.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/cursor_white.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/color_selector_text_chip.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/color/selector_text_chip.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_done_icon.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_done_icon.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_phone_number_verification.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_phone_number_verification.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/anim_out_to_right.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/anim/out_to_right.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_bottom_sheet_dashboard_filter.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/bottom_sheet_dashboard_filter.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxhdpi_ic_tutorial_one.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxhdpi/ic_tutorial_one.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-anydpi-v24_ic_hide_password.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-anydpi-v24/ic_hide_password.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-hdpi_ic_google.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-hdpi/ic_google.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_search_filter.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_search_filter.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-anydpi-v24_icon_via_speech.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-anydpi-v24/icon_via_speech.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xhdpi_ic_tutorial_one.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xhdpi/ic_tutorial_one.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_splash.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_splash.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_right_green.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_right_green.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-anydpi-v24_ic_home_diagnosis_background.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-anydpi-v24/ic_home_diagnosis_background.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xhdpi_ic_choose_image.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xhdpi/ic_choose_image.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_health_logs.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_health_logs.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_toolbar.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/toolbar.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_ic_logo.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxxhdpi/ic_logo.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/navigation_graph_diagnosis.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/navigation/graph_diagnosis.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/navigation_graph_diagnosis_edit_basic_info.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/navigation/graph_diagnosis_edit_basic_info.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_diagnosis.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_diagnosis.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/anim_out_to_left.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/anim/out_to_left.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-ldpi_ic_dashboard_add.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-ldpi/ic_dashboard_add.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxhdpi_ic_google.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxhdpi/ic_google.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/font_nunito_medium.ttf.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/font/nunito_medium.ttf"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxhdpi_ic_choose_image.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxhdpi/ic_choose_image.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_notification.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_notification.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_btn_color_primary_background.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/btn_color_primary_background.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_health_detail.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_health_detail.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/anim_txt_bottom_down.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/anim/txt_bottom_down.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_ic_google.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxxhdpi/ic_google.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/navigation_graph_authenticate_user.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/navigation/graph_authenticate_user.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxhdpi_ic_next.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xxhdpi/ic_next.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ripple_normal_bounded.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ripple_normal_bounded.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_dashboard_profile_select.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_dashboard_profile_select.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_patient_dashboard.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_patient_dashboard.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-nodpi_radar_marker.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-nodpi/radar_marker.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xhdpi_ic_google.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xhdpi/ic_google.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xhdpi_ic_dashboard_add.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xhdpi/ic_dashboard_add.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_ic_home_diagnosis_background.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xxxhdpi/ic_home_diagnosis_background.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_btn_color_primary_border_left_rounded_background.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/btn_color_primary_border_left_rounded_background.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_patient_detail.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_patient_detail.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_bottom_sheet_image_picker.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/bottom_sheet_image_picker.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_btn_color_primary_left_rounded_background.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/btn_color_primary_left_rounded_background.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_place_holder_profile.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_place_holder_profile.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-anydpi-v24_ic_dashboard_add.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-anydpi-v24/ic_dashboard_add.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_item_medicine_search_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/item_medicine_search_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xhdpi_ic_next.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xhdpi/ic_next.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_item_dropdown_ailment.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/item_dropdown_ailment.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_profile_placeholder.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_profile_placeholder.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_weight_vs_date_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_weight_vs_date_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_ic_tutorial_one.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxxhdpi/ic_tutorial_one.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_chf_ailment_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_chf_ailment_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_chooser.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_chooser.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_edt_rounded_corner.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/edt_rounded_corner.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_icon_via_speech.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xxxhdpi/icon_via_speech.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-anydpi-v24_icon_via_image.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-anydpi-v24/icon_via_image.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_web_view.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_web_view.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_home_select.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_home_select.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_spinner_style.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/spinner_style.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_settings_style.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/settings_style.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_calendar.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_calendar.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ripple_normal.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ripple_normal.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/navigation_graph_diagnosis_edit_medication.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/navigation/graph_diagnosis_edit_medication.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-hdpi_ic_tutorial_two.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-hdpi/ic_tutorial_two.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxhdpi_icon_via_image.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xxhdpi/icon_via_image.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_vision_live_preview.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_vision_live_preview.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_still_image.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_still_image.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_weight.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_weight.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_chb_medication_dashboard_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_chb_medication_dashboard_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_height.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_height.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_compound_question_type_3_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/compound_question_type_3_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_ic_switch_camera_white_48dp.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxxhdpi/ic_switch_camera_white_48dp.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_item_connection.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/item_connection.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_checkbox_click_state.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/checkbox_click_state.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_fitbit.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_fitbit.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/color_selector_chip.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/color/selector_chip.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_diagnosis_part_3.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_diagnosis_part_3.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_email_user_thumbnail.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_email_user_thumbnail.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_btn_color_primary_rounded_background.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/btn_color_primary_rounded_background.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-hdpi_icon_via_speech.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-hdpi/icon_via_speech.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-anydpi-v24_ic_next.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-anydpi-v24/ic_next.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_guideline_left.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/guideline_left.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-nodpi_marker2.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-nodpi/marker2.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_btn_color_accent_background.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/btn_color_accent_background.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/font_nunito_bold.ttf.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/font/nunito_bold.ttf"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/anim_in_from_left.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/anim/in_from_left.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_login.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_login.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_drawable_user_placeholder.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/drawable_user_placeholder.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_item_medication_preview_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/item_medication_preview_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_bottom_sheet_physician_operation.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/bottom_sheet_physician_operation.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_email_user_thumbnail_bg.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_email_user_thumbnail_bg.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_bg_sync_profile.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/bg_sync_profile.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_logout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_logout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_btn_color_primary_border_rounded_background.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/btn_color_primary_border_rounded_background.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_drawable_green_gradient_circle.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/drawable_green_gradient_circle.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_calender.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_calender.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_ic_switch_camera_white_48dp_inset.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxxhdpi/ic_switch_camera_white_48dp_inset.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_launcher_background.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_profile_placeholder_small.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_profile_placeholder_small.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_steps_vs_date_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_steps_vs_date_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_btn_white_bg_with_grey_corner.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/btn_white_bg_with_grey_corner.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_web_view.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_web_view.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_vision_entry_choice.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_vision_entry_choice.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-hdpi_icon_via_image.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-hdpi/icon_via_image.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_change_email.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_change_email.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_connect.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_connect.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxhdpi_ic_home_diagnosis_background.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xxhdpi/ic_home_diagnosis_background.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-ldpi_icon_via_speech.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-ldpi/icon_via_speech.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_empty_data.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_empty_data.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_diagnosis_part_2.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_diagnosis_part_2.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_forgot_password.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_forgot_password.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-hdpi_ic_choose_image.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-hdpi/ic_choose_image.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xhdpi_ic_tutorial_three.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xhdpi/ic_tutorial_three.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_back_v2.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_back_v2.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_ic_dashboard_add.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xxxhdpi/ic_dashboard_add.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_checkbox_checked.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_checkbox_checked.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_tutorial_slide_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/tutorial_slide_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_gender.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_gender.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_profile_menu.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_profile_menu.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_home_unselect.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_home_unselect.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-hdpi_ic_tutorial_one.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-hdpi/ic_tutorial_one.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-ldpi_ic_next.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-ldpi/ic_next.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_drawable_connect_background.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/drawable_connect_background.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxhdpi_ic_logo.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxhdpi/ic_logo.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/xml_file_paths.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/xml/file_paths.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_compound_question_type_1_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/compound_question_type_1_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_left_green.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_left_green.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-mdpi_ic_dashboard_add.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-mdpi/ic_dashboard_add.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_app_gradient_background.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/app_gradient_background.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/font_nunito_semibold.ttf.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/font/nunito_semibold.ttf"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxhdpi_ic_dashboard_add.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xxhdpi/ic_dashboard_add.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_tutorial.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_tutorial.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_vision_camerax_live_preview.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_vision_camerax_live_preview.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_dashboard_profile_selected.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_dashboard_profile_selected.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_health_logs.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_health_logs.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-ldpi_icon_via_image.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-ldpi/icon_via_image.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_watch.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_watch.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_compound_question_type_not_supported_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/compound_question_type_not_supported_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_edit_profile.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_edit_profile.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_white_rounded_corner.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/white_rounded_corner.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_back.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_back.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_edit_profile.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_edit_profile.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_toggle_thumb.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_toggle_thumb.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_drawable_green_circular_border.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/drawable_green_circular_border.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_notification_preference.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_notification_preference.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_illness.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_illness.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_item_medicine_added.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/item_medicine_added.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_dashboard.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_dashboard.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_dropdown_mobile.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_dropdown_mobile.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_edt_rounded_corner_red.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/edt_rounded_corner_red.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_ic_hide_password.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xxxhdpi/ic_hide_password.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_terms_and_conditon.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_terms_and_conditon.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-hdpi_ic_hide_password.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-hdpi/ic_hide_password.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-mdpi_ic_next.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-mdpi/ic_next.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_compound_question_type_2_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/compound_question_type_2_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-hdpi_ic_next.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-hdpi/ic_next.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xhdpi_ic_hide_password.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xhdpi/ic_hide_password.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/navigation_graph_profile.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/navigation/graph_profile.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_add_v2.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_add_v2.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_change_password.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_change_password.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_diagnosis_part_1.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_diagnosis_part_1.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/font_nunito_regular.ttf.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/font/nunito_regular.ttf"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_icon_info.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/icon_info.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/anim_txt_bottom_up.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/anim/txt_bottom_up.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_btn_color_primary_right_rounded_background.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/btn_color_primary_right_rounded_background.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_no_notification.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_no_notification.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-mdpi_ic_hide_password.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-mdpi/ic_hide_password.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_root.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_root.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_dashboard_profile_unselected.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_dashboard_profile_unselected.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-mdpi_ic_home_diagnosis_background.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-mdpi/ic_home_diagnosis_background.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_btn_gradient_background.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/btn_gradient_background.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xhdpi_ic_tutorial_two.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xhdpi/ic_tutorial_two.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_item_notification_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/item_notification_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxhdpi_ic_hide_password.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xxhdpi/ic_hide_password.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_diagnosis_part_4.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_diagnosis_part_4.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-ldpi_ic_home_diagnosis_background.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-ldpi/ic_home_diagnosis_background.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-hdpi_ic_logo.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-hdpi/ic_logo.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_checkbox_uncheck.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_checkbox_uncheck.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_search_normal.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_search_normal.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxhdpi_ic_tutorial_two.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxhdpi/ic_tutorial_two.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_right_white.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_right_white.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_settings.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_settings.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xhdpi_icon_via_image.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xhdpi/icon_via_image.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-hdpi_ic_home_diagnosis_background.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-hdpi/ic_home_diagnosis_background.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_diagnosis_bottom_views.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_diagnosis_bottom_views.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_afib_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_afib_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_more_options.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_more_options.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_drawable_light_red_circular.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/drawable_light_red_circular.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_ic_choose_image.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxxhdpi/ic_choose_image.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/navigation_graph_selection_item.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/navigation/graph_selection_item.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_close.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_close.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/navigation_graph_dashboard.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/navigation/graph_dashboard.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_bp_vs_date_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_bp_vs_date_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_fitbit_login.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_fitbit_login.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_profile_circle_bg.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_profile_circle_bg.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_afib_medication_dashboard_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_afib_medication_dashboard_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_dashboard_profile_unselect.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_dashboard_profile_unselect.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_toggle_track.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_toggle_track.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_about.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_about.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_faq.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_faq.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-hdpi_ic_dashboard_add.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-hdpi/ic_dashboard_add.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_add.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_add.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_ic_tutorial_three.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxxhdpi/ic_tutorial_three.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_toggle_style.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/toggle_style.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_sync_health_data.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_sync_health_data.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_remove_red.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_remove_red.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_medication_preview_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_medication_preview_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_health_logs_30dp.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_health_logs_30dp.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_shape_drop_down_normal.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/shape_drop_down_normal.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_google_fit.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_google_fit.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_icon_via_image.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-xxxhdpi/icon_via_image.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/color_button_background_color_selector.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/color/button_background_color_selector.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_fragment_sign_up.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_sign_up.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_dialog_progress_bar.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/dialog_progress_bar.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_change_password.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_change_password.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_remove.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_remove.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xhdpi_ic_logo.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xhdpi/ic_logo.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_step_view.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_step_view.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_activity_sync_health.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_sync_health.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_bottom_sheet_image_picker_edit_screen.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/bottom_sheet_image_picker_edit_screen.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_guideline_right.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/guideline_right.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-mdpi_icon_via_image.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/generated/res/pngs/qa/debug/drawable-mdpi/icon_via_image.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxhdpi_ic_tutorial_three.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxhdpi/ic_tutorial_three.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-hdpi_ic_tutorial_three.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-hdpi/ic_tutorial_three.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_drawable_green_circular.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/drawable_green_circular.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_heartratevsdate_layout.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_heartratevsdate_layout.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_patient_detail_dashbord.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_patient_detail_dashbord.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_btn_color_primary_border_right_rounded_background.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/btn_color_primary_border_right_rounded_background.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable-xxxhdpi_ic_settings_white_24dp.png.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable-xxxhdpi/ic_settings_white_24dp.png"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/layout_include_patient_detail_ailment.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/include_patient_detail_ailment.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_setting.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_setting.xml"
+    }
+]

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cvChf"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvNameLabel"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="CHF Type : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvChfType"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNameLabel"
+            app:layout_constraintEnd_toStartOf="@+id/ivEditChbClinical"
+            app:layout_constraintStart_toEndOf="@+id/tvNameLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvNameLabel"
+            tools:text="Hfrfe" />
+
+        <TextView
+            android:id="@+id/textView9"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/ef"
+            app:layout_constraintStart_toStartOf="@+id/tvNameLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameLabel" />
+
+        <TextView
+            android:id="@+id/tvEfDash"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toTopOf="@+id/textView9"
+            tools:text="@string/unknown" />
+
+        <TextView
+            android:id="@+id/tvNhayLabel"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="NYHA Class : "
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintStart_toEndOf="@+id/tvEfDash"
+            app:layout_constraintTop_toTopOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/tvNyhaClass"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNhayLabel"
+            app:layout_constraintStart_toEndOf="@+id/tvNhayLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvNhayLabel"
+            tools:text="2" />
+
+        <TextView
+            android:id="@+id/tvDryWeightLabelDash"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Dry Weight : "
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/tvDryWeightDash"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDryWeightLabelDash"
+            app:layout_constraintStart_toEndOf="@+id/tvDryWeightLabelDash"
+            app:layout_constraintTop_toTopOf="@+id/tvDryWeightLabelDash"
+            tools:text="25" />
+
+        <TextView
+            android:id="@+id/tvCardiacDevicesLabel"
+            style="@style/BaseAppTheme.TxtView.bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Cardiac Device(s) : "
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/tvDryWeightLabelDash" />
+
+        <TextView
+            android:id="@+id/tvCardiacDevices"
+            style="@style/BaseAppTheme.TxtView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvCardiacDevicesLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvCardiacDevicesLabel"
+            tools:text="2 Leads" />
+
+        <ImageView
+            android:id="@+id/ivEditChbClinical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="6dp"
+            android:background="@drawable/ripple_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_edit_profile" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

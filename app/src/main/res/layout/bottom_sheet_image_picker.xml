@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:contentPadding="0dp"
+    style="@style/CustomCardCorners"
+    >
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvAddImageLabel"
+        style="@style/BaseAppTheme.TxtView.bold"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/bottom_sheet_item"
+        android:layout_marginStart="8dp"
+        android:text="@string/add_image"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/bottom_sheet_item"
+        android:textSize="@dimen/text_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvTakePic"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/bottom_sheet_item"
+        android:paddingLeft="8dp"
+        android:text="@string/take_a_picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddImageLabel" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvPickImage"
+        style="@style/BaseAppTheme.TxtView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/bottom_sheet_item"
+        android:paddingLeft="8dp"
+        android:text="Gallery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTakePic" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
+

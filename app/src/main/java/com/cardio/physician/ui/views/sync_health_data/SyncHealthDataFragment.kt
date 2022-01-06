@@ -1,0 +1,231 @@
+package com.cardio.physician.ui.views.sync_health_data
+
+import android.app.Activity
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.cardio.physician.R
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationHandler
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationManager
+import com.cardio.physician.data.remote.fitnesstracker.fitbit.authentication.AuthenticationResult
+import com.cardio.physician.data.remote.fitnesstracker.googlefit.GoogleFitManager
+import com.cardio.physician.databinding.FragmentSyncHealthDataBinding
+import com.cardio.physician.domain.fitness.model.FitnessModel
+import com.cardio.physician.ui.common.base.fragment.BaseToolBarFragment
+import com.cardio.physician.ui.common.customviews.toolbar.SyncHealthToolbarImp
+import com.cardio.physician.ui.common.customviews.toolbar.base.IToolbar
+import com.cardio.physician.ui.common.utils.extentions.customObserver
+import com.cardio.physician.ui.common.utils.extentions.isConnectedOrThrowMsg
+import com.cardio.physician.ui.views.healthlogs.HealthLogsActivity
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+open class SyncHealthDataFragment : BaseToolBarFragment<FragmentSyncHealthDataBinding>(),
+    AuthenticationHandler {
+
+    protected var isFitSelected = false
+    protected var isGoogleFitSelected = false
+    val TAG = "SyncHealthDataFragment"
+    val viewModel: SyncHealthViewModel by viewModels()
+    private lateinit var arrayOfImageView: Array<ImageView>
+
+    var resultHealthLogs: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                onBackButtonClick()
+            }
+        }
+
+    var resultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            if (!AuthenticationManager.onActivityResult(
+                    AuthenticationManager.RESULT_CODE,
+                    result.resultCode,
+                    result.data,
+                    this
+                )
+            ) {
+                // Handle other activity results, if needed
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (resultCode) {
+            AppCompatActivity.RESULT_OK -> {
+                val postSignInAction = GoogleFitManager.FitActionRequestCode.values()[requestCode]
+                postSignInAction.let {
+                    binding.googleFitContainer.performClick()
+                }
+            }
+            else -> oAuthErrorMsg(requestCode, resultCode)
+        }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        binding = FragmentSyncHealthDataBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        arrayOfImageView = arrayOf(binding.imgFitBitDone, binding.imgGoogleFitDone)
+        setViews()
+        setListener()
+        setObservers()
+    }
+
+    private fun setViews() {
+        binding.btNext.visibility = View.VISIBLE
+        //initially set continue button disabled
+        enableContinueButton(false)
+        val selectedHealthKit = viewModel.getSelectedHealthKit()
+        if (selectedHealthKit.equals(getString(R.string.fitbit), true)) {
+            if (viewModel.isFitbitLoggedIn()) {
+                onFitBitAuthenticated()
+            }
+        } else if (selectedHealthKit.equals(getString(R.string.google_fit), true)) {
+            if (viewModel.isGooglefitLoggedIn()) {
+                onGoogleAuthenticated()
+            }
+        }
+    }
+
+    private fun enableContinueButton(isEnable: Boolean) {
+        if (isEnable) {
+            binding.btNext.isEnabled = true
+            binding.btNext.alpha = 1.0f
+        } else {
+            binding.btNext.isEnabled = false
+            binding.btNext.alpha = 0.3f
+        }
+    }
+
+    override fun onAuthFinished(result: AuthenticationResult?) {
+        result?.isSuccessful?.let {
+            if (it) {
+                onFitBitAuthenticated()
+            }
+        }
+    }
+
+    open fun setListener() {
+        binding.fitbitContainer.setOnClickListener {
+            isConnectedOrThrowMsg {
+                if (!viewModel.isFitbitLoggedIn())
+                    viewModel.connectWithFitbit(resultLauncher, requireContext())
+                else {
+                    onFitBitAuthenticated()
+                }
+            }
+        }
+        binding.googleFitContainer.setOnClickListener {
+            isConnectedOrThrowMsg {
+                if (!viewModel.isGooglefitLoggedIn())
+                    viewModel.connectWithGooglefit(this)
+                else {
+                    onGoogleAuthenticated()
+                }
+            }
+        }
+        binding.healthLogsContainer.setOnClickListener {
+            resultHealthLogs.launch(HealthLogsActivity.getIntent(requireActivity(), null))
+        }
+        binding.btNext.setOnClickListener {
+            onBackButtonClick()
+        }
+    }
+
+    open fun setObservers() {
+        viewModel.getUserFitbitData().customObserver(
+            this,
+            onLoading = ::showProgress,
+            onSuccess = {
+                it?.let {
+                    onFitbitProfileDataRecieved(it)
+                }
+            },
+            onError = ::onError
+        )
+        viewModel.getUserGoogleFitLiveData()
+            .customObserver(this, onLoading = ::showProgress, onSuccess = {
+                it?.let {
+                    onGoogleProfileDataRecieved(it)
+                }
+            }, onError = ::onError)
+    }
+
+    open fun onGoogleProfileDataRecieved(it: FitnessModel) {
+        //do what you need to do here may be update user profile
+    }
+
+    open fun onFitbitProfileDataRecieved(fitnessModel: FitnessModel) {
+        //do what you need to do here may be update user profile
+    }
+
+
+    private fun onGoogleAuthenticated() {
+        isFitSelected = false
+        isGoogleFitSelected = true
+        arrayOfImageView[1].visibility = View.VISIBLE
+        arrayOfImageView[0].visibility = View.GONE
+        viewModel.storeSyncSelectionInPreference(getString(R.string.google_fit))
+        enableContinueButton(true)
+    }
+
+    private fun onFitBitAuthenticated() {
+        isFitSelected = true
+        isGoogleFitSelected = false
+        viewModel.storeSyncSelectionInPreference(getString(R.string.fitbit))
+        arrayOfImageView[1].visibility = View.GONE
+        arrayOfImageView[0].visibility = View.VISIBLE
+        enableContinueButton(true)
+    }
+
+    /*if instance was directly made of this class then following method will be called*/
+    open fun onGoogleSelection() {
+        findNavController().popBackStack()
+    }
+
+    /*if instance was directly made of this class then following method will be called*/
+    open fun onFitbitSelection() {
+        findNavController().popBackStack()
+    }
+
+    private fun oAuthErrorMsg(requestCode: Int, resultCode: Int) {
+        val message = """
+            There was an error signing into Fit. Check the troubleshooting section of the README
+            for potential issues.
+            Request code was: $requestCode
+            Result code was: $resultCode
+        """.trimIndent()
+        Log.e(TAG, message)
+    }
+
+    fun logout(activity: Activity) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getToolbarImp(): IToolbar? {
+        return SyncHealthToolbarImp(binding.headerView.toolBarContainer).onBackButtonListener {
+            onBackButtonClick()
+        }
+    }
+
+}

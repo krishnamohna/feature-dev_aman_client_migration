@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#00b191</color>
+    <color name="colorPrimaryDark">#008063</color>
+    <color name="colorPrimaryLight">#c4f0e8</color>
+    <color name="black">#000000</color>
+    <color name="black_tutorial_text">#333333</color>
+    <color name="white">#ffffff</color>
+    <color name="grey">#ADAFBB</color>
+    <color name="grey_bg">#e0e5e4</color>
+    <color name="grey_divider">#c4c4c4</color>
+    <color name="grey_text">#8e9aab</color>
+    <color name="grey_text_hint">#999999</color>
+    <color name="grey_dark">#25242d</color>
+    <color name="green_light">#1bc340</color>
+    <color name="green_toggle">#34c759</color>
+    <color name="green_otp">#4cb162</color>
+    <color name="green_tutorial_indicator">#0493bf</color>
+    <!--button colors-->
+    <color name="buttonBackgroundColorDisabled">#e0e0e0</color>
+    <color name="buttonBackgroundColorEnabled">@color/colorPrimaryDark</color>
+    <color name="btn_gradient_start">#00b191</color>
+    <color name="btn_gradient_end">#0e88ac</color>
+    <color name="btn_gradient_start_light">#00e6bb</color>
+    <color name="btn_gradient_end_light">#13b9ec</color>
+    <color name="red_validation">#ee000e</color>
+    <color name="blue">#007aff</color>
+    <color name="blue_btn_start">#8228fb</color>
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/grey_bg</color>
+    <color name="text_color_green">#00b191</color>
+    <!--ripple-->
+    <color name="ripple_icon_state_pressed">#c4c4c4</color>
+    <!--step view -->
+    <color name="stepview_line_done">@android:color/white</color>
+    <color name="stepview_line_next">#26ffffff</color>
+    <color name="stepview_text_next">#40ffffff</color>
+    <color name="stepview_text_done">#40ffffff</color>
+    <color name="stepview_text_selected">@android:color/white</color>
+    <color name="stepview_circle_done">@android:color/white</color>
+    <color name="stepview_circle_selected">@android:color/white</color>
+    <color name="stepview_selected_number">#25448a</color>
+    <color name="stepview_mark">@color/stepview_selected_number</color>
+    <color name="step_diagnosis_color">@color/colorPrimary</color>
+    <color name="cardview_light">#fbfbfc</color>
+    <color name="color_data_point_graph">#0B92A6</color>
+    <color name="color_high_heart_rate">#FFCABD</color>
+    <color name="color_optimal_heart_rate">#B0FFB0</color>
+    <color name="color_low_heart_rate">#FFEEBC</color>
+    <color name="color_filter">#0B92A6</color>
+    <color name="medicine">#0B92A6</color>
+    <color name="red_light">#4Dee000e</color>
+</resources>
