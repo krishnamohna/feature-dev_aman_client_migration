@@ -16,6 +16,7 @@ import com.cardio.physician.ui.common.base.fragment.BaseToolBarFragment;
 import com.cardio.physician.ui.common.customviews.toolbar.DashBoardToolbarImp;
 import com.cardio.physician.ui.common.customviews.toolbar.base.IToolbar;
 import com.cardio.physician.ui.common.utils.*;
+import com.cardio.physician.ui.views.add_patient.AddPatientActivity;
 import com.cardio.physician.ui.views.dashboard.DashboardActivity;
 import com.cardio.physician.ui.views.diagnosis.DiagnosisActivity;
 import com.cardio.physician.ui.views.notifications.NotificationsActivity;

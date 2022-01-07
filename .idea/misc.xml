@@ -9,8 +9,10 @@
         <entry key="app/src/main/res/drawable/ic_done_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_remove_red.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_fitbit_login.xml" value="0.30978260869565216" />
         <entry key="app/src/main/res/layout/activity_notifications.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_diagnosis_part_3.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_patient_dashboard.xml" value="0.30978260869565216" />
         <entry key="app/src/main/res/layout/item_notification_layout.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_patient.xml" value="0.30978260869565216" />
       </map>

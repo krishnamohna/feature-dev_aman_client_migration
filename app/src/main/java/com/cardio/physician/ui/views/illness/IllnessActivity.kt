@@ -67,23 +67,17 @@ class IllnessActivity : BaseActivity(), View.OnClickListener {
 
     private fun setObservers() {
         viewModel.liveUserData.customObserver(this, null, {
-            showHidePatientView(View.GONE)
-            adapter.updateData(it)
+            if(it.isNullOrEmpty()){
+                showHidePatientView(View.VISIBLE)
+            }else{
+                showHidePatientView(View.GONE)
+                adapter.updateData(it)
+            }
         }, { msg, exp ->
             showHidePatientView(View.VISIBLE)
-            when (msg) {
-                /*"201" -> {
-                    binding.ivEmailUser.visibility = View.VISIBLE
-                    binding.tvEmailUser.visibility = View.VISIBLE
-                    binding.tvInviteUser.visibility = View.VISIBLE
-                    binding.tvEmailUser.text = binding.etSearch.text.toString()
-                }*/
-                "203", "202" -> {
-                    binding.ivEmailUser.visibility = View.GONE
-                    binding.tvEmailUser.visibility = View.GONE
-                    binding.tvInviteUser.visibility = View.GONE
-                }
-            }
+            binding.ivEmailUser.visibility = View.GONE
+            binding.tvEmailUser.visibility = View.GONE
+            binding.tvInviteUser.visibility = View.GONE
         })
     }
 

@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/incremental/mergeQaDebugResources/stripped.dir/layout/fragment_diagnosis_part_4.xml",
-        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_diagnosis_part_4.xml"
-    },
-    {
         "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/incremental/mergeQaDebugResources/stripped.dir/layout/activity_vision_entry_choice.xml",
         "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/activity_vision_entry_choice.xml"
+    },
+    {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/incremental/mergeQaDebugResources/stripped.dir/layout/fragment_diagnosis_part_4.xml",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_diagnosis_part_4.xml"
     },
     {
         "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/incremental/mergeQaDebugResources/stripped.dir/layout/item_medicine_search_layout.xml",

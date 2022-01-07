@@ -91,7 +91,7 @@ class AddPatientRepositoryImp @Inject constructor(override val firebaseAuth: Fir
             userManager.getString(Preference.PREF_FIRST_NAME)
         mapNotification[FireStoreDocKey.LAST_NAME] =
             userManager.getString(Preference.PREF_LAST_NAME)
-        mapNotification[FireStoreDocKey.REQUEST_STATUS] = false
+//        mapNotification[FireStoreDocKey.REQUEST_STATUS] = false
         mapNotification[FireStoreDocKey.TIME_STAMP_CAMEL] = System.currentTimeMillis()
 
         fireStore.collection(FireStoreCollection.NOTIFICATIONS)
@@ -112,13 +112,13 @@ class AddPatientRepositoryImp @Inject constructor(override val firebaseAuth: Fir
     private fun getNotificationMsg(notificationType: String): String {
         return  when(notificationType){
             FireStoreDocKey.NOTIFICATION_TYPE_ADD_DIAGNOSIS ->{
-                "${userManager.getString(Preference.PREF_DISPLAY_NAME)} has added a diagnosis."
+                "${userManager.getString(Preference.PREF_DISPLAY_NAME)} has added a diagnosis for you."
             }
             FireStoreDocKey.NOTIFICATION_TYPE_EDIT_DIAGNOSIS ->{
-                "${userManager.getString(Preference.PREF_DISPLAY_NAME)} has edited a diagnosis."
+                "${userManager.getString(Preference.PREF_DISPLAY_NAME)} has edited a diagnosis for you."
             }
             FireStoreDocKey.NOTIFICATION_TYPE_REQUEST ->{
-                "${userManager.getString(Preference.PREF_DISPLAY_NAME)} has requested you to accept him as your doctor."
+                "${userManager.getString(Preference.PREF_DISPLAY_NAME)} has sent a request to add you as patient."
             }
             else -> {
                 "Incompatible notification type.Talk to support"

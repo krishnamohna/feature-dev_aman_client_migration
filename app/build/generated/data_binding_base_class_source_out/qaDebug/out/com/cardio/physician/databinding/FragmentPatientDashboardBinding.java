@@ -32,7 +32,7 @@ public final class FragmentPatientDashboardBinding implements ViewBinding {
   public final AppCompatImageView ivFilter;
 
   @NonNull
-  public final AppCompatImageView ivNoPatientFound;
+  public final AppCompatTextView ivNoPatientFound;
 
   @NonNull
   public final AppCompatImageView ivSearch;
@@ -60,7 +60,7 @@ public final class FragmentPatientDashboardBinding implements ViewBinding {
 
   private FragmentPatientDashboardBinding(@NonNull ConstraintLayout rootView,
       @NonNull AppCompatEditText etSearch, @NonNull ToolbarBinding headerView,
-      @NonNull AppCompatImageView ivFilter, @NonNull AppCompatImageView ivNoPatientFound,
+      @NonNull AppCompatImageView ivFilter, @NonNull AppCompatTextView ivNoPatientFound,
       @NonNull AppCompatImageView ivSearch, @NonNull ConstraintLayout parentContainer,
       @NonNull ProgressBar progressBarSync, @NonNull RecyclerView rvConnections,
       @NonNull AppCompatTextView tvAllPatientLabel, @NonNull AppCompatTextView tvDate,
@@ -127,7 +127,7 @@ public final class FragmentPatientDashboardBinding implements ViewBinding {
       }
 
       id = R.id.iv_no_patient_found;
-      AppCompatImageView ivNoPatientFound = rootView.findViewById(id);
+      AppCompatTextView ivNoPatientFound = rootView.findViewById(id);
       if (ivNoPatientFound == null) {
         break missingId;
       }

@@ -73,13 +73,13 @@ class NotificationAdapter constructor(private val action: (AdapterAction, Notifi
         private fun getMessage(notificationModel: NotificationModel): SpannableStringBuilder {
             val message = when {
                 notificationModel.type == FireStoreDocKey.NOTIFICATION_TYPE_REQUEST && notificationModel.requestStatus == true -> {
-                    "is in your connection"
+                    "has accepted your request."
                 }
                 notificationModel.type == FireStoreDocKey.NOTIFICATION_TYPE_REQUEST && notificationModel.requestStatus == false -> {
                     "is rejected by you."
                 }
                 notificationModel.type == FireStoreDocKey.NOTIFICATION_TYPE_REQUEST && notificationModel.requestStatus == null -> {
-                    "has added you"
+                    "has sent a request to add you as patient."
                 }
                 notificationModel.type == FireStoreDocKey.NOTIFICATION_TYPE_ADD_DIAGNOSIS -> {
                     "has added a diagnosis for you."

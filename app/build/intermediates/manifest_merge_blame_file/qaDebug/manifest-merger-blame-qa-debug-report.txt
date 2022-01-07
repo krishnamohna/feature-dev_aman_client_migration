@@ -80,610 +80,603 @@
 42-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:34:9-41
 43        android:supportsRtl="true"
 43-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:35:9-35
-44        android:testOnly="true"
-45        android:theme="@style/AppTheme"
-45-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:36:9-40
-46        android:usesCleartextTraffic="true" >
-46-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:37:9-44
-47        <activity
-47-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:40:9-125
-48            android:name="com.cardio.physician.ui.views.profile.web_view.WebViewActivity"
-48-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:40:19-76
-49            android:screenOrientation="portrait" />
-49-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:40:77-113
-50        <activity
-50-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:41:9-43:52
-51            android:name="com.cardio.physician.ui.views.healthlogs.HealthLogsActivity"
-51-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:42:13-67
-52            android:screenOrientation="portrait" />
-52-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:43:13-49
-53        <activity
-53-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:44:9-46:52
-54            android:name="com.cardio.physician.ui.views.diagnosis.DiagnosisActivity"
-54-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:45:13-65
-55            android:screenOrientation="portrait" />
-55-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:46:13-49
-56        <activity
-56-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:47:9-49:52
-57            android:name="com.cardio.physician.ui.views.diagnosis.EditDiagnosisActivity"
-57-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:48:13-69
-58            android:screenOrientation="portrait" />
-58-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:49:13-49
-59        <activity
-59-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:50:9-52:15
-60            android:name="com.cardio.physician.ui.views.notifications.NotificationsActivity"
-60-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:50:19-79
-61            android:screenOrientation="portrait" />
-61-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:51:13-49
-62        <activity
-62-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:53:9-61:20
-63            android:name="com.cardio.physician.ui.views.splash.SplashActivity"
-63-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:54:13-59
-64            android:screenOrientation="portrait" >
-64-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:55:13-49
-65            <intent-filter>
-65-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:56:13-60:29
-66                <action android:name="android.intent.action.MAIN" />
-66-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:57:17-69
-66-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:57:25-66
-67
-68                <category android:name="android.intent.category.LAUNCHER" />
-68-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:59:17-77
-68-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:59:27-74
-69            </intent-filter>
-70        </activity>
-71        <activity
-71-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:62:9-64:52
-72            android:name="com.cardio.physician.ui.views.tutorial.TutorialActivity"
-72-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:63:13-63
-73            android:screenOrientation="portrait" />
-73-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:64:13-49
-74        <activity
-74-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:65:9-68:58
-75            android:name="com.cardio.physician.ui.views.auth.AuthenticateUserActivity"
-75-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:66:13-67
-76            android:screenOrientation="portrait"
-76-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:67:13-49
-77            android:windowSoftInputMode="adjustResize" />
-77-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:68:13-55
-78        <activity
-78-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:69:9-72:59
-79            android:name="com.cardio.physician.ui.views.dashboard.DashboardActivity"
-79-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:70:13-65
-80            android:screenOrientation="portrait"
-80-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:71:13-49
-81            android:windowSoftInputMode="adjustNothing" />
-81-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:72:13-56
-82        <activity
-82-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:73:9-75:52
-83            android:name="com.cardio.physician.ui.views.change_email.ChangeEmailActivity"
-83-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:74:13-70
-84            android:screenOrientation="portrait" />
-84-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:75:13-49
-85        <activity
-85-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:76:9-79:59
-86            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-86-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:77:13-76
-87            android:screenOrientation="portrait"
-87-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:78:13-49
-88            android:theme="@style/Base.Theme.AppCompat" />
-88-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:79:13-56
-89        <activity
-89-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:80:9-82:45
-90            android:name="com.cardio.physician.ui.views.fitbit.RootActivity"
-90-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:81:13-77
-91            android:label="Root Activity" />
-91-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:82:13-42
-92        <activity
-92-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:83:9-96:20
-93            android:name="com.cardio.physician.ui.views.fitbit.auth.LoginActivity"
-93-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:84:13-83
-94            android:launchMode="singleTop" >
-94-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:85:13-43
-95            <intent-filter android:label="filter_fitbit_auth" >
-95-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:86:13-95:29
-95-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:86:28-62
-96                <action android:name="android.intent.action.VIEW" />
-96-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:87:17-69
-96-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:87:25-66
-97
-98                <category android:name="android.intent.category.DEFAULT" />
-98-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:89:17-76
-98-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:89:27-73
-99                <category android:name="android.intent.category.BROWSABLE" />
-99-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:90:17-78
-99-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:90:27-75
-100                <!-- Accepts URIs that begin with "example://gizmos” -->
-101                <data
-101-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:92:17-94:53
-102                    android:host="fitbit"
-102-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:93:21-42
-103                    android:scheme="pocketcardio" />
-103-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:94:21-50
-104            </intent-filter>
-105        </activity>
-106
-107        <meta-data
-107-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:98:9-100:38
-108            android:name="com.fitbit.sampleandroidoauth2.CLIENT_ID"
-108-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:99:13-68
-109            android:value="23BD79" />
-109-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:100:13-35
-110        <meta-data
-110-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:101:9-103:58
-111            android:name="com.fitbit.sampleandroidoauth2.REDIRECT_URL"
-111-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:102:13-71
-112            android:value="pocketCardio://fitbit/auth" />
-112-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:103:13-55
-113
-114        <activity
-114-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:105:9-107:52
-115            android:name="com.cardio.physician.ui.views.sync_health_data.activity.SyncHealthActivty"
-115-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:106:13-81
-116            android:screenOrientation="portrait" />
-116-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:107:13-49
-117        <activity
-117-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:108:9-111:52
-118            android:name="com.cardio.physician.ui.views.textrecognization.kotlin.CameraXLivePreviewActivity"
-118-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:109:13-89
-119            android:exported="true"
-119-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:110:13-36
-120            android:screenOrientation="portrait" />
-120-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:111:13-49
-121        <activity
-121-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:112:9-115:52
-122            android:name="com.google.mlkit.vision.demo.kotlin.StillImageActivity"
-122-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:113:13-82
-123            android:exported="true"
-123-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:114:13-36
-124            android:screenOrientation="portrait" />
-124-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:115:13-49
-125        <activity android:name="com.cardio.physician.ui.views.add_patient.AddPatientActivity" />
-125-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:116:9-77
-125-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:116:19-74
-126        <activity android:name="com.cardio.physician.ui.views.illness.IllnessActivity" />
-126-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:117:9-70
-126-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:117:19-67
-127
-128        <provider
-129            android:name="androidx.core.content.FileProvider"
-129-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:120:13-62
-130            android:authorities="com.cardio.physician.qa.fileprovider"
-130-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:121:13-64
-131            android:exported="false"
-131-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:122:13-37
-132            android:grantUriPermissions="true" >
-132-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:123:13-47
-133            <meta-data
-133-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:124:13-126:54
-134                android:name="android.support.FILE_PROVIDER_PATHS"
-134-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:125:17-67
-135                android:resource="@xml/file_paths" />
-135-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:126:17-51
-136        </provider> <!-- fitbit activities -->
-137        <service
-137-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:128:9-131:39
-138            android:name="com.cardio.physician.ui.service.SyncHeathDataService"
-138-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:129:13-60
-139            android:enabled="true"
-139-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:130:13-35
-140            android:exported="true" />
-140-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:131:13-36
-141
-142        <meta-data
-142-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:133:9-135:69
-143            android:name="com.google.android.gms.version"
-143-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:134:13-58
-144            android:value="@integer/google_play_services_version" />
-144-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:135:13-66
-145        <!--
-146 Optional: Add it to automatically download ML model to device after
-147  your app is installed.
-148        -->
-149        <meta-data
-149-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:140:9-142:39
-150            android:name="com.google.mlkit.vision.DEPENDENCIES"
-150-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:141:13-64
-151            android:value="ocr,ica" />
-151-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:142:13-36
-152
-153        <!-- for firebase push notificatons -->
-154        <service
-154-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:145:9-151:19
-155            android:name="com.cardio.physician.ui.service.FirebasePushNotificationService"
-155-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:146:13-71
-156            android:exported="false" >
-156-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:147:13-37
-157            <intent-filter>
-157-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:148:13-150:29
-158                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-158-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:149:17-78
-158-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:149:25-75
-159            </intent-filter>
-160        </service>
-161
-162        <meta-data
-162-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:153:9-155:71
-163            android:name="com.google.firebase.messaging.default_notification_channel_id"
-163-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:154:13-89
-164            android:value="@string/default_notification_channel_id" />
-164-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:155:13-68
-165
-166        <service
-166-->[com.google.firebase:firebase-crashlytics-ktx:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4d49ef2c50e98817e2e9157eec9e179a/firebase-crashlytics-ktx-18.1.0/AndroidManifest.xml:24:9-30:19
-167            android:name="com.google.firebase.components.ComponentDiscoveryService"
-167-->[com.google.firebase:firebase-crashlytics-ktx:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4d49ef2c50e98817e2e9157eec9e179a/firebase-crashlytics-ktx-18.1.0/AndroidManifest.xml:25:13-84
-168            android:directBootAware="true"
-168-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:35:13-43
-169            android:exported="false" >
-169-->[com.google.firebase:firebase-crashlytics-ktx:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4d49ef2c50e98817e2e9157eec9e179a/firebase-crashlytics-ktx-18.1.0/AndroidManifest.xml:26:13-37
-170            <meta-data
-170-->[com.google.firebase:firebase-crashlytics-ktx:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4d49ef2c50e98817e2e9157eec9e179a/firebase-crashlytics-ktx-18.1.0/AndroidManifest.xml:27:13-29:85
-171                android:name="com.google.firebase.components:com.google.firebase.crashlytics.ktx.FirebaseCrashlyticsKtxRegistrar"
-171-->[com.google.firebase:firebase-crashlytics-ktx:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4d49ef2c50e98817e2e9157eec9e179a/firebase-crashlytics-ktx-18.1.0/AndroidManifest.xml:28:17-130
-172                android:value="com.google.firebase.components.ComponentRegistrar" />
-172-->[com.google.firebase:firebase-crashlytics-ktx:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4d49ef2c50e98817e2e9157eec9e179a/firebase-crashlytics-ktx-18.1.0/AndroidManifest.xml:29:17-82
-173            <meta-data
-173-->[com.google.firebase:firebase-firestore-ktx:23.0.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/62a66d91b53c44ab1da1d914048f02f4/firebase-firestore-ktx-23.0.2/AndroidManifest.xml:15:13-17:85
-174                android:name="com.google.firebase.components:com.google.firebase.firestore.ktx.FirebaseFirestoreKtxRegistrar"
-174-->[com.google.firebase:firebase-firestore-ktx:23.0.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/62a66d91b53c44ab1da1d914048f02f4/firebase-firestore-ktx-23.0.2/AndroidManifest.xml:16:17-126
-175                android:value="com.google.firebase.components.ComponentRegistrar" />
-175-->[com.google.firebase:firebase-firestore-ktx:23.0.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/62a66d91b53c44ab1da1d914048f02f4/firebase-firestore-ktx-23.0.2/AndroidManifest.xml:17:17-82
-176            <meta-data
-176-->[com.google.firebase:firebase-auth-ktx:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/74082f118b58fc24fb3f49fcb0a06b96/firebase-auth-ktx-21.0.1/AndroidManifest.xml:11:13-13:85
-177                android:name="com.google.firebase.components:com.google.firebase.auth.ktx.FirebaseAuthKtxRegistrar"
-177-->[com.google.firebase:firebase-auth-ktx:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/74082f118b58fc24fb3f49fcb0a06b96/firebase-auth-ktx-21.0.1/AndroidManifest.xml:12:17-116
-178                android:value="com.google.firebase.components.ComponentRegistrar" />
-178-->[com.google.firebase:firebase-auth-ktx:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/74082f118b58fc24fb3f49fcb0a06b96/firebase-auth-ktx-21.0.1/AndroidManifest.xml:13:17-82
-179            <meta-data
-179-->[com.google.firebase:firebase-common-ktx:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/a4a2f92e92142c318ea6cb3974223120/firebase-common-ktx-20.0.0/AndroidManifest.xml:15:13-17:85
-180                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar"
-180-->[com.google.firebase:firebase-common-ktx:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/a4a2f92e92142c318ea6cb3974223120/firebase-common-ktx-20.0.0/AndroidManifest.xml:16:17-113
-181                android:value="com.google.firebase.components.ComponentRegistrar" />
-181-->[com.google.firebase:firebase-common-ktx:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/a4a2f92e92142c318ea6cb3974223120/firebase-common-ktx-20.0.0/AndroidManifest.xml:17:17-82
-182            <meta-data
-182-->[com.google.firebase:firebase-storage:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/35d93d35f26497ecfabadd6b304e7263/firebase-storage-20.0.0/AndroidManifest.xml:33:13-35:85
-183                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-183-->[com.google.firebase:firebase-storage:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/35d93d35f26497ecfabadd6b304e7263/firebase-storage-20.0.0/AndroidManifest.xml:34:17-107
-184                android:value="com.google.firebase.components.ComponentRegistrar" />
-184-->[com.google.firebase:firebase-storage:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/35d93d35f26497ecfabadd6b304e7263/firebase-storage-20.0.0/AndroidManifest.xml:35:17-82
-185            <meta-data
-185-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:77:13-79:85
-186                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-186-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:78:17-109
-187                android:value="com.google.firebase.components.ComponentRegistrar" />
-187-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:79:17-82
-188            <meta-data
-188-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:52:13-54:85
-189                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-189-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:53:17-119
-190                android:value="com.google.firebase.components.ComponentRegistrar" />
-190-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:54:17-82
-191            <meta-data
-191-->[com.google.firebase:firebase-firestore:23.0.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/5526bedce5a21299f4ea5912cf270423/firebase-firestore-23.0.2/AndroidManifest.xml:20:13-22:85
-192                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-192-->[com.google.firebase:firebase-firestore:23.0.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/5526bedce5a21299f4ea5912cf270423/firebase-firestore-23.0.2/AndroidManifest.xml:21:17-111
-193                android:value="com.google.firebase.components.ComponentRegistrar" />
-193-->[com.google.firebase:firebase-firestore:23.0.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/5526bedce5a21299f4ea5912cf270423/firebase-firestore-23.0.2/AndroidManifest.xml:22:17-82
-194            <meta-data
-194-->[com.google.android.gms:play-services-measurement-api:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/c412b87337caabbdd83f1a481be528d9/play-services-measurement-api-19.0.0/AndroidManifest.xml:30:13-32:85
-195                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-195-->[com.google.android.gms:play-services-measurement-api:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/c412b87337caabbdd83f1a481be528d9/play-services-measurement-api-19.0.0/AndroidManifest.xml:31:17-139
-196                android:value="com.google.firebase.components.ComponentRegistrar" />
-196-->[com.google.android.gms:play-services-measurement-api:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/c412b87337caabbdd83f1a481be528d9/play-services-measurement-api-19.0.0/AndroidManifest.xml:32:17-82
-197            <meta-data
-197-->[com.google.firebase:firebase-crashlytics:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/2fcdd394d65dadcdef17936f9f3e87d1/firebase-crashlytics-18.1.0/AndroidManifest.xml:18:13-20:85
-198                android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
-198-->[com.google.firebase:firebase-crashlytics:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/2fcdd394d65dadcdef17936f9f3e87d1/firebase-crashlytics-18.1.0/AndroidManifest.xml:19:17-115
-199                android:value="com.google.firebase.components.ComponentRegistrar" />
-199-->[com.google.firebase:firebase-crashlytics:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/2fcdd394d65dadcdef17936f9f3e87d1/firebase-crashlytics-18.1.0/AndroidManifest.xml:20:17-82
-200            <meta-data
-200-->[com.google.firebase:firebase-datatransport:18.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b3dfdd386660c2da7e6ec1a972aa5c08/firebase-datatransport-18.0.0/AndroidManifest.xml:28:13-30:85
-201                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-201-->[com.google.firebase:firebase-datatransport:18.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b3dfdd386660c2da7e6ec1a972aa5c08/firebase-datatransport-18.0.0/AndroidManifest.xml:29:17-115
-202                android:value="com.google.firebase.components.ComponentRegistrar" />
-202-->[com.google.firebase:firebase-datatransport:18.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b3dfdd386660c2da7e6ec1a972aa5c08/firebase-datatransport-18.0.0/AndroidManifest.xml:30:17-82
-203            <meta-data
-203-->[com.google.firebase:firebase-installations:17.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/e5ea02f73eadc2f24c8c93faf9216493/firebase-installations-17.0.0/AndroidManifest.xml:18:13-20:85
-204                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-204-->[com.google.firebase:firebase-installations:17.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/e5ea02f73eadc2f24c8c93faf9216493/firebase-installations-17.0.0/AndroidManifest.xml:19:17-127
-205                android:value="com.google.firebase.components.ComponentRegistrar" />
-205-->[com.google.firebase:firebase-installations:17.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/e5ea02f73eadc2f24c8c93faf9216493/firebase-installations-17.0.0/AndroidManifest.xml:20:17-82
-206        </service>
-207
-208        <activity
-208-->[:countrypicker] /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-15:54
-209            android:name="com.countrypicker.CountrySelectActivity"
-209-->[:countrypicker] /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-67
-210            android:screenOrientation="portrait"
-210-->[:countrypicker] /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-49
-211            android:theme="@style/CountryAppTheme" />
-211-->[:countrypicker] /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-51
-212        <activity
-212-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:27:9-44:20
-213            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-213-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:28:13-80
-214            android:excludeFromRecents="true"
-214-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:29:13-46
-215            android:exported="true"
-215-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:30:13-36
-216            android:launchMode="singleTask"
-216-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:31:13-44
-217            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-217-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:32:13-72
-218            <intent-filter>
-218-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:33:13-43:29
-219                <action android:name="android.intent.action.VIEW" />
-219-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:87:17-69
-219-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:87:25-66
-220
-221                <category android:name="android.intent.category.DEFAULT" />
-221-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:89:17-76
-221-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:89:27-73
-222                <category android:name="android.intent.category.BROWSABLE" />
-222-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:90:17-78
-222-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:90:27-75
-223
-224                <data
-224-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:92:17-94:53
-225                    android:host="firebase.auth"
-225-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:93:21-42
-226                    android:path="/"
-227                    android:scheme="genericidp" />
-227-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:94:21-50
-228            </intent-filter>
-229        </activity>
-230        <activity
-230-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:45:9-62:20
-231            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-231-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:46:13-79
-232            android:excludeFromRecents="true"
-232-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:47:13-46
-233            android:exported="true"
-233-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:48:13-36
-234            android:launchMode="singleTask"
-234-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:49:13-44
-235            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-235-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:50:13-72
-236            <intent-filter>
-236-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:51:13-61:29
-237                <action android:name="android.intent.action.VIEW" />
-237-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:87:17-69
-237-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:87:25-66
-238
-239                <category android:name="android.intent.category.DEFAULT" />
-239-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:89:17-76
-239-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:89:27-73
-240                <category android:name="android.intent.category.BROWSABLE" />
-240-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:90:17-78
-240-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:90:27-75
-241
-242                <data
-242-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:92:17-94:53
-243                    android:host="firebase.auth"
-243-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:93:21-42
-244                    android:path="/"
-245                    android:scheme="recaptcha" />
-245-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:94:21-50
-246            </intent-filter>
-247        </activity>
-248
-249        <service
-249-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:64:9-73:19
-250            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
-250-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:65:13-101
-251            android:enabled="true"
-251-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:66:13-35
-252            android:exported="false" >
-252-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:67:13-37
-253            <intent-filter>
-253-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:68:13-72:29
-254                <action android:name="com.google.firebase.auth.api.gms.service.START" />
-254-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:69:17-89
-254-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:69:25-86
-255
-256                <category android:name="android.intent.category.DEFAULT" />
-256-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:89:17-76
-256-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:89:27-73
-257            </intent-filter>
-258        </service>
-259
-260        <receiver
-260-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:29:9-33:20
-261            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-261-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:30:13-85
-262            android:enabled="true"
-262-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:31:13-35
-263            android:exported="false" >
-263-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:32:13-37
-264        </receiver>
-265
-266        <service
-266-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:35:9-38:40
-267            android:name="com.google.android.gms.measurement.AppMeasurementService"
-267-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:36:13-84
-268            android:enabled="true"
-268-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:37:13-35
-269            android:exported="false" />
-269-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:38:13-37
-270        <service
-270-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:39:9-43:72
-271            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-271-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:40:13-87
-272            android:enabled="true"
-272-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:41:13-35
-273            android:exported="false"
-273-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:42:13-37
-274            android:permission="android.permission.BIND_JOB_SERVICE" />
-274-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:43:13-69
-275
-276        <receiver
-276-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:28:9-35:20
-277            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-277-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:29:13-78
-278            android:exported="true"
-278-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:30:13-36
-279            android:permission="com.google.android.c2dm.permission.SEND" >
-279-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:31:13-73
-280            <intent-filter>
-280-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:32:13-34:29
-281                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-281-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:33:17-81
-281-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:33:25-78
-282            </intent-filter>
-283        </receiver>
-284        <!--
-285             FirebaseMessagingService performs security checks at runtime,
-286             but set to not exported to explicitly avoid allowing another app to call it.
-287        -->
-288        <service
-288-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:41:9-48:19
-289            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-289-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:42:13-82
-290            android:directBootAware="true"
-290-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:43:13-43
-291            android:exported="false" >
-291-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:44:13-37
-292            <intent-filter android:priority="-500" >
-292-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:148:13-150:29
-293                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-293-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:149:17-78
-293-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:149:25-75
-294            </intent-filter>
-295        </service>
-296
-297        <activity
-297-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:23:9-27:75
-298            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-298-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:24:13-93
-299            android:excludeFromRecents="true"
-299-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:25:13-46
-300            android:exported="false"
-300-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:26:13-37
-301            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-301-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:27:13-72
-302        <!--
-303            Service handling Google Sign-In user revocation. For apps that do not integrate with
-304            Google Sign-In, this service will never be started.
-305        -->
-306        <service
-306-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:33:9-37:51
-307            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-307-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:34:13-89
-308            android:exported="true"
-308-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:35:13-36
-309            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-309-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:36:13-107
-310            android:visibleToInstantApps="true" />
-310-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:37:13-48
-311
-312        <meta-data
-312-->[com.google.android.gms:play-services-fitness:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d88db18c4abb2ee846274d3e11bfc942/play-services-fitness-20.0.0/AndroidManifest.xml:23:9-25:38
-313            android:name="com.google.gms.fitness.sdk.version"
-313-->[com.google.android.gms:play-services-fitness:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d88db18c4abb2ee846274d3e11bfc942/play-services-fitness-20.0.0/AndroidManifest.xml:24:13-62
-314            android:value="20.0.0" />
-314-->[com.google.android.gms:play-services-fitness:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d88db18c4abb2ee846274d3e11bfc942/play-services-fitness-20.0.0/AndroidManifest.xml:25:13-35
-315
-316        <service
-316-->[com.google.android.gms:play-services-mlkit-text-recognition:16.3.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4430f445d171020014f7daf65cefefc1/play-services-mlkit-text-recognition-16.3.0/AndroidManifest.xml:9:9-15:19
-317            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
-317-->[com.google.android.gms:play-services-mlkit-text-recognition:16.3.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4430f445d171020014f7daf65cefefc1/play-services-mlkit-text-recognition-16.3.0/AndroidManifest.xml:10:13-91
-318            android:directBootAware="true"
-318-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:17:13-43
-319            android:exported="false" >
-319-->[com.google.android.gms:play-services-mlkit-text-recognition:16.3.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4430f445d171020014f7daf65cefefc1/play-services-mlkit-text-recognition-16.3.0/AndroidManifest.xml:11:13-37
-320            <meta-data
-320-->[com.google.android.gms:play-services-mlkit-text-recognition:16.3.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4430f445d171020014f7daf65cefefc1/play-services-mlkit-text-recognition-16.3.0/AndroidManifest.xml:12:13-14:85
-321                android:name="com.google.firebase.components:com.google.mlkit.vision.text.internal.TextRegistrar"
-321-->[com.google.android.gms:play-services-mlkit-text-recognition:16.3.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4430f445d171020014f7daf65cefefc1/play-services-mlkit-text-recognition-16.3.0/AndroidManifest.xml:13:17-114
-322                android:value="com.google.firebase.components.ComponentRegistrar" />
-322-->[com.google.android.gms:play-services-mlkit-text-recognition:16.3.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4430f445d171020014f7daf65cefefc1/play-services-mlkit-text-recognition-16.3.0/AndroidManifest.xml:14:17-82
-323            <meta-data
-323-->[com.google.mlkit:vision-common:16.5.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3fc57d208d823ec457037b67df75cdbb/vision-common-16.5.0/AndroidManifest.xml:12:13-14:85
-324                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
-324-->[com.google.mlkit:vision-common:16.5.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3fc57d208d823ec457037b67df75cdbb/vision-common-16.5.0/AndroidManifest.xml:13:17-124
-325                android:value="com.google.firebase.components.ComponentRegistrar" />
-325-->[com.google.mlkit:vision-common:16.5.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3fc57d208d823ec457037b67df75cdbb/vision-common-16.5.0/AndroidManifest.xml:14:17-82
-326            <meta-data
-326-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:20:13-22:85
-327                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
-327-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:21:17-120
-328                android:value="com.google.firebase.components.ComponentRegistrar" />
-328-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:22:17-82
-329        </service>
-330
-331        <provider
-331-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:9:9-13:38
-332            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
-332-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:10:13-78
-333            android:authorities="com.cardio.physician.qa.mlkitinitprovider"
-333-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:11:13-69
-334            android:exported="false"
-334-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:12:13-37
-335            android:initOrder="99" />
-335-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:13:13-35
-336
-337        <activity
-337-->[com.google.android.gms:play-services-base:17.6.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/291f038a2f57d4ba2a3646fd8f730dce/play-services-base-17.6.0/AndroidManifest.xml:23:9-26:75
-338            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-338-->[com.google.android.gms:play-services-base:17.6.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/291f038a2f57d4ba2a3646fd8f730dce/play-services-base-17.6.0/AndroidManifest.xml:24:13-79
-339            android:exported="false"
-339-->[com.google.android.gms:play-services-base:17.6.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/291f038a2f57d4ba2a3646fd8f730dce/play-services-base-17.6.0/AndroidManifest.xml:25:13-37
-340            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-340-->[com.google.android.gms:play-services-base:17.6.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/291f038a2f57d4ba2a3646fd8f730dce/play-services-base-17.6.0/AndroidManifest.xml:26:13-72
-341
-342        <provider
-342-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:26:9-31:39
-343            android:name="com.google.firebase.provider.FirebaseInitProvider"
-343-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:27:13-77
-344            android:authorities="com.cardio.physician.qa.firebaseinitprovider"
-344-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:28:13-72
-345            android:directBootAware="true"
-345-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:29:13-43
-346            android:exported="false"
-346-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:30:13-37
-347            android:initOrder="100" />
-347-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:31:13-36
-348        <provider
-348-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ac40450f421a3abc2de6af4a437b1d3a/lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
-349            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-349-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ac40450f421a3abc2de6af4a437b1d3a/lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
-350            android:authorities="com.cardio.physician.qa.lifecycle-process"
-350-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ac40450f421a3abc2de6af4a437b1d3a/lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
-351            android:exported="false"
-351-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ac40450f421a3abc2de6af4a437b1d3a/lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
-352            android:multiprocess="true" />
-352-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ac40450f421a3abc2de6af4a437b1d3a/lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
-353
-354        <service
-354-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4fc3d2da6ae76bad873736b76efda68c/transport-backend-cct-3.0.0/AndroidManifest.xml:29:9-35:19
-355            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-355-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4fc3d2da6ae76bad873736b76efda68c/transport-backend-cct-3.0.0/AndroidManifest.xml:30:13-103
-356            android:exported="false" >
-356-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4fc3d2da6ae76bad873736b76efda68c/transport-backend-cct-3.0.0/AndroidManifest.xml:31:13-37
-357            <meta-data
-357-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4fc3d2da6ae76bad873736b76efda68c/transport-backend-cct-3.0.0/AndroidManifest.xml:32:13-34:39
-358                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-358-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4fc3d2da6ae76bad873736b76efda68c/transport-backend-cct-3.0.0/AndroidManifest.xml:33:17-94
-359                android:value="cct" />
-359-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4fc3d2da6ae76bad873736b76efda68c/transport-backend-cct-3.0.0/AndroidManifest.xml:34:17-36
-360        </service>
-361        <service
-361-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:26:9-30:19
-362            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-362-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:27:13-117
-363            android:exported="false"
-363-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:28:13-37
-364            android:permission="android.permission.BIND_JOB_SERVICE" >
-364-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:29:13-69
-365        </service>
-366
-367        <receiver
-367-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:32:9-34:40
-368            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-368-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:33:13-132
-369            android:exported="false" />
-369-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:34:13-37
-370    </application>
-371
-372</manifest>
+44        android:theme="@style/AppTheme"
+44-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:36:9-40
+45        android:usesCleartextTraffic="true" >
+45-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:37:9-44
+46        <activity
+46-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:40:9-125
+47            android:name="com.cardio.physician.ui.views.profile.web_view.WebViewActivity"
+47-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:40:19-76
+48            android:screenOrientation="portrait" />
+48-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:40:77-113
+49        <activity
+49-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:41:9-43:52
+50            android:name="com.cardio.physician.ui.views.healthlogs.HealthLogsActivity"
+50-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:42:13-67
+51            android:screenOrientation="portrait" />
+51-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:43:13-49
+52        <activity
+52-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:44:9-46:52
+53            android:name="com.cardio.physician.ui.views.diagnosis.DiagnosisActivity"
+53-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:45:13-65
+54            android:screenOrientation="portrait" />
+54-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:46:13-49
+55        <activity
+55-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:47:9-49:52
+56            android:name="com.cardio.physician.ui.views.diagnosis.EditDiagnosisActivity"
+56-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:48:13-69
+57            android:screenOrientation="portrait" />
+57-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:49:13-49
+58        <activity
+58-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:50:9-52:15
+59            android:name="com.cardio.physician.ui.views.notifications.NotificationsActivity"
+59-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:50:19-79
+60            android:screenOrientation="portrait" />
+60-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:51:13-49
+61        <activity
+61-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:53:9-61:20
+62            android:name="com.cardio.physician.ui.views.splash.SplashActivity"
+62-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:54:13-59
+63            android:screenOrientation="portrait" >
+63-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:55:13-49
+64            <intent-filter>
+64-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:56:13-60:29
+65                <action android:name="android.intent.action.MAIN" />
+65-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:57:17-69
+65-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:57:25-66
+66
+67                <category android:name="android.intent.category.LAUNCHER" />
+67-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:59:17-77
+67-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:59:27-74
+68            </intent-filter>
+69        </activity>
+70        <activity
+70-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:62:9-64:52
+71            android:name="com.cardio.physician.ui.views.tutorial.TutorialActivity"
+71-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:63:13-63
+72            android:screenOrientation="portrait" />
+72-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:64:13-49
+73        <activity
+73-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:65:9-68:58
+74            android:name="com.cardio.physician.ui.views.auth.AuthenticateUserActivity"
+74-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:66:13-67
+75            android:screenOrientation="portrait"
+75-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:67:13-49
+76            android:windowSoftInputMode="adjustResize" />
+76-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:68:13-55
+77        <activity
+77-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:69:9-72:59
+78            android:name="com.cardio.physician.ui.views.dashboard.DashboardActivity"
+78-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:70:13-65
+79            android:screenOrientation="portrait"
+79-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:71:13-49
+80            android:windowSoftInputMode="adjustNothing" />
+80-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:72:13-56
+81        <activity
+81-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:73:9-75:52
+82            android:name="com.cardio.physician.ui.views.change_email.ChangeEmailActivity"
+82-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:74:13-70
+83            android:screenOrientation="portrait" />
+83-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:75:13-49
+84        <activity
+84-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:76:9-79:59
+85            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+85-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:77:13-76
+86            android:screenOrientation="portrait"
+86-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:78:13-49
+87            android:theme="@style/Base.Theme.AppCompat" />
+87-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:79:13-56
+88        <activity
+88-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:80:9-82:45
+89            android:name="com.cardio.physician.ui.views.fitbit.RootActivity"
+89-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:81:13-77
+90            android:label="Root Activity" />
+90-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:82:13-42
+91        <activity
+91-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:83:9-96:20
+92            android:name="com.cardio.physician.ui.views.fitbit.auth.LoginActivity"
+92-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:84:13-83
+93            android:launchMode="singleTop" >
+93-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:85:13-43
+94
+95            <!--
+96            <intent-filter android:label="filter_fitbit_auth">
+97                <action android:name="android.intent.action.VIEW" />
+98
+99                <category android:name="android.intent.category.DEFAULT" />
+100                <category android:name="android.intent.category.BROWSABLE" />
+101                &lt;!&ndash; Accepts URIs that begin with "example://gizmos” &ndash;&gt;
+102                <data
+103                    android:host="fitbit"
+104                    android:scheme="pocketcardio" />
+105            </intent-filter>
+106            -->
+107        </activity>
+108
+109        <meta-data
+109-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:98:9-100:38
+110            android:name="com.fitbit.sampleandroidoauth2.CLIENT_ID"
+110-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:99:13-68
+111            android:value="23BD79" />
+111-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:100:13-35
+112        <meta-data
+112-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:101:9-103:58
+113            android:name="com.fitbit.sampleandroidoauth2.REDIRECT_URL"
+113-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:102:13-71
+114            android:value="pocketCardio://fitbit/auth" />
+114-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:103:13-55
+115
+116        <activity
+116-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:105:9-107:52
+117            android:name="com.cardio.physician.ui.views.sync_health_data.activity.SyncHealthActivty"
+117-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:106:13-81
+118            android:screenOrientation="portrait" />
+118-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:107:13-49
+119        <activity
+119-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:108:9-111:52
+120            android:name="com.cardio.physician.ui.views.textrecognization.kotlin.CameraXLivePreviewActivity"
+120-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:109:13-89
+121            android:exported="true"
+121-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:110:13-36
+122            android:screenOrientation="portrait" />
+122-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:111:13-49
+123        <activity
+123-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:112:9-115:52
+124            android:name="com.google.mlkit.vision.demo.kotlin.StillImageActivity"
+124-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:113:13-82
+125            android:exported="true"
+125-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:114:13-36
+126            android:screenOrientation="portrait" />
+126-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:115:13-49
+127        <activity android:name="com.cardio.physician.ui.views.add_patient.AddPatientActivity" />
+127-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:116:9-77
+127-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:116:19-74
+128        <activity android:name="com.cardio.physician.ui.views.illness.IllnessActivity" />
+128-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:117:9-70
+128-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:117:19-67
+129
+130        <provider
+131            android:name="androidx.core.content.FileProvider"
+131-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:120:13-62
+132            android:authorities="com.cardio.physician.qa.fileprovider"
+132-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:121:13-64
+133            android:exported="false"
+133-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:122:13-37
+134            android:grantUriPermissions="true" >
+134-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:123:13-47
+135            <meta-data
+135-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:124:13-126:54
+136                android:name="android.support.FILE_PROVIDER_PATHS"
+136-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:125:17-67
+137                android:resource="@xml/file_paths" />
+137-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:126:17-51
+138        </provider> <!-- fitbit activities -->
+139        <service
+139-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:128:9-131:39
+140            android:name="com.cardio.physician.ui.service.SyncHeathDataService"
+140-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:129:13-60
+141            android:enabled="true"
+141-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:130:13-35
+142            android:exported="true" />
+142-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:131:13-36
+143
+144        <meta-data
+144-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:133:9-135:69
+145            android:name="com.google.android.gms.version"
+145-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:134:13-58
+146            android:value="@integer/google_play_services_version" />
+146-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:135:13-66
+147        <!--
+148 Optional: Add it to automatically download ML model to device after
+149  your app is installed.
+150        -->
+151        <meta-data
+151-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:140:9-142:39
+152            android:name="com.google.mlkit.vision.DEPENDENCIES"
+152-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:141:13-64
+153            android:value="ocr,ica" />
+153-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:142:13-36
+154
+155        <!-- for firebase push notificatons -->
+156        <service
+156-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:145:9-151:19
+157            android:name="com.cardio.physician.ui.service.FirebasePushNotificationService"
+157-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:146:13-71
+158            android:exported="false" >
+158-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:147:13-37
+159            <intent-filter>
+159-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:148:13-150:29
+160                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+160-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:149:17-78
+160-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:149:25-75
+161            </intent-filter>
+162        </service>
+163
+164        <meta-data
+164-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:153:9-155:71
+165            android:name="com.google.firebase.messaging.default_notification_channel_id"
+165-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:154:13-89
+166            android:value="@string/default_notification_channel_id" />
+166-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:155:13-68
+167
+168        <service
+168-->[com.google.firebase:firebase-crashlytics-ktx:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4d49ef2c50e98817e2e9157eec9e179a/firebase-crashlytics-ktx-18.1.0/AndroidManifest.xml:24:9-30:19
+169            android:name="com.google.firebase.components.ComponentDiscoveryService"
+169-->[com.google.firebase:firebase-crashlytics-ktx:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4d49ef2c50e98817e2e9157eec9e179a/firebase-crashlytics-ktx-18.1.0/AndroidManifest.xml:25:13-84
+170            android:directBootAware="true"
+170-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:35:13-43
+171            android:exported="false" >
+171-->[com.google.firebase:firebase-crashlytics-ktx:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4d49ef2c50e98817e2e9157eec9e179a/firebase-crashlytics-ktx-18.1.0/AndroidManifest.xml:26:13-37
+172            <meta-data
+172-->[com.google.firebase:firebase-crashlytics-ktx:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4d49ef2c50e98817e2e9157eec9e179a/firebase-crashlytics-ktx-18.1.0/AndroidManifest.xml:27:13-29:85
+173                android:name="com.google.firebase.components:com.google.firebase.crashlytics.ktx.FirebaseCrashlyticsKtxRegistrar"
+173-->[com.google.firebase:firebase-crashlytics-ktx:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4d49ef2c50e98817e2e9157eec9e179a/firebase-crashlytics-ktx-18.1.0/AndroidManifest.xml:28:17-130
+174                android:value="com.google.firebase.components.ComponentRegistrar" />
+174-->[com.google.firebase:firebase-crashlytics-ktx:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4d49ef2c50e98817e2e9157eec9e179a/firebase-crashlytics-ktx-18.1.0/AndroidManifest.xml:29:17-82
+175            <meta-data
+175-->[com.google.firebase:firebase-firestore-ktx:23.0.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/62a66d91b53c44ab1da1d914048f02f4/firebase-firestore-ktx-23.0.2/AndroidManifest.xml:15:13-17:85
+176                android:name="com.google.firebase.components:com.google.firebase.firestore.ktx.FirebaseFirestoreKtxRegistrar"
+176-->[com.google.firebase:firebase-firestore-ktx:23.0.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/62a66d91b53c44ab1da1d914048f02f4/firebase-firestore-ktx-23.0.2/AndroidManifest.xml:16:17-126
+177                android:value="com.google.firebase.components.ComponentRegistrar" />
+177-->[com.google.firebase:firebase-firestore-ktx:23.0.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/62a66d91b53c44ab1da1d914048f02f4/firebase-firestore-ktx-23.0.2/AndroidManifest.xml:17:17-82
+178            <meta-data
+178-->[com.google.firebase:firebase-auth-ktx:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/74082f118b58fc24fb3f49fcb0a06b96/firebase-auth-ktx-21.0.1/AndroidManifest.xml:11:13-13:85
+179                android:name="com.google.firebase.components:com.google.firebase.auth.ktx.FirebaseAuthKtxRegistrar"
+179-->[com.google.firebase:firebase-auth-ktx:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/74082f118b58fc24fb3f49fcb0a06b96/firebase-auth-ktx-21.0.1/AndroidManifest.xml:12:17-116
+180                android:value="com.google.firebase.components.ComponentRegistrar" />
+180-->[com.google.firebase:firebase-auth-ktx:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/74082f118b58fc24fb3f49fcb0a06b96/firebase-auth-ktx-21.0.1/AndroidManifest.xml:13:17-82
+181            <meta-data
+181-->[com.google.firebase:firebase-common-ktx:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/a4a2f92e92142c318ea6cb3974223120/firebase-common-ktx-20.0.0/AndroidManifest.xml:15:13-17:85
+182                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar"
+182-->[com.google.firebase:firebase-common-ktx:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/a4a2f92e92142c318ea6cb3974223120/firebase-common-ktx-20.0.0/AndroidManifest.xml:16:17-113
+183                android:value="com.google.firebase.components.ComponentRegistrar" />
+183-->[com.google.firebase:firebase-common-ktx:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/a4a2f92e92142c318ea6cb3974223120/firebase-common-ktx-20.0.0/AndroidManifest.xml:17:17-82
+184            <meta-data
+184-->[com.google.firebase:firebase-storage:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/35d93d35f26497ecfabadd6b304e7263/firebase-storage-20.0.0/AndroidManifest.xml:33:13-35:85
+185                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+185-->[com.google.firebase:firebase-storage:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/35d93d35f26497ecfabadd6b304e7263/firebase-storage-20.0.0/AndroidManifest.xml:34:17-107
+186                android:value="com.google.firebase.components.ComponentRegistrar" />
+186-->[com.google.firebase:firebase-storage:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/35d93d35f26497ecfabadd6b304e7263/firebase-storage-20.0.0/AndroidManifest.xml:35:17-82
+187            <meta-data
+187-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:77:13-79:85
+188                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+188-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:78:17-109
+189                android:value="com.google.firebase.components.ComponentRegistrar" />
+189-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:79:17-82
+190            <meta-data
+190-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:52:13-54:85
+191                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+191-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:53:17-119
+192                android:value="com.google.firebase.components.ComponentRegistrar" />
+192-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:54:17-82
+193            <meta-data
+193-->[com.google.firebase:firebase-firestore:23.0.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/5526bedce5a21299f4ea5912cf270423/firebase-firestore-23.0.2/AndroidManifest.xml:20:13-22:85
+194                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+194-->[com.google.firebase:firebase-firestore:23.0.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/5526bedce5a21299f4ea5912cf270423/firebase-firestore-23.0.2/AndroidManifest.xml:21:17-111
+195                android:value="com.google.firebase.components.ComponentRegistrar" />
+195-->[com.google.firebase:firebase-firestore:23.0.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/5526bedce5a21299f4ea5912cf270423/firebase-firestore-23.0.2/AndroidManifest.xml:22:17-82
+196            <meta-data
+196-->[com.google.android.gms:play-services-measurement-api:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/c412b87337caabbdd83f1a481be528d9/play-services-measurement-api-19.0.0/AndroidManifest.xml:30:13-32:85
+197                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+197-->[com.google.android.gms:play-services-measurement-api:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/c412b87337caabbdd83f1a481be528d9/play-services-measurement-api-19.0.0/AndroidManifest.xml:31:17-139
+198                android:value="com.google.firebase.components.ComponentRegistrar" />
+198-->[com.google.android.gms:play-services-measurement-api:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/c412b87337caabbdd83f1a481be528d9/play-services-measurement-api-19.0.0/AndroidManifest.xml:32:17-82
+199            <meta-data
+199-->[com.google.firebase:firebase-crashlytics:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/2fcdd394d65dadcdef17936f9f3e87d1/firebase-crashlytics-18.1.0/AndroidManifest.xml:18:13-20:85
+200                android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
+200-->[com.google.firebase:firebase-crashlytics:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/2fcdd394d65dadcdef17936f9f3e87d1/firebase-crashlytics-18.1.0/AndroidManifest.xml:19:17-115
+201                android:value="com.google.firebase.components.ComponentRegistrar" />
+201-->[com.google.firebase:firebase-crashlytics:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/2fcdd394d65dadcdef17936f9f3e87d1/firebase-crashlytics-18.1.0/AndroidManifest.xml:20:17-82
+202            <meta-data
+202-->[com.google.firebase:firebase-datatransport:18.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b3dfdd386660c2da7e6ec1a972aa5c08/firebase-datatransport-18.0.0/AndroidManifest.xml:28:13-30:85
+203                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+203-->[com.google.firebase:firebase-datatransport:18.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b3dfdd386660c2da7e6ec1a972aa5c08/firebase-datatransport-18.0.0/AndroidManifest.xml:29:17-115
+204                android:value="com.google.firebase.components.ComponentRegistrar" />
+204-->[com.google.firebase:firebase-datatransport:18.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b3dfdd386660c2da7e6ec1a972aa5c08/firebase-datatransport-18.0.0/AndroidManifest.xml:30:17-82
+205            <meta-data
+205-->[com.google.firebase:firebase-installations:17.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/e5ea02f73eadc2f24c8c93faf9216493/firebase-installations-17.0.0/AndroidManifest.xml:18:13-20:85
+206                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+206-->[com.google.firebase:firebase-installations:17.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/e5ea02f73eadc2f24c8c93faf9216493/firebase-installations-17.0.0/AndroidManifest.xml:19:17-127
+207                android:value="com.google.firebase.components.ComponentRegistrar" />
+207-->[com.google.firebase:firebase-installations:17.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/e5ea02f73eadc2f24c8c93faf9216493/firebase-installations-17.0.0/AndroidManifest.xml:20:17-82
+208        </service>
+209
+210        <activity
+210-->[:countrypicker] /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-15:54
+211            android:name="com.countrypicker.CountrySelectActivity"
+211-->[:countrypicker] /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-67
+212            android:screenOrientation="portrait"
+212-->[:countrypicker] /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-49
+213            android:theme="@style/CountryAppTheme" />
+213-->[:countrypicker] /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/countrypicker/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-51
+214        <activity
+214-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:27:9-44:20
+215            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+215-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:28:13-80
+216            android:excludeFromRecents="true"
+216-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:29:13-46
+217            android:exported="true"
+217-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:30:13-36
+218            android:launchMode="singleTask"
+218-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:31:13-44
+219            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+219-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:32:13-72
+220            <intent-filter>
+220-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:33:13-43:29
+221                <action android:name="android.intent.action.VIEW" />
+221-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:34:17-69
+221-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:34:25-66
+222
+223                <category android:name="android.intent.category.DEFAULT" />
+223-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
+223-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
+224                <category android:name="android.intent.category.BROWSABLE" />
+224-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:37:17-78
+224-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:37:27-75
+225
+226                <data
+226-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:39:17-42:51
+227                    android:host="firebase.auth"
+227-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:40:21-49
+228                    android:path="/"
+228-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:41:21-37
+229                    android:scheme="genericidp" />
+229-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:42:21-48
+230            </intent-filter>
+231        </activity>
+232        <activity
+232-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:45:9-62:20
+233            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+233-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:46:13-79
+234            android:excludeFromRecents="true"
+234-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:47:13-46
+235            android:exported="true"
+235-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:48:13-36
+236            android:launchMode="singleTask"
+236-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:49:13-44
+237            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+237-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:50:13-72
+238            <intent-filter>
+238-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:51:13-61:29
+239                <action android:name="android.intent.action.VIEW" />
+239-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:34:17-69
+239-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:34:25-66
+240
+241                <category android:name="android.intent.category.DEFAULT" />
+241-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
+241-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
+242                <category android:name="android.intent.category.BROWSABLE" />
+242-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:37:17-78
+242-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:37:27-75
+243
+244                <data
+244-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:39:17-42:51
+245                    android:host="firebase.auth"
+245-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:40:21-49
+246                    android:path="/"
+246-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:41:21-37
+247                    android:scheme="recaptcha" />
+247-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:42:21-48
+248            </intent-filter>
+249        </activity>
+250
+251        <service
+251-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:64:9-73:19
+252            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
+252-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:65:13-101
+253            android:enabled="true"
+253-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:66:13-35
+254            android:exported="false" >
+254-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:67:13-37
+255            <intent-filter>
+255-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:68:13-72:29
+256                <action android:name="com.google.firebase.auth.api.gms.service.START" />
+256-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:69:17-89
+256-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:69:25-86
+257
+258                <category android:name="android.intent.category.DEFAULT" />
+258-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
+258-->[com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
+259            </intent-filter>
+260        </service>
+261
+262        <receiver
+262-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:29:9-33:20
+263            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+263-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:30:13-85
+264            android:enabled="true"
+264-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:31:13-35
+265            android:exported="false" >
+265-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:32:13-37
+266        </receiver>
+267
+268        <service
+268-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:35:9-38:40
+269            android:name="com.google.android.gms.measurement.AppMeasurementService"
+269-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:36:13-84
+270            android:enabled="true"
+270-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:37:13-35
+271            android:exported="false" />
+271-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:38:13-37
+272        <service
+272-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:39:9-43:72
+273            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+273-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:40:13-87
+274            android:enabled="true"
+274-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:41:13-35
+275            android:exported="false"
+275-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:42:13-37
+276            android:permission="android.permission.BIND_JOB_SERVICE" />
+276-->[com.google.android.gms:play-services-measurement:19.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b8ab2b8f6f1bad6ef298ed2f40622a63/play-services-measurement-19.0.0/AndroidManifest.xml:43:13-69
+277
+278        <receiver
+278-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:28:9-35:20
+279            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+279-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:29:13-78
+280            android:exported="true"
+280-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:30:13-36
+281            android:permission="com.google.android.c2dm.permission.SEND" >
+281-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:31:13-73
+282            <intent-filter>
+282-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:32:13-34:29
+283                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+283-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:33:17-81
+283-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:33:25-78
+284            </intent-filter>
+285        </receiver>
+286        <!--
+287             FirebaseMessagingService performs security checks at runtime,
+288             but set to not exported to explicitly avoid allowing another app to call it.
+289        -->
+290        <service
+290-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:41:9-48:19
+291            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+291-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:42:13-82
+292            android:directBootAware="true"
+292-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:43:13-43
+293            android:exported="false" >
+293-->[com.google.firebase:firebase-messaging:22.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/81a17d947d5632d846cf921f64584673/firebase-messaging-22.0.0/AndroidManifest.xml:44:13-37
+294            <intent-filter android:priority="-500" >
+294-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:148:13-150:29
+295                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+295-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:149:17-78
+295-->/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:149:25-75
+296            </intent-filter>
+297        </service>
+298
+299        <activity
+299-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:23:9-27:75
+300            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+300-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:24:13-93
+301            android:excludeFromRecents="true"
+301-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:25:13-46
+302            android:exported="false"
+302-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:26:13-37
+303            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+303-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:27:13-72
+304        <!--
+305            Service handling Google Sign-In user revocation. For apps that do not integrate with
+306            Google Sign-In, this service will never be started.
+307        -->
+308        <service
+308-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:33:9-37:51
+309            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+309-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:34:13-89
+310            android:exported="true"
+310-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:35:13-36
+311            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+311-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:36:13-107
+312            android:visibleToInstantApps="true" />
+312-->[com.google.android.gms:play-services-auth:19.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5b9487d78a7ca025ea1b976b8770bc5/play-services-auth-19.2.0/AndroidManifest.xml:37:13-48
+313
+314        <meta-data
+314-->[com.google.android.gms:play-services-fitness:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d88db18c4abb2ee846274d3e11bfc942/play-services-fitness-20.0.0/AndroidManifest.xml:23:9-25:38
+315            android:name="com.google.gms.fitness.sdk.version"
+315-->[com.google.android.gms:play-services-fitness:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d88db18c4abb2ee846274d3e11bfc942/play-services-fitness-20.0.0/AndroidManifest.xml:24:13-62
+316            android:value="20.0.0" />
+316-->[com.google.android.gms:play-services-fitness:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d88db18c4abb2ee846274d3e11bfc942/play-services-fitness-20.0.0/AndroidManifest.xml:25:13-35
+317
+318        <service
+318-->[com.google.android.gms:play-services-mlkit-text-recognition:16.3.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4430f445d171020014f7daf65cefefc1/play-services-mlkit-text-recognition-16.3.0/AndroidManifest.xml:9:9-15:19
+319            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+319-->[com.google.android.gms:play-services-mlkit-text-recognition:16.3.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4430f445d171020014f7daf65cefefc1/play-services-mlkit-text-recognition-16.3.0/AndroidManifest.xml:10:13-91
+320            android:directBootAware="true"
+320-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:17:13-43
+321            android:exported="false" >
+321-->[com.google.android.gms:play-services-mlkit-text-recognition:16.3.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4430f445d171020014f7daf65cefefc1/play-services-mlkit-text-recognition-16.3.0/AndroidManifest.xml:11:13-37
+322            <meta-data
+322-->[com.google.android.gms:play-services-mlkit-text-recognition:16.3.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4430f445d171020014f7daf65cefefc1/play-services-mlkit-text-recognition-16.3.0/AndroidManifest.xml:12:13-14:85
+323                android:name="com.google.firebase.components:com.google.mlkit.vision.text.internal.TextRegistrar"
+323-->[com.google.android.gms:play-services-mlkit-text-recognition:16.3.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4430f445d171020014f7daf65cefefc1/play-services-mlkit-text-recognition-16.3.0/AndroidManifest.xml:13:17-114
+324                android:value="com.google.firebase.components.ComponentRegistrar" />
+324-->[com.google.android.gms:play-services-mlkit-text-recognition:16.3.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4430f445d171020014f7daf65cefefc1/play-services-mlkit-text-recognition-16.3.0/AndroidManifest.xml:14:17-82
+325            <meta-data
+325-->[com.google.mlkit:vision-common:16.5.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3fc57d208d823ec457037b67df75cdbb/vision-common-16.5.0/AndroidManifest.xml:12:13-14:85
+326                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
+326-->[com.google.mlkit:vision-common:16.5.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3fc57d208d823ec457037b67df75cdbb/vision-common-16.5.0/AndroidManifest.xml:13:17-124
+327                android:value="com.google.firebase.components.ComponentRegistrar" />
+327-->[com.google.mlkit:vision-common:16.5.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3fc57d208d823ec457037b67df75cdbb/vision-common-16.5.0/AndroidManifest.xml:14:17-82
+328            <meta-data
+328-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:20:13-22:85
+329                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+329-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:21:17-120
+330                android:value="com.google.firebase.components.ComponentRegistrar" />
+330-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:22:17-82
+331        </service>
+332
+333        <provider
+333-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:9:9-13:38
+334            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+334-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:10:13-78
+335            android:authorities="com.cardio.physician.qa.mlkitinitprovider"
+335-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:11:13-69
+336            android:exported="false"
+336-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:12:13-37
+337            android:initOrder="99" />
+337-->[com.google.mlkit:common:17.1.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ffdab5e00052c4c7de204d800f91e27c/common-17.1.1/AndroidManifest.xml:13:13-35
+338
+339        <activity
+339-->[com.google.android.gms:play-services-base:17.6.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/291f038a2f57d4ba2a3646fd8f730dce/play-services-base-17.6.0/AndroidManifest.xml:23:9-26:75
+340            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+340-->[com.google.android.gms:play-services-base:17.6.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/291f038a2f57d4ba2a3646fd8f730dce/play-services-base-17.6.0/AndroidManifest.xml:24:13-79
+341            android:exported="false"
+341-->[com.google.android.gms:play-services-base:17.6.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/291f038a2f57d4ba2a3646fd8f730dce/play-services-base-17.6.0/AndroidManifest.xml:25:13-37
+342            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+342-->[com.google.android.gms:play-services-base:17.6.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/291f038a2f57d4ba2a3646fd8f730dce/play-services-base-17.6.0/AndroidManifest.xml:26:13-72
+343
+344        <provider
+344-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:26:9-31:39
+345            android:name="com.google.firebase.provider.FirebaseInitProvider"
+345-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:27:13-77
+346            android:authorities="com.cardio.physician.qa.firebaseinitprovider"
+346-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:28:13-72
+347            android:directBootAware="true"
+347-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:29:13-43
+348            android:exported="false"
+348-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:30:13-37
+349            android:initOrder="100" />
+349-->[com.google.firebase:firebase-common:20.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/01b6bf77fb313a47e5dca1c3ac8b6783/firebase-common-20.0.0/AndroidManifest.xml:31:13-36
+350        <provider
+350-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ac40450f421a3abc2de6af4a437b1d3a/lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+351            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+351-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ac40450f421a3abc2de6af4a437b1d3a/lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+352            android:authorities="com.cardio.physician.qa.lifecycle-process"
+352-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ac40450f421a3abc2de6af4a437b1d3a/lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+353            android:exported="false"
+353-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ac40450f421a3abc2de6af4a437b1d3a/lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+354            android:multiprocess="true" />
+354-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/ac40450f421a3abc2de6af4a437b1d3a/lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+355
+356        <service
+356-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4fc3d2da6ae76bad873736b76efda68c/transport-backend-cct-3.0.0/AndroidManifest.xml:29:9-35:19
+357            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+357-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4fc3d2da6ae76bad873736b76efda68c/transport-backend-cct-3.0.0/AndroidManifest.xml:30:13-103
+358            android:exported="false" >
+358-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4fc3d2da6ae76bad873736b76efda68c/transport-backend-cct-3.0.0/AndroidManifest.xml:31:13-37
+359            <meta-data
+359-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4fc3d2da6ae76bad873736b76efda68c/transport-backend-cct-3.0.0/AndroidManifest.xml:32:13-34:39
+360                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+360-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4fc3d2da6ae76bad873736b76efda68c/transport-backend-cct-3.0.0/AndroidManifest.xml:33:17-94
+361                android:value="cct" />
+361-->[com.google.android.datatransport:transport-backend-cct:3.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4fc3d2da6ae76bad873736b76efda68c/transport-backend-cct-3.0.0/AndroidManifest.xml:34:17-36
+362        </service>
+363        <service
+363-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:26:9-30:19
+364            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+364-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:27:13-117
+365            android:exported="false"
+365-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:28:13-37
+366            android:permission="android.permission.BIND_JOB_SERVICE" >
+366-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:29:13-69
+367        </service>
+368
+369        <receiver
+369-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:32:9-34:40
+370            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+370-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:33:13-132
+371            android:exported="false" />
+371-->[com.google.android.datatransport:transport-runtime:3.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/3b26f9a2c79e68181f430fe55154f278/transport-runtime-3.0.1/AndroidManifest.xml:34:13-37
+372    </application>
+373
+374</manifest>

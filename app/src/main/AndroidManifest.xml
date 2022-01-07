@@ -83,16 +83,16 @@
         <activity
             android:name="com.cardio.physician.ui.views.fitbit.auth.LoginActivity"
             android:launchMode="singleTop">
-            <intent-filter android:label="filter_fitbit_auth">
+            <!--<intent-filter android:label="filter_fitbit_auth">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <!-- Accepts URIs that begin with "example://gizmos” -->
+                &lt;!&ndash; Accepts URIs that begin with "example://gizmos” &ndash;&gt;
                 <data
                     android:host="fitbit"
                     android:scheme="pocketcardio" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
 
         <meta-data

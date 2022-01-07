@@ -115,10 +115,16 @@ class AddPatientViewModel @Inject constructor(
                 if(data.isEmpty()){
                     userSearchSingleLiveData.value = Resource.error(Constants.ADD_PATIENT, 202, "202", null)
                 }else{
+                    val map = LinkedHashMap<String?, PatientModel>()
+                    for (patient in data){
+                        if(patient.isAdded == 1) map.put(patient.userId, patient)
+                    }
+                    val outputString = ArrayList<PatientModel>()
+                    outputString.addAll(map.values)
                     userSearchSingleLiveData.postValue(
                         Resource.success(
                             Constants.ADD_PATIENT,
-                            data
+                            outputString
                         )
                     )
                 }

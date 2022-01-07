@@ -18,6 +18,7 @@ import com.cardio.physician.ui.common.customviews.toolbar.DashBoardToolbarImp
 import com.cardio.physician.ui.common.customviews.toolbar.base.IToolbar
 import com.cardio.physician.ui.common.utils.*
 import com.cardio.physician.ui.common.utils.extentions.customObserver
+import com.cardio.physician.ui.views.add_patient.AddPatientActivity
 import com.cardio.physician.ui.views.dashboard.DashboardActivity
 import com.cardio.physician.ui.views.diagnosis.DiagnosisActivity
 import com.cardio.physician.ui.views.notifications.NotificationsActivity
@@ -99,6 +100,7 @@ class PatientDashboardFragment : BaseToolBarFragment<FragmentPatientDashboardBin
                 }
             },
             onError = { msg, exp ->
+                showHidePatientView(View.VISIBLE)
             }
         )
     }
@@ -147,6 +149,9 @@ class PatientDashboardFragment : BaseToolBarFragment<FragmentPatientDashboardBin
             (requireActivity() as? DashboardActivity)?.registerSyncUpdates {
                 binding.progressBarSync.visibility = if (it) View.VISIBLE else View.GONE
             }
+        }
+        binding.tvNoPatientFound.setOnClickListener {
+            AddPatientActivity.start(activity as DashboardActivity)
         }
         binding.etSearch.addTextChangedListener(TextChangeWatcher(binding.etSearch))
         binding.ivFilter.setOnClickListener { (activity as? DashboardActivity)?. let { it1 ->

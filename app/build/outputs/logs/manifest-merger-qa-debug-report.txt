@@ -731,28 +731,6 @@ ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/
 		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:85:13-43
 	android:name
 		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:84:13-83
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:fitbit+data:scheme:pocketcardio
-ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:86:13-95:29
-	android:label
-		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:86:28-62
-action#android.intent.action.VIEW
-ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:87:17-69
-	android:name
-		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:87:25-66
-category#android.intent.category.DEFAULT
-ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:89:17-76
-	android:name
-		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:89:27-73
-category#android.intent.category.BROWSABLE
-ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:90:17-78
-	android:name
-		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:90:27-75
-data
-ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:92:17-94:53
-	android:host
-		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:93:21-42
-	android:scheme
-		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:94:21-50
 meta-data#com.fitbit.sampleandroidoauth2.CLIENT_ID
 ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:98:9-100:38
 	android:value
@@ -933,6 +911,26 @@ ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/
 		ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:28:13-80
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:firebase.auth+data:path:/+data:scheme:genericidp
 ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:33:13-43:29
+action#android.intent.action.VIEW
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:34:17-69
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:34:25-66
+category#android.intent.category.DEFAULT
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
+category#android.intent.category.BROWSABLE
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:37:17-78
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:37:27-75
+data
+ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:39:17-42:51
+	android:path
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:41:21-37
+	android:host
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:40:21-49
+	android:scheme
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:42:21-48
 activity#com.google.firebase.auth.internal.RecaptchaActivity
 ADDED from [com.google.firebase:firebase-auth:21.0.1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/d6746af43328fcc01d0d67a66ee42701/firebase-auth-21.0.1/AndroidManifest.xml:45:9-62:20
 	android:excludeFromRecents
