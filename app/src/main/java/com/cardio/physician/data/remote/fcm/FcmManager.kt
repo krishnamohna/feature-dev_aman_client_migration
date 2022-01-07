@@ -74,7 +74,7 @@ class FcmManager @Inject constructor(
                 val msg =
                     if (isEdit) "${userManager.getString(PREF_DISPLAY_NAME)} has added a diagnosis." else
                         "${userManager.getString(PREF_DISPLAY_NAME)} has edited a diagnosis."
-                userId?.let { it1 -> sendPushNotification(it1, msg) }
+                userId?.let { it1 -> sendPushNotification(it1, msg, "Diagnosis") }
 
                 /*connectionRepo.getMyConnections().forEach {
 
@@ -85,11 +85,11 @@ class FcmManager @Inject constructor(
         }
     }
 
-    fun sendPushNotification(senderId: String, message: String) {
+    fun sendPushNotification(senderId: String, message: String, title: String) {
         executeService.execute(Runnable {
             val mediaType: MediaType? = "application/json".toMediaTypeOrNull()
             val body =
-                "{\r\n\t\"to\": \"/topics/$senderId\",\r\n\t\"notification\": {\r\n\t\t\"body\": \"$message\",\r\n\t\t\"title\": \"Pocket Cardio\"\r\n\t}\r\n}".toRequestBody(
+                "{\r\n\t\"to\": \"/topics/$senderId\",\r\n\t\"notification\": {\r\n\t\t\"body\": \"$message\",\r\n\t\t\"title\": \"$title\"\r\n\t}\r\n}".toRequestBody(
                     mediaType)
             val request: Request = Request.Builder()
                 .url("https://fcm.googleapis.com/fcm/send")

@@ -450,7 +450,7 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
     }
 
     private fun setBasicInfo(userModel: UserModel?) {
-        userManager.setString(Preference.PREF_DISPLAY_NAME, getDisplayName(userModel?.firstName,userModel?.lastName))
+//        userManager.setString(Preference.PREF_DISPLAY_NAME, getDisplayName(userModel?.firstName,userModel?.lastName))
         (activity as DiagnosisActivity)?.itoolbar.view.setUpToolbar(userModel?.firstName + " " + userModel?.lastName)
         toolbar?.setUserImage(userModel?.imagePath)
         userModel?.gender?.let {

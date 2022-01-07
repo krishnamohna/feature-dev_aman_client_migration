@@ -75,12 +75,12 @@ class NotificationAdapter constructor(private val action: (AdapterAction, Notifi
                 notificationModel.type == FireStoreDocKey.NOTIFICATION_TYPE_REQUEST && notificationModel.requestStatus == true -> {
                     "has accepted your request."
                 }
-                notificationModel.type == FireStoreDocKey.NOTIFICATION_TYPE_REQUEST && notificationModel.requestStatus == false -> {
+                /*notificationModel.type == FireStoreDocKey.NOTIFICATION_TYPE_REQUEST && notificationModel.requestStatus == false -> {
                     "is rejected by you."
                 }
                 notificationModel.type == FireStoreDocKey.NOTIFICATION_TYPE_REQUEST && notificationModel.requestStatus == null -> {
                     "has sent a request to add you as patient."
-                }
+                }*/
                 notificationModel.type == FireStoreDocKey.NOTIFICATION_TYPE_ADD_DIAGNOSIS -> {
                     "has added a diagnosis for you."
                 }

@@ -154,7 +154,7 @@ class DiagnosisRepoImp @Inject constructor(
             }
 
             //notify users through notifications
-            fcmManager.notifyUsersForDiagnosis(isEdit, userId)
+//            fcmManager.notifyUsersForDiagnosis(isEdit, userId)
         }
 
     }

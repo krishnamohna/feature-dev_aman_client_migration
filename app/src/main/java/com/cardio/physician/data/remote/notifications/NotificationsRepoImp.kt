@@ -94,17 +94,17 @@ class NotificationsRepoImp @Inject constructor(
                 .document().set(mapNotification).await()
             //send push
             val msg = getNotificationMsg(notificationType)
-            fcmManager.sendPushNotification(connection.userId,msg)
+            fcmManager.sendPushNotification(connection.userId,msg, "Add Request")
         }
     }
 
     private fun getNotificationMsg(notificationType: String): String {
         return  when(notificationType){
             NOTIFICATION_TYPE_ADD_DIAGNOSIS->{
-                "${userManager.getString(Preference.PREF_DISPLAY_NAME)} has added a diagnosis."
+                "${userManager.getString(Preference.PREF_DISPLAY_NAME)} has added your new diagnosis."
             }
             NOTIFICATION_TYPE_EDIT_DIAGNOSIS->{
-                "${userManager.getString(Preference.PREF_DISPLAY_NAME)} has edited a diagnosis."
+                "${userManager.getString(Preference.PREF_DISPLAY_NAME)} has edited your diagnosis."
             }
             else -> {
                 "Incompatible notification type.Talk to support"
@@ -158,7 +158,7 @@ class NotificationsRepoImp @Inject constructor(
             notificationModel.requestStatus=true
             //send push notification to use to notify him
             fcmManager.sendPushNotification(notificationModel.userId,
-                "${userManager.getString(PREF_DISPLAY_NAME)} has accepted your request.")
+                "${userManager.getString(PREF_DISPLAY_NAME)} has accepted your request.", "Add Request")
         }else{
             notificationModel.requestStatus=false
         }

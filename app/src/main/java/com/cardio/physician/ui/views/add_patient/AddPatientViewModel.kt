@@ -10,10 +10,7 @@ import com.cardio.physician.domain.addpatient.PatientModel
 import com.cardio.physician.network.Resource
 import com.cardio.physician.network.api.Constants
 import com.cardio.physician.ui.common.base.viewmodel.BaseAuthViewModel
-import com.cardio.physician.ui.common.utils.FireStoreDocKey
-import com.cardio.physician.ui.common.utils.UserType
-import com.cardio.physician.ui.common.utils.getCurrentDate
-import com.cardio.physician.ui.common.utils.isValidEmail
+import com.cardio.physician.ui.common.utils.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -143,10 +140,22 @@ class AddPatientViewModel @Inject constructor(
                 FireStoreDocKey.LAST_NAME to (patientModel.lastName?:""),
                 FireStoreDocKey.SEARCH_NAME to (patientModel.firstName?.lowercase() +" "+ patientModel.lastName?.lowercase()),
                 FireStoreDocKey.IMAGE_URL to (patientModel.imageUrl?:""),
+                FireStoreDocKey.USER_ID to (patientModel.userId?:""),
                 FireStoreDocKey.EMAIL to (patientModel.email?:"")
             )
+        val connection1Data: HashMap<String, Any> =
+            hashMapOf(
+                FireStoreDocKey.TIMESTAMP to System.currentTimeMillis().toDouble(),
+                FireStoreDocKey.REQUEST_STATUS to false,
+                FireStoreDocKey.FIRST_NAME to userManager.getString(Preference.PREF_FIRST_NAME),
+                FireStoreDocKey.LAST_NAME to userManager.getString(Preference.PREF_LAST_NAME),
+                FireStoreDocKey.SEARCH_NAME to (userManager.getString(Preference.PREF_FIRST_NAME).lowercase() +" "+ userManager.getString(Preference.PREF_LAST_NAME).lowercase()),
+                FireStoreDocKey.IMAGE_URL to userManager.getString(Preference.PREF_PROFILE_IMAGE),
+                FireStoreDocKey.USER_ID to getPatientUid(),
+                FireStoreDocKey.EMAIL to userManager.getString(Preference.PREF_EMAIL)
+            )
         viewModelScope.launch {
-            addPatientRepositoryImp.addDataToFirestore(patientModel, connectionData)
+            addPatientRepositoryImp.addDataToFirestore(patientModel, connectionData, connection1Data)
         }
     }
 }

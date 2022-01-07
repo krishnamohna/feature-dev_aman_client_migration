@@ -68,7 +68,7 @@ fun getDate(date: Int): String? {
 fun String.datePickerStringToDate(
     dateFormat: String, timeZone: TimeZone = TimeZone.getDefault(),
 ): Date {
-    val parser = SimpleDateFormat(dateFormat, Locale.getDefault())
+    val parser = SimpleDateFormat(dateFormat, Locale.US)
     parser.timeZone = timeZone
     return try {
         parser.parse(this)
@@ -129,8 +129,8 @@ fun getDaysDifference(date: String?): Int {
     return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS).toInt()
 }
 
-fun getDefaultDateFormatter() = SimpleDateFormat(DATE_FORMAT_DD_MMM_YYYY, Locale.getDefault())
-fun getDefaultTimeFormatter() = SimpleDateFormat(DATE_FORMAT_HH_MM, Locale.getDefault())
+fun getDefaultDateFormatter() = SimpleDateFormat(DATE_FORMAT_DD_MMM_YYYY, Locale.US)
+fun getDefaultTimeFormatter() = SimpleDateFormat(DATE_FORMAT_HH_MM, Locale.US)
 
 fun DataPoint.getStartTimeString(): String = getDefaultDateFormatter()
     .format(this.getStartTime(TimeUnit.MILLISECONDS))
@@ -150,14 +150,14 @@ fun getDatesOfLastDays(days: Int, listDates: MutableList<DateModel>) {
 }
 
 fun formatDate(inputFormat: String, inputDate: String): String? {
-    var dateformat = SimpleDateFormat(inputFormat, Locale.getDefault())
+    var dateformat = SimpleDateFormat(inputFormat, Locale.US)
     return getDefaultDateFormatter().format(dateformat.parse(inputDate))
 }
 
 fun formatDateToGraph(dateInput:String):String{
    try {
        var date= getDefaultDateFormatter().parse(dateInput)
-       return SimpleDateFormat(DATE_FORMAT_DD_MM, Locale.getDefault()).format(date)
+       return SimpleDateFormat(DATE_FORMAT_DD_MM, Locale.US).format(date)
    }catch (exp:Exception){
        return dateInput
    }
