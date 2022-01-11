@@ -2851,6 +2851,7 @@ drawable ic_next
 drawable ic_no_notification
 drawable ic_notification
 drawable ic_notification_preference
+drawable ic_notification_v2
 drawable ic_place_holder_profile
 drawable ic_profile_circle_bg
 drawable ic_profile_placeholder
@@ -3777,6 +3778,7 @@ id stop
 id stretch
 id submenuarrow
 id submit_area
+id swipeRefreshLayoutNotifications
 id switchNotification
 id syncHealthDataFragment
 id tabMode

@@ -14,9 +14,14 @@ import com.cardio.physician.ui.common.base.viewmodel.BaseViewModel
 import com.cardio.physician.ui.common.utils.extentions.setError
 import com.cardio.physician.ui.common.utils.extentions.setLoading
 import com.cardio.physician.ui.common.utils.extentions.setSuccess
+import com.cardio.physician.ui.common.utils.extentions.toConnectionModel
 import com.cardio.physician.ui.common.utils.livedata.SingleLiveEvent
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.QuerySnapshot
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -53,8 +58,13 @@ class DashboardViewModel @Inject constructor(
     fun getPatientList(currentDate: String) {
         viewModelScope.launch {
             try {
-                singleEventConnections.setLoading()
-                singleEventConnections.setSuccess(diagnosisRepo.getPatientListByDate(currentDate))
+                diagnosisRepo.getPatientListByDate(currentDate
+                ) { value, error ->
+                    if (value != null)
+                        singleEventConnections.setSuccess(value.toConnectionModel())
+                    else
+                        error?.let { singleEventConnections.setError(it) }
+                }
             }catch (exp:Exception){
                 singleEventConnections.setError(exp)
             }
@@ -86,13 +96,13 @@ class DashboardViewModel @Inject constructor(
     }
 
     fun getUserDetail(userId: String?) {
-        try {
-            userSingleLiveData.setLoading()
-            viewModelScope.launch {
+        viewModelScope.launch {
+            try {
+                userSingleLiveData.setLoading()
                 userSingleLiveData.setSuccess(userProfileRepository.fetchUserDetailByModel(userId))
+            } catch (e: Exception) {
+                userSingleLiveData.setError(e)
             }
-        } catch (e: Exception) {
-            userSingleLiveData.setError(e)
         }
     }
 

@@ -22,8 +22,8 @@ class SharedPreferences @Inject constructor(@ApplicationContext context: Context
         return sharedPreferences.getString(key, "")!!
     }
 
-    fun getString(key: String,defValue:String?): String {
-        return sharedPreferences.getString(key, defValue)!!
+    fun getString(key: String,defValue:String?): String? {
+        return sharedPreferences.getString(key, defValue)
     }
 
     fun setBoolean(key: String, value: Boolean) {

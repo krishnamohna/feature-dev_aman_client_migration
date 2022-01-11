@@ -11,10 +11,10 @@ INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/a
 	android:name
 		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:120:13-62
 manifest
-ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-160:12
-INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-160:12
-INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-160:12
-INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-160:12
+ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-162:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-162:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-162:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-162:12
 MERGED from [androidx.databinding:databinding-adapters:4.1.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/2ee800f82db01701d258c21dff27a86f/databinding-adapters-4.1.2/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:databinding-runtime:4.1.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/2b0a299a7ddcee8d127f9e074722c199/databinding-runtime-4.1.2/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:viewbinding:4.1.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/48e25d735904c4a6acb9e64b1e9a8df8/viewbinding-4.1.2/AndroidManifest.xml:17:1-22:12
@@ -142,22 +142,22 @@ MERGED from [androidx.annotation:annotation-experimental:1.0.0] /home/appinventi
 MERGED from [com.google.dagger:dagger-lint-aar:2.35] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b2c340f56728536ee055819a59c3a64c/dagger-lint-aar-2.35/AndroidManifest.xml:16:1-19:12
 MERGED from [com.google.android.odml:image:1.0.0-beta1] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/b337e79a2b7f2749ee94bd94f03a5d20/image-1.0.0-beta1/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/f5a489e90c0f2cefc34d939dcf2311d7/protolite-well-known-types-18.0.0/AndroidManifest.xml:2:1-11:12
-INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-160:12
-INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-160:12
-INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-160:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-162:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-162:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-162:12
 	package
 		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:4:5-35
 		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml
 		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml
-		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-160:12
+		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-162:12
 		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml
 	xmlns:tools
 		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml
-		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-160:12
+		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:1-162:12
 		INJECTED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:2:11-69
@@ -522,7 +522,7 @@ ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/
 	android:name
 		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:22:21-69
 application
-ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:31:5-158:19
+ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:31:5-160:19
 MERGED from [com.tbuonomo:dotsindicator:4.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/92db91cd004745c712c748c8574af403/dotsindicator-4.2/AndroidManifest.xml:11:5-47
 MERGED from [com.tbuonomo:dotsindicator:4.2] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/92db91cd004745c712c748c8574af403/dotsindicator-4.2/AndroidManifest.xml:11:5-47
 MERGED from [com.google.firebase:firebase-crashlytics-ktx:18.1.0] /home/appinventiv/.gradle/caches/transforms-2/files-2.1/4d49ef2c50e98817e2e9157eec9e179a/firebase-crashlytics-ktx-18.1.0/AndroidManifest.xml:23:5-31:19
@@ -813,6 +813,12 @@ ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/
 		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:155:13-68
 	android:name
 		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:154:13-89
+meta-data#com.google.firebase.messaging.default_notification_icon
+ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:156:9-158:54
+	android:resource
+		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:158:13-51
+	android:name
+		ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:157:13-83
 intent#action:name:android.media.action.IMAGE_CAPTURE
 ADDED from /home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/AndroidManifest.xml:26:9-28:18
 action#android.media.action.IMAGE_CAPTURE

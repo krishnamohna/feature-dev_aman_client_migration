@@ -11,7 +11,11 @@ import com.cardio.physician.domain.synchealth.SyncHealthRepositary;
 import com.cardio.physician.network.Resource;
 import com.cardio.physician.ui.common.base.viewmodel.BaseViewModel;
 import com.cardio.physician.ui.common.utils.livedata.SingleLiveEvent;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import dagger.hilt.android.lifecycle.HiltViewModel;
+import java.util.*;
 import javax.inject.Inject;
 
 @dagger.hilt.android.lifecycle.HiltViewModel()

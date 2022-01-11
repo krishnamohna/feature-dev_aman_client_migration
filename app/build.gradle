@@ -40,6 +40,8 @@ android {
             buildConfigField "String", "FCM_KEY", "\"AAAALxjHhdA:APA91bF7sf8FI1ap6Zag5h0uY8Ks6LYt2j-GXHaKk9hcDGghuGw2CVab-8YI8n-jh2CNXzzUmxrVouX-30vhqBpjdtgpmEfywocqOIlWxdC2b4s3WP0nV1n7FO5aQNPINBJBFWDSQKrl\""
         }
         dev {
+            ext.alwaysUpdateBuildId = false
+            ext.enableCrashlytics = false
             dimension "env"
             resConfigs("en", "xxhdpi")
             buildConfigField "String", "FCM_KEY", "\"AAAAjYHTt9k:APA91bERQajsu-Kup_7OVCoU9rrxvlD-qBBvdsezTnqyMebBTs7m1bRer8T83zmzFdzXkz6q6ignOLNBW31fJl4V6n5V1s08k3h5lDtx11tlw54uUW4l80qcIu3VCvyNUS6gDyCMA3gX\""
@@ -59,6 +61,9 @@ android {
     }
     kapt {
         correctErrorTypes true
+    }
+    dexOptions {
+        incremental true
     }
 }
 

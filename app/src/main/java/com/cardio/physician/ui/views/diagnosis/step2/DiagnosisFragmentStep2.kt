@@ -296,4 +296,5 @@ open class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2
         adapterMed.addMed(it)
     }
 
+
 }

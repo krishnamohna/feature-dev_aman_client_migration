@@ -30,11 +30,22 @@ class SplashActivity : BaseActivity() {
             when {
                 Firebase.auth.currentUser != null -> openActivity(DashboardActivity::class.java)
                 !userManager.isTutorialRequired -> {
+                    clearSessionIfStillExist()
                     openActivity(TutorialActivity::class.java)
                     userManager.setBoolean(Preference.IS_TUTORIAL_SHOWN,true)
                 }
-                else -> openActivity(AuthenticateUserActivity::class.java)
+                else -> {
+                    clearSessionIfStillExist()
+                    openActivity(AuthenticateUserActivity::class.java)
+                }
             }
+        }
+    }
+
+    private fun clearSessionIfStillExist() {
+        fcmManager.unsubscribeFcmTopic {
+            userManager.clearAllPreference()
+            logoutGoogleIfLoggedIn()
         }
     }
 

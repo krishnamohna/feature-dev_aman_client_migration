@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     tools:context=".ui.views.notifications.NotificationsActivity">
 
     <!--header view-->
@@ -14,16 +15,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNotifications"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayoutNotifications"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerView" />
+        app:layout_constraintTop_toBottomOf="@+id/headerView"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerView" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/tvNoNotificationFound"
@@ -35,7 +47,7 @@
         android:textSize="@dimen/text_large"
         android:src="@drawable/ic_no_notification"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/rvNotifications"
+        app:layout_constraintBottom_toBottomOf="@+id/swipeRefreshLayoutNotifications"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerView"

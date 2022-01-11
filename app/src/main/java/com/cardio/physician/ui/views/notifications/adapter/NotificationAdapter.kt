@@ -90,9 +90,15 @@ class NotificationAdapter constructor(private val action: (AdapterAction, Notifi
                 else ->
                     "Incompatible message type"
             }
-            return SpannableStringBuilder().bold { append(notificationModel.getFullName()) }
-                .append(" ")
-                .append(message)
+            return if(notificationModel.getFullName().trim().isNotEmpty()){
+                SpannableStringBuilder().bold { append(notificationModel.getFullName()) }
+                    .append(" ")
+                    .append(message)
+            }else {
+                SpannableStringBuilder().bold { append(notificationModel.email) }
+                    .append(" ")
+                    .append(message)
+            }
         }
     }
 

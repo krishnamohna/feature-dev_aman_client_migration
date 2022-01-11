@@ -1,7 +1,10 @@
 package com.cardio.physician.ui.views.dashboard.fragment
 
 import android.app.Activity
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,8 +23,10 @@ import com.cardio.physician.ui.common.base.fragment.BaseToolBarFragment
 import com.cardio.physician.ui.common.customviews.toolbar.DashBoardToolbarImp
 import com.cardio.physician.ui.common.customviews.toolbar.base.IToolbar
 import com.cardio.physician.ui.common.utils.*
+import com.cardio.physician.ui.common.utils.EXTRAS.EXTRAS_PUSH_NOTIFICATON_TITLE
 import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.ATRIAL_FABRILLATION
 import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.CARDIAC_HEART_FAILURE
+import com.cardio.physician.ui.common.utils.NotificationTitle.NOTIFICATION_TITLE_DIAGNOSIS
 import com.cardio.physician.ui.common.utils.extentions.customObserver
 import com.cardio.physician.ui.common.utils.extentions.isConnectedOrThrowMsg
 import com.cardio.physician.ui.common.utils.extentions.setUpToolbar
@@ -104,6 +109,14 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        activity?.let {
+            (requireActivity() as? DashboardActivity)?.unregisterSyncUpdates()
+        }
+        context?.unregisterReceiver(notificationUpdateReciever)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -164,6 +177,10 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
     }
 
     private fun setObservers() {
+        //register broad cast reciver for push notification update
+        val intentFilter = IntentFilter(BroadCastAction.ACTION_NOTIFICATION_UPDATE)
+        context?.registerReceiver(notificationUpdateReciever, intentFilter)
+
         (requireActivity() as? DashboardActivity)?.registerSyncUpdates {
             /*new health logs are synced to server lets update this screen*/
             /*check if any user has any diagnosis then load health logs too*/
@@ -266,12 +283,6 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
         viewModel.getDiagnosisAfib(getCurrentDate(), FireStoreDocKey.ATRIAL_FABRILLATION, arguments?.getString(FireStoreDocKey.USER_ID))
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        activity?.let {
-            (requireActivity() as? DashboardActivity)?.unregisterSyncUpdates()
-        }
-    }
 
     private fun setListener() {
         binding.includeFilterDash.btFilter30.setOnClickListener {
@@ -471,5 +482,18 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
         diagnosisModel?.firstName?.let { binding.includeBasicInfo.tvNameDashboard.text = it }
         diagnosisModel?.lastName?.let { binding.includeBasicInfo.tvNameDashboard.append(" ${it}") }
     }
+
+    private val notificationUpdateReciever: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            intent.getStringExtra(EXTRAS_PUSH_NOTIFICATON_TITLE)?.let {title->
+                if (title.equals(NOTIFICATION_TITLE_DIAGNOSIS,true)){
+                    parentActivity?.runOnUiThread {
+                        init()
+                    }
+                }
+            }
+        }
+    }
+
 
 }

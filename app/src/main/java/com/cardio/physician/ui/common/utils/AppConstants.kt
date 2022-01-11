@@ -16,8 +16,14 @@ interface Preference {
         const val PREF_LAST_NAME = "last_name"
         const val PREF_PROFILE_IMAGE = "profile_image"
         const val PREF_EMAIL = "pref_email"
+        const val LAST_SUBSCRIPTION_TOPIC = "last_subscription_token"
     }
 }
+
+object BroadCastAction{
+    const val ACTION_NOTIFICATION_UPDATE="action_notification_update"
+}
+
 
 interface Timer {
     companion object {
@@ -227,6 +233,12 @@ object EXTRAS {
     const val USER_ID = "extras_user_id"
     const val SELECTED_IMAGE = "selected_image"
     const val EXTRAS_FROM_NOTIFICATION = "extras_from_notification"
+    const val EXTRAS_PUSH_NOTIFICATON_TITLE = "extras_push_noti_title"
+}
+
+object NotificationTitle{
+    const val NOTIFICATION_TITLE_DIAGNOSIS="Diagnosis"
+    const val NOTIFICATION_TITLE_ADD_REQUEST="Add Request"
 }
 
 

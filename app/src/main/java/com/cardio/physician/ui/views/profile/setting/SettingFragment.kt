@@ -5,11 +5,13 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.cardio.physician.R
+import com.cardio.physician.data.local.UserManager
 import com.cardio.physician.databinding.FragmentSettingBinding
 import com.cardio.physician.domain.user.SignUpUserType
 import com.cardio.physician.network.NetworkHelper
 import com.cardio.physician.ui.common.base.activity.BaseActivity
 import com.cardio.physician.ui.common.base.fragment.BaseFragmentAuth
+import com.cardio.physician.ui.common.utils.Preference
 import com.cardio.physician.ui.common.utils.WEBURL
 import com.cardio.physician.ui.common.utils.customSnackBarFail
 import com.cardio.physician.ui.common.utils.viewbinding.viewBinding
@@ -26,6 +28,9 @@ class SettingFragment : BaseFragmentAuth(R.layout.fragment_setting), View.OnClic
     @Inject
     lateinit var networkHelper: NetworkHelper
 
+    @Inject
+    lateinit var userManager: UserManager
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpToolbar(binding.root, getString(R.string.setting), backBtnVisibility = true)
@@ -40,6 +45,7 @@ class SettingFragment : BaseFragmentAuth(R.layout.fragment_setting), View.OnClic
                binding.changePasswordContainer.visibility=View.GONE
            }
         }
+        binding.switchNotification.isChecked=userManager.getBoolean(Preference.IS_TOPIC_SUBSCRIBED)
     }
 
     private fun setListener() {

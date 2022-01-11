@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/drawable_green_gradient_circle.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/drawable_light_red_circular.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_done_icon.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_notification_v2.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/drawable/ic_remove_red.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_add_patient.xml" value="0.3038949275362319" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.1" />

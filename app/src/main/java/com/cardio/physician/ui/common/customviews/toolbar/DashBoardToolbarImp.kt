@@ -18,7 +18,7 @@ class DashBoardToolbarImp(val view: View) : IToolbar {
         view.findViewById<ImageView>(R.id.imgProfilePicToolbar).visibility=View.INVISIBLE
         //make it invisible from gone to keep title in center
         view.findViewById<ImageView>(R.id.imgEditProfile).visibility=View.VISIBLE
-        view.findViewById<ImageView>(R.id.imgEditProfile).setImageResource(R.drawable.ic_notification)
+        view.findViewById<ImageView>(R.id.imgEditProfile).setImageResource(R.drawable.ic_notification_v2)
     }
 
     fun registerNotificationClick(onNotificationClick : ()->Unit): DashBoardToolbarImp {

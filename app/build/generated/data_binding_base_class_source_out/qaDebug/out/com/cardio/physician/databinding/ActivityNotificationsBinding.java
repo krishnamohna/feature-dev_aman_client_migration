@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import com.cardio.physician.R;
 import java.lang.NullPointerException;
@@ -26,14 +27,19 @@ public final class ActivityNotificationsBinding implements ViewBinding {
   public final RecyclerView rvNotifications;
 
   @NonNull
+  public final SwipeRefreshLayout swipeRefreshLayoutNotifications;
+
+  @NonNull
   public final AppCompatImageView tvNoNotificationFound;
 
   private ActivityNotificationsBinding(@NonNull ConstraintLayout rootView,
       @NonNull ToolbarBinding headerView, @NonNull RecyclerView rvNotifications,
+      @NonNull SwipeRefreshLayout swipeRefreshLayoutNotifications,
       @NonNull AppCompatImageView tvNoNotificationFound) {
     this.rootView = rootView;
     this.headerView = headerView;
     this.rvNotifications = rvNotifications;
+    this.swipeRefreshLayoutNotifications = swipeRefreshLayoutNotifications;
     this.tvNoNotificationFound = tvNoNotificationFound;
   }
 
@@ -77,6 +83,12 @@ public final class ActivityNotificationsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.swipeRefreshLayoutNotifications;
+      SwipeRefreshLayout swipeRefreshLayoutNotifications = rootView.findViewById(id);
+      if (swipeRefreshLayoutNotifications == null) {
+        break missingId;
+      }
+
       id = R.id.tvNoNotificationFound;
       AppCompatImageView tvNoNotificationFound = rootView.findViewById(id);
       if (tvNoNotificationFound == null) {
@@ -84,7 +96,7 @@ public final class ActivityNotificationsBinding implements ViewBinding {
       }
 
       return new ActivityNotificationsBinding((ConstraintLayout) rootView, binding_headerView,
-          rvNotifications, tvNoNotificationFound);
+          rvNotifications, swipeRefreshLayoutNotifications, tvNoNotificationFound);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -6,6 +6,7 @@ import com.cardio.physician.data.local.UserManager
 import com.cardio.physician.domain.connection.ConnectionRepo
 import com.cardio.physician.ui.common.utils.Constants.FCM_SERVER_KEY
 import com.cardio.physician.ui.common.utils.Preference.Companion.IS_TOPIC_SUBSCRIBED
+import com.cardio.physician.ui.common.utils.Preference.Companion.LAST_SUBSCRIPTION_TOPIC
 import com.cardio.physician.ui.common.utils.Preference.Companion.PREF_DISPLAY_NAME
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
@@ -45,10 +46,11 @@ class FcmManager @Inject constructor(
 
     fun subscribeFcmTopic() {
         if (!userManager.getBoolean(IS_TOPIC_SUBSCRIBED)) {
-            firebaseAuth.currentUser?.let {
-                FirebaseMessaging.getInstance().subscribeToTopic(it.uid)
+            firebaseAuth.currentUser?.let {firebaseUser->
+                FirebaseMessaging.getInstance().subscribeToTopic(firebaseUser.uid)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
+                            userManager.setString(LAST_SUBSCRIPTION_TOPIC,firebaseUser.uid)
                             userManager.setBoolean(IS_TOPIC_SUBSCRIBED, true)
                         }
                     }
@@ -57,12 +59,15 @@ class FcmManager @Inject constructor(
     }
 
     fun unsubscribeFcmTopic(onUnsubscribed: (() -> Unit)? = null) {
-        firebaseAuth.currentUser?.let {
-            FirebaseMessaging.getInstance().unsubscribeFromTopic(it.uid)
+        userManager.getString(LAST_SUBSCRIPTION_TOPIC,null)?.let {
+            FirebaseMessaging.getInstance().unsubscribeFromTopic(it)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         userManager.setBoolean(IS_TOPIC_SUBSCRIBED, false)
                     }
+                    onUnsubscribed?.invoke()
+                }
+                .addOnFailureListener {
                     onUnsubscribed?.invoke()
                 }
         }

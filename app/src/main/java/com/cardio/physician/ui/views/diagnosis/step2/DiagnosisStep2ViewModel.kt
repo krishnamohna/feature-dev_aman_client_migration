@@ -1,5 +1,6 @@
 package com.cardio.physician.ui.views.diagnosis.step2
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.cardio.physician.data.remote.profile.UserProfileRepository
@@ -54,11 +55,11 @@ class DiagnosisStep2ViewModel @Inject constructor(
     }
 
     //method is used to save medicines from json file in assert to firestore collection for step 2 of diagnosis
-   /* fun saveMediciensToFirestore(context: Context){
+    fun saveMediciensToFirestore(context: Context){
         viewModelScope.launch {
             diagnosisRepo.saveMedicineToCollections(context)
         }
-    }*/
+    }
 }
 
 

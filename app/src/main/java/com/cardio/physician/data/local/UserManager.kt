@@ -27,7 +27,7 @@ class UserManager @Inject constructor(
         return sharedPreferences.getString(key)
     }
 
-    fun getString(key: String,default:String) : String{
+    fun getString(key: String,default:String?) : String?{
         return sharedPreferences.getString(key,default)
     }
 

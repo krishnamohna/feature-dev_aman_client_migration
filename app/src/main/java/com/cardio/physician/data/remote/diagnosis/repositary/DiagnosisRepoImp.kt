@@ -18,10 +18,7 @@ import com.cardio.physician.ui.common.utils.UserType
 import com.cardio.physician.ui.common.utils.extentions.*
 import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.tasks.await
@@ -66,27 +63,32 @@ class DiagnosisRepoImp @Inject constructor(
         }
     }
 
-    override suspend fun getPatientListByDate(date: String): List<ConnectionModel> {
-        val query = firebaseAuth.currentUser?.uid?.let {
+    override suspend fun getPatientListByDate(date: String, listener: EventListener<QuerySnapshot>) {
+        firebaseAuth.currentUser?.uid?.let {
             fireStoreDb.collection(FireStoreCollection.CONNECTIONS)
                 .document(UserType.USER_TYPE_PHYSICIAN)
                 .collection(it)
                 .orderBy(FireStoreDocKey.TIME_STAMP_CAMEL, Query.Direction.DESCENDING)
-        }
+        }?.addSnapshotListener(listener)
+
+/*
         val querySnapshot = query?.get()?.await()
         return if(querySnapshot == null || querySnapshot.isEmpty){
             throw NetworkError(404,"No record found")
         }else{
             querySnapshot.toConnectionModel()
         }
+*/
     }
+
+
 
     private suspend fun updateCollectionIfMedDoesNotExist(
         name: String,
         medicineModel: MedicineModel,
-    ): Boolean {
+    ) {
         var queryList = name.split(" ").toList()
-        return queryList.isNotEmpty().let {
+        queryList.isNotEmpty().let {
             var finalQueryList = mutableListOf<String>()
             var medName = queryList.get(0).capitalize()
             finalQueryList.add(medName)
@@ -95,13 +97,12 @@ class DiagnosisRepoImp @Inject constructor(
                 .get().await()
             //if med does not exist in collection so add it
             result.documents.isEmpty()?.let {
-                /*if (it) {
-                    saveMedToCollection(medName)
-                }*/
+                if (it) {
+                    //  saveMedToCollection(medName)
+                }
             }
             var doesMedExist = result.documents.isNotEmpty()
             if (doesMedExist) addMedicineInfoToModel(result.documents.get(0), medicineModel)
-            doesMedExist
         }
     }
 
@@ -175,11 +176,14 @@ class DiagnosisRepoImp @Inject constructor(
 
     /*this method is only used to upload medicines to firestore rather than adding them manually */
     override suspend fun saveMedicineToCollections(context: Context) {
-        var medicinesJson=getJsonDataFromAsset(context,"medicines.json")
+        var medicinesJson = getJsonDataFromAsset(context, "medicines.json")
         val listPersonType = object : TypeToken<MedicineFireStoreEntity>() {}.type
-        var medicinesFireStore: MedicineFireStoreEntity = Gson().fromJson(medicinesJson, listPersonType)
+        var medicinesFireStore: MedicineFireStoreEntity =
+            Gson().fromJson(medicinesJson, listPersonType)
         medicinesFireStore.Sheet1.forEachIndexed { index, medicineModel ->
-            fireStoreDb.collection(FireStoreCollection.DRUGS).document(index.toString()).set(medicineModel).await()
+            val documentId=index+1
+            fireStoreDb.collection(FireStoreCollection.DRUGS).document(documentId.toString())
+                .set(medicineModel).await()
         }
     }
 

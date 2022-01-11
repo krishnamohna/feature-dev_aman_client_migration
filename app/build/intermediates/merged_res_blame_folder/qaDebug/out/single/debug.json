@@ -988,6 +988,10 @@
         "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/layout/fragment_sync_health_data.xml"
     },
     {
+        "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/drawable_ic_notification_v2.xml.flat",
+        "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/drawable/ic_notification_v2.xml"
+    },
+    {
         "merged": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/build/intermediates/res/merged/qa/debug/mipmap-hdpi_ic_launcher.png.flat",
         "source": "/home/appinventiv/AndroidStudioProjects/Appinventiv/PhysicianApp/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     },

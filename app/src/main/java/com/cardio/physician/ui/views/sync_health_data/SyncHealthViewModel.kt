@@ -46,7 +46,7 @@ class SyncHealthViewModel @Inject constructor(
 
     fun getSelectedHealthKit(): String {
         var selectedTab = userManager.getString(SYNC_HEALTH, "")
-        return selectedTab
+        return selectedTab!!
     }
 
     fun connectWithFitbit(resultLauncher: ActivityResultLauncher<Intent>, context: Context) {

@@ -3,7 +3,7 @@ package com.cardio.physician.domain.user
 enum class SignUpUserType(val value: String) {
     NORMAL("NORMAL"),
     GOOGLE("GOOGLE"),
-    APPLE("GOOGLE");
+    APPLE("APPLE");
 
     companion object {
         fun fromName(value: String?) = values().first {

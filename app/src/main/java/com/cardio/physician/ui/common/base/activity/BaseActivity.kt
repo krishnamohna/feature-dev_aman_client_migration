@@ -80,16 +80,18 @@ abstract class BaseActivity : AppCompatActivity(), DialogProvider {
         }
 
     fun signOut() {
-        userManager.clearAllPreference()
+        //unsubscribe topic first as it need preference then clear preference
+        //  fcmManager.unsubscribeFcmTopic()
         Firebase.auth.signOut()
         logoutGoogleIfLoggedIn()
         fitbit.logout()
         NotificationUtil(this).clearAllNotifications()
-        fcmManager.unsubscribeFcmTopic()
+        //clear preferences in the end
+        //  userManager.clearAllPreference()
         openLoginActivity()
     }
 
-    private fun logoutGoogleIfLoggedIn() {
+    fun logoutGoogleIfLoggedIn() {
         try {
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
             val googleSignInClient = GoogleSignIn.getClient(this, gso)

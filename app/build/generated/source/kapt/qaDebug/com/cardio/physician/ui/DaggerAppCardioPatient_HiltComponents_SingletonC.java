@@ -1206,6 +1206,7 @@ public final class DaggerAppCardioPatient_HiltComponents_SingletonC extends AppC
         @CanIgnoreReturnValue
         private SettingFragment injectSettingFragment2(SettingFragment instance) {
           SettingFragment_MembersInjector.injectNetworkHelper(instance, DaggerAppCardioPatient_HiltComponents_SingletonC.this.networkHelper());
+          SettingFragment_MembersInjector.injectUserManager(instance, DaggerAppCardioPatient_HiltComponents_SingletonC.this.userManager());
           return instance;
         }
 
