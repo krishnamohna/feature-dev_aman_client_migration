@@ -43,12 +43,12 @@ class NotificationsActivity : BaseToolbarActivity() {
         model: NotificationModel,
     ) {
         when (adapterAction) {
-            NotificationAdapter.AdapterAction.ACTION_ACCEPT_REQUEST -> {
+            /*NotificationAdapter.AdapterAction.ACTION_ACCEPT_REQUEST -> {
                 viewModel.acceptRequest(model.userId, model.documentId, model)
             }
             NotificationAdapter.AdapterAction.ACTION_REJECT_REQUEST -> {
                 viewModel.rejectRequest(model.userId, model.documentId, model)
-            }
+            }*/
         }
     }
 

@@ -29,9 +29,9 @@ class DashBoardToolbarImp(val view: View) : IToolbar {
     }
 
     fun setUserImage(imageUrl:String?){
-        imageUrl?.let {
+        /*imageUrl?.let {
             view.findViewById<ImageView>(R.id.imgProfilePicToolbar).loadImage(it,true,true,R.drawable.ic_profile_placeholder_small)
-        }
+        }*/
     }
 
 }

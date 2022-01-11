@@ -60,6 +60,16 @@ class PatientDashboardFragment : BaseToolBarFragment<FragmentPatientDashboardBin
     }
 
     private fun showHidePatientView(showHide: Int){
+        binding.tvNoPatientFoundSearch.visibility = showHide
+        binding.ivNoPatientFoundSearch.visibility = showHide
+        if(showHide == View.VISIBLE){
+            binding.rvConnections.visibility = View.GONE
+        }else{
+            binding.rvConnections.visibility = View.VISIBLE
+        }
+    }
+
+    private fun showHidePatientViewListEmpty(showHide: Int){
         binding.tvNoPatientFound.visibility = showHide
         binding.ivNoPatientFound.visibility = showHide
         if(showHide == View.VISIBLE){
@@ -93,14 +103,14 @@ class PatientDashboardFragment : BaseToolBarFragment<FragmentPatientDashboardBin
             onLoading = ::showProgress,
             onSuccess = { connectionList ->
                 if(connectionList.isNullOrEmpty()){
-                    showHidePatientView(View.VISIBLE)
+                    showHidePatientViewListEmpty(View.VISIBLE)
                 }else{
-                    showHidePatientView(View.GONE)
+                    showHidePatientViewListEmpty(View.GONE)
                     connectionList?.let { adapter.updateConnectionList(it) }
                 }
             },
             onError = { msg, exp ->
-                showHidePatientView(View.VISIBLE)
+                showHidePatientViewListEmpty(View.VISIBLE)
             }
         )
     }
@@ -194,11 +204,11 @@ class PatientDashboardFragment : BaseToolBarFragment<FragmentPatientDashboardBin
     }
 
     private fun setUserDataInView(userModel: UserModel?) {
-        toolbar?.view?.findViewById<ImageView>(R.id.imgProfilePicToolbar)?.visibility=View.VISIBLE
+//        toolbar?.view?.findViewById<ImageView>(R.id.imgProfilePicToolbar)?.visibility=View.VISIBLE
         toolbar?.view?.findViewById<ImageView>(R.id.imgEditProfile)?.visibility=View.VISIBLE
         toolbar?.view?.findViewById<ImageView>(R.id.imgEditProfile)?.setImageResource(R.drawable.ic_notification)
 
-        toolbar?.setUserImage(userModel?.imagePath)
+//        toolbar?.setUserImage(userModel?.imagePath)
     }
 
     inner class TextChangeWatcher(private var view: View) :

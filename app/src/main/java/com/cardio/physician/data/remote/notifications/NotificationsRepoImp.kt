@@ -94,7 +94,7 @@ class NotificationsRepoImp @Inject constructor(
                 .document().set(mapNotification).await()
             //send push
             val msg = getNotificationMsg(notificationType)
-            fcmManager.sendPushNotification(connection.userId,msg, "Add Request")
+            fcmManager.sendPushNotification(connection.userId,msg, "Diagnosis")
         }
     }
 

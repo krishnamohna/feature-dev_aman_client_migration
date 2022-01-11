@@ -603,13 +603,6 @@
             "isRateControlAgent": "No"
         },
         {
-            "name": "spironolactone",
-            "tradeName": "Aldactone",
-            "category": "potassium sparing diuretics",
-            "isDiuretics": "Yes",
-            "isRateControlAgent": "No"
-        },
-        {
             "name": "triamterene",
             "tradeName": "Dyrenium",
             "category": "potassium sparing diuretics",

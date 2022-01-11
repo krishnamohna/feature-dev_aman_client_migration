@@ -35,6 +35,9 @@ public final class FragmentPatientDashboardBinding implements ViewBinding {
   public final AppCompatTextView ivNoPatientFound;
 
   @NonNull
+  public final AppCompatImageView ivNoPatientFoundSearch;
+
+  @NonNull
   public final AppCompatImageView ivSearch;
 
   @NonNull
@@ -56,20 +59,25 @@ public final class FragmentPatientDashboardBinding implements ViewBinding {
   public final AppCompatTextView tvNoPatientFound;
 
   @NonNull
+  public final AppCompatTextView tvNoPatientFoundSearch;
+
+  @NonNull
   public final View view;
 
   private FragmentPatientDashboardBinding(@NonNull ConstraintLayout rootView,
       @NonNull AppCompatEditText etSearch, @NonNull ToolbarBinding headerView,
       @NonNull AppCompatImageView ivFilter, @NonNull AppCompatTextView ivNoPatientFound,
-      @NonNull AppCompatImageView ivSearch, @NonNull ConstraintLayout parentContainer,
-      @NonNull ProgressBar progressBarSync, @NonNull RecyclerView rvConnections,
-      @NonNull AppCompatTextView tvAllPatientLabel, @NonNull AppCompatTextView tvDate,
-      @NonNull AppCompatTextView tvNoPatientFound, @NonNull View view) {
+      @NonNull AppCompatImageView ivNoPatientFoundSearch, @NonNull AppCompatImageView ivSearch,
+      @NonNull ConstraintLayout parentContainer, @NonNull ProgressBar progressBarSync,
+      @NonNull RecyclerView rvConnections, @NonNull AppCompatTextView tvAllPatientLabel,
+      @NonNull AppCompatTextView tvDate, @NonNull AppCompatTextView tvNoPatientFound,
+      @NonNull AppCompatTextView tvNoPatientFoundSearch, @NonNull View view) {
     this.rootView = rootView;
     this.etSearch = etSearch;
     this.headerView = headerView;
     this.ivFilter = ivFilter;
     this.ivNoPatientFound = ivNoPatientFound;
+    this.ivNoPatientFoundSearch = ivNoPatientFoundSearch;
     this.ivSearch = ivSearch;
     this.parentContainer = parentContainer;
     this.progressBarSync = progressBarSync;
@@ -77,6 +85,7 @@ public final class FragmentPatientDashboardBinding implements ViewBinding {
     this.tvAllPatientLabel = tvAllPatientLabel;
     this.tvDate = tvDate;
     this.tvNoPatientFound = tvNoPatientFound;
+    this.tvNoPatientFoundSearch = tvNoPatientFoundSearch;
     this.view = view;
   }
 
@@ -132,6 +141,12 @@ public final class FragmentPatientDashboardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.iv_no_patient_found_search;
+      AppCompatImageView ivNoPatientFoundSearch = rootView.findViewById(id);
+      if (ivNoPatientFoundSearch == null) {
+        break missingId;
+      }
+
       id = R.id.iv_search;
       AppCompatImageView ivSearch = rootView.findViewById(id);
       if (ivSearch == null) {
@@ -170,6 +185,12 @@ public final class FragmentPatientDashboardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tv_no_patient_found_search;
+      AppCompatTextView tvNoPatientFoundSearch = rootView.findViewById(id);
+      if (tvNoPatientFoundSearch == null) {
+        break missingId;
+      }
+
       id = R.id.view;
       View view = rootView.findViewById(id);
       if (view == null) {
@@ -177,8 +198,9 @@ public final class FragmentPatientDashboardBinding implements ViewBinding {
       }
 
       return new FragmentPatientDashboardBinding((ConstraintLayout) rootView, etSearch,
-          binding_headerView, ivFilter, ivNoPatientFound, ivSearch, parentContainer,
-          progressBarSync, rvConnections, tvAllPatientLabel, tvDate, tvNoPatientFound, view);
+          binding_headerView, ivFilter, ivNoPatientFound, ivNoPatientFoundSearch, ivSearch,
+          parentContainer, progressBarSync, rvConnections, tvAllPatientLabel, tvDate,
+          tvNoPatientFound, tvNoPatientFoundSearch, view);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

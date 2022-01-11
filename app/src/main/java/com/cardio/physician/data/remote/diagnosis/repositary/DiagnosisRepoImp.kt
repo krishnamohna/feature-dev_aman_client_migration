@@ -95,9 +95,9 @@ class DiagnosisRepoImp @Inject constructor(
                 .get().await()
             //if med does not exist in collection so add it
             result.documents.isEmpty()?.let {
-                if (it) {
+                /*if (it) {
                     saveMedToCollection(medName)
-                }
+                }*/
             }
             var doesMedExist = result.documents.isNotEmpty()
             if (doesMedExist) addMedicineInfoToModel(result.documents.get(0), medicineModel)
@@ -131,7 +131,7 @@ class DiagnosisRepoImp @Inject constructor(
         val json = Gson().toJson(diagnosisModel)
         var mapDiagnosis: Map<String, Any> = HashMap()
         mapDiagnosis = Gson().fromJson(json, mapDiagnosis.javaClass)
-        (userId?:firebaseAuth.currentUser?.uid)?.let { uuid ->
+        userId?.let { uuid ->
             fireStoreDb.collection(FireStoreCollection.DIAGNOSIS)
                 .document(uuid)
                 .collection(diagnosisModel.ailment!!)

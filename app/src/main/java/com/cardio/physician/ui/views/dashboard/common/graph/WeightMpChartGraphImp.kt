@@ -33,10 +33,12 @@ import java.util.*
 import javax.inject.Inject
 
 
+
 class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
     OnChartValueSelectedListener {
 
     private lateinit var chart: LineChart
+    private var maxValue: Float = 0f
 
     override fun getGraphView(context: Context): View {
         chart = LineChart(context)
@@ -47,26 +49,27 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
 
     override fun showGraph(listHealthLogs: List<FitnessModel>?) {
         val values = mutableListOf<Entry>()
-        var totalValue=0f
-        val dateLabels= mutableListOf<String?>()
+        var totalValue = 0f
+        val dateLabels = mutableListOf<String?>()
         listHealthLogs?.forEachIndexed { index, fitnessModel ->
             fitnessModel.weight?.let {
-                if(it == "0" || it.isBlank()) return@let
+                if (it == "0" || it.isBlank()) return@let
                 values.add(Entry(index.toFloat(), it.toFloat()))
+                if(it.toFloat()>maxValue)maxValue=it.toFloat()
                 totalValue += it.toFloat()
                 fitnessModel.date?.let { dateLabels.add(formatDateToGraph(it)) }
             }
         }
         //check if there are entries and then make  visible
-        if(dateLabels.isNotEmpty()){
+        if (dateLabels.isNotEmpty()) {
             showGraphFilters()
             parentLayout?.visibility = View.VISIBLE //set avg value of graph
             setAverageValue((totalValue / dateLabels.size).toInt().toString())
-        }else{
+        } else {
             parentLayout?.visibility = View.GONE
             return
         }
-        chart.xAxis.valueFormatter= LineChartXAxisValueFormatter(dateLabels)
+        chart.xAxis.valueFormatter = LineChartXAxisValueFormatter(dateLabels)
         val set1: LineDataSet
         if (chart.data != null &&
             chart.data.dataSetCount > 0
@@ -84,7 +87,7 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
             set1.setDrawIcons(false)
             set1.setDrawValues(false)
             // draw dashed line
-          //  set1.enableDashedLine(10f, 5f, 0f)
+            //  set1.enableDashedLine(10f, 5f, 0f)
             // black lines and points
             set1.color = Color.BLACK
             set1.setCircleColor(chart.context.getColor(R.color.color_data_point_graph))
@@ -114,7 +117,7 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
             } else {
                 set1.fillColor = Color.WHITE
             }
-            set1.valueTypeface=typefaceBold
+            set1.valueTypeface = typefaceBold
             val dataSets = ArrayList<ILineDataSet>()
             dataSets.add(set1) // add the data sets
             // create a data object with the data sets
@@ -122,6 +125,53 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
             // set data
             chart.data = data
             chart.invalidate()
+        }
+    }
+
+    override fun setDryWeight(diagnosisModel: DiagnosisModel) {
+        removeAllLinesFirst()
+        getDryWeight(diagnosisModel)?.let {dryWeight->
+            try {
+                addLimitLines(chart.axisLeft, dryWeight.toFloat())
+                if(dryWeight.toFloat()>maxValue){
+                    chart.axisLeft.mAxisMaximum=dryWeight.toFloat()+20
+                    chart.axisLeft.axisMaximum=dryWeight.toFloat()+20
+                }
+                chart.notifyDataSetChanged()
+                chart.invalidate()
+            } catch (exp: Exception) {
+                exp.printStackTrace()
+            }
+        }
+    }
+
+    private fun removeAllLinesFirst() {
+        chart.axisLeft.removeAllLimitLines()
+        chart.notifyDataSetChanged()
+        chart.invalidate()
+    }
+
+    private fun addLimitLines(yAxis: YAxis, value: Float) {
+        val ll1 = LimitLine(value, "Dry Weight")
+        ll1.lineWidth = 1f
+        ll1.disableDashedLine()
+        //ll1.enableDashedLine(10f, 10f, 0f)
+        ll1.lineColor = chart.context.resources.getColor(R.color.color_data_point_graph)
+        ll1.labelPosition = LimitLine.LimitLabelPosition.RIGHT_BOTTOM
+        ll1.textSize = 10f
+        yAxis.addLimitLine(ll1)
+        yAxis.setDrawLimitLinesBehindData(true)
+    }
+
+    private fun getDryWeight(diagnosisModel: DiagnosisModel): String? {
+        return diagnosisModel.questionnaire?.firstOrNull {
+            it.type == QuestionTypes.TYPE_2 && it.id == FireStoreDocKey.DRY_WEIGHT_QUESTION_ID
+        }?.let { question ->
+            if (!question.answer.equals(FireStoreDocKey.UNKNOWN, true)) {
+                question.answer
+            } else {
+                return null
+            }
         }
     }
 
@@ -157,8 +207,8 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
         xAxis.enableGridDashedLine(10f, 10f, 0f)
         xAxis.labelCount = Constants.CHART_LABEL_COUNT
         xAxis.granularity = 1f // only intervals of 1 day
-        xAxis.position=XAxis.XAxisPosition.BOTTOM
-        xAxis.typeface=typefaceBold
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
+        xAxis.typeface = typefaceBold
         xAxis.axisMinimum = 0f
         // // Y-Axis Style // //
         var yAxis: YAxis
@@ -168,7 +218,7 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
         chart.getAxisRight().setEnabled(false)
         // horizontal grid lines
         yAxis.enableGridDashedLine(10f, 10f, 0f)
-        yAxis.typeface=typefaceBold
+        yAxis.typeface = typefaceBold
         // axis range
         // draw points over time
         chart.animateX(1500)
@@ -186,47 +236,5 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
 
     }
 
-    override fun setDryWeight(diagnosisModel: DiagnosisModel) {
-        removeAllLinesFirst()
-        getDryWeight(diagnosisModel)?.let {
-            try {
-                addLimitLines(chart.axisLeft, it.toFloat())
-            }catch (exp:Exception){
-                exp.printStackTrace()
-            }
-        }
-    }
-
-    private fun removeAllLinesFirst() {
-        chart.axisLeft.removeAllLimitLines()
-        chart.notifyDataSetChanged()
-        chart.invalidate()
-    }
-
-    private fun addLimitLines(yAxis: YAxis, value: Float) {
-        val ll1 = LimitLine(value, "Dry Weight")
-        ll1.lineWidth = 1f
-        ll1.disableDashedLine()
-        //ll1.enableDashedLine(10f, 10f, 0f)
-        ll1.lineColor=chart.context.resources.getColor(R.color.color_data_point_graph)
-        ll1.labelPosition = LimitLine.LimitLabelPosition.RIGHT_BOTTOM
-        ll1.textSize = 10f
-        yAxis.addLimitLine(ll1)
-        yAxis.setDrawLimitLinesBehindData(true)
-        chart.notifyDataSetChanged()
-        chart.invalidate()
-    }
-
-    private fun getDryWeight(diagnosisModel: DiagnosisModel): String? {
-        return diagnosisModel.questionnaire?.firstOrNull {
-            it.type == QuestionTypes.TYPE_2 && it.id == FireStoreDocKey.DRY_WEIGHT_QUESTION_ID
-        }?.let { question ->
-            if (!question.answer.equals(FireStoreDocKey.UNKNOWN, true)) {
-                question.answer
-            } else {
-                return null
-            }
-        }
-    }
 
 }

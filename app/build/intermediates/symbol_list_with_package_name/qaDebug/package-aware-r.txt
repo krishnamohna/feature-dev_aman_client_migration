@@ -3515,6 +3515,7 @@ id iv_back
 id iv_email_user
 id iv_filter
 id iv_no_patient_found
+id iv_no_patient_found_search
 id iv_options
 id iv_search
 id iv_user_image
@@ -3966,6 +3967,7 @@ id tv_end_date
 id tv_filter
 id tv_invite_user
 id tv_no_patient_found
+id tv_no_patient_found_search
 id tv_reset
 id tv_start_date
 id tv_user_name
