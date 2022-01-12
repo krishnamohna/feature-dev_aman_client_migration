@@ -152,7 +152,7 @@ class DiagnosisRepoImp @Inject constructor(
                 transaction.set(refDiagnosisRef, mapDiagnosis)
                 transaction.set(refHealthLogs, getHealthLogMap(diagnosisModel), SetOptions.merge())
                 transaction.set(refProfile, getUserModelMap(diagnosisModel), SetOptions.merge())
-            }
+            }.await()
 
             //notify users through notifications
 //            fcmManager.notifyUsersForDiagnosis(isEdit, userId)
