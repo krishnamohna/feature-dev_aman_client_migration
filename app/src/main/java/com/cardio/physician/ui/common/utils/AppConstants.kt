@@ -241,4 +241,9 @@ object NotificationTitle{
     const val NOTIFICATION_TITLE_ADD_REQUEST="Add Request"
 }
 
+object NotificationType{
+    const val TYPE_ADD_DIAGNOSIS="2"
+    const val TYPE_EDIT_DIAGNOSIS="3"
+    const val TYPE_UNKNOWN="4"
+}
 

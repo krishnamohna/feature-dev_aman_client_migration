@@ -25,6 +25,7 @@ import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.IFillFormatter
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
@@ -77,7 +78,6 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
             set1 = chart.data.getDataSetByIndex(0) as LineDataSet
             set1.values = values
             set1.notifyDataSetChanged()
-            chart.data.notifyDataChanged()
             chart.notifyDataSetChanged()
             chart.invalidate()
             chart.animateX(CHART_ANIMATE_TIME)
@@ -106,24 +106,24 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
             set1.enableDashedHighlightLine(10f, 5f, 0f)
             // set the filled area
             set1.setDrawFilled(true)
-//            set1.fillFormatter =
-//                IFillFormatter { dataSet, dataProvider -> chart.axisLeft.axisMinimum }
+            set1.fillFormatter =
+                IFillFormatter { dataSet, dataProvider -> chart.axisLeft.axisMinimum }
             // set color of filled area
             if (Utils.getSDKInt() >= 18) {
                 // drawables only supported on api level 18 and above
                 // val drawable = ContextCompat.getDrawable(chart.context, R.drawable.fade_red)
                 // set1.fillDrawable = drawable
-                set1.setFillColor(Color.WHITE);
+                set1.fillColor = Color.WHITE;
             } else {
                 set1.fillColor = Color.WHITE
             }
-            set1.valueTypeface = typefaceBold
             val dataSets = ArrayList<ILineDataSet>()
             dataSets.add(set1) // add the data sets
             // create a data object with the data sets
             val data = LineData(dataSets)
             // set data
             chart.data = data
+            chart.notifyDataSetChanged();
             chart.invalidate()
         }
     }
@@ -134,7 +134,6 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
             try {
                 addLimitLines(chart.axisLeft, dryWeight.toFloat())
                 if(dryWeight.toFloat()>maxValue){
-                    chart.axisLeft.mAxisMaximum=dryWeight.toFloat()+20
                     chart.axisLeft.axisMaximum=dryWeight.toFloat()+20
                 }
                 chart.notifyDataSetChanged()
@@ -183,7 +182,7 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
         // enable touch gestures
         chart.setTouchEnabled(true)
         // set listeners
-        //  chart.setOnChartValueSelectedListener(this)
+        // chart.setOnChartValueSelectedListener(this)
         chart.setDrawGridBackground(false)
         // create marker to display box when values are selected
         val mv =
@@ -191,41 +190,42 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
                 context,
                 R.layout.custom_marker_view)
         // Set the marker to the chart
-        mv.setChartView(chart)
-        chart.setMarker(mv)
+        mv.chartView = chart
+        chart.marker = mv
         // enable scaling and dragging
-        chart.setDragEnabled(true)
+        chart.isDragEnabled = true
         chart.setScaleEnabled(true)
         // chart.setScaleXEnabled(true);
         // chart.setScaleYEnabled(true);
         // force pinch zoom along both axis
         chart.setPinchZoom(true)
-        var xAxis: XAxis
         // // X-Axis Style // //
-        xAxis = chart.getXAxis()
+        var xAxis: XAxis = chart.getXAxis()
         // vertical grid lines
         xAxis.enableGridDashedLine(10f, 10f, 0f)
         xAxis.labelCount = Constants.CHART_LABEL_COUNT
-        xAxis.granularity = 1f // only intervals of 1 day
+        xAxis.granularity = 1f // only intervals of 1 da
         xAxis.position = XAxis.XAxisPosition.BOTTOM
-        xAxis.typeface = typefaceBold
-        xAxis.axisMinimum = 0f
+        xAxis.typeface=typefaceBold
+        //   xAxis.setAxisMinimum(0f)
         // // Y-Axis Style // //
-        var yAxis: YAxis
-        yAxis = chart.axisLeft
+        var yAxis: YAxis = chart.getAxisLeft()
+        yAxis.typeface=typefaceBold
+        yAxis.enableGridDashedLine(10f, 10f, 0f)
         yAxis.axisMinimum = 0f
         // disable dual axis (only use LEFT axis)
-        chart.getAxisRight().setEnabled(false)
+        chart.axisRight.isEnabled = false
         // horizontal grid lines
-        yAxis.enableGridDashedLine(10f, 10f, 0f)
-        yAxis.typeface = typefaceBold
         // axis range
+        // yAxis.axisMaximum = 200f
+        // yAxis.axisMinimum = -50f
+        // // Create Limit Lines // //
         // draw points over time
         chart.animateX(1500)
         // get the legend (only possible after setting data)
         val l: Legend = chart.getLegend()
         // draw legend entries as lines
-        l.form = LegendForm.NONE
+        l.form = Legend.LegendForm.NONE
     }
 
     override fun onValueSelected(e: Entry?, h: Highlight?) {

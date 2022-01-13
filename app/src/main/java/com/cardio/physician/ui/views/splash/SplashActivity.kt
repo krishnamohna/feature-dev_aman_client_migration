@@ -11,6 +11,7 @@ import com.cardio.physician.ui.views.dashboard.DashboardActivity
 import com.cardio.physician.ui.views.tutorial.TutorialActivity
 import com.cardio.physician.ui.common.utils.Preference
 import com.cardio.physician.ui.common.utils.Timer.Companion.SPLASH_TIME
+import com.cardio.physician.ui.views.notifications.NotificationsActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,6 +26,14 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        val bundle = intent.extras
+
+        if (bundle != null && bundle["type"] != null) {
+            val datas = bundle["type"].toString()
+            NotificationsActivity.start(this)
+            finish()
+        }
+
         lifecycleScope.launch {
             delay(SPLASH_TIME)
             when {

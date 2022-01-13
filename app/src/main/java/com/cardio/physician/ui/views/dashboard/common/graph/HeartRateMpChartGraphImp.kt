@@ -160,7 +160,7 @@ class HeartRateMpChartGraphImp @Inject constructor() : BaseGraphImp(), HeartRate
         var yAxis: YAxis = chart.getAxisLeft()
         yAxis.typeface=typefaceBold
         yAxis.setAxisMaximum(200f)
-        yAxis.axisMinimum = 0f
+//        yAxis.axisMinimum = 0f
         // disable dual axis (only use LEFT axis)
         chart.axisRight.isEnabled = false
         // horizontal grid lines

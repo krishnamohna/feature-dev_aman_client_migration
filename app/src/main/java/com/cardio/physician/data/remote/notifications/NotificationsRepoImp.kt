@@ -14,6 +14,9 @@ import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.NOTIFICATI
 import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.NOTIFICATION_TYPE_EDIT_DIAGNOSIS
 import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.NOTIFICATION_TYPE_REQUEST
 import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.NOTIFICATION_TYPE_REQUEST_ACCEPTED
+import com.cardio.physician.ui.common.utils.NotificationType.TYPE_ADD_DIAGNOSIS
+import com.cardio.physician.ui.common.utils.NotificationType.TYPE_EDIT_DIAGNOSIS
+import com.cardio.physician.ui.common.utils.NotificationType.TYPE_UNKNOWN
 import com.cardio.physician.ui.common.utils.Preference.Companion.PREF_DISPLAY_NAME
 import com.cardio.physician.ui.common.utils.extentions.toNotificationsList
 import com.google.firebase.auth.FirebaseAuth
@@ -94,7 +97,15 @@ class NotificationsRepoImp @Inject constructor(
                 .document().set(mapNotification).await()
             //send push
             val msg = getNotificationMsg(notificationType)
-            fcmManager.sendPushNotification(connection.userId,msg, "Diagnosis")
+            fcmManager.sendPushNotification(connection.userId,msg, "Diagnosis", getNotificationConstType(notificationType))
+        }
+    }
+
+    private fun getNotificationConstType(notificationType: String): String {
+        return when (notificationType) {
+            NOTIFICATION_TYPE_ADD_DIAGNOSIS -> TYPE_ADD_DIAGNOSIS
+            NOTIFICATION_TYPE_EDIT_DIAGNOSIS -> TYPE_EDIT_DIAGNOSIS
+            else -> TYPE_UNKNOWN
         }
     }
 

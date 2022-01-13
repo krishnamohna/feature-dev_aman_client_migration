@@ -55,6 +55,10 @@ class NotificationAdapter constructor(private val action: (AdapterAction, Notifi
                 action.invoke(AdapterAction.ACTION_REJECT_REQUEST,
                     notificationModel)
             }
+            binding.mcvRoot.setOnClickListener {
+                action.invoke(AdapterAction.ACTION_ITEM_CLICK,
+                    notificationModel)
+            }
         }
 
         private fun managerViewVisibility(notificationModel: NotificationModel) {
@@ -91,11 +95,11 @@ class NotificationAdapter constructor(private val action: (AdapterAction, Notifi
                     "Incompatible message type"
             }
             return if(notificationModel.getFullName().trim().isNotEmpty()){
-                SpannableStringBuilder().bold { append(notificationModel.getFullName()) }
+                SpannableStringBuilder().bold { append("Patient ${notificationModel.getFullName()}") }
                     .append(" ")
                     .append(message)
             }else {
-                SpannableStringBuilder().bold { append(notificationModel.email) }
+                SpannableStringBuilder().bold { append("Patient ${notificationModel.email}") }
                     .append(" ")
                     .append(message)
             }

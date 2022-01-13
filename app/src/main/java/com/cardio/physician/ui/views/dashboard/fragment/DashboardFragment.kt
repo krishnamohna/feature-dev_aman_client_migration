@@ -447,6 +447,7 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
         bpGraph.showGraph(listHealthLogs)
         weightGraph.showGraph(listHealthLogs)
         stepCountGraph.showGraph(listHealthLogs)
+        diagnosisModelChib?.let { weightGraph.setDryWeight(it) }
     }
 
     private fun setAfibData(diagnosisModel: DiagnosisModel) {
@@ -457,7 +458,7 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
     private fun setChbData(diagnosisModel: DiagnosisModel) {
         chfView.showClinicalData(diagnosisModel, binding)
         chfMedicationView.showMedicationData(diagnosisModel, binding)
-        weightGraph.setDryWeight(diagnosisModel)
+//        weightGraph.setDryWeight(diagnosisModel)
     }
 
     private fun setBasicInfo(userModel: UserModel?) {

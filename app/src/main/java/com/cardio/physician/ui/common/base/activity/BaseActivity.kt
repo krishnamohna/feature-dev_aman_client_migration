@@ -81,13 +81,13 @@ abstract class BaseActivity : AppCompatActivity(), DialogProvider {
 
     fun signOut() {
         //unsubscribe topic first as it need preference then clear preference
-        //  fcmManager.unsubscribeFcmTopic()
+          fcmManager.unsubscribeFcmTopic()
         Firebase.auth.signOut()
         logoutGoogleIfLoggedIn()
         fitbit.logout()
         NotificationUtil(this).clearAllNotifications()
         //clear preferences in the end
-        //  userManager.clearAllPreference()
+          userManager.clearAllPreference()
         openLoginActivity()
     }
 

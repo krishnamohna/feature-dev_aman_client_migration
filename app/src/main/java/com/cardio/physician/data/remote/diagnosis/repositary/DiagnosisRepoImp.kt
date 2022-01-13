@@ -151,7 +151,7 @@ class DiagnosisRepoImp @Inject constructor(
             fireStoreDb.runTransaction { transaction ->
                 transaction.set(refDiagnosisRef, mapDiagnosis)
                 transaction.set(refHealthLogs, getHealthLogMap(diagnosisModel), SetOptions.merge())
-                transaction.set(refProfile, getUserModelMap(diagnosisModel), SetOptions.merge())
+                transaction.set(refProfile, getUserModelMap(diagnosisModel))
             }.await()
 
             //notify users through notifications

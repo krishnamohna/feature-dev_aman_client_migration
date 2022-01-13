@@ -206,7 +206,7 @@ class PatientDashboardFragment : BaseToolBarFragment<FragmentPatientDashboardBin
     private fun setUserDataInView(userModel: UserModel?) {
 //        toolbar?.view?.findViewById<ImageView>(R.id.imgProfilePicToolbar)?.visibility=View.VISIBLE
         toolbar?.view?.findViewById<ImageView>(R.id.imgEditProfile)?.visibility=View.VISIBLE
-        toolbar?.view?.findViewById<ImageView>(R.id.imgEditProfile)?.setImageResource(R.drawable.ic_notification)
+        toolbar?.view?.findViewById<ImageView>(R.id.imgEditProfile)?.setImageResource(R.drawable.ic_notification_v2)
 
 //        toolbar?.setUserImage(userModel?.imagePath)
     }

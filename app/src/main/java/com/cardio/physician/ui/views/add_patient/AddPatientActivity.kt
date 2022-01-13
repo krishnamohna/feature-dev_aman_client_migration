@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cardio.physician.BuildConfig
 import com.cardio.physician.R
 import com.cardio.physician.databinding.ActivityAddPatientBinding
 import com.cardio.physician.ui.common.base.activity.BaseActivity
@@ -128,13 +129,22 @@ class AddPatientActivity : BaseActivity(), View.OnClickListener {
                 onBackPressed()
             }
             binding.ivEmailUser, binding.tvEmailUser, binding.tvInviteUser -> {
-                showAlertDialog(this@AddPatientActivity,
+                val sendIntent = Intent()
+                sendIntent.action = Intent.ACTION_SEND
+                sendIntent.putExtra(
+                    Intent.EXTRA_TEXT,
+                    "Hey check out my patient app at: https://play.google.com/store/apps/details?id=com.cardio.doctor"
+                )
+                sendIntent.type = "text/plain"
+                startActivity(sendIntent)
+
+                /*showAlertDialog(this@AddPatientActivity,
                     "Invitation Sent", "You will be notified once the user\naccepts the invite.", getString(R.string.ok).uppercase(),
                     getString(R.string.cancel),
                     btnTwoVisibility = false
                 ) { _: String, dialog: DialogInterface ->
                     dialog.dismiss()
-                }
+                }*/
             }
         }
     }

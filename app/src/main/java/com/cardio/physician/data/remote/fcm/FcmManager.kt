@@ -91,11 +91,20 @@ class FcmManager @Inject constructor(
     }
 
     fun sendPushNotification(senderId: String, message: String, title: String) {
+        sendPushNotification(senderId, message, title,null)
+    }
+
+    fun sendPushNotification(senderId: String, message: String, title: String, pushType: String?) {
         executeService.execute(Runnable {
             val mediaType: MediaType? = "application/json".toMediaTypeOrNull()
-            val body =
-                "{\r\n\t\"to\": \"/topics/$senderId\",\r\n\t\"notification\": {\r\n\t\t\"body\": \"$message\",\r\n\t\t\"title\": \"$title\"\r\n\t}\r\n}".toRequestBody(
+            lateinit var body: RequestBody
+            if (pushType.isNullOrBlank()) {
+                body = "{\r\n\t\"to\": \"/topics/$senderId\",\r\n\t\"notification\": {\r\n\t\t\"body\": \"$message\",\r\n\t\t\"title\": \"$title\"\r\n\t}\r\n}".toRequestBody(
                     mediaType)
+            } else {
+                body = "{\r\n\t\"condition\": \"'$senderId' in topics\",\r\n\t\"notification\": {\r\n\t\t\"body\": \"$message\",\r\n\t\t\"title\": \"$title\"\r\n\t},\r\n    \"data\":{\r\n\"userId\":\"${firebaseAuth.currentUser?.uid}\",\r\n        \"type\":\"$pushType\"\r\n    }\r\n}".toRequestBody(
+                    mediaType);
+            }
             val request: Request = Request.Builder()
                 .url("https://fcm.googleapis.com/fcm/send")
                 .method("POST", body)

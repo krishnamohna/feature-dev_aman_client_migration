@@ -18,6 +18,7 @@ import com.cardio.physician.ui.common.customviews.toolbar.base.IToolbar
 import com.cardio.physician.ui.common.utils.BroadCastAction.ACTION_NOTIFICATION_UPDATE
 import com.cardio.physician.ui.common.utils.PaginationListener
 import com.cardio.physician.ui.common.utils.extentions.customObserver
+import com.cardio.physician.ui.views.diagnosis.DiagnosisActivity
 import com.cardio.physician.ui.views.notifications.adapter.NotificationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -58,6 +59,9 @@ class NotificationsActivity : BaseToolbarActivity() {
             }
             NotificationAdapter.AdapterAction.ACTION_REJECT_REQUEST -> {
                 viewModel.rejectRequest(model.userId, model.documentId, model)
+            }
+            else -> {
+                DiagnosisActivity.start(this@NotificationsActivity, model.userId)
             }
         }
     }
