@@ -14,8 +14,7 @@ import com.cardio.physician.ui.common.utils.firebaseQuery
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.SignInMethodQueryResult
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.*
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -33,6 +32,11 @@ class UserProfileRepository @Inject constructor(
         val patientId = userId?:firebaseAuth.currentUser?.uid
         return fireStore.collection(FireStoreCollection.USERS).document(patientId ?: "")
             .get().await().toUserModel()
+    }
+
+    suspend fun fetchUserDetailByModelListener(userId: String?, listener: EventListener<DocumentSnapshot>){
+        val patientId = userId?:firebaseAuth.currentUser?.uid
+        fireStore.collection(FireStoreCollection.USERS).document(patientId ?: "").addSnapshotListener(listener)
     }
 
     suspend fun storeUserDataInFireStore(

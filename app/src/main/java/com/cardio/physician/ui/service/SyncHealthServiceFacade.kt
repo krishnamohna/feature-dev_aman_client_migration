@@ -87,15 +87,12 @@ class SyncHealthServiceFacade @Inject constructor(
                     if (isTodayDate(syncModel.arrayDates[i]))
                         continue
                     fitnessModel.weight =
-                        syncModel.arrayWeightLogs[i]?.weight ?: fitnessModel.weight
+                        syncModel.arrayWeightLogs[i]?.weight
                     fitnessModel.date = syncModel.arrayDates[i].date
                     fitnessModel.timeStamp = syncModel.arrayDates[i].timeStamp
                     fitnessModel.heartRate = syncModel.arrayHeartLogs[i]?.restHeartRate
-                        ?: fitnessModel.heartRate
-                    fitnessModel.bloodPressureTopBp =
-                        syncModel.arrayBloodPresure[i]?.topBp ?: fitnessModel.bloodPressureTopBp
+                    fitnessModel.bloodPressureTopBp = syncModel.arrayBloodPresure[i]?.topBp
                     fitnessModel.bloodPressureBottomBp = syncModel.arrayBloodPresure[i]?.bottomBp
-                        ?: fitnessModel.bloodPressureBottomBp
                     fitnessModel.stepCount = syncModel.arrayStepCounts[i]?.stepCount
                     syncHealthRepositary.saveHealthData(fitnessModel)
                 }

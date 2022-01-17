@@ -52,13 +52,15 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
         val values = mutableListOf<Entry>()
         var totalValue = 0f
         val dateLabels = mutableListOf<String?>()
-        listHealthLogs?.forEachIndexed { index, fitnessModel ->
+        var x=0
+        listHealthLogs?.forEachIndexed { _, fitnessModel ->
             fitnessModel.weight?.let {
                 if (it == "0" || it.isBlank()) return@let
-                values.add(Entry(index.toFloat(), it.toFloat()))
+                values.add(Entry(x.toFloat(), it.toFloat()))
                 if(it.toFloat()>maxValue)maxValue=it.toFloat()
                 totalValue += it.toFloat()
                 fitnessModel.date?.let { dateLabels.add(formatDateToGraph(it)) }
+                x += 1
             }
         }
         //check if there are entries and then make  visible
@@ -181,9 +183,9 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
         chart.getDescription().setEnabled(false)
         // enable touch gestures
         chart.setTouchEnabled(true)
-        // set listeners
-        // chart.setOnChartValueSelectedListener(this)
         chart.setDrawGridBackground(false)
+        // scaling can now only be done on x- and y-axis separately
+        chart.setPinchZoom(false)
         // create marker to display box when values are selected
         val mv =
             MyMarkerView(

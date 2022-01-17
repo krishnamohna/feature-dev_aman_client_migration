@@ -302,5 +302,6 @@
     <string name="default_notification_channel_name">Default Notifications</string>
     <string name="default_notification_channel_description">Notification regarding requests and illness updates wil be displayed</string>
     <string name="no_notification_found">No Notification Found</string>
+    <string name="error_subscribe_notifications">Unable to turn on notifications</string>
 
 </resources>

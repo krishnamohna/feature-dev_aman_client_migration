@@ -44,21 +44,28 @@ class FcmManager @Inject constructor(
         })
     }
 
-    fun subscribeFcmTopic() {
+    fun subscribeFcmTopic(onSubscribed: ((Boolean) -> Unit)? = null) {
         if (!userManager.getBoolean(IS_TOPIC_SUBSCRIBED)) {
-            firebaseAuth.currentUser?.let {firebaseUser->
+            firebaseAuth.currentUser?.let { firebaseUser ->
                 FirebaseMessaging.getInstance().subscribeToTopic(firebaseUser.uid)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            userManager.setString(LAST_SUBSCRIPTION_TOPIC,firebaseUser.uid)
+                            userManager.setString(LAST_SUBSCRIPTION_TOPIC, firebaseUser.uid)
                             userManager.setBoolean(IS_TOPIC_SUBSCRIBED, true)
+                            onSubscribed?.invoke(true)
                         }
                     }
+                    .addOnFailureListener {
+                        onSubscribed?.invoke(false)
+                    }
             }
+        }else{
+            onSubscribed?.invoke(true)
         }
     }
 
     fun unsubscribeFcmTopic(onUnsubscribed: (() -> Unit)? = null) {
+        if(userManager.getString(LAST_SUBSCRIPTION_TOPIC, null).isNullOrBlank())onUnsubscribed?.invoke()
         userManager.getString(LAST_SUBSCRIPTION_TOPIC,null)?.let {
             FirebaseMessaging.getInstance().unsubscribeFromTopic(it)
                 .addOnCompleteListener { task ->
@@ -97,12 +104,11 @@ class FcmManager @Inject constructor(
     fun sendPushNotification(senderId: String, message: String, title: String, pushType: String?) {
         executeService.execute(Runnable {
             val mediaType: MediaType? = "application/json".toMediaTypeOrNull()
-            lateinit var body: RequestBody
-            if (pushType.isNullOrBlank()) {
-                body = "{\r\n\t\"to\": \"/topics/$senderId\",\r\n\t\"notification\": {\r\n\t\t\"body\": \"$message\",\r\n\t\t\"title\": \"$title\"\r\n\t}\r\n}".toRequestBody(
+            var body: RequestBody = if (pushType.isNullOrBlank()) {
+                "{\r\n\t\"to\": \"/topics/$senderId\",\r\n\t\"notification\": {\r\n\t\t\"body\": \"$message\",\r\n\t\t\"title\": \"$title\"\r\n\t}\r\n}".toRequestBody(
                     mediaType)
             } else {
-                body = "{\r\n\t\"condition\": \"'$senderId' in topics\",\r\n\t\"notification\": {\r\n\t\t\"body\": \"$message\",\r\n\t\t\"title\": \"$title\"\r\n\t},\r\n    \"data\":{\r\n\"userId\":\"${firebaseAuth.currentUser?.uid}\",\r\n        \"type\":\"$pushType\"\r\n    }\r\n}".toRequestBody(
+                "{\r\n\t\"condition\": \"'$senderId' in topics\",\r\n\t\"notification\": {\r\n\t\t\"body\": \"$message\",\r\n\t\t\"title\": \"$title\"\r\n\t},\r\n    \"data\":{\r\n\"userId\":\"${firebaseAuth.currentUser?.uid}\",\r\n        \"type\":\"$pushType\"\r\n    }\r\n}".toRequestBody(
                     mediaType);
             }
             val request: Request = Request.Builder()

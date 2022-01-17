@@ -46,7 +46,12 @@ class NotificationsActivity : BaseToolbarActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        unregisterListeners()
+    }
+
+    private fun unregisterListeners() {
         unregisterReceiver(notificationUpdateReciever)
+        // viewModel.unregisterDocumentChanges()
     }
 
     private fun onAdapterAction(

@@ -45,12 +45,14 @@ class HeartRateMpChartGraphImp @Inject constructor() : BaseGraphImp(), HeartRate
         val values = mutableListOf<Entry>()
         var totalValue = 0f
         val dateLabels = mutableListOf<String?>()
+        var x=0
         listHealthLogs?.forEachIndexed { index, fitnessModel ->
             fitnessModel.heartRate?.let {
                 if(it == "0" || it.isBlank()) return@let
-                values.add(Entry(index.toFloat(), it.toFloat()))
+                values.add(Entry(x.toFloat(), it.toFloat()))
                 totalValue += it.toFloat()
                 fitnessModel.date?.let { dateLabels.add(formatDateToGraph(it)) }
+                x += 1
             }
         }
         //check if there are entries and then make  visible

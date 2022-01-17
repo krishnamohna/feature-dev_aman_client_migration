@@ -23,6 +23,8 @@ import com.cardio.physician.ui.views.dashboard.fragment.DashboardFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.NavArgument
 import com.cardio.physician.R
+import com.cardio.physician.ui.common.utils.EXTRAS
+import com.cardio.physician.ui.views.notifications.NotificationsActivity
 
 
 @AndroidEntryPoint
@@ -36,7 +38,8 @@ open class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
         }
         fun getActivityIntent(activity: Activity)=Intent(activity, DiagnosisActivity::class.java)
     }
-    var currentFilter = DashboardFragment.Filter.THIRTY
+
+    lateinit var currentFilter: DashboardFragment.Filter
     var questionList: List<QuestionModel>? = null
     var lastQuestionIndex = 0
     private var onConnectClick: (() -> Unit?)? = null
@@ -55,10 +58,22 @@ open class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
         setContentView(binding.root)
         setViews()
         setListeners()
+        init()
     }
 
     private fun setViews() {
         setNavGraph()
+    }
+
+    fun init() {
+        currentFilter=DashboardFragment.Filter.THIRTY
+        //  fcmManager.getToken()
+        fcmManager.subscribeFcmTopic()
+        //  fcmManager.sendPushNotification("weather")
+        intent?.let {
+            if (it.getBooleanExtra(EXTRAS.EXTRAS_FROM_NOTIFICATION, false))
+                NotificationsActivity.start(this)
+        }
     }
 
     open fun setNavGraph() {

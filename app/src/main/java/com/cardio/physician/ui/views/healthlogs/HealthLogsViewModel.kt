@@ -110,11 +110,11 @@ class HealthLogsViewModel @Inject constructor(
     ) {
         alphaVisibilityHelper.addEditTextWatcher(list, onTextChanged)
     }
-    fun getHealthLogsByDate(date: String) {
+    fun getHealthLogsByDate(date: String, userId: String?) {
         viewModelScope.launch {
             try {
                 mutableLiveDataHealthLogs.setLoading()
-                mutableLiveDataHealthLogs.setSuccess(syncHealthRepositary.getHealthLogByDate(date))
+                mutableLiveDataHealthLogs.setSuccess(syncHealthRepositary.getHealthLogByDate(date, userId))
             } catch (exp: Exception) {
                 mutableLiveDataHealthLogs.setError(exp)
             }

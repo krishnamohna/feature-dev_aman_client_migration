@@ -14,6 +14,8 @@ import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.NOTIFICATI
 import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.NOTIFICATION_TYPE_EDIT_DIAGNOSIS
 import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.NOTIFICATION_TYPE_REQUEST
 import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.NOTIFICATION_TYPE_REQUEST_ACCEPTED
+import com.cardio.physician.ui.common.utils.NotificationTitle.NOTIFICATION_TITLE_DIAGNOSIS
+import com.cardio.physician.ui.common.utils.NotificationType.TYPE_ACCEPT_REQUEST
 import com.cardio.physician.ui.common.utils.NotificationType.TYPE_ADD_DIAGNOSIS
 import com.cardio.physician.ui.common.utils.NotificationType.TYPE_EDIT_DIAGNOSIS
 import com.cardio.physician.ui.common.utils.NotificationType.TYPE_UNKNOWN
@@ -21,6 +23,7 @@ import com.cardio.physician.ui.common.utils.Preference.Companion.PREF_DISPLAY_NA
 import com.cardio.physician.ui.common.utils.extentions.toNotificationsList
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -31,6 +34,8 @@ class NotificationsRepoImp @Inject constructor(
     private val fcmManager: FcmManager,
     private val userManager: UserManager,
 ) : NotificationRepo {
+
+    private lateinit var listener: ListenerRegistration
 
     override suspend fun getNotifications(lastNotificationModel: NotificationModel?): List<NotificationModel> {
         var query: Query = fireStoreDb.collection(FireStoreCollection.NOTIFICATIONS)
@@ -97,8 +102,25 @@ class NotificationsRepoImp @Inject constructor(
                 .document().set(mapNotification).await()
             //send push
             val msg = getNotificationMsg(notificationType)
-            fcmManager.sendPushNotification(connection.userId,msg, "Diagnosis", getNotificationConstType(notificationType))
+            fcmManager.sendPushNotification(connection.userId,
+                msg,
+                NOTIFICATION_TITLE_DIAGNOSIS,
+                getNotificationConstType(notificationType))
         }
+    }
+
+    override fun addNotificationsChangeListener(function: () -> Unit) {
+        listener = fireStoreDb.collection(FireStoreCollection.NOTIFICATIONS)
+            .document(FireStoreDocument.PATIENT)
+            .collection(getPatientUid())
+            .orderBy(FireStoreDocKey.TIME_STAMP_CAMEL, Query.Direction.DESCENDING)
+            .limit(PAGE_SIZE.toLong()).addSnapshotListener { value, error ->
+                function.invoke()
+            }
+    }
+
+    override fun removeNotificationsChangeListener() {
+        if (this::listener.isInitialized) listener.remove()
     }
 
     private fun getNotificationConstType(notificationType: String): String {
@@ -169,7 +191,7 @@ class NotificationsRepoImp @Inject constructor(
             notificationModel.requestStatus=true
             //send push notification to use to notify him
             fcmManager.sendPushNotification(notificationModel.userId,
-                "${userManager.getString(PREF_DISPLAY_NAME)} has accepted your request.", "Add Request")
+                "${userManager.getString(PREF_DISPLAY_NAME)} has accepted your request.", "Add Request", TYPE_ACCEPT_REQUEST)
         }else{
             notificationModel.requestStatus=false
         }

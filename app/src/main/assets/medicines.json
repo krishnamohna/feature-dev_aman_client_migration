@@ -450,13 +450,6 @@
         },
         {
             "name": "Amlodipine",
-            "tradeName": "Norvasc",
-            "category": "calcium channel blocker",
-            "isDiuretics": "No",
-            "isRateControlAgent": "No"
-        },
-        {
-            "name": "Amlodipine",
             "tradeName": "Lotrel",
             "category": "calcium channel blocker",
             "isDiuretics": "No",
@@ -603,15 +596,15 @@
             "isRateControlAgent": "No"
         },
         {
-            "name": "triamterene",
-            "tradeName": "Dyrenium",
+            "name": "spironolactone",
+            "tradeName": "Aldactone",
             "category": "potassium sparing diuretics",
             "isDiuretics": "Yes",
             "isRateControlAgent": "No"
         },
         {
-            "name": "eplerenone",
-            "tradeName": "Inspra",
+            "name": "triamterene",
+            "tradeName": "Dyrenium",
             "category": "potassium sparing diuretics",
             "isDiuretics": "Yes",
             "isRateControlAgent": "No"
