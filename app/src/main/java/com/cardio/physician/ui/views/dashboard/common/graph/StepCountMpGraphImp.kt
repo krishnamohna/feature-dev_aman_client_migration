@@ -40,12 +40,14 @@ class StepCountMpGraphImp @Inject constructor() : BaseGraphImp(), StepCountGraph
         val values = mutableListOf<Entry>()
         val dateLabels = mutableListOf<String?>()
         var totalValue=0f
-        listHealthLogs?.forEachIndexed { index, fitnessModel ->
+        var x=0
+        listHealthLogs?.forEachIndexed { _, fitnessModel ->
             fitnessModel.stepCount?.let {
                 if(it == "0" || it.isBlank()) return@let
-                values.add(Entry(index.toFloat(), it.toFloat()))
+                values.add(Entry(x.toFloat(), it.toFloat()))
                 totalValue += it.toFloat()
                 fitnessModel.date?.let { dateLabels.add(formatDateToGraph(it)) }
+                x += 1
             }
         }
         //check if there are entries and then make  visible
@@ -143,18 +145,16 @@ class StepCountMpGraphImp @Inject constructor() : BaseGraphImp(), StepCountGraph
         chart.setPinchZoom(true)
         // // X-Axis Style // //
         var xAxis: XAxis = chart.getXAxis()
-        // vertical grid lines
         xAxis.enableGridDashedLine(10f, 10f, 0f)
         xAxis.labelCount = Constants.CHART_LABEL_COUNT
         xAxis.granularity = 1f // only intervals of 1 da
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.typeface=typefaceBold
-     //   xAxis.setAxisMinimum(0f)
         // // Y-Axis Style // //
         var yAxis: YAxis = chart.getAxisLeft()
         yAxis.typeface=typefaceBold
         yAxis.enableGridDashedLine(10f, 10f, 0f)
-        yAxis.axisMinimum = 0f
+        //  yAxis.axisMinimum = 0f
         // disable dual axis (only use LEFT axis)
         chart.axisRight.isEnabled = false
         // horizontal grid lines

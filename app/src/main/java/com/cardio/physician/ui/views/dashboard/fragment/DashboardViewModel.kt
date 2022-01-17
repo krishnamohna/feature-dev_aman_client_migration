@@ -11,10 +11,8 @@ import com.cardio.physician.domain.fitness.model.FitnessModel
 import com.cardio.physician.domain.synchealth.SyncHealthRepositary
 import com.cardio.physician.network.Resource
 import com.cardio.physician.ui.common.base.viewmodel.BaseViewModel
-import com.cardio.physician.ui.common.utils.extentions.setError
-import com.cardio.physician.ui.common.utils.extentions.setLoading
-import com.cardio.physician.ui.common.utils.extentions.setSuccess
-import com.cardio.physician.ui.common.utils.extentions.toConnectionModel
+import com.cardio.physician.ui.common.utils.FireStoreDocKey
+import com.cardio.physician.ui.common.utils.extentions.*
 import com.cardio.physician.ui.common.utils.livedata.SingleLiveEvent
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestoreException
@@ -75,8 +73,13 @@ class DashboardViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 singleEventDiagnosisChib.setLoading()
-                singleEventDiagnosisChib.setSuccess(diagnosisRepo.getDiagnosisByDate(currentDate,
-                    ailment, userId))
+                diagnosisRepo.getDiagnosisByDate(currentDate,
+                    ailment, userId) { value, error ->
+                    if (value != null)
+                        singleEventDiagnosisChib.setSuccess(value.toDiagnosisModel())
+                    else
+                        error?.let { singleEventDiagnosisChib.setError(it) }
+                }
             } catch (exp: Exception) {
                 singleEventDiagnosisChib.setError(exp)
             }
@@ -87,8 +90,13 @@ class DashboardViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 singleEventDiagnosisAfib.setLoading()
-                singleEventDiagnosisAfib.setSuccess(diagnosisRepo.getDiagnosisByDate(currentDate,
-                    ailment, userId))
+                diagnosisRepo.getDiagnosisByDate(currentDate,
+                    ailment, userId){ value, error ->
+                    if (value != null)
+                        singleEventDiagnosisAfib.setSuccess(value.toDiagnosisModel())
+                    else
+                        error?.let { singleEventDiagnosisAfib.setError(it) }
+                }
             } catch (exp: Exception) {
                 singleEventDiagnosisAfib.setError(exp)
             }
@@ -99,7 +107,10 @@ class DashboardViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 userSingleLiveData.setLoading()
-                userSingleLiveData.setSuccess(userProfileRepository.fetchUserDetailByModel(userId))
+                userProfileRepository.fetchUserDetailByModelListener(userId){value, error ->
+                    if(value != null) userSingleLiveData.setSuccess(value.toUserModel())
+                    else error?.let { userSingleLiveData.setError(error) }
+                }
             } catch (e: Exception) {
                 userSingleLiveData.setError(e)
             }
@@ -110,12 +121,30 @@ class DashboardViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 singleEventHealthLogs.setLoading()
-                singleEventHealthLogs.setSuccess(syncRepositary.getHealthLogs(days, userId))
+                syncRepositary.getHealthLogs(days, userId){value, error ->
+                    if (value != null){
+                        var listFitnessModel = mutableListOf<FitnessModel>()
+                        for (document in value) {
+                            val fitnessModel = FitnessModel()
+                            fitnessModel.weight = document.data[FireStoreDocKey.WEIGHT] as? String?
+                            fitnessModel.heartRate = document.data[FireStoreDocKey.HEART_RATE] as? String?
+                            fitnessModel.bloodPressureTopBp =
+                                document.data[FireStoreDocKey.BLOOD_SYSTOLIC_BP] as? String?
+                            fitnessModel.bloodPressureBottomBp =
+                                document.data[FireStoreDocKey.BLOOD_DIASTOLIC_BP] as? String?
+                            fitnessModel.date = document.data[FireStoreDocKey.DATE] as? String?
+                            fitnessModel.timeStamp = document.data[FireStoreDocKey.DATE] as? Long?
+                            fitnessModel.stepCount = document.data[FireStoreDocKey.STEP_COUNT] as? String
+                            listFitnessModel.add(fitnessModel)
+                        }
+                        singleEventHealthLogs.setSuccess(listFitnessModel)
+                    }
+                    else
+                        error?.let { singleEventHealthLogs.setError(it) }
+                }
             } catch (e: Exception) {
                 singleEventHealthLogs.setError(e)
             }
         }
     }
-
-
 }

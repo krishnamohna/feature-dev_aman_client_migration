@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.cardio.physician.R
 import com.cardio.physician.data.local.UserManager
+import com.cardio.physician.data.remote.fcm.FcmManager
 import com.cardio.physician.databinding.FragmentSettingBinding
 import com.cardio.physician.domain.user.SignUpUserType
 import com.cardio.physician.network.NetworkHelper
@@ -14,6 +15,8 @@ import com.cardio.physician.ui.common.base.fragment.BaseFragmentAuth
 import com.cardio.physician.ui.common.utils.Preference
 import com.cardio.physician.ui.common.utils.WEBURL
 import com.cardio.physician.ui.common.utils.customSnackBarFail
+import com.cardio.physician.ui.common.utils.extentions.isConnectedOrThrowMsg
+import com.cardio.physician.ui.common.utils.showToast
 import com.cardio.physician.ui.common.utils.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -27,6 +30,11 @@ class SettingFragment : BaseFragmentAuth(R.layout.fragment_setting), View.OnClic
 
     @Inject
     lateinit var networkHelper: NetworkHelper
+
+
+    @Inject
+    lateinit var fcmManager: FcmManager
+
 
     @Inject
     lateinit var userManager: UserManager
@@ -54,7 +62,25 @@ class SettingFragment : BaseFragmentAuth(R.layout.fragment_setting), View.OnClic
         binding.faqContainer.setOnClickListener(this)
         binding.termsAndConditionContainer.setOnClickListener(this)
         binding.logoutContainer.setOnClickListener(this)
-        binding.switchNotification.setOnClickListener(this)
+        binding.switchNotification.setOnCheckedChangeListener { _, isSelected ->
+            isConnectedOrThrowMsg {
+                if (isSelected) {
+                    binding.switchNotification.isEnabled = false
+                    fcmManager.subscribeFcmTopic {
+                        binding.switchNotification.isEnabled = true
+                        if (!it) {
+                            showToast(getString(R.string.error_subscribe_notifications))
+                            binding.switchNotification.isChecked = false
+                        }
+                    }
+                } else {
+                    binding.switchNotification.isEnabled = false
+                    fcmManager.unsubscribeFcmTopic {
+                        binding.switchNotification.isEnabled = true
+                    }
+                }
+            }
+        }
     }
 
     private fun setObservers() {
@@ -81,10 +107,6 @@ class SettingFragment : BaseFragmentAuth(R.layout.fragment_setting), View.OnClic
                 showLogout(getString(R.string.logout), getString(R.string.logout_description)) {
                     (requireActivity() as BaseActivity).signOut()
                 }
-            }
-
-            binding.switchNotification -> {
-                binding.switchNotification.isChecked = !binding.switchNotification.isChecked
             }
         }
     }

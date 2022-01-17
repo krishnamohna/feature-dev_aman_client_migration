@@ -40,7 +40,8 @@ class BpBarMpChartGraphImp @Inject constructor() : BaseGraphImp(), BpGraph {
         val dateLabels = mutableListOf<String?>()
         var totalValue = 0f
         var totalValue2 = 0f
-        listHealthLogs?.forEachIndexed { index, fitnessModel ->
+        var x=0
+        listHealthLogs?.forEachIndexed { _, fitnessModel ->
             fitnessModel.bloodPressureTopBp?.let {
                 if(it == "0" || it.isBlank()) return@let
                 totalValue += fitnessModel.bloodPressureBottomBp!!.toFloat()
@@ -48,8 +49,9 @@ class BpBarMpChartGraphImp @Inject constructor() : BaseGraphImp(), BpGraph {
                 var lowerVal = fitnessModel.bloodPressureBottomBp!!.toFloat()
                 var upperVal =fitnessModel.bloodPressureTopBp!!.toFloat() - lowerVal
                 val range = floatArrayOf(lowerVal, upperVal)
-                values.add(BarEntry(index.toFloat(), range))
+                values.add(BarEntry(x.toFloat(), range))
                 fitnessModel.date?.let { dateLabels.add(formatDateToGraph(it)) }
+                x += 1
             }
         }
         //check if there are entries and then make  visible

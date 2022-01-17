@@ -28,7 +28,7 @@ class NotificationUtil constructor(private val context: Context) {
                 .bigText(getMessage(remoteMessage)))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(getPendingIntent())
-            .setAutoCancel(true)
+//            .setAutoCancel(true)
         // Register the channel with the system
         val notificationManager: NotificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

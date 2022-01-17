@@ -8,9 +8,11 @@ import com.cardio.physician.ui.common.utils.FireStoreCollection
 import com.cardio.physician.ui.common.utils.FireStoreDocKey
 import com.cardio.physician.ui.common.utils.extentions.toFitNessModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.tasks.await
 import java.util.*
 import javax.inject.Inject
@@ -72,12 +74,16 @@ class SyncHealthRepositoryImp @Inject constructor(
     }
 
 
-    override suspend fun getHealthLogByDate(date: String): FitnessModel {
-        var result = fireStore.collection(FireStoreCollection.HEALTH_LOGS)
-            .document(firebaseAuth.currentUser?.uid!!)
-            .collection(FireStoreCollection.LOGS).document(date).get().await()
-        if (result.exists()) {
-            return result.toFitNessModel()
+    override suspend fun getHealthLogByDate(date: String, userId: String?): FitnessModel {
+        var result = userId?.let {
+            fireStore.collection(FireStoreCollection.HEALTH_LOGS)
+                .document(it)
+                .collection(FireStoreCollection.LOGS).document(date).get().await()
+        }
+        if (result != null) {
+            if (result.exists()) {
+                return result.toFitNessModel()
+            }
         }
         throw NetworkError.noRecordFound()
     }
@@ -123,35 +129,13 @@ class SyncHealthRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getHealthLogs(days: Long, userId: String?): List<FitnessModel> {
+    override suspend fun getHealthLogs(days: Long, userId: String?, listener: EventListener<QuerySnapshot>){
         val patientId = userId?: firebaseAuth.currentUser?.uid!!
-        val query: Query = fireStore.collection(FireStoreCollection.HEALTH_LOGS)
+        fireStore.collection(FireStoreCollection.HEALTH_LOGS)
             .document(patientId)
             .collection(FireStoreCollection.LOGS)
             .orderBy(FireStoreDocKey.TIME_STAMP_CAMEL, Query.Direction.ASCENDING)
-            .limit(days)
-        val querySnapshot = query.get().await()
-        return if (querySnapshot.isEmpty) {
-            throw NetworkError.noRecordFound()
-        } else {
-            var listFitnessModel = mutableListOf<FitnessModel>()
-            for (document in querySnapshot) {
-                val fitnessModel = FitnessModel()
-                fitnessModel.weight = document.data[FireStoreDocKey.WEIGHT] as? String?
-                fitnessModel.heartRate = document.data[FireStoreDocKey.HEART_RATE] as? String?
-                fitnessModel.bloodPressureTopBp =
-                    document.data[FireStoreDocKey.BLOOD_SYSTOLIC_BP] as? String?
-                fitnessModel.bloodPressureBottomBp =
-                    document.data[FireStoreDocKey.BLOOD_DIASTOLIC_BP] as? String?
-                fitnessModel.date = document.data[FireStoreDocKey.DATE] as? String?
-                fitnessModel.timeStamp = document.data[FireStoreDocKey.DATE] as? Long?
-                fitnessModel.stepCount = document.data[FireStoreDocKey.STEP_COUNT] as? String
-                listFitnessModel.add(fitnessModel)
-            }
-            listFitnessModel
-        }
+            .limit(days).addSnapshotListener(listener)
     }
-
-
 }
 

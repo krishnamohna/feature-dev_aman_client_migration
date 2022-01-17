@@ -132,6 +132,7 @@ class DiagnosisRepoImp @Inject constructor(
         val json = Gson().toJson(diagnosisModel)
         var mapDiagnosis: Map<String, Any> = HashMap()
         mapDiagnosis = Gson().fromJson(json, mapDiagnosis.javaClass)
+
         userId?.let { uuid ->
             fireStoreDb.collection(FireStoreCollection.DIAGNOSIS)
                 .document(uuid)
@@ -139,19 +140,26 @@ class DiagnosisRepoImp @Inject constructor(
                 .document()
                 .set(mapDiagnosis)
                 .await()
-            val refDiagnosisRef = fireStoreDb.collection(FireStoreCollection.DIAGNOSIS)
-                .document(uuid)
-                .collection(diagnosisModel.ailment!!)
-                .document()
+            val refDiagnosisRef = if (diagnosisModel.documentId.isNullOrBlank())
+                fireStoreDb.collection(FireStoreCollection.DIAGNOSIS)
+                    .document(uuid)
+                    .collection(diagnosisModel.ailment!!)
+                    .document()
+            else
+                fireStoreDb.collection(FireStoreCollection.DIAGNOSIS)
+                    .document(uuid)
+                    .collection(diagnosisModel.ailment!!)
+                    .document(diagnosisModel.documentId!!)
+            diagnosisModel.documentId = null
             val refHealthLogs = fireStoreDb.collection(FireStoreCollection.HEALTH_LOGS)
                 .document(uuid)
                 .collection(FireStoreCollection.LOGS)
                 .document(diagnosisModel.date!!)
             var refProfile = fireStoreDb.collection(FireStoreCollection.USERS).document(uuid)
             fireStoreDb.runTransaction { transaction ->
-                transaction.set(refDiagnosisRef, mapDiagnosis)
+                transaction.set(refDiagnosisRef, mapDiagnosis, SetOptions.merge())
                 transaction.set(refHealthLogs, getHealthLogMap(diagnosisModel), SetOptions.merge())
-                transaction.set(refProfile, getUserModelMap(diagnosisModel))
+                transaction.update(refProfile, getUserModelMap(diagnosisModel))
             }.await()
 
             //notify users through notifications
@@ -160,18 +168,18 @@ class DiagnosisRepoImp @Inject constructor(
 
     }
 
-    override suspend fun getDiagnosisByDate(date: String, ailment: String, userId: String?): List<DiagnosisModel> {
-        val query: Query = fireStoreDb.collection(FireStoreCollection.DIAGNOSIS)
+    override suspend fun getDiagnosisByDate(date: String, ailment: String, userId: String?, listener: EventListener<QuerySnapshot>){
+        fireStoreDb.collection(FireStoreCollection.DIAGNOSIS)
             .document(userId?:firebaseAuth.currentUser?.uid!!)
             .collection(ailment)
             .orderBy(FireStoreDocKey.TIME_STAMP_CAMEL, Query.Direction.DESCENDING)
-            .limit(1)
-        val querySnapshot = query.get().await()
+            .limit(1).addSnapshotListener(listener)
+        /*val querySnapshot = query.get().await()
         return if (querySnapshot.isEmpty) {
             throw NetworkError.noRecordFound()
         } else {
             querySnapshot.toDiagnosisModel()
-        }
+        }*/
     }
 
     /*this method is only used to upload medicines to firestore rather than adding them manually */

@@ -11,4 +11,6 @@ interface NotificationRepo {
     ): NotificationModel
     suspend fun rejectRequest(senderId: String, documentId: String, notificationModel: NotificationModel): NotificationModel
     suspend fun addNotificationsToConnections(listConnections:List<ConnectionModel>,notificationType:String)
+    fun addNotificationsChangeListener(function: () -> Unit)
+    fun removeNotificationsChangeListener()
 }

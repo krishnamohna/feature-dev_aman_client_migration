@@ -79,6 +79,7 @@ class HealthLogsActivity : BaseToolbarActivity() {
         }, onError = ::onError
         )
         viewModel.getHealthlogsLiveData().customObserver(this, onLoading = ::showProgress, {
+            clearAllFields()
             it?.let {
                 setFitnessViews(it)
             }
@@ -183,7 +184,7 @@ class HealthLogsActivity : BaseToolbarActivity() {
                     dateString.datePickerStringToDate(DateFormat_.DATE_FORMAT_DD_MM_YYYY_DATE_PICKER)
                 binding.edtHealthLogDate.setText(getStringFromDate(selectedDate))
                 isConnectedOrThrowMsg {
-                    viewModel.getHealthLogsByDate(binding.edtHealthLogDate.text.toString())
+                    viewModel.getHealthLogsByDate(binding.edtHealthLogDate.text.toString(), intent.getStringExtra(EXTRAS.USER_ID))
                 }
             }?.show()
         }

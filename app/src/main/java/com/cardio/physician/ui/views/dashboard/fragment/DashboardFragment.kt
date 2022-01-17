@@ -51,8 +51,8 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
 
     enum class Filter(val value: Long) {
         THIRTY(30L),
-        SIXTY(30L),
-        NINETY(30L)
+        SIXTY(60L),
+        NINETY(90L)
     }
 
     val args : DashboardFragmentArgs by navArgs()
@@ -207,6 +207,11 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
                     onDiagnosisLoaded()
                     if (isNonEmpty)
                         setDiagnosisDataInView(diagnosis.get(0))
+                    else{
+                        isChfDiagnosisLoaded = true
+                        onDiagnosisFailed()
+                    }
+
                 }
             },
             onError = {msg,exp->
@@ -223,6 +228,10 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
                     onDiagnosisLoaded()
                     if (isNonEmpty)
                         setDiagnosisDataInView(diagnosis.get(0))
+                    else{
+                        isAfibDiagnosisLoaded = true
+                        onDiagnosisFailed()
+                    }
                 }
             },
             onError = {msg,exp->
@@ -462,20 +471,27 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
     }
 
     private fun setBasicInfo(userModel: UserModel?) {
-//        userManager.setString(Preference.PREF_DISPLAY_NAME, getDisplayName(userModel?.firstName,userModel?.lastName))
+
         (activity as DiagnosisActivity)?.itoolbar.view.setUpToolbar(userModel?.firstName + " " + userModel?.lastName)
-        toolbar?.setUserImage(userModel?.imagePath)
+
+        if (userModel?.gender.isNullOrBlank()) binding.includeBasicInfo.tvGenderDash.text = "--"
+        if (userModel?.dob.isNullOrBlank()) {
+            binding.includeBasicInfo.tvDateDashboard.text="--"
+            binding.includeBasicInfo.tvAgeDash.text = "--"
+        }
         userModel?.gender?.let {
-            if (!it.equals(getString(R.string.select_gender),
+            if (it.isNotBlank() && !it.equals(getString(R.string.select_gender),
                     true)
             ) binding.includeBasicInfo.tvGenderDash.text = it
         }
         userModel?.dob?.let {
-            if (it.isBlank()) return
-            binding.includeBasicInfo.tvDateDashboard.text = it
-            binding.includeBasicInfo.tvAgeDash.text =
-                "${it.getNoYearsFromDate()} ${getString(R.string.years)}"
+            if(it.isNotBlank()){
+                binding.includeBasicInfo.tvDateDashboard.text = it
+                binding.includeBasicInfo.tvAgeDash.text =
+                    "${it.getNoYearsFromDate()} ${getString(R.string.years)}"
+            }
         }
+        toolbar?.setUserImage(userModel?.imagePath)
     }
 
     private fun setBasicInfo(diagnosisModel: DiagnosisModel?) {

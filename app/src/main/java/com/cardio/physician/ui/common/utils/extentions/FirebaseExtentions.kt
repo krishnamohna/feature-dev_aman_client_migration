@@ -91,6 +91,7 @@ fun QuerySnapshot.toDiagnosisModel(): List<DiagnosisModel> {
     val gson=Gson()
     this.forEach {
        var diagnosisModel=gson.fromJson(gson.toJson(it.data), DiagnosisModel::class.java)
+        diagnosisModel.documentId=it.id
         list.add(diagnosisModel)
     }
     return list

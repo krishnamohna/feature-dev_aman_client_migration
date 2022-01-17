@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.fragment.app.Fragment
 import com.cardio.physician.R
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -83,6 +84,10 @@ fun showConfirmAlertDialog(
         context.getString(R.string.no),
         true,
         mCallBack)
+}
+
+fun Fragment.showToast(msg: String?){
+    showToast(requireContext(),msg)
 }
 
 fun showAlertDialog(

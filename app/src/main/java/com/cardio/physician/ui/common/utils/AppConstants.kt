@@ -242,6 +242,7 @@ object NotificationTitle{
 }
 
 object NotificationType{
+    const val TYPE_ACCEPT_REQUEST="1"
     const val TYPE_ADD_DIAGNOSIS="2"
     const val TYPE_EDIT_DIAGNOSIS="3"
     const val TYPE_UNKNOWN="4"

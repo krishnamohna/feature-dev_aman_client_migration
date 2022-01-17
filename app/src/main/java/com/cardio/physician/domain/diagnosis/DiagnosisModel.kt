@@ -3,7 +3,8 @@ package com.cardio.physician.domain.diagnosis
 import android.os.Parcel
 import android.os.Parcelable
 import com.cardio.physician.domain.questionare.model.QuestionModel
-class DiagnosisModel() : Parcelable  {
+class DiagnosisModel() : Parcelable {
+    var documentId: String? = null
     var date: String?=null
     var timeStamp: Long?=null
     var questionnaire: List<QuestionModel>?=null
@@ -20,6 +21,7 @@ class DiagnosisModel() : Parcelable  {
     var medications: List<MedicineModel>? = null
 
     constructor(parcel: Parcel) : this() {
+        documentId = parcel.readString()
         date = parcel.readString()
         timeStamp = parcel.readValue(Long::class.java.classLoader) as? Long
         questionnaire = parcel.createTypedArrayList(QuestionModel.CREATOR)
@@ -37,6 +39,7 @@ class DiagnosisModel() : Parcelable  {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(documentId)
         parcel.writeString(date)
         parcel.writeValue(timeStamp)
         parcel.writeTypedList(questionnaire)
@@ -66,4 +69,5 @@ class DiagnosisModel() : Parcelable  {
             return arrayOfNulls(size)
         }
     }
+
 }

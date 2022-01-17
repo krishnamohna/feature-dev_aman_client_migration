@@ -64,4 +64,12 @@ class NotificatonsViewModel @Inject constructor(private val notificationRepo: No
         }
     }
 
+    fun listenDocumentChanges(function: () -> Unit) {
+        notificationRepo.addNotificationsChangeListener(function)
+    }
+    fun unregisterDocumentChanges(){
+        notificationRepo.removeNotificationsChangeListener()
+    }
+
+
 }
