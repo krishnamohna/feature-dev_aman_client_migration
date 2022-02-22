@@ -24,8 +24,13 @@ class NotificationAdapter constructor(private val action: (AdapterAction, Notifi
     val listNotifications = mutableListOf<NotificationModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
-        return NotificationViewHolder(ItemNotificationLayoutBinding.inflate(LayoutInflater.from(
-            parent.context), parent, false).root)
+        return NotificationViewHolder(
+            ItemNotificationLayoutBinding.inflate(
+                LayoutInflater.from(
+                    parent.context
+                ), parent, false
+            ).root
+        )
     }
 
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
@@ -44,20 +49,28 @@ class NotificationAdapter constructor(private val action: (AdapterAction, Notifi
             // managerViewVisibility(notificationModel)
             binding.tvNotiUseerName.text =
                 getMessage(notificationModel)
-            binding.imgProfilePicToolbar.loadImage(notificationModel.imageUrl)
+            if (!notificationModel.imageUrl.isNullOrBlank()) {
+                binding.imgProfilePicToolbar.loadImage(notificationModel.imageUrl)
+            }
             binding.tvNotiDate.text = formatTimeStampToTimePassed(notificationModel.timeStamp)
             //set listeners
             binding.ivNotiAcceptRequest.setOnClickListener {
-                action.invoke(AdapterAction.ACTION_ACCEPT_REQUEST,
-                    notificationModel)
+                action.invoke(
+                    AdapterAction.ACTION_ACCEPT_REQUEST,
+                    notificationModel
+                )
             }
             binding.ivNotiRejectRequest.setOnClickListener {
-                action.invoke(AdapterAction.ACTION_REJECT_REQUEST,
-                    notificationModel)
+                action.invoke(
+                    AdapterAction.ACTION_REJECT_REQUEST,
+                    notificationModel
+                )
             }
             binding.mcvRoot.setOnClickListener {
-                action.invoke(AdapterAction.ACTION_ITEM_CLICK,
-                    notificationModel)
+                action.invoke(
+                    AdapterAction.ACTION_ITEM_CLICK,
+                    notificationModel
+                )
             }
         }
 
@@ -94,11 +107,11 @@ class NotificationAdapter constructor(private val action: (AdapterAction, Notifi
                 else ->
                     "Incompatible message type"
             }
-            return if(notificationModel.getFullName().trim().isNotEmpty()){
+            return if (notificationModel.getFullName().trim().isNotEmpty()) {
                 SpannableStringBuilder().bold { append("Patient ${notificationModel.getFullName()}") }
                     .append(" ")
                     .append(message)
-            }else {
+            } else {
                 SpannableStringBuilder().bold { append("Patient ${notificationModel.email}") }
                     .append(" ")
                     .append(message)

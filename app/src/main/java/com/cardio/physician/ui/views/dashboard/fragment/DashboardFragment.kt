@@ -43,8 +43,21 @@ import com.cardio.physician.ui.views.dashboard.common.medicineview.IMedicineView
 import com.cardio.physician.ui.views.diagnosis.DiagnosisActivity
 import com.cardio.physician.ui.views.diagnosis.EditDiagnosisActivity
 import com.cardio.physician.ui.views.healthlogs.HealthLogsActivity
+import com.google.firebase.dynamiclinks.ktx.dynamicLinks
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.google.firebase.dynamiclinks.PendingDynamicLinkData
+
+import com.google.android.gms.tasks.OnSuccessListener
+
+import android.content.Intent.getIntent
+import android.net.Uri
+
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
+
+
+
 
 @AndroidEntryPoint
 class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {

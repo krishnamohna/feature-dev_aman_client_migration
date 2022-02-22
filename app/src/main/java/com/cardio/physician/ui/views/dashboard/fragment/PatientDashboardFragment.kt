@@ -120,6 +120,7 @@ class PatientDashboardFragment : BaseToolBarFragment<FragmentPatientDashboardBin
         resetFields()
     }
 
+
     private fun saveInfoToPrefrence(userModel: UserModel?) {
         //save user info to preferences
         userManager.setString(Preference.PREF_DISPLAY_NAME, getDisplayName(userModel?.firstName,userModel?.lastName))

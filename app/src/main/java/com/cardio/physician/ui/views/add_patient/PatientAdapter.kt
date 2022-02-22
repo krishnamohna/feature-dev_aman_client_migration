@@ -28,7 +28,7 @@ class PatientAdapter(val onRecyclerViewItemClick : (view: View, position: Int)->
                 binding.tvAdd.visibility = View.VISIBLE
                 if (patientFilterList[adapterPosition].isAdded != 0) {
                     if(patientFilterList[adapterPosition].isAdded == 1){
-                        binding.tvAdd.text = ""
+                        binding.tvAdd.text = "Added"
                     }else{
                         binding.tvAdd.text = "Requested"
                     }

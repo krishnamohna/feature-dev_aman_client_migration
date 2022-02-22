@@ -94,7 +94,7 @@ class ConnectionsAdapter(val recyclerViewListener : (view: View, position: Int)-
         } else {
             for (connection in connectionsList){
                 if(connection.timestamp!=null) {
-                    if (connection.timestamp > startDate && connection.timestamp < endDate) {
+                    if (connection.timestamp.toLong() > startDate && connection.timestamp.toLong() < endDate) {
                         filterableList.add(connection)
                     }
                 }

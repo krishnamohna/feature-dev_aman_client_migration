@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.net.toUri
@@ -15,8 +16,13 @@ import com.cardio.physician.BuildConfig
 import com.cardio.physician.R
 import com.cardio.physician.databinding.ActivityAddPatientBinding
 import com.cardio.physician.ui.common.base.activity.BaseActivity
+import com.cardio.physician.ui.common.utils.DynamicLinkUtils
 import com.cardio.physician.ui.common.utils.extentions.customObserver
+import com.cardio.physician.ui.common.utils.getPatientUid
 import com.cardio.physician.ui.common.utils.showAlertDialog
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.firebase.dynamiclinks.DynamicLink
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.google.firebase.dynamiclinks.ktx.androidParameters
 import com.google.firebase.dynamiclinks.ktx.dynamicLink
 import com.google.firebase.dynamiclinks.ktx.dynamicLinks
@@ -44,6 +50,23 @@ class AddPatientActivity : BaseActivity(), View.OnClickListener {
         setListeners()
         setRecyclerView()
         setObservers()
+
+
+      /*  Firebase.dynamicLinks
+            .getDynamicLink(intent)
+            .addOnSuccessListener(this) { pendingDynamicLinkData ->
+                var deepLink: Uri? = null
+                if (pendingDynamicLinkData != null) {
+                    deepLink = pendingDynamicLinkData.link
+                }
+                if (deepLink != null) {
+                    val doctorId: String = deepLink!!.getQueryParameter("doctorId")!! // returns null too
+                }
+            }
+            .addOnFailureListener(this, OnFailureListener {
+                val message=it.message
+            })*/
+
     }
 
     private fun setListeners() {
@@ -136,7 +159,7 @@ class AddPatientActivity : BaseActivity(), View.OnClickListener {
                 onBackPressed()
             }
             binding.ivEmailUser, binding.tvEmailUser, binding.tvInviteUser -> {
-                val dynamicLink=getDynamicLink()
+                val dynamicLink= DynamicLinkUtils.generateContentLink(getPatientUid())
                 val sendIntent = Intent()
                 sendIntent.action = Intent.ACTION_SEND
                 sendIntent.putExtra(
@@ -157,25 +180,5 @@ class AddPatientActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-    private fun getDynamicLink(): Uri {
-        val invitationLink = "https://www.example.com/?invitedby=${1234}" //Pass parameters in link as query parameters
-        val dynamicLink = Firebase.dynamicLinks.dynamicLink {
-            link = Uri.parse(invitationLink)
-            domainUriPrefix = "https://pocketcardiophysician.page.link/"
-            //domainUriPrefix = "https://spaceo.page.link"
-            androidParameters("com.cardio.doctor") {
-                minimumVersion = 1
-                //fallbackUrl="https://play.google.com/store".toUri()
-                fallbackUrl = "https://play.google.com/store".toUri()
-            }
-            // Open links with com.example.ios on iOS
-            iosParameters("com.pocketcardiodoctor.beta") {
-                //setFallbackUrl()
-            }
-        }
 
-        val dynamicLinkUri = dynamicLink.uri // get Link
-        return dynamicLinkUri
-
-    }
 }
