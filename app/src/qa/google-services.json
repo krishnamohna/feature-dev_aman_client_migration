@@ -1,61 +1,45 @@
 {
   "project_info": {
-    "project_number": "202279192016",
-    "project_id": "pocketcardioqa",
-    "storage_bucket": "pocketcardioqa.appspot.com"
+    "project_number": "771544353937",
+    "project_id": "cardio-decision-suite",
+    "storage_bucket": "cardio-decision-suite.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:202279192016:android:f4e64de1a4f87d2d3925d5",
+        "mobilesdk_app_id": "1:771544353937:android:83837635727e4875e0c330",
         "android_client_info": {
-          "package_name": "com.cardio.doctor.qa"
+          "package_name": "com.cardio.patient"
         }
       },
       "oauth_client": [
         {
-          "client_id": "202279192016-7i8ou6rcn6q0ld2o41oissgrq5ekmcb8.apps.googleusercontent.com",
+          "client_id": "771544353937-tgjqaobdntv1s2k0urtetdgde1h3vdc6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.cardio.doctor.qa",
-            "certificate_hash": "8cb054b8c0f01dfeae05ebd77695ddbf821556af"
+            "package_name": "com.cardio.patient",
+            "certificate_hash": "160f523b6b46ffebfbf11720fb4e7de06357d914"
           }
         },
         {
-          "client_id": "202279192016-ads52lsro7rnkbnvd165e4acsff12522.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.cardio.doctor.qa",
-            "certificate_hash": "287cd35898eae14be2c12d0ecb94d0204c8855b9"
-          }
-        },
-        {
-          "client_id": "202279192016-u8ibsqdqe71v39vrl0391hmvnv0r6f8h.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.cardio.doctor.qa",
-            "certificate_hash": "13525c71f87845c3328625f132778cb46f20f87c"
-          }
-        },
-        {
-          "client_id": "202279192016-mqpj87fj3knda0lhaek3vil6kutl6s5k.apps.googleusercontent.com",
+          "client_id": "771544353937-28via5j6f8lu36tmi8r2417n9rp2rmcm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBNvUCWemo4URST17T8P51OtpNm74QJ2yI"
+          "current_key": "AIzaSyDN8M28mn5eUu2xbGd00BUKndW7-CwFcYs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "202279192016-mqpj87fj3knda0lhaek3vil6kutl6s5k.apps.googleusercontent.com",
+              "client_id": "771544353937-28via5j6f8lu36tmi8r2417n9rp2rmcm.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "202279192016-46uq6r8nibalf6edecvi06u9bdk0jfrs.apps.googleusercontent.com",
+              "client_id": "771544353937-2umleg4828582bgvsqrtktcldc7j4p9t.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.pocketcardiodoctor.beta"
@@ -67,39 +51,47 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:202279192016:android:8b686593106eb1d13925d5",
+        "mobilesdk_app_id": "1:771544353937:android:7cccbc6b4cf6d608e0c330",
         "android_client_info": {
-          "package_name": "com.cardio.physician.qa"
+          "package_name": "com.cardio.provider"
         }
       },
       "oauth_client": [
         {
-          "client_id": "202279192016-jo90ljdk69dsolg3atb5p1g248iv36ec.apps.googleusercontent.com",
+          "client_id": "771544353937-mr8840lbrbsa691poqik4dm75c6hej27.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.cardio.physician.qa",
-            "certificate_hash": "13525c71f87845c3328625f132778cb46f20f87c"
+            "package_name": "com.cardio.provider",
+            "certificate_hash": "160f523b6b46ffebfbf11720fb4e7de06357d914"
           }
         },
         {
-          "client_id": "202279192016-mqpj87fj3knda0lhaek3vil6kutl6s5k.apps.googleusercontent.com",
+          "client_id": "771544353937-o77329pcif8bj3k0lcpjn1t9atq20p6e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cardio.provider",
+            "certificate_hash": "7c5d351c0b996e780bab4990d8281bb3bab39904"
+          }
+        },
+        {
+          "client_id": "771544353937-28via5j6f8lu36tmi8r2417n9rp2rmcm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBNvUCWemo4URST17T8P51OtpNm74QJ2yI"
+          "current_key": "AIzaSyDN8M28mn5eUu2xbGd00BUKndW7-CwFcYs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "202279192016-mqpj87fj3knda0lhaek3vil6kutl6s5k.apps.googleusercontent.com",
+              "client_id": "771544353937-28via5j6f8lu36tmi8r2417n9rp2rmcm.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "202279192016-46uq6r8nibalf6edecvi06u9bdk0jfrs.apps.googleusercontent.com",
+              "client_id": "771544353937-2umleg4828582bgvsqrtktcldc7j4p9t.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.pocketcardiodoctor.beta"

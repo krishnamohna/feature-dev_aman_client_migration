@@ -35,9 +35,9 @@ android {
     productFlavors {
         qa {
             dimension "env"
-            applicationIdSuffix ".qa"
+            applicationId "com.cardio.patient"
             versionNameSuffix "-qa"
-            buildConfigField "String", "FCM_KEY", "\"AAAALxjHhdA:APA91bF7sf8FI1ap6Zag5h0uY8Ks6LYt2j-GXHaKk9hcDGghuGw2CVab-8YI8n-jh2CNXzzUmxrVouX-30vhqBpjdtgpmEfywocqOIlWxdC2b4s3WP0nV1n7FO5aQNPINBJBFWDSQKrl\""
+            buildConfigField "String", "FCM_KEY", "\"AAAAs6OgjJE:APA91bHLQZmwkRgFG4jxpz3VGdHH0q42T_fd8YxccRm-8C3hZc9kEwqI0Gwp2Io227HRQQLgh_JqGZbbFK2vbA1jO3lF-kBX4b6jH8O2FhHI6_aqUDLszJl93sn-9DZ1dHAOPQbLbxhQ\""
             buildConfigField "String", "PATINET_PACKAGE_ANME",'"com.cardio.doctor.qa"'
             buildConfigField "String", "DOMAIN",'"https://pocketcardiophysicianqa.page.link/"'
         }
