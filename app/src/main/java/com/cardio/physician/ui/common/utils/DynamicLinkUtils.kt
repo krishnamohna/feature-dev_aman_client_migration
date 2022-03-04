@@ -8,12 +8,12 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 object DynamicLinkUtils {
 
     fun generateContentLink(userId:String): Uri {
-        val baseUrl = Uri.parse("https://pocketcadevapi.appskeeper.in//?doctorId=${userId}")
+        val baseUrl = Uri.parse("https://links.decision.health//?doctorId=${userId}")
         val link = FirebaseDynamicLinks.getInstance()
             .createDynamicLink()
             .setLink(baseUrl)
             .setDomainUriPrefix(BuildConfig.DOMAIN)
-            .setIosParameters(DynamicLink.IosParameters.Builder("com.pocketcardiodoctor.beta").build())
+            .setIosParameters(DynamicLink.IosParameters.Builder("com.cardioDecision.Patient").build())
             .setAndroidParameters(DynamicLink.AndroidParameters.Builder(BuildConfig.PATINET_PACKAGE_ANME).build())
             .buildDynamicLink()
 

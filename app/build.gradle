@@ -38,7 +38,7 @@ android {
             applicationIdSuffix ".qa"
             versionNameSuffix "-qa"
             buildConfigField "String", "FCM_KEY", "\"AAAALxjHhdA:APA91bF7sf8FI1ap6Zag5h0uY8Ks6LYt2j-GXHaKk9hcDGghuGw2CVab-8YI8n-jh2CNXzzUmxrVouX-30vhqBpjdtgpmEfywocqOIlWxdC2b4s3WP0nV1n7FO5aQNPINBJBFWDSQKrl\""
-            buildConfigField "String", "PATINET_PACKAGE_ANME",'"com.cardio.doctor.qa"'
+            buildConfigField "String", "PATINET_PACKAGE_ANME",'"com.cardio.patient"'
             buildConfigField "String", "DOMAIN",'"https://pocketcardiophysicianqa.page.link/"'
         }
         dev {
@@ -47,8 +47,8 @@ android {
             dimension "env"
             resConfigs("en", "xxhdpi")
             buildConfigField "String", "FCM_KEY", "\"AAAAjYHTt9k:APA91bERQajsu-Kup_7OVCoU9rrxvlD-qBBvdsezTnqyMebBTs7m1bRer8T83zmzFdzXkz6q6ignOLNBW31fJl4V6n5V1s08k3h5lDtx11tlw54uUW4l80qcIu3VCvyNUS6gDyCMA3gX\""
-            buildConfigField "String", "PATINET_PACKAGE_ANME",'"com.cardio.doctor"'
-            buildConfigField "String", "DOMAIN",'"https://pocketcardiophysician1.page.link/"'
+            buildConfigField "String", "PATINET_PACKAGE_ANME",'"com.cardio.patient"'
+            buildConfigField "String", "DOMAIN",'"https://links.decision.health/"'
         }
     }
 
