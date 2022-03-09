@@ -66,8 +66,8 @@ class SettingFragment : BaseFragmentAuth(R.layout.fragment_setting), View.OnClic
         binding.logoutContainer.setOnClickListener(this)
         binding.switchNotification.setOnCheckedChangeListener { _, isSelected ->
             isConnectedOrThrowMsg {
+                userManager.setBoolean(HAS_MANUALLY_CHANGED_SUBSCRIPTION,true);
                 if (isSelected) {
-                    userManager.setBoolean(HAS_MANUALLY_CHANGED_SUBSCRIPTION,true);
                     // binding.switchNotification.isEnabled = false
                     fcmManager.subscribeFcmTopic {
                         //   binding.switchNotification.isEnabled = true
