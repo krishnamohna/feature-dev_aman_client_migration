@@ -1,6 +1,7 @@
 package com.cardio.physician.ui.views.healthlogs
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputFilter
@@ -318,6 +319,20 @@ class HealthLogsActivity : BaseToolbarActivity() {
             setText(message)
             setVisibility(visibility)
         }
+    }
+
+    override fun onBackPressed() {
+         showConfirmAlertDialog(
+           this!!,
+           "",
+           getString(R.string.confirm_dismiss_diagnosis)
+       ) { btnText: String, dialog: DialogInterface ->
+           when (btnText) {
+               getString(R.string.yes) -> {
+                   finish()
+               }
+           }
+       }
     }
 
 }

@@ -23,8 +23,11 @@ import com.cardio.physician.ui.common.utils.showConfirmAlertDialog
 import com.cardio.physician.ui.views.dashboard.fragment.DashboardFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.NavArgument
+import androidx.navigation.findNavController
 import com.cardio.physician.R
 import com.cardio.physician.ui.common.utils.EXTRAS
+import com.cardio.physician.ui.views.diagnosis.step2.EditFragmentStep2
+import com.cardio.physician.ui.views.diagnosis.step3.EditDiagnosisFragmentStep3
 import com.cardio.physician.ui.views.notifications.NotificationsActivity
 
 
@@ -37,7 +40,8 @@ open class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
             intent.putExtra(FireStoreDocKey.USER_ID, userId)
             activity.startActivity(intent)
         }
-        fun getActivityIntent(activity: Activity)=Intent(activity, DiagnosisActivity::class.java)
+
+        fun getActivityIntent(activity: Activity) = Intent(activity, DiagnosisActivity::class.java)
     }
 
     lateinit var currentFilter: DashboardFragment.Filter
@@ -67,7 +71,7 @@ open class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
     }
 
     fun init() {
-        currentFilter=DashboardFragment.Filter.THIRTY
+        currentFilter = DashboardFragment.Filter.THIRTY
         //  fcmManager.getToken()
         fcmManager.subscribeFcmTopic()
         //  fcmManager.sendPushNotification("weather")
@@ -80,7 +84,7 @@ open class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
     open fun setNavGraph() {
         val bundle = Bundle()
         bundle.putString(FireStoreDocKey.USER_ID, intent.getStringExtra(FireStoreDocKey.USER_ID))
-        navController.setGraph(com.cardio.physician.R.navigation.graph_selection_item,bundle)
+        navController.setGraph(com.cardio.physician.R.navigation.graph_selection_item, bundle)
 
         /*navController.setGraph(com.cardio.physician.R.navigation.graph_selection_item)
         navController.graph.findNode(com.cardio.physician.R.id.graph_selection_item)
@@ -97,22 +101,56 @@ open class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
     }
 
     override fun onBackPressed() {
-        showConfirmAlertDialog(
-            this!!,
-            "",
-            getString(R.string.confirm_dismiss_diagnosis)
-        ) { btnText: String, dialog: DialogInterface ->
-            when (btnText) {
-                getString(R.string.yes) -> {
-                    finish()
+        /* showConfirmAlertDialog(
+             this!!,
+             "",
+             getString(R.string.confirm_dismiss_diagnosis)
+         ) { btnText: String, dialog: DialogInterface ->
+             when (btnText) {
+                 getString(R.string.yes) -> {
+                     finish()
+                 }
+             }
+         }*/
+        val navHostFragment = supportFragmentManager.primaryNavigationFragment
+        when (val currentFragment = navHostFragment?.childFragmentManager?.fragments?.first()) {
+            is EditDiagnosisFragmentStep3 -> {
+                showConfirmAlertDialog(
+                    this!!,
+                    "",
+                    getString(R.string.confirm_dismiss_diagnosis)
+                ) { btnText: String, dialog: DialogInterface ->
+                    when (btnText) {
+                        getString(R.string.yes) -> {
+                            finish()
+                        }
+                    }
                 }
             }
+
+            is EditFragmentStep2 -> {
+                showConfirmAlertDialog(
+                    this!!,
+                    "",
+                    getString(R.string.confirm_dismiss_diagnosis)
+                ) { btnText: String, dialog: DialogInterface ->
+                    when (btnText) {
+                        getString(R.string.yes) -> {
+                            finish()
+                        }
+                    }
+                }
+            }
+            else-> {
+                finish()
+            }
         }
+
     }
 
     private fun setListeners() {
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            when(destination.label){
+            when (destination.label) {
                 "Dashboard" -> {
                     itoolbar.view.setUpToolbar("Dashboard")
                 }
