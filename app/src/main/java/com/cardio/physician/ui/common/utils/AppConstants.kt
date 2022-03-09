@@ -17,6 +17,7 @@ interface Preference {
         const val PREF_PROFILE_IMAGE = "profile_image"
         const val PREF_EMAIL = "pref_email"
         const val LAST_SUBSCRIPTION_TOPIC = "last_subscription_token"
+        const val HAS_MANUALLY_CHANGED_SUBSCRIPTION = "has_manully_changed_subscription"
     }
 }
 
