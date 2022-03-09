@@ -7,7 +7,7 @@ import com.cardio.physician.BuildConfig
 
 interface Preference {
     companion object {
-        const val APP = "DoctorPreferences"
+        const val APP = "Doctor_Preferences"
         const val IS_TUTORIAL_SHOWN = "IsTutorialShown"
         const val SYNC_HEALTH = "SyncHealth"
         const val IS_TOPIC_SUBSCRIBED = "is_topic_subscribed"
@@ -17,6 +17,7 @@ interface Preference {
         const val PREF_PROFILE_IMAGE = "profile_image"
         const val PREF_EMAIL = "pref_email"
         const val LAST_SUBSCRIPTION_TOPIC = "last_subscription_token"
+        const val HAS_MANUALLY_CHANGED_SUBSCRIPTION = "has_manully_changed_subscription"
     }
 }
 

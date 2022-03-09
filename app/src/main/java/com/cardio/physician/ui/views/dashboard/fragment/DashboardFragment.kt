@@ -199,7 +199,6 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
             onSuccess = {
                 setBasicInfo(it)
                 onUserDetailLoaded()
-                saveInfoToPrefrence(it)
             },
             {msg,exp->
                 onUserDetailLoaded()
@@ -287,17 +286,6 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
         }
     }
 
-    private fun saveInfoToPrefrence(userModel: UserModel?) {
-        //save user info to preferences
-        userManager.setString(
-            Preference.PREF_DISPLAY_NAME,
-            getDisplayName(userModel?.firstName, userModel?.lastName)
-        )
-        userManager.setString(Preference.PREF_FIRST_NAME, userModel?.firstName)
-        userManager.setString(Preference.PREF_LAST_NAME, userModel?.lastName)
-        userManager.setString(Preference.PREF_EMAIL, userModel?.email)
-        userManager.setString(Preference.PREF_PROFILE_IMAGE, userModel?.imagePath)
-    }
 
     private fun onDiagnosisLoaded() {
         binding.tvReportDateDash.visibility = View.VISIBLE

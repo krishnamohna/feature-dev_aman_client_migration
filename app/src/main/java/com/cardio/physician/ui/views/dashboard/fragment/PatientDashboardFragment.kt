@@ -94,7 +94,6 @@ class PatientDashboardFragment : BaseToolBarFragment<FragmentPatientDashboardBin
             null,
             onSuccess = {
                 setUserDataInView(it)
-                saveInfoToPrefrence(it)
             },
             null
         )
@@ -118,16 +117,6 @@ class PatientDashboardFragment : BaseToolBarFragment<FragmentPatientDashboardBin
 
     fun init() {
         resetFields()
-    }
-
-
-    private fun saveInfoToPrefrence(userModel: UserModel?) {
-        //save user info to preferences
-        userManager.setString(Preference.PREF_DISPLAY_NAME, getDisplayName(userModel?.firstName,userModel?.lastName))
-        userManager.setString(Preference.PREF_FIRST_NAME, userModel?.firstName)
-        userManager.setString(Preference.PREF_LAST_NAME, userModel?.lastName)
-        userManager.setString(Preference.PREF_EMAIL, userModel?.email)
-        userManager.setString(Preference.PREF_PROFILE_IMAGE, userModel?.imagePath)
     }
 
     private fun resetFields(){

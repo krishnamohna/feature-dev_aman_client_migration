@@ -107,7 +107,7 @@ class SyncHealthRepositoryImp @Inject constructor(
                 it)
         }
         fitnessModel.stepCount?.let { mapHealth.put(FireStoreDocKey.STEP_COUNT, it) }
-        userId?:firebaseAuth.currentUser?.uid?.let { uid ->
+        userId?.let { uid ->
             fitnessModel.date?.let { date ->
                 try {
                     //TRY UPDATE VALUE FIRST

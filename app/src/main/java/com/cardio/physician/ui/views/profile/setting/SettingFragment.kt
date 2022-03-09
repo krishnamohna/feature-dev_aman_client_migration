@@ -13,6 +13,7 @@ import com.cardio.physician.network.NetworkHelper
 import com.cardio.physician.ui.common.base.activity.BaseActivity
 import com.cardio.physician.ui.common.base.fragment.BaseFragmentAuth
 import com.cardio.physician.ui.common.utils.Preference
+import com.cardio.physician.ui.common.utils.Preference.Companion.HAS_MANUALLY_CHANGED_SUBSCRIPTION
 import com.cardio.physician.ui.common.utils.WEBURL
 import com.cardio.physician.ui.common.utils.customSnackBarFail
 import com.cardio.physician.ui.common.utils.extentions.isConnectedOrThrowMsg
@@ -65,6 +66,7 @@ class SettingFragment : BaseFragmentAuth(R.layout.fragment_setting), View.OnClic
         binding.logoutContainer.setOnClickListener(this)
         binding.switchNotification.setOnCheckedChangeListener { _, isSelected ->
             isConnectedOrThrowMsg {
+                userManager.setBoolean(HAS_MANUALLY_CHANGED_SUBSCRIPTION,true);
                 if (isSelected) {
                     // binding.switchNotification.isEnabled = false
                     fcmManager.subscribeFcmTopic {

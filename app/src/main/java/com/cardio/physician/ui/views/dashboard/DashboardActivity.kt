@@ -7,15 +7,20 @@ import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
 import android.view.View
+import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cardio.physician.R
 import com.cardio.physician.data.remote.fcm.FcmManager
 import com.cardio.physician.databinding.ActivityDashboardBinding
+import com.cardio.physician.domain.common.model.UserModel
 import com.cardio.physician.ui.common.base.activity.BaseActivity
 import com.cardio.physician.ui.common.utils.EXTRAS
+import com.cardio.physician.ui.common.utils.Preference
+import com.cardio.physician.ui.common.utils.Preference.Companion.HAS_MANUALLY_CHANGED_SUBSCRIPTION
 import com.cardio.physician.ui.common.utils.extentions.customObserver
 import com.cardio.physician.ui.common.utils.extentions.isConnectedOrThrowMsg
+import com.cardio.physician.ui.common.utils.getDisplayName
 import com.cardio.physician.ui.common.utils.showPhysicianPickOption
 import com.cardio.physician.ui.service.SyncHeathDataService
 import com.cardio.physician.ui.views.add_patient.AddPatientActivity
@@ -43,21 +48,23 @@ class DashboardActivity : BaseActivity(), View.OnClickListener {
     private val navController: NavController by lazy {
         (supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment).navController
     }
-
+    val viewModel: DashboardActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setNavigationController()
-//        startAndBindSyncService()
         setListener()
+        setObserver()
         init()
     }
 
+
     fun init() {
-//        fcmManager.getToken()
-        fcmManager.subscribeFcmTopic()
-        //  fcmManager.sendPushNotification("weather")
+        //if passed nothing or null then it fetched current user detail
+        viewModel.getUserDetail()
+        if (!userManager.getBoolean(HAS_MANUALLY_CHANGED_SUBSCRIPTION))
+            fcmManager.subscribeFcmTopic()
         intent?.let {
             if (it.getBooleanExtra(EXTRAS.EXTRAS_FROM_NOTIFICATION, false))
                 NotificationsActivity.start(this)
@@ -89,6 +96,20 @@ class DashboardActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
+    private fun setObserver() {
+        viewModel.liveUserData.customObserver(
+                this,
+                onLoading = ::showProgress,
+                onSuccess = {
+                    saveInfoToPrefrence(it)
+                },
+                {msg,exp->
+
+                }
+        )
+    }
+
+
     private fun setMenuIconState(currentTab: TAB) {
         when (currentTab) {
             TAB.DASHBOARD -> {
@@ -112,11 +133,6 @@ class DashboardActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-//        unbindService(connection)
-//        mBound = false
-    }
 
     override fun onClick(view: View?) {
         when (view) {
@@ -156,8 +172,8 @@ class DashboardActivity : BaseActivity(), View.OnClickListener {
 
     private fun setNavigationController() {
         val navController =
-            (supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment)
-                .navController
+                (supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment)
+                        .navController
         baseViewModel.navDirectionLiveData.observe(this) {
             navController.navigate(it)
         }
@@ -181,15 +197,15 @@ class DashboardActivity : BaseActivity(), View.OnClickListener {
     private fun registerListeners() {
         if (this::mService.isInitialized) {
             mService.facade.getSyncData().customObserver(
-                this,
-                onLoading = {
-                },
-                {
-                    it?.let { onHealthLogsSync?.invoke(it) }
-                },
-                { msg, exp ->
+                    this,
+                    onLoading = {
+                    },
+                    {
+                        it?.let { onHealthLogsSync?.invoke(it) }
+                    },
+                    { msg, exp ->
 
-                }
+                    }
             )
         }
     }
@@ -204,5 +220,17 @@ class DashboardActivity : BaseActivity(), View.OnClickListener {
 
     fun unregisterSyncUpdates() {
         onHealthLogsSync == null
+    }
+
+    private fun saveInfoToPrefrence(userModel: UserModel?) {
+        //save user info to preferences
+        userManager.setString(
+                Preference.PREF_DISPLAY_NAME,
+                getDisplayName(userModel?.firstName, userModel?.lastName)
+        )
+        userManager.setString(Preference.PREF_FIRST_NAME, userModel?.firstName)
+        userManager.setString(Preference.PREF_LAST_NAME, userModel?.lastName)
+        userManager.setString(Preference.PREF_EMAIL, userModel?.email)
+        userManager.setString(Preference.PREF_PROFILE_IMAGE, userModel?.imagePath)
     }
 }
