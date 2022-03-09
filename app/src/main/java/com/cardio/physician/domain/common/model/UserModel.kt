@@ -18,7 +18,8 @@ data class UserModel(var uid: String?,
                      val height:String?=null,
                      val weight:String?=null,
                      val dob:String?=null,
-                     val userType: UserType=UserType.PHYSICIAN
+                     val userType: UserType=UserType.PHYSICIAN,
+                     val hasUnreadNotification:Boolean?=null
 
 ): Parcelable{
 

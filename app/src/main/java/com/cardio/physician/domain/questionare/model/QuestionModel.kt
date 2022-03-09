@@ -64,4 +64,8 @@ data class QuestionModel(
         }
     }
 
+    fun isAnswered(): Boolean {
+        return !answer.isNullOrBlank()
+    }
+
 }

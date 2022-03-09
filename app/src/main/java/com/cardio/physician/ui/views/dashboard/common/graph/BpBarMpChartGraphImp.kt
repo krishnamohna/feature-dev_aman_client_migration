@@ -7,6 +7,7 @@ import com.cardio.physician.domain.fitness.model.FitnessModel
 import com.cardio.physician.ui.common.utils.Constants
 import com.cardio.physician.ui.common.utils.Timer
 import com.cardio.physician.ui.common.utils.Timer.Companion.CHART_ANIMATE_TIME
+import com.cardio.physician.ui.common.utils.extentions.isValidHealthLog
 import com.cardio.physician.ui.common.utils.formatDateToGraph
 import com.cardio.physician.ui.views.dashboard.common.graph.base.BaseGraphImp
 import com.cardio.physician.ui.views.dashboard.common.graph.base.BpGraph
@@ -40,19 +41,17 @@ class BpBarMpChartGraphImp @Inject constructor() : BaseGraphImp(), BpGraph {
         val dateLabels = mutableListOf<String?>()
         var totalValue = 0f
         var totalValue2 = 0f
-        var x=0
-        listHealthLogs?.forEachIndexed { _, fitnessModel ->
-            fitnessModel.bloodPressureTopBp?.let {
-                if(it == "0" || it.isBlank()) return@let
-                totalValue += fitnessModel.bloodPressureBottomBp!!.toFloat()
-                totalValue2 += fitnessModel.bloodPressureTopBp!!.toFloat()
-                var lowerVal = fitnessModel.bloodPressureBottomBp!!.toFloat()
-                var upperVal =fitnessModel.bloodPressureTopBp!!.toFloat() - lowerVal
-                val range = floatArrayOf(lowerVal, upperVal)
-                values.add(BarEntry(x.toFloat(), range))
-                fitnessModel.date?.let { dateLabels.add(formatDateToGraph(it)) }
-                x += 1
-            }
+        listHealthLogs?.filter {
+            it.bloodPressureTopBp.isValidHealthLog() && it.bloodPressureBottomBp.isValidHealthLog() && it.date != null
+        }?.forEachIndexed { index, fitnessModel ->
+            //no need of null check on bp and date ans list is already filtered on these params
+            totalValue += fitnessModel.bloodPressureBottomBp!!.toFloat()
+            totalValue2 += fitnessModel.bloodPressureTopBp!!.toFloat()
+            var lowerVal = fitnessModel.bloodPressureBottomBp!!.toFloat()
+            var upperVal = fitnessModel.bloodPressureTopBp!!.toFloat() - lowerVal
+            val range = floatArrayOf(lowerVal, upperVal)
+            values.add(BarEntry(index.toFloat(), range))
+            dateLabels.add(formatDateToGraph(fitnessModel.date!!))
         }
         //check if there are entries and then make  visible
         //check if there are entries and then make  visible

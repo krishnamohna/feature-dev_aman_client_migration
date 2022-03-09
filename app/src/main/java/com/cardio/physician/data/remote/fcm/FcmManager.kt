@@ -65,7 +65,7 @@ class FcmManager @Inject constructor(
     }
 
     fun unsubscribeFcmTopic(onUnsubscribed: (() -> Unit)? = null) {
-        if(userManager.getString(LAST_SUBSCRIPTION_TOPIC, null).isNullOrBlank())onUnsubscribed?.invoke()
+        //if(userManager.getString(LAST_SUBSCRIPTION_TOPIC, null).isNullOrBlank())onUnsubscribed?.invoke()
         userManager.getString(LAST_SUBSCRIPTION_TOPIC,null)?.let {
             FirebaseMessaging.getInstance().unsubscribeFromTopic(it)
                 .addOnCompleteListener { task ->
@@ -80,7 +80,8 @@ class FcmManager @Inject constructor(
         }
     }
 
-    fun notifyUsersForDiagnosis(isEdit: Boolean, userId: String?) {
+
+   /* fun notifyUsersForDiagnosis(isEdit: Boolean, userId: String?) {
         GlobalScope.launch {
             try {
                 val msg =
@@ -88,14 +89,14 @@ class FcmManager @Inject constructor(
                         "${userManager.getString(PREF_DISPLAY_NAME)} has edited a diagnosis."
                 userId?.let { it1 -> sendPushNotification(it1, msg, "Diagnosis") }
 
-                /*connectionRepo.getMyConnections().forEach {
+                *//*connectionRepo.getMyConnections().forEach {
 
-                }*/
+                }*//*
             } catch (exp: Exception) {
                 exp.printStackTrace()
             }
         }
-    }
+    }*/
 
     fun sendPushNotification(senderId: String, message: String, title: String) {
         sendPushNotification(senderId, message, title,null)

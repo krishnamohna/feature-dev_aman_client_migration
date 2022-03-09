@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.views.diagnosis.step2.dosageandfrequency.DosageAndFrequencyActivity">
+
+    <include
+        android:id="@+id/headerView"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/cvDiagnosisBottomContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/cvDiagnosisBottomContainer"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".ui.views.diagnosis.step2.dosageandfrequency.DosageAndFrequencyActivity">
+
+            <TextView
+                android:id="@+id/tvDosageLabel"
+                style="@style/BaseAppTheme.TxtView.bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/select_dosage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/rgDosageOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/tvDosageLabel"
+                app:layout_constraintTop_toBottomOf="@+id/tvDosageLabel"></RadioGroup>
+
+            <TextView
+                android:id="@+id/tvDosageFrequency"
+                style="@style/BaseAppTheme.TxtView.bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/select_no_of_tablet"
+                app:layout_constraintStart_toStartOf="@+id/tvDosageLabel"
+                app:layout_constraintTop_toBottomOf="@+id/rgDosageOption" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinnerNoOfTablets"
+                android:layout_width="0dp"
+                android:background="@drawable/edt_rounded_corner"
+                android:layout_height="@dimen/height_spinner"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvDosageFrequency"
+                app:layout_constraintTop_toBottomOf="@id/tvDosageFrequency" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivNoOfTabletDropDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_dropdown_mobile"
+                app:layout_constraintBottom_toBottomOf="@id/spinnerNoOfTablets"
+                app:layout_constraintEnd_toEndOf="@id/spinnerNoOfTablets"
+                app:layout_constraintTop_toTopOf="@+id/spinnerNoOfTablets" />
+
+
+            <TextView
+                android:id="@+id/tvSelectFrequencyLabel"
+                style="@style/BaseAppTheme.TxtView.bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/select_frequency"
+                app:layout_constraintStart_toStartOf="@+id/tvDosageLabel"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerNoOfTablets" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinnerNoOfTime"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_spinner"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/edt_rounded_corner"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/spinnerPerDay"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/tvSelectFrequencyLabel"
+                app:layout_constraintTop_toBottomOf="@id/tvSelectFrequencyLabel" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivNoOfTimeDropDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_dropdown_mobile"
+                app:layout_constraintBottom_toBottomOf="@id/spinnerNoOfTime"
+                app:layout_constraintEnd_toEndOf="@id/spinnerNoOfTime"
+                app:layout_constraintTop_toTopOf="@+id/spinnerNoOfTime" />
+
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinnerPerDay"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_spinner"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edt_rounded_corner"
+                app:layout_constraintEnd_toEndOf="@+id/spinnerNoOfTablets"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/spinnerNoOfTime"
+                app:layout_constraintTop_toBottomOf="@id/tvSelectFrequencyLabel" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivPerDayDropDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_dropdown_mobile"
+                app:layout_constraintBottom_toBottomOf="@id/spinnerPerDay"
+                app:layout_constraintEnd_toEndOf="@id/spinnerPerDay"
+                app:layout_constraintTop_toTopOf="@+id/spinnerPerDay" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <include
+        android:id="@+id/cvDiagnosisBottomContainer"
+        layout="@layout/include_diagnosis_bottom_views"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/scrollViewStep1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

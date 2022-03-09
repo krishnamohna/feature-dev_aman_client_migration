@@ -49,6 +49,11 @@ class DashboardViewModel @Inject constructor(
     val liveDataHealthLogs: LiveData<Resource<List<FitnessModel>>> =
         singleEventHealthLogs
 
+    /*health logs for considerations */
+    private val singleEventHealthLogsConsiderations = SingleLiveEvent<Resource<List<FitnessModel>>>()
+    val liveDataHealthLogsConsiderations: LiveData<Resource<List<FitnessModel>>> =
+        singleEventHealthLogsConsiderations
+
     private val singleEventConnections = SingleLiveEvent<Resource<List<ConnectionModel>>>()
     val liveDataConnections: LiveData<Resource<List<ConnectionModel>>> =
         singleEventConnections
@@ -117,6 +122,16 @@ class DashboardViewModel @Inject constructor(
         }
     }
 
+  /*  fun getHealthLogs(days: Long,userId: String?) {
+        viewModelScope.launch {
+            try {
+                singleEventHealthLogs.setLoading()
+                singleEventHealthLogs.setSuccess(syncRepositary.getHealthLogs1(days,userId))
+            } catch (e: Exception) {
+                singleEventHealthLogs.setError(e)
+            }
+        }
+    }*/
     fun getHealthLogs(days: Long, userId: String?) {
         viewModelScope.launch {
             try {
@@ -144,6 +159,17 @@ class DashboardViewModel @Inject constructor(
                 }
             } catch (e: Exception) {
                 singleEventHealthLogs.setError(e)
+            }
+        }
+    }
+
+    fun getHealthLogsForConsiderations(userId: String?) {
+        viewModelScope.launch {
+            try {
+                singleEventHealthLogsConsiderations.setLoading()
+                singleEventHealthLogsConsiderations.setSuccess(syncRepositary.getHealthLogs1(DashboardFragment.Filter.NINETY.value,userId))
+            } catch (e: Exception) {
+                singleEventHealthLogsConsiderations.setError(e)
             }
         }
     }

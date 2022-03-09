@@ -29,15 +29,13 @@ class SettingFragment : BaseFragmentAuth(R.layout.fragment_setting), View.OnClic
     private val navArgs by navArgs<SettingFragmentArgs>()
 
     @Inject
-    lateinit var networkHelper: NetworkHelper
+    lateinit var userManager: UserManager
 
+    @Inject
+    lateinit var networkHelper: NetworkHelper
 
     @Inject
     lateinit var fcmManager: FcmManager
-
-
-    @Inject
-    lateinit var userManager: UserManager
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,12 +47,15 @@ class SettingFragment : BaseFragmentAuth(R.layout.fragment_setting), View.OnClic
 
     private fun setViews() {
         navArgs.extrasUserType?.let {
-           if(it== SignUpUserType.GOOGLE.name){
-               binding.changePasswordContainer.visibility=View.GONE
-           }
+            if (it == SignUpUserType.GOOGLE.name) {
+                binding.changePasswordContainer.visibility = View.GONE
+            }
         }
-        binding.switchNotification.isChecked=userManager.getBoolean(Preference.IS_TOPIC_SUBSCRIBED)
+        binding.switchNotification.isChecked =
+            userManager.getBoolean(Preference.IS_TOPIC_SUBSCRIBED)
     }
+
+
 
     private fun setListener() {
         binding.changePasswordContainer.setOnClickListener(this)
@@ -65,18 +66,18 @@ class SettingFragment : BaseFragmentAuth(R.layout.fragment_setting), View.OnClic
         binding.switchNotification.setOnCheckedChangeListener { _, isSelected ->
             isConnectedOrThrowMsg {
                 if (isSelected) {
-                    binding.switchNotification.isEnabled = false
+                    // binding.switchNotification.isEnabled = false
                     fcmManager.subscribeFcmTopic {
-                        binding.switchNotification.isEnabled = true
+                        //   binding.switchNotification.isEnabled = true
                         if (!it) {
                             showToast(getString(R.string.error_subscribe_notifications))
                             binding.switchNotification.isChecked = false
                         }
                     }
                 } else {
-                    binding.switchNotification.isEnabled = false
+                    //  binding.switchNotification.isEnabled = false
                     fcmManager.unsubscribeFcmTopic {
-                        binding.switchNotification.isEnabled = true
+                        //      binding.switchNotification.isEnabled = true
                     }
                 }
             }

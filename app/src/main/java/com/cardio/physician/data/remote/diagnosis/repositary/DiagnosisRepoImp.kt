@@ -1,6 +1,8 @@
 package com.cardio.physician.data.remote.diagnosis.repositary
 
 import android.content.Context
+import android.os.Parcel
+import com.cardio.physician.data.remote.diagnosis.DiagnosisRepoUtil
 import com.cardio.physician.data.remote.diagnosis.entity.medicines.MedicineFireStoreEntity
 import com.cardio.physician.data.remote.fcm.FcmManager
 import com.cardio.physician.domain.common.model.BaseModel
@@ -19,11 +21,14 @@ import com.cardio.physician.ui.common.utils.extentions.*
 import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
+import com.google.firebase.firestore.EventListener
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.tasks.await
 import java.io.IOException
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.HashMap
 
 
 class DiagnosisRepoImp @Inject constructor(
@@ -33,7 +38,14 @@ class DiagnosisRepoImp @Inject constructor(
     private val fcmManager: FcmManager,
 ) : DiagnosisRepo {
 
-    override suspend fun fetchMedicine(name: String, isPreExistedMed: Boolean): BaseModel<MedicineModel> {
+    private var medicineModelLast: MedicineModel?=null
+    private val diagnosisRepoUtil : DiagnosisRepoUtil by lazy {
+        DiagnosisRepoUtil()
+    }
+
+
+
+    /*override suspend fun fetchMedicine(name: String, isPreExistedMed: Boolean): BaseModel<MedicineModel> {
         if(isPreExistedMed){
             //if medicine is already there in collection manually added  no need to search it through api
             var baseModel=BaseModel(MedicineModel(name,name,name))
@@ -48,6 +60,49 @@ class DiagnosisRepoImp @Inject constructor(
                 }
             }
             return throw NetworkError.noRecordFound()
+        }
+    }*/
+
+    override suspend fun fetchMedicine(
+        name: String,
+        isPreExistedMed: Boolean,
+    ): BaseModel<MedicineModel> {
+        return if (isPreExistedMed || doesMedExistInFirestore(name)) {
+            //if med is selected from dropdown or searched med exist in firestore
+            try {
+                apiService.getMedicineDosages(name).body()?.let { entity ->
+                    entity.drugGroup.let {
+                        return entity.toBaseModel(name).apply {
+                            mergeMedicineDataFromOurCollection(name, data)
+                        }
+                    }
+                }
+            } catch (exp: Exception) {
+                return addMedWithNameOnly(name)
+            }
+            throw NetworkError.noRecordFound()
+        } else {
+            //get drugname from api  queried with  tradename/drugname
+            val medicineModel = getDrugFromTradeName(name)
+            val drugName=medicineModel?.data?.name
+            if (medicineModel != null && drugName != null) {
+                if (doesMedExistInFirestore(drugName)) {
+                    try {
+                        apiService.getMedicineDosages(drugName).body()?.let { entity ->
+                            return entity.toBaseModel(drugName).apply {
+                                mergeMedicineDataFromOurCollection(drugName, data)
+                            }
+                        }
+                    }catch (exp:Exception){
+                        return addMedWithNameOnly(name)
+                    }
+                    throw NetworkError.noRecordFound()
+                } else {
+                    addMedWithNameOnly(name)
+                }
+            } else {
+                addMedWithNameOnly(name)
+            }
         }
     }
 
@@ -114,21 +169,6 @@ class DiagnosisRepoImp @Inject constructor(
     }
 
     override suspend fun submitReport(diagnosisModel: DiagnosisModel, userId: String?, isEdit: Boolean) {
-/*
-        var json = Gson().toJson(diagnosisModel)
-        var mapDiagnosis: Map<String, Any> = HashMap()
-        mapDiagnosis = Gson().fromJson(json, mapDiagnosis.javaClass)
-        (userId?:firebaseAuth.currentUser?.uid)?.let { uuid ->
-            fireStoreDb.collection(FireStoreCollection.DIAGNOSIS)
-                .document(uuid)
-                .collection(diagnosisModel.ailment!!)
-                .document()
-                .set(mapDiagnosis)
-                .await()
-        }
-
-*/
-
         val json = Gson().toJson(diagnosisModel)
         var mapDiagnosis: Map<String, Any> = HashMap()
         mapDiagnosis = Gson().fromJson(json, mapDiagnosis.javaClass)
@@ -174,12 +214,6 @@ class DiagnosisRepoImp @Inject constructor(
             .collection(ailment)
             .orderBy(FireStoreDocKey.TIME_STAMP_CAMEL, Query.Direction.DESCENDING)
             .limit(1).addSnapshotListener(listener)
-        /*val querySnapshot = query.get().await()
-        return if (querySnapshot.isEmpty) {
-            throw NetworkError.noRecordFound()
-        } else {
-            querySnapshot.toDiagnosisModel()
-        }*/
     }
 
     /*this method is only used to upload medicines to firestore rather than adding them manually */
@@ -267,6 +301,59 @@ class DiagnosisRepoImp @Inject constructor(
         userModel.firstName?.let {mapUserProfile.put( FireStoreDocKey.FIRST_NAME,it)}
         userModel.lastName?.let {mapUserProfile.put( FireStoreDocKey.LAST_NAME,it)}
         return mapUserProfile
+    }
+
+    private fun addMedWithNameOnly(name: String): BaseModel<MedicineModel> {
+        return BaseModel(MedicineModel(Parcel.obtain()).also {
+            it.name = name
+            it.searchedMed = name
+        })
+    }
+
+    private suspend fun mergeMedicineDataFromOurCollection(
+        name: String,
+        medicineModel: MedicineModel,
+    ) {
+        if(medicineModelLast?.name.equals(name.capitalize(Locale.ROOT))) {
+            medicineModel.category=medicineModelLast?.category
+            medicineModel.dosage=medicineModelLast?.dosage
+            medicineModel.diuretics=medicineModelLast?.diuretics
+            medicineModel.tradeName=medicineModelLast?.tradeName
+            medicineModel.rateControlAgent=medicineModelLast?.rateControlAgent
+        }else{
+            val finalQueryList = mutableListOf<String>()
+            finalQueryList.add(name.capitalize(Locale.ROOT))
+            val result = fireStoreDb.collection(FireStoreCollection.DRUGS)
+                .whereIn(FireStoreDocKey.NAME, finalQueryList)
+                .get().await()
+            if (result.documents.isNotEmpty()){
+                result.documents[0].toMedicineModel(medicineModel)
+            }
+        }
+    }
+
+    private suspend fun getDrugFromTradeName(name: String): BaseModel<MedicineModel>? {
+        return apiService.getMedicineDosages(name).body()?.let { entity ->
+            entity.toBaseModel(name).apply {
+                data.name = entity.getDrugName()
+                data.searchedMed = entity.getDrugName()
+            }
+        }
+    }
+
+    private suspend fun doesMedExistInFirestore(medName: String): Boolean {
+        return medName.let {
+            val finalQueryList = mutableListOf<String>()
+            finalQueryList.add(it)
+            val result = fireStoreDb.collection(FireStoreCollection.DRUGS)
+                .whereIn(FireStoreDocKey.NAME, finalQueryList)
+                .get().await()
+            if (result.documents.isNotEmpty()) {
+                //lets keep this in variable for reusing it
+                medicineModelLast= result.documents[0].toMedicineModel()
+            }
+            result.documents.isNotEmpty()
+        }
     }
 
 }

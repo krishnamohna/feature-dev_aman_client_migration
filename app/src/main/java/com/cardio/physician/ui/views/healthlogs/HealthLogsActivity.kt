@@ -21,6 +21,7 @@ import com.cardio.physician.ui.common.utils.Constants.BOTTOM_BP_DIGITS_BEFORE_ZE
 import com.cardio.physician.ui.common.utils.Constants.HEART_DIGITS_BEFORE_ZERO
 import com.cardio.physician.ui.common.utils.Constants.TOP_BP_DIGITS_BEFORE_ZERO
 import com.cardio.physician.ui.common.utils.Constants.WEIGHT_DIGITS_BEFORE_ZERO
+import com.cardio.physician.ui.common.utils.extentions.clearHoursMins
 import com.cardio.physician.ui.common.utils.extentions.customObserver
 import com.cardio.physician.ui.common.utils.extentions.getTrimmedText
 import com.cardio.physician.ui.common.utils.extentions.isConnectedOrThrowMsg
@@ -162,16 +163,22 @@ class HealthLogsActivity : BaseToolbarActivity() {
         }
         binding.edtHealthLogDate.setOnClickListener {
             val dateStart = Date()
-            var calender = Calendar.getInstance()
-            calender.add(Calendar.MONTH, -1)
+            var calender = Calendar.getInstance().clearHoursMins().apply {
+                add(Calendar.DAY_OF_YEAR, -90)
+            }
             dateStart.time = calender.timeInMillis
             //if user created date is found
             viewModel.getUserSignedUpDate()?.let {
-                dateStart.time = it
+              /*  dateStart.time = it
                 //let minus one month here
                 var calender = Calendar.getInstance()
                 calender.time = dateStart
-                calender.add(Calendar.MONTH, -1)
+                calender.add(Calendar.MONTH, -1)*/
+                //let minus 90 days here
+                calender.timeInMillis = it
+                var calender = calender.clearHoursMins().apply {
+                    add(Calendar.DAY_OF_YEAR, -90)
+                }
                 dateStart.time = calender.timeInMillis
             }
             getDatePicker(HealthLogsActivity@ this,

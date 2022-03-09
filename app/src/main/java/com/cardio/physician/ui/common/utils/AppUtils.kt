@@ -10,6 +10,7 @@ import android.util.Patterns
 import android.view.View
 import android.widget.EditText
 import com.google.firebase.auth.FirebaseAuth
+import java.util.*
 import java.util.regex.Pattern
 
 
@@ -158,4 +159,15 @@ fun getDisplayName(firstName:String?,lastname:String?):String{
 
 fun getPatientUid(): String {
     return FirebaseAuth.getInstance().currentUser!!.uid
+}
+
+fun getDatesOfLastDays(days: Int, listDates: MutableList<String>) {
+    for (i in (days - 1) downTo 0) {
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_YEAR, -i)
+        var now = Date()
+        now.time = calendar.timeInMillis
+        var date = getDefaultDateFormatter().format(now)
+        listDates.add(date)
+    }
 }

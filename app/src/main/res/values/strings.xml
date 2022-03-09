@@ -245,7 +245,7 @@
     <string name="leads">Leads</string>
     <string name="vaidation_answer_current_question_first">Please answer current question first !!</string>
     <string name="active_energy_in_kcal">Active Energy (in kcal)</string>
-    <string name="select_medication">Select Medication</string>
+    <string name="select_medication">Select Medication\n<font size="11">Dosage and Frequency will be asked for cardiac medicines only\nFor combination medicines please enter each drug separately</font></string>
     <string name="manual">@string/title_health_logs</string>
     <string name="success_med_added">Medicine Added"</string>
     <string name="error_med_exist">Medicine is already Added</string>
@@ -303,5 +303,15 @@
     <string name="default_notification_channel_description">Notification regarding requests and illness updates wil be displayed</string>
     <string name="no_notification_found">No Notification Found</string>
     <string name="error_subscribe_notifications">Unable to turn on notifications</string>
+    <string name="title_dossage_nd_frequency">Dosage &amp; Frequency</string>
+    <string name="select_dosage">Select Dosage</string>
+    <string name="select_no_of_tablet">Select Number of Tablets/Dosage</string>
+    <string name="select_frequency">Select Frequency </string>
+    <string name="button_add">Add</string>
+    <string name="tablet">Tablet</string>
+    <string name="tablets">Tablets</string>
+    <string name="dosage">Dosage</string>
+    <string name="mg">mg</string>
+    <string name="title_considerations">Considerations</string>
 
 </resources>

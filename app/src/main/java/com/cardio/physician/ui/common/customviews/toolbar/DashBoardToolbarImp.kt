@@ -34,4 +34,9 @@ class DashBoardToolbarImp(val view: View) : IToolbar {
         }*/
     }
 
+    fun notificationBadgeVisibility(show: Boolean) {
+        view.findViewById<ImageView>(R.id.imgNotificationBadge).visibility =
+            if (show) View.VISIBLE else View.GONE
+    }
+
 }

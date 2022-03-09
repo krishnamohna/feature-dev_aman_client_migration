@@ -145,6 +145,7 @@ interface FireStoreDocKey {
         const val PACEMAKER_QUESTION_ID = "5"
         const val UNKNOWN = "Unknown"
         const val NO = "No"
+        const val YES = "yes"
 
         //for drug
         const val DOSAGE = "dosage"
@@ -181,11 +182,11 @@ object GoogleFit {
 
 object Constants {
     const val GOOGLE_SPEECH_SEARCH_APP = "com.google.android.googlequicksearchbox"
-    const val CHART_LABEL_COUNT = 8
+    const val CHART_LABEL_COUNT = 7
     const val USER_TYPE_NOT_DEFINED = "not_defined"
     const val USER_TYPE_PATIENT = "patient"
     const val USER_TYPE_PHYSICIAN = "physician"
-    const val HEALTH_LOG_PERIOD_FOR_CONNECT_FEATURE = 7
+    const val HEALTH_LOG_PERIOD_FOR_CONNECT_FEATURE = 30
     const val WEIGHT_DIGITS_BEFORE_ZERO = 3
     const val HEIGHT_DIGITS_BEFORE_ZERO = 3
     const val HEART_DIGITS_BEFORE_ZERO = 3
@@ -194,6 +195,9 @@ object Constants {
     const val STEP_BP_DIGITS_BEFORE_ZERO = 6
     const val ANSWER_UNKOWN = "Incomplete"
     var FCM_SERVER_KEY = BuildConfig.FCM_KEY
+    const val ANSWER_2_OR_LESS = "2 or less"
+    const val MAX_NO_OF_HEALTH_LOGS_PER_API = 30
+
 }
 
 object ERROR {
@@ -234,6 +238,7 @@ object EXTRAS {
     const val SELECTED_IMAGE = "selected_image"
     const val EXTRAS_FROM_NOTIFICATION = "extras_from_notification"
     const val EXTRAS_PUSH_NOTIFICATON_TITLE = "extras_push_noti_title"
+    const val EXTRAS_DOCTOR_ID = "doctorId"
 }
 
 object NotificationTitle{

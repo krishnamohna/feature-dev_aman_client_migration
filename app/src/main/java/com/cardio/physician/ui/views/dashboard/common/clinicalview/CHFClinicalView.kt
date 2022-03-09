@@ -12,6 +12,7 @@ import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.DRY_WEIGHT
 import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.EJECTION_FRACTION_QUESTION_ID
 import com.cardio.physician.ui.common.utils.FireStoreDocKey.Companion.PACEMAKER_QUESTION_ID
 import com.cardio.physician.ui.common.utils.QuestionTypes
+import com.cardio.physician.ui.views.dashboard.common.extenstions.getPacemakerQuestion
 
 class CHFClinicalView : BaseClinicalView() {
 
@@ -53,10 +54,20 @@ class CHFClinicalView : BaseClinicalView() {
                 binding.includeChf.tvDryWeightDash.text = dryWeight
                 manageTextViewColor(dryWeight, binding.includeChf.tvDryWeightDash)
             }
-            getPaceMakerLeads(diagnosisModel)?.let { lead ->
+           /* getPaceMakerLeads(diagnosisModel)?.let { lead ->
                 binding.includeChf.tvCardiacDevices.text = lead
             }
             getDefibrillatorLeads(diagnosisModel)?.let { lead ->
+                binding.includeChf.tvCardiacDevices.append(lead)
+            }*/
+            //clear text first
+            binding.includeChf.tvCardiacDevices.text=""
+            getDefibrillatorLeads(diagnosisModel)?.let { lead ->
+                binding.includeChf.tvCardiacDevices.text = lead
+            }
+            getPaceMakerLeads(diagnosisModel)?.let { lead ->
+                if(binding.includeChf.tvCardiacDevices.text.isNotBlank())
+                    binding.includeChf.tvCardiacDevices.append(" & ")
                 binding.includeChf.tvCardiacDevices.append(lead)
             }
         } catch (exp: Exception) {
@@ -76,10 +87,29 @@ class CHFClinicalView : BaseClinicalView() {
         binding.includeChf.cvChf.visibility = View.VISIBLE
     }
 
-    private fun getPaceMakerLeads(diagnosisModel: DiagnosisModel): String? {
+    /*private fun getPaceMakerLeads(diagnosisModel: DiagnosisModel): String? {
         return diagnosisModel.questionnaire?.firstOrNull {
             it.type == QuestionTypes.TYPE_3 && it.id == PACEMAKER_QUESTION_ID
         }?.let { question ->
+            if (!question.answer.equals(FireStoreDocKey.UNKNOWN, true) && !question.answer.equals(
+                    FireStoreDocKey.NO,
+                    true)
+            ) {
+                "${question.answerSecondary} lead pacemaker"
+            } else if (question.answer.equals(
+                    FireStoreDocKey.NO,
+                    true)
+            ) {
+                "${question.answer} lead pacemaker"
+            } else {
+                "Unknown pacemaker"
+            }
+        }
+    }*/
+
+    private fun getPaceMakerLeads(diagnosisModel: DiagnosisModel): String? {
+        return diagnosisModel.getPacemakerQuestion()?.let { question ->
+            if(!question.isAnswered())return null
             if (!question.answer.equals(FireStoreDocKey.UNKNOWN, true) && !question.answer.equals(
                     FireStoreDocKey.NO,
                     true)
@@ -104,17 +134,18 @@ class CHFClinicalView : BaseClinicalView() {
                     FireStoreDocKey.NO,
                     true)
             ) {
-                " & ${question.answerSecondary} lead defibrillator"
+                "${question.answerSecondary} lead defibrillator"
             } else if (question.answer.equals(
                     FireStoreDocKey.NO,
                     true)
             ) {
-                " & ${question.answer} lead defibrillator"
+                "${question.answer} lead defibrillator"
             } else {
-                " & Unknown defibrillator"
+                "Unknown defibrillator"
             }
         }
     }
+
 
     private fun getDryWeight(diagnosisModel: DiagnosisModel): String? {
         return diagnosisModel.questionnaire?.firstOrNull {

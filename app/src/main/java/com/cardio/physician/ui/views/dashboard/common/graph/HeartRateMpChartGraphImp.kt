@@ -8,6 +8,7 @@ import com.cardio.physician.R
 import com.cardio.physician.domain.fitness.model.FitnessModel
 import com.cardio.physician.ui.common.utils.Constants.CHART_LABEL_COUNT
 import com.cardio.physician.ui.common.utils.Timer
+import com.cardio.physician.ui.common.utils.extentions.isValidHealthLog
 import com.cardio.physician.ui.common.utils.formatDateToGraph
 import com.cardio.physician.ui.views.dashboard.common.graph.base.BaseGraphImp
 import com.cardio.physician.ui.views.dashboard.common.graph.base.HeartRateGraph
@@ -45,15 +46,13 @@ class HeartRateMpChartGraphImp @Inject constructor() : BaseGraphImp(), HeartRate
         val values = mutableListOf<Entry>()
         var totalValue = 0f
         val dateLabels = mutableListOf<String?>()
-        var x=0
-        listHealthLogs?.forEachIndexed { index, fitnessModel ->
-            fitnessModel.heartRate?.let {
-                if(it == "0" || it.isBlank()) return@let
-                values.add(Entry(x.toFloat(), it.toFloat()))
-                totalValue += it.toFloat()
-                fitnessModel.date?.let { dateLabels.add(formatDateToGraph(it)) }
-                x += 1
-            }
+        listHealthLogs?.filter {
+            it.heartRate.isValidHealthLog() && it.date != null
+        }?.forEachIndexed { index, fitnessModel ->
+            //no need of null check on heart rate and date ans list is already filtered on these params
+            values.add(Entry(index.toFloat(), fitnessModel.heartRate!!.toFloat()))
+            totalValue += fitnessModel.heartRate!!.toFloat()
+            dateLabels.add(formatDateToGraph(fitnessModel.date!!))
         }
         //check if there are entries and then make  visible
         if(dateLabels.isNotEmpty()){
@@ -157,7 +156,7 @@ class HeartRateMpChartGraphImp @Inject constructor() : BaseGraphImp(), HeartRate
         xAxis.granularity = 1f // only intervals of 1 day
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.typeface=typefaceBold
-        xAxis.axisMinimum = 0f
+        //xAxis.axisMinimum = 0f
         // Y-Axis Style
         var yAxis: YAxis = chart.getAxisLeft()
         yAxis.typeface=typefaceBold

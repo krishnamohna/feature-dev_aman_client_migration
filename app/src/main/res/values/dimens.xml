@@ -29,4 +29,6 @@
     <dimen name="button_bottom_margin">@dimen/_30sdp</dimen>
     <dimen name="width_accept_reject">@dimen/_30sdp</dimen>
     <dimen name="profile_image_notifications">@dimen/_40sdp</dimen>
+    <dimen name="widht_height_med_remove">@dimen/_28sdp</dimen>
+    <dimen name="height_spinner">@dimen/_40sdp</dimen>
 </resources>

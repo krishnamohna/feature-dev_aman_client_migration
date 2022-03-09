@@ -24,8 +24,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="TutorialTitle">
         <item>Connect with Experience Practitioners </item>
-        <item>Lorem Ipsum is simply dummy text of printing.</item>
-        <item>Lorem Ipsum is simply dummy text of printing.</item>
+        <item>Connect with Experience Practitioners </item>
+        <item>Connect with Experience Practitioners </item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="TutorialDescription">
@@ -39,6 +39,35 @@
         <item>Male</item>
         <item>Female</item>
         <item>other</item>
+    </string-array>
+
+
+    <string-array name="no_of_tablets">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="no_of_time">
+        <item>1 Time</item>
+        <item>2 Time</item>
+        <item>3 Time</item>
+        <item>4 Time</item>
+        <item>5 Time</item>
+    </string-array>
+
+    <string-array name="per_day">
+        <item>Per Day</item>
+        <item>Per Week</item>
+        <item>Per Month</item>
+        <item>Per Year</item>
     </string-array>
 
 

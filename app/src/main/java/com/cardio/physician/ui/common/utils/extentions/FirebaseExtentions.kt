@@ -121,6 +121,12 @@ fun DocumentSnapshot.toMedicineModel(medicineModel: MedicineModel) {
     medicineModel.rateControlAgent=getField(FireStoreDocKey.RATE_CONTROL_AGENT)
 }
 
+fun DocumentSnapshot.toMedicineModel(): MedicineModel {
+    var medicineModel=MedicineModel(Parcel.obtain())
+    toMedicineModel(medicineModel)
+    return medicineModel
+}
+
 
 fun QuerySnapshot.toPatientModel(): List<PatientModel> {
     var list = mutableListOf<PatientModel>()

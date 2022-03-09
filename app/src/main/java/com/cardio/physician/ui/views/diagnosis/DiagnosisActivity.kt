@@ -1,6 +1,7 @@
 package com.cardio.physician.ui.views.diagnosis
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -96,8 +97,7 @@ open class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
     }
 
     override fun onBackPressed() {
-        finish()
-        /*showConfirmAlertDialog(
+        showConfirmAlertDialog(
             this!!,
             "",
             getString(R.string.confirm_dismiss_diagnosis)
@@ -107,7 +107,7 @@ open class DiagnosisActivity : BaseToolbarActivity(), AuthenticationHandler {
                     finish()
                 }
             }
-        }*/
+        }
     }
 
     private fun setListeners() {

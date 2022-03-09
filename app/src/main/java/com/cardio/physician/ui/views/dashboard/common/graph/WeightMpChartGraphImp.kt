@@ -11,6 +11,7 @@ import com.cardio.physician.ui.common.utils.Constants
 import com.cardio.physician.ui.common.utils.FireStoreDocKey
 import com.cardio.physician.ui.common.utils.QuestionTypes
 import com.cardio.physician.ui.common.utils.Timer.Companion.CHART_ANIMATE_TIME
+import com.cardio.physician.ui.common.utils.extentions.isValidHealthLog
 import com.cardio.physician.ui.common.utils.formatDateToGraph
 import com.cardio.physician.ui.views.dashboard.common.graph.base.BaseGraphImp
 import com.cardio.physician.ui.views.dashboard.common.graph.base.WeightGraph
@@ -52,16 +53,15 @@ class WeightMpChartGraphImp @Inject constructor() : BaseGraphImp(), WeightGraph,
         val values = mutableListOf<Entry>()
         var totalValue = 0f
         val dateLabels = mutableListOf<String?>()
-        var x=0
-        listHealthLogs?.forEachIndexed { _, fitnessModel ->
-            fitnessModel.weight?.let {
-                if (it == "0" || it.isBlank()) return@let
-                values.add(Entry(x.toFloat(), it.toFloat()))
-                if(it.toFloat()>maxValue)maxValue=it.toFloat()
-                totalValue += it.toFloat()
-                fitnessModel.date?.let { dateLabels.add(formatDateToGraph(it)) }
-                x += 1
-            }
+        listHealthLogs?.filter {
+            it.weight.isValidHealthLog() && it.date!=null
+        }?.forEachIndexed { index, fitnessModel ->
+            //no need of null check on weight and date ans list is already filtered on these params
+            values.add(Entry(index.toFloat(), fitnessModel.weight!!.toFloat()))
+            if (fitnessModel.weight!!.toFloat() > maxValue) maxValue =
+                fitnessModel.weight!!.toFloat()
+            totalValue += fitnessModel.weight!!.toFloat()
+            dateLabels.add(formatDateToGraph(fitnessModel.date!!))
         }
         //check if there are entries and then make  visible
         if (dateLabels.isNotEmpty()) {

@@ -37,6 +37,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,LockedOrientationActivity"
         tools:targetApi="m">
+        <activity android:name=".ui.views.diagnosis.step2.dosageandfrequency.DosageAndFrequencyActivity" />
         <activity
             android:name=".ui.views.profile.web_view.WebViewActivity"
             android:screenOrientation="portrait" />

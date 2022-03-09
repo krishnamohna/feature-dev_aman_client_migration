@@ -302,7 +302,35 @@
                 app:layout_constraintStart_toStartOf="@+id/tvHemoDynamicData"
                 app:layout_constraintTop_toBottomOf="@+id/includeChbMedications"
                 tools:visibility="gone" />
-
+            <!--considiration-->
+            <TextView
+                android:id="@+id/tvConsidirationLabel"
+                style="@style/BaseAppTheme.TxtView.bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/title_considerations"
+                android:textSize="@dimen/text_medium"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/includeAfibMedications"
+                tools:visibility="visible" />
+            <include
+                android:id="@+id/includeDashConsidiratiodn"
+                layout="@layout/include_dashboard_considiration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvConsidirationLabel"
+                tools:visibility="visible" />
 
             <!--erorr messges when no diagnosis is there-->
 

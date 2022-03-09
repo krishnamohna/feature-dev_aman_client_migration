@@ -29,12 +29,15 @@
     <TextView
         android:id="@+id/tvMedicationLabelStep2"
         style="@style/BaseAppTheme.TxtView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:textAlignment="center"
         android:fontFamily="@font/nunito_regular"
         android:text="@string/select_medication"
-        android:textSize="@dimen/text_large"
+        android:textSize="@dimen/text_medium"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +50,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/nunito_semibold"
         android:text="Select Medication"
@@ -56,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvMedicationLabelStep2"
-        tools:visibility="visible" />
+        tools:visibility="gone" />
 
     <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/edtMedicineSearch"
@@ -71,7 +74,7 @@
         android:inputType="textCapWords"
         android:maxLength="@integer/int_25"
         android:completionThreshold="0"
-        app:layout_goneMarginTop="16dp"
+        app:layout_goneMarginTop="8dp"
         android:maxLines="@integer/int_1"
         android:paddingLeft="@dimen/_16sdp"
         android:paddingRight="@dimen/_24sdp"
@@ -99,22 +102,22 @@
         android:id="@+id/materialCardViewImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:clickable="true"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/materialCardViewSpeech"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/edtMedicineSearch"
-        app:layout_constraintTop_toBottomOf="@+id/tvSearchMedError" >
+        app:layout_constraintTop_toBottomOf="@+id/tvSearchMedError">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -122,12 +125,12 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:textStyle="bold"
                 style="@style/BaseAppTheme.TxtView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:text="@string/add_via_image" />
+                android:text="@string/add_via_image"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

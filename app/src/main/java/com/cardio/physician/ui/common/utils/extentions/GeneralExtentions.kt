@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import com.cardio.physician.R
 import com.cardio.physician.network.NetworkHelper
 import com.cardio.physician.ui.common.utils.showToast
+import java.util.*
 
 
 fun Context.isConnectedOrThrowMsg(result:()->Unit) {
@@ -39,4 +40,20 @@ fun String.isAllDigits():Boolean{
         if(!it.isDigit()) return false
     }
     return true
+}
+fun String?.inValidHealthLog(): Boolean {
+    return isNullOrBlank() || this=="0"
+}
+
+fun String?.isValidHealthLog(): Boolean {
+    return !inValidHealthLog()
+}
+
+fun Calendar.clearHoursMins(): Calendar {
+    return apply {
+        set(Calendar.HOUR_OF_DAY, 0)
+        set(Calendar.MINUTE, 0)
+        set(Calendar.SECOND, 0)
+        set(Calendar.MILLISECOND,0)
+    }
 }

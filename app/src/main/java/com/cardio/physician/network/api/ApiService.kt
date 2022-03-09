@@ -6,6 +6,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
+   /* @GET(Commands.COMMAND_SEARCH_DRUG)
+    suspend fun searchMedicine(@Query("name") name: String): Response<MedicineEntity>*/
+
     @GET(Commands.COMMAND_SEARCH_DRUG)
-    suspend fun searchMedicine(@Query("name") name: String): Response<MedicineEntity>
+    suspend fun getMedicineDosages(@Query("name") name: String): Response<MedicineEntity>
 }

@@ -16,7 +16,7 @@
             style="@style/BaseAppTheme.TxtView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="CHF"
             android:textStyle="bold"
@@ -36,9 +36,9 @@
             android:id="@+id/flBetaBlocker"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             app:flexWrap="wrap"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.6"
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/arni"
-            app:layout_constraintStart_toStartOf="@+id/tvBetaBlockerLabel"
+            app:layout_constraintStart_toStartOf="@+id/tvChfMedLabel"
             app:layout_constraintTop_toTopOf="@+id/flArni" />
 
         <com.google.android.flexbox.FlexboxLayout
@@ -61,9 +61,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:flexWrap="wrap"
-            app:layout_constraintEnd_toEndOf="@+id/flBetaBlocker"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/ivEditChbMed"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/flBetaBlocker"
+            app:layout_constraintStart_toEndOf="@+id/tvSglLabel"
             app:layout_constraintTop_toBottomOf="@+id/flBetaBlocker"
             tools:layout_height="@dimen/_30sdp" />
 
@@ -74,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ace_arb"
-            app:layout_constraintStart_toStartOf="@+id/tvArniLabel"
+            app:layout_constraintStart_toStartOf="@+id/tvChfMedLabel"
             app:layout_constraintTop_toTopOf="@+id/flAce" />
 
         <com.google.android.flexbox.FlexboxLayout
@@ -83,8 +84,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:flexWrap="wrap"
-            app:layout_constraintEnd_toEndOf="@+id/flBetaBlocker"
-            app:layout_constraintStart_toStartOf="@+id/flBetaBlocker"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/ivEditChbMed"
+            app:layout_constraintStart_toEndOf="@+id/tvSglLabel"
             app:layout_constraintTop_toBottomOf="@+id/flArni"
             tools:layout_height="@dimen/_30sdp" />
 
@@ -96,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mra"
-            app:layout_constraintStart_toStartOf="@+id/tvArniLabel"
+            app:layout_constraintStart_toStartOf="@+id/tvChfMedLabel"
             app:layout_constraintTop_toTopOf="@+id/flMra" />
 
         <com.google.android.flexbox.FlexboxLayout
@@ -104,9 +106,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
             app:flexWrap="wrap"
-            app:layout_constraintEnd_toEndOf="@+id/flBetaBlocker"
-            app:layout_constraintStart_toStartOf="@+id/flBetaBlocker"
+            app:layout_constraintEnd_toEndOf="@+id/ivEditChbMed"
+            app:layout_constraintStart_toEndOf="@+id/tvSglLabel"
             app:layout_constraintTop_toBottomOf="@+id/flAce"
             tools:layout_height="@dimen/_30sdp" />
 
@@ -119,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sglt2_inhibitor"
-            app:layout_constraintStart_toStartOf="@+id/tvArniLabel"
+            app:layout_constraintStart_toStartOf="@+id/tvChfMedLabel"
             app:layout_constraintTop_toTopOf="@+id/flSgl" />
 
         <com.google.android.flexbox.FlexboxLayout
@@ -129,14 +132,15 @@
             android:layout_marginTop="8dp"
             app:flexWrap="wrap"
             app:layout_goneMarginBottom="8dp"
+            android:layout_marginStart="16dp"
             app:layout_constraintBottom_toTopOf="@id/flOther"
-            app:layout_constraintEnd_toEndOf="@+id/flBetaBlocker"
-            app:layout_constraintStart_toStartOf="@+id/flBetaBlocker"
+            app:layout_constraintEnd_toEndOf="@+id/ivEditChbMed"
+            app:layout_constraintStart_toEndOf="@+id/tvSglLabel"
             app:layout_constraintTop_toBottomOf="@+id/flMra"
             tools:layout_height="@dimen/_30sdp" />
 
 
-         <!--other-->
+        <!--other-->
 
         <TextView
             android:id="@+id/tvOtherLabel"
@@ -145,7 +149,7 @@
             android:layout_height="wrap_content"
             android:text="@string/other"
             android:visibility="visible"
-            app:layout_constraintStart_toStartOf="@+id/tvBetaBlockerLabel"
+            app:layout_constraintStart_toStartOf="@+id/tvChfMedLabel"
             app:layout_constraintTop_toTopOf="@+id/flOther" />
 
         <com.google.android.flexbox.FlexboxLayout
@@ -154,11 +158,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
             android:text="@string/none"
             app:flexWrap="wrap"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/flBetaBlocker"
-            app:layout_constraintStart_toStartOf="@+id/flBetaBlocker"
+            app:layout_constraintEnd_toEndOf="@+id/ivEditChbMed"
+            app:layout_constraintStart_toEndOf="@+id/tvSglLabel"
             app:layout_constraintTop_toBottomOf="@+id/flSgl"
             tools:layout_height="@dimen/_30sdp" />
 
@@ -166,7 +171,7 @@
             android:id="@+id/ivEditChbMed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/ripple_normal"
             android:padding="6dp"
             app:layout_constraintBottom_toBottomOf="@+id/tvChfMedLabel"

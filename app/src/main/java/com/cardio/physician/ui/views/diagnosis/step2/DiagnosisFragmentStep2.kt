@@ -15,33 +15,65 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.cardio.doctor.ui.views.diagnosis.step2.adapter.MedRecylarAdapter
+import com.cardio.physician.ui.views.diagnosis.step2.adapter.PredictiveMedicineSearchAdapter
 import com.cardio.physician.R
 import com.cardio.physician.databinding.FragmentDiagnosisPart2Binding
 import com.cardio.physician.domain.diagnosis.MedicineModel
-import com.cardio.physician.ui.common.utils.Constants
+import com.cardio.physician.ui.common.utils.*
 import com.cardio.physician.ui.common.utils.EXTRAS.TEXT_RECOGNIZATION
-import com.cardio.physician.ui.common.utils.ItemOffsetDecoration
 import com.cardio.physician.ui.common.utils.extentions.customObserver
 import com.cardio.physician.ui.common.utils.extentions.isConnectedOrThrowMsg
-import com.cardio.physician.ui.common.utils.showFilePickOptions
-import com.cardio.physician.ui.common.utils.showToast
 import com.cardio.physician.ui.views.diagnosis.common.BaseDiagnosisFragment
-import com.cardio.physician.ui.views.diagnosis.step1.DiagnosisFragmentStep1Args
-import com.cardio.physician.ui.views.diagnosis.step2.adapter.MedRecylarAdapter
-import com.cardio.physician.ui.views.diagnosis.step2.adapter.PredictiveMedicineSearchAdapter
+import com.cardio.physician.ui.views.diagnosis.step2.dosageandfrequency.DosageAndFrequencyActivity
 import com.google.mlkit.vision.demo.kotlin.StillImageActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.*
 import java.util.*
+import kotlin.coroutines.CoroutineContext
 
 
 @AndroidEntryPoint
-open class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Binding>() {
+open class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2Binding>(),
+    CoroutineScope {
 
-    private lateinit var adapterPridictiveSearch: PredictiveMedicineSearchAdapter
+    private lateinit var adapterPredictiveSearch: PredictiveMedicineSearchAdapter
     val viewModel: DiagnosisStep2ViewModel by viewModels()
-    private val adapterMed: MedRecylarAdapter by lazy { MedRecylarAdapter() }
     val args: DiagnosisFragmentStep2Args by navArgs()
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
+    private lateinit var job: Job
+
+    private val adapterMed: MedRecylarAdapter by lazy {
+        MedRecylarAdapter {
+            if (it.hasDosage())
+                resultEditMed.launch(DosageAndFrequencyActivity.getIntent(it, requireActivity()))
+        }
+    }
+
+    private val resultEditMed: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it?.resultCode == Activity.RESULT_OK) {
+                it.data?.getParcelableExtra<MedicineModel>(EXTRAS.EXTRAS_DOCTOR_ID)?.let {
+                    adapterMed.updateMedicine(it)
+                }
+            }
+        }
+
+
+    private val resultAddMed: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it?.resultCode == Activity.RESULT_OK) {
+                it.data?.getParcelableExtra<MedicineModel>(EXTRAS.EXTRAS_DOCTOR_ID)?.let {
+                    addToList(it)
+                }
+            }
+        }
+
     private val onMedicineSearch: (query: String) -> List<MedicineModel> = { query ->
         searchMedicine(query)
     }
@@ -54,7 +86,7 @@ open class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2
         }
     }
 
-    private fun medSearchProgressVisibility(visibility:Int){
+    private fun medSearchProgressVisibility(visibility: Int) {
         diagnosisActivity?.run {
             runOnUiThread {
                 binding.pbMedSearch.visibility = visibility
@@ -73,10 +105,16 @@ open class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        job = Job()
         setListeners()
         setViews()
         setObservers()
         init()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        job.cancel()
     }
 
     private fun init() {
@@ -84,20 +122,19 @@ open class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2
     }
 
     private fun setViews() {
-        binding.recyclarAddedMed.layoutManager = GridLayoutManager(requireContext(), 2)
-        val itemDecoration =
-            ItemOffsetDecoration(
-                requireContext(),
-                R.dimen.item_offset)
+        binding.recyclarAddedMed.layoutManager = LinearLayoutManager(requireContext())
+        val itemDecoration = ItemOffsetDecoration(requireContext(), R.dimen.item_offset)
         //   binding.recyclarAddedMed.addItemDecoration(itemDecoration)
         binding.recyclarAddedMed.adapter = adapterMed
         binding.cvDiagnosisBottomContainer.btCancel.setText(getString(R.string.back))
         setStepView(binding.stepView.stepView)
-        var list = listOf<String>()
-        adapterPridictiveSearch = PredictiveMedicineSearchAdapter(requireContext(),
+        var list = listOf<MedicineModel>()
+        adapterPredictiveSearch = PredictiveMedicineSearchAdapter(
+            requireContext(),
             R.layout.item_medicine_search_layout,
-            list, onMedicineSearch)
-        binding.edtMedicineSearch.setAdapter(adapterPridictiveSearch)
+            list, onMedicineSearch
+        )
+        binding.edtMedicineSearch.setAdapter(adapterPredictiveSearch)
     }
 
     private var resultLauncherSpeechToText: ActivityResultLauncher<Intent> =
@@ -151,11 +188,19 @@ open class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2
     private fun onStoragePermissionGranted() {
         parentActivity?.let {
             showFilePickOptions(activity = it, {
-                resultTextRecog.launch(StillImageActivity.getIntent(requireActivity(),
-                    StillImageActivity.CHOOSE_TYPE_CAMERA))
+                resultTextRecog.launch(
+                    StillImageActivity.getIntent(
+                        requireActivity(),
+                        StillImageActivity.CHOOSE_TYPE_CAMERA
+                    )
+                )
             }, {
-                resultTextRecog.launch(StillImageActivity.getIntent(requireActivity(),
-                    StillImageActivity.CHOOSE_TYPE_GALLERY))
+                resultTextRecog.launch(
+                    StillImageActivity.getIntent(
+                        requireActivity(),
+                        StillImageActivity.CHOOSE_TYPE_GALLERY
+                    )
+                )
             })
         }
     }
@@ -200,9 +245,6 @@ open class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2
 
 
     private fun setListeners() {
-        binding.edtMedicineSearch.setOnItemClickListener { adapterView, view, i, l ->
-            onAddMed(true)
-        }
         binding.cvDiagnosisBottomContainer.btNext.setOnClickListener {
             diagnosisActivity?.diagnosisModel?.medications = adapterMed.listMeds
             onNextButtonClick()
@@ -219,9 +261,14 @@ open class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2
         binding.imageViewAddMed.setOnClickListener {
             onAddMed(false)
         }
+        binding.edtMedicineSearch.setOnItemClickListener { adapterView, view, position, l ->
+            binding.edtMedicineSearch.setText(adapterPredictiveSearch.getMedName(position))
+            binding.edtMedicineSearch.setSelection(binding.edtMedicineSearch.text.length)
+            onAddMed(true)
+        }
     }
 
-    private fun onAddMed(isPreExistedMed:Boolean){
+    private fun onAddMed(isPreExistedMed: Boolean) {
         binding.edtMedicineSearch.text.toString().trim().let {
             if (it.isNotEmpty()) {
                 if (adapterMed.isMedSearchExist(it)) {
@@ -229,7 +276,10 @@ open class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2
                     return
                 }
                 isConnectedOrThrowMsg {
-                    viewModel.fetchMed(binding.edtMedicineSearch.text.toString().trim(),isPreExistedMed)
+                    viewModel.fetchMed(
+                        binding.edtMedicineSearch.text.toString().trim(),
+                        isPreExistedMed
+                    )
                 }
             } else {
                 showToast(parentActivity!!, getString(R.string.enter_medicine))
@@ -278,9 +328,16 @@ open class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2
             onSuccess = {
                 it?.let {
                     binding.edtMedicineSearch.setText("")
-                    if (!adapterMed.isMedSearchExist(it.searchedMed!!) && !adapterMed.isMedExist(it.name!!)) {
-                        addToList(it)
-//                        parentActivity?.let { showToast(it, getString(R.string.medicine_added)) }
+                    if (!doesMedAlreadyExist(it)) {
+                        if (it.hasDosage())
+                            resultAddMed.launch(
+                                DosageAndFrequencyActivity.getIntent(
+                                    it,
+                                    requireActivity()
+                                )
+                            )
+                        else
+                            addToList(it)
                     } else {
                         parentActivity?.let { showToast(it, getString(R.string.error_med_exist)) }
                     }
@@ -292,9 +349,13 @@ open class DiagnosisFragmentStep2 : BaseDiagnosisFragment<FragmentDiagnosisPart2
         )
     }
 
+    private fun doesMedAlreadyExist(medicineModel: MedicineModel): Boolean =
+        adapterMed.isMedSearchExist(medicineModel.searchedMed!!) || adapterMed.isMedExist(
+            medicineModel.name!!
+        )
+
     open fun addToList(it: MedicineModel) {
         adapterMed.addMed(it)
     }
-
 
 }

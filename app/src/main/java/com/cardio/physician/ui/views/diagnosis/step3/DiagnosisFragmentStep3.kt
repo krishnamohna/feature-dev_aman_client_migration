@@ -13,9 +13,12 @@ import com.cardio.physician.domain.questionare.model.QuestionModel
 import com.cardio.physician.ui.common.customviews.questions.*
 import com.cardio.physician.ui.common.customviews.questions.base.BaseQuestionView
 import com.cardio.physician.ui.common.customviews.questions.base.QuestionView
+import com.cardio.physician.ui.common.utils.FireStoreDocKey
 import com.cardio.physician.ui.common.utils.QuestionTypes
 import com.cardio.physician.ui.common.utils.extentions.customObserver
 import com.cardio.physician.ui.common.utils.showToast
+import com.cardio.physician.ui.views.dashboard.common.extenstions.getDefibrillatorQuestion
+import com.cardio.physician.ui.views.dashboard.common.extenstions.isPacemakerQuestion
 import com.cardio.physician.ui.views.diagnosis.common.BaseDiagnosisFragment
 import com.cardio.physician.ui.views.diagnosis.step1.DiagnosisFragmentStep1Args
 import dagger.hilt.android.AndroidEntryPoint
@@ -79,11 +82,15 @@ open class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3
 
     open fun showQuestion(questionView: View) {
         manageNextBackButtonBackground()
-        binding.tvQuestionTotalVsCurrent.setText("${(diagnosisActivity?.lastQuestionIndex?.plus(1))}/${questionList?.size}")
+        binding.tvQuestionTotalVsCurrent.text = "${(diagnosisActivity?.lastQuestionIndex?.plus(1))}/${getTotalQuestionSize()}"
         binding.frameLayoutQuestionContainer.removeAllViews()
-        binding.frameLayoutQuestionContainer.addView(questionView,
-            ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT))
+        binding.frameLayoutQuestionContainer.addView(
+            questionView,
+            ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+        )
         //set next button alpha visibility
         enableButtonClick(hasAnsweredCurrentQuestion())
     }
@@ -149,7 +156,7 @@ open class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3
                 //show next question if has any question
                 binding.imageViewQuestionRight.performClick()
             } else {
-                if (hasUserGivenAllAnswers()) {
+                if (true/*hasUserGivenAllAnswers()*/) {
                     //save all questions to diagnoss model in diagnosis activity
                     diagnosisActivity?.diagnosisModel?.questionnaire = questionList
                     onNextButtonClick()
@@ -185,7 +192,8 @@ open class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3
     private fun hasUserGivenAllAnswers(): Boolean {
         if (questionList == null) return false
         questionList?.forEach {
-            if (it.answer.isNullOrBlank()) return false
+           // if (it.answer.isNullOrBlank()) return false
+            if (!it.isAnswered()) return false
         }
         return true
     }
@@ -197,18 +205,43 @@ open class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3
         }
         questionList?.let {
             if (hasNextQuestion()) {
-                diagnosisActivity?.lastQuestionIndex = diagnosisActivity?.lastQuestionIndex!! + 1
-                var question = it.get(diagnosisActivity?.lastQuestionIndex!!)
+                diagnosisActivity!!.lastQuestionIndex++
+                var question = it[diagnosisActivity?.lastQuestionIndex!!]
+                //if defibrillator is selected then skip pacemaker question
+                if (isPaceMakerQuestion(question) && isDefibrillatorSelected()) {
+                    question.answer = null
+                    question.answerSecondary = null
+                    diagnosisActivity!!.lastQuestionIndex++
+                    question = it[diagnosisActivity?.lastQuestionIndex!!]
+                }
                 showQuestion(getQuestionView(question))
+
             }
         }
     }
 
-    private fun showPreviousQuestion() {
+    private fun isPaceMakerQuestion(question: QuestionModel) = question.isPacemakerQuestion()
+
+ /*   private fun showPreviousQuestion() {
         questionList?.let {
             if (hasPreviousQuestion()) {
                 diagnosisActivity?.lastQuestionIndex = diagnosisActivity?.lastQuestionIndex!! - 1
                 var question = it.get(diagnosisActivity?.lastQuestionIndex!!)
+                showQuestion(getQuestionView(question))
+            }
+        }
+    }*/
+
+    private fun showPreviousQuestion() {
+        questionList?.let {
+            if (hasPreviousQuestion()) {
+                diagnosisActivity!!.lastQuestionIndex--
+                var question = it[diagnosisActivity?.lastQuestionIndex!!]
+                //if defibrillator is selected then skip pacemaker question
+                if (isPaceMakerQuestion(question) && isDefibrillatorSelected()) {
+                    diagnosisActivity!!.lastQuestionIndex--
+                    question = it[diagnosisActivity?.lastQuestionIndex!!]
+                }
                 showQuestion(getQuestionView(question))
             }
         }
@@ -260,6 +293,22 @@ open class DiagnosisFragmentStep3 : BaseDiagnosisFragment<FragmentDiagnosisPart3
         return false
     }
 
+    private fun isDefibrillatorSelected(): Boolean {
+        questionList?.getDefibrillatorQuestion()?.let { it ->
+            if (it.answer.equals(FireStoreDocKey.YES, true)) {
+                return true
+            }
+        }
+        return false
+    }
+
     open fun isFirstQuestion()=diagnosisActivity!!.lastQuestionIndex==0
+
+    private fun getTotalQuestionSize(): Int {
+        var size=questionList?.size?:0
+        /* if(isDefibrillatorSelected())
+             size--*/
+        return size
+    }
 
 }

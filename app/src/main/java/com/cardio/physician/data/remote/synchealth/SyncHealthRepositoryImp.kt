@@ -6,7 +6,9 @@ import com.cardio.physician.network.NetworkError
 import com.cardio.physician.network.api.ApiStatus.Companion.STATUS_NOT_FOUND
 import com.cardio.physician.ui.common.utils.FireStoreCollection
 import com.cardio.physician.ui.common.utils.FireStoreDocKey
+import com.cardio.physician.ui.common.utils.extentions.clearHoursMins
 import com.cardio.physician.ui.common.utils.extentions.toFitNessModel
+import com.cardio.physician.ui.common.utils.getPatientUid
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
@@ -74,6 +76,7 @@ class SyncHealthRepositoryImp @Inject constructor(
     }
 
 
+
     override suspend fun getHealthLogByDate(date: String, userId: String?): FitnessModel {
         var result = userId?.let {
             fireStore.collection(FireStoreCollection.HEALTH_LOGS)
@@ -136,6 +139,65 @@ class SyncHealthRepositoryImp @Inject constructor(
             .collection(FireStoreCollection.LOGS)
             .orderBy(FireStoreDocKey.TIME_STAMP_CAMEL, Query.Direction.ASCENDING)
             .limit(days).addSnapshotListener(listener)
+    }
+
+    override suspend fun getHealthLogs1(days: Long,userId: String?): List<FitnessModel> {
+        val pastTimeMills = Calendar.getInstance().clearHoursMins().run {
+            add(Calendar.DAY_OF_YEAR, -days.toInt())
+            timeInMillis - (1000*60*60).toLong()
+        }
+        val patientId = userId?: firebaseAuth.currentUser?.uid!!
+        val query: Query = fireStore.collection(FireStoreCollection.HEALTH_LOGS)
+            .document(patientId)
+            .collection(FireStoreCollection.LOGS)
+            .whereGreaterThanOrEqualTo(FireStoreDocKey.TIME_STAMP_CAMEL, pastTimeMills)
+            .orderBy(FireStoreDocKey.TIME_STAMP_CAMEL, Query.Direction.ASCENDING)
+        val querySnapshot = query.get().await()
+        return if (querySnapshot.isEmpty) {
+            throw NetworkError.noRecordFound()
+        } else {
+            var listFitnessModel = mutableListOf<FitnessModel>()
+            for (document in querySnapshot) {
+                val fitnessModel = FitnessModel()
+                fitnessModel.weight = document.data[FireStoreDocKey.WEIGHT] as? String?
+                fitnessModel.heartRate = document.data[FireStoreDocKey.HEART_RATE] as? String?
+                fitnessModel.bloodPressureTopBp =
+                    document.data[FireStoreDocKey.BLOOD_SYSTOLIC_BP] as? String?
+                fitnessModel.bloodPressureBottomBp =
+                    document.data[FireStoreDocKey.BLOOD_DIASTOLIC_BP] as? String?
+                fitnessModel.date = document.data[FireStoreDocKey.DATE] as? String?
+                fitnessModel.timeStamp = document.data[FireStoreDocKey.DATE] as? Long?
+                fitnessModel.stepCount = document.data[FireStoreDocKey.STEP_COUNT] as? String
+                listFitnessModel.add(fitnessModel)
+            }
+            listFitnessModel
+        }
+    }
+
+    override suspend fun saveHealthData(listFitnessModel: List<FitnessModel>) {
+        fireStore.runBatch {batch->
+            listFitnessModel.forEach { fitnessModel->
+                val mapHealth: HashMap<String, Any?> =
+                    hashMapOf(
+                        FireStoreDocKey.WEIGHT to fitnessModel.weight,
+                        FireStoreDocKey.HEART_RATE to fitnessModel.heartRate,
+                        FireStoreDocKey.BLOOD_SYSTOLIC_BP to fitnessModel.bloodPressureTopBp,
+                        FireStoreDocKey.TIME_STAMP to fitnessModel.timeStamp,
+                        FireStoreDocKey.DATE to fitnessModel.date,
+                        FireStoreDocKey.BLOOD_DIASTOLIC_BP to fitnessModel.bloodPressureBottomBp,
+                        FireStoreDocKey.STEP_COUNT to fitnessModel.stepCount
+                    )
+                firebaseAuth.currentUser?.uid?.let {
+                    fitnessModel.date?.let { date ->
+                        val ref=fireStore.collection(FireStoreCollection.HEALTH_LOGS)
+                            .document(it)
+                            .collection(FireStoreCollection.LOGS)
+                            .document(date)
+                        batch.set(ref,mapHealth)
+                    }
+                }
+            }
+        }.await()
     }
 }
 

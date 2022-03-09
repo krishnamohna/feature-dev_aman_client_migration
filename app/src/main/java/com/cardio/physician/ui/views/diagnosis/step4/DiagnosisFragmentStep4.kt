@@ -5,13 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.cardio.doctor.ui.views.diagnosis.step2.adapter.bindMedicineData
 import com.cardio.physician.R
 import com.cardio.physician.databinding.FragmentDiagnosisPart4Binding
-import com.cardio.physician.databinding.ItemMedicationPreviewLayoutBinding
+import com.cardio.physician.databinding.ItemMedicineAddedBinding
 import com.cardio.physician.domain.questionare.model.QuestionModel
 import com.cardio.physician.ui.common.customviews.questions.*
 import com.cardio.physician.ui.common.utils.QuestionTypes
@@ -21,6 +22,7 @@ import com.cardio.physician.ui.common.utils.showToast
 import com.cardio.physician.ui.views.diagnosis.DiagnosisActivity
 import com.cardio.physician.ui.views.diagnosis.common.BaseDiagnosisFragment
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Binding>() {
@@ -97,9 +99,8 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
     private fun showQuestionare() {
         binding.llQuestionareContainer.removeAllViews()
         diagnosisActivity?.diagnosisModel?.questionnaire?.forEach {
-            it?.run {
-                showQuestion(getQuestionView(this))
-            }
+            if (it.isAnswered())
+                showQuestion(getQuestionView(it))
         }
     }
 
@@ -128,7 +129,7 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
     }
 
 
-    private fun showMedicationData() {
+    /*private fun showMedicationData() {
         binding.clMedication.llMedicationPreview.removeAllViews()
         diagnosisActivity?.diagnosisModel?.medications?.forEach {
             var bindingItemMedication =
@@ -142,6 +143,36 @@ class DiagnosisFragmentStep4 : BaseDiagnosisFragment<FragmentDiagnosisPart4Bindi
             params.setMargins(0,requireActivity().resources.getDimension(R.dimen._2sdp).toInt(),0,0)
             binding.clMedication.llMedicationPreview.addView(bindingItemMedication.root,
                 params )
+        }
+    }*/
+
+    private fun showMedicationData() {
+        binding.clMedication.llMedicationPreview.removeAllViews()
+        diagnosisActivity?.diagnosisModel?.medications?.forEach { model ->
+            val bindingItemMedication =
+                ItemMedicineAddedBinding.inflate(
+                    LayoutInflater.from(context),
+                    binding.clMedication.llMedicationPreview,
+                    false
+                )
+            binding.clMedication.clMedication.visibility = View.VISIBLE
+            bindingItemMedication.ivRemoveMed.visibility = View.GONE
+            bindingItemMedication.materialCardViewMedicine.isClickable = false
+            bindMedicineData(bindingItemMedication, model, requireContext())
+            val params = LinearLayoutCompat.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            params.setMargins(
+                0,
+                0,
+                0,
+                requireActivity().resources.getDimension(R.dimen._2sdp).toInt()
+            )
+            binding.clMedication.llMedicationPreview.addView(
+                bindingItemMedication.root,
+                params
+            )
         }
     }
 

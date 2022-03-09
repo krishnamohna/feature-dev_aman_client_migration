@@ -43,21 +43,10 @@ import com.cardio.physician.ui.views.dashboard.common.medicineview.IMedicineView
 import com.cardio.physician.ui.views.diagnosis.DiagnosisActivity
 import com.cardio.physician.ui.views.diagnosis.EditDiagnosisActivity
 import com.cardio.physician.ui.views.healthlogs.HealthLogsActivity
-import com.google.firebase.dynamiclinks.ktx.dynamicLinks
-import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.google.firebase.dynamiclinks.PendingDynamicLinkData
-
-import com.google.android.gms.tasks.OnSuccessListener
-
-import android.content.Intent.getIntent
-import android.net.Uri
-
-import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
-
-
-
+import com.cardio.doctor.ui.views.dashboard.common.considiration.Consideration
+import com.cardio.physician.ui.views.dashboard.common.considiration.chfconsiderations.CHFConsideration
 
 @AndroidEntryPoint
 class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
@@ -76,6 +65,7 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
     private var isChfDiagnosisLoaded = false
     private var isAfibDiagnosisLoaded = false
 
+
     private val chfView: CHFClinicalView by lazy {
         CHFClinicalView()
     }
@@ -87,6 +77,9 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
     }
     private val afibMedicineView: IMedicineView by lazy {
         AFibMedicationView()
+    }
+    private val chfConsidirationView: Consideration by lazy {
+        CHFConsideration()
     }
 
     @Inject
@@ -204,8 +197,9 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
             this,
             onLoading = ::showProgress,
             onSuccess = {
-                onUserDetailLoaded()
                 setBasicInfo(it)
+                onUserDetailLoaded()
+                saveInfoToPrefrence(it)
             },
             {msg,exp->
                 onUserDetailLoaded()
@@ -256,7 +250,21 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
             this,
             onLoading = ::showProgress,
             onSuccess = { listHealthLogs ->
-                listHealthLogs?.let { showGraphs(it) }
+                listHealthLogs?.let {
+                    showGraphs(it)
+                }
+            },
+            onError = { _, _ ->
+                setVisibilityOfGraphs(View.GONE)
+            }
+        )
+        viewModel.liveDataHealthLogsConsiderations.customObserver(
+            this,
+            onLoading = ::showProgress,
+            onSuccess = { listHealthLogs ->
+                listHealthLogs?.let {
+                    showConsidiration(it)
+                }
             },
             onError = {msg,exp->
                 setVisibilityOfGraphs(View.GONE)
@@ -279,10 +287,24 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
         }
     }
 
+    private fun saveInfoToPrefrence(userModel: UserModel?) {
+        //save user info to preferences
+        userManager.setString(
+            Preference.PREF_DISPLAY_NAME,
+            getDisplayName(userModel?.firstName, userModel?.lastName)
+        )
+        userManager.setString(Preference.PREF_FIRST_NAME, userModel?.firstName)
+        userManager.setString(Preference.PREF_LAST_NAME, userModel?.lastName)
+        userManager.setString(Preference.PREF_EMAIL, userModel?.email)
+        userManager.setString(Preference.PREF_PROFILE_IMAGE, userModel?.imagePath)
+    }
+
     private fun onDiagnosisLoaded() {
         binding.tvReportDateDash.visibility = View.VISIBLE
         binding.tvMyReportlabel.visibility = View.VISIBLE
         diagnosisActivity?.currentFilter?.value?.let { viewModel.getHealthLogs(it, arguments?.getString(FireStoreDocKey.USER_ID)) }
+
+        viewModel.getHealthLogsForConsiderations(arguments?.getString(FireStoreDocKey.USER_ID))
     }
 
 
@@ -463,6 +485,10 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
         return if (diagnosisModelAfib != null) diagnosisModelAfib else diagnosisModelChib
     }
 
+    private fun showConsidiration(it: List<FitnessModel>) {
+        chfConsidirationView.showData(binding,it,diagnosisModelChib)
+    }
+
     private fun showGraphs(listHealthLogs: List<FitnessModel>?) {
         //show all the graphs now
         heartRateGraph.showGraph(listHealthLogs)
@@ -505,6 +531,9 @@ class DashboardFragment : BaseToolBarFragment<FragmentDashboardBinding>() {
             }
         }
         toolbar?.setUserImage(userModel?.imagePath)
+        userModel?.hasUnreadNotification?.let {
+            toolbar?.notificationBadgeVisibility(it)
+        }
     }
 
     private fun setBasicInfo(diagnosisModel: DiagnosisModel?) {

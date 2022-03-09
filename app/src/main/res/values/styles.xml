@@ -63,7 +63,7 @@
     <style name="BaseAppTheme.TxtView.semiBold" parent="BaseAppTheme.TxtView">
         <item name="fontFamily">@font/nunito_semibold</item>
     </style>
-    <!--textView for medication none-->
+    <!--textView for medication none
     <style name="BaseAppTheme.TxtView.bold.medication.none" parent="BaseAppTheme.TxtView.bold">
         <item name="android:paddingStart">@dimen/_16sdp</item>/>
         <item name="android:paddingEnd">@dimen/_16sdp</item>/>
@@ -73,6 +73,21 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:background">@drawable/btn_color_accent_background</item>/>
+    </style>-->
+
+    <!--textView for medication none-->
+    <style name="BaseAppTheme.TxtView.bold.medication.none" parent="BaseAppTheme.TxtView.bold">
+        <item name="android:paddingStart">@dimen/_16sdp</item>/>
+        <item name="android:paddingEnd">@dimen/_16sdp</item>/>
+        <item name="android:paddingTop">2dp</item>/>
+        <item name="android:paddingBottom">2dp</item>/>
+        <item name="android:minHeight">@dimen/medicine_height</item>/>
+        <item name="android:singleLine">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@drawable/btn_color_red_background</item>/>
     </style>
     <!--textView for medication selected-->
     <style name="BaseAppTheme.TxtView.bold.medication" parent="BaseAppTheme.TxtView.bold.medication.none">
@@ -162,5 +177,11 @@
         <item name="android:maxLines">6</item>
         <item name="android:singleLine">false</item>
         <item name="android:fontFamily">@font/nunito_regular</item>
+    </style>
+
+    <!--textView for medication selected-->
+    <style name="BaseAppTheme.TxtView.bold.medication.other" parent="BaseAppTheme.TxtView.bold.medication.none">
+        <item name="android:background">@drawable/btn_color_primary_background</item>/>
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>
