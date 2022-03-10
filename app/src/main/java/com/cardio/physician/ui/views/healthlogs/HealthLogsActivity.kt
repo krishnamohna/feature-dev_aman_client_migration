@@ -169,19 +169,13 @@ class HealthLogsActivity : BaseToolbarActivity() {
             }
             dateStart.time = calender.timeInMillis
             //if user created date is found
-            viewModel.getUserSignedUpDate()?.let {
-              /*  dateStart.time = it
-                //let minus one month here
-                var calender = Calendar.getInstance()
-                calender.time = dateStart
-                calender.add(Calendar.MONTH, -1)*/
-                //let minus 90 days here
+          /*  viewModel.getUserSignedUpDate()?.let {
                 calender.timeInMillis = it
                 var calender = calender.clearHoursMins().apply {
                     add(Calendar.DAY_OF_YEAR, -90)
                 }
                 dateStart.time = calender.timeInMillis
-            }
+            }*/
             getDatePicker(HealthLogsActivity@ this,
                 selectedDate,
                 dateStart) { _, year, month, date ->

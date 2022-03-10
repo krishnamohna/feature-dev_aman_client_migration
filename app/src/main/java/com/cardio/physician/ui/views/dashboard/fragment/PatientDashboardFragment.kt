@@ -60,6 +60,10 @@ class PatientDashboardFragment : BaseToolBarFragment<FragmentPatientDashboardBin
     }
 
     private fun showHidePatientView(showHide: Int){
+        if(binding.tvNoPatientFound.visibility==View.VISIBLE) {
+            binding.tvNoPatientFound.visibility = View.GONE
+            binding.ivNoPatientFound.visibility = View.GONE
+        }
             binding.tvNoPatientFoundSearch.visibility = showHide
             binding.ivNoPatientFoundSearch.visibility = showHide
             if (showHide == View.VISIBLE) {
@@ -70,7 +74,11 @@ class PatientDashboardFragment : BaseToolBarFragment<FragmentPatientDashboardBin
 
     }
 
-    private fun showHidePatientViewListEmpty(showHide: Int){//0(1st)
+    private fun showHidePatientViewListEmpty(showHide: Int){
+        if(binding.tvNoPatientFoundSearch.visibility==View.VISIBLE) {
+            binding.tvNoPatientFoundSearch.visibility = View.GONE
+            binding.ivNoPatientFoundSearch.visibility = View.GONE
+        }
             binding.tvNoPatientFound.visibility = showHide
             binding.ivNoPatientFound.visibility = showHide
             if (showHide == View.VISIBLE) {
@@ -133,7 +141,11 @@ class PatientDashboardFragment : BaseToolBarFragment<FragmentPatientDashboardBin
         val layoutManager = LinearLayoutManager(activity)
         adapter = ConnectionsAdapter( {
                 view, position -> DiagnosisActivity.start(requireActivity(), adapter.connectionsList[position].userId)
-        }, { showEmptyView -> if(showEmptyView) showHidePatientView(View.VISIBLE) else showHidePatientView(View.GONE) })
+        }, { showEmptyView ->
+            if(showEmptyView)
+            showHidePatientView(View.VISIBLE)
+        else
+            showHidePatientView(View.GONE) })
         binding.rvConnections.layoutManager = layoutManager
         binding.rvConnections.adapter = adapter
     }
