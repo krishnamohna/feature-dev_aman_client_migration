@@ -1,47 +1,47 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:2:1-13:12
-INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:2:1-13:12
-INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:2:1-13:12
-INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:2:1-13:12
-INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:2:1-13:12
-INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:2:1-13:12
-INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:2:1-13:12
+ADDED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
 	package
-		ADDED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:3:5-32
-		INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
-		INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
+		ADDED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:3:5-32
+		INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
+		INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
-		ADDED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:2:1-13:12
-		INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
+		INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
+		ADDED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+		INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
 	android:versionCode
-		INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
-		ADDED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:2:1-13:12
-		INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
+		INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
+		ADDED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:2:1-13:12
+		INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:2:11-69
+		ADDED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:2:11-69
 application
-ADDED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:5:5-11:19
+ADDED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:5:5-11:19
 activity#com.countrypicker.CountrySelectActivity
-ADDED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:6:9-10:15
+ADDED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:6:9-10:15
 	android:screenOrientation
-		ADDED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:9:13-49
+		ADDED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:9:13-49
 	android:theme
-		ADDED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:8:13-51
+		ADDED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:8:13-51
 	android:name
-		ADDED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml:7:13-50
+		ADDED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml:7:13-50
 uses-sdk
-INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
-INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
-INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
-INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
+INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
+INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
+INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
+INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
-		ADDED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
-		INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
+		INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
+		ADDED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
+		INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
-		ADDED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
-		INJECTED from E:\workspace\android-patient\countrypicker\src\main\AndroidManifest.xml
+		INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
+		ADDED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml
+		INJECTED from /home/appinventiv/AndroidStudioProjects/PocketCardio_Doctor/android-patient/countrypicker/src/main/AndroidManifest.xml

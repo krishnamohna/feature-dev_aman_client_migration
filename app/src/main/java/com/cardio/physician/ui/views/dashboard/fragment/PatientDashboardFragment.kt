@@ -60,23 +60,24 @@ class PatientDashboardFragment : BaseToolBarFragment<FragmentPatientDashboardBin
     }
 
     private fun showHidePatientView(showHide: Int){
-        binding.tvNoPatientFoundSearch.visibility = showHide
-        binding.ivNoPatientFoundSearch.visibility = showHide
-        if(showHide == View.VISIBLE){
-            binding.rvConnections.visibility = View.GONE
-        }else{
-            binding.rvConnections.visibility = View.VISIBLE
-        }
+            binding.tvNoPatientFoundSearch.visibility = showHide
+            binding.ivNoPatientFoundSearch.visibility = showHide
+            if (showHide == View.VISIBLE) {
+                binding.rvConnections.visibility = View.GONE
+            } else {
+                binding.rvConnections.visibility = View.VISIBLE
+            }
+
     }
 
-    private fun showHidePatientViewListEmpty(showHide: Int){
-        binding.tvNoPatientFound.visibility = showHide
-        binding.ivNoPatientFound.visibility = showHide
-        if(showHide == View.VISIBLE){
-            binding.rvConnections.visibility = View.GONE
-        }else{
-            binding.rvConnections.visibility = View.VISIBLE
-        }
+    private fun showHidePatientViewListEmpty(showHide: Int){//0(1st)
+            binding.tvNoPatientFound.visibility = showHide
+            binding.ivNoPatientFound.visibility = showHide
+            if (showHide == View.VISIBLE) {
+                binding.rvConnections.visibility = View.GONE
+            } else {
+                binding.rvConnections.visibility = View.VISIBLE
+            }
     }
 
     override fun getToolbarImp(): IToolbar? {
