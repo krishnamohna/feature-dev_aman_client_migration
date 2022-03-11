@@ -24,6 +24,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.cardio.doctor.ui.common.utils.imagecrop.cropImageFromUri
 import com.cardio.physician.R
 import com.cardio.physician.databinding.FragmentEditProfileBinding
 import com.cardio.physician.domain.common.model.UserModel
@@ -45,7 +46,7 @@ import com.cardio.physician.ui.common.utils.inputfilter.DecimalDigitsInputFilter
 import com.cardio.physician.ui.views.change_email.ChangeEmailActivity
 import com.google.firebase.firestore.DocumentSnapshot
 import com.theartofdev.edmodo.cropper.CropImage
-import com.theartofdev.edmodo.cropper.CropImageView
+import com.yalantis.ucrop.UCrop
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -61,6 +62,7 @@ class EditProfileFragment : BaseToolBarFragment<FragmentEditProfileBinding>(),
     private val viewModel: EditUserProfileViewModel by viewModels()
     private var birthDate: Date? = null
     private val navArgs by navArgs<EditProfileFragmentArgs>()
+    private var latestTmpUri: Uri? = null
 
     var isEmailEdited: (email: String) -> Unit = {
         Intent(requireContext(), ChangeEmailActivity::class.java).apply {
@@ -69,6 +71,22 @@ class EditProfileFragment : BaseToolBarFragment<FragmentEditProfileBinding>(),
             resultLauncher.launch(this)
         }
     }
+
+    private val takeImageResult =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
+            if (isSuccess) {
+                latestTmpUri?.let { uri ->
+                    cropImageFromUri(uri, this)
+                }
+            }
+        }
+
+    private val selectImageFromGalleryResult =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                cropImageFromUri(it, this)
+            }
+        }
 
     private var resultLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -437,22 +455,31 @@ class EditProfileFragment : BaseToolBarFragment<FragmentEditProfileBinding>(),
     }
 
     private fun fetchImage() {
-        showFilePickOptionsForEditProfile(requireActivity(),{
-            CropImage.activity().setGuidelines(CropImageView.Guidelines.ON)
-                .start(requireContext(), this)
+        showFilePickOptionsForEditProfile(requireActivity(), {
+            takeImage()
         }, {
-            CropImage.activity().setGuidelines(CropImageView.Guidelines.ON)
-                .start(requireContext(), this)
+            pickImage()
         }, {
-            selectedImageUri=null
-            viewModel.firebaseUri=null
+            selectedImageUri = null
+            viewModel.firebaseUri = null
             binding.imgProfilePic.setImageResource(R.drawable.ic_profile_placeholder)
             viewModel.removePhoto()
-        },shouldShowRemovePhotoOption())
+        }, shouldShowRemovePhotoOption())
     }
 
-    private fun shouldShowRemovePhotoOption(): Boolean = viewModel.firebaseUri!=null || selectedImageUri!=null
+    private fun takeImage() {
+        getTmpFileUri(requireContext()).let { uri ->
+            latestTmpUri = uri
+            takeImageResult.launch(uri)
+        }
+    }
 
+    private fun pickImage() {
+        selectImageFromGalleryResult.launch("image/*")
+    }
+
+    private fun shouldShowRemovePhotoOption(): Boolean =
+        viewModel.firebaseUri != null || selectedImageUri != null
 
     @SuppressLint("Assert")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -463,6 +490,13 @@ class EditProfileFragment : BaseToolBarFragment<FragmentEditProfileBinding>(),
                 binding.imgProfilePic.loadImage(result.uri, true, true)
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 customSnackBarFail(requireContext(), binding.root, result.error.message!!)
+            }
+        } else if (requestCode == UCrop.REQUEST_CROP) {
+            data?.let {
+                UCrop.getOutput(it)?.let { uri->
+                    selectedImageUri = uri
+                    binding.imgProfilePic.loadImage(uri, true, true)
+                }
             }
         }
     }

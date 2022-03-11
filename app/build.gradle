@@ -157,5 +157,7 @@ dependencies {
     //firebase dynamic link
     implementation 'com.google.firebase:firebase-dynamic-links-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    //crop image
+    implementation 'com.github.yalantis:ucrop:2.2.6'
 }
 

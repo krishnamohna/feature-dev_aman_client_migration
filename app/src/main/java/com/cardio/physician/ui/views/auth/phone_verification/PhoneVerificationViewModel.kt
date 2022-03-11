@@ -40,15 +40,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PhoneVerificationViewModel @Inject constructor(
-    userManager: UserManager,
-    private val userProfileRepo: UserProfileRepository,
-    private val phoneVerificationRepository: PhoneVerificationRepository,
-    application: Application,
+        userManager: UserManager,
+        private val userProfileRepo: UserProfileRepository,
+        private val phoneVerificationRepository: PhoneVerificationRepository,
+        application: Application,
 ) : BaseAuthViewModel(userManager, application) {
 
     private val _validatePhoneVerification = SingleLiveEvent<Resource<FirebaseUser>>()
     val validateForgotPasswordResponse: LiveData<Resource<FirebaseUser>> =
-        _validatePhoneVerification
+            _validatePhoneVerification
 
     private val _loginApiResponse = SingleLiveEvent<Resource<String>>()
     val loginApiResponse: LiveData<Resource<String>> = _loginApiResponse
@@ -68,7 +68,7 @@ class PhoneVerificationViewModel @Inject constructor(
 
     private fun setObserverForAlpha(resourceId: Int) {
         _validatePhoneVerification.value =
-            Resource.setAlpha(Constants.PHONE_VERIFICATION, resourceId)
+                Resource.setAlpha(Constants.PHONE_VERIFICATION, resourceId)
     }
 
     fun verifyPhoneNumberWithCode(verificationId: String?, code: String) {
@@ -80,20 +80,20 @@ class PhoneVerificationViewModel @Inject constructor(
         try {
             viewModelScope.launch {
                 _phoneAuthenticationResponse.value =
-                    Resource.loading(Constants.PHONE_VERIFICATION, null)
+                        Resource.loading(Constants.PHONE_VERIFICATION, null)
                 val authResult =
-                    phoneVerificationRepository.signInWithCredential(credential, _firebaseException)
+                        phoneVerificationRepository.signInWithCredential(credential, _firebaseException)
                 if (authResult != null) {
                     // phoneVerificationRepository.enableAccountLinking(credential,_firebaseException)
                     _phoneAuthenticationResponse.value =
-                        Resource.success(Constants.PHONE_VERIFICATION, authResult.user)
+                            Resource.success(Constants.PHONE_VERIFICATION, authResult.user)
                 } else {
                     _phoneAuthenticationResponse.value =
-                        Resource.error(Constants.PHONE_VERIFICATION,
-                            0,
-                            getApplication<AppCardioPatient>().getString(R.string.getting_some_error),
-                            null
-                        )
+                            Resource.error(Constants.PHONE_VERIFICATION,
+                                    0,
+                                    getApplication<AppCardioPatient>().getString(R.string.getting_some_error),
+                                    null
+                            )
                 }
 
                 /*auth.signInWithCredential(credential).addOnCompleteListener { task ->
@@ -114,29 +114,29 @@ class PhoneVerificationViewModel @Inject constructor(
             }
         } catch (e: Exception) {
             _phoneAuthenticationResponse.value =
-                Resource.error(Constants.VALIDATION, 0, getExceptionMessage(e), null)
+                    Resource.error(Constants.VALIDATION, 0, getExceptionMessage(e), null)
         }
     }
 
 
     fun updateEmailAndPassword(
-        user: FirebaseUser?,
-        phoneVerificationDetail: PhoneVerificationDetails?,
+            user: FirebaseUser?,
+            phoneVerificationDetail: PhoneVerificationDetails?,
     ) {
         try {
             viewModelScope.launch {
                 _validatePhoneVerification.value =
-                    Resource.loading(Constants.UPDATE_EMAIL_AND_PASSWORD, null)
+                        Resource.loading(Constants.UPDATE_EMAIL_AND_PASSWORD, null)
                 user?.let {
                     //  if (deviceUri != null && firebaseUri == null) {
                     if (!phoneVerificationDetail?.imageUrl.isNullOrEmpty()) {
                         val uri = Uri.parse(phoneVerificationDetail?.imageUrl)
                         val firebaseUriDeferred = async {
                             phoneVerificationRepository.uploadImageOnFirebaseStorage(
-                                uri,
-                                getFileName(getApplication(), uri)
-                                    ?: UUID.randomUUID().toString(),
-                                _firebaseException
+                                    uri,
+                                    getFileName(getApplication(), uri)
+                                            ?: UUID.randomUUID().toString(),
+                                    _firebaseException
                             )
                         }
                         val firebaseUri = firebaseUriDeferred.await()
@@ -146,19 +146,19 @@ class PhoneVerificationViewModel @Inject constructor(
                     it.updateEmail(phoneVerificationDetail!!.email).addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             user.updatePassword(phoneVerificationDetail.password)
-                                .addOnCompleteListener { resultPassword ->
-                                    if (resultPassword.isSuccessful) {
-                                        viewModelScope.launch {
-                                            phoneVerificationRepository.sendVerificationEmail(it,
-                                                _firebaseException)
+                                    .addOnCompleteListener { resultPassword ->
+                                        if (resultPassword.isSuccessful) {
+                                            viewModelScope.launch {
+                                                phoneVerificationRepository.sendVerificationEmail(it,
+                                                        _firebaseException)
+                                            }
+                                            storeUserDetailInFireStore(user, phoneVerificationDetail)
+                                            _validatePhoneVerification.value = Resource.success(
+                                                    Constants.UPDATE_EMAIL_AND_PASSWORD,
+                                                    null
+                                            )
                                         }
-                                        storeUserDetailInFireStore(user, phoneVerificationDetail)
-                                        _validatePhoneVerification.value = Resource.success(
-                                            Constants.UPDATE_EMAIL_AND_PASSWORD,
-                                            null
-                                        )
                                     }
-                                }
                         }
                     }.addOnFailureListener {
                         showFailureException(it)
@@ -172,32 +172,32 @@ class PhoneVerificationViewModel @Inject constructor(
 
     private fun showFailureException(exception: Exception) {
         _validatePhoneVerification.value = Resource.error(
-            Constants.VALIDATION,
-            0, getExceptionMessage(exception),
-            null
+                Constants.VALIDATION,
+                0, getExceptionMessage(exception),
+                null
         )
     }
 
     private fun storeUserDetailInFireStore(
-        user: FirebaseUser?,
-        userDetail: PhoneVerificationDetails?,
+            user: FirebaseUser?,
+            userDetail: PhoneVerificationDetails?,
     ) {
         try {
             viewModelScope.launch {
                 userDetail.let {
                     val user: HashMap<String, Any> =
-                        hashMapOf(
-                            USER_ID to user!!.uid,
-                            FIRST_NAME to userDetail!!.firstName,
-                            LAST_NAME to userDetail.lastName,
-                            COUNTRY_CODE to userDetail.countryCode,
-                            PHONE_NUMBER to userDetail.phoneNumber,
-                            EMAIL to userDetail.email.toLowerCase(),
-                            IMAGE_URL to imagePath,
-                            SIGN_UP_TYPE to SignUpUserType.NORMAL.name,
-                            USER_TYPE to com.cardio.physician.ui.common.utils.Constants.USER_TYPE_PHYSICIAN,
-                            SEARCH_NAME_USER to getSearchName(userDetail.firstName,userDetail.lastName)
-                        )
+                            hashMapOf(
+                                    USER_ID to user!!.uid,
+                                    FIRST_NAME to userDetail!!.firstName,
+                                    LAST_NAME to userDetail.lastName,
+                                    COUNTRY_CODE to userDetail.countryCode,
+                                    PHONE_NUMBER to userDetail.phoneNumber,
+                                    EMAIL to userDetail.email.toLowerCase(),
+                                    IMAGE_URL to imagePath,
+                                    SIGN_UP_TYPE to SignUpUserType.NORMAL.name,
+                                    USER_TYPE to com.cardio.physician.ui.common.utils.Constants.USER_TYPE_PHYSICIAN,
+                                    SEARCH_NAME_USER to getSearchName(userDetail.firstName, userDetail.lastName)
+                            )
                     phoneVerificationRepository.storeUserDataInFireStore("", user)
                 }
             }
@@ -206,21 +206,21 @@ class PhoneVerificationViewModel @Inject constructor(
         }
     }
 
-    fun validateUserType(isGoogleLogin: Boolean = false, onForceLogout: (() -> Unit)?=null) {
+    fun validateUserType(isGoogleLogin: Boolean = false, onForceLogout: (() -> Unit)? = null) {
         viewModelScope.launch {
-            try{
-                if(userProfileRepo.fetchUserDetailByModel(null).userType== UserType.PHYSICIAN){
+            try {
+                if (userProfileRepo.fetchUserDetailByModel(null).userType == UserType.PHYSICIAN) {
                     _loginApiResponse.value =
-                        Resource.success(Constants.LOGIN, null)
-                }else{
+                            Resource.success(Constants.LOGIN, null)
+                } else {
                     onForceLogout?.invoke()
                     _loginApiResponse.value = Resource.error(Constants.VALIDATION, 0,
-                        applicationContext.getString(R.string.error_not_patient_account), null)
+                            applicationContext.getString(R.string.error_not_patient_account), null)
                 }
-            }catch (exp:Exception){
+            } catch (exp: Exception) {
                 onForceLogout?.invoke()
                 _loginApiResponse.value = Resource.error(Constants.VALIDATION, 0,
-                    getExceptionMessage(exp), null)
+                        getExceptionMessage(exp), null)
             }
         }
     }

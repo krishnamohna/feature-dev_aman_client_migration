@@ -18,6 +18,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.cardio.doctor.ui.common.utils.imagecrop.cropImageFromUri
 import com.cardio.physician.R
 import com.cardio.physician.databinding.FragmentSignUpBinding
 import com.cardio.physician.domain.common.model.ValidationModel
@@ -38,6 +39,7 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.theartofdev.edmodo.cropper.CropImage.*
 import com.theartofdev.edmodo.cropper.CropImageView
+import com.yalantis.ucrop.UCrop
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -54,9 +56,26 @@ class SignUpFragment : BaseFragmentAuth(R.layout.fragment_sign_up), View.OnClick
     private val viewModel: SignUpViewModel by viewModels()
     private var isPasswordVisible: Boolean = false
     private var isConfirmVisible: Boolean = false
+    private var latestTmpUri: Uri? = null
 
     @Inject
     lateinit var networkHelper: NetworkHelper
+
+    private val takeImageResult =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
+            if (isSuccess) {
+                latestTmpUri?.let { uri ->
+                    cropImageFromUri(uri, this)
+                }
+            }
+        }
+
+    private val selectImageFromGalleryResult =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                cropImageFromUri(it, this)
+            }
+        }
 
     private val requestMultiplePermissions =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -183,8 +202,25 @@ class SignUpFragment : BaseFragmentAuth(R.layout.fragment_sign_up), View.OnClick
     }
 
     private fun fetchImage() {
-        activity().setGuidelines(CropImageView.Guidelines.ON)
-            .start(requireContext(), this)
+        showFilePickOptionsForEditProfile(requireActivity(), {
+            takeImage()
+        }, {
+            pickImage()
+        }, {
+        }, false)
+        /*activity().setGuidelines(CropImageView.Guidelines.ON)
+            .start(requireContext(), this)*/
+    }
+
+    private fun takeImage() {
+        getTmpFileUri(requireContext()).let { uri ->
+            latestTmpUri = uri
+            takeImageResult.launch(uri)
+        }
+    }
+
+    private fun pickImage() {
+        selectImageFromGalleryResult.launch("image/*")
     }
 
     @SuppressLint("Assert")
@@ -204,6 +240,13 @@ class SignUpFragment : BaseFragmentAuth(R.layout.fragment_sign_up), View.OnClick
                 //viewModel.uploadProfileImage(viewModel.deviceUri, viewModel.fileName)
             } else if (resultCode == CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 customSnackBarFail(requireContext(), binding.root, result.error.message!!)
+            }
+        } else if (requestCode == UCrop.REQUEST_CROP) {
+            data?.let {
+                UCrop.getOutput(it)?.let { uri ->
+                    viewModel.deviceUri = uri
+                    binding.imgProfilePic.loadImage(uri, true, true)
+                }
             }
         }
     }
