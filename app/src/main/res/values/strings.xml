@@ -313,5 +313,5 @@
     <string name="dosage">Dosage</string>
     <string name="mg">mg</string>
     <string name="title_considerations">Considerations</string>
-
+    <string name="file_provider_authorities">com.cardio.provider.provider</string>
 </resources>

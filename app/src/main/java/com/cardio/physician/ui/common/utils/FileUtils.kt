@@ -200,3 +200,12 @@ fun copyLarge(input: InputStream, output: OutputStream, buffer: ByteArray?): Lon
     }
     return count
 }
+
+fun getTmpFileUri(context: Context): Uri {
+    val tmpFile = File.createTempFile("tmp_image_file", ".png", context.cacheDir).apply {
+        createNewFile()
+        deleteOnExit()
+    }
+    return FileProvider.getUriForFile(context, context.getString(R.string.file_provider_authorities), tmpFile)
+}
+
