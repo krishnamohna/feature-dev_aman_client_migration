@@ -24,6 +24,7 @@ import com.cardio.physician.ui.common.utils.FireStoreDocKey
 import com.cardio.physician.ui.common.utils.customSnackBarFail
 import com.cardio.physician.ui.common.utils.extentions.loadImage
 import com.cardio.physician.ui.common.utils.extentions.toUserModel
+import com.cardio.physician.ui.common.utils.showToast
 import com.cardio.physician.ui.views.dashboard.DashboardActivity
 import com.cardio.physician.ui.views.diagnosis.DiagnosisActivity
 import com.cardio.physician.ui.views.healthlogs.HealthLogsActivity
@@ -33,15 +34,15 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class GetProfileFragment : BaseToolBarFragment<FragmentGetProfileBinding>(), View.OnClickListener {
 
-    private var userType: String?=null
+    private var userType: String? = null
     private var userModel: UserModel? = null
     private val viewModel: UserProfileViewModel by viewModels()
 
     var resultHealthLogs: ActivityResultLauncher<Intent> = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()){
-            result->
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-           onBackButtonClick()
+            onBackButtonClick()
         }
     }
 
@@ -57,7 +58,7 @@ class GetProfileFragment : BaseToolBarFragment<FragmentGetProfileBinding>(), Vie
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding=FragmentGetProfileBinding.inflate(inflater,container,false)
+        binding = FragmentGetProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -65,7 +66,7 @@ class GetProfileFragment : BaseToolBarFragment<FragmentGetProfileBinding>(), Vie
         super.onViewCreated(view, savedInstanceState)
         setListener()
         setObservers()
-        launchWithMinDelay{
+        launchWithMinDelay {
             viewModel.getUserDetail()
         }
     }
@@ -73,8 +74,11 @@ class GetProfileFragment : BaseToolBarFragment<FragmentGetProfileBinding>(), Vie
     override fun onResume() {
         super.onResume()
         (requireActivity() as? DashboardActivity)?.registerDiagnosisClick {
-            resultDiagnosisReportSubmition.launch(DiagnosisActivity.getActivityIntent(
-                requireActivity()))
+            resultDiagnosisReportSubmition.launch(
+                DiagnosisActivity.getActivityIntent(
+                    requireActivity()
+                )
+            )
         }
     }
 
@@ -110,8 +114,12 @@ class GetProfileFragment : BaseToolBarFragment<FragmentGetProfileBinding>(), Vie
                 hideProgress()
                 when (apiResponse.apiConstant) {
                     Constants.USER_DETAIL -> {
-                        userModel = (apiResponse.data as? DocumentSnapshot)?.toUserModel()
-                        showUserDetailOnUI(apiResponse.data as DocumentSnapshot)
+                        if (apiResponse.data != null) {
+                            userModel = (apiResponse.data as? DocumentSnapshot)?.toUserModel()
+                            showUserDetailOnUI(apiResponse.data as DocumentSnapshot)
+                        } else {
+                            showToast(R.string.getting_some_error)
+                        }
                     }
 
                     Constants.USER_PROFILE_PIC -> {
@@ -121,7 +129,7 @@ class GetProfileFragment : BaseToolBarFragment<FragmentGetProfileBinding>(), Vie
                             .apply(RequestOptions().circleCrop())
                             .placeholder(R.drawable.ic_profile_placeholder)
                             .into(binding.imgProfilePic)*/
-                        binding.imgProfilePic.loadImage(storageReference,true,true)
+                        binding.imgProfilePic.loadImage(storageReference, true, true)
                     }
                 }
             }
@@ -156,15 +164,15 @@ class GetProfileFragment : BaseToolBarFragment<FragmentGetProfileBinding>(), Vie
             var gender = documentReference.data?.get(FireStoreDocKey.GENDER) as String?
             var weight = documentReference.data?.get(FireStoreDocKey.WEIGHT) as String?
             var height = documentReference.data?.get(FireStoreDocKey.HEIGHT) as String?
-            userType= documentReference.data?.get(FireStoreDocKey.SIGN_UP_TYPE) as String?
+            userType = documentReference.data?.get(FireStoreDocKey.SIGN_UP_TYPE) as String?
             val userName = firstName?.plus(" ").plus(lastName ?: "")
             binding.txtUserName.text = userName
             binding.txtEmailAddress.text = email ?: ""
             phoneNumber?.let {
-                if(!it.trim().isEmpty()) {
+                if (!it.trim().isEmpty()) {
                     binding.txtPhoneNumber.visibility = View.VISIBLE
                     binding.txtPhoneNumber.text = "$countryCode  $phoneNumber"
-                }else{
+                } else {
                     binding.txtPhoneNumber.visibility = View.INVISIBLE
                 }
             }
@@ -181,8 +189,8 @@ class GetProfileFragment : BaseToolBarFragment<FragmentGetProfileBinding>(), Vie
             binding.txtWeight.text = weight
             binding.txtSelectedWearable.text = viewModel.getSelectedHealthKit()
             if (!imageUrl.isNullOrBlank()) {
-               // viewModel.getImageDownloadUrl(imageUrl)
-                binding.imgProfilePic.loadImage(imageUrl,true,true)
+                // viewModel.getImageDownloadUrl(imageUrl)
+                binding.imgProfilePic.loadImage(imageUrl, true, true)
             }
         } else {
             customSnackBarFail(
@@ -199,10 +207,18 @@ class GetProfileFragment : BaseToolBarFragment<FragmentGetProfileBinding>(), Vie
                 findNavController().navigate(GetProfileFragmentDirections.getProfileToSyncHealthData())
             }
             binding.settingContainer -> {
-                findNavController().navigate(GetProfileFragmentDirections.getProfileToSettingFragment(userType))
+                findNavController().navigate(
+                    GetProfileFragmentDirections.getProfileToSettingFragment(
+                        userType
+                    )
+                )
             }
             binding.headerView.imgEditProfile -> {
-                findNavController().navigate(GetProfileFragmentDirections.getProfileToEditProfile(userModel))
+                findNavController().navigate(
+                    GetProfileFragmentDirections.getProfileToEditProfile(
+                        userModel
+                    )
+                )
             }
         }
     }
